@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+
+	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+	<load class="AlphaNum" file="../arguments/alphanum.class.php" />
+
+	<load class="AddressBook" file="addressbook.class.php" />
+	<load class="AddressBookProfile" file="addressbookprofile.class.php" />
+	<load class="AddressBookAdd" file="addressbookadd.class.php" />
+	<load class="AddressBookPost" file="addressbookpost.class.php" />
+	<load class="AddressBookAuto" file="addressbookauto.class.php" />
+
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<view name="default" class="AddressBook" template="default.tpl" />
+	<view name="add" class="AddressBookAdd" template="form.tpl" />
+	<view name="view" class="AddressBookProfile" template="profile.tpl" />
+	<view name="edit" class="AddressBookProfile" template="form.tpl" />
+	<view name="auto" class="AddressBookAuto" template="autocomplete.tpl" />
+
+	<page view="default" />
+	<page view="view">
+		<argument name="profile_id" class="NumberArgument" />
+	</page>
+	<page view="edit">
+		<argument name="profile_id" class="NumberArgument" />
+		<argument name="act" class="AlphaNum" />
+	</page>
+	<page name="add" view="add" />
+	<page name="auto" view="auto">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" />
+		<argument name="postname" class="AlphaNum" />
+	</page>
+
+	<form action="post" class="AddressBookPost">
+		<redirect page="" />
+	</form>
+</app>

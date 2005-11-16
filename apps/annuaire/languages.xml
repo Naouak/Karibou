@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<translation>
+    <sentence key="DIRECTORY_HOME">
+        <translation language="fr" value="Accueil Annuaire" />
+        <translation language="en" value="Directory Home" />
+    </sentence>
+    <sentence key="DIRECTORY_DESCRIPTION">
+        <translation language="fr">
+				L'annuaire vous permet de rechercher rapidement les coordonnées des différents utilisateurs de l'Intranet. Pensez à mettre à jour vos informations régulièrement en utilisant le lien "Mon profil".
+        </translation>
+        <translation language="en">
+				The directory offers you to search for users profiles quickly and easily. Try to keep your profile up to date using the "My Profile" link.
+        </translation>
+    </sentence>
+    <sentence key="USER_PROFILE">
+        <translation language="fr">
+				Profil utilisateur
+        </translation>
+        <translation language="en">
+				User profile
+        </translation>
+    </sentence>
+    <sentence key="NO_RESULT">
+        <translation language="fr">
+				Aucun résultat
+        </translation>
+        <translation language="en">
+				No result
+        </translation>
+    </sentence>
+    <sentence key="USER_GROUPS_TREE">
+        <translation language="fr">
+				Arbre des groupes d'utilisateurs
+        </translation>
+        <translation language="en">
+				User groups tree
+        </translation>
+    </sentence>
+    <sentence key="USER_GROUPS_TREE_DESCRIPTION">
+        <translation language="fr">
+				L'arbre des groupes d'utilisateurs présenté ci-dessous présente la liste de l'ensemble des groupes
+				qui composent l'intranet. En cliquant sur un groupe, vous afficherez les utilisateurs qui composent
+				ce groupe.
+        </translation>
+        <translation language="en">
+				The user groups tree displayed below shows each group of the intranet. By clicking on a group, you'll
+				display its users.
+        </translation>
+    </sentence>
+    <sentence key="USER_GROUPS">
+        <translation language="fr">
+				Groupes d'utilisateurs
+        </translation>
+        <translation language="en">
+				User groups
+        </translation>
+    </sentence>
+    <sentence key="GROUPS_DESCRIPTION">
+        <translation language="fr">
+				Groupes d'utilisateurs
+        </translation>
+        <translation language="en">
+				User groups
+        </translation>
+    </sentence>
+    <sentence key="FOR">
+        <translation language="fr">
+				pour
+        </translation>
+        <translation language="en">
+				for
+        </translation>
+    </sentence>
+    <sentence key="USER_SEARCH">
+        <translation language="fr">
+				Recherche d'utilisateurs
+        </translation>
+        <translation language="en">
+				User search
+        </translation>
+    </sentence>
+    <sentence key="SEARCH">
+        <translation language="fr">
+				Recherche
+        </translation>
+        <translation language="en">
+				Search
+        </translation>
+    </sentence>
+    <sentence key="RESULT">
+        <translation language="fr">
+				résultat
+        </translation>
+        <translation language="en">
+				result
+        </translation>
+    </sentence>
+    <sentence key="SEARCH_RESULTS">
+        <translation language="fr">
+				Résultats de la recherche
+        </translation>
+        <translation language="en">
+				Search results
+        </translation>
+    </sentence>
+    <sentence key="TITLE">
+        <translation language="fr" value="Annuaire des utilisateurs" />
+        <translation language="en" value="User Profiles" />
+    </sentence>
+    <sentence key="SEARCH_TITLE">
+        <translation language="fr" value="Rechercher" />
+        <translation language="en" value="Search" />
+    </sentence>
+    <sentence key="GROUPS_LINK">
+        <translation language="fr" value="Groupes" />
+        <translation language="en" value="Groups" />
+    </sentence>
+    <sentence key="USER_LINK">
+        <translation language="fr" value="Mon Profil" />
+        <translation language="en" value="My Profile" />
+    </sentence>
+    <sentence key="EDIT_LINK">
+        <translation language="fr">
+			C'est mon profil et je souhaite éditer mes informations
+        </translation>
+        <translation language="en">
+			It's my profile and I want to update it
+        </translation>
+    </sentence>
+    <sentence key="ADDRESSES">
+        <translation language="fr">
+			Adresses
+        </translation>
+        <translation language="en">
+        	Addresses
+        </translation>
+    </sentence>
+    <sentence key="PHONES">
+        <translation language="fr">
+        	Numéros de téléphone
+        </translation>
+        <translation language="en">
+			Phone numbers
+        </translation>
+    </sentence>
+    <sentence key="EMAILS">
+        <translation language="fr">
+			Adresses email
+        </translation>
+        <translation language="en">
+			Email addresses
+        </translation>
+    </sentence>
+    <sentence key="ADD_A_PHONE_NUMBER">
+        <translation language="fr">	
+			Ajouter un numéro de téléphone
+        </translation>
+        <translation language="en">
+			Add a phone number
+        </translation>
+    </sentence>
+    <sentence key="ADD_AN_ADDRESS">
+        <translation language="fr">
+			Ajouter une adresse
+        </translation>
+        <translation language="en">
+			Add an address
+        </translation>
+    </sentence>
+    <sentence key="ADD_AN_EMAIL">
+        <translation language="fr">
+			Ajouter une adresse email
+        </translation>
+        <translation language="en">
+			Add an email address
+        </translation>
+    </sentence>
+    <sentence key="LOGIN">
+        <translation language="fr" value="Nom d'Utilisateur" />
+        <translation language="en" value="Username" />
+    </sentence>
+    <sentence key="FIRSTNAME">
+        <translation language="fr" value="Prenom" />
+        <translation language="en" value="Firstname" />
+    </sentence>
+    <sentence key="LASTNAME">
+        <translation language="fr" value="Nom" />
+        <translation language="en" value="Lastname" />
+    </sentence>
+    <sentence key="SURNAME">
+        <translation language="fr" value="Surnom" />
+        <translation language="en" value="Surname" />
+    </sentence>
+    <sentence key="BIRTHDAY">
+        <translation language="fr" value="Anniversaire" />
+        <translation language="en" value="Birthday" />
+    </sentence>
+    <sentence key="URL">
+        <translation language="fr" value="Site Web" />
+        <translation language="en" value="Website" />
+    </sentence>
+    <sentence key="PICTURE">
+        <translation language="fr" value="Photo" />
+        <translation language="en" value="Picture" />
+    </sentence>
+
+    <sentence key="ADDRESSTYPE">
+        <translation language="fr" value="Type" />
+        <translation language="en" value="Type" />
+    </sentence>
+    <sentence key="PHONETYPE">
+        <translation language="fr" value="Type" />
+        <translation language="en" value="Type" />
+    </sentence>
+    <sentence key="EMAILTYPE">
+        <translation language="fr" value="Type" />
+        <translation language="en" value="Type" />
+    </sentence>
+
+    <sentence key="POADDRESS">
+        <translation language="fr" value="Postale" />
+        <translation language="en" value="P.O. Address" />
+    </sentence>
+    <sentence key="EXTADDRESS">
+        <translation language="fr" value="Extension" />
+        <translation language="en" value="Extension" />
+    </sentence>
+    <sentence key="STREET">
+        <translation language="fr" value="Rue" />
+        <translation language="en" value="Street" />
+    </sentence>
+    <sentence key="CITY">
+        <translation language="fr" value="Ville" />
+        <translation language="en" value="City" />
+    </sentence>
+    <sentence key="REGION">
+        <translation language="fr" value="Region" />
+        <translation language="en" value="Region" />
+    </sentence>
+    <sentence key="POSTCODE">
+        <translation language="fr" value="Code Postal" />
+        <translation language="en" value="Postcode" />
+    </sentence>
+    <sentence key="COUNTRY">
+        <translation language="fr" value="Pays" />
+        <translation language="en" value="Country" />
+    </sentence>
+    <sentence key="PHONENUMBER">
+        <translation language="fr" value="Numero" />
+        <translation language="en" value="Number" />
+    </sentence>
+    <sentence key="EMAILADDRESS">
+        <translation language="fr" value="Adresse" />
+        <translation language="en" value="Address" />
+    </sentence>
+
+    <sentence key="DELETE">
+        <translation language="fr" value="Supprimer" />
+        <translation language="en" value="Delete" />
+    </sentence>
+
+    <sentence key="HOME">
+        <translation language="fr" value="Personnel" />
+        <translation language="en" value="Home" />
+    </sentence>
+    <sentence key="WORK">
+        <translation language="fr" value="Travail" />
+        <translation language="en" value="Work" />
+    </sentence>
+    <sentence key="DOM">
+        <translation language="fr" value="Domestique" />
+        <translation language="en" value="Domestic" />
+    </sentence>
+    <sentence key="INTL">
+        <translation language="fr" value="International" />
+        <translation language="en" value="International" />
+    </sentence>
+    <sentence key="POSTAL">
+        <translation language="fr" value="Postale" />
+        <translation language="en" value="Postal" />
+    </sentence>
+    <sentence key="FAX">
+        <translation language="fr" value="Telecopie" />
+        <translation language="en" value="FAX" />
+    </sentence>
+    <sentence key="CELL">
+        <translation language="fr" value="Telephone Mobile" />
+        <translation language="en" value="Cellular" />
+    </sentence>
+    <sentence key="PAGER">
+        <translation language="fr" value="Pager" />
+        <translation language="en" value="Pager" />
+    </sentence>
+    <sentence key="INTERNET">
+        <translation language="fr" value="E-Mail Internet" />
+        <translation language="en" value="Internet Mail" />
+    </sentence>
+    <sentence key="AIM">
+        <translation language="fr" value="AIM" />
+        <translation language="en" value="AIM" />
+    </sentence>
+    <sentence key="ICQ">
+        <translation language="fr" value="ICQ" />
+        <translation language="en" value="ICQ" />
+    </sentence>
+    <sentence key="JABBER">
+        <translation language="fr" value="JABBER" />
+        <translation language="en" value="JABBER" />
+    </sentence>
+    <sentence key="MSN">
+        <translation language="fr" value="MSN" />
+        <translation language="en" value="MSN" />
+    </sentence>
+    <sentence key="SKYPE">
+        <translation language="fr" value="SKYPE" />
+        <translation language="en" value="SKYPE" />
+    </sentence>
+    <sentence key="USER_PROFILE_EDIT">
+        <translation language="fr">
+        	Édition du profil utilisateur
+        </translation>
+        <translation language="en">
+			Editing your user profile
+        </translation>
+    </sentence>
+    <sentence key="PROFILE_INFO">
+        <translation language="fr">
+        	Informations du profil
+        </translation>
+        <translation language="en">
+			Profile information
+        </translation>
+    </sentence>
+    <sentence key="CREATE_NEW_ENTRY">
+        <translation language="fr">
+        	Créer une nouvelle entrée ici
+        </translation>
+        <translation language="en">
+			Create a new entry here
+        </translation>
+    </sentence>
+    <sentence key="SAVE_PROFILE">
+        <translation language="fr">
+        	Enregistrer mes modifications
+        </translation>
+        <translation language="en">
+			Save my modifications
+        </translation>
+    </sentence>
+    <sentence key="TYPE">
+        <translation language="fr">
+        	Type
+        </translation>
+        <translation language="en">
+			Type
+        </translation>
+    </sentence>
+	<sentence key="WEBSITE">
+		<translation language="fr">
+			Site web
+		</translation>
+		<translation language="en">
+			Web site
+		</translation>
+	</sentence>
+	<sentence key="NOTE">
+		<translation language="fr">
+			Message au monde
+		</translation>
+		<translation language="en">
+			Your message
+		</translation>
+	</sentence>
+	<sentence key="NO_ACCESS">
+		<translation language="fr">Vous ne pouvez pas modifier ce profil</translation>
+		<translation language="en">You cannot modify this profile</translation>
+	</sentence>
+	<sentence key="SEND_FLASHMAIL">
+		<translation language="fr">Envoyer un message instantané (FlashMail)</translation>
+		<translation language="en">Send instant message (FlashMail)</translation>
+	</sentence>
+</translation>

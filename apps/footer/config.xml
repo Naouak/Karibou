@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<footer>
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+	<load class="FooterModel" file="footermodel.class.php" />
+
+	<view name="default" class="FooterModel" template="footer.tpl" />
+	<view name="simple" class="FooterModel" template="footersimple.tpl" />
+	<view name="popup" class="FooterModel" template="footerpopup.tpl" />
+
+</footer>

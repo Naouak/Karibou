@@ -1,0 +1,28 @@
+
+@import 'autocompleter.css';
+@import 'karibou.css';
+@import 'home.css';
+
+@import 'apponlineusers.css';
+@import 'appminichat.css';
+@import 'appflashmail.css';
+@import 'appnews.css';
+@import 'apppreferences.css';
+@import 'applogin.css';
+@import 'appmail.css';
+@import 'appchangepassword.css';
+@import 'appnetcv.css';
+@import 'appcontact.css';
+@import 'appdirectory.css';
+@import 'appfileshare.css';
+
+@import 'appcalendar.css';
+@import 'appcalendar_time_8_20.css';
+@import 'appcalendar_duration.css';
+@import 'appcalendar_month.css';
+
+/* hack to have :hover behaviour on any elements for Internet Explorer */
+
+body {
+	behavior:url("/themes/js/csshover.htc");
+}

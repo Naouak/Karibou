@@ -1,0 +1,120 @@
+<?php
+/**
+ * @copyright 2004 Jonathan Semczyk <jonathan.semczyk@free.fr>
+ *
+ * @license http://www.gnu.org/licenses/lgpl.html Lesser GNU Public License
+ * See the enclosed file COPYING for license information (LGPL).
+ * 
+ * @package framework
+ **/
+
+/**
+ * Debug Class, currently output to screen.
+ *
+ * @todo can write to files, use hookmanager...
+ * @package framework
+ **/
+class Debug
+{
+	public static $display = true;
+	private static $output = "html";
+	private static $debugMessages = array();
+	
+	function __construct()
+	{
+		$this->debugMessages = array();
+	}
+	
+	function kill($txt)
+	{
+		if( self::$display )
+		{
+			self::display($txt);
+			self::flushMessages();
+			echo self::backtrace();
+			die();
+		}
+	}
+	
+	function display($txt)
+	{
+		if( self::$display )
+		{
+			if(is_array($txt) or is_object($txt))
+			{
+				$txt = '<pre>' . print_r($txt, TRUE) . '</pre>';
+			}
+			self::$debugMessages[] = $txt."<br />\n";
+		}
+		
+	}
+	
+	function flushMessages()
+	{
+		if( self::$display )
+		{
+			foreach(self::$debugMessages as $message)
+			{
+				echo $message;
+			}
+			self::$debugMessages = array();
+		}
+	}
+	
+	function backtrace()
+	{
+		$output = "<div style='text-align: left; font-family: monospace;'>\n";
+		$output .= "<b>Backtrace:</b><br />\n";
+		$backtrace = debug_backtrace();
+		$backtrace = array_reverse($backtrace);
+		array_pop($backtrace);
+		$backtrace = array_reverse($backtrace);
+		foreach ($backtrace as $bt)
+		{
+			$args = '';
+			foreach ($bt['args'] as $a)
+			{
+				if (!empty($args))
+				{
+					$args .= ', ';
+				}
+				switch (gettype($a))
+				{
+					case 'integer':
+					case 'double':
+						$args .= $a;
+						break;
+					case 'string':
+						$a = htmlspecialchars(substr($a, 0, 64)).((strlen($a) > 64) ? '...' : '');
+						$args .= "\"$a\"";
+						break;
+					case 'array':
+						$args .= 'Array('.count($a).')';
+						break;
+					case 'object':
+						$args .= 'Object('.get_class($a).')';
+						break;
+					case 'resource':
+						$args .= 'Resource('.strstr($a, '#').')';
+						break;
+					case 'boolean':
+						$args .= $a ? 'True' : 'False';
+						break;
+					case 'NULL':
+						$args .= 'Null';
+						break;
+					default:
+						$args .= 'Unknown';
+				}
+			}
+			$output .= "<br />\n";
+			$output .= "<b>call:</b> {$bt['class']}{$bt['type']}{$bt['function']}($args)<br />\n";
+			$output .= "<b>file:</b> {$bt['line']} - {$bt['file']}<br />\n";
+		}
+		$output .= "</div>\n";
+		return $output;
+}
+
+}
+
+?>

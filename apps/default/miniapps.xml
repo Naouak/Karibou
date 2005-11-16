@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<miniapps>
+
+	<small id="login" app="login" view="mini"/>
+	<small id ="minichat" app="minichat" view="mini" configview="smallconfig" />
+	<small id ="prefs" app="preferences" view="mini" />
+	<small id ="calendar" app="calendar" view="mini" />
+	<small id ="rssreader" app="rssreader" view="mini" configview="miniconfig" />
+	<small id ="mytof" app="mytof" view="mini" configview="miniconfig" />
+	<small id ="mynotes" app="mynotes" view="mini" configview="miniconfig" />
+	<small id ="onlineusers" app="onlineusers" view="mini" />
+
+	<medium id ="news" app="news" view="mini" />
+	<medium id ="mail" app="mail" view="mini" />
+
+</miniapps>

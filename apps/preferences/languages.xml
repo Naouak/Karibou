@@ -1,0 +1,18 @@
+<translation>
+    <sentence key="PREFERENCES_LANGUAGE">
+        <translation language="fr" value="Langue" />
+        <translation language="en" value="Language" />
+    </sentence>
+    <sentence key="PREFERENCES">
+        <translation language="fr" value="Préférences" />
+        <translation language="en" value="Preferences" />
+    </sentence>
+    <sentence key="UPDATE">
+        <translation language="fr">
+        Mettre à jour
+        </translation>
+        <translation language="en">
+        Update
+        </translation>
+    </sentence>
+</translation>

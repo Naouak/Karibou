@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<translation>
+    <sentence key="TITLE">
+        <translation language="fr" value="Client WebMail IMAP" />
+        <translation language="en" value="WebMail IMAP Client" />
+    </sentence>
+    <sentence key="KEYCHAINLOCK">
+        <translation language="fr" value="Erreur : Impossible de debloquer le KeyChain" />
+        <translation language="en" value="Error : KeyChain Locked" />
+    </sentence>
+    <sentence key="SAVEDSERVER">
+        <translation language="fr" value="Utiliser une connexion sauvegardée : " />
+        <translation language="en" value="Use a saved connection : " />
+    </sentence>
+    <sentence key="COMPOSELINK">
+        <translation language="fr" value="Ecrire un e-mail" />
+        <translation language="en" value="Compose an e-mail" />
+    </sentence>
+    <sentence key="WROTE">
+        <translation language="fr" value="à écrit" />
+        <translation language="en" value="wrote" />
+    </sentence>
+    <sentence key="FOR">
+        <translation language="fr">
+			Pour
+        </translation>
+        <translation language="en">
+			For
+        </translation>
+    </sentence>
+    <sentence key="MAILBOX_VIEW">
+        <translation language="fr">
+			Mes messages électroniques
+        </translation>
+        <translation language="en">
+			My electronic mails
+        </translation>
+    </sentence>
+    <sentence key="EMAIL_VIEW">
+        <translation language="fr">
+			Visualisation d'un email
+        </translation>
+        <translation language="en">
+			Email view
+        </translation>
+    </sentence>
+    <sentence key="FROM">
+        <translation language="fr">
+			De
+        </translation>
+        <translation language="en">
+			From
+        </translation>
+    </sentence>
+    <sentence key="SUBJECT">
+        <translation language="fr">
+			Sujet
+        </translation>
+        <translation language="en">
+			Subject
+        </translation>
+    </sentence>
+    <sentence key="Reply to">
+        <translation language="fr">Répondre à</translation>
+        <translation language="en">Reply to</translation>
+    </sentence>
+    <sentence key="Date">
+        <translation language="fr">Date</translation>
+        <translation language="en">Date</translation>
+    </sentence>
+    <sentence key="previous">
+        <translation language="fr">Précédant</translation>
+        <translation language="en">Previous</translation>
+    </sentence>
+    <sentence key="next">
+        <translation language="fr">Suivant</translation>
+        <translation language="en">Next</translation>
+    </sentence>
+    <sentence key="Remove">
+        <translation language="fr">Supprimer</translation>
+        <translation language="en">Delete</translation>
+    </sentence>
+    <sentence key="Reply">
+        <translation language="fr">Répondre</translation>
+        <translation language="en">Reply</translation>
+    </sentence>
+    <sentence key="Reply All">
+        <translation language="fr">Répondre à tous</translation>
+        <translation language="en">Reply All</translation>
+    </sentence>
+    <sentence key="hide">
+        <translation language="fr">Cacher les Messages supprimés</translation>
+        <translation language="en">Hide deleted e-mails</translation>
+    </sentence>
+    <sentence key="show all">
+        <translation language="fr">Montrer les Messages supprimés</translation>
+        <translation language="en">Show deleted e-mails</translation>
+    </sentence>
+    <sentence key="expunge">
+        <translation language="fr">Vider les Messages supprimés</translation>
+        <translation language="en">Expunge Deleted e-mails</translation>
+    </sentence>
+</translation>

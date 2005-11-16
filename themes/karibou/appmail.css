@@ -1,0 +1,155 @@
+
+.unread {
+	font-weight: bold;
+}
+
+tr td.message {
+	line-height: 14px;
+	padding-bottom: 4px;
+	background-repeat: no-repeat;
+	padding-left: 24px;
+	padding-top: 2px;
+	vertical-align: top;
+}
+
+tr.unread td.message {
+	background-position: 0 5px;
+	background-image: url(images/mail/unread.png);
+}
+
+tr.read td.message {
+	background-position: 0 0px;
+	background-image: url(images/mail/read.png);
+}
+
+tr.replied td.message {
+	background-position: 0 0px;
+	background-image: url(images/mail/replied.png);
+}
+
+td.date {
+	white-space: nowrap;
+}
+
+.deleted {
+	text-decoration: line-through;
+}
+
+.menubox {
+	float: right;
+	margin: 10px;
+	padding: 10px;
+	background-color: #fafafa;
+	border: 1px solid #999;
+	width: 150px;
+}
+.menubox ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+.menubox li {
+	padding-left: 0px;
+}
+
+.drophover{
+	background-color: #9f9;
+}
+
+.headbox {
+	margin: 10px;
+	padding: 10px;
+	background-color: #fafafa;
+	border: 1px solid #999;
+	width: 660px;
+}
+
+.headbox label {
+	float: left;
+	width: 140px;
+}
+.headbox input {
+	float: left;
+	width: 500px;
+	border: 1px solid #999;
+	margin: 0px 0px 5px 0px;
+}
+.headbox textarea {
+	float: left;
+	width: 500px;
+	height: 40px;
+	border: 1px solid #999;
+	margin: 0px 0px 5px 0px;
+}
+.headbox select {
+	float: left;
+	width: 500px;
+	border: 1px solid #999;
+	margin: 0px 0px 5px 0px;
+}
+.headbox .button {
+	float: left;
+	width: 120px;
+	border: 1px solid #999;
+	background-color: #eee;
+}
+
+.bodybox {
+	margin: 10px;
+	padding: 10px;
+	background-color: #fefefe;
+	border: 1px solid #999;
+	width: 660px;
+}
+.bodybox .mail {
+	background-color: #fff;
+	border: 1px solid #fff;
+}
+.bodybox .dragmail {
+	background-color: #fff;
+	border: 1px solid #444;
+}
+.bodybox textarea {
+	width: 650px;
+	height: 450px;
+	border: 1px solid #999;
+}
+
+.attachbox {
+	float: left;
+	margin: 10px;
+	padding: 10px;
+	background-color: #fafafa;
+	border: 1px solid #999;
+	width: 600px;
+}
+
+
+/* Design mini applis */
+.mail {
+}
+
+.mail a {
+	text-decoration: none;
+}
+
+.mail .messagesnb {
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+.mail .quota {
+	border-top: 1px solid #efefef;
+	border-bottom: 1px solid #efefef;
+	margin-bottom: 5px;
+}
+
+.mail .quota .bar {
+	background: #88ee88;
+	overflow: visible;
+	white-space: nowrap;
+	border-right: 2px solid #66ee66;
+	padding-left: 5px;
+}

@@ -1,0 +1,158 @@
+
+.thumbnail {
+	float: left;
+	margin: 10px;
+	padding: 0px 0px 5px 0px;
+	border-top: 1px solid #acacac;
+	border-right: 2px solid #acacac;
+	border-bottom: 2px solid #acacac;
+	border-left: 1px solid #acacac;
+	width: 150px;
+	height: 200px;
+	text-align: center;
+}
+.thumbnail img {
+	max-width: 150px;
+	max-height: 180px;
+	border: 0px;
+	padding: 0px;
+}
+.thumbnail a {
+	text-decoration: none;
+}
+
+
+.thumbtitle {
+	margin-top: 5px;
+	font-size: 0.8em;
+	color: #444;
+	text-align: center;
+}
+
+.largefieldset {
+	border: 1px #aaa solid;
+	margin: 10px;
+	padding: 10px;
+	background-color: #fafafa;
+}
+
+.largefieldset label {
+	float: left;
+	width: 250px;
+}
+
+.largefieldset input {
+	float: left;
+	width: 300px;
+	border: 1px solid #666;
+	padding: 1px 2px 1px 2px;
+}
+.largefieldset textarea {
+	float: left;
+	width: 300px;
+	border: 1px solid #666;
+	padding: 1px 2px 1px 2px;
+	height: 50px;
+}
+.largefieldset select {
+	float: left;
+	width: 300px;
+}
+.largefieldset .checkbox {
+	width: 15px;
+}
+.largefieldset .button {
+	width: auto;
+}
+.largefieldset .input_xs {
+	display: inline;
+	width: 40px;
+}
+.largefieldset .input_s {
+	display: inline;
+	width: 60px;
+}
+.largefieldset .input_m {
+	display: inline;
+	width: 90px;
+}
+.largefieldset .text {
+	float: left;
+}
+
+input.saveprofile {
+	text-align: center;
+	border: 1px solid #6699AA;
+	background: #99AACC;
+	margin-left: 300px;
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+/* User profile */
+#content .profile {
+	border-left: 5px solid #c6c6c6;
+}
+
+#content .profile h3 {
+	border-left: 5px solid #cfcfcf;
+	border-bottom: 1px solid #c6c6c6;
+	margin: 10px 0px 0px 0px;
+	background: #efefef;
+}
+
+#content .profile h4 {
+	margin: 0px 0px 5px 0px;
+	padding: 0px;
+	text-align: center;
+	background: #efefef;
+}
+
+#content .profile img {
+	float: left;
+	margin: 5px;
+	padding: 5px;
+	border: 1px solid #efefef;
+	text-align: center;
+}
+
+#content .profile .infos {
+	float: left;
+	margin: 5px;
+	padding: 5px;
+	border-left: 4px solid #dfdfdf;
+	font-size: 130%;
+	line-height: 180%;
+}
+
+#content .profile .addresses .address {
+	float: left;
+	width: 260px;
+	border: 1px dashed #afafaf;
+	color: #454545;
+	margin: 5px;
+	padding: 4px;
+}
+
+#content .profile .emails .email, #content .profile .phones .phone {
+	float: left;
+	border: 1px dashed #afafaf;
+	color: #454545;
+	margin: 5px;
+	padding: 4px;
+	text-align: center;
+}
+
+#content .profile a {
+	text-decoration: none;
+}
+
+#content .profile .editprofilelink {
+padding-top: 10px;
+margin-left: 5px;
+}
+
+#content .profile .sendflashmaillink {
+padding-top: 10px;
+margin-left: 5px;
+}

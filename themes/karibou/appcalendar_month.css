@@ -1,0 +1,86 @@
+.calendar_month_mini {
+	width: 200px;/*161*/
+	padding: 0;
+	margin: 0px;
+	font: normal 12px/20px sans-serif;
+	color: #616B76;
+	text-align: center;
+	background-color: #fff;
+	border-left: 1px solid #a2adcc;
+}
+
+/* Days */
+.calendar_month_mini th {
+	font: bold 11px/25px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #777987;
+	background: #c6cade;
+	border-right: 1px solid #a2adcc;
+	border-bottom: 1px solid #a2adcc;
+	border-top: 1px solid #a2adcc;
+}
+#content .calendar_month_mini th abbr {
+    font-weight: normal;
+    border: 0px;
+}
+
+.calendar_month_mini td {
+	border-right: 1px solid #a2adcc;
+	border-bottom: 1px solid #a2adcc;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	background: url(images/calendar/bg_td_d.png) no-repeat right bottom;
+}
+
+#content .calendar_month_mini td a {
+	text-decoration: none;
+	font-weight: normal;
+	display: block;
+	color: #5e5e5e;
+}
+
+/* Weeks */
+#content .calendar_month_mini td.weekofyear a {
+	color: #efefef;
+}
+
+.calendar_month_mini td.weekofyear {
+	background: #5ea85f;
+}
+
+/* Today */
+#content .calendar_month_mini td.today a {
+	color: #ffffff;
+	font-weight: bold;
+}
+
+.calendar_month_mini td.today {
+	background: #ff4e4e url(images/calendar/bg_td_t.png) no-repeat right bottom;
+}
+
+/* Day with event(s) */
+#content .calendar_month_mini td.eventday a {
+	font-weight: bold;
+}
+
+.calendar_month_mini td.eventday {
+	background: #ffffff url(images/calendar/bg_td_e.png) no-repeat right bottom;
+}
+
+
+/* Other month */
+#content .calendar_month_mini td.othermonth {
+	color: #cbcbcb;
+}
+
+.calendar_month_mini td.othermonth {
+}
+
+
+/* Caption */
+#content .calendar_month_mini caption, #content .calendar_month_mini caption a {
+    background: #9399b5;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+}

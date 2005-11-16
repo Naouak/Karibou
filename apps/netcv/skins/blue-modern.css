@@ -1,0 +1,191 @@
+{literal}
+@import url("backToNetCV.css");
+
+body {
+margin : 0; 
+padding : 0; 
+font-family : "georgia", serif; 
+color : #ffffff; 
+background-image : url(image/bleu2.jpg); 
+} 
+#container {
+position : relative; 
+padding : 0; 
+margin : auto; 
+height : 100%; 
+width : 800px; 
+} 
+#boxTop {
+position : relative; 
+width : 20%; 
+padding : 0; 
+margin : 1px; 
+text-align : left; 
+height : 100%; 
+} 
+#name h1 {
+position : absolute; 
+font-family : "Trebuchet MS", serif; 
+top : 5em; 
+width : 90%; 
+margin : 0; 
+text-align : center; 
+font-size : 24px; 
+font-weight : bold; 
+border-bottom : 2px solid #cccccc; 
+background-color : transparent; 
+} 
+#infos {
+position : relative; 
+top : 20em; 
+font-family : "Trebuchet MS", serif; 
+left : 3px; 
+padding : 0; 
+text-align : center; 
+font-size : 12px; 
+line-height : 14px; 
+color : #cccccc; 
+width : 90%; 
+} 
+#photo {
+position : absolute; 
+top : 26em; 
+left : 15%; 
+padding : 0; 
+} 
+#photo img {
+border : 1px solid #ffffff; 
+} 
+.boxTitle {
+position : relative; 
+left : 16%; 
+width : 18%; 
+padding : 0; 
+margin : 2px; 
+text-align : left; 
+} 
+.boxContent {
+position : relative; 
+width : 62%; 
+left : 35%; 
+padding : 0; 
+margin-right : 10px; 
+border-left : 1.2px solid #ffffff; 
+} 
+.boxContentLevel1 {
+position : relative; 
+padding : 0 0 0 20px; 
+} 
+.boxContentLevel2 {
+position : relative; 
+padding : 0 0 0 40px; 
+} 
+#jobTitle h1 {
+position : absolute; 
+font-family : "Trebuchet MS", serif; 
+font-style : italic; 
+font-size : 16px; 
+top : 10.5em; 
+padding : 0; 
+margin-left : 10%; 
+text-align : center; 
+width : 80%; 
+} 
+.boxTitle h1 {
+position : relative; 
+font-family : "Trebuchet MS", serif; 
+font-size : 18px; 
+font-weight : normal; 
+padding : 2px; 
+color : #ffffff; 
+margin-top : 60px; 
+margin-bottom : -20px; 
+text-align : center; 
+} 
+.boxContentLevel1 h2 {
+position : relative; 
+font-family : "Trebuchet MS", serif; 
+font-size : 14px; 
+font-weight : bold; 
+line-height : 12px; 
+margin : 0; 
+padding : 5px 5px 0 0; 
+text-align : left; 
+color : #99ccff; 
+} 
+.boxContentLevel1 h3 {
+position : relative; 
+font-size : 12px; 
+top : 0; 
+right : 10px; 
+margin : 0; 
+margin-top : -14px; 
+padding : 0; 
+color : #ffffff; 
+text-align : right; 
+} 
+.boxContentLevel2 h3 {
+position : relative; 
+font-size : 10px; 
+color : #333333; 
+line-height : 12px; 
+margin : 0; 
+padding : 5px 5px 0 0; 
+text-align : left; 
+} 
+.boxContentLevel1 p , .boxContentLevel1 ul {
+position : relative; 
+font-family : Verdana; 
+font-size : 13px; 
+color : #ffffff; 
+line-height : 14px; 
+margin : 0; 
+padding : 5px 5px 15px 30px; 
+text-align : justify; 
+} 
+.boxContentLevel1 ul {
+padding : 0 0 0 40px; 
+} 
+ul {
+margin : 0; 
+padding : 0 0 0 20px; 
+} 
+li {
+list-style-type : none; 
+background-image : url(image/puce1.jpg); 
+background-repeat : no-repeat; 
+background-position : 65% 50%; 
+margin : 0; 
+padding-left : 15px; 
+} 
+#boxTop #infos {
+position : absolute; 
+top : 20em; 
+font-size : 12px; 
+line-height : 20px; 
+} 
+#boxTop #infos #address {
+position : relative; 
+} 
+#boxTop #infos #phone {
+position : relative; 
+} 
+a {
+color : #ffffcc; 
+font-family : "georgia", serif; 
+} 
+a:visited {
+color : #b8b8b8; 
+font-family : "georgia", serif; 
+} 
+a:hover {
+color : #b8b8b8; 
+font-family : "georgia", serif; 
+} 
+#boxTop #infos #email {
+position : relative; 
+} 
+#boxTop #infos #other_infos {
+position : relative; 
+} 
+{/literal}

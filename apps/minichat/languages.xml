@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<translation>
+    <sentence key="MINICHAT_SEND">
+        <translation language="fr" value="Envoyer" />
+        <translation language="en" value="Send" />
+    </sentence>
+    <sentence key="CURRENTCHAT">
+        <translation language="fr">
+            Chat actuel
+        </translation>
+        <translation language="en">
+            Current chat
+        </translation>
+    </sentence>
+    <sentence key="LASTCHAT">
+        <translation language="fr">
+            Dernieres conversations
+        </translation>
+        <translation language="en">
+            Last chats
+        </translation>
+    </sentence>
+    <sentence key="VIEWCHATHISTORY">
+        <translation language="fr">
+            Voir l'historique
+        </translation>
+        <translation language="en">
+            View chat history
+        </translation>
+    </sentence>
+</translation>

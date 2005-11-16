@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+	
+	<load class="Error" file="error.class.php" />
+
+	<view name="notfound" class="Error" template="notfound.tpl" />
+	<view name="noaccess" class="Error" template="noaccess.tpl" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<page name="notfound" view="notfound" />
+</app>

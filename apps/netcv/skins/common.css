@@ -1,0 +1,37 @@
+{literal}
+pre {
+	border: 1px dashed #bdbdbd;
+	padding: 5px;
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+blockquote {
+margin-left: 0px;
+padding-left: 0px;
+border-left: 5px solid #bdbdbd;
+}
+
+blockquote p {
+padding: 0px;
+}
+
+a {
+color: #000000;
+text-decoration: none;
+border-bottom: 1px dashed #adadad;
+}
+
+a:hover {
+border-bottom: 1px solid #000000;
+}
+
+.lang {
+top: 0px;
+left: 0px;
+}
+
+{/literal}

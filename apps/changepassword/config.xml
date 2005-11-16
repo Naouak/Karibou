@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+
+
+	<config>
+		<param name="method">
+			<value name="method">ldap</value>
+        	</param>
+	</config>
+
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+
+	<load class="ChangePassword" file="changepassword.class.php" />
+	<load class="GivePassword" file="givepassword.class.php" />
+	<load class="PasswordInterfaceLDAP" file="class/passwordinterfaceldap.class.php" />
+	<load class="PasswordInterface" file="class/passwordinterface.class.php" />
+
+	<view name="default" class="GivePassword" template="givepassword.tpl" />
+
+	<page view="default" />
+	
+	<form action="changepassword" class="ChangePassword">
+		<redirect />
+	</form>
+	
+</app>

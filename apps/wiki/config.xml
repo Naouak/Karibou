@@ -1,0 +1,38 @@
+<app class="wiki">
+
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<load class="PageArgument" file="../arguments/pageargument.class.php" />
+	<load class="ArgAction" file="../arguments/argaction.class.php" />
+	<load class="Alphanum" file="../arguments/alphanum.class.php" />
+	<load class="WikiDefault" file="wikidefault.class.php" />
+	<load class="WikiHistory" file="wikihistory.class.php" />
+	<load class="WikiPost" file="wikipost.class.php" />
+	<load class="WikiHelp" file="wikihelp.class.php" />
+	<load class="Wiki" file="wiki.class.php" />
+	<load class="WikiFactory" file="wikifactory.class.php" />
+	<load class="wiki2xhtmlBasic" file="wiki2xhtml.basic.class.php" />
+	
+	
+	<view name="default" class="WikiDefault" template="wiki.tpl" />
+	<view name="help" class="WikiHelp" template="help.tpl" />
+	<view name="history" class="WikiHistory" template="history.tpl" />
+
+	<page name="help" view="help" />
+	
+	<page view="default">
+		<option name="docu" class="Alphanum" />
+		<option name="mode" class="Alphanum" />
+	</page>
+
+	<page view="history">
+		<option name="docu" class="Alphanum" />
+	</page>
+	
+	<form action="post" class="WikiPost">
+		<referer />
+	</form>
+</app>

@@ -1,0 +1,33 @@
+<app>
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+	
+	/* Classes pour gérer les arguments */
+	<load class="PageArgument" file="../arguments/pageargument.class.php" />
+	<load class="YearArgument" file="../arguments/yearargument.class.php" />
+	<load class="MonthArgument" file="../arguments/monthargument.class.php" />
+	<load class="WeekArgument" file="../arguments/weekargument.class.php" />
+	<load class="DayArgument" file="../arguments/dayargument.class.php" />
+	
+	<load class="KDate" file="classes/kdate.class.php" />
+	<load class="ICal" file="classes/ical.class.php" />
+	
+	<load class="Calendrier" file="calendrier.class.php" />
+	<load class="CalendrierByDay" file="calendrierbyday.class.php" />
+	
+	<view name="default" class="Calendrier" template="calendrier.tpl" />
+	<view name="mini2" class="Calendrier" template="small.tpl" />
+	<view name="byDay" class="CalendrierByDay" template="calendrierbyday.tpl" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<page view="default" />
+	<page name="byWeek" view="default" >
+		<argument name="week" class="WeekArgument" />
+	</page>
+	<page name="byDay" view="byDay" >
+		<argument name="year" class="YearArgument" />
+		<argument name="month" class="MonthArgument" />
+		<argument name="day" class="DayArgument" />
+	</page>	
+</app>

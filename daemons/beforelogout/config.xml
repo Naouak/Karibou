@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<daemon>
+
+	<load class="VisitorsLogout" file="visitorslogout.class.php" />
+
+	<listen event="logout" class="VisitorsLogout" />
+
+</daemon>

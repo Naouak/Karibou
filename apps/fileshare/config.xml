@@ -1,0 +1,55 @@
+<app>	
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+
+	<load class="AnyCharArgument" file="../arguments/anycharargument.class.php" />
+
+	<load class="KDirectory" file="class/kdirectory.class.php" />
+	<load class="KFile" file="class/kfile.class.php" />
+
+	<load class="FileShareDefault" file="default.class.php" />
+	<load class="FileShareSaveFile" file="savefile.class.php" />
+	<load class="FileShareList" file="list.class.php" />
+	<load class="FileShareUpload" file="upload.class.php" />
+	<load class="FileShareDownload" file="download.class.php" />
+	<load class="FileShareDirectory" file="directory.class.php" />
+	<load class="FileShareCreateDirectory" file="createdirectory.class.php" />
+	<load class="FileShareSaveDirectory" file="savedirectory.class.php" />
+
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<view name="default" class="FileShareDefault" template="default.tpl" />
+	<view name="list" class="FileShareList" template="list.tpl" />
+	<view name="upload" class="FileShareUpload" template="upload.tpl" />
+	<view name="download" class="FileShareDownload" template="download.tpl" />
+	<view name="createdirectory" class="FileShareCreateDirectory" template="createdirectory.tpl" />
+	
+	<view name="directory" class="FileShareDirectory" template="directory.tpl" />
+
+	<page view="directory" />
+	
+	<page name="upload" view="upload">
+		<option name="directoryname" class="AnyCharArgument" />
+	</page>
+
+	<page name="createdirectory" view="createdirectory">
+		<option name="directoryname" class="AnyCharArgument" />
+	</page>
+
+	<page name="directory" view="directory">
+		<option name="directoryname" class="AnyCharArgument" />
+	</page>
+
+	<page name="download" view="download">
+		<argument name="filename" class="AnyCharArgument" />
+	</page>
+
+	<form action="savefile" class="FileShareSaveFile">
+		<redirect />
+	</form>
+	
+	<form action="savedirectory" class="FileShareSaveDirectory">
+		<redirect />
+	</form>
+
+</app>

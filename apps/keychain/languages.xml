@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<translation>
+	<sentence key="TITLE">
+		<translation language="fr" value="KeyChain : Gestionnaire de clefs" />
+		<translation language="en" value="KeyChain" />
+	</sentence>
+	<sentence key="LOCKED">
+		<translation language="fr" value="verrouillé" />
+		<translation language="en" value="locked" />
+	</sentence>
+	<sentence key="UNLOCKED">
+		<translation language="fr" value="déverrouillé" />
+		<translation language="en" value="unlocked" />
+	</sentence>
+	<sentence key="PASSPHRASE">
+		<translation language="fr" value="Phrase Secrète" />
+		<translation language="en" value="Pass-Phrase" />
+	</sentence>
+	<sentence key="NEWPASSPHRASE">
+		<translation language="fr" value="Nouvelle Phrase Secrète" />
+		<translation language="en" value="New Pass-Phrase" />
+	</sentence>
+	<sentence key="OLDPASSPHRASE">
+		<translation language="fr" value="Ancienne Phrase Secrète" />
+		<translation language="en" value="Old Pass-Phrase" />
+	</sentence>
+	<sentence key="REPASSPHRASE">
+		<translation language="fr" value="retaper la Phrase Secrète" />
+		<translation language="en" value="Pass-Phrase re-type" />
+	</sentence>
+	<sentence key="RENEWPASSPHRASE">
+		<translation language="fr" value="retaper la Nouvelle Phrase Secrète" />
+		<translation language="en" value="New Pass-Phrase re-type" />
+	</sentence>
+
+	<sentence key="KEYCHAINUNLOCKED">
+		<translation language="fr" value="Ton trousseau de clefs est verrouille" />
+		<translation language="en" value="Your KeyChain is unlocked." />
+	</sentence>
+	<sentence key="KEYCHAINLOCKED">
+		<translation language="fr" value="Ton trousseau de clefs est verrouillé avec une phrase secrète differente de ton mot de passe de session. Bien que cela te fournisse une meilleur sécurité tu veux peut-etre déverrouiller le trousseau automatiquement. Utilise simplement le meme mot de passe que pour t'enregistrer. Sinon déverrouille manuellement ton trousseau en utilisant le formulaire ci-dessous :" />
+		<translation language="en" value="Your KeyChain is locked with a pass-phrase different from your password. While it provides more security you might want it to be automaticaly unlocked. Simply reset it to be the as your session password (less secure)." />
+	</sentence>
+
+	<sentence key="FORMCREATEKEYCHAIN">
+		<translation language="fr" value="Créer un nouveau trousseau de clefs (détruit le trousseau existant)" />
+		<translation language="en" value="Create a new keychain (it will destroy old saved keys)" />
+	</sentence>
+	<sentence key="FORMUNLOCKKEYCHAIN">
+		<translation language="fr" value="Ouvre le trousseau" />
+		<translation language="en" value="Unlock KeyChain" />
+	</sentence>
+	<sentence key="FORMRESETKEYCHAIN">
+		<translation language="fr" value="Réinitialise la phrase secrète" />
+		<translation language="en" value="Reset the pass-phrase" />
+	</sentence>
+
+</translation>

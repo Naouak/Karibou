@@ -1,0 +1,134 @@
+.fileshare {
+}
+
+.fileshare ul {
+	margin: 2px;
+	padding: 0px;
+	list-style: none;
+}
+
+.fileshare li {
+float: left;
+margin: 10px;
+width: 150px;
+height: 100px;
+border: 1px solid #efefef;
+text-align: center;
+overflow: hidden;
+}
+
+.fileshare li.file {
+	background-image: url(images/fileshare/default.png);
+	background-repeat: no-repeat;
+	background-position: 55px 40px;
+}
+
+.fileshare li.file.xls {
+	background-image: url(images/fileshare/files/xls.png);
+}
+.fileshare li.file.doc {
+	background-image: url(images/fileshare/files/doc.png);
+}
+.fileshare li.file.ppt {
+	background-image: url(images/fileshare/files/ppt.png);
+}
+.fileshare li.file.zip {
+	background-image: url(images/fileshare/files/zip.png);
+}
+.fileshare li.file.pdf {
+	background-image: url(images/fileshare/files/pdf.png);
+}
+
+.fileshare li.directory {
+	background-image: url(images/fileshare/directory.png);
+	background-repeat: no-repeat;
+	background-position: 40px 35px;
+
+}
+
+.fileshare li a .name {
+font-size: 0.85em;
+font-weight: bold;
+}
+
+.fileshare li a .size {
+font-size: 0.8em;
+}
+
+.fileshare li a .date {
+color: #acacac;
+font-size: 0.8em;
+}
+
+.fileshare li a {
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	text-decoration: none;
+	height: 95px;
+}
+
+.fileshare li.file a:hover {
+	background-image: url(images/fileshare/download.png);
+	background-repeat: no-repeat;
+	background-position: bottom right;
+}
+
+.fileshare .uploadlink, .fileshare .createdirectorylink {
+text-align: center;
+padding-bottom: 2px;
+}
+
+.fileshare .uploadlink a, .fileshare .createdirectorylink a {
+clear: both;
+font-weight: bold;
+text-decoration: none;
+}
+
+.fileshare form {
+	padding: 10px;
+	margin: 10px;
+	background: #efefff;
+	border: 1px solid #acacbb;
+	line-height: 40px;
+	text-align: center;
+}
+
+.fileshare form input.file {
+	padding: 4px;
+	font-weight: bold;
+	border: 1px solid #acacbb;
+	font-weight: bold;
+	line-height: 20px;
+
+	font-weight: bold;
+	background-repeat: no-repeat;
+	background-position: 3px 3px;
+	padding-left: 28px;
+	background-image: url(images/fileshare/file16.png);
+}
+
+.fileshare form input.directory {
+	padding: 4px;
+	font-weight: bold;
+	border: 1px solid #acacbb;
+	font-weight: bold;
+	line-height: 20px;
+
+	font-weight: bold;
+	background-repeat: no-repeat;
+	background-position: 3px 3px;
+	padding-left: 28px;
+	background-image: url(images/fileshare/directory20.png);
+}
+
+.fileshare form input.button {
+	padding: 4px;
+	font-weight: bold;
+	background: #666699;
+	border: 2px solid #9999bb;
+	color: #ffffff;
+}
+.fileshare form label {
+	font-weight: bold;
+}

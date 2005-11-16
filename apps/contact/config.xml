@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+
+	<config>
+		<param name="email" value="dev@lists.karibou.org" />
+	</config>
+
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+	<load class="Contact" file="contact.class.php" />
+	<load class="Send" file="send.class.php" />
+
+	<view name="default" class="Contact" template="form.tpl" />
+
+	<page view="default" />
+	
+	<form action="send" class="Send">
+		<redirect />
+	</form>
+	
+</app>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<config>
+		<param name="max">
+			<value name="small">10</value>
+			<value name="normal">20</value>
+		</param>
+	</config>
+	
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+	
+	<load class="PageArgument" file="../arguments/pageargument.class.php" />
+	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+	<load class="MiniChat" file="minichat.class.php" />
+	<load class="MiniChatPost" file="minichatpost.class.php" />
+	<load class="MiniChatConfig" file="minichatconfig.class.php" />
+	
+	<view name="mini" class="MiniChat" template="small.tpl" />
+	<view name="smallconfig" class="MiniChatConfig" template="smallconfig.tpl" />
+	<view name="big" class="MiniChat" template="minichat.tpl" />
+
+	<view name="content" class="MiniChat" template="content.tpl" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<page view="big" />
+	<page view="big">
+		<option name="pagenum" class="PageArgument" />
+	</page>
+	
+	<page name="content" view="content">
+		<option name="pagenum" class="PageArgument" />
+		<option name="maxlines" class="NumberArgument" />
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+	
+	<form action="post" class="MiniChatPost">
+		<referer />
+	</form>
+	
+</app>

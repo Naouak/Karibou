@@ -1,0 +1,128 @@
+#calendar {
+	position: relative;
+	margin: 10px;
+	padding: 10px;
+	height: 800px;
+	width: 630px;
+}
+
+#calendar .hours {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 630px;
+}
+#calendar .hours div {
+	height: 49px;
+	border-top: 1px dashed #666;
+}
+
+#calendar .events {
+	position: absolute;
+	top: 0px;
+	left: 30px;
+}
+
+#calendar_sidebar {
+	position: absolute;
+	top: 0px;
+	left: 640px;
+	width: 240px;
+}
+
+.event{
+	z-index: 1;
+	position: absolute;
+	overflow: hidden;
+	padding: 0px 0px 0px 5px;
+	border: 1px solid #999;
+}
+
+.event:hover{
+	z-index: 9;
+	overflow: visible;
+	min-width: 240px;
+}
+
+.event:hover .event_box{
+	background-color: #ddd;
+	min-width: 240px;
+}
+.event:hover .event_content{
+	background-color: #ddd;
+	min-width: 240px;
+}
+
+.event_content p {
+	margin: 0px;
+	padding: 0px;
+}
+.event_content .event_hours {
+	color: #444;
+	font-size: 0.9em;
+}
+
+.event_size_1 {
+	width: 590px;
+}
+.event_size_2 {
+	width: 290px;
+}
+.event_size_3 {
+	width: 190px;
+}
+.event_size_4 {
+	width: 140px;
+}
+.event_size_5 {
+	width: 110px;
+}
+.event_size_6 {
+	width: 90px;
+}
+
+.newcolumn_2 {
+	position: relative;
+	left: 300px;
+}
+.newcolumn_3 {
+	position: relative;
+	left: 200px;
+}
+.newcolumn_4 {
+	position: relative;
+	left: 150px;
+}
+.newcolumn_5 {
+	position: relative;
+	left: 120px;
+}
+.newcolumn_6 {
+	position: relative;
+	left: 100px;
+}
+
+
+.blue {
+	background-color: #99f;
+}
+.lightblue {
+	background-color: #bbf;
+}
+.red {
+	background-color: #f99;
+}
+.red:hover {
+	background-color: #fff;
+}
+.green {
+	background-color: #9f9;
+}
+
+/* Edit event */
+#content .date select {
+	width: 50px;
+}
+#content .date option {
+	padding-right: 5px;
+}

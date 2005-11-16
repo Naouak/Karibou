@@ -1,0 +1,64 @@
+<translation>
+    <sentence key="TITLE_AUTH">
+        <translation language="fr" value="Authentification" />
+        <translation language="en" value="Login" />
+    </sentence>
+    <sentence key="USERNAME">
+        <translation language="fr" value="Nom d'utilisateur" />
+        <translation language="en" value="Username" />
+    </sentence>
+    <sentence key="PASSWORD">
+        <translation language="fr" value="Mot de passe" />
+        <translation language="en" value="Password" />
+    </sentence>
+    <sentence key="OK">
+        <translation language="fr" value="Valider" />
+        <translation language="en" value="Ok" />
+    </sentence>
+    <sentence key="CONNEXION">
+        <translation language="fr" value="Connection" />
+        <translation language="en" value="Connexion" />
+    </sentence>
+    <sentence key="REGISTER">
+        <translation language="fr" value="Créer un compte" />
+        <translation language="en" value="Register" />
+    </sentence>
+    <sentence key="LOGOUT">
+        <translation language="fr" value="Déconnecter" />
+        <translation language="en" value="Logout" />
+    </sentence>
+
+    <sentence key="KEYCHAINLINK">
+        <translation language="fr" value="Trousseau de clefs" />
+        <translation language="en" value="KeyChain" />
+    </sentence>
+    
+    <sentence key="KEYCHAINREADY">
+        <translation language="fr" value="Ton trousseau est déverrouillé et accessible" />
+        <translation language="en" value="Your KeyChain is ready to use." />
+    </sentence>
+    <sentence key="KEYCHAINLOCKED">
+        <translation language="fr" value="Ton trousseau est verrouillé" />
+        <translation language="en" value="Your KeyChain is locked" />
+    </sentence>
+    <sentence key="NOKEYCHAIN">
+        <translation language="fr" value="Tu n'as pas encore crée de trousseau de clefs, tu ne pourra pas utiliser certaines application (comme le webmail)." />
+        <translation language="en" value="You didn't have created a KeyChain yet, you won't be able to use apps that uses it (like the webmail)." />
+    </sentence>
+    <sentence key="CHANGEPASSWORD">
+        <translation language="fr">
+			Changer mon mot de passe
+        </translation>
+        <translation language="en">
+			Change my password
+        </translation>
+    </sentence>
+    <sentence key="EDITPROFILE">
+        <translation language="fr">
+			Éditer mon profil
+        </translation>
+        <translation language="en">
+			Edit my profile
+        </translation>
+    </sentence>
+</translation>

@@ -1,0 +1,18 @@
+<app>
+	<load class="Test" file="Test.class.php" />
+	<load class="TestView" file="testview.class.php" />
+	
+	<header app="header" view="simple" />
+	<footer app="footer" view="simple" />
+
+	<view name="default" class="Test" template="test.tpl" />
+	<view name="view" class="TestView" template="testview.tpl" />
+	
+	<page view="view" />
+
+	<page name="view" view="view">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" />
+	</page>
+	
+</app>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<daemon>
+
+	<load class="LogoutListener" file="logoutlistener.class.php" />
+	
+	<load class="LoginListener" file="loginlistener.class.php" />
+
+	<listen event="logout" class="LogoutListener" />
+
+	<listen event="login" class="LoginListener" />
+
+</daemon>

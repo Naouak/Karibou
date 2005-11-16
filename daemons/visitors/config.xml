@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<daemon>
+
+	<load class="VisitorsLogin" file="visitorslogin.class.php" />
+	<load class="VisitorsLoad" file="visitorsload.class.php" />
+
+	<listen event="load" class="VisitorsLoad" />
+	<listen event="login" class="VisitorsLogin" />
+
+</daemon>

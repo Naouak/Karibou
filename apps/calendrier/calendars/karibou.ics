@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+PRODID:-//K Desktop Environment//NONSGML libkcal 3.2//EN
+VERSION:2.0
+BEGIN:VEVENT
+DTSTAMP:20050815T111349Z
+ORGANIZER;CN=Benoit Tirmarche:MAILTO:btirmarche@elv.enic.fr
+ATTENDEE;CN=Ben;RSVP=TRUE;PARTSTAT=NEEDS-ACTION;ROLE=REQ-PARTICIPANT:mailto:benoit.tirmarche@telecomlille.net
+ATTENDEE;CN=Ben2;RSVP=FALSE;PARTSTAT=ACCEPTED;ROLE=REQ-PARTICIPANT:mailto:btirmarche@elv.enic.fr
+CREATED:20050815T111107Z
+UID:KOrganizer-318890521.556
+SEQUENCE:2
+LAST-MODIFIED:20050815T111349Z
+DESCRIPTION:Ceci est un test avec des accents et des retours à la \nligne.\nEt
+  des symboles € aussi\, pour tester \nles différents types de\ncaract
+ ères
+SUMMARY:Test ical Kontact
+LOCATION:Emplacement Evt
+CLASS:PUBLIC
+PRIORITY:5
+CATEGORIES:Affaires
+ATTACH:file:///home/mcben/www/karibou/public_html/apps/calendrier/calendars/karibou.ics
+DTSTART:20050815T090000Z
+DTEND:20050815T110000Z
+TRANSP:OPAQUE
+END:VEVENT
+
+END:VCALENDAR
+

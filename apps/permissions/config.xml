@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+	
+	<load class="AlphaNum" file="../arguments/alphanum.class.php" />
+	
+	<load class="PermDefault" file="permdefault.class.php" />
+	<load class="PermAppli" file="permappli.class.php" />
+	<load class="PermAppliPost" file="permapplipost.class.php" />
+
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />	
+	
+	<view name="default" class="PermDefault" template="default.tpl" />
+	<view name="perm" class="PermAppli" template="appli.tpl" />
+
+	<page view="default" />
+	<page view="perm" >
+		<argument name="appli" class="AlphaNum" />
+	</page>
+
+	<form action="post" class="PermAppliPost">
+		<referer />
+	</form>
+
+</app>

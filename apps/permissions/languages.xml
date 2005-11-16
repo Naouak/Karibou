@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<translation>
+    <sentence key="_UNKNOWN_">
+        <translation language="fr" value="Inconnues" />
+        <translation language="en" value="Unknown" />
+    </sentence>
+    <sentence key="_NO_ACCESS_">
+        <translation language="fr" value="Acces Interdit" />
+        <translation language="en" value="No Access" />
+    </sentence>
+    <sentence key="_READ_ONLY_">
+        <translation language="fr" value="Lecture Seule" />
+        <translation language="en" value="Read Only" />
+    </sentence>
+    <sentence key="_DEFAULT_">
+        <translation language="fr" value="Par defaut" />
+        <translation language="en" value="Default" />
+    </sentence>
+    <sentence key="_SELF_WRITE_">
+        <translation language="fr" value="Ecriture sur donnees perso" />
+        <translation language="en" value="Write on personal data" />
+    </sentence>
+    <sentence key="_GROUP_WRITE_">
+        <translation language="fr" value="Ecriture sur les donnees du groupe" />
+        <translation language="en" value="Write on Group Data" />
+    </sentence>
+    <sentence key="_GROUP_ADMIN_">
+        <translation language="fr">
+        Administrateur du groupe
+        </translation>
+        <translation language="en">
+        Group administrator
+        </translation>
+    </sentence>
+    <sentence key="_FULL_WRITE_">
+        <translation language="fr" value="Moderateur" />
+        <translation language="en" value="Moderator" />
+    </sentence>
+    <sentence key="_ADMIN_">
+        <translation language="fr" value="Administrateur" />
+        <translation language="en" value="Administrator" />
+    </sentence>
+
+    <sentence key="PERM_TITLE">
+        <translation language="fr" value="Gestion des permissions sur l'appli : " />
+        <translation language="en" value="Permissions Admin for app : " />
+    </sentence>
+    <sentence key="GROUP_PERM">
+        <translation language="fr" value="Droits par groupes" />
+        <translation language="en" value="Group Permissions" />
+    </sentence>
+    <sentence key="OK">
+        <translation language="fr" value="Valider les modifications : " />
+        <translation language="en" value="Send modifications : " />
+    </sentence>
+
+</translation>

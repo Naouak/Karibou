@@ -1,0 +1,189 @@
+body {margin:0; padding:0;}
+input {margin: 1px;}
+#menuHaut {position: absolute; top:0; left:0; width: 100%; padding: 0.3em 0em; z-index: 3;}
+html>body #menuHaut {
+position: fixed;
+}
+#menuHaut div {display: inline;}
+
+#surnom {position: absolute; width: 200px; text-align: center;}
+#menujs {position: absolute; left: 200px;}
+
+
+#infos {float: right;}
+#infos img{height: 12px;}
+
+#icones {
+	float: right;
+}
+
+#connectes {
+	float: right;
+}
+
+#logo {	
+	position:absolute;
+	width:180px;
+	top:30px;
+	left:5px;
+	margin: 0;
+	padding: 0;
+}
+
+
+#conteneurMiniApplis {
+	position:absolute;
+	width:180px;
+	top:90px;
+	left:5px;
+	padding: 3px;
+/* Here is the ugly brilliant hack that protects IE5/Win from its own stupidity. 
+Thanks to Tantek Celik for the hack and to Eric Costello for publicizing it. 
+IE5/Win incorrectly parses the "\"}"" value, prematurely closing the style 
+declaration. The incorrect IE5/Win value is above, while the correct value is 
+below. See http://glish.com/css/hacks.asp for details. */
+	voice-family: "\"}\"";
+	voice-family:inherit;
+	width:180px;
+}
+/* I've heard this called the "be nice to Opera 5" rule. Basically, it feeds correct length values to user agents that exhibit the parsing error exploited above yet get the CSS box model right and understand the CSS2 parent-child selector. ALWAYS include a "be nice to Opera 5" rule every time you use the Tantek Celik hack (above). */
+body>#conteneurMiniApplis {width:180px;}
+
+#contenu {
+	position:absolute; /* Position is declared "relative" to gain control of stacking order (z-index). */
+	width:auto;
+	top: 40px;
+	left: 200px;
+	right: 240px;
+	min-width:120px;
+	/*margin:0px 250px 0px 198px;*/
+	padding:10px;
+	z-index: 2; /* This allows the content to overlap the right menu in narrow windows in good browsers. */
+}
+
+#right {
+position:absolute;
+	width:230px;
+	top:28px;
+	right:5px;
+	padding:3px;
+/*	z-index:1;*/
+/* Again, the ugly brilliant hack. */
+	voice-family: "\"}\"";
+	voice-family:inherit;
+	width:230px;
+	}
+
+/* Again, "be nice to Opera 5". */
+body>#right {
+	width:230px;
+}
+
+
+
+/*
+Style réalisé par mcben.
+Couleurs:
+	gris: #eee
+	rose: #ecd
+	bleu: #def
+*/
+
+body {background-color: #fff; color:#000; font: 0.7em Verdana, sans-serif; }
+img { border: 0; }
+a{color: #000; }
+a:hover{color: #fff;}
+input {background-color: #fff;border: 1px solid black; color: #000;}
+
+
+
+/* la boite du logo */
+#logo {border: 2px dashed black;}
+
+/* la boite d une appli normale */
+/* (Ne sert plus a rien, car on a mis un id différent pour la boite global de chaque appli
+#Appli {background-color: #ecd;}*/
+
+/* la boite de la mini applis */
+.miniAppli {background-color: #ecd;}
+
+/* le titre d'une appli pleine page */
+.enteteAppli {background-color: #ecd;}
+
+/* le titre d'une mini appli */
+.enteteMiniAppli {background-color: #ecd;}
+
+/* le contenu d'une appli*/
+.contenuAppli {	background-color: #def;}
+
+/* le contenu d'une mini appli*/
+.contenuMiniAppli {background-color: #def;}
+
+#conteneurMiniApplis {
+	border: 1px dashed black;
+	background-color:#eee;
+}
+
+
+#menuHaut {background-color: #eee; color: #000; border: #000 dashed; border-width: 1px 0px;
+}
+
+#contenu {
+	border:1px solid black;
+	background-color:#fff;
+}
+#right {
+	border:1px dashed black;
+	background-color:#eee;
+}
+
+form label {
+	float: left;
+	width: 150px;
+	text-align: left;
+}
+
+/*
+#contenu{position: absolute; top: 30px; background-color:#ecd; z-Index: 1;}
+*/
+
+/******************/
+/*	Le menu !!    */
+/******************/
+
+.menu h4 {display: inline;}
+.menu {padding: 0 0.3em 0 0.3em; display: inline;}
+.menu a, .menu a:hover{text-decoration: none; color: #000;}
+
+
+.ssmenu {padding: 0.3em;margin:0; background-color: #ecd; border: 1px #000 dashed; width: 75%;}
+.ssmenu a, .ssmenu a:hover{text-decoration: none; color: #000;}
+.ssmenu a:hover{background-color: #def;}
+
+
+.ssmenu li {list-style-type:none;}
+.ssmenu li:hover {background-color:#def;color: #fff;}
+
+/**********************/
+/*	Les permissions    */
+/**********************/
+
+.perm0 {
+	color: #009;
+}
+.perm1 {
+	color: #00F;
+}
+.perm2 {
+	color: #F66;
+}
+.perm3 {
+	color: #F00;
+}
+.perm99 {
+	color: #000;
+}
+
+.bottombox {
+	background-color: #DDD;
+}

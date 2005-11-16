@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<translation>
+	<sentence key="HEADER_PAGE_TITLE">
+		<translation language="fr" value="L'Intranet en francais !" />
+		<translation language="en" value="The Intranet in english !" />
+	</sentence>
+	<sentence key="HEADER_PAGE_DESCRIPTION">
+		<translation language="fr">
+			Karibou V2 dispose maintenant du support multilingue pour pouvoir faire des applis internationales!
+		</translation>
+		<translation language="en">
+			Karibou V2 has now an effective multilanguage system in order to allow its fellow developpers to create international apps!
+		</translation>
+	</sentence>
+	<sentence key="KPOWERED">
+		<translation language="fr">
+            Propulsé par Karibou
+		</translation>
+		<translation language="en">
+			Powered by Karibou
+		</translation>
+	</sentence>
+	<sentence key="LOGOUT">
+		<translation language="fr" value="déconnecter" />
+		<translation language="en" value="logout" />
+	</sentence>
+
+	<sentence key="APP_HOME">
+		<translation language="fr" value="Accueil" />
+		<translation language="en" value="Homepage" />
+	</sentence>
+	<sentence key="APP_EMAIL">
+		<translation language="fr" value="E-Mail" />
+		<translation language="en" value="E-Mail" />
+	</sentence>
+	<sentence key="APP_CALENDAR">
+		<translation language="fr" value="Calendrier" />
+		<translation language="en" value="Calendar" />
+	</sentence>
+	<sentence key="APP_NEWS">
+		<translation language="fr" value="Actualités" />
+		<translation language="en" value="News" />
+	</sentence>
+	<sentence key="APP_DIRECTORY">
+		<translation language="fr" value="Annuaire" />
+		<translation language="en" value="Directory" />
+	</sentence>
+	<sentence key="APP_NETCV">
+		<translation language="fr" value="NetCV" />
+		<translation language="en" value="NetCV" />
+	</sentence>
+	<sentence key="APP_ADDRESSBOOK">
+		<translation language="fr" value="Carnet d'Adresses" />
+		<translation language="en" value="Address Book" />
+	</sentence>
+	<sentence key="APP_FILESHARE">
+		<translation language="fr">
+		Fichiers
+		</translation>
+		<translation language="en">
+		File Sharing</translation>
+	</sentence>
+	<sentence key="LOADING">
+		<translation language="fr">
+		Chargement
+		</translation>
+		<translation language="en">
+		Loading
+        </translation>
+	</sentence>
+</translation>

@@ -1,0 +1,107 @@
+<translation>
+	<sentence key="FILESHARE_TITLE">
+		<translation language="fr">
+		Partage de fichiers
+		</translation>
+		<translation language="en">
+		File sharing
+		</translation>
+	</sentence>
+	<sentence key="FILESHARE_DESCRIPTION">
+		<translation language="fr">
+		Cliquez sur un fichier pour le télécharger. Si vous souhaitez ajouter un fichier pour qu'il puisse etre téléchargé, cliquez sur le bouton "Ajouter un fichier".
+		</translation>
+		<translation language="en">
+		Click on a file to proceed to download. If you want to add a file so that it can
+		be downloaded, click on the button "Upload a file".
+		</translation>
+	</sentence>
+	<sentence key="UPLOAD_A_FILE">
+		<translation language="fr">
+Ajouter un fichier
+		</translation>
+		<translation language="en">
+Upload a file
+		</translation>
+	</sentence>
+	<sentence key="FILEUPLOAD_DESCRIPTION">
+		<translation language="fr">
+Ce formulaire vous permet d'ajouter un fichier a la liste. Selectionnez le fichier que vous souhaitez ajouter puis cliquez sur le bouton "Ajouter ce fichier".
+		</translation>
+		<translation language="en">
+Upload a file using this form. Browse your hard drive to select the file, and click on "Upload file".
+		</translation>
+	</sentence>
+	<sentence key="UPLOAD_FILE">
+		<translation language="fr">
+Ajouter ce fichier
+		</translation>
+		<translation language="en">
+Upload file
+		</translation>
+	</sentence>
+	<sentence key="DIRECTORYEMPTY">
+		<translation language="fr">
+			Ce repertoire est vide
+		</translation>
+		<translation language="en">
+			This directory is empty
+		</translation>
+	</sentence>
+	<sentence key="BROWSINGDIRECTORY">
+		<translation language="fr">
+			Parcours du repertoire
+		</translation>
+		<translation language="en">
+			Browsing directory
+		</translation>
+	</sentence>
+	<sentence key="UPONELEVEL">
+		<translation language="fr">
+			Aller au répertoire parent
+		</translation>
+		<translation language="en">
+			To parent directory
+		</translation>
+	</sentence>
+	<sentence key="UPLOADINGTO">
+		<translation language="fr">
+			Répertoire de destination
+		</translation>
+		<translation language="en">
+			Destination directory
+		</translation>
+	</sentence>
+	<sentence key="CREATINGIN">
+		<translation language="fr">
+			La création se fera dans le répertoire
+		</translation>
+		<translation language="en">
+			Creation will be done in directory
+		</translation>
+	</sentence>
+	<sentence key="CREATEDIRECTORY">
+		<translation language="fr">
+			Créer le répertoire
+		</translation>
+		<translation language="en">
+			Create directory
+		</translation>
+	</sentence>
+	<sentence key="CREATE_A_DIRECTORY">
+		<translation language="fr">
+			Créer un répertoire
+		</translation>
+		<translation language="en">
+			Create a directory
+		</translation>
+	</sentence>
+	<sentence key="CREATEDIRECTORY_DESCRIPTION">
+		<translation language="fr">
+			Vous êtes sur le point de créer un répertoire. Avant de procéder, veillez à ce qu'il ne soit pas redondant.
+		</translation>
+		<translation language="en">
+			You are about to create a directory. Before processing, please make sure that it won't be redundant with any other.
+		</translation>
+	</sentence>
+</translation>

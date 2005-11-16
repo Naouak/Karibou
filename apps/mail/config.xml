@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<config>
+		<param name="server" value="mail.telecomlille.net" />
+		<param name="username_append" value="@telecomlille.net" />
+	</config>
+	
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+
+	<load class="AlphaNum" file="../arguments/alphanum.class.php" />
+	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+	<load class="PageArgument" file="../arguments/pageargument.class.php" />
+	<load class="ArgServer" file="../arguments/argserver.class.php" />
+	<load class="HideArgument" file="../arguments/hideargument.class.php" />
+	<load class="MailboxArgument" file="../arguments/mailboxargument.class.php" />
+
+	<load class="Mail" file="mail.class.php" />
+	<load class="MailboxView" file="mailboxview.class.php" />
+	<load class="MailConnect" file="mailconnect.class.php" />
+	<load class="MailCompose" file="mailcompose.class.php" />
+	<load class="MailSend" file="mailsend.class.php" />
+	<load class="MailMove" file="mailmove.class.php" />
+	<load class="MailRemove" file="mailremove.class.php" />
+	<load class="MailExpunge" file="mailexpunge.class.php" />
+
+	<load class="Failed" file="failed.class.php" />
+
+	<load class="MiniMail" file="minimail.class.php" />
+	<load class="MiniMailConfig" file="minimailconfig.class.php" />
+
+	<load class="Mailbox" file="classes/mailbox.class.php" />
+	<load class="Message" file="classes/message.class.php" />
+	<load class="Part" file="classes/part.class.php" />
+
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<view name="default" class="Mail" template="default.tpl" />
+	<view name="mailbox" class="MailboxView" template="mailbox.tpl" />
+	<view name="maillist" class="MailMove" template="maillist.tpl" />
+	<view name="message" class="MailboxView" template="message.tpl" />
+	<view name="attachment" class="MailboxView" template="attachment.tpl" />
+	<view name="compose" class="MailCompose" template="mailcompose.tpl" />
+
+	<view name="failed" class="Failed" template="failed.tpl" />
+
+	<view name="mini" class="MiniMail" template="small.tpl" />
+	<view name="miniconfig" class="MiniMailConfig" template="smallconfig.tpl" />
+	
+	<page view="mailbox" />
+	<page view="mailbox">
+		<argument name="mailbox" class="MailboxArgument" />
+		<option name="pagenum" class="PageArgument" />
+		<option name="hide" class="HideArgument" />
+	</page>
+	<page name="list" view="maillist">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" />
+		<argument name="mailbox" class="MailboxArgument" />
+		<option name="pagenum" class="PageArgument" />
+		<option name="hide" class="HideArgument" />
+	</page>
+	<page name="msg" view="message">
+		<argument name="mailbox" class="MailboxArgument" />
+		<argument name="uid" class="NumberArgument" />
+	</page>
+	<page name="att" view="attachment">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" />
+		<argument name="mailbox" class="MailboxArgument" />
+		<argument name="uid" class="NumberArgument" />
+		<argument name="attachment" class="NumberArgument" />
+	</page>
+	<page name="compose" view="compose" />
+	<page name="reply" view="compose">
+		<argument name="mailbox" class="MailboxArgument" />
+		<argument name="uid" class="NumberArgument" />
+		<option name="opt" class="AlphaNum" />
+	</page>
+
+	<page name="failed" view="failed">
+		<argument name="message" class="AlphaNum" />
+	</page>
+	
+	<form action="connect" class="MailConnect">
+		<redirect page="mbox"/>
+	</form>
+	<form action="send" class="MailSend">
+		<redirect page="" />
+	</form>
+	<form action="remove" class="MailRemove">
+		<redirect page="" />
+	</form>
+	<form action="expunge" class="MailExpunge">
+		<redirect page="" />
+	</form>
+</app>

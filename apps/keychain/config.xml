@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+	
+	<load class="KeyChainConfig" file="keychainconfig.class.php" />
+	<load class="KeyChainPost" file="keychainpost.class.php" />
+
+	<view name="default" class="KeyChainConfig" template="keychainconfig.tpl" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<page view="default" />
+
+	<form action="config" class="KeyChainPost">
+		<referer />
+	</form>
+</app>

@@ -1,0 +1,22 @@
+
+.autocompleter {
+	border: 1px #999 solid;
+	padding-left: 0px;
+	margin: 0px;
+	background-color: #fefefe;
+}
+
+.autocompleter .selected {
+	background-color: #acf;
+}
+
+.autocompleter ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+.autocompleter li {
+	padding-left: 0px;
+}
+

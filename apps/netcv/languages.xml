@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<translation>
+	<sentence key="NETCV_HOME">
+		<translation language="fr">
+		Accueil NetCV
+		</translation>
+		<translation language="en">
+		NetCV Home
+		</translation>
+	</sentence>
+	<sentence key="PERSOINFO">
+		<translation language="fr" value="Informations personnelles" />
+		<translation language="en" value="Personal information" />
+	</sentence>
+	<sentence key="PERSOINFO_MODIFY">
+		<translation language="fr" value="Modifier vos informations personnelles (nom, coordonnées, email...)" />
+		<translation language="en" value="Modify your personal info (name, address, email...)" />
+	</sentence>
+	<sentence key="ONLINE">
+		<translation language="fr">
+		Mise en ligne
+		</translation>
+		<translation language="en">
+		Online availability
+		</translation>
+	</sentence>
+	<sentence key="CONTENT_CHECK">
+		<translation language="fr" value="Vérification du remplissage de vos CV" />
+		<translation language="en" value="Checking the filling of your CV" />
+	</sentence>
+	<sentence key="MINIMA_REQUIRED">
+		<translation language="fr" value="Minima requis" />
+		<translation language="en" value="Minima required" />
+	</sentence>
+	<sentence key="MINIMA_REQUIRED_DESCRIPTION">
+		<translation language="fr" value="Pour qu'un de vos CV (ou version multilingue de CV) soit mis en ligne, il faut que celui-ci soit suffisamment rempli. Au minimum il doit contenir:" />
+		<translation language="en" value="In order for your CV (or a multilingual version of your CV) to be available online, it must be filled up with, at least:" />
+	</sentence>
+	<sentence key="SECTION">
+		<translation language="fr" value="Section" />
+		<translation language="en" value="Section" />
+	</sentence>
+	<sentence key="ELEMENT">
+		<translation language="fr" value="élément" />
+		<translation language="en" value="element" />
+	</sentence>
+	<sentence key="ELEMENTS_BY_SECTION">
+		<translation language="fr" value="éléments par section" />
+		<translation language="en" value="elements by section" />
+	</sentence>
+	<sentence key="PERSONALINFO">
+		<translation language="fr" value="informations personnelles renseignées" />
+		<translation language="en" value="personal info filled" />
+	</sentence>
+	<sentence key="CV_STATE">
+		<translation language="fr" value="Etat de vos CV" />
+		<translation language="en" value="State of your CV" />
+	</sentence>
+	<sentence key="ENOUGH_CONTENT">
+		<translation language="fr" value="Votre CV peut être mis en ligne car il est assez rempli." />
+		<translation language="en" value="Your CV can be available online, it is filled enough" />
+	</sentence>
+	<sentence key="NOT_ENOUGH_CONTENT">
+		<translation language="fr" value="Votre CV ne peut être mis en ligne car il n'est pas assez rempli." />
+		<translation language="en" value="Your CV cannot be available online because it is not filled enough." />
+	</sentence>
+	<sentence key="NO_SECTION">
+		<translation language="fr" value="Vous n'avez pas encore créé de section pour cette version de CV." />
+		<translation language="en" value="You haven't created a section for this CV yet." />
+	</sentence>
+	<sentence key="NO_CV">
+		<translation language="fr" value="Vous n'avez pas encore créé de CV..." />
+		<translation language="en" value="You haven't created a CV yet..." />
+	</sentence>
+	<sentence key="GO_CREATE">
+		<translation language="fr" value="A vous de jouer !" />
+		<translation language="en" value="Let's write your CV !" />
+	</sentence>
+	<sentence key="BACK_HOME">
+		<translation language="fr" value="Retourner à la page d'accueil de NetCV" />
+		<translation language="en" value="Back to NetCV homepage" />
+	</sentence>
+	<sentence key="NOT_ENOUGH_CONTENT_PRIVATE">
+	  <translation language="fr">
+		Votre CV n'est pas assez renseigné pour être mis en ligne ou prévisualisé.
+		</translation>
+		<translation language="en">
+		Your CV doesn't have enough content to be displayed.
+		</translation>
+	</sentence>
+	<sentence key="BACK_TO_EDITING">
+		<translation language="fr">
+			Cliquez ici pour retourner à la modification de votre CV		
+		</translation>
+		<translation language="en">
+			Click here to go back to the CV modification page
+		</translation>
+	</sentence>
+	<sentence key="HISTORY_BACK">
+		<translation language="fr">
+		Cliquez ici pour revenir à la page précédente.
+		</translation>
+		<translation language="en">
+		Click here to go back to the previous page.
+		</translation>
+	</sentence>
+	<sentence key="HELPER_CLICK_ON_LANG_TO_EDIT">
+		<translation language="fr">
+		Cliquez sur la langue d'un CV pour éditer son contenu.
+		</translation>
+		<translation language="en">
+		Click on the language of a CV to edit its content.
+		</translation>
+	</sentence>
+	<sentence key="MY_CV">
+		<translation language="fr">
+		Mes CV
+		</translation>
+		<translation language="en">
+		My CV
+		</translation>
+	</sentence>
+	<sentence key="EDIT">
+		<translation language="fr">
+		Editer
+		</translation>
+		<translation language="en">
+		Edit
+		</translation>
+	</sentence>
+	<sentence key="DELETE">
+		<translation language="fr">
+		Supprimer
+		</translation>
+		<translation language="en">
+		Delete
+		</translation>
+	</sentence>
+	<sentence key="DELETE_CV">
+		<translation language="fr">
+			Supprimer ce CV
+		</translation>
+		<translation language="en">
+			Delete this CV
+		</translation>
+	</sentence>
+	<sentence key="ADD_TRANSLATION_TO_CV">
+		<translation language="fr">
+			Ajouter une traduction à ce CV
+		</translation>
+		<translation language="en">
+			Add a translation to this CV
+		</translation>
+	</sentence>
+	<sentence key="CREATE_ANOTHER_CV">
+		<translation language="fr">
+			Créer un autre CV
+		</translation>
+		<translation language="en">
+			Create another CV
+		</translation>
+	</sentence>
+	<sentence key="CREATE_FIRST_CV">
+		<translation language="fr">
+			Créer mon premier CV
+		</translation>
+		<translation language="en">
+			Create my first CV
+		</translation>
+	</sentence>
+	<sentence key="MODIFY_CV_SETTINGS">
+		<translation language="fr">
+		Modification des préférences du CV
+		</translation>
+		<translation language="en">
+		CV settings modification
+		</translation>
+	</sentence>
+	<sentence key="APPLY_MODIFICATIONS">
+		<translation language="fr">
+			Appliquer les modifications
+		</translation>
+		<translation language="en">
+			Apply modifications
+		</translation>
+	</sentence>
+	<sentence key="YOU_ARE_HERE">
+		<translation language="fr">
+			Vous êtes ici
+		</translation>
+		<translation language="en">
+			You are here
+		</translation>
+	</sentence>
+	<sentence key="CREATION_OF_A_NEW_CV">
+		<translation language="fr">
+			Creation d'un nouveau CV
+		</translation>
+		<translation language="en">
+			Creation of a new CV
+		</translation>
+	</sentence>
+	<sentence key="CREATE_THE_CV">
+		<translation language="fr">
+			Créer le CV
+		</translation>
+		<translation language="en">
+			Create the CV
+		</translation>
+	</sentence>
+	<sentence key="HELPER_CV_SETTINGS">
+		<translation language="fr">
+		Choisissez ici les préférences de votre CV. Celles-ci sont spécifiques au CV que vous éditez ou créez et sont modifiables à tout moment sur cette page.
+		</translation>
+		<translation language="en">
+		Choose the settings of your CV. They are specific to your CV and can be modified at any moment on this page.
+		</translation>
+	</sentence>
+	<sentence key="CV_NAME">
+		<translation language="fr">	
+			Nom du CV (interne)
+		</translation>
+		<translation language="en">
+			Name of your CV (internal)
+		</translation>
+	</sentence>
+	<sentence key="CV_ADDRESS">
+		<translation language="fr">
+		Adresse internet du CV
+		</translation>
+		<translation language="en">
+		Internet CV address (hostname)
+		</translation>
+	</sentence>
+	<sentence key="CV_DIFFUSION">
+		<translation language="fr">
+		Diffusion du CV
+		</translation>
+		<translation language="en">
+		CV diffusion
+		</translation>
+	</sentence>
+	<sentence key="PUBLIC_DIFFUSION">
+		<translation language="fr">
+		Diffusion publique
+		</translation>
+		<translation language="en">
+		Public diffusion
+		</translation>
+	</sentence>
+	<sentence key="NO_SEARCH_ENGINE">
+		<translation language="fr">
+		Pas de référencement
+		</translation>
+		<translation language="en">
+		No search engine indexing
+		</translation>
+	</sentence>
+	<sentence key="PRIVATE_DIFFUSION">
+		<translation language="fr">
+		Diffusion privée
+		</translation>
+		<translation language="en">
+		Private diffusion
+		</translation>
+	</sentence>
+	<sentence key="EMAIL_DISPLAY">
+		<translation language="fr">
+		Affichage de l'adresse email
+		</translation>
+		<translation language="en">
+		Email display
+		</translation>
+	</sentence>
+	<sentence key="DISPLAY_EMAIL_ADDRESS">
+		<translation language="fr">
+		Afficher l'adresse email
+		</translation>
+		<translation language="en">
+		Display email address
+		</translation>
+	</sentence>
+	<sentence key="CONTACT_FORM">
+		<translation language="fr">
+		Utilisation d'un formulaire de contact (recommandé)
+		</translation>
+		<translation language="en">
+		Contact using an HTML form (recommended)
+		</translation>
+	</sentence>
+	<sentence key="DISPLAY_EMAIL">
+		<translation language="fr">
+		Afficher l'adresse email
+		</translation>
+		<translation language="en">
+		Display email
+		</translation>
+	</sentence>
+	<sentence key="DESIGN_CHOICE">
+		<translation language="fr">
+		Choix du design de CV
+		</translation>
+		<translation language="en">
+		Choice of the CV design
+		</translation>
+	</sentence>
+	<sentence key="BACK">
+		<translation language="fr">
+		Retour
+		</translation>
+		<translation language="en">
+		Back
+		</translation>
+	</sentence>
+	<sentence key="HOME">
+		<translation language="fr">
+		Accueil
+		</translation>
+		<translation language="en">
+		Home
+		</translation>
+	</sentence>
+	<sentence key="HELPER_ITEM">
+		<translation language="fr">
+		Un élément doit toujours avoir rapport avec le thème de la section.
+		</translation>
+		<translation language="en">
+		An element has to be related to the section purpose.
+		</translation>
+	</sentence>
+	<sentence key="ELEMENTS_OF">
+		<translation language="fr">
+		Éléments de
+		</translation>
+		<translation language="en">
+		Elements of
+		</translation>
+	</sentence>
+	<sentence key="THIS_WILL_DELETE">
+		<translation language="fr">
+		Cela va supprimer l\\'élément
+		</translation>
+		<translation language="en">
+		This will delete the element
+		</translation>
+	</sentence>
+	<sentence key="ARE_YOU_SURE">
+		<translation language="fr">
+		Êtes-vous sûr de vouloir continuer ?
+		</translation>
+		<translation language="en">
+		Are you sure ?
+		</translation>
+	</sentence>
+	<sentence key="MOVE_UP">
+		<translation language="fr">
+		Monter
+		</translation>
+		<translation language="en">
+		Move up
+		</translation>
+	</sentence>
+	<sentence key="MOVE_DOWN">
+		<translation language="fr">
+		Descendre
+		</translation>
+		<translation language="en">
+		Move down
+		</translation>
+	</sentence>
+	<sentence key="ADD_AN_ELEMENT">
+		<translation language="fr">
+		Ajouter un élément
+		</translation>
+		<translation language="en">
+		Add an element
+		</translation>
+	</sentence>
+	<sentence key="MODIFICATION_OF_THE_ELEMENT">
+		<translation language="fr">
+		Modification de l'élément
+		</translation>
+		<translation language="en">
+		Element modification
+		</translation>
+	</sentence>
+	<sentence key="ELEMENT_CREATION">
+		<translation language="fr">
+		Creation d'un nouvel élément
+		</translation>
+		<translation language="en">
+		Creation of a new element
+		</translation>
+	</sentence>
+	<sentence key="APPLY_MODIFICATIONS">
+		<translation language="fr">
+		Appliquer les modifications
+		</translation>
+		<translation language="en">
+		Apply modifications
+		</translation>
+	</sentence>
+	<sentence key="CREATE_ELEMENT">
+		<translation language="fr">
+		Creer l'élément
+		</translation>
+		<translation language="en">
+		Create the element
+		</translation>
+	</sentence>
+	<sentence key="ELEMENT_TITLE">
+		<translation language="fr">
+		Titre de l'element
+		</translation>
+		<translation language="en">
+		Element title
+		</translation>
+	</sentence>
+	<sentence key="ELEMENT_SUBTITLE">
+		<translation language="fr">
+		Sous-Titre de l'element
+		</translation>
+		<translation language="en">
+		Element subtitle
+		</translation>
+	</sentence>
+	<sentence key="ELEMENT_DESCRIPTION">
+		<translation language="fr">
+		Description de l'element
+		</translation>
+		<translation language="en">
+		Element description
+		</translation>
+	</sentence>
+	<sentence key="BACK_TO_SECTIONS">
+		<translation language="fr">
+		Retour aux sections
+		</translation>
+		<translation language="en">
+		Back to sections
+		</translation>
+	</sentence>
+	<sentence key="HELPER_SECTIONS">
+		<translation language="fr">
+		Cliquer sur le nom de la section pour visualiser et ajouter des éléments.
+		</translation>
+		<translation language="en">
+		Click on the name of a section to view its content and add elements.
+		</translation>
+	</sentence>
+	<sentence key="RENAME">
+		<translation language="fr">
+		Renommer
+		</translation>
+		<translation language="en">
+		Rename
+		</translation>
+	</sentence>
+	<sentence key="ADD_A_SECTION">
+		<translation language="fr">
+		Ajouter une section
+		</translation>
+		<translation language="en">
+		Add a section
+		</translation>
+	</sentence>Vous n'avez pas encore créé de section à ce CV.
+	<sentence key="NO_SECTION">
+		<translation language="fr">
+		Vous n'avez pas encore créé de section.
+		</translation>
+		<translation language="en">
+		You haven't created a section yet.
+		</translation>
+	</sentence>
+	<sentence key="CREATE_FIRST_SECTION">
+		<translation language="fr">
+		Créer ma première section
+		</translation>
+		<translation language="en">
+		Create my first section
+		</translation>
+	</sentence>
+	<sentence key="SECTION_NAME_MODIFY">
+		<translation language="fr">
+		Modification du nom de la section
+		</translation>
+		<translation language="en">
+		Section name modify
+		</translation>
+	</sentence>
+	<sentence key="APPLY_MODIFICATION_AND_BACK_TO_SECTIONS">
+		<translation language="fr">
+		Appliquer les modifications et retourner à la liste des sections
+		</translation>
+		<translation language="en">
+		Apply modification and go back to section list
+		</translation>
+	</sentence>
+	<sentence key="APPLY_MODIFICATION_AND_ENTER_SECTION">
+		<translation language="fr">
+		Appliquer les modifications et aller dans la section
+		</translation>
+		<translation language="en">
+		Apply modifications and enter the section
+		</translation>
+	</sentence>
+	<sentence key="SECTION_CREATION">
+		<translation language="fr">
+		Creation d'une nouvelle section
+		</translation>
+		<translation language="en">
+		Creation of a new section
+		</translation>
+	</sentence>
+	<sentence key="CREATE_AND_BACK_TO_SECTIONS">
+		<translation language="fr">
+		Créer la section et retourner à la liste des sections
+		</translation>
+		<translation language="en">
+		Create the section and go back to section list
+		</translation>
+	</sentence>
+	<sentence key="CREATE_AND_GO_INTO">
+		<translation language="fr">
+		Creer la section et aller dans celle-ci
+		</translation>
+		<translation language="en">
+		Create the section and enter it
+		</translation>
+	</sentence>
+	<sentence key="HELPER_SECTION_CREATION">
+		<translation language="fr">
+		Une "<strong>section</strong>" dans votre CV va contenir des éléments relatifs à un thème.
+		Par exemple, la section "<em>Expériences Professionnelles</em>" contiendra chaque expérience que vous souhaitez faire apparaître sur votre CV.
+		Dans la même idée, la section "<em>Formations</em>" contiendra les différentes formations que vous souhaitez afficher, etc.
+		</translation>
+		<translation language="en">
+		A section of your CV will contain elements related to a specific purpose.
+		For example, a section "<em>Professional Experience</em>" will contain each professional experience you want to display on your CV.
+		As a matter of fact, a section called "Education" will contain you academic background...
+		</translation>
+	</sentence>
+	<sentence key="SECTION_TITLE">
+		<translation language="fr">
+		Titre de la section
+		</translation>
+		<translation language="en">
+		Section title
+		</translation>
+	</sentence>
+	<sentence key="SECTION_TITLE_HELP">
+		<translation language="fr">
+		Exemple: Formations, Experiences...
+		</translation>
+		<translation language="en">
+		Example: Education, Professional Experience...
+		</translation>
+	</sentence>
+	<sentence key="CANCEL">
+		<translation language="fr">
+		Annuler
+		</translation>
+		<translation language="en">
+		Cancel
+		</translation>
+	</sentence>
+	<sentence key="CV_CREATION">
+		<translation language="fr">
+		Création d'un nouveau CV
+		</translation>
+		<translation language="en">
+		CV creation
+		</translation>
+	</sentence>
+	<sentence key="CV_LANGUAGE_CREATION">
+		<translation language="fr">
+		Choix de la langue du CV
+		</translation>
+		<translation language="en">
+		Choice of the CV language
+		</translation>
+	</sentence>
+	<sentence key="CV_VERSION_CREATION">
+		<translation language="fr">
+		Création d'une traduction pour ce CV
+		</translation>
+		<translation language="en">
+		Creation of a translation for this CV
+		</translation>
+	</sentence>
+	<sentence key="CREATE_THE_CV">
+		<translation language="fr">
+		Créer le CV
+		</translation>
+		<translation language="en">
+		Create the CV
+		</translation>
+	</sentence>
+	<sentence key="DEFAULT_PERSONAL_INFO">
+		<translation language="fr">
+		Informations personnelles par défaut
+		</translation>
+		<translation language="en">
+		Default personal information
+		</translation>
+	</sentence>
+	<sentence key="HELPER_PERSONAL_INFO">
+		<translation language="fr">
+		Vous êtes actuellement dans l'espace de modification de vos informations personnelles <strong>par défaut</strong>, c'est à dire celles qui sont utilisées sur vos CV oû vous n'avez pas spécifié d'informations particulières. Vous pouvez choisir le CV sur lequel vous souhaitez modifier les informations personnelles grâce au menu ci-dessous.
+		<br />
+		<strong>Vous devez au moins renseigner {$config.minimum.personalinfos} informations personnelles par défaut pour que vos CV puissent être mis en ligne.</strong>
+		</translation>
+		<translation language="en">
+		You are on the <strong>default</strong> personal information modification page, which means those that are used when you don't have any specific information for a CV. If you want to set specific information for a CV (for example a different jobtitle), click on your CV language (displayed below).
+		<br />
+		<strong>You have to set at least {$config.minimum.personalinfos} default personal info to make your CV available online.</strong>
+		</translation>
+	</sentence>
+	<sentence key="FIRSTNAME">
+		<translation language="fr">
+		Prénom
+		</translation>
+		<translation language="en">
+		Firstname
+		</translation>
+	</sentence>
+	<sentence key="LASTNAME">
+		<translation language="fr">
+		Nom
+		</translation>
+		<translation language="en">
+		Last name
+		</translation>
+	</sentence>
+	<sentence key="EMAIL">
+		<translation language="fr">
+		Adresse email
+		</translation>
+		<translation language="en">
+		Email address
+		</translation>
+	</sentence>
+	<sentence key="ADDRESS">
+		<translation language="fr">
+		Adresse
+		</translation>
+		<translation language="en">
+		Address
+		</translation>
+	</sentence>
+	<sentence key="POSTALCODE">
+		<translation language="fr">
+		Code Postal
+		</translation>
+		<translation language="en">
+		Postal Code
+		</translation>
+	</sentence>
+	<sentence key="CITY">
+		<translation language="fr">
+		Ville
+		</translation>
+		<translation language="en">
+		City
+		</translation>
+	</sentence>
+	<sentence key="HOMEPHONE">
+		<translation language="fr">
+		Téléphone fixe
+		</translation>
+		<translation language="en">
+		Home phone
+		</translation>
+	</sentence>
+	<sentence key="COMPANYPHONE">
+		<translation language="fr">
+		Téléphone professionel
+		</translation>
+		<translation language="en">
+		Professional phone
+		</translation>
+	</sentence>
+	<sentence key="MOBILEPHONE">
+		<translation language="fr">
+		Téléphone mobile
+		</translation>
+		<translation language="en">
+		Mobile phone
+		</translation>
+	</sentence>
+	<sentence key="OTHERINFO">
+		<translation language="fr">
+		Autres informations
+		</translation>
+		<translation language="en">
+		Other information
+		</translation>
+	</sentence>
+	<sentence key="JOBTITLE">
+		<translation language="fr">
+		Nom du poste actuel / recherché
+		</translation>
+		<translation language="en">
+		Job title (current / sought)
+		</translation>
+	</sentence>
+	<sentence key="UPDATE">
+		<translation language="fr">
+		Mettre a jour
+		</translation>
+		<translation language="en">
+		Update
+		</translation>
+	</sentence>
+	<sentence key="CV_PERSONAL_INFO">
+		<translation language="fr">
+		Informations personnelles du CV
+		</translation>
+		<translation language="en">
+		CV personal information
+		</translation>
+	</sentence>
+	<sentence key="HELPER_CV_PERSONAL_INFO">
+		<translation language="fr">
+		Lorsqu'un champ est vide, la valeur par défaut est utilisée.
+		</translation>
+		<translation language="en">
+		When a text area is empty, the default value is used for display.
+		</translation>
+	</sentence>
+	<sentence key="INFORMATION">
+		<translation language="fr">
+		Informations
+		</translation>
+		<translation language="en">
+		Information
+		</translation>
+	</sentence>
+	<sentence key="CHANGE_LANGUAGE">
+		<translation language="fr">
+		Changer la langue
+		</translation>
+		<translation language="en">
+		Change the language
+		</translation>
+	</sentence>
+	<sentence key="PREVIEW">
+		<translation language="fr">
+		Prévisualiser
+		</translation>
+		<translation language="en">
+		Preview
+		</translation>
+	</sentence>
+	<sentence key="TITLE_WIKI_SYNTAX">
+		<translation language="fr">
+		Utilisez la syntaxe wiki pour mettre en forme la description
+		</translation>
+		<translation language="en">
+		How to format your description using the wiki syntax
+		</translation>
+	</sentence>
+	<sentence key="ADDRESS_IN_USE">
+		<translation language="fr">
+		L'adresse de CV est déjà utilisée.
+		</translation>
+		<translation language="en">
+		The address you chose is already in use.
+		</translation>
+	</sentence>
+	<sentence key="CV_MODIFIED">
+		<translation language="fr">
+		Le CV a été modifié
+		</translation>
+		<translation language="en">
+		The CV has been modified
+		</translation>
+	</sentence>
+	<sentence key="CV_ADDED">
+		<translation language="fr">
+		Le CV a été créé
+		</translation>
+		<translation language="en">
+		The CV has been created
+		</translation>
+	</sentence>
+	<sentence key="NO_EMPTY_FIELD">
+		<translation language="fr">
+		Toutes les informations doivent être renseignées
+		</translation>
+		<translation language="en">
+		All the information must be filled
+		</translation>
+	</sentence>
+	<sentence key="DELETED_CV">
+		<translation language="fr">
+		Le CV a été supprimé.
+		</translation>
+		<translation language="en">
+		The CV has been deleted.
+		</translation>
+	</sentence>
+	<sentence key="ELEMENT_UPDATED">
+		<translation language="fr">
+		L'élément a été mis à jour.
+		</translation>
+		<translation language="en">
+		The element has been updated.
+		</translation>
+	</sentence>
+	<sentence key="ELEMENT_ADDED">
+		<translation language="fr">
+		L'élément a été ajouté.
+		</translation>
+		<translation language="en">
+		The element has been added.
+		</translation>
+	</sentence>
+	<sentence key="SECTION_ADDED">
+		<translation language="fr">
+		La section a été ajoutée.
+		</translation>
+		<translation language="en">
+		The section has been added.
+		</translation>
+	</sentence>
+	<sentence key="SECTION_MODIFIED">
+		<translation language="fr">
+		La section a été modifiée.
+		</translation>
+		<translation language="en">
+		The section has been updated.
+		</translation>
+	</sentence>
+	<sentence key="DELETED_LANG_CV">
+		<translation language="fr">
+		La traduction du CV a été supprimée.
+		</translation>
+		<translation language="en">
+		The translation of the CV has been deleted.
+		</translation>
+	</sentence>
+	<sentence key="TRANSLATION_MODIFIED">
+		<translation language="fr">
+		La traduction du CV a été modifiée.
+		</translation>
+		<translation language="en">
+		The translation of the CV has been modified.
+		</translation>
+	</sentence>
+	<sentence key="TRANSLATION_CREATED">
+		<translation language="fr">
+		 Une nouvelle traduction du CV a été créée.
+		</translation>
+		<translation language="en">
+		A new translation of the CV has been created.
+		</translation>
+	</sentence>
+	<sentence key="CV_PERSONAL_INFO_UPDATED">
+		<translation language="fr">
+		Les informations personnelles du CV ont été mises à jour.
+		</translation>
+		<translation language="en">
+		The personal information of the CV have been updated.
+		</translation>
+	</sentence>
+	<sentence key="DEFAULT_PERSONAL_INFO_UPDATED">
+		<translation language="fr">
+		Les informations personnelles par défaut ont été mises à jour.
+		</translation>
+		<translation language="en">
+		Default personal information have been updated.
+		</translation>
+	</sentence>	
+	<sentence key="ENOUGH_PERSONALINFO">
+		<translation language="fr">
+		Vos informations personnelles par défaut sont assez remplies.
+		</translation>
+		<translation language="en">
+		Your default personal information are filled correctly.
+		</translation>
+	</sentence>	
+	<sentence key="NOT_ENOUGH_PERSONALINFO">
+		<translation language="fr">
+		Vos informations personnelles par défaut ne sont pas assez remplies.
+		Même si un de vos CV est assez rempli, il ne pourra pas être mis en ligne tant que vous n'aurez pas renseigné au moins {$config.minimum.personalinfos} informations personnelles.
+		</translation>
+		<translation language="en">
+		Your default personal information are not filled correctly.
+		Even if one of you CV has enough content, it won't be available online unless you set a minimum of {$config.minimum.personalinfos} personal information.
+		</translation>
+	</sentence>
+	<sentence key="CLICK_HERE_TO_MODIFY_YOUR_PERSOINFO">
+		<translation language="fr">
+		Cliquez ici pour mettre à jour vos informations personnelles
+		</translation>
+		<translation language="en">
+		Click here to update your personal information.
+		</translation>
+	</sentence>
+	<sentence key="PERSONALINFO_STATE">
+		<translation language="fr">
+		État du remplissage de vos informations personnelles
+		</translation>
+		<translation language="en">
+		Personal information update state
+		</translation>
+	</sentence>
+	<sentence key="AND">
+		<translation language="fr">
+		et
+		</translation>
+		<translation language="en">
+		and
+		</translation>
+	</sentence>
+	<sentence key="ADD_FIRST_SECTION">
+		<translation language="fr">
+		Ajouter ma première section
+		</translation>
+		<translation language="en">
+		Add my first section
+		</translation>
+	</sentence>
+</translation>

@@ -1,0 +1,77 @@
+<translation>
+    <sentence key="PROJECTGROUP_TITLE">
+        <translation language="fr">
+        Gestion des Groupes Projets
+        </translation>
+        <translation language="en">
+        Project Group Management
+        </translation>
+    </sentence>
+    <sentence key="PROJECTGROUP_DESCRIPTION">
+        <translation language="fr">
+        L'application de Gestion des Groupes Projets est un outil d'aide a la creation
+        de groupes projet.
+        </translation>
+        <translation language="en">
+        The Project Groupe Management application is a tool which aim is to simplify
+        the project groups creation.
+        </translation>
+    </sentence>
+    <sentence key="PROJECTGROUP">
+        <translation language="fr">
+        Groupe Projet
+        </translation>
+        <translation language="en">
+        Project Group
+        </translation>
+    </sentence>
+    <sentence key="NOPROJECT">
+        <translation language="fr">
+        Il n'y a pas encore de projet de cree
+        </translation>
+        <translation language="en">
+        There is no project yet
+        </translation>
+    </sentence>
+    <sentence key="PROJECTS">
+        <translation language="fr">
+        Projets
+        </translation>
+        <translation language="en">
+        Projects
+        </translation>
+    </sentence>
+    <sentence key="NOPROJECT">
+        <translation language="fr">
+        Il n'y a pas encore de projet de cree
+        </translation>
+        <translation language="en">
+        There is no project yet
+        </translation>
+    </sentence>
+    <sentence key="PROJECTGROUP_GROUPLIST">
+        <translation language="fr">
+        Liste des groupes du projet
+        </translation>
+        <translation language="en">
+        Group list for the project
+        </translation>
+    </sentence>
+    <sentence key="ADDMETOTHISGROUP">
+        <translation language="fr">
+        Ajoutez moi a ce groupe
+        </translation>
+        <translation language="en">
+        Add me to this group
+        </translation>
+    </sentence>
+    <sentence key="CREATENEWPROJECT">
+        <translation language="fr">
+        Creer un nouveau projet
+        </translation>
+        <translation language="en">
+        Create a new project
+        </translation>
+    </sentence>
+    
+</translation>

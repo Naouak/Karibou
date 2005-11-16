@@ -1,0 +1,37 @@
+<translation>
+    <sentence key="TITLE_WIKI_SYNTAX">
+        <translation language="fr" value="Syntaxe wiki" />
+        <translation language="en" value="Wiki syntax" />
+    </sentence>
+    
+    <sentence key="ACTION_MODIFY">
+        <translation language="fr" value="Modifier" />
+        <translation language="en" value="Modify" />
+    </sentence>
+    
+    <sentence key="ACTION_PREVIEW">
+        <translation language="fr" value="Aperçu" />
+        <translation language="en" value="Preview" />
+    </sentence>
+    
+    <sentence key="ACTION_RESET">
+        <translation language="fr" value="Annuler" />
+        <translation language="en" value="Reset" />
+    </sentence>
+
+    <sentence key="HISTORY">
+        <translation language="fr" value="Historique" />
+        <translation language="en" value="History" />
+    </sentence>
+
+    <sentence key="RETOUR">
+        <translation language="fr" value="Retour" />
+        <translation language="en" value="Back" />
+    </sentence>
+
+    <sentence key="BY">
+        <translation language="fr" value="par" />
+        <translation language="en" value="by" />
+    </sentence>
+
+</translation>

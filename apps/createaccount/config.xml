@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<load class="CreateAccount" file="createaccount.class.php" />
+	<load class="CreateAccountSave" file="createaccountsave.class.php" />	
+
+	<view name="createaccount" class="CreateAccount" template="createaccount.tpl" />
+
+	<header app="header" view="default"/>
+	<footer app="footer" view="default" />
+	
+	<page view="createaccount" />
+	<page name="createaccount" view="createaccount" />
+	
+	<form action="createaccountsave" class="CreateAccountSave">
+		<redirect app="" page="" />
+	</form>
+	
+</app>

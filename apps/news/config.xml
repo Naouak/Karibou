@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+
+	<config>
+		<param name="displaynb">
+			<value name="newsgrand">8</value>
+		</param>
+	</config>
+	
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+	
+	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+	<load class="PageArgument" file="../arguments/pageargument.class.php" />
+	<load class="ElementId" file="../arguments/elementid.class.php" />
+	<load class="DisplayComments" file="../arguments/displaycomments.class.php" />
+
+	<load class="News" file="class/news.class.php" />
+	<load class="NewsGrand" file="newsgrand.class.php" />
+	<load class="NewsAdd" file="newsadd.class.php" />
+	<load class="NewsModify" file="newsmodify.class.php" />
+	<load class="NewsView" file="newsview.class.php" />
+	<load class="NewsPost" file="newspost.class.php" />
+	<load class="NewsAddComment" file="newsaddcomment.class.php" />
+	<load class="NewsMini" file="newsmini.class.php" />
+	<load class="NewsMiniConfig" file="newsminiconfig.class.php" />
+	<load class="wiki2xhtmlBasic" file="../wiki/wiki2xhtml.basic.class.php" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<view name="default" class="NewsGrand" template="newsgrand.tpl" />
+	<view name="rss" class="NewsGrand" template="newsgrandrss.tpl" />
+	<view name="add" class="NewsAdd" template="newsmodify.tpl" />
+	<view name="modify" class="NewsModify" template="newsmodify.tpl" />
+	<view name="addcomment" class="NewsAddComment" template="newsaddcomment.tpl" />
+	<view name="view" class="NewsView" template="newsview.tpl" />
+
+	<view name="mini" class="NewsMini" template="small.tpl" />
+	<view name="miniconfig" class="NewsMiniConfig" template="smallconfig.tpl" />
+
+	<page name="" view="default" />
+	
+	<page name="" view="default" >
+		<argument name="pagenum" class="PageArgument" />
+	</page>
+	
+	<page name="rss" view="rss">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" /> 
+	</page>
+	
+	<page name="add" view="add" />
+
+	<page name="modify" view="modify">
+		<argument name="id" class="NumberArgument" />
+	</page>
+	
+	<page name="view" view="view" >
+		<argument name="id" class="NumberArgument" />
+		<option name="displayComments" class="DisplayComments" />
+	</page>
+
+	<page name="addcomment" view="view" >
+		<argument name="id" class="NumberArgument" />
+		<option name="addcomment" class="NumberArgument" />
+	</page>
+	
+	<form action="post" class="NewsPost">
+		<redirect />
+	</form>
+	
+</app>

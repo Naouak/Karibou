@@ -1,0 +1,15 @@
+<app>
+	<load class="Login" file="login.class.php" />
+	<load class="Logout" file="logout.class.php" />
+	<load class="LoginForm" file="loginform.class.php" />
+	
+	<view name="mini" class="LoginForm" template="loginform.tpl" />
+	
+	<form class="Login">
+		<redirect app="" view="" />
+	</form>
+	
+	<form action="logout" class="Logout">
+		<redirect app="" page="" />
+	</form>
+</app>

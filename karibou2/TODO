@@ -1,0 +1,34 @@
+TODO
+
+Framework :
+
+ - creer un site avec un fichier xml
+ - documentation
+ - groupes secrets
+ 
+Applis :
+
+ * Imperatif
+  - carnet d'adresses
+    - proposer la suppression de contact
+  - calendrier :
+    - calendrier en lecture seule, public / privé (ok c'est viré des actions dispo, reste à sécuriser le POST) 
+    - finaliser le formulaire d'ajout / modification d'évènements dans le calendrier
+  - importation des utilisateurs
+  - mail
+    - corriger l'appli minimail (lien dans le vide)
+  - page d'accueil
+    - permettre de remplacer la page d'accueil par un formulaire
+      - si aucun email n'est disponible dans le profil utilisateur, l'utilisateur doit en saisir un
+      - si ses coordonnées ne sont pas à jour...
+      - pour obliger l'utilisateur à changer son mot de passe...
+
+ * En allant
+  - finaliser les traductions, penser à les utiliser directement (c'est plus long de traduire les applications ensuite que de le faire en allant)
+
+ * Non bloquant
+  - Utiliser la permission GROUP_ADMIN
+  - affichage d'une semaine dans le calendrier
+  - préférences pour le calendrier à afficher (les calendriers à afficher par défaut peuvent être mis en préférence)
+  - mise en place d'un log des login / logout + utilisation des applications
+  - page / appli credits pour présenter les auteurs des applis

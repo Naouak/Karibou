@@ -1,0 +1,21 @@
+.onlineusers {
+}
+
+.onlineusers ul {
+	margin: 2px;
+	padding: 0px;
+	list-style: none;
+}
+
+.onlineusers li {
+	padding-left: 14px;
+	background-image: url(images/onlineusers/buddyicon.png);
+	background-repeat: no-repeat;
+	background-position: 0px 5px;
+	line-height: 28px;
+}
+
+.onlineusers li a.userlink {
+	font-weight: bold;
+	text-decoration: none;
+}

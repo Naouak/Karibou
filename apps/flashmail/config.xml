@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+
+	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+
+	<load class="FlashMailFactory" file="class/flashmailfactory.class.php" />
+	<load class="FlashMail" file="class/flashmail.class.php" />
+
+	<load class="FlashMailList" file="list.class.php" />
+	<load class="UnReadFlashMailList" file="unreadlist.class.php" />
+	<load class="FlashMailSend" file="send.class.php" />
+	<load class="FlashMailScript" file="flashmailscript.class.php" />
+	<load class="FlashMailHeaderBox" file="headerbox.class.php" />
+	<load class="FlashMailWrite" file="write.class.php" />
+	<load class="FlashMailSetAsRead" file="setasread.class.php" />
+	<load class="FlashMailNothing" file="nothing.class.php" />
+
+	<view name="default" class="FlashMailList" template="default.tpl" />
+	<view name="list" class="FlashMailList" template="list.tpl" />
+	<view name="unreadlist" class="UnReadFlashMailList" template="list.tpl" />
+	<view name="headerbox" class="FlashMailHeaderBox" template="headerbox.tpl" />
+	<view name="headerbox_content" class="UnReadFlashMailList" template="headerbox_content.tpl" />
+	<view name="popupscript" class="FlashMailScript" template="flashmailscript.tpl" />
+	<view name="write" class="FlashMailWrite" template="write.tpl" />
+	<view name="setasread" class="FlashMailSetAsRead" template="empty.tpl" />
+
+	<view name="writebox" class="FlashMailNothing" template="writebox.tpl" />
+
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<page view="default" />
+
+	<page name="writebox" view="writebox">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+
+	<page name="write" view="write">
+		<option name="flashmailid" class="NumberArgument" />
+	</page>
+	
+	<page name="writeto" view="write">
+		<option name="userid" class="NumberArgument" />
+	</page>
+
+	<page name="headerbox" view="headerbox">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+
+	<page name="headerbox_unreadlist" view="unreadlist">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+
+	<page name="headerbox_content" view="headerbox_content">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+	
+	<page name="headerbox_answer" view="write">
+		<option name="flashmailid" class="NumberArgument" />
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+
+	<page name="headerbox_writeto" view="write">
+		<option name="userid" class="NumberArgument" />
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+
+	<page name="setasread" view="setasread">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+		<option name="flashmailid" class="NumberArgument" />
+	</page>
+
+	<page name="popup" view="unreadlist">
+		<header app="header" view="popup" />
+		<header app="footer" view="popup" />
+	</page>
+	
+	<form action="send" class="FlashMailSend">
+		<redirect />
+	</form>
+</app>

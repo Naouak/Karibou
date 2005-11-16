@@ -1,0 +1,4 @@
+#RewriteEngine on
+#RewriteRule ^([a-zA-Z]+)$ ?page=$1 [L]
+#RewriteRule ^([a-zA-Z]+)/$ ?page=$1 [L]
+

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<header>
+	<permissions default="_NO_ACCESS_" logged="_GROUP_WRITE_" />
+	
+	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+	<load class="WeekArgument" file="../arguments/weekargument.class.php" />
+
+	<load class="KDate" file="classes/kdate.class.php" />
+
+	<load class="CalendarReader" file="classes/calendarreader.class.php" />
+	<load class="CalendarReaderDB" file="classes/calendarreaderdb.class.php" />
+	<load class="CalendarWriter" file="classes/calendarwriter.class.php" />
+	<load class="CalendarWriterDB" file="classes/calendarwriterdb.class.php" />
+	<load class="CalendarEvent" file="classes/calendarevent.class.php" />
+	<load class="CalendarEventList" file="classes/calendareventlist.class.php" />
+	<load class="CalendarEventDB" file="classes/calendareventdb.class.php" />
+	<load class="CalendarList" file="classes/calendarlist.class.php" />
+	<load class="CalendarListDB" file="classes/calendarlistdb.class.php" />
+	<load class="Calendar" file="classes/calendar.class.php" />
+	<load class="wiki2xhtmlBasic" file="../wiki/wiki2xhtml.basic.class.php" />
+
+	<load class="CalendarModel" file="calendarmodel.class.php" />
+	
+	<load class="CalendarByMonth" file="calendarbymonth.class.php" />
+	<load class="CalendarByDay" file="calendarbyday.class.php" />
+	<load class="CalendarManage" file="calendarmanage.class.php" />
+
+	<load class="CalendarEditEvent" file="calendareditevent.class.php" />
+	<load class="CalendarDeleteEvent" file="calendardeleteevent.class.php" />
+	<load class="CalendarSaveEvent" file="calendarsaveevent.class.php" />
+	<load class="CalendarSubscribe" file="calendarsubscribe.class.php" />
+	<load class="CalendarUnsubscribe" file="calendarunsubscribe.class.php" />
+
+	<load class="CalendarEdit" file="calendaredit.class.php" />
+	<load class="CalendarSave" file="calendarsave.class.php" />
+	
+	<load class="CalendarMini" file="calendarmini.class.php" />
+	<load class="CalendarMiniConfig" file="calendarminiconfig.class.php" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<view name="default" class="CalendarByDay" template="byday.tpl" />
+	<view name="byDay" class="CalendarByDay" template="byday.tpl" />
+	<view name="byWeek" class="CalendarByWeek" template="byweek.tpl" />
+	<view name="byMonth" class="CalendarByMonth" template="bymonth.tpl" />
+	<view name="addEvent" class="CalendarEditEvent" template="editevent.tpl" />
+	<view name="editEvent" class="CalendarEditEvent" template="editevent.tpl" />
+	<view name="addCalendar" class="CalendarEdit" template="editcalendar.tpl" />
+	<view name="editCalendar" class="CalendarEdit" template="editcalendar.tpl" />
+	<view name="manage" class="CalendarManage" template="manage.tpl" />
+
+	<view name="mini" class="CalendarMini" template="small.tpl" />
+	<view name="miniconfig" class="CalendarMiniConfig" template="smallconfig.tpl" />
+
+	<page name="thisMonth" view="byMonth">
+        <header app="empty" view="empty" />
+        <footer app="empty" view="empty" />
+	</page>
+
+	<page view="default" />
+	<page view="byDay">
+		<argument name="year" class="NumberArgument"/>
+		<argument name="month" class="NumberArgument"/>
+		<argument name="day" class="NumberArgument"/>
+	</page>
+	<page view="byWeek">
+		<argument name="year" class="NumberArgument"/>
+		<argument name="week" class="WeekArgument"/>
+	</page>
+	<page view="byMonth">
+		<argument name="year" class="NumberArgument"/>
+		<argument name="month" class="NumberArgument"/>
+	</page>
+	<page name="view" view="byDay">
+		<argument name="cal_id" class="NumberArgument"/>
+		<argument name="year" class="NumberArgument"/>
+		<argument name="month" class="NumberArgument"/>
+		<argument name="day" class="NumberArgument"/>
+	</page>
+	
+	
+	<page name="addEvent" view="addEvent">
+		<option name="year" class="NumberArgument"/>
+		<option name="month" class="NumberArgument"/>
+		<option name="day" class="NumberArgument"/>
+	</page>
+	<page name="editEvent" view="addEvent">
+		<argument name="calendarid" class="NumberArgument"/>
+		<argument name="eventid" class="NumberArgument"/>
+	</page>
+	<page name="addCalendar" view="addCalendar" />
+	<page name="editCalendar" view="editCalendar">
+		<argument name="calendarid" class="NumberArgument"/>
+	</page>
+	<page name="manage" view="manage" />
+
+	<form action="deleteEvent" class="CalendarDeleteEvent">
+		<referer />
+	</form>
+	<form action="saveEvent" class="CalendarSaveEvent">
+		<redirect app="" page="" />
+	</form>
+	<form action="saveCalendar" class="CalendarSave">
+		<redirect app="" page="" />
+	</form>
+	<form action="subscribe" class="CalendarSubscribe">
+		<referer />
+	</form>
+	<form action="unsubscribe" class="CalendarUnsubscribe">
+		<referer />
+	</form>
+</header>

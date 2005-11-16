@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<load class="AccueilModel" file="accueilmodel.class.php" />
+	<load class="AccueilSaveApps" file="accueilsaveapps.class.php" />
+	<load class="AccueilDeleteApps" file="accueildeleteapps.class.php" />
+	<load class="AccueilSetContainers" file="accueilsetcontainers.class.php" />
+	<load class="MiniAppView" file="miniappview.class.php" />
+	<load class="MiniAppAdd" file="miniappadd.class.php" />
+	<load class="MiniAppAddAjax" file="miniappaddajax.class.php" />
+	<load class="MiniAppConfig" file="miniappconfig.class.php" />
+	<load class="MiniAppConfigAjax" file="miniappconfigajax.class.php" />
+	<load class="MiniAppEditConfig" file="miniappeditconfig.class.php" />
+	<load class="MiniAppEditView" file="miniappeditview.class.php" />
+	
+	<load class="HomeMiniApps" file="homeminiapps.class.php" />
+	<load class="HomeContainers" file="homecontainers.class.php" />
+
+	<load class="UsernameArgument" file="../arguments/usernameargument.class.php" />
+	<load class="ArgMiniapp" file="../arguments/argminiapp.class.php" />
+	<load class="ArgAction" file="../arguments/argaction.class.php" />
+	
+	<view name="default" class="AccueilModel" template="accueil.tpl" />
+	<view name="edit" class="AccueilModel" template="edit.tpl" />
+	<view name="hookhead" class="AccueilHead" template="hookhead.tpl" />
+
+	<view name="miniappview" class="MiniAppView" template="miniappview.tpl" />
+	<view name="miniappedit" class="MiniAppView" template="miniappedit.tpl" />
+	<view name="miniappeditview" class="MiniAppEditView" template="miniappeditview.tpl" />
+	<view name="miniappeditconfig" class="MiniAppEditConfig" template="miniappeditconfig.tpl" />
+	
+	<view name="miniappaddajax" class="MiniAppAddAjax" template="miniappedit.tpl" />
+	<view name="miniappconfigajax" class="MiniAppConfigAjax" template="miniappeditview.tpl" />
+	
+	<header app="header" view="home" />
+	<footer app="footer" view="default" />
+	
+	<page view="default" />
+	<page view="edit">
+		<argument name="act" class="ArgAction" />
+	</page>
+	<page name="miniappaddajax" view="miniappaddajax">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" />
+		<argument name="miniapp" class="ArgMiniapp" />
+	</page>
+	<page name="miniappconfigajax" view="miniappconfigajax">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" />
+	</page>
+	<page name="miniappeditconfig" view="miniappeditconfig">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" />
+		<argument name="miniapp" class="ArgMiniapp" />
+	</page>
+	<page name="miniappeditview" view="miniappeditview">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" />
+		<argument name="miniapp" class="ArgMiniapp" />
+	</page>
+	
+	<form action="saveapps" class="AccueilSaveApps">
+	</form>
+	<form action="deleteapps" class="AccueilDeleteApps">
+	</form>
+
+	<form action="setcontainers" class="AccueilSetContainers">
+		<referer />
+	</form>
+
+	<form action="addapp" class="MiniAppAdd">
+		<referer />
+	</form>
+
+	<form action="configapp" class="MiniAppConfig">
+		<referer />
+	</form>
+	
+</app>

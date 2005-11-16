@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+
+	<load class="UserName" file="../arguments/username.class.php" />
+	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+	
+	<load class="LDAPInterface" file="class/ldapinterface.class.php" />
+
+	<load class="Admin" file="admin.class.php" />
+	<load class="UsersAdmin" file="usersadmin.class.php" />
+	<load class="UserAdmin" file="useradmin.class.php" />
+	<load class="AddUser" file="adduser.class.php" />
+	<load class="ModifyUser" file="modifyuser.class.php" />
+	<load class="GroupsAdmin" file="groupsadmin.class.php" />
+	<load class="AddGroup" file="addgroup.class.php" />
+	<load class="Import" file="import.class.php" />
+	<load class="ImportSave" file="importsave.class.php" />
+
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<view name="default" class="Admin" template="default.tpl" />
+	<view name="users" class="UsersAdmin" template="usersadmin.tpl" />
+	<view name="useradmin" class="UserAdmin" template="useradmin.tpl" />
+	<view name="groups" class="GroupsAdmin" template="groupsadmin.tpl" />
+	<view name="import" class="Import" template="import.tpl" />
+
+	<page view="default" />
+	<page name="users" view="users" />
+	<page name="groups" view="groups" />
+	<page name="import" view="import">
+		<option name="editid" class="NumberArgument" />
+	</page>
+
+	<page name="edituser" view="useradmin">
+		<argument name="username" class="UserName" />
+	</page>
+	<page name="editgroup" view="groupadmin">
+		<argument name="group" class="NumberArgument" />
+	</page>
+	
+	<form action="adduser" class="AddUser">
+		<redirect app="admin" page="users" />
+	</form>
+	<form action="modifyuser" class="ModifyUser">
+		<redirect app="admin" page="users" />
+	</form>
+	<form action="addgroup" class="AddGroup">
+		<redirect app="admin" page="groups" />
+	</form>
+	<form action="modifygroup" class="ModifyGroup">
+		<redirect app="admin" page="groups" />
+	</form>
+	<form action="importsave" class="ImportSave">
+		<redirect app="admin" page="import" />
+	</form>
+</app>

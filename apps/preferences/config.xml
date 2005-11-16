@@ -1,0 +1,19 @@
+<app>	
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+	<load class="PreferencesLarge" file="preferenceslarge.class.php" />
+	<load class="PreferencesPost" file="preferencespost.class.php" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<view name="default" class="PreferencesLarge" template="preferenceslarge.tpl" />
+	<view name="mini" class="PreferencesLarge" template="preferencessmall.tpl" />
+
+	<page view="default" />
+	
+	<form action="post" class="PreferencesPost">
+		<referer />
+	</form>
+	
+</app>

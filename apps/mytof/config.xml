@@ -1,0 +1,12 @@
+<app>	
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+	<load class="MyTof" file="mytof.class.php" />
+	<load class="MyTofConfig" file="mytofconfig.class.php" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<view name="mini" class="MyTof" template="mytof.tpl" />
+	<view name="miniconfig" class="MyTofConfig" template="mytofconfig.tpl" />
+</app>

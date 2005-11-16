@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+
+	<config>
+		<param name="minimum">
+			<value name="sections">3</value>
+			<value name="elements">6</value>
+			<value name="personalinfos">6</value>
+		</param>
+		<param name="personalinfos">
+			<value name="system">4</value>
+			<value name="user">12</value>
+		</param>
+		<param name="intranet">
+			<value name="host">karibou.org</value>
+			<value name="full">intranet.karibou.org</value>
+		</param>
+	</config>
+
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+
+	<header app="header" view="default"/>
+	<footer app="footer" view="default" />
+
+	<load class="GroupId"				file="../arguments/groupid.class.php" />
+	<load class="CVId"				file="../arguments/cvid.class.php" />
+	<load class="Direction"				file="../arguments/direction.class.php" />
+	<load class="AlphaNum"				file="../arguments/alphanum.class.php" />
+	<load class="DisplayComments"		file="../arguments/displaycomments.class.php" />
+	<load class="UserName"				file="../arguments/username.class.php" />
+	<load class="NumberArgument"		file="../arguments/numberargument.class.php" />
+
+	<load class="NetCVLanguage"		file="class/netcvlanguage.class.php" />
+	<load class="NetCVSkin"				file="class/netcvskin.class.php" />
+	<load class="NetCVSkinList"		file="class/netcvskinlist.class.php" />
+	<load class="NetCVContent"			file="class/netcvcontent.class.php" />
+	<load class="NetCVGroupList"		file="class/netcvgrouplist.class.php" />
+	<load class="NetCVGroup"			file="class/netcvgroup.class.php" />
+	<load class="NetCVSingleCV"		file="class/netcvsinglecv.class.php" />
+	<load class="NetCVSingleCVList"	file="class/netcvsinglecvlist.class.php" />
+	<load class="NetCVTempTranslation"	file="class/netcvtrans.temp.class.php" />
+	<load class="NetCVUser"				file="class/netcvuser.class.php" />
+	<load class="wiki2xhtmlBasic"		file="../wiki/wiki2xhtml.basic.class.php" />
+	
+	<load class="NetCVHome"				file="home.class.php" />
+	<load class="NetCVGroupListView"	file="cvgrouplistview.class.php" />
+	<load class="NetCVGroupModify"	file="cvgroupmodify.class.php" />
+	<load class="NetCVGroupDelete"	file="cvgroupdelete.class.php" />
+	<load class="NetCVElementMove"	file="cvelementmove.class.php" />
+	<load class="NetCVGroupSave"		file="cvgroupsave.class.php" />
+	<load class="NetCVPersonalInfo"	file="personalinfo.class.php" />
+	<load class="NetCVPersonalInfoSave"	file="personalinfosave.class.php" />
+	<load class="NetCVSectionList"	file="cvsectionlist.class.php" />
+	<load class="NetCVSectionModify"	file="cvsectionmodify.class.php" />
+	<load class="NetCVSectionSave"	file="cvsectionsave.class.php" />
+	<load class="NetCVItemList"		file="cvitemlist.class.php" />
+	<load class="NetCVItemModify"		file="cvitemmodify.class.php" />
+	<load class="NetCVItemSave"		file="cvitemsave.class.php" />
+	<load class="NetCVElementDelete"	file="cvelementdelete.class.php" />
+	<load class="NetCVPreview"			file="preview.class.php" />
+	<load class="NetCVStats"			file="stats.class.php" />
+	<load class="NetCVSkinDisplay"	file="cvskindisplay.class.php" />
+	<load class="NetCVDisplay"			file="cvdisplay.class.php" />
+	<load class="NetCVSingleCVSave"	file="cvsinglecvsave.class.php" />	
+	<load class="NetCVSingleCVModify"	file="cvsinglecvmodify.class.php" />
+	<load class="NetCVSingleCVDelete"	file="cvsinglecvdelete.class.php" />
+	<load class="NetCVSingleCVDelete"	file="cvsinglecvdelete.class.php" />
+	<load class="NetCVContentCheck"	file="cvcontentcheck.class.php" />
+	<load class="NetCVContactForm"	file="cvcontactform.class.php" />
+	<load class="NetCVContactFormSend"	file="cvcontactformsend.class.php" />
+
+	<view name="home"					class="NetCVHome"			template="home.tpl" />
+	<view name="cvgrouplistview"	class="NetCVGroupListView"	template="cvgrouplistview.tpl" />
+	<view name="cvdisplay"			class="NetCVDisplay"		template="cvdisplay.tpl" />
+	<view name="cvskindisplay"		class="NetCVSkinDisplay"	template="cvskindisplay.tpl" />
+	<view name="personalinfo"		class="NetCVPersonalInfo"	template="personalinfo.tpl" />
+	<view name="cvgroupmodify"		class="NetCVGroupModify"	template="cvgroupmodify.tpl" />
+	<view name="cvgroupdelete"		class="NetCVGroupDelete"	template="cvgroupdelete.tpl" />
+	<view name="cvsectionlist"		class="NetCVSectionList"	template="cvsectionlist.tpl" />
+	<view name="cvsectionmodify"	class="NetCVSectionModify"	template="cvsectionmodify.tpl" />
+	<view name="cvitemlist"			class="NetCVItemList"		template="cvitemlist.tpl" />
+	<view name="cvitemmodify"		class="NetCVItemModify"		template="cvitemmodify.tpl" />
+	<view name="cvelementdelete"	class="NetCVElementDelete"	template="cvelementdelete.tpl" />
+	<view name="cvelementmove"		class="NetCVElementMove"	template="cvelementmove.tpl" />
+	<view name="cvsinglecvmodify"	class="NetCVSingleCVModify"	template="cvsinglecvmodify.tpl" />
+	<view name="cvsinglecvdelete"	class="NetCVSingleCVDelete"	template="cvsinglecvdelete.tpl" />
+	<view name="cvcontentcheck"	class="NetCVContentCheck"	template="cvcontentcheck.tpl" />
+	<view name="cvcontactform"		class="NetCVContactForm"	template="cvcontactform.tpl" />
+
+
+	<page name="" view="home" />
+	<page name="cv" view="cvdisplay">
+		<header app="header"	view="empty"/>
+		<footer app="footer"	view="empty" />
+		<argument name="hostname"	class="UserName" />
+		<option name="lang"	class="AlphaNum" />
+		<option name="preview"	class="DisplayComments" />
+	</page>
+	<page name="cvskindisplay" view="cvskindisplay">
+		<header app="header"		view="empty"/>
+		<footer app="footer"		view="empty" />
+		<option name="filename"	class="AlphaNum" />
+	</page>
+	<page name="personalinfo"	view="personalinfo">
+		<option name="gid"		class="GroupId" />
+		<option name="cvid"		class="CVId" />
+	</page>
+	<page name="cvsectionlist"	view="cvsectionlist">
+		<argument name="gid"		class="GroupId" />
+		<argument name="cvid"	class="CVId" />
+	</page>
+	<page name="cvsectionmodify"	view="cvsectionmodify">
+		<argument name="gid"		class="GroupId" />
+		<argument name="cvid"		class="CVId" />
+		<option name="first"		class="DisplayComments" />
+		<option name="id"			class="NumberArgument" />
+	</page>
+	<page name="cvgrouplistview"	view="cvgrouplistview" />
+	<page name="cvgroupmodify"		view="cvgroupmodify">
+		<option name="gid"			class="NumberArgument" />
+	</page>
+	<page name="cvgroupdelete" view="cvgroupdelete">
+		<header	app="header"			view="empty"/>
+		<footer	app="footer"			view="empty" />
+		<option name="gid"		class="GroupId" />
+	</page>
+	<page name="cvitemlist" view="cvitemlist">
+		<argument name="gid" class="GroupId" />
+		<argument name="cvid"	class="CVId" />
+		<option name="pid"	class="NumberArgument" />
+	</page>
+	<page name="cvitemmodify" view="cvitemmodify">
+		<argument name="gid" class="GroupId" />
+		<argument name="cvid"	class="CVId" />
+		<argument name="pid"	class="NumberArgument" />
+		<option name="id"		class="NumberArgument" />
+	</page>
+	
+	<page name="cvelementdelete" view="cvelementdelete">
+		<header	app="header"			view="empty"/>
+		<footer	app="footer"			view="empty" />
+		<argument name="gid"		class="GroupId" />
+		<argument name="cvid"	class="CVId" />
+		<argument name="id"		class="NumberArgument" />
+	</page>
+	<page name="cvelementmove" view="cvelementmove">
+		<header	app="header"			view="empty"/>
+		<footer	app="footer"			view="empty" />
+		<option	name="direction"	class="Direction" />
+		<argument name="gid"			class="GroupId" />
+		<argument name="cvid"		class="CVId" />
+		<argument name="id"			class="NumberArgument" />
+	</page>
+	<page name="cvsinglecvmodify" view="cvsinglecvmodify">
+		<option name="gid"	 class="GroupId" />
+		<option name="cvid"	 class="CVId" />
+	</page>
+	<page name="cvsinglecvdelete" view="cvsinglecvdelete">
+		<header	app="header"			view="empty"/>
+		<footer	app="footer"			view="empty" />
+		<option name="gid"		class="GroupId" />
+		<option name="cvid"		class="CVId" />
+	</page>
+	<page name="cvcontentcheck" view="cvcontentcheck">
+		<option name="gid"		class="GroupId" />
+		<option name="cvid"		class="CVId" />
+	</page>
+	<page name="cvcontactform" view="cvcontactform">
+		<header	app="header"			view="empty"/>
+		<footer	app="footer"			view="empty" />
+		<argument name="hostname"	class="UserName" />
+		<option name="lang"			class="AlphaNum" />
+	</page>
+
+	<form action="cvsinglecvsave" class="NetCVSingleCVSave">
+		<redirect />
+	</form>
+	<form action="cvgroupsave" class="NetCVGroupSave">
+		<redirect />
+	</form>
+	<form action="cvsectionsave" class="NetCVSectionSave">
+		<redirect />
+	</form>
+	<form action="cvitemsave" class="NetCVItemSave">
+		<referer />
+	</form>
+	<form action="personalinfosave" class="NetCVPersonalInfoSave">
+		<referer />
+	</form>
+	<form action="cvcontactformsend" class="NetCVContactFormSend">
+		<redirect />
+	</form>
+
+</app>

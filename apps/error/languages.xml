@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<translation>
+	<sentence key="NOTFOUND" >
+		<translation language="fr" value="Erreur : Page Introuvable" />
+		<translation language="en" value="Error : Page does not exist" />
+	</sentence>
+	<sentence key="NOACCESS" >
+		<translation language="fr" value="Erreur : Accès interdit" />
+		<translation language="en" value="Error : Access unauthorized" />
+	</sentence>
+	<sentence key="NOACCESS_DESCRIPTION" >
+		<translation language="fr">
+		Vous n'êtes pas autorisé à accéder à cette page. Une des raisons peut être que vous n'êtes pas encore connecté.
+		Pour vous connecter, rendez-vous sur l'accueil de l'Intranet.
+		</translation>
+		<translation language="en">
+		You are not authorized to access this page. One of the reason can be that you are not authenticated yet.
+		In order to connect to the Intranet please login on the homepage.
+		</translation>
+	</sentence>
+</translation>

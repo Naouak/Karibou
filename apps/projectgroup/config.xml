@@ -1,0 +1,41 @@
+<app>	
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+
+	<load class="PGProjectGroup" file="class/projectgroup.class.php" />
+	<load class="PGProjectGroupFactory" file="class/projectgroupfactory.class.php" />
+	<load class="PGProject" file="class/user.class.php" />
+	<load class="PGProjectFactory" file="class/projectfactory.class.php" />
+	<load class="PGUser" file="class/user.class.php" />
+	<load class="PGUserFactory" file="class/userfactory.class.php" />
+	
+	<load class="ProjectGroupHome" file="home.class.php" />
+	<load class="ProjectGroupProjectEdit" file="projectedit.class.php" />
+	<load class="ProjectGroupProject" file="project.class.php" />
+	<load class="ProjectGroupGroup" file="group.class.php" />
+
+	<load class="ProjectGroupSaveProject" file="project.class.php" />
+	<load class="ProjectGroupSaveGroup" file="group.class.php" />
+	<load class="ProjectGroupSaveAddMe" file="addme.class.php" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<view name="home" class="ProjectGroupHome" template="home.tpl" />
+	<view name="projectedit" class="ProjectGroupProjectEdit" template="projectedit.tpl" />
+	<view name="project" class="ProjectGroupProject" template="project.tpl" />
+	<view name="group" class="ProjectGroupGroup" template="group.tpl" />
+
+	<page view="home" />
+	<page name="project" view="project" />
+	<page name="projectedit" view="projectedit" />
+	<page name="projectedit" view="projectedit">
+		<option name="projectid" class="NumberArgument" />
+    </page>
+	<page name="group" view="group" />
+
+	<form action="projectsave" class="ProjectGroupSaveProject">
+		<referer />
+	</form>
+</app>

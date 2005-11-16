@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<translation>
+    <sentence key="NEWS">
+        <translation language="fr" value="Actualités" />
+        <translation language="en" value="News" />
+    </sentence>
+    <sentence key="ADD_ARTICLE">
+        <translation language="fr" value="Ajouter un article" />
+        <translation language="en" value="Add an article" />
+    </sentence>
+    <sentence key="ADDED_ARTICLE">
+        <translation language="fr" value="Article ajouté" />
+        <translation language="en" value="Article added" />
+    </sentence>
+    <sentence key="ADD_ERROR">
+        <translation language="fr">Une erreur s'est produite lors de l'enregistrement du nouvel article.</translation>
+        <translation language="en">An error occured when saving the new article.</translation>
+    </sentence>
+    <sentence key="ADD_COMMENT">
+        <translation language="fr" value="Ajouter un commentaire" />
+        <translation language="en" value="Add a comment" />
+    </sentence>
+    <sentence key="PAGES">
+        <translation language="fr" value="Pages" />
+        <translation language="en" value="Pages" />
+    </sentence>    
+    <sentence key="NO_RIGHT_TO_MODIFY">
+        <translation language="fr" value="Vous n'êtes pas autorisé à modifier cet article." />
+        <translation language="en" value="You don't have the right to modify this article" />
+    </sentence>
+    <sentence key="MODIFY_ARTICLE">
+        <translation language="fr" value="Modifier l'article" />
+        <translation language="en" value="Modify the article" />
+    </sentence>
+    <sentence key="POST_MODIFIED_ARTICLE">
+        <translation language="fr" value="Poster l'article" />
+        <translation language="en" value="Post this article" />
+    </sentence>
+    <sentence key="MODIFIED_ARTICLE">
+        <translation language="fr">L'article a été modifié</translation>
+        <translation language="en">The article has been modified</translation>
+    </sentence>
+    <sentence key="MODIFY_ERROR">
+        <translation language="fr">Une erreur s'est produite lors de la modification de l'article.</translation>
+        <translation language="en">An error occured when saving the modified article</translation>
+    </sentence>
+    <sentence key="NOT_AUTHORIZED_TO_MODIFY">
+        <translation language="fr">Vous n'avez pas l'autorisation de modifier cet article.</translation>
+        <translation language="en">You are not authorized to modify this article.</translation>
+    </sentence>
+    <sentence key="NOT_AUTHORIZED_TO_VIEW">
+        <translation language="fr">Vous n'avez pas l'autorisation de visualiser cet article.</translation>
+        <translation language="en">You are not authorized to view this article.</translation>
+    </sentence>
+    <sentence key="NOT_AUTHORIZED_TO_DELETE">
+        <translation language="fr">Vous n'avez pas l'autorisation de supprimer cet article.</translation>
+        <translation language="en">You are not authorized to delete this article.</translation>
+    </sentence>
+    <sentence key="NOT_AUTHORIZED_TO_POST_COMMENTS">
+        <translation language="fr">Vous n'avez pas l'autorisation de modifier cet article ou de poster des commentaires.</translation>
+        <translation language="en">You are not authorized to modify this article or to post comments.</translation>
+    </sentence>
+
+    <sentence key="ACTION_ERROR">
+        <translation language="fr">Erreur: L'action demandée est inconnue.</translation>
+        <translation language="en">Error: This action is unknown.</translation>
+    </sentence>
+    <sentence key="NO_ID">
+        <translation language="fr">Aucun identifiant d'article disponible.</translation>
+        <translation language="en">No ID available.</translation>
+    </sentence>
+    <sentence key="NO_TITLE_FOR_COMMENT">
+        <translation language="fr">Un commentaire doit avoir un titre.</translation>
+        <translation language="en">A comment must have a title.</translation>
+    </sentence>
+    <sentence key="NO_DESCRIPTION_FOR_COMMENT">
+        <translation language="fr">Un commentaire doit avoir une description.</translation>
+        <translation language="en">A comment must have a description.</translation>
+    </sentence>
+    <sentence key="COMMENT_POSTED">
+        <translation language="fr">Le commentaire a été posté.</translation>
+        <translation language="en">The comment has been posted.</translation>
+    </sentence>
+    <sentence key="COMMENT_POST_ERROR">
+        <translation language="fr">Une erreur s'est produite lors de l'enregistrement du commentaire.</translation>
+        <translation language="en">An error occured when saving the comment.</translation>
+    </sentence>
+    <sentence key="DELETED_ARTICLE">
+        <translation language="fr">L'article a été supprimé.</translation>
+        <translation language="en">The article has been deleted.</translation>
+    </sentence>
+    <sentence key="POST_NEW_ARTICLE">
+        <translation language="fr" value="Poster le nouvel article" />
+        <translation language="en" value="Post this new article" />
+    </sentence> 
+    <sentence key="NEWS_TITLE">
+        <translation language="fr" value="Titre" />
+        <translation language="en" value="Title" />
+    </sentence>
+    <sentence key="NEWS_DESCRIPTION">
+        <translation language="fr" value="Description" />
+        <translation language="en" value="Description" />
+    </sentence>
+    <sentence key="COMMENT_TITLE">
+        <translation language="fr" value="Titre" />
+        <translation language="en" value="Title" />
+    </sentence>
+    <sentence key="COMMENT_DESCRIPTION">
+        <translation language="fr" value="Description" />
+        <translation language="en" value="Description" />
+    </sentence>
+    <sentence key="TITLE_WIKI_SYNTAX">
+        <translation language="fr" value="Aide sur la mise en forme (syntaxe wiki)" />
+        <translation language="en" value="How to format your text (wiki syntax)" />
+    </sentence>
+    <sentence key="BY">
+        <translation language="fr" value="par" />
+        <translation language="en" value="by" />
+    </sentence>
+    <sentence key="COMMENT">
+        <translation language="fr" value="commentaire" />
+        <translation language="en" value="comment" />
+    </sentence>    
+    <sentence key="DISPLAY_COMMENTS">
+        <translation language="fr" value="Afficher les commentaires" />
+        <translation language="en" value="Display comments" />
+    </sentence>
+    <sentence key="ADD_COMMENT">
+        <translation language="fr" value="Ajouter un commentaire" />
+        <translation language="en" value="Add a comment" />
+    </sentence>
+    <sentence key="HIDE_COMMENTS">
+        <translation language="fr" value="Cacher les commentaires" />
+        <translation language="en" value="Hide comments" />
+    </sentence>
+    <sentence key="DISPLAY_WHOLE_ARTICLE">
+        <translation language="fr" value="Voir l'article complet" />
+        <translation language="en" value="Display the whole article" />
+    </sentence>
+    <sentence key="NEWS_GROUPS_DESTINATION">
+        <translation language="fr" value="Pour" />
+        <translation language="en" value="For" />
+    </sentence>
+    <sentence key="ARTICLE_NOT_FOUND">
+        <translation language="fr">L'article que vous recherchez n'a pas été trouvé.</translation>
+        <translation language="en">Article not found</translation>
+    </sentence>
+    <sentence key="SURE_TO_DELETE_ARTICLE">
+        <translation language="fr">Cela va supprimer l\\'article !\nÊtes-vous sûr de vouloir continuer ?</translation>
+        <translation language="en">You are going to delete the article !\nAre you sure ?</translation>
+    </sentence>
+    <sentence key="DELETE">
+        <translation language="fr">Supprimer</translation>
+        <translation language="en">Delete</translation>
+    </sentence>
+    <sentence key="MODIFY">
+        <translation language="fr">Modifier</translation>
+        <translation language="en">Modify</translation>
+    </sentence>
+    <sentence key="NOTITLE">
+        <translation language="fr">Sans titre</translation>
+        <translation language="en">No title</translation>
+    </sentence>
+    <sentence key="POST_COMMENT_ON_ARTICLE">
+        <translation language="fr">Poster un commentaire sur cet article</translation>
+        <translation language="en">Post a comment on this article</translation>
+    </sentence>
+    <sentence key="ADD_A_COMMENT_TO_ARTICLE">
+        <translation language="fr">Ajouter un commentaire à l'article</translation>
+        <translation language="en">Add a comment to article</translation>
+    </sentence>
+    <sentence key="NEWS_VIEW_ARCHIVES">
+        <translation language="fr">Voir les archives</translation>
+        <translation language="en">View archives</translation>
+    </sentence>
+</translation>

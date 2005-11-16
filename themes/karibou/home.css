@@ -1,0 +1,169 @@
+
+#surnom {
+	margin: 5px 0px 0px 10px;
+	line-height: 25px;
+}
+
+#default_container {
+	background-color: #e1fee1;
+	padding: 0px;
+	margin: 5px;
+	width: 680px;
+	min-height: 0px;
+}
+
+#delete_container {
+	background-color: #fee1e1;
+	padding: 0px;
+	margin: 5px;
+	width: 220px;
+	height: 50px;
+}
+
+.delete_container .background {
+	color: #fff;
+	position: absolute;
+	top: 5px;
+	left: 45px;
+	text-align: center;
+	font-size: 36px;
+}
+
+.cont_scol {
+	padding: 0px;
+	margin: 0px;
+	width: 215px;
+	min-height: 50px;
+}
+.cont_mcol {
+	padding: 0px;
+	margin: 0px;
+	width: 435px;
+	min-height: 50px;
+}
+.cont_lcol {
+	padding: 0px;
+	margin: 0px;
+	width: 650px;
+	min-height: 50px;
+}
+.cont_xlcol {
+	padding: 0px;
+	margin: 5px;
+	min-height: 50px;
+}
+
+.view {
+	background-color: #e1e1fe;
+	border: 1px solid #999;
+}
+
+.sbox {
+	position: relative;
+	float: left;
+	margin: 2px;
+	padding: 1px;
+	border: 1px #eee solid;
+	background-color: #fafafa;
+	width: 206px;
+	min-height: 50px;
+}
+
+.mbox {
+	position: relative;
+	float: left;
+	margin: 2px;
+	padding: 1px;
+	border: 1px #eee solid;
+	background-color: #fafafa;
+	width: 426px;
+	min-height: 80px;
+}
+
+.lbox {
+	position: relative;
+	float: left;
+	margin: 2px;
+	padding: 1px;
+	border: 1px #eee solid;
+	background-color: #fafafa;
+	width: 650px;
+	min-height: 80px;
+}
+
+.handle {
+	background-color: #fa0;
+	color: #fff;
+	cursor: move;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.sbox .edit {
+	position: absolute;
+	top: 0px;
+	left: 180px;
+	background-color: #eee;
+}
+.mbox .edit {
+	position: absolute;
+	top: 0px;
+	left: 400px;
+	background-color: #eee;
+}
+.lbox .edit {
+	position: absolute;
+	top: 0px;
+	left: 620px;
+	background-color: #eee;
+}
+
+/**
+ *	MINI-APPS
+ */
+
+.mynotes{
+	border: 1px solid #999;
+	width: 200px;
+	height: 150px;
+}
+
+.configbar {
+	border: 1px #eee solid;
+	margin: 5px;
+}
+
+.configbar img {
+	border: 0px;
+	vertical-align: middle;
+	margin: 0px 5px 0px 5px;
+}
+
+/**
+ * Personnalise Button
+ */
+
+#personalise_button {
+	float: right;
+	color: #999;
+	text-decoration: none;
+	font-weight: bold;
+	border: 1px solid #aaa;
+	background: #eee;
+	padding: 2px 5px 2px 5px;
+	margin: 5px;
+}
+#personalise_button:hover {
+	background: #bbffbb;
+}
+
+#content .home h3 {
+	text-align:center;
+	border-left: 0px;
+	border-right: 0px;
+	border-bottom: 1px dashed #dcdcdc;
+	border-top: 0px;
+	background: #efefef;
+	color: #448899;
+}
