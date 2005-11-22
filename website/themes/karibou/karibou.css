@@ -332,7 +332,7 @@ ul {
 	margin-top: 5px;
 }
 
-.appNav ul {
+ul.appNav  {
 	border: 1px solid #acacac;
 	height: 20px;
 	text-align: center;
@@ -341,18 +341,18 @@ ul {
 	list-style: none;
 }
 
-.appNav li {
+ul.appNav li  {
 	float: left;
 	margin: 0 10px;
 	padding: 2px;	
 }
 
-.appNav a {
+ul.appNav a {
 	display: block;
 	text-decoration: none;
 	font-weight: bold;
 }
-.appNav a:hover {
+ul.appNav a:hover {
 	text-decoration: underline;
 }
 
