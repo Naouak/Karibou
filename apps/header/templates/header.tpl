@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>
 		##HEADER_PAGE_TITLE## :: ##KPOWERED##
 	</title>
@@ -10,8 +10,8 @@
 {foreach item=style from=$styles}
 	<link rel="alternate stylesheet" type="text/css" href="{$style.home_css}" media="screen" title="{$style.titre}" />
 {/foreach}
-	<script src="/themes/js/prototype.js"></script>
-	<script src="/themes/js/scriptaculous.js"></script>
+	<script type="text/javascript" src="/themes/js/prototype.js"></script>
+	<script type="text/javascript" src="/themes/js/scriptaculous.js"></script>
 	<script type="text/javascript">
 {literal}
 		function popup(adresse, nom, hauteur, largeur, haut, gauche){
