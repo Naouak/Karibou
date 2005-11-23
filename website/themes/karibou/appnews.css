@@ -26,26 +26,11 @@
 
 .aNews .time {
 	float: right;
-	
 	padding: 4px;
-	
 	font-style: italic;
-	
 	text-align: right;
-
 	background: #efefef;
-}
-
-.aSmallNews .time {
-	position: absolute;
-	right: 10px;
-	font-style: italic;
-	color: #acacac;
-}
-
-.aSmallNews .title {
-	font-weight: bold;
-}
+}
 
 .addlink {
 	text-align: center;
@@ -64,8 +49,24 @@
 	text-decoration: none;
 }
 
+/* A Small News */
+
+.aSmallNews .title {
+	font-weight: bold;
+	display: block;
+}
+
 .aSmallNews .author {
+	display: inline;
 	font-style: italic;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.aSmallNews .time {
+	display: inline;
+	font-style: italic;
+	color: #acacac;
 }
 
 .aSmallNews a {
@@ -101,18 +102,14 @@
 .aNews .commentsHidden {
 	padding: 4px 0px 4px 0px;
 	margin: 0px;
-	
 	text-align: center;
-
 	background: #efefef;
 }
 
 .aNews .commentsShowed {
 	padding: 4px 0px 4px 0px;
 	margin: 0px;
-	
 	text-align: center;
-
 	background: #efefef;
 }
 
