@@ -226,30 +226,14 @@ protected $text;
 			$mail->Mailer   = "smtp";
 			$mail->CharSet = "UTF-8";
 			$mail->WordWrap = 80;
-			$mail->From = "contact@inkateo.com";
-			$mail->FromName = "Master-Comex.com via Inkateo";
+			$mail->From = "contact";
+			$mail->FromName = "Activation";
 			$mail->AddAddress($row["email"], $row["firstname"]." ".$row["lastname"]);
-			$mail->AddCC($row["login"].$GLOBALS['config']['login']['post_username'], $row["firstname"]." ".$row["lastname"]." (comex)");
-			$mail->Subject = "Activation de ton compte sur : http://intranet.master-comex.com";
+			$mail->AddCC($row["login"].$GLOBALS['config']['login']['post_username'], $row["firstname"]." ".$row["lastname"]);
+			$mail->Subject = "Login activation";
 			$mail->Body = "
-Bonjour ".$row["firstname"]." !
-
-Ton compte sur http://intranet.master-comex.com a été créé.
-
-Tu peux désormais y acceder avec les informations suivantes:
  - Login : ".$row['login']."
  - Mot de passe : ".$row['password']."
-
-http://intranet.master-comex est ton intranet, c'est à toi de le construire
-avec tes collègues de promotion, les anciens... N'hésite pas à nous contacter 
-si tu as des idées pour l'améliorer, corriger des éventuels bugs ou si  tu  veux
-participer (design, développement, organisation...)
-
-Nous te souhaitons une bonne connexion !
-
---
-L'equipe Inkateo
-http://www.inkateo.com
 			";
 		
 			if( $row['login'] != "" && $row['password'] != "" && !$mail->Send() )
