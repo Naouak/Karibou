@@ -17,17 +17,15 @@
 </div>
 
 <form action="{kurl page="importsave"}" method="POST">
-	<textarea name="csv" rows="1" cols="20"></textarea>
-	<input type="submit" name="ImportCSV" value="ImportCSV">
-	<br />
 {if ($rows) && ($rows|@count > 0)}
-
 	<input type="submit" name="GeneratePasswords" value="GeneratePasswords">
 	<input type="submit" name="GenerateLogins" value="GenerateLogins">
 	<br />
 	<input type="submit" name="FullImportLDAP" value="FullImportInLDAP">
 	<br />
 	<input type="submit" name="FullImportKaribou" value="FullImportKaribou">
+	<br />
+	<input type="submit" name="FullSendEmail" value="FullSendEmail">
 {if (isset($check))}
 	{if $check.keyerror}
 		<div class="error">
@@ -132,4 +130,7 @@
 {else}
 	No import data
 {/if}
+    <br />
+	<textarea name="csv" rows="5" cols="100"></textarea>
+	<input type="submit" name="ImportCSV" value="ImportCSV">
 </form>

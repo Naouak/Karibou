@@ -7,7 +7,7 @@
  * 
  * @package applications
  **/
-
+ClassLoader::add('PHPMailer', KARIBOU_LIB_DIR.'/phpmailer/class.phpmailer.php');
 /**
  * Save import
  * 
@@ -170,6 +170,114 @@ protected $text;
 			{
 				$this->importInLDAP();
 			}
+			elseif (isset($_POST["SendEmail"]))
+			{
+				$this->sendEmail($_POST["SendEmail"]);
+			}
+			elseif (isset($_POST["FullSendEmail"]))
+			{
+				$this->sendEmail();
+			}
+		}
+	}
+
+	function sendEmail ($id = FALSE)
+	{
+
+		if ($id === FALSE)
+		{
+			//Full Import
+			$qry = "
+					SELECT *
+					FROM admin_import
+					WHERE `emailsent_date` = '0000-00-00'";			
+		}
+		else
+		{
+			//Single import 
+			$qry = "
+					SELECT *
+					FROM admin_import
+					WHERE `id` = '".$id."'";
+		}
+			
+		try
+		{
+			$stmt = $this->db->prepare($qry);
+			$stmt->execute();
+		}
+		catch( PDOException $e )
+		{
+			Debug::display($qry);
+			Debug::kill($e->getMessage());
+		}
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		$_SESSION['adminCheck']['ldap'] = array();
+
+		$app = $this->appList->getApp($this->appname);
+		$config = $app->getConfig();
+
+		$_SESSION["adminCheck"]["email"] = array();
+		foreach($rows as $row)
+		{
+			$mail = new PHPMailer();
+			$mail->Host     = "localhost";
+			$mail->Mailer   = "smtp";
+			$mail->CharSet = "UTF-8";
+			$mail->WordWrap = 80;
+			$mail->From = "contact@inkateo.com";
+			$mail->FromName = "Master-Comex.com via Inkateo";
+			$mail->AddAddress($row["email"], $row["firstname"]." ".$row["lastname"]);
+			$mail->AddCC($row["login"].$GLOBALS['config']['login']['post_username'], $row["firstname"]." ".$row["lastname"]." (comex)");
+			$mail->Subject = "Activation de ton compte sur : http://intranet.master-comex.com";
+			$mail->Body = "
+Bonjour ".$row["firstname"]." !
+
+Ton compte sur http://intranet.master-comex.com a été créé.
+
+Tu peux désormais y acceder avec les informations suivantes:
+ - Login : ".$row['login']."
+ - Mot de passe : ".$row['password']."
+
+http://intranet.master-comex est ton intranet, c'est à toi de le construire
+avec tes collègues de promotion, les anciens... N'hésite pas à nous contacter 
+si tu as des idées pour l'améliorer, corriger des éventuels bugs ou si  tu  veux
+participer (design, développement, organisation...)
+
+Nous te souhaitons une bonne connexion !
+
+--
+L'equipe Inkateo
+http://www.inkateo.com
+			";
+		
+			if( $row['login'] != "" && $row['password'] != "" && !$mail->Send() )
+			{
+				$_SESSION["adminCheck"]["email"][$row["id"].$row["email"]] = FALSE;
+				Debug::kill($mail);
+			}
+			else
+			{
+				$_SESSION["adminCheck"]["email"][$row["id"].$row["email"]] = TRUE;
+				Debug::display($mail);
+
+			
+			//Defini comme importé
+			$qry = "UPDATE admin_import
+			SET emailsent_date = '".date("Y-m-d H:i:s")."'
+			WHERE id = '".$row["id"]."'";
+			try
+			{
+				$stmt = $this->db->prepare($qry);
+				$stmt->execute();
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($qry." : ".$e->getMessage());
+			}
+
+			}
 		}
 	}
 	
@@ -178,17 +286,50 @@ protected $text;
 		if ($id === FALSE)
 		{
 			//Full Import
-
+			$qry = "
+					SELECT *
+					FROM admin_import";			
 		}
 		else
 		{
 			//Single import 
-
+			$qry = "
+					SELECT *
+					FROM admin_import
+					WHERE `id` = '".$id."'";
 		}
-		
+			
+		try
+		{
+			$stmt = $this->db->prepare($qry);
+			$stmt->execute();
+		}
+		catch( PDOException $e )
+		{
+			Debug::display($qry);
+			Debug::kill($e->getMessage());
+		}
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		$_SESSION['adminCheck']['ldap'] = array();
+
 		$ildap = new LDAPInterface();
 		$ildap->connect();
-		
+		foreach($rows as $row)
+		{
+			$groups = $this->userFactory->getGroups();
+			$ou1 = $groups->getGroupById($row['group'])->getName();
+			$ou2 = $groups->getParent($row['group'])->getName();
+
+			if ($ou1 != FALSE && $ou2 != FALSE)
+			{
+				$_SESSION['adminCheck']['ldap'][$row['login']] = $ildap->addAccount($row['login'],str_replace('@','',$GLOBALS['config']['login']['post_username']),$row['password'],array($ou1, $ou2));
+			}
+			else
+			{
+				Debug::kill("Organisational Units problem");
+			}
+		}
 		$ildap->disconnect();
 	}
 	
@@ -394,7 +535,7 @@ protected $text;
 						$qry = "
 								INSERT INTO admin_import
 								(`firstname`,`lastname`,`group`,`email`,`phone`)
-								VALUES ('".mysql_escape_string(ucwords(strtolower($firstname)))."','".mysql_escape_string(ucwords(strtolower($lastname)))."','".mysql_escape_string($group)."','".mysql_escape_string($email)."','".mysql_escape_string($phone)."')";
+								VALUES ('".ucwords(strtolower($firstname))."','".ucwords(strtolower($lastname))."','".$group."','".$email."','".$phone."')";
 						try
 						{
 							$stmt = $this->db->prepare($qry);
@@ -412,7 +553,7 @@ protected $text;
 						$qry = "
 								SELECT count(*) as nb 
 								FROM admin_import
-								WHERE `firstname` = '".mysql_escape_string($firstname)."' AND `lastname` = '".mysql_escape_string($lastname)."'";
+								WHERE `firstname` = '".$firstname."' AND `lastname` = '".$lastname."'";
 						try
 						{
 							$stmt = $this->db->prepare($qry);
