@@ -41,18 +41,18 @@
 	</page>
 	
 	<form action="adduser" class="AddUser">
-		<redirect app="admin" page="users" />
+		<redirect page="users" />
 	</form>
 	<form action="modifyuser" class="ModifyUser">
-		<redirect app="admin" page="users" />
+		<redirect page="users" />
 	</form>
 	<form action="addgroup" class="AddGroup">
-		<redirect app="admin" page="groups" />
+		<redirect page="groups" />
 	</form>
 	<form action="modifygroup" class="ModifyGroup">
-		<redirect app="admin" page="groups" />
+		<redirect page="groups" />
 	</form>
 	<form action="importsave" class="ImportSave">
-		<redirect app="admin" page="import" />
+		<redirect page="import" />
 	</form>
 </app>
