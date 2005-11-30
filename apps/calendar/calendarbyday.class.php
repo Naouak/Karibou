@@ -39,6 +39,7 @@ class CalendarByDay extends CalendarModel
 		$myCalendars = new CalendarListDB($this->db, $this->currentUser);
 		$cals = $myCalendars->getSubscribedCalendars();
 		
+		$adminCalendars = $myCalendars->getAdminCalendars();
 		
 		$start = new Date($currentDate);
 		$start->setHour(8);
@@ -68,6 +69,18 @@ class CalendarByDay extends CalendarModel
 			{
 				$evts_ol = $cal->getReader()->getEventsByDay( $currentDate );
 				$evts = $evts_ol->getAllEvents( $start, $stop );
+				foreach($evts as &$e)
+				{
+					foreach($adminCalendars as $adm)
+					{
+						if( ($e->calendarid == $adm->getId()) )
+						{
+							$e->admin = true;
+							Debug::display("TRUE");
+							break;
+						}
+					}
+				}
 				$this->insertIntoColumns($evts);
 	
 				$nextDay_evts_ol = $cal->getReader()->getEventsByDay( $nextDay );

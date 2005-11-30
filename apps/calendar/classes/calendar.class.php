@@ -60,6 +60,7 @@ class Calendar
 	{
 		return $this->writer;
 	}
+	
 }
 
 ?>

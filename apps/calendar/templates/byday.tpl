@@ -60,7 +60,7 @@
 				</span>
 {/if}
 				<br />
-{if ($currentUser->getId() == $event->authorid)}
+{if $event->admin}
 				<a href="{kurl page='editEvent' calendarid=$event->calendarid eventid=$event->uid}">##EDITEVENT##</a>
 				<form action="{kurl page='deleteEvent'}" method="POST" name="deleteEvent">
                     <input type="hidden" name="calendarid" value="{$event->calendarid}" />

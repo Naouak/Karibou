@@ -144,7 +144,7 @@ class CalendarListDB extends CalendarList
 	function getAdminCalendars()
 	{
 		$sql = "
-			SELECT calendar.*, 'user' as caltype FROM calendar_user, calendar WHERE calendar_user.user_id = ".$this->user->getID()." AND calendar.id = calendar_user.calendar_id
+			SELECT calendar.*,  'user' as caltype FROM calendar_user, calendar WHERE calendar_user.user_id = ".$this->user->getID()." AND calendar.id = calendar_user.calendar_id
 			UNION
 			SELECT calendar.*, 'group' as caltype FROM calendar_group, calendar WHERE group_id IN (".$this->user->getGroupTreeAdminQuery().")  AND calendar.id = calendar_group.calendar_id";
 
@@ -165,6 +165,7 @@ class CalendarListDB extends CalendarList
 			$calendars[] = new Calendar($reader, $writer, $tab["caltype"], $tab["id"], $tab["name"], $tab["type"]);
 		}
 		unset($stmt);
+		Debug::display(print_r($calendars, true));
 		return $calendars;		
 	}
 
