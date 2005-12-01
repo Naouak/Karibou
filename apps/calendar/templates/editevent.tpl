@@ -38,6 +38,11 @@
 		{html_select_date day_extra='class="input_xs"' month_extra='class="input_m"' year_extra='class="input_s"' prefix="enddate" start_year="-1" end_year="+3" field_order="DMY" time=$event->stopdate}
 		<span class="text">##AT##</span>
 		{html_select_time hour_extra='class="input_xs"' minute_extra='class="input_xs"' prefix="enddate" use_24_hours=true minute_interval=15 display_seconds=false time=$event->stopdate}
+{*
+	<br class="spacer" />
+	<label for="summary">##SPEAKER##</label>
+	<input type="text" name="speaker" id="speaker" value="{if isset($event)}{$event->speaker}{/if}" />
+*}
 	<br class="spacer" />
 	<label for="location">##LOCATION##</label>
 	<input type="text" name="location" id="location" value="{if isset($event)}{$event->location}{/if}" />
@@ -45,6 +50,7 @@
 	<label for="category">##CATEGORY##</label>
 	<select name="category" id="category">
 		<option value="lecture" {if isset($event) && $event->category == "lecture"}SELECTED{/if}>##LECTURE##</option>
+		<option value="conference" {if isset($event) && $event->category == "conference"}SELECTED{/if}>##CONFERENCE##</option>
 		<option value="meeting" {if isset($event) && $event->category == "meeting"}SELECTED{/if}>##MEETING##</option>
 		<option value="rendezvous" {if isset($event) && $event->category == "rendezvous"}SELECTED{/if}>##RENDEZVOUS##</option>
 		<option value="party" {if isset($event) && $event->category == "party"}SELECTED{/if}>##PARTY##</option>
@@ -53,7 +59,7 @@
 	<label for="priority">##PRIORITY##</label>
 	<select name="priority" id="priority">
 		<option value="1" {if isset($event) && $event->priority == "1"}SELECTED{/if}>##LOW##</option>
-		<option value="2" {if isset($event) && $event->priority == "2"}SELECTED{/if}>##NORMAL##</option>
+		<option value="2" {if isset($event)}{if $event->priority == "2"}SELECTED{/if}{else}SELECTED{/if}>##NORMAL##</option>
 		<option value="3" {if isset($event) && $event->priority == "3"}SELECTED{/if}>##HIGH##</option>
 	</select>
 	<br class="spacer" />

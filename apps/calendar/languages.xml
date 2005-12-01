@@ -186,12 +186,12 @@
 	</sentence>
 	<sentence key="SUMMARY">
 		<translation language="fr">
-		Résumé
+		Titre
 		</translation>
 		<translation language="en">
-		Summary
+		Title
 		</translation>
-	</sentence>
+	</sentence>	
 	<sentence key="STARTDATE">
 		<translation language="fr">
 		Date de début
@@ -278,6 +278,14 @@
 		</translation>
 		<translation language="en">
 		Party
+		</translation>
+	</sentence>
+	<sentence key="CONFERENCE">
+		<translation language="fr">
+		Conférence
+		</translation>
+		<translation language="en">
+		Conference
 		</translation>
 	</sentence>
 	<sentence key="LOW">
