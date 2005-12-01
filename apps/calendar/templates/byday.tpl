@@ -45,7 +45,7 @@
 *}	
 	<div class="event_box event_size_{$colnum} start_{$event->start_class} size_{$event->size_class} lightblue" >
 		<div class="event_content light_blue" >
-			<h3>{$event->summary|truncate:20}</h3>
+			<h3>{$event->summary}</h3>
 			<p>{$event->getDescriptionXHTML()}</p>
 			<p>
 {if $event->parent}
