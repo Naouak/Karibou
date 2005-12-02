@@ -17,6 +17,9 @@ class Annuaire extends Model
 {
 	function build()
 	{
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu");
+		
 		if( $this->currentUser->isLogged() )
 		{
 			$this->assign('currentuser_login', $this->currentUser->getLogin() );

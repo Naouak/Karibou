@@ -4,8 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>
-		##HEADER_PAGE_TITLE##
- :: ##KPOWERED##
+		##HEADER_PAGE_TITLE## :: ##KPOWERED##
 	</title>
 	<link rel="stylesheet" type="text/css" href="{$cssFile}" media="screen" title="Normal" />
 {foreach item=style from=$styles}
@@ -47,6 +46,7 @@
 			<li><a href="{kurl app="netcv"}">##APP_NETCV##</a></li>
 			<li><a href="{kurl app="wiki"}">Wiki</a></li>
 			<li><a href="{kurl app="contact"}">Contact</a></li>
+			{hook name="header_menu"}
 	 	</ul>
 	</div>
 	</div>
