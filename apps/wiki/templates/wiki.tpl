@@ -1,15 +1,12 @@
-<div id="wiki">
-<a href="{kurl page="help"}" >##TITLE_WIKI_SYNTAX##</a>
-<h1>{$titre_wiki}</h1>
-<p class="msg">{$msg}</p>
-{if $mode eq "edit"}
-        {if $permission >= _SELF_WRITE_}
-        	<form action="{kurl docu=$titre_wiki mode="add"}" method="post">
+{popup_init src="/javascripts/overlib.js"}
+
+{capture name="formulaire_wiki"}
+	<form action="{kurl docu=$titre_wiki mode="add"}" method="post">
         	<input type="hidden" name="page_wiki" value="{$titre_wiki}" />
 			{* p_format = valeur utilisée par la barre dotclear
 	 		 *  possibilité de mettre html à la place de wiki
 			 *}
-        	<input type="hidden" id="p_format" name="p_format" value="wiki" />
+			<input type="hidden" name="p_format" id="p_format" value="wiki" />
 			<div id="dctoolbar">
 			<img title="Forte emphase" src="images/bt_strong.png" />
 			<img title="Emphase" src="images/bt_em.png" />
@@ -58,7 +55,7 @@
 					'URL ?');
 				tb.addSpace(10);
 				tb.btImg('Image interne','images-popup.php');
-				tb.draw('Vous pouvez utiliser les raccourcis suivants pour enrichir votre présentation.');
+				tb.draw('##TXT_TOOLBAR##');
 			}
 			// ]]>
 			</script>
@@ -68,6 +65,23 @@
         <!--<input type="submit" name="preview" value="##ACTION_PREVIEW##" />-->
         <input type="submit" name="reset" value="##ACTION_RESET##" />
         </form>
+{/capture}
+
+<div id="wiki">
+<ul class="appNav">
+	<li><a href="/wiki/">##TITLE_WIKI_HOME##</a></li>
+ 	{if $permission >= _SELF_WRITE_}	
+	<li><a href="{kurl docu="$titre_wiki" mode="edit"}" title="">##ACTION_MODIFY##</a></li>
+	<li><a href="{kurl docu="$titre_wiki" mode="history"}" title="" >##HISTORY##</a></li>
+	{/if}
+	<li><a href="{kurl page="help"}" onclick="javascript:popup(this.href, 'aide_wiki', '800', '800', '800', '800');return false;" >##TITLE_WIKI_SYNTAX##</a></li>
+</ul>
+
+<h1>page : {$titre_wiki}</h1>
+<p class="msg">{$msg}</p>
+{if $mode eq "edit"}
+        {if $permission >= _SELF_WRITE_}
+        	{$smarty.capture.formulaire_wiki}
         {else}
             <p>##NO_PERMISSION##</p>
         {/if}
@@ -95,9 +109,6 @@ Preview Mode still to do
     <div id="zone_wiki">
         {$contenu_wiki}
     </div>
-    {if $permission >= _SELF_WRITE_}
-    <a href="{kurl docu="$titre_wiki" mode="edit"}" title="">##ACTION_MODIFY##</a> | <a href="{kurl docu="$titre_wiki" mode="history"}" title="">##HISTORY##</a> 
-    {/if}
 {/if}
 
 {$debug}

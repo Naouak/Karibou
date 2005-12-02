@@ -91,7 +91,8 @@ class WikiDefault extends Model
     public function add() {
         if ( isset($_POST) && isset($_POST['submit']) && $_POST['submit'] != '' ) {
             debug::display('toto'.$this->currentUser->getID());
-            $date = date('Y-m-d H:i:s');
+            $date = date('Y-m-d H:i:s');            
+            
             $o_wiki = new Wiki($_POST['page_wiki'], $_POST['contenu_wiki'], $date, $this->userFactory->prepareUserFromId($this->currentUser->getID()));
             $o_wiki->add($this->db);
             return true;

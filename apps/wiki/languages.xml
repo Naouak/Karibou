@@ -1,5 +1,9 @@
 <translation>
-    <sentence key="TITLE_WIKI_SYNTAX">
+    <sentence key="TITLE_WIKI_HOME">
+        <translation language="fr" value="Accueil" />
+        <translation language="en" value="Home" />
+    </sentence>
+	<sentence key="TITLE_WIKI_SYNTAX">
         <translation language="fr" value="Syntaxe wiki" />
         <translation language="en" value="Wiki syntax" />
     </sentence>
@@ -33,5 +37,16 @@
         <translation language="fr" value="par" />
         <translation language="en" value="by" />
     </sentence>
+
+    <sentence key="CHOOSE_FORMAT">
+        <translation language="fr" value="Format" />
+        <translation language="en" value="Format" />
+    </sentence>
+    
+    <sentence key="TXT_TOOLBAR">
+        <translation language="fr" value="Vous pouvez utiliser les raccourcis suivants pour enrichir votre présentation." />
+        <translation language="en" value="You can use these tootips to modify your text." />
+    </sentence>    
+   
 
 </translation>
