@@ -15,12 +15,13 @@
 	<load class="Wiki" file="wiki.class.php" />
 	<load class="WikiFactory" file="wikifactory.class.php" />
 	<load class="wiki2xhtmlBasic" file="wiki2xhtml.basic.class.php" />
-	
+	<load class="WikiMenu" file="wikimenu.class.php" />
 	
 	<view name="default" class="WikiDefault" template="wiki.tpl" />
 	<view name="help" class="WikiHelp" template="help.tpl" />
 	<view name="history" class="WikiHistory" template="history.tpl" />
-
+	<view name="menu" class="WikiMenu" template="menu.tpl" />
+	
 	<page name="help" view="help" />
 	
 	<page view="default">

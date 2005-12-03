@@ -23,8 +23,8 @@ class WikiDefault extends Model
     public $mode = '';
     public $o_wiki = null;
     
-	public function build() {
-               
+	public function build()	{     
+	
         if(isset($this->args['docu']) && $this->args['docu'] != '') {
 			$this->current_page = $this->args['docu'];
         }
@@ -36,6 +36,9 @@ class WikiDefault extends Model
 			$this->mode = $this->args['mode'];
         }
         
+	$menuApp = $this->appList->getApp($this->appname);
+	$menuApp->addView("menu", "header_menu", array("page" => "home", "docu" => $this->current_page, "mode" => $this->mode) );
+	
         $this->o_wiki = $this->getDataWiki();
         
         switch($this->mode) {

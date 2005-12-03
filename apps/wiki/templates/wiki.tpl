@@ -68,6 +68,7 @@
 {/capture}
 
 <div id="wiki">
+{*
 <ul class="appNav">
 	<li><a href="/wiki/">##TITLE_WIKI_HOME##</a></li>
  	{if $permission >= _SELF_WRITE_}	
@@ -76,7 +77,7 @@
 	{/if}
 	<li><a href="{kurl page="help"}" onclick="javascript:popup(this.href, 'aide_wiki', '800', '800', '800', '800');return false;" >##TITLE_WIKI_SYNTAX##</a></li>
 </ul>
-
+*}
 <h1>page : {$titre_wiki}</h1>
 <p class="msg">{$msg}</p>
 {if $mode eq "edit"}
