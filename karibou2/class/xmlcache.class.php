@@ -162,18 +162,13 @@ class XMLCache
 				$fileName = $regs[3];
 			}
 			
-			if ($protocol == "https")
-			{
-				$serverName = "ssl://" . $serverName;
-				$port = 443;
-			}
-			else
-				$port = 80;
-				
 			//var_dump($regs);
 			//echo "proto = " . $protocol . " servername = " . $serverName . " filename = " .$fileName;
 
-			$fp = fsockopen($serverName, $port, $errno, $errstr, 2);
+			if ($protocol == "https")
+				$fp = fsockopen("ssl://" . $serverName, 443, $errno, $errstr, 2);
+			else
+				$fp = fsockopen($serverName, 80, $errno, $errstr, 2);
 			if (!$fp)
 			{
 				Debug::display("impossible de d'ouvrir le socket : $errstr");
