@@ -228,16 +228,16 @@ class XMLCache
 		$workfile = $this->cachefile.".work";
 		if( is_file($workfile) )
 		{
-			/*if( (filectime($workfile)+60) < time() )
+			if( (filectime($workfile)+60) < time() )
 			{
 				// si le fichier de travail existe deja on retourne et on prend du coup l'ancienne version
 				// ca evite que 2 process ecrivent en meme temps, au pire on a une ancienne version du fichier
 				return;
 			}
 			else
-			{*/
+			{
 				unlink($workfile);
-			//}
+			}
 		}
 		$fp = fopen($workfile, "w");
 		
@@ -250,7 +250,7 @@ class XMLCache
 			$simplexml = simplexml_load_string($this->getXMLFromURL($this->xmlfile));
 		}
 		
-		if( !($simplexml) )
+		if( $simplexml === FALSE )
 		{
 			Debug::display("impossible de parser le fichier xml : " . $this->xmlfile);
 			fclose($fp);
