@@ -41,13 +41,14 @@ class XMLCache
 		if( ! is_file($xml) )
 			Debug::kill("File : $xml doesn't exist");
 		$this->lastmodified = filemtime($xml);
+		
 		return $this->load($xml);
 	}
 
-	function loadURL($xml, $timeout=3600)
+	function loadURL($xml, $timeout=0)
 	{
 		$this->lastmodified = time() - $timeout ;
-		return $this->load( $xml ) ;
+		return $this->load( $xml, true) ;
 	}
 	
 	protected function isCached()
@@ -60,7 +61,7 @@ class XMLCache
 		return false;
 	}
 	
-	function load($xml)
+	function load($xml, $from_url = false)
 	{
 		$this->xmlfile = $xml;
 		$this->cacheid = md5($xml);
@@ -69,7 +70,7 @@ class XMLCache
 		if( ! $this->isCached() )
 		{
 			Debug::display("Creating Cache File ".$this->cachefile);
-			if( ! $this->createCache() ) return FALSE;
+			if( ! $this->createCache($from_url) ) return FALSE;
 		}
 		include($this->cachefile);
 		$this->xml = &$xml0;
@@ -125,28 +126,134 @@ class XMLCache
 		
 		return $code;
 	}
+
+	// Load from an url via fsockopen
+	function getXMLFromURL($url)
+	{
+			if (strpos($url, "@") !== FALSE)
+			{
+				$status = ereg("(.*)://(.*):(.*)@([^/]*)/(.*)$",$url,$regs);
+				$hasPassword = TRUE;
+			}
+			else
+			{
+				$status = ereg("(.*)://(.*)/(.*)",$url,$regs);
+				$hasPassword = FALSE;
+			}
+			if($status === FALSE)
+			{
+				Debug::display("impossible de determiner le serverName");
+				fclose($fp);
+				unlink($workfile);
+				return FALSE;
+			}
+			$protocol = $regs[1];
+			
+			if ($hasPassword)
+			{
+				$username = $regs[2];
+				$password = $regs[3];
+				$serverName = $regs[4];
+				$fileName = $regs[5];
+			}
+			else
+			{
+				$serverName = $regs[2];
+				$fileName = $regs[3];
+			}
+			
+			if ($protocol == "https")
+			{
+				$serverName = "ssl://" . $serverName;
+				$port = 443;
+			}
+			else
+				$port = 80;
+				
+			var_dump($regs);
+			echo "proto = " . $protocol . " servername = " . $serverName . " filename = " .$fileName;
+
+			$fp = fsockopen($serverName, $port, $errno, $errstr, 2);
+			if (!$fp)
+			{
+				Debug::display("impossible de d'ouvrir le socket : $errstr");
+				return FALSE;
+			}
+			else
+			{
+   			$out = "GET /$fileName HTTP/1.1\r\n";
+   			$out .= "Host: $serverName\r\n";
+   			if ($hasPassword)
+   			$out .= "Authorization: Basic ".base64_encode("$username:$password")."\r\n";
+   			$out .= "Connection: Close\r\n\r\n";
+
+				fwrite($fp, $out);
+				$xmlString = '';
+   			while (!feof($fp)) 
+   			{
+       		$xmlString .= fread($fp, 8192);
+   			}
+   			fclose($fp);
+			}			
+			
+			// split header and body
+      $pos = strpos($xmlString, "\r\n" . "\r\n");
+      if($pos !== false)
+      {
+      	$header = substr($xmlString, 0, $pos);
+      	$xmlString = substr($xmlString, $pos + 2 * strlen("\r\n"));
+			}
+			
+			// parse headers
+      $headers = array();
+      $lines = explode("\r\n", $header);
+      foreach($lines as $line)
+          if(($pos = strpos($line, ':')) !== false)
+              $headers[strtolower(trim(substr($line, 0, $pos)))] = trim(substr($line, $pos+1));
+      
+      // redirection?
+      if(isset($headers['location']))
+      {
+          return($this->getXMLFromURL($headers['location']));
+      }
+      else
+      {
+          return($xmlString);
+      }
+			return $xmlString;
+	}	
+
 	
-	function createCache()
+	function createCache($from_url)
 	{
 		$workfile = $this->cachefile.".work";
 		if( is_file($workfile) )
 		{
-			if( (filectime($workfile)+60) < time() )
+			/*if( (filectime($workfile)+60) < time() )
 			{
 				// si le fichier de travail existe deja on retourne et on prend du coup l'ancienne version
 				// ca evite que 2 process ecrivent en meme temps, au pire on a une ancienne version du fichier
 				return;
 			}
 			else
-			{
+			{*/
 				unlink($workfile);
-			}
+			//}
 		}
 		$fp = fopen($workfile, "w");
 		
-		if( !($simplexml = simplexml_load_file($this->xmlfile)) )
+		if (!$from_url)
 		{
-			Debug::display("impossible de parser le fichier xml : $configfile");
+			$simplexml = simplexml_load_file($this->xmlfile);
+		}
+		else
+		{
+			$simplexml = simplexml_load_string($this->getXMLFromURL($this->xmlfile));
+		}
+		
+		if( !($simplexml) )
+		{
+			Debug::display("impossible de parser le fichier xml : " . $this->xmlfile);
 			fclose($fp);
 			unlink($workfile);
 			return FALSE;
@@ -159,11 +266,12 @@ class XMLCache
 			
 			fwrite($fp, $phpfile);
 			fclose($fp);
+			if (is_file($this->cachefile))
+				unlink($this->cachefile);
 			rename($workfile, $this->cachefile);
 			return TRUE;
 		}
 	}
-	
 }
 
 ?>
