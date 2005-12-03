@@ -4,6 +4,10 @@
         <translation language="fr" value="Accueil Annuaire" />
         <translation language="en" value="Directory Home" />
     </sentence>
+    <sentence key="DIRECTORY">
+        <translation language="fr">Annuaire</translation>
+        <translation language="en">Directory</translation>
+    </sentence>
     <sentence key="DIRECTORY_DESCRIPTION">
         <translation language="fr">
 				L'annuaire vous permet de rechercher rapidement les coordonnées des différents utilisateurs de l'Intranet. Pensez à mettre à jour vos informations régulièrement en utilisant le lien "Mon profil".

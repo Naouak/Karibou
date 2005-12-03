@@ -12,6 +12,11 @@ class AnnuaireMenu extends Model
 		{
 			$this->assign("page", "");
 		}
+		
+		if ($this->permission >= _SELF_WRITE_)
+		{
+			$this->assign("username", $this->currentUser->getLogin());
+		}
 	}
 }
 
