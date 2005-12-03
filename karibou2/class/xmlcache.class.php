@@ -182,13 +182,14 @@ class XMLCache
    				$out .= "Authorization: Basic ".base64_encode("$username:$password")."\r\n";
    			$out .= "Connection: Close\r\n\r\n";
 
-Debug::display("out = " . $out);
+				Debug::display("out = " . $out);
 				fwrite($fp, $out);
 				$xmlString = '';
    			while (!feof($fp)) 
    			{
        		$xmlString .= fread($fp, 8192);
    			}
+   			Debug::display("xmlString = " . $xmlString);
    			fclose($fp);
 			}			
 			
