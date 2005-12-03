@@ -195,6 +195,7 @@ class XMLCache
 			
 			// split header and body
       $pos = strpos($xmlString, "\r\n" . "\r\n");
+      Debug::display("pos = " . $pos);
       if($pos !== false)
       {
       	$header = substr($xmlString, 0, $pos);
