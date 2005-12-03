@@ -130,7 +130,7 @@ class XMLCache
 	// Load from an url via fsockopen
 	function getXMLFromURL($url)
 	{
-			Debug::display($url);
+			Debug::display("URL = " . $url);
 			if (strpos($url, "@") !== FALSE)
 			{
 				$status = ereg("(.*)://(.*):(.*)@([^/]*)/(.*)$",$url,$regs);
