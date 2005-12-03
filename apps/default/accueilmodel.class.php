@@ -19,6 +19,9 @@ class AccueilModel extends Model
 {
 	function build()
 	{
+		$app = $this->appList->getApp($this->appname);
+		$app->addView("menu", "header_menu");
+
 		$currentUser = $this->userFactory->getCurrentUser();
 
 		if( ($containers = $currentUser->getPref('containers'))

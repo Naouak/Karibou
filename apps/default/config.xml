@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <app>
+	<load class="DefaultMenu" file="defaultmenu.class.php" />
+
 	<load class="AccueilModel" file="accueilmodel.class.php" />
 	<load class="AccueilSaveApps" file="accueilsaveapps.class.php" />
 	<load class="AccueilDeleteApps" file="accueildeleteapps.class.php" />
@@ -19,6 +21,8 @@
 	<load class="ArgMiniapp" file="../arguments/argminiapp.class.php" />
 	<load class="ArgAction" file="../arguments/argaction.class.php" />
 	
+	<view name="menu" class="DefaultMenu" template="menu.tpl" />
+
 	<view name="default" class="AccueilModel" template="accueil.tpl" />
 	<view name="edit" class="AccueilModel" template="edit.tpl" />
 	<view name="hookhead" class="AccueilHead" template="hookhead.tpl" />
