@@ -200,7 +200,7 @@ class XMLCache
       	$xmlString = substr($xmlString, $pos + 2 * strlen("\r\n"));
       	$xmlData = explode("<?xml", $xmlString);
       	if ($xmlData !== FALSE)
-					$xmlString = $xmlData[1];
+					$xmlString = "<?xml" . $xmlData[1];
 			}
 			
 			// parse headers
