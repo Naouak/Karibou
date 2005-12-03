@@ -130,6 +130,7 @@ class XMLCache
 	// Load from an url via fsockopen
 	function getXMLFromURL($url)
 	{
+			Debug::display($url);
 			if (strpos($url, "@") !== FALSE)
 			{
 				$status = ereg("(.*)://(.*):(.*)@([^/]*)/(.*)$",$url,$regs);
@@ -168,8 +169,8 @@ class XMLCache
 			else
 				$port = 80;
 				
-			var_dump($regs);
-			echo "proto = " . $protocol . " servername = " . $serverName . " filename = " .$fileName;
+			//var_dump($regs);
+			//echo "proto = " . $protocol . " servername = " . $serverName . " filename = " .$fileName;
 
 			$fp = fsockopen($serverName, $port, $errno, $errstr, 2);
 			if (!$fp)
