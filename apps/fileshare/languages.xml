@@ -1,4 +1,12 @@
 <translation>
+	<sentence key="FILESHARE">
+		<translation language="fr">
+		Fichiers
+		</translation>
+		<translation language="en">
+		FileShare
+		</translation>
+	</sentence>
 	<sentence key="FILESHARE_TITLE">
 		<translation language="fr">
 		Partage de fichiers

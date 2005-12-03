@@ -16,7 +16,10 @@ class FileShareCreateDirectory extends Model
 {
 	public function build()
 	{
-		if (isset($this->args['directoryname']))
+		$app = $this->appList->getApp($this->appname);
+		$app->addView("menu", "header_menu", array("page"=>"createdirectory"));
+
+		if ( isset($this->args['directoryname']) )
 		{
 			$this->assign('directorynamebase64', $this->args['directoryname']);
 			$this->assign('directoryname', base64_decode($this->args['directoryname']));

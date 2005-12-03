@@ -16,6 +16,9 @@ class FileShareDefault extends Model
 {
 	public function build()
 	{
+		$app = $this->appList->getApp($this->appname);
+		$app->addView("menu", "header_menu", array("page"=>"home"));
+	
 		$myDir = new KDirectory(KARIBOU_PUB_DIR.'/fileshare/');
 $this->assign("myDir", $myDir);
 		//$this->assign("files",$myDir->returnFileList());

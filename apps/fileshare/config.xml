@@ -6,6 +6,8 @@
 	<load class="KDirectory" file="class/kdirectory.class.php" />
 	<load class="KFile" file="class/kfile.class.php" />
 
+	<load class="FileShareMenu" file="filesharemenu.class.php" />
+
 	<load class="FileShareDefault" file="default.class.php" />
 	<load class="FileShareSaveFile" file="savefile.class.php" />
 	<load class="FileShareList" file="list.class.php" />
@@ -17,6 +19,8 @@
 
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
+
+	<view name="menu" class="FileShareMenu" template="menu.tpl" />
 
 	<view name="default" class="FileShareDefault" template="default.tpl" />
 	<view name="list" class="FileShareList" template="list.tpl" />

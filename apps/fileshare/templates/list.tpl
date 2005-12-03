@@ -1,6 +1,13 @@
 {assign var=subdirs value=$myDir->returnSubDirList()}
-{if $subdirs|@count > 0}
 <ul>
+{if !$myDir->isRootDir()}
+	<li class="directory">
+		<a href="{kurl page="directory" directoryname=$myDir->getParentPathBase64()}">
+			<div class="name">##UPONELEVEL##</div>
+		</a>
+	</li>
+{/if}
+{if $subdirs|@count > 0}
 {foreach item=directory from=$subdirs}
 	<li class="directory">
 		<a href="{kurl page="directory" directoryname=$directory->getPathBase64()}" title="{$directory->getName()}">
@@ -9,8 +16,8 @@
 		</a>
 	</li>
 {/foreach}
-</ul>
 {/if}
+</ul>
 
 {assign var=files value=$myDir->returnFileList()}
 {if $files|@count>0}

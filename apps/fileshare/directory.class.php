@@ -16,6 +16,8 @@ class FileShareDirectory extends Model
 {
 	public function build()
 	{
+		$app = $this->appList->getApp($this->appname);
+
 		if (isset($this->args["directoryname"]) && $this->args["directoryname"] != "")
 		{
 			$path = '';
@@ -34,17 +36,14 @@ class FileShareDirectory extends Model
 			$myDir = new KDirectory();
 		}
 
+		$app->addView("menu", "header_menu", array("page"=>"home", "myDir"=>$myDir, "permission"=>$this->permission));
+
 		$this->assign("myDir",$myDir);
 		
 		if ($this->permission > _READ_ONLY_)
 		{
 			$this->assign("uploadallowed", TRUE);
 		}
-		
-		if ($this->permission > _READ_ONLY_)
-		{
-			$this->assign("uploadallowed", TRUE);
-		}		
 	}
 }
 

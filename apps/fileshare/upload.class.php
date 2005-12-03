@@ -16,6 +16,9 @@ class FileShareUpload extends Model
 {
 	public function build()
 	{
+		$app = $this->appList->getApp($this->appname);
+		$app->addView("menu", "header_menu", array("page"=>"uploadfile"));
+
 		if (isset($this->args['directoryname']))
 		{
 			$this->assign('directorynamebase64', $this->args['directoryname']);
