@@ -189,13 +189,11 @@ class XMLCache
    			{
        		$xmlString .= fread($fp, 8192);
    			}
-   			Debug::display("xmlString = " . $xmlString);
    			fclose($fp);
 			}			
 			
 			// split header and body
       $pos = strpos($xmlString, "\r\n" . "\r\n");
-      Debug::display("pos = " . $pos);
       if($pos !== false)
       {
       	$header = substr($xmlString, 0, $pos);
@@ -208,7 +206,8 @@ class XMLCache
       foreach($lines as $line)
           if(($pos = strpos($line, ':')) !== false)
               $headers[strtolower(trim(substr($line, 0, $pos)))] = trim(substr($line, $pos+1));
-      
+
+ 			Debug::display("xmlString = " . $xmlString);
       // redirection?
       if(isset($headers['location']))
       {
@@ -218,7 +217,6 @@ class XMLCache
       {
           return($xmlString);
       }
-			return $xmlString;
 	}	
 
 	
