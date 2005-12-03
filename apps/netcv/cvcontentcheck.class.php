@@ -15,13 +15,15 @@ class NetCVContentCheck extends Model
 	public function build()
 	{
 		$app = $this->appList->getApp($this->appname);
+		$app->addView("menu", "header_menu", array("page" => "cvcontentcheck"));
 		$config = $app->getConfig();
 
 		$myNetCVUser = new NetCVUser($this->db, $this->currentUser);
 		$myNetCVGroupList = $myNetCVUser->returnCVGroupList();
 		
 		if (isset($this->args["cvid"],$this->args["gid"]) && $this->args["cvid"] != "" && $this->args["gid"] != "") {
-			$myNetCVGroup = $myNetCVGroupList->returnGroupById($this->args['gid']);			$myNetCVSingleCVList = $myNetCVGroup->returnCVListObject();
+			$myNetCVGroup = $myNetCVGroupList->returnGroupById($this->args['gid']);
+			$myNetCVSingleCVList = $myNetCVGroup->returnCVListObject();
 			$myNetCVSingleCV = $myNetCVGroup->CVList->returnCVById($this->args["cvid"]);
 			$myNetCV = $myNetCVSingleCV->getContent();
 			$myNetCVPersonalInfo = $myNetCVUser->returnPersonalInfo($this->args['cvid']);			

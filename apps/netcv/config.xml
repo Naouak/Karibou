@@ -68,6 +68,7 @@
 	<load class="NetCVContentCheck"	file="cvcontentcheck.class.php" />
 	<load class="NetCVContactForm"	file="cvcontactform.class.php" />
 	<load class="NetCVContactFormSend"	file="cvcontactformsend.class.php" />
+	<load class="NetCVMenu" file="cvmenu.class.php" />
 
 	<view name="home"					class="NetCVHome"			template="home.tpl" />
 	<view name="cvgrouplistview"	class="NetCVGroupListView"	template="cvgrouplistview.tpl" />
@@ -86,7 +87,7 @@
 	<view name="cvsinglecvdelete"	class="NetCVSingleCVDelete"	template="cvsinglecvdelete.tpl" />
 	<view name="cvcontentcheck"	class="NetCVContentCheck"	template="cvcontentcheck.tpl" />
 	<view name="cvcontactform"		class="NetCVContactForm"	template="cvcontactform.tpl" />
-
+	<view name="menu" class="NetCVMenu" template="menu.tpl" />
 
 	<page name="" view="home" />
 	<page name="cv" view="cvdisplay">

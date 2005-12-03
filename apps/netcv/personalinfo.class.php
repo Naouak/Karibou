@@ -18,6 +18,7 @@ class NetCVPersonalInfo extends Model
 	{
 	
 		$app = $this->appList->getApp($this->appname);
+		$app->addView("menu", "header_menu", array("page" => "personalinfo"));
 		$config = $app->getConfig();
 		$this->assign("config", $config);
 	

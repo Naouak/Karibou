@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <translation>
+	<sentence key="NETCV">
+		<translation language="fr">NetCV</translation>
+		<translation language="en">NetCV</translation>
+	</sentence>
 	<sentence key="NETCV_HOME">
 		<translation language="fr">
 		Accueil NetCV
