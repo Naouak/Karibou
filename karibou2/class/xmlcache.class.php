@@ -146,6 +146,7 @@ class XMLCache
 				Debug::display("impossible de determiner le serverName");
 				return FALSE;
 			}
+			
 			$protocol = $regs[1];
 			
 			if ($hasPassword)
@@ -183,9 +184,10 @@ class XMLCache
    			$out = "GET /$fileName HTTP/1.1\r\n";
    			$out .= "Host: $serverName\r\n";
    			if ($hasPassword)
-   			$out .= "Authorization: Basic ".base64_encode("$username:$password")."\r\n";
+   				$out .= "Authorization: Basic ".base64_encode("$username:$password")."\r\n";
    			$out .= "Connection: Close\r\n\r\n";
 
+Debug::display("out = " . $out);
 				fwrite($fp, $out);
 				$xmlString = '';
    			while (!feof($fp)) 
