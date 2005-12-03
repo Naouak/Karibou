@@ -20,6 +20,10 @@ class AddressBookAdd extends Model
 {
 	function build()
 	{
+	
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "add") );
+	
 		$this->assign('addr_types', array("DOM", "INTL", "POSTAL", "HOME", "WORK") );
 		$this->assign('phone_types', array("WORK", "HOME", "FAX", "CELL", "PAGER") );
 		$this->assign('email_types', array("INTERNET", "AIM", "ICQ", "JABBER", "MSN", "SKYPE") );

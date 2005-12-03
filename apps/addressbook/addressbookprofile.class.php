@@ -20,6 +20,7 @@ class AddressBookProfile extends Model
 {
 	function build()
 	{
+	
 		$profile_id = $this->args['profile_id'];
 		
 		$factory = new ProfileFactory($this->db, "addressbook");
@@ -46,9 +47,17 @@ class AddressBookProfile extends Model
 			|| ($this->permission >= _FULL_WRITE_)
 		 )
 		{
-			$this->assign('edit', true);
+			$editmode = true;
 			$this->assign('profile_id', $profile_id);
 		}
+		else
+		{
+			$editmode = false;
+		}
+		
+		$this->assign('edit', $editmode);
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "profile", "edit" => $editmode, "profile_id" => $this->args['profile_id']) );
 		
 		if( isset( $this->args['act'] ) && ($this->args['act']=='edit') )
 		{

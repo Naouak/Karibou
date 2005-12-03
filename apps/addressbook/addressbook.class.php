@@ -15,6 +15,10 @@ class AddressBook extends Model
 {
 	function build()
 	{
+
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "home") );
+	
 		$qry = "SELECT * FROM addressbook_user au, addressbook a WHERE 
 			a.id=au.profile_id AND
 			au.user_id='".$this->currentUser->getID()."' LIMIT 20";

@@ -1,4 +1,3 @@
-{include file="appnav.tpl"}
 <h1>##TITLE##</h1>
 <div class="helper">
 	##DIRECTORY_DESCRIPTION##

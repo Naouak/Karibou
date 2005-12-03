@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <translation>
+	<sentence key="ADDRESSBOOK">
+		<translation language="fr" value="Carnet d'Adresses" />
+		<translation language="en" value="Address Book" />
+	</sentence>
 	<sentence key="DIRECTORY_HOME">
 		<translation language="fr" value="Accueil du carnet d'adresses" />
 		<translation language="en" value="Address book home" />
@@ -189,10 +193,6 @@
 	<sentence key="DELETE">
 		<translation language="fr" value="Supprimer" />
 		<translation language="en" value="Delete" />
-	</sentence>
-	<sentence key="HOME">
-		<translation language="fr" value="Personnel" />
-		<translation language="en" value="Home" />
 	</sentence>
 	<sentence key="WORK">
 		<translation language="fr" value="Travail" />

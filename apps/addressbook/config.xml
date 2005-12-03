@@ -11,6 +11,8 @@
 	<load class="AddressBookPost" file="addressbookpost.class.php" />
 	<load class="AddressBookAuto" file="addressbookauto.class.php" />
 
+	<load class="AddressBookMenu" file="addressbookmenu.class.php" />
+
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 	
@@ -19,6 +21,8 @@
 	<view name="view" class="AddressBookProfile" template="profile.tpl" />
 	<view name="edit" class="AddressBookProfile" template="form.tpl" />
 	<view name="auto" class="AddressBookAuto" template="autocomplete.tpl" />
+
+	<view name="menu" class="AddressBookMenu" template="menu.tpl" />
 
 	<page view="default" />
 	<page view="view">
