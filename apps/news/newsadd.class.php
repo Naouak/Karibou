@@ -13,7 +13,10 @@ class NewsAdd extends Model
 {
 
 	public function build()
-	{	
+	{
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "add") );
+		
 		$this->assign('permission', $this->permission);
 		
 		//Verification de la presence d'erreur et affection du message d'erreur a afficher

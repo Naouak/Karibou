@@ -14,6 +14,9 @@ class NewsModify extends Model
 	protected $article;
 	public function build()
 	{
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "modify") );
+	
 		$this->article = new News ($this->userFactory);
 		$this->assign('permission', $this->permission);
 				

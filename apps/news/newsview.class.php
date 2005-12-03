@@ -17,6 +17,18 @@ class NewsView extends Model
 
 	public function build()
 	{
+		if (isset($this->args['displayComments']) && ($this->args['displayComments'] == 1) )
+		{
+			$viewcomments = true;
+		}
+		else
+		{
+			$viewcomments = false;
+		}
+
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "view", "viewcomments" => $viewcomments, "article_id" => $this->args['id']) );
+	
 		$this->article = new News ($this->userFactory);
 		
 		//Chargement de la news a modifier a partir du SQL

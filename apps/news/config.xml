@@ -25,6 +25,8 @@
 	<load class="NewsMiniConfig" file="newsminiconfig.class.php" />
 	<load class="wiki2xhtmlBasic" file="../wiki/wiki2xhtml.basic.class.php" />
 	
+	<load class="NewsMenu" file="newsmenu.class.php" />
+
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 
@@ -37,6 +39,8 @@
 
 	<view name="mini" class="NewsMini" template="small.tpl" />
 	<view name="miniconfig" class="NewsMiniConfig" template="smallconfig.tpl" />
+
+	<view name="menu" class="NewsMenu" template="menu.tpl" />
 
 	<page name="" view="default" />
 	

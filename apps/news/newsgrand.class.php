@@ -17,6 +17,10 @@ class NewsGrand extends Model
 	public function build()
 	{
 	
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "news") );
+
+	
 		//Comptage des news (prise en compte des dernieres uniquement)
 		//$max = 2;
 		$app = $this->appList->getApp($this->appname);
