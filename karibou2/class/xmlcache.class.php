@@ -198,9 +198,9 @@ class XMLCache
       {
       	$header = substr($xmlString, 0, $pos);
       	$xmlString = substr($xmlString, $pos + 2 * strlen("\r\n"));
-				$xmlData = ereg("([^<]*)(.*)([^>]+)",$xmlString,$regs);
-      	if ($xmlData !== FALSE)
-					$xmlString = $regs[2];
+				$startXML = strpos($xmlString, "<");
+				$endXML = strrpos($xmlString, ">");
+				$xmlString = substr($xmlString, $startXML, $endXML - $startXML);
 			}
 			
 			// parse headers
