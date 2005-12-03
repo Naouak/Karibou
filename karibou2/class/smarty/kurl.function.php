@@ -15,7 +15,7 @@ function smarty_function_kurl($params, &$smarty)
 	return kurl( $array , $smarty->getAppList() );
 }
 
-function kurl(&$params , $appList)
+function kurl($params , $appList)
 {
 	$app = "";
 	$page = "";

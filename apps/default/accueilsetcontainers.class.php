@@ -23,6 +23,7 @@ class AccueilSetContainers extends FormModel
 		$containers = $currentUser->getPref('containers');
 		$containers->setSizes($_GET['size']);
 		$currentUser->setPref('containers', $containers );
+		$currentUser->savePrefs($this->db );
 	}
 }
 
