@@ -143,8 +143,6 @@ class XMLCache
 			if($status === FALSE)
 			{
 				Debug::display("impossible de determiner le serverName");
-				fclose($fp);
-				unlink($workfile);
 				return FALSE;
 			}
 			$protocol = $regs[1];
