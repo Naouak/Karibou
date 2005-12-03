@@ -45,7 +45,7 @@ class XMLCache
 		return $this->load($xml);
 	}
 
-	function loadURL($xml, $timeout=0)
+	function loadURL($xml, $timeout=3600)
 	{
 		$this->lastmodified = time() - $timeout ;
 		return $this->load( $xml, true) ;
@@ -162,9 +162,6 @@ class XMLCache
 				$fileName = $regs[3];
 			}
 			
-			//var_dump($regs);
-			//echo "proto = " . $protocol . " servername = " . $serverName . " filename = " .$fileName;
-
 			if ($protocol == "https")
 				$fp = fsockopen("ssl://" . $serverName, 443, $errno, $errstr, 2);
 			else
@@ -182,7 +179,6 @@ class XMLCache
    				$out .= "Authorization: Basic ".base64_encode("$username:$password")."\r\n";
    			$out .= "Connection: Close\r\n\r\n";
 
-				Debug::display("out = " . $out);
 				fwrite($fp, $out);
 				$xmlString = '';
    			while (!feof($fp)) 
@@ -210,7 +206,6 @@ class XMLCache
           if(($pos = strpos($line, ':')) !== false)
               $headers[strtolower(trim(substr($line, 0, $pos)))] = trim(substr($line, $pos+1));
 
- 			Debug::display("xmlString = " . $xmlString);
       // redirection?
       if(isset($headers['location']))
       {
