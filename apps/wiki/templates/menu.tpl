@@ -8,7 +8,7 @@
 		<li><a href="{kurl docu=$docu mode='edit'}">##ACTION_MODIFY## {$docu}</a></li>
 		<li><strong>##HISTORY## {$docu}</strong></li>
 	{else}
-		<li><a href="{kurl}">##WIKI##</a></li>	
+		<li><strong>##WIKI##</strong></li>	
 		{if $permission >= _SELF_WRITE_}
 		<li><a href="{kurl docu=$docu mode='edit'}">##ACTION_MODIFY## {$docu}</a></li>
 		<li><a href="{kurl docu=$docu mode='history'}">##HISTORY## {$docu}</a></li>
