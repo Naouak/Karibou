@@ -200,7 +200,7 @@ class XMLCache
       	$xmlString = substr($xmlString, $pos + 2 * strlen("\r\n"));
 				$startXML = strpos($xmlString, "<");
 				$endXML = strrpos($xmlString, ">");
-				$xmlString = substr($xmlString, $startXML, $endXML - $startXML);
+				$xmlString = substr($xmlString, $startXML, $endXML - $startXML + 1);
 			}
 			
 			// parse headers
