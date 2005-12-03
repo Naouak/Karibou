@@ -1,6 +1,0 @@
-TODO List pour le calendrier
-
-- Gestion des données au format ical ou vcal en natif
-- Travail sur les urls (supprimer le byWeek, byDay, etc...)
-- Gérer les 0 devant les chiffres de jour
-- Meilleure inclusion des classes PEAR (Date, File)
