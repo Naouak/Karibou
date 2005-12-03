@@ -200,7 +200,7 @@ class XMLCache
       	$xmlString = substr($xmlString, $pos + 2 * strlen("\r\n"));
 				$xmlData = ereg("([^<]*)(.*)([^>]*)",$xmlString,$regs);
       	if ($xmlData !== FALSE)
-					$xmlString = "<?xml" . $regs[1];
+					$xmlString = "<?xml" . $regs[2];
 			}
 			
 			// parse headers
