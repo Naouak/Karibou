@@ -14,6 +14,9 @@ class CalendarManage extends Model
 {
 	public function build()
 	{
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "manage") );
+		
 		$myCalendars = new CalendarListDB($this->db, $this->currentUser);
 		$cals_pub_tmp = $myCalendars->getPublicCalendars();
 		$cals_subs = $myCalendars->getSubscribedCalendars();

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <translation>
+	<sentence key="CALENDAR">
+		<translation language="fr">Calendrier</translation>
+		<translation language="en">Calendar</translation>
+	</sentence>
 	<sentence key="EVENTADDED">
 		<translation language="fr">
 		Évènement ajouté

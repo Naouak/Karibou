@@ -16,6 +16,9 @@ class CalendarEditEvent extends Model
 {
 	public function build()
 	{
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "addEvent") );
+		
  		if (isset($this->args['eventid'],$this->args['calendarid']) && $this->args['eventid'] != '' && $this->args['calendarid'] != '')
 		{
 			//Mode edition

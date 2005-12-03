@@ -15,6 +15,9 @@ class CalendarByDay extends CalendarModel
 {
 	public function build()
 	{
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "home") );
+		
 		setlocale(LC_ALL, "EN_en");
 //		setlocale(LC_ALL, "FR_fr");
 	
