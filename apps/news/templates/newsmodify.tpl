@@ -2,7 +2,8 @@
 	<h1>##NEWS##</h1>
 	<h2>{if isset($theNewsToModify)}##MODIFY_ARTICLE##{else}##ADD_ARTICLE##{/if}</h2>
 	<div class="newNewsForm">
-		<a href="{kurl app="wiki" page="help"}" >##TITLE_WIKI_SYNTAX##</a>
+		{*<a href="{kurl app="wiki" page="help"}" >##TITLE_WIKI_SYNTAX##</a>*}
+		<a href="{kurl app="wiki" page="help"}" onclick="javascript:popup(this.href, 'wiki_help', '800', '900', '200', '200');return false;" >##TITLE_WIKI_SYNTAX##</a>
 	{include file="newsmessage.tpl"}
 	{if (!isset($notauthorized))}
 				<form action="{kurl action="post"}" method="post">
