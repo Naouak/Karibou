@@ -1,7 +1,8 @@
 <h1>##CALENDAR##</h1>
 {include file="messages.tpl"}
 <h2>{if isset($event)}##EDITEVENT##{else}##ADDEVENT##{/if}</h2>
-<a href="{kurl app="wiki" page="help"}">##TITLE_WIKI_SYNTAX##</a>
+{*<a href="{kurl app="wiki" page="help"}">##TITLE_WIKI_SYNTAX##</a>*}
+<a href="{kurl app="wiki" page="help"}" onclick="javascript:popup(this.href, 'wiki_help', '800', '900', '200', '200');return false;" >##TITLE_WIKI_SYNTAX##</a>
 {if !isset($event) && isset($calendarid) && isset($eventid)}(##ERROR_SO_ADDING##){/if}
 {if ($calendars|@count > 0)}
 <form action="{kurl page="saveEvent"}" method="post">
