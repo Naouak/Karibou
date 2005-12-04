@@ -2,15 +2,18 @@
 
 class ActivationCreate extends Model
 {
-	protected $domain = "master-comex.com";
-	protected $ldapbase  = 'dc=inkateo,dc=com';
-	protected $ldaprdn  = 'cn=admin,dc=inkateo,dc=com';
-	protected $ldappass = '';
+	protected $ldapjvd;
+	protected $ldaprdn;
+	protected $ldappass;
 
 	protected $table;
 
 	function build()
 	{
+		$this->ldaprdn = $GLOBALS['config']['ldap']['rdn'];
+		$this->ldappass = $GLOBALS['config']['ldap']['pwd'];
+		$this->ldapjvd = $GLOBALS['config']['ldap']['jvd'];
+		
 		$table = $GLOBALS['config']['bdd']['annuairedb'].".import_alumni";
 		$this->table = $table;
 
@@ -132,7 +135,7 @@ class ActivationCreate extends Model
 	   }
 	   
 		$ou = strtolower($lapromo);
-		$sr = ldap_search ($ldapconn, "jvd=".$this->domain.",".$this->ldapbase,"(&(objectClass=organizationalUnit)(ou=".$ou."))");
+		$sr = ldap_search ($ldapconn, $this->ldapjvd,"(&(objectClass=organizationalUnit)(ou=".$ou."))");
 		$info_fetched = ldap_get_entries($ldapconn, $sr);
 		
 		if( $info_fetched['count'] < 1 )
@@ -147,14 +150,11 @@ class ActivationCreate extends Model
 			  array (
 			    0 => $ou
 			  ) ) ;
-			@ldap_add($ldapconn, "ou=".$ou.",jvd=".$this->domain.",".$this->ldapbase, $info_add);
+			@ldap_add($ldapconn, "ou=".$ou.",".$this->ldapjvd, $info_add);
 		}
 		
-		if ( @ldap_add($ldapconn, "mail=".$add_email.",ou=".$ou.",jvd=".$this->domain.",o=".$this->ldapbase, $info) )
+		if ( @ldap_add($ldapconn, "mail=".$add_email.",ou=".$ou.",".$this->ldapjvd, $info) )
 		{
-			// insert OK / A CHANGER !!!
-	
-	
 			$req_sql = "UPDATE ".$this->table." SET active = NOW(), email='".$email."' WHERE id = ".$id;
 	
 			$this->db->exec($req_sql);
