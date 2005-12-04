@@ -1,25 +1,24 @@
 <app>
 	<permissions default="_SELF_WRITE_" logged="_SELF_WRITE_" />
 
-	<load class="AlphaNum" file="../arguments/alphanum.class.php" />
+	<load class="KeyArgument" file="../arguments/keyargument.class.php" />
 
 	<load class="Activation" file="activation.class.php" />
-	<load class="Activation" file="activation.class.php" />
-	<load class="ActivationCreate" file="activation.class.php" />
+	<load class="ActivationCreate" file="create.class.php" />
 
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 
 	<view name="default" class="Activation" template="default.tpl" />
 	<view name="edit" class="Activation" template="default.tpl" />
-	<view name="create" class="ActivationCreate" template="default.tpl" />
+	<view name="create" class="ActivationCreate" template="create.tpl" />
 
 	<page view="default" />
 	<page name="edit" view="edit">
-		<argument name="key" class="AlphaNum" />
+		<argument name="key" class="KeyArgument" />
 	</page>
 	<page name="create" view="create">
-		<argument name="key" class="AlphaNum" />
+		<argument name="key" class="KeyArgument" />
 	</page>
 
 </app>

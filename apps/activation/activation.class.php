@@ -7,10 +7,14 @@ class Activation extends Model
 		$table = $GLOBALS['config']['bdd']['annuairedb'].".import_alumni";
 		
 		
-		if( isset($_GET['key']) )
+		if( isset($_POST['key']) )
 		{
-			$this->assign("key", $_GET['key']);
-			$qry = "SELECT * FROM $table WHERE uniqkey='".addslashes($_GET['key'])."'";
+			$this->assign("key", $_POST['key']);
+			if(!isset($_SESSION['activation_email']))
+				session_register('activation_email');
+			$_SESSION['activation_email'] = $_POST['email'];
+
+			$qry = "SELECT * FROM $table WHERE uniqkey='".addslashes($_POST['key'])."'";
 			$stmt = $this->db->query($qry);
 			if( $item = $stmt->fetch(PDO::FETCH_ASSOC) )
 			{

@@ -11,12 +11,16 @@
 	<a href="{kurl page='edit' key=$key}">non</a>
 </p>
 {else}
-<form action="{kurl}">
+<form action="{kurl}" method="POST">
 <fieldset class="largefieldset">
 	<legend>Activer un compte</legend>
 	<label for="active_key">Saisir une clé d'activation : </label>
-	<input id="active_key" type="text" name="key" />
+	<input id="active_key" type="text" name="key" /><br />
+	<label for="active_email">Saisir une adresse e-mail : </label>
+	<input id="active_email" type="text" name="email" />
 	<br />
+	<p>L'adresse e-mail sera utilisé pour t'envoyer tes premières infos 
+		de connexion, ne te trompe pas.</p>
 	<br />
 	<input class="button" type="submit" value="Envoyer" />
 </fieldset>
