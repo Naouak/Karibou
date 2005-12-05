@@ -5,6 +5,7 @@ class ActivationCreate extends Model
 	protected $ldapjvd;
 	protected $ldaprdn;
 	protected $ldappass;
+	protected $domain;
 
 	protected $table;
 
@@ -13,6 +14,7 @@ class ActivationCreate extends Model
 		$this->ldaprdn = $GLOBALS['config']['ldap']['rdn'];
 		$this->ldappass = $GLOBALS['config']['ldap']['pwd'];
 		$this->ldapjvd = $GLOBALS['config']['ldap']['jvd'];
+		$this->domain = $GLOBALS['config']['mail']['domain'];
 		
 		$table = $GLOBALS['config']['bdd']['annuairedb'].".import_alumni";
 		$this->table = $table;
@@ -68,8 +70,8 @@ class ActivationCreate extends Model
 		$id = $item['id'];
 		$email_alternatif = $_SESSION['activation_email'];
 
-		$email = $this->deleteAccent($item['prenom'])
-			.".".$this->deleteAccent($item['nom'])."@".$this->domain;
+		$email = strtolower($this->deleteAccent($item['prenom']))
+			.".".strtolower($this->deleteAccent($item['nom']))."@".$this->domain;
 		$lafiliere = $item["promotype"];
 		$lapromo = $item["promo"];
 		
