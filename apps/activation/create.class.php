@@ -33,6 +33,7 @@ class ActivationCreate extends Model
 		else
 		{
 			$this->assign('error', true);
+			$this->assign('message', 'compte déjà créé');
 		}
 	}
 	
@@ -157,7 +158,7 @@ class ActivationCreate extends Model
 		
 		if ( @ldap_add($ldapconn, "mail=".$add_email.",ou=".$ou.",".$this->ldapjvd, $info) )
 		{
-			$req_sql = "UPDATE ".$this->table." SET active = NOW(), email='".$email."' WHERE id = ".$id;
+			$req_sql = "UPDATE ".$this->table." SET active = NOW(), email='".$email_alternatif."' WHERE id = ".$id;
 	
 			$this->db->exec($req_sql);
 			
@@ -165,6 +166,7 @@ class ActivationCreate extends Model
 			
 			$this->assign("email", $add_email);
 			$this->assign("password", $add_password);
+			$this->send_email_create($email_alternatif, $email,  $add_password);
 	  }
 	  else 
 	  {
@@ -173,6 +175,86 @@ class ActivationCreate extends Model
 			$this->assign('message', 'Une erreur s\'est produite. Peut-être ce compte a-t-il déja été activé ?');
 	  }
 		
+	}
+	
+	/**
+	 * Fonction pour l'envoie d'email de confirmation de création
+	 */
+	
+	function send_email_create ($email_alternatif,$email_enic, $add_password) {
+	
+		global $add_email;
+	
+		$subject = "[".$GLOBALS['config']['mail']['domain']."] Bienvenue $add_email";
+	
+		$message = "
+<html>
+ <head>
+  <title>".$subject."</title>
+  <style type=\"text/css\">
+   p {
+     font-family: Trebuchet MS, Verdana, Arial;
+     font-size: 11px;
+   }
+   a {
+     color: #225599;
+   }
+   a:hover {
+     color: #995566;
+   }
+   .link {
+     font-size: 13px;
+   }
+   #hint {
+     font-size: 12px;
+     background: #cfcfff;
+     border: 1px solid #adadee;
+     padding: 2px;
+   }
+   #hint p{
+     margin: 0px;
+     padding: 0px;
+   }
+  </style>
+ </head>
+ <body>
+
+Bonjour,<br />
+<br />
+Ton compte email $add_email est désormais actif.<br />
+<br />
+Ton mot de passe est: $add_password
+<br />
+<br />
+Tu peux le changer sur l'<a href=\"http://intranet.".$GLOBALS['config']['mail']['domain']."\">intranet</a>, dans la rubrique correspondante.
+<br />
+<br />
+A bientôt !<br />
+<br />
+L'équipe Inkateo.
+<a href=\"mailto:contact@inkateo.com\">contact@inkateo.com</a>
+
+ </body>
+</html>";
+
+	/* Pour envoyer du mail au format HTML, vous pouvez configurer le type Content-type. */
+	$headers  = "MIME-Version: 1.0\r\n";
+	$headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
+	
+	/* D'autres en-têtes : errors, From cc's, bcc's, etc */
+	$headers .= "From: Inkateo <contact@inkateo.com>\r\n";
+	
+	/* Send it ! 
+			Envoi également à l'adresse fournie par l'ancien si elle existe
+	*/
+		if( isset($email_alternatif) && $email_alternatif ) $sent_adresses = $add_email.",".$email_alternatif;
+		else $sent_adresses = $add_email;
+
+		if (isset($email_enic) && $email_enic ) { $sent_adresses .= ",".$email_enic; }
+
+
+		mail($sent_adresses, $subject, $message, $headers);
+
 	}
 }
 
