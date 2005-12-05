@@ -26,6 +26,7 @@ class ActivationCreate extends Model
 		$stmt = $this->db->query($qry);
 		if( $item = $stmt->fetch(PDO::FETCH_ASSOC) )
 		{
+			unset($stmt);
 			$this->createEmail($item);
 			$this->assign('password', $password);
 		}
@@ -33,7 +34,6 @@ class ActivationCreate extends Model
 		{
 			$this->assign('error', true);
 		}
-		unset($stmt);
 	}
 	
 	function deleteAccent ($chaine)
