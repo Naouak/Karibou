@@ -167,7 +167,7 @@ class ActivationCreate extends Model
 	  else 
 	  {
 			ldap_close($ldapconn);
-			$this->assign('error'; true);
+			$this->assign('error', true);
 			$this->assign('message', 'Une erreur s\'est produite. Peut-être ce compte a-t-il déja été activé ?');
 	  }
 		
