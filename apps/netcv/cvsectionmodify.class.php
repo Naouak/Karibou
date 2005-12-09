@@ -16,6 +16,9 @@ class NetCVSectionModify extends Model
 {
 	public function build()
 	{
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "cvsectionmodify") );
+
 		if (isset($this->args['cvid'], $this->args['gid'])) {
 			$myNetCVUser = new NetCVUser($this->db, $this->currentUser,TRUE);
 		   $myNetCVSingleCV = $myNetCVUser->returnSingleCV($this->args['gid'], $this->args["cvid"]);	

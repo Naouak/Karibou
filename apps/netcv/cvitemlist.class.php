@@ -16,6 +16,9 @@ class NetCVItemList extends Model
 {
 	public function build()
 	{
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "cvitemlist") );
+
 		$myNetCVUser = new NetCVUser($this->db, $this->currentUser, TRUE);
 		if (isset($this->args['cvid'])) {			$myNetCVGroupList	= $myNetCVUser->returnCVGroupList();
 			$myNetCVGroup		= $myNetCVGroupList->returnGroupById($this->args['gid']);

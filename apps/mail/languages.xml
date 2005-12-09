@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <translation>
+    <sentence key="EMAIL">
+        <translation language="fr" value="Email" />
+        <translation language="en" value="Email" />
+    </sentence>
     <sentence key="TITLE">
         <translation language="fr" value="Client WebMail IMAP" />
         <translation language="en" value="WebMail IMAP Client" />

@@ -1,4 +1,4 @@
-{include file="menu.tpl"}
+{include file="menumail.tpl"}
 <form action="{kurl action='send'}" method="post" >
 <div class="headbox">
 	<label for="from">From :</label>

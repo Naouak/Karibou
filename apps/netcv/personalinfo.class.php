@@ -19,13 +19,14 @@ class NetCVPersonalInfo extends Model
 	
 		$app = $this->appList->getApp($this->appname);
 		$app->addView("menu", "header_menu", array("page" => "personalinfo"));
+		
 		$config = $app->getConfig();
 		$this->assign("config", $config);
 	
-    	$myNetCVUser = new NetCVUser($this->db, $this->currentUser,TRUE);
+		$myNetCVUser = new NetCVUser($this->db, $this->currentUser,TRUE);
 		$myNetCVGroupList = $myNetCVUser->returnCVGroupList();
 		
-    	$this->assign("myNetCVUser", $myNetCVUser);
+		$this->assign("myNetCVUser", $myNetCVUser);
 		$this->assign("myNetCVGroupList", $myNetCVGroupList);
 
 		if (isset($this->args["cvid"],$this->args["gid"]) && ($this->args["cvid"] != "") &&  ($this->args["gid"] != "")) {

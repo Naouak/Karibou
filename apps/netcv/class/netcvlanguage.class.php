@@ -5,7 +5,7 @@ class NetCVLanguage {
 	function __construct () {
 		$languages = array();
 		$languagescodes = new XMLCache(KARIBOU_CACHE_DIR.'/languagecodes');
-		if( $languagescodes->loadURL(KARIBOU_DIR.'/data/languagecodes.xml') )
+		if( $languagescodes->loadFile(KARIBOU_DIR.'/data/languagecodes.xml') )
 		{
 			$xml = $languagescodes->getXML();
 				if( isset($xml->language) )

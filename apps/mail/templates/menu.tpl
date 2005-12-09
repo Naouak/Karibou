@@ -1,26 +1,19 @@
-<div class="menubox">
-<ul>
-{foreach item=mbox from=$mailboxes}
-	<li id="mailfolder_{$mbox}"><a href="{kurl mailbox=$mbox}">{$mbox}</a></li>
-{/foreach}
-</ul>
-</div>
-<script>
-{foreach item=mbox from=$mailboxes}
-	Droppables.add("mailfolder_{$mbox}",
-		{ldelim}
-			hoverclass: 'drophover',
-			greedy: true,
-			onDrop: function(element, dropon)
-			{ldelim}
-				element.style.visibility = "hidden";
-				new Ajax.Updater('maillist', '{kurl page="list" mailbox=$mailbox pagenum=$page}', 
-					{ldelim}
-						asynchronous:true,
-						evalScripts:true,
-						postBody: element.id+"={$mbox}"
-					{rdelim});
-			{rdelim}
-		{rdelim});
-{/foreach}
-</script>
+{if $page == "home"}
+	<li><strong>##EMAIL##</strong></li>
+{else}
+	<li><a href="{kurl app='mail'}">##EMAIL##</a></li>
+{/if}
+
+{if $page == "compose"}
+	<li><strong>##COMPOSELINK##</strong></li>
+{else}
+	<li><a href="{kurl page='compose'}">##COMPOSELINK##</a></li>
+{/if}
+
+{if ($page == "view") && (isset($article_id))}
+	{if $viewcomments == true}
+		<li><a href="{kurl page='view' id=$article_id displayComments=0}">##HIDE_COMMENTS##</a></li>
+	{else}
+		<li><a href="{kurl page='view' id=$article_id displayComments=1}">##DISPLAY_COMMENTS##</a></li>
+	{/if}
+{/if}

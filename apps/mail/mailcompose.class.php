@@ -17,6 +17,9 @@ class MailCompose extends Model
 	
 	function build()
 	{
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "compose") );
+	
 		$user = $this->userFactory->getCurrentUser();
 		$username = $user->getLogin();
 		$factory = new ProfileFactory($this->db, $GLOBALS['config']['bdd']["annuairedb"].".profile");

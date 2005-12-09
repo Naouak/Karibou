@@ -14,6 +14,10 @@ class NetCVSingleCVModify extends Model
 {
 	public function build()
 	{
+	
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "cvsinglecvmodify") );
+		
 		$myNetCVLanguage = new NetCVLanguage();
 		$this->assign("languages",$myNetCVLanguage->returnLanguages());
 		

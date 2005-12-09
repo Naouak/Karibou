@@ -22,7 +22,10 @@ require_once dirname(__FILE__)."/class/netcvuser.class.php";
 class NetCVHome extends Model
 {
 	public function build()
-	{
+	{	
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "home") );
+		
 		$this->assign ("permission", $this->permission);
 		if($this->currentUser->isLogged() && ($this->permission >= _SELF_WRITE_))
 		{

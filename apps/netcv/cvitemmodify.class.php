@@ -16,7 +16,10 @@ class NetCVItemModify extends Model
 {
 	public function build()
 	{
-	
+
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "cvitemmodify") );
+
 		$myNetCVUser = new NetCVUser($this->db, $this->currentUser, TRUE);
 		if (isset($this->args['cvid'], $this->args['gid'])) {
 			//$myNetCVUser->getCVContent($this->args['cvid']);

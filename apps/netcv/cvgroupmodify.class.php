@@ -14,7 +14,10 @@ class NetCVGroupModify extends Model
 {
 	public function build()
 	{
-	
+
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "cvgroupmodify") );
+
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
 		$this->assign("config", $config);

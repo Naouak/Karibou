@@ -32,6 +32,7 @@
 	<load class="Message" file="classes/message.class.php" />
 	<load class="Part" file="classes/part.class.php" />
 
+	<load class="MailMenu" file="mailmenu.class.php" />
 	
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
@@ -47,6 +48,8 @@
 
 	<view name="mini" class="MiniMail" template="small.tpl" />
 	<view name="miniconfig" class="MiniMailConfig" template="smallconfig.tpl" />
+	
+	<view name="menu" class="MailMenu" template="menu.tpl" />
 	
 	<page view="mailbox" />
 	<page view="mailbox">

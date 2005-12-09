@@ -17,8 +17,8 @@ class NetCVSectionList extends Model
 {
 	public function build()
 	{
-		$app = $this->appList->getApp($this->appname);
-		$app->addView("menu", "header_menu");
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "cvsectionlist") );
 		
 		$myNetCVUser = new NetCVUser($this->db, $this->currentUser, TRUE);
 

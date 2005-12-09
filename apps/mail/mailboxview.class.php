@@ -14,6 +14,9 @@ class MailboxView extends Model
 
 	function build()
 	{
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "home") );
+	
 		$user = $this->userFactory->getCurrentUser();
 		
 		$keychain = KeyChainFactory::getKeyChain($this->currentUser);
