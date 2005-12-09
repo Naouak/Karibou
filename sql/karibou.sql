@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 2.6.2-pl1
 -- http://www.phpmyadmin.net
 -- 
@@ -472,7 +472,7 @@ CREATE TABLE `netcv_users` (
 
 
 
-
+DROP TABLE IF EXISTS `flashmail`;
 CREATE TABLE `flashmail` (
   `id` int(11) NOT NULL auto_increment,
   `date` datetime NOT NULL default '0000-00-00 00:00:00',
@@ -525,11 +525,6 @@ CREATE TABLE `calendar_event` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 
--- Contenu de la table `calendar_event`
--- 
-
-INSERT INTO `calendar_event` VALUES (2, 1, 'event de jon', 'summary de jon', 'lille', '', 0, '2005-09-20 00:00:00', '2005-09-22 00:00:00', '');
 
 -- --------------------------------------------------------
 
