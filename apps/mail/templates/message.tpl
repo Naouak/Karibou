@@ -1,7 +1,6 @@
 <h1>##TITLE## ##FOR## {$username}</h1>
 <h2>##EMAIL_VIEW##</h2>
 
-{include file="menu.tpl"}
 <div class="headbox">
 	##FROM## :
 {foreach name=from item=addr from=$header->from}
