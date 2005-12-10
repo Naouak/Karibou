@@ -49,7 +49,8 @@
 		##ELEMENT_DESCRIPTION##:
 		<textarea class="netcvDescriptionItem" name="netcvDescriptionItem" rows="10" cols="40">{if (isset($myDescriptionItem->infos))}{$myDescriptionItem->getVar("infos")|escape:"html"}{/if}</textarea>
 		<input type="hidden" name="netcvDescriptionItemId" value="{if (isset($myDescriptionItem))}{$myDescriptionItem->getVar("id")}{/if}">
-		<br /><a href="{kurl app="wiki" page="help"}" >##TITLE_WIKI_SYNTAX##</a>
+		<br />
+		<a href="{kurl app="wiki" page="help"}" onclick="javascript:popup(this.href, 'wiki_help', '800', '900', '200', '200');return false;" >##TITLE_WIKI_SYNTAX##</a>
 		<br /><br />
 	  </div>
 	
