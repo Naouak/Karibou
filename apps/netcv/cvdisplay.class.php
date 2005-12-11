@@ -14,13 +14,24 @@ class NetCVDisplay extends Model
 {
 	public function build()
 	{
+
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
-	
-		if (isset($this->args['hostname']) && ($this->args['hostname'] != ""))
-		{
+
+		if ( (isset($this->args['hostname']) && ($this->args['hostname'] != "")) || (preg_match($GLOBALS['config']['netcv']['hostregexp'], $_SERVER["HTTP_HOST"], $regs))) {
+
+			if (isset($regs))
+			{
+				$hostname = $regs[1];
+				$this->assign("external", TRUE);
+			}
+			else
+			{
+				$hostname = $this->args['hostname'];
+			}
+			
 			//Récupération du group
-			$myNetCVGroup = new NetCVGroup($this->db, $this->args['hostname'], TRUE /* readonly */);
+			$myNetCVGroup = new NetCVGroup($this->db, $hostname, TRUE /* readonly */);
 			//Création du user à partir du groupe
 			$myNetCVUser = new NetCVUser($this->db, $myNetCVGroup->getInfo("user_id"));
 			//Création de la liste de CV
