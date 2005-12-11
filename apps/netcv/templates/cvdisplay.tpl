@@ -43,10 +43,14 @@
 	{assign var="mySections" value=$myNetCV->child}
 	<div id="container">
 		<div class="lang">
-			{section name=l loop=$myNetCVSingleCVList}
-				{assign var="singleCV" value=$myNetCVSingleCVList[l]}
+			{*section name=l loop=$myNetCVSingleCVList}
+    			{assign var="singleCV" value=$myNetCVSingleCVList[l]}
+{if isset($myNetCVSingleCVList[l])}
+    {if (isset($singleCV->getInfo("lang")))}
 				<a href="{kurl page="cv" hostname=$myNetCVGroup->getInfo("hostname") lang=$singleCV->getInfo("lang")}">{$myNetCVLanguage->getNameByCode($singleCV->getInfo("lang"))}</a>
-			{/section}
+    {/if}
+{/if}
+			{/section*}
 		</div>
 	{*Affichage des informations de l utilisateur*}
 		 <div id="boxTop">
@@ -61,11 +65,13 @@
 	{$myNetCVPersonalInfo.phonemobile}
 			 </div>
 			 <div id="email">
-				{if ($myNetCVGroup->getInfo("emailDisplay") == "show")}
+				{*if ($myNetCVGroup->getInfo("emailDisplay") == "show")*}
 					<a href="mailto:{$myNetCVPersonalInfo.email}">{$myNetCVPersonalInfo.email}</a>
-				{elseif ($myNetCVGroup->getInfo("emailDisplay") == "form")}
-					<a href="{kurl page="cvcontactform" hostname=$myNetCVGroup->getInfo("hostname") lang=$myNetCVSingleCV->getInfo("lang")}">contact</a>
-				{/if}
+				{*elseif ($myNetCVGroup->getInfo("emailDisplay") == "form")}
+{*$myNetCVGroup->getInfo("hostname")}
+{*$myNetCVSingleCV->getInfo("lang")}
+					<a href="{*{kurl page="cvcontactform" hostname=$myNetCVGroup->getInfo("hostname")}{* lang=$myNetCVSingleCV->getInfo("lang")}">contact</a>
+				{/if*}
 			 </div>
 			 <div id="other_infos">
 	{$myNetCVPersonalInfo.otherinfos}
