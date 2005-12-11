@@ -62,9 +62,9 @@ class NetCVSingleCVList {
 	function returnDefaultCV () {
 		if ( (count($this->CVList) > 0)) {
 	   		foreach($this->CVList as $cv) {
-	   			if ($cv->getInfo("default") == '1') {
+	   			//if ($cv->getInfo("default") == '1') {
 		   			return $cv;
-	   			}
+	   			//}
 	   		}
 	   	} else {
 	   		return FALSE;
