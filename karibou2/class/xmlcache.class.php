@@ -138,7 +138,7 @@ class XMLCache
 			}
 			else
 			{
-				$status = ereg("(.*)://(.*)/(.*)",$url,$regs);
+				$status = ereg("(.*)://([^/]*)/(.*)$",$url,$regs);
 				$hasPassword = FALSE;
 			}
 			if($status === FALSE)
