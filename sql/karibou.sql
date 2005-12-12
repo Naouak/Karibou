@@ -581,3 +581,54 @@ CREATE TABLE `admin_import` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- 
+
+-- phpMyAdmin SQL Dump
+-- version 2.7.0-pl1
+-- http://www.phpmyadmin.net
+-- 
+-- Serveur: localhost
+-- Généré le : Lundi 12 Décembre 2005 à 15:58
+-- Version du serveur: 4.1.15
+-- Version de PHP: 5.1.1
+-- 
+-- Base de données: `k2_apps`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Structure de la table `fileshare_rights`
+-- 
+
+CREATE TABLE `fileshare_rights` (
+  `id` int(11) NOT NULL default '0',
+  `group` int(11) NOT NULL default '0',
+  `rights` int(11) NOT NULL default '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+-- 
+-- Structure de la table `fileshare_sysinfos`
+-- 
+
+CREATE TABLE `fileshare_sysinfos` (
+  `id` int(11) NOT NULL default '0',
+  `path` text NOT NULL,
+  `creator` int(11) NOT NULL default '0',
+  `owner` int(11) NOT NULL default '0',
+  `type` enum('file','folder') NOT NULL default 'file'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+-- 
+-- Structure de la table `fileshare_versions`
+-- 
+
+CREATE TABLE `fileshare_versions` (
+  `id` int(11) NOT NULL default '0',
+  `description` text NOT NULL,
+  `user` int(11) NOT NULL default '0',
+  `date` datetime NOT NULL default '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
