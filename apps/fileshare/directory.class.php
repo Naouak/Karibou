@@ -29,14 +29,14 @@ class FileShareDirectory extends Model
 				}
 			}
 
-			$myDir = new KDirectory($path);
+			$myDir = new KDirectory($this->db, $path);
 		}
 		else
 		{
-			$myDir = new KDirectory();
+			$myDir = new KDirectory($this->db);
 		}
 
-		$app->addView("menu", "header_menu", array("page"=>"home", "myDir"=>$myDir, "permission"=>$this->permission));
+		$app->addView("menu", "header_menu", array("page"=>"home", "myDirPathBase64"=>$myDir->getPathBase64(), "permission"=>$this->permission));
 
 		$this->assign("myDir",$myDir);
 		

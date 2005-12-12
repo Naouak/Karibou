@@ -5,6 +5,8 @@
 
 	<load class="KDirectory" file="class/kdirectory.class.php" />
 	<load class="KFile" file="class/kfile.class.php" />
+	<load class="KDBFSElement" file="class/kdbfselement.class.php" />
+	<load class="KDBFSElementWriter" file="class/kdbfselementwriter.class.php" />
 
 	<load class="FileShareMenu" file="filesharemenu.class.php" />
 

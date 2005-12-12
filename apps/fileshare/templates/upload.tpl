@@ -6,6 +6,8 @@
 		<br />
 		{if (isset($directorynamebase64))}<input type="hidden" name="directoryname" value="{$directorynamebase64}" />{/if}
 		<input type="file" name="file" class="file" />
+		<br />
+		<label for="description">##DESCRIPTION##</label> : <textarea name="description" cols="40" rows="3"></textarea>
 		<input type="submit" value="##UPLOAD_FILE##" class="button">
 	</form>
 </div>

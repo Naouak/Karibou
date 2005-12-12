@@ -22,11 +22,11 @@ class FileShareSaveDirectory extends FormModel
 
 		if (isset($_POST['directoryname']) && $_POST['directoryname'] != '')
 		{
-			$dir = new KDirectory(base64_decode($_POST['directoryname']));
+			$dir = new KDirectory($this->db, base64_decode($_POST['directoryname']));
 		}
 		else
 		{
-			$dir = new KDirectory();
+			$dir = new KDirectory($this->db);
 		}
 
 		if( isset($_POST["newdirectoryname"]) && ($this->permission > _READ_ONLY_) )

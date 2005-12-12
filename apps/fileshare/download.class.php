@@ -18,7 +18,7 @@ class FileShareDownload extends Model
 	{
 		$currentUser = $this->userFactory->getCurrentUser();
 		
-		$file = new KFile (base64_decode($this->args["filename"]));
+		$file = new KFile ($this->db, base64_decode($this->args["filename"]));
 		
 		//$filepath = KARIBOU_PUB_DIR.'/fileshare/'.base64_decode($this->args["filename"]);
 

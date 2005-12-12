@@ -12,14 +12,16 @@
  *
  * @package applications
  **/
-class KFile
+class KFile extends KDBFSElement
 {
 	protected $rootdir;
 	protected $fullpath; //Contains the fullpath of the file
 	protected $path; //Contains the path of the file (from the rootdir)
 
-	function __construct($path, $rootdir = FALSE)
+	function __construct($db, $path, $rootdir = FALSE)
 	{
+		$this->db = $db;
+	
 		//Security
 		$path = str_replace ('/..', '', $path);
 		$path = str_replace ('../', '', $path);
@@ -34,6 +36,8 @@ class KFile
 		}
 		$this->path = $path;
 		$this->fullpath = $this->rootdir.$path;
+		
+		parent::__construct($db, 'file', $path);
 	}
 	
 	function getPathBase64()

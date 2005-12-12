@@ -12,7 +12,7 @@
  * 
  * @package applications
  **/
-class KDirectory
+class KDirectory extends KDBFSElement
 {
 	protected $fullpath;
 	protected $path;
@@ -21,8 +21,11 @@ class KDirectory
 	protected $subdirs = array();
 	protected $exists;
 
-	function __construct($path = "", $rootdir = FALSE)
+	function __construct(PDO $db, $path = "", $rootdir = FALSE)
 	{
+	
+		$this->db = $db;
+		
 		//Security
 		$path = str_replace ('/..', '', $path);
 		$path = str_replace ('../', '', $path);
@@ -69,6 +72,8 @@ class KDirectory
 			//Directory doesn't exist
 			$this->exists = FALSE;
 		}
+		
+		parent::__construct($db, 'folder', $path);
 	}
 	
 	//Return true if directory exists
@@ -106,7 +111,10 @@ class KDirectory
 	//Return full path from rootdir without trailing slash
 	public function getFullPath()
 	{
-		return $this->fullpath;
+		preg_match("/(.*)[\/]{0,1}$/", $this->fullpath, $matches);
+		//var_dump($matches);
+		return $matches[0];
+		//return $this->fullpath;
 	}
 
 	//Return path from rootdir without trailing slash
@@ -185,12 +193,14 @@ class KDirectory
 
 	public function addFile ($filename)
 	{
-		array_push($this->files, new KFile($filename) );
+		$kfile = new KFile($this->db, $filename);
+		
+		array_push($this->files, $kfile );
 	}
 	
 	public function addSubDir ($dirname)
 	{
-		array_push($this->subdirs, new KDirectory($dirname) );
+		array_push($this->subdirs, new KDirectory($this->db, $dirname) );
 	}
 	
 	public function returnFileList()
