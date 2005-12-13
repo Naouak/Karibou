@@ -1,13 +1,17 @@
 .fileshare {
 }
 
-.fileshare ul {
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * Large Icons View * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+
+.fileshare ul.largeicons {
 	margin: 2px;
 	padding: 0px;
 	list-style: none;
 }
 
-.fileshare li {
+.fileshare ul.largeicons li {
 float: left;
 margin: 10px;
 width: 150px;
@@ -17,50 +21,49 @@ text-align: center;
 overflow: hidden;
 }
 
-.fileshare li.file {
-	background-image: url(images/fileshare/default.png);
+.fileshare ul.largeicons.file li {
+	background-image: url(images/fileshare/largeicons/default.png);
 	background-repeat: no-repeat;
 	background-position: 55px 40px;
 }
 
-.fileshare li.file.xls {
-	background-image: url(images/fileshare/files/xls.png);
+.fileshare ul.largeicons.file  li.xls {
+	background-image: url(images/fileshare/largeicons/files/xls.png);
 }
-.fileshare li.file.doc {
-	background-image: url(images/fileshare/files/doc.png);
+.fileshare ul.largeicons.file li.doc {
+	background-image: url(images/fileshare/largeicons/files/doc.png);
 }
-.fileshare li.file.ppt {
-	background-image: url(images/fileshare/files/ppt.png);
+.fileshare ul.largeicons.file li.ppt {
+	background-image: url(images/fileshare/largeicons/files/ppt.png);
 }
-.fileshare li.file.zip {
-	background-image: url(images/fileshare/files/zip.png);
+.fileshare ul.largeicons.file li.zip {
+	background-image: url(images/fileshare/largeicons/files/zip.png);
 }
-.fileshare li.file.pdf {
-	background-image: url(images/fileshare/files/pdf.png);
+.fileshare ul.largeicons.file li.pdf {
+	background-image: url(images/fileshare/largeicons/files/pdf.png);
 }
 
-.fileshare li.directory {
-	background-image: url(images/fileshare/directory.png);
+.fileshare ul.largeicons.directory  li {
+	background-image: url(images/fileshare/largeicons/directory.png);
 	background-repeat: no-repeat;
 	background-position: 40px 35px;
-
 }
 
-.fileshare li a .name {
+.fileshare ul.largeicons li a .name {
 font-size: 0.85em;
 font-weight: bold;
 }
 
-.fileshare li a .size {
+.fileshare ul.largeicons  li a .size {
 font-size: 0.8em;
 }
 
-.fileshare li a .date {
+.fileshare ul.largeicons  li a .date {
 color: #acacac;
 font-size: 0.8em;
 }
 
-.fileshare li a {
+.fileshare ul.largeicons li a {
 	padding: 0px;
 	margin: 0px;
 	display: block;
@@ -68,11 +71,125 @@ font-size: 0.8em;
 	height: 95px;
 }
 
-.fileshare li.file a:hover {
-	background-image: url(images/fileshare/download.png);
+.fileshare ul.largeicons.file li a:hover {
+	background-image: url(images/fileshare/largeicons/download.png);
 	background-repeat: no-repeat;
 	background-position: bottom right;
 }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * Detailed View * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+
+.fileshare ul.detailed {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+.fileshare ul.detailed li {
+	margin: 0px 0px 0px 10px;
+	padding-left: 23px;
+	padding-top: 4px;
+	width: 840px;
+	height: 24px;
+	border: 0px solid #efefef;
+	text-align: left;
+	overflow: hidden;
+	cursor: hand;
+}
+
+.fileshare ul.detailed li:hover {
+	background-color: #efefef;
+}
+
+.fileshare ul.detailed.file li {
+	background-image: url(images/fileshare/detailed/default.png);
+	background-repeat: no-repeat;
+	background-position: 2px 2px;
+}
+
+.fileshare ul.detailed.file  li.xls {
+	background-image: url(images/fileshare/detailed/files/xls.png);
+}
+.fileshare ul.detailed.file li.doc {
+	background-image: url(images/fileshare/detailed/files/doc.png);
+}
+.fileshare ul.detailed.file li.ppt {
+	background-image: url(images/fileshare/detailed/files/ppt.png);
+}
+.fileshare ul.detailed.file li.zip {
+	background-image: url(images/fileshare/detailed/files/zip.png);
+}
+.fileshare ul.detailed.file li.pdf {
+	background-image: url(images/fileshare/detailed/files/pdf.png);
+}
+
+.fileshare ul.detailed.directory  li {
+	background-image: url(images/fileshare/detailed/directory.png);
+	background-repeat: no-repeat;
+	background-position: 0px 4px;
+}
+
+.fileshare ul.detailed li .name {
+	float: left;
+	display: block;
+	width: 200px;
+	font-size: 0.85em;
+	font-weight: bold;
+	overflow: hidden;
+}
+
+.fileshare ul.detailed  li .size {
+	float: left;
+	display: block;
+	width: 60px;
+	margin-left: 10px;
+	font-size: 0.85em;
+}
+
+.fileshare ul.detailed.directory  li .date {
+	margin-left: 70px;
+}
+
+.fileshare ul.detailed  li .date {
+	float: left;
+	display: block;
+	width: 150px;
+	font-size: 0.85em;
+}
+
+.fileshare ul.detailed  li .description {
+	float: left;
+	display: block;
+	width: 40px;
+	margin-left: 10px;
+	font-size: 0.85em;
+}
+
+.fileshare ul.detailed li a {
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	text-decoration: none;
+	height: 95px;
+}
+
+
+.fileshare ul.detailed.header li {
+	cursor: auto;
+	background-color: #bcbcbc;
+	height: 20px;
+	color: #ffffff;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+.fileshare ul.detailed.header li:hover {
+	background-color: #bcbcbc;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
 
 .fileshare .uploadlink, .fileshare .createdirectorylink {
 text-align: center;
