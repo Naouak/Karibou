@@ -73,19 +73,35 @@ protected $text;
 								$args[$key] = $file;
 								$locationfree = TRUE;
 								
+								if (isset($_POST["owner"]) && $_POST["owner"] != "")
+								{
+									$owner = $_POST["owner"];
+								}
+								else
+								{
+									$owner = NULL;
+								}
+								
 								$kdbfsw = new KDBFSElementWriter 
-									(	$this->db, 
+									(	
+										$this->db, 
 										array(
-											"path" => $dir->getFullPath()."/".$shortfilename.$append.$fileextension,
-											"creator"	=> $this->currentUser->getId(),
-											"owner"	=> FALSE,
-											"type"	=> 'file'),
+											"name"		=> $shortfilename.$append.$fileextension,
+											"parent"		=> $dir->getFolderId(),
+											"creator"		=> $this->currentUser->getId(),
+											"groupowner"	=> $owner,
+											"type"		=> 'file'),
 										array(
-											"group"	=> FALSE,
-											"rights"	=> 7),
+
+/*										
+											"group"		=> NULL,
+											"rights"		=> 7
+*/
+										),
+
 										array (
 											"description"	=> $_POST["description"],
-											"user"	=> $this->currentUser->getId())
+											"user"		=> $this->currentUser->getId())
 									);
 							}
 							else

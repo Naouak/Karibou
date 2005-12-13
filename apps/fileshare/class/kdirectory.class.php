@@ -132,6 +132,19 @@ class KDirectory extends KDBFSElement
 		return $path;
 	}
 	
+	public function getPathArray()
+	{
+		$path = $this->getPath();
+		preg_match_all("/([^\/]+)/", $path, $out, PREG_PATTERN_ORDER);
+		return $out[1];
+	}
+	
+	//Method getting the folderid
+	public function getFolderId()
+	{
+		return parent::getFolderId($this->getPathArray());
+	}
+	
 	//Return TRUE if dir is rootdir
 	public function isRootDir()
 	{

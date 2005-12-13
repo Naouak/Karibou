@@ -27,7 +27,7 @@ class KDBFSElementWriter
 		$this->db	= $db;
 		
 		$this->sysinfos	= $sysinfos;
-		$this->rights		= $rights;
+		$this->rights	= $rights;
 		$this->versions	= $versions;
 		
 		$this->writeAllInfos();
@@ -37,7 +37,10 @@ class KDBFSElementWriter
 	function writeAllInfos ()
 	{
 		$this->writeSysInfos();
-		$this->writeRights();
+		if (count ($this->rights) > 0)
+		{
+			$this->writeRights();
+		}
 		$this->writeVersions();
 	}
 
@@ -59,12 +62,33 @@ class KDBFSElementWriter
 		$tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		unset($stmt);
 		$this->id = $tab[0]['max']+1;
+
+
+		//groupwner is null if there is no group owner
+		if (is_null($this->sysinfos["groupowner"]))
+		{
+			$groupownertxt = "NULL";
+		}
+		else
+		{
+			$groupownertxt= "'".$this->sysinfos["groupowner"]."'";
+		}
 		
+		//parent is the id of the parent folder
+		if (is_null($this->sysinfos["parent"]))
+		{
+			$parenttxt = "NULL";
+		}
+		else
+		{
+			$parenttxt = "'".$this->sysinfos["parent"]."'";
+		}
+
 		$sql = "
 				INSERT INTO fileshare_sysinfos
-					(`id`, `path`, `creator`, `owner`, `type`)
+					(`id`, `parent`, `name`, `creator`, `groupowner`, `type`, `datetime`)
 				VALUES
-					('".$this->id."', '".$this->sysinfos["path"]."', '".$this->sysinfos["creator"]."', '".$this->sysinfos["owner"]."','".$this->sysinfos["type"]."')
+					('".$this->id."', $parenttxt, '".$this->sysinfos["name"]."', '".$this->sysinfos["creator"]."', $groupownertxt,'".$this->sysinfos["type"]."', NOW())
 			";			
 		try
 		{
@@ -80,12 +104,21 @@ class KDBFSElementWriter
 	//Method setting the $this->rights var
 	function writeRights ()
 	{
+		if (is_null($this->rights["group"]))
+		{
+			$grouptxt = "NULL";
+		}
+		else
+		{
+			$grouptxt = "'".$this->rights["group"]."'";
+		}
+	
 		$sql = "
 				INSERT INTO fileshare_rights
-					(`id`, `group`, `rights`)
+					(`id`, `group`, `rights`, `datetime`)
 				VALUES
-					('".$this->id."', '".$this->rights["group"]."', '".$this->rights["rights"]."')
-			";			
+					('".$this->id."', $grouptxt, '".$this->rights["rights"]."', NOW())
+			";
 		try
 		{
 			$stmt = $this->db->exec($sql);
@@ -102,7 +135,7 @@ class KDBFSElementWriter
 	{
 		$sql = "
 				INSERT INTO fileshare_versions
-					(`id`, `description`, `user`, `date`)
+					(`id`, `description`, `user`, `datetime`)
 				VALUES
 					('".$this->id."', '".$this->versions["description"]."', '".$this->versions["user"]."', NOW())
 			";			

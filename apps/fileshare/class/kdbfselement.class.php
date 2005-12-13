@@ -16,44 +16,57 @@ class KDBFSElement
 {
 	protected $db;
 	
-	protected $path;
+	protected $name;
 	
 	protected $sysinfos;
 	protected $rights;
 	protected $versions;
 
-	function __construct ($db, $type, $path)
+	function __construct ($db, $type, $name, $parent)
 	{
 		$this->db			= $db;
 
 		if ($this->db !== FALSE)
 		{
-			$this->path		= $path;
+			$this->name		= $name;
 			
 			$this->sysinfos	= array();
-			$this->rights		= array();
+			$this->rights	= array();
 			$this->versions	= array();
 			
-			$this->getAllInfos();
+			$this->retrieveAllInfos();
 		}
 	}
 
-	function getAllInfos ()
+	function retrieveAllInfos ()
 	{
-		$this->sysinfos = $this->getSysInfos();
+		$this->sysinfos = $this->retrieveSysInfos();
 		$this->id = $this->sysinfos['id'];
-		$this->rights = $this->getRights();
-		$this->versions = $this->getVersions();
+		
+		$this->rights = $this->retrieveRights();
+		$this->versions = $this->retrieveVersions();
 		
 	}
 
+	public function getSysInfos($key)
+	{
+		if (isset($this->sysinfos[$key]))
+		{
+			return $this->sysinfos[$key];
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+
 	//Method setting the $this->sysinfos var
-	function getSysInfos ()
+	protected function retrieveSysInfos ()
 	{
 		$sql = "
 				SELECT *
 				FROM fileshare_sysinfos
-				WHERE	fileshare_sysinfos.path = '".$this->path."'
+				WHERE	fileshare_sysinfos.name = '".$this->name."'
 			";			
 			
 		try
@@ -73,7 +86,7 @@ class KDBFSElement
 	}
 
 	//Method setting the $this->rights var
-	function getRights ()
+	function retrieveRights ()
 	{
 		$sql = "
 				SELECT *
@@ -90,17 +103,29 @@ class KDBFSElement
 			Debug::kill($e->getMessage());
 		}
 		
-		$tab = $stmt->fetch(PDO::FETCH_ASSOC);
+		$tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		
 		unset($stmt);
 		
 		return $tab;
 	}
-	
+
+	public function getVersionInfo($key)
+	{var_dump($this->versions);
+		if (isset($this->versions[0][$key]))
+		{
+			return $this->versions[0][$key];
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+
 	//Method setting the $this->versions var
-	function getVersions ()
+	function retrieveVersions ()
 	{
-		$sql = "
+		echo $sql = "
 				SELECT *
 				FROM fileshare_versions
 				WHERE	fileshare_versions.id = '".$this->id."'
@@ -115,11 +140,69 @@ class KDBFSElement
 			Debug::kill($e->getMessage());
 		}
 		
-		$tab = $stmt->fetch(PDO::FETCH_ASSOC);
+		$tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		
 		unset($stmt);
 		
 		return $tab;
+	}
+	
+	//Method getting the folderid
+	function getFolderId($patharray)
+	{
+		foreach($patharray as $level => $name)
+		{
+			//SQL select null parent for root directory
+			if ($level == 0)
+			{
+				$parenttxt = "IS NULL";
+			}
+			else
+			{
+				if (isset($thisid))
+				{
+					$parenttxt = "= '".$thisid."'";
+					unset($thisid);
+				}
+				else
+				{
+					Debug::kill("FileShare : No parent id for child...");
+				}
+			}
+			
+			$sql = "
+					SELECT *
+					FROM fileshare_sysinfos
+					WHERE `name` = '".$name."'
+					AND `parent` $parenttxt
+				";			
+				
+			try
+			{
+				$stmt = $this->db->query($sql);
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage());
+			}
+			
+			$tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			
+			if (isset($tab[0]["id"]))
+			{
+				$thisid = $tab[0]["id"];
+			}
+			unset($stmt);
+		}
+		
+		if (isset($thisid))
+		{
+			return $thisid;
+		}
+		else
+		{
+			return NULL;
+		}
 	}
 	
 }

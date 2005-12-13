@@ -44,6 +44,8 @@ class FileShareDirectory extends Model
 		{
 			$this->assign("uploadallowed", TRUE);
 		}
+		
+		$this->assign("viewtype", "detailed");
 	}
 }
 

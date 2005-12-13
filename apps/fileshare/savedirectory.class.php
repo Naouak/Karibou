@@ -32,8 +32,40 @@ class FileShareSaveDirectory extends FormModel
 		if( isset($_POST["newdirectoryname"]) && ($this->permission > _READ_ONLY_) )
 		{
 			$this->text = new KText();
+			$directorytxt = $this->text->epureString($_POST["newdirectoryname"]);
+			
+			$dir->createSubDirectory($directorytxt);
 
-			$dir->createSubDirectory($this->text->epureString($_POST["newdirectoryname"]));
+			if (isset($_POST["owner"]) && $_POST["owner"] != "")
+			{
+				$owner = $_POST["owner"];
+			}
+			else
+			{
+				$owner = NULL;
+			}
+								
+			$kdbfsw = new KDBFSElementWriter 
+				(	
+					$this->db, 
+					array(
+						"name"		=> $directorytxt,
+						"parent"		=> $dir->getFolderId(),
+						"creator"		=> $this->currentUser->getId(),
+						"groupowner"	=> $owner,
+						"type"		=> 'folder'),
+					
+						array(
+/*	
+						"group"		=> $owner,
+						"rights"		=> 7
+*/
+						),
+
+					array (
+						"description"	=> $_POST["description"],
+						"user"		=> $this->currentUser->getId())
+				);
 
 			$this->setRedirectArg('app', 'fileshare');
 			$this->setRedirectArg('page', 'directory');

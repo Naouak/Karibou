@@ -24,6 +24,9 @@ class FileShareUpload extends Model
 			$this->assign('directorynamebase64', $this->args['directoryname']);
 			$this->assign('directoryname', base64_decode($this->args['directoryname']));
 		}
+
+		$groups = $this->userFactory->getGroups();
+		$this->assign('grouptree', $groups->getTree() );
 	}
 }
 
