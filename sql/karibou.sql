@@ -584,7 +584,6 @@ CREATE TABLE `admin_import` (
 -- Structure de la table `fileshare_rights`
 -- 
 
-DROP TABLE IF EXISTS `fileshare_rights`;
 CREATE TABLE `fileshare_rights` (
   `id` int(11) NOT NULL default '0',
   `group` int(11) default '0',
@@ -598,7 +597,6 @@ CREATE TABLE `fileshare_rights` (
 -- Structure de la table `fileshare_sysinfos`
 -- 
 
-DROP TABLE IF EXISTS `fileshare_sysinfos`;
 CREATE TABLE `fileshare_sysinfos` (
   `id` int(11) NOT NULL default '0',
   `parent` int(11) default '0',
@@ -615,10 +613,11 @@ CREATE TABLE `fileshare_sysinfos` (
 -- Structure de la table `fileshare_versions`
 -- 
 
-DROP TABLE IF EXISTS `fileshare_versions`;
 CREATE TABLE `fileshare_versions` (
   `id` int(11) NOT NULL default '0',
+  `versionid` int(11) NOT NULL default '0',
   `description` text NOT NULL,
   `user` int(11) NOT NULL default '0',
   `datetime` datetime NOT NULL default '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
