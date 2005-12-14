@@ -89,7 +89,7 @@ font-size: 0.8em;
 
 .fileshare ul.detailed li {
 	margin: 0px 0px 0px 10px;
-	padding-left: 23px;
+	/*padding-left: 23px;*/
 	padding-top: 4px;
 	width: 840px;
 	height: 24px;
@@ -135,6 +135,7 @@ font-size: 0.8em;
 	float: left;
 	display: block;
 	width: 200px;
+	padding-left: 23px;
 	font-size: 0.85em;
 	font-weight: bold;
 	overflow: hidden;
@@ -162,15 +163,33 @@ font-size: 0.8em;
 .fileshare ul.detailed  li .description {
 	float: left;
 	display: block;
-	width: 40px;
+	width: 300px;
 	margin-left: 10px;
 	font-size: 0.85em;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.fileshare ul.detailed  li .downloadlink {
+	float: left;
+	display: block;
+	width: 30px;
+	margin-left: 10px;
+	font-size: 0.85em;
+	white-space: nowrap;
+	overflow: hidden;
+	font-weight: bold;
+	color: #000000;
+}
+
+.fileshare ul.detailed li a span {
+	cursor: hand;
 }
 
 .fileshare ul.detailed li a {
 	padding: 0px;
 	margin: 0px;
-	display: block;
+	display: inline;
 	text-decoration: none;
 	height: 95px;
 }
@@ -189,7 +208,93 @@ font-size: 0.8em;
 	background-color: #bcbcbc;
 }
 
+.fileshare .detailed.empty {
+	margin-left: 30px;
+	font-weight: bold;
+}
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * File Details * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+.fileshare .filedetails {
+	background-image: url(images/fileshare/largeicons/default.png);
+	background-repeat: no-repeat;
+	background-position: 10px 10px;
+	margin: 20px 0px 10px 30px;
+	padding-left: 90px;
+	line-height: 30px;
+}
+
+.fileshare .filedetails.xls {
+	background-image: url(images/fileshare/largeicons/files/xls.png);
+}
+.fileshare .filedetails.doc {
+	background-image: url(images/fileshare/largeicons/files/doc.png);
+}
+.fileshare .filedetails.ppt {
+	background-image: url(images/fileshare/largeicons/files/ppt.png);
+}
+.fileshare .filedetails.zip {
+	background-image: url(images/fileshare/largeicons/files/zip.png);
+}
+.fileshare .filedetails.pdf {
+	background-image: url(images/fileshare/largeicons/files/pdf.png);
+}
+
+.fileshare .filedetails label {
+	width: 120px;
+	display: block;
+	float: left;
+	clear: both;
+}
+
+.fileshare .filedetails div.detail span {
+	font-weight: bold;
+}
+
+.fileshare .filedetails div.description label, .fileshare .filedetails div.versions label {
+	display: inline;
+	float: none;
+}
+
+.fileshare .filedetails div.description span {
+	display: block;
+	margin-left: 40px;
+	padding: 5px;
+	width: 600px;
+	border: 1px solid #dfdfdf;
+	font-weight: normal;
+	background: #efefef;
+	line-height: 20px;
+}
+
+/* versions */
+.fileshare .filedetails div.versions {
+	margin-top: 20px;
+}
+
+.fileshare .filedetails div.versions ul {
+	display: block;
+	list-style: none;
+}
+
+.fileshare .filedetails div.versions li {
+	border-left: 4px solid #acacac;
+	padding-left: 10px;
+	margin-bottom: 5px;
+}
+
+.fileshare .filedetails div.versions li span {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.fileshare .filedetails div.versions {
+	
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+
 
 .fileshare .uploadlink, .fileshare .createdirectorylink {
 text-align: center;
