@@ -45,9 +45,8 @@ class FileShareSaveDirectory extends FormModel
 				$owner = NULL;
 			}
 								
-			$kdbfsw = new KDBFSElementWriter 
-				(	
-					$this->db, 
+			$kdbfsw = new KDBFSElementWriter ($this->db);
+			$kdbfsw->writeInfos(
 					array(
 						"name"		=> $directorytxt,
 						"parent"		=> $dir->getFolderId(),
@@ -63,8 +62,11 @@ class FileShareSaveDirectory extends FormModel
 						),
 
 					array (
+					/*
 						"description"	=> $_POST["description"],
-						"user"		=> $this->currentUser->getId())
+						"user"		=> $this->currentUser->getId()
+					*/
+					)
 				);
 
 			$this->setRedirectArg('app', 'fileshare');

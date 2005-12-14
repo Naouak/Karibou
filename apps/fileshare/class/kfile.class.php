@@ -18,27 +18,38 @@ class KFile extends KDBFSElement
 	protected $fullpath; //Contains the fullpath of the file
 	protected $path; //Contains the path of the file (from the rootdir)
 
-	function __construct($db, $path, $rootdir = FALSE)
+	function __construct($db, $path = FALSE, $rootdir = FALSE, $id = FALSE)
 	{
 		$this->db = $db;
-	
-		//Security
-		$path = str_replace ('/..', '', $path);
-		$path = str_replace ('../', '', $path);
 		
 		if ($rootdir == FALSE)
 		{
-			$this->rootdir = KARIBOU_PUB_DIR.'/fileshare/';
+			$this->rootdir = KARIBOU_PUB_DIR.'/fileshare/share/';
 		}
 		else
 		{
 			$this->rootdir = $rootdir;
 		}
-		$this->path = $path;
-		$this->fullpath = $this->rootdir.$path;
-		
-		parent::__construct($db, 'file', $path);
+	
+		if ($id === FALSE && $path !== FALSE)
+		{
+			//Security
+			$path = str_replace ('/..', '', $path);
+			$path = str_replace ('../', '', $path);
+			
+			$this->path = $path;
+			
+			parent::__construct($db, 'file', $this->getPath());
+		}
+		elseif ($id !== FALSE)
+		{
+			parent::__construct($db, FALSE, FALSE, $id);
+			
+		}
+
+		$this->fullpath = $this->rootdir.$this->path;
 	}
+	
 	
 	function getPathBase64()
 	{
@@ -74,7 +85,13 @@ class KFile extends KDBFSElement
 			return '';
 		}
 	}
-	
+
+	//Method getting the fileid
+	public function getFileId()
+	{
+		return parent::getElementId();
+	}
+
 	//Returns file extension if exists (string after the last dot)
 	function getExtension ()
 	{

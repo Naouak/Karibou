@@ -16,36 +16,53 @@ class KDBFSElement
 {
 	protected $db;
 	
-	protected $name;
+	protected $id;
+	
+	protected $path;
+	protected $patharray; //This array contains the names of each element
+	protected $patharrayid; //This array contains the ids of each element (in the same order as $patharray)
 	
 	protected $sysinfos;
 	protected $rights;
 	protected $versions;
 
-	function __construct ($db, $type, $name, $parent)
+	function __construct ($db, $type = FALSE, $path = FALSE, $id = FALSE)
 	{
 		$this->db			= $db;
 
 		if ($this->db !== FALSE)
 		{
-			$this->name		= $name;
-			
 			$this->sysinfos	= array();
 			$this->rights	= array();
 			$this->versions	= array();
 			
-			$this->retrieveAllInfos();
+			//Using the path to retrieve the infos
+			if ( ($type !== FALSE) && ($path !== FALSE) )
+			{
+				$this->path	= $path;
+				$this->setPathArrayId();
+
+				$this->retrieveAllInfos();
+			}
+			//Using the id to retrieve the infos
+			elseif ($id !== FALSE)
+			{
+				$this->id = $id;
+				$this->retrieveAllInfos();
+				$this->setPathArray();
+			}
+			else
+			{
+				Debug::kill("No decent way...");
+			}
 		}
 	}
 
 	function retrieveAllInfos ()
 	{
 		$this->sysinfos = $this->retrieveSysInfos();
-		$this->id = $this->sysinfos['id'];
-		
 		$this->rights = $this->retrieveRights();
 		$this->versions = $this->retrieveVersions();
-		
 	}
 
 	public function getSysInfos($key)
@@ -66,7 +83,7 @@ class KDBFSElement
 		$sql = "
 				SELECT *
 				FROM fileshare_sysinfos
-				WHERE	fileshare_sysinfos.name = '".$this->name."'
+				WHERE	fileshare_sysinfos.id = '".$this->getElementId()."'
 			";			
 			
 		try
@@ -91,7 +108,7 @@ class KDBFSElement
 		$sql = "
 				SELECT *
 				FROM fileshare_rights
-				WHERE	fileshare_rights.id = '".$this->id."'
+				WHERE	fileshare_rights.id = '".$this->getElementId()."'
 			";			
 			
 		try
@@ -110,25 +127,32 @@ class KDBFSElement
 		return $tab;
 	}
 
-	public function getVersionInfo($key)
-	{var_dump($this->versions);
-		if (isset($this->versions[0][$key]))
+	public function getLastVersionInfo($key)
+	{
+		$lastversion = end($this->versions);
+		if (isset($lastversion[$key]))
 		{
-			return $this->versions[0][$key];
+			return $lastversion[$key];
 		}
 		else
 		{
 			return FALSE;
 		}
 	}
+	
+	public function getAllVersions()
+	{
+		var_dump($this->versions);
+		return $this->versions;
+	}
 
 	//Method setting the $this->versions var
 	function retrieveVersions ()
 	{
-		echo $sql = "
+		$sql = "
 				SELECT *
 				FROM fileshare_versions
-				WHERE	fileshare_versions.id = '".$this->id."'
+				WHERE	fileshare_versions.id = '".$this->getElementId()."'
 			";			
 			
 		try
@@ -146,11 +170,38 @@ class KDBFSElement
 		
 		return $tab;
 	}
-	
-	//Method getting the folderid
-	function getFolderId($patharray)
+
+
+	//Return path from rootdir without trailing slash
+	public function getPath()
 	{
-		foreach($patharray as $level => $name)
+		if ( (strrpos($this->path,'/')== strlen($this->path)-1) )
+		{
+			$path = substr($this->path,0,strlen($this->path)-1);
+		}
+		else
+		{
+			$path = $this->path;
+		}
+		
+		return $path;
+	}
+	
+	public function getPathArray()
+	{
+		$path = $this->getPath();
+		preg_match_all("/([^\/]+)/", $path, $out, PREG_PATTERN_ORDER);
+		return $out[1];
+	}
+	
+
+	//Method setting the pathArray var
+	function setPathArrayId()
+	{
+		$this->patharray = $this->getPathArray();
+		$this->patharrayid = array();
+		
+		foreach($this->patharray as $level => $name)
 		{
 			//SQL select null parent for root directory
 			if ($level == 0)
@@ -191,17 +242,97 @@ class KDBFSElement
 			if (isset($tab[0]["id"]))
 			{
 				$thisid = $tab[0]["id"];
+				$this->patharrayid[] = $thisid;
+			}
+			else
+			{
+				$this->patharrayid[] = FALSE;
 			}
 			unset($stmt);
 		}
-		
-		if (isset($thisid))
+	}
+
+	//Method getting the element id
+	function getElementId()
+	{
+		if (!isset($this->id))
 		{
-			return $thisid;
+			if (!isset($this->patharrayid))
+			{
+				$this->setPathArrayId();
+			}
+			//NULL case ?
+			if (count ($this->patharrayid) > 0)
+			{
+				return end($this->patharrayid);
+			}
+			else
+			{
+				return NULL;
+			}
 		}
 		else
 		{
-			return NULL;
+			return $this->id;
+		}
+	}
+	
+	//Method setting the pathArray var
+	function setPathArray()
+	{
+		//$this->patharray = $this->getPathArray();
+		//$this->patharrayid = array();
+		
+		$cid = $this->id;
+		$rpatharray = array();
+		$rpatharrayid = array();
+		
+		//need loop protection... if parent id is already in id list...
+		
+		while (isset($cid) && ($cid != NULL) )
+		{
+			$sql = "
+					SELECT id, parent, name
+					FROM fileshare_sysinfos
+					WHERE `id` = '".$cid."'
+				";			
+					
+			try
+			{
+				$stmt = $this->db->query($sql);
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage());
+			}
+			
+			$tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			
+			if (count($tab) > 0)
+			{
+				$cid = $tab[0]["parent"];
+				
+				$rpatharrayid[] =  $tab[0]["id"];
+				$rpatharray[] = $tab[0]["name"];
+			}
+			else
+			{
+				$rpatharrayid[] = NULL;
+				$rpatharray[] = NULL;
+				$cid = NULL;
+			}
+			unset($stmt);
+		}
+		$this->patharray = array_reverse($rpatharray);
+		$this->patharrayid = array_reverse($rpatharrayid);
+		if (count($this->patharray) > 0)
+		{
+			$path = "";
+			foreach ($this->patharray as $name)
+			{
+				$path .= "/".$name;
+			}
+			$this->path = $path;
 		}
 	}
 	

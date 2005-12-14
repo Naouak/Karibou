@@ -19,7 +19,16 @@ class FileShareUpload extends Model
 		$app = $this->appList->getApp($this->appname);
 		$app->addView("menu", "header_menu", array("page"=>"uploadfile"));
 
-		if (isset($this->args['directoryname']))
+		//Uploading a new file version
+		if (isset($this->args['fileid']))
+		{
+			//$dbfsFile = new KDBFSElement($this->db, FALSE, FALSE, $this->args['fileid']);
+			//$this->assign('dbfsFile', $dbfsFile);
+			$file = new KFile($this->db, FALSE, FALSE, $this->args['fileid']);
+			$this->assign('myFile', $file);
+			
+		}
+		elseif (isset($this->args['directoryname']))
 		{
 			$this->assign('directorynamebase64', $this->args['directoryname']);
 			$this->assign('directoryname', base64_decode($this->args['directoryname']));

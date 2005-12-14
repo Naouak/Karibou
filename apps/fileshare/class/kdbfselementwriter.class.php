@@ -16,32 +16,45 @@ class KDBFSElementWriter
 {
 	protected $db;
 	
+	protected $id; //Element ID
+	
 	protected $path;
 	
 	protected $sysinfos;
 	protected $rights;
 	protected $versions;
 
-	function __construct ($db, $sysinfos, $rights, $versions)
+	function __construct ($db, $id = FALSE)
 	{
 		$this->db	= $db;
 		
-		$this->sysinfos	= $sysinfos;
-		$this->rights	= $rights;
-		$this->versions	= $versions;
-		
-		$this->writeAllInfos();
+		$this->id = $id;
 
 	}
 
-	function writeAllInfos ()
+	public function writeInfos ($sysinfos, $rights, $versions)
 	{
-		$this->writeSysInfos();
-		if (count ($this->rights) > 0)
+		if ( $sysinfos!== FALSE && $rights !== FALSE && $versions !== FALSE)
 		{
-			$this->writeRights();
+			$this->sysinfos	= $sysinfos;
+			$this->rights		= $rights;
+			$this->versions	= $versions;
+			
+			if (count($this->sysinfos) > 0)
+			{
+				$this->writeSysInfos();
+			}
+			
+			if (count ($this->rights) > 0)
+			{
+				$this->writeRights();
+			}
+			
+			if (count($this->versions) > 0)
+			{
+				$this->writeVersions();
+			}
 		}
-		$this->writeVersions();
 	}
 
 	//Method setting the $this->sysinfos var
@@ -135,9 +148,9 @@ class KDBFSElementWriter
 	{
 		$sql = "
 				INSERT INTO fileshare_versions
-					(`id`, `description`, `user`, `datetime`)
+					(`id`, `versionid`, `description`, `user`, `datetime`)
 				VALUES
-					('".$this->id."', '".$this->versions["description"]."', '".$this->versions["user"]."', NOW())
+					('".$this->id."', '".$this->versions["versionid"]."', '".$this->versions["description"]."', '".$this->versions["user"]."', NOW())
 			";			
 		try
 		{

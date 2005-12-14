@@ -33,7 +33,7 @@ class KDirectory extends KDBFSElement
 		$this->path = $path;
 		if ($rootdir == FALSE)
 		{
-			$this->rootdir = KARIBOU_PUB_DIR.'/fileshare/';
+			$this->rootdir = KARIBOU_PUB_DIR.'/fileshare/share/';
 		}
 		else
 		{
@@ -50,8 +50,8 @@ class KDirectory extends KDBFSElement
 				while (false !== ($entry = $d->read())) {
 				   if ($entry != '.' && $entry != '..' && $entry != '.htaccess')
 				   {
-					   if (is_file($this->fullpath.$entry))
-					   {
+						if (is_file($this->fullpath.$entry))
+						{
 							$this->addFile($this->getPath()."/".$entry);
 						}
 						elseif (is_dir($this->fullpath.$entry))
@@ -73,7 +73,7 @@ class KDirectory extends KDBFSElement
 			$this->exists = FALSE;
 		}
 		
-		parent::__construct($db, 'folder', $path);
+		parent::__construct($db, 'folder', $this->getPath());
 	}
 	
 	//Return true if directory exists
@@ -117,32 +117,12 @@ class KDirectory extends KDBFSElement
 		//return $this->fullpath;
 	}
 
-	//Return path from rootdir without trailing slash
-	public function getPath()
-	{
-		if ( (strrpos($this->path,'/')== strlen($this->path)-1) )
-		{
-			$path = substr($this->path,0,strlen($this->path)-1);
-		}
-		else
-		{
-			$path = $this->path;
-		}
-		
-		return $path;
-	}
-	
-	public function getPathArray()
-	{
-		$path = $this->getPath();
-		preg_match_all("/([^\/]+)/", $path, $out, PREG_PATTERN_ORDER);
-		return $out[1];
-	}
+
 	
 	//Method getting the folderid
 	public function getFolderId()
 	{
-		return parent::getFolderId($this->getPathArray());
+		return parent::getElementId();
 	}
 	
 	//Return TRUE if dir is rootdir

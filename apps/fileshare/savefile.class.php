@@ -22,111 +22,198 @@ protected $text;
 
 		if( isset($_FILES) && ($this->permission > _READ_ONLY_) )
 		{
-		
-			if (isset($_POST['directoryname']) && $_POST['directoryname'] != '')
+			if (isset($_POST["fileid"]))
 			{
-				$dir = new KDirectory($this->db, base64_decode($_POST['directoryname']));
-			}
-			else
-			{
-				$dir = new KDirectory($this->db);
-			}
-		
-			$this->text = new KText();
+				//Check rights
+				
+				$myFile = new KFile ($this->db, FALSE,FALSE, $_POST["fileid"]);
 
-			foreach( $_FILES as $key => $file)
-			{
-				if (!is_dir(KARIBOU_PUB_DIR.'/fileshare'))
+				//Get last version id + 1
+				$id = $myFile->getLastVersionInfo("id");
+				$actualVersionId = $myFile->getLastVersionInfo("versionid");
+				$newVersionId = $actualVersionId + 1;
+				
+				if (isset($newVersionId, $id) && ($actualVersionId !== FALSE) && ($actualVersionId != "") && ($id !== FALSE) && ($id != "") )
 				{
-					mkdir(KARIBOU_PUB_DIR.'/fileshare', 0700);
-				}
-
-				if( !empty($file['name']) )
-				{
-					if ( ($file["size"] == 0) || ($file["size"] < ini_get("upload_max_filesize")) )
-					{
-								//Size issue
-								$this->setRedirectArg('app', 'fileshare');
-								$this->setRedirectArg('page', 'upload');
-					}
-					else
-					{
-					 
-						$kfile = new KFile(FALSE, $file['name']);
-						
-						//$filename = $this->text->epureString($file['name']);
-						$shortfilename = $this->text->epureString($kfile->getShortName());
-						$fileextension = $this->text->epureString($kfile->getExtension());
-						if ($fileextension != '')
-						{
-							$fileextension = '.'.$fileextension;
-						}
+					$versionFilePath = KARIBOU_PUB_DIR.'/fileshare/versions/'.$id.".".$actualVersionId;
 					
-						$append = '';
-						$locationfree = FALSE;
+					//Overwrite if versioned file exists
+					/*
+					while (is_file($versionFilePath) || is_dir($versionFilePath))
+					{
+						$versionFilePath = KARIBOU_PUB_DIR.'/fileshare/versions/'.$id.".".++$newVersionId;
+					}
+					*/
+					
+					//if (!is_file($versionFilePath) && !is_dir($versionFilePath))
+					//{
 						
-						while (!$locationfree)
+						if (isset($_FILES))
 						{
-							if (!is_file($dir->getFullPath()."/".$shortfilename.$append.$fileextension)) {
-								move_uploaded_file($file['tmp_name'], $dir->getFullPath()."/".$shortfilename.$append.$fileextension);
-								unset($file['tmp_name']);
-								$args[$key] = $file;
-								$locationfree = TRUE;
-								
-								if (isset($_POST["owner"]) && $_POST["owner"] != "")
-								{
-									$owner = $_POST["owner"];
-								}
-								else
-								{
-									$owner = NULL;
-								}
-								
-								$kdbfsw = new KDBFSElementWriter 
-									(	
-										$this->db, 
-										array(
-											"name"		=> $shortfilename.$append.$fileextension,
-											"parent"		=> $dir->getFolderId(),
-											"creator"		=> $this->currentUser->getId(),
-											"groupowner"	=> $owner,
-											"type"		=> 'file'),
-										array(
+							
+							reset($_FILES);
+							$file = current($_FILES);
+							
+							//Backup  / Move actual file in fvers/id.versionid
+							$actualLocation = $myFile->getFullPath();
 
-/*										
-											"group"		=> NULL,
-											"rights"		=> 7
-*/
-										),
-
-										array (
-											"description"	=> $_POST["description"],
-											"user"		=> $this->currentUser->getId())
-									);
+							if (copy($actualLocation, $versionFilePath))
+							{
+								
+								//Copy uploaded file at backuped file original location
+	
+								//Save file in fileshare_versions/id.versionid
+								move_uploaded_file($file['tmp_name'], $actualLocation);
+								
+								//Update db
+								$kdbfsw = new KDBFSElementWriter ($this->db, $id);
+										$kdbfsw->writeInfos(
+												array(),
+												array(),
+		
+												array (
+													"description"	=> $_POST["description"],
+													"versionid"	=> $newVersionId,
+													"user"		=> $this->currentUser->getId())
+											);
+								
+								$this->setRedirectArg('app', 'fileshare');
+								$this->setRedirectArg('page', 'filedetails');
+								$this->setRedirectArg('filename', $myFile->getPathBase64());
+								//$this->setRedirectArg('page', 'directory');
+								//$this->setRedirectArg('directoryname', $dir->getPathBase64());
 							}
 							else
 							{
-								if($append == '')
-								{
-									$append = 1;
-								}
-								else
-								{
-									$append++;
-								}
+								Debug::Kill ("Backup failed");
 							}
 						}
-						$this->setRedirectArg('app', 'fileshare');
-						$this->setRedirectArg('page', 'directory');
-						$this->setRedirectArg('directoryname', $dir->getPathBase64());
+						else
+						{
+							Debug::kill("No post file");
+						}
+/*
 					}
+					else
+					{
+						Debug::Kill("FS element exists!");
+					}
+*/
 				}
 				else
 				{
-					//Size issue
-					$this->setRedirectArg('app', 'fileshare');
-					$this->setRedirectArg('page', 'upload');
-					$this->setRedirectArg('directoryname', $dir->getPathBase64());
+					Debug::kill("DBFS id issue");
+				}
+			}
+			else
+			{
+		
+				if (isset($_POST['directoryname']) && $_POST['directoryname'] != '')
+				{
+					$dir = new KDirectory($this->db, base64_decode($_POST['directoryname']));
+				}
+				else
+				{
+					$dir = new KDirectory($this->db);
+				}
+			
+				$this->text = new KText();
+	
+				foreach( $_FILES as $key => $file)
+				{
+					if (!is_dir(KARIBOU_PUB_DIR.'/fileshare'))
+					{
+						mkdir(KARIBOU_PUB_DIR.'/fileshare', 0700);
+					}
+	
+					if( !empty($file['name']) )
+					{
+						if ( ($file["size"] == 0) || ($file["size"] < ini_get("upload_max_filesize")) )
+						{
+									//Size issue
+									$this->setRedirectArg('app', 'fileshare');
+									$this->setRedirectArg('page', 'upload');
+						}
+						else
+						{
+						 
+							$kfile = new KFile(FALSE, $file['name']);
+							
+							//$filename = $this->text->epureString($file['name']);
+							$shortfilename = $this->text->epureString($kfile->getShortName());
+							$fileextension = $this->text->epureString($kfile->getExtension());
+							if ($fileextension != '')
+							{
+								$fileextension = '.'.$fileextension;
+							}
+						
+							$append = '';
+							$locationfree = FALSE;
+							
+							while (!$locationfree)
+							{
+								if (!is_file($dir->getFullPath()."/".$shortfilename.$append.$fileextension)) {
+									move_uploaded_file($file['tmp_name'], $dir->getFullPath()."/".$shortfilename.$append.$fileextension);
+									unset($file['tmp_name']);
+									$args[$key] = $file;
+									$locationfree = TRUE;
+									
+									if (isset($_POST["owner"]) && $_POST["owner"] != "")
+									{
+										$owner = $_POST["owner"];
+									}
+									else
+									{
+										$owner = NULL;
+									}
+									
+									$kdbfsw = new KDBFSElementWriter ($this->db);
+									
+									$kdbfsw->writeInfos(
+											array(
+												"name"		=> $shortfilename.$append.$fileextension,
+												"parent"		=> $dir->getFolderId(),
+												"creator"		=> $this->currentUser->getId(),
+												"groupowner"	=> $owner,
+												"type"		=> 'file'),
+											array(
+	
+	/*										
+												"group"		=> NULL,
+												"rights"		=> 7
+	*/
+											),
+	
+											array (
+												"versionid"	=> 0,
+												"description"	=> $_POST["description"],
+												"user"		=> $this->currentUser->getId())
+										);
+								}
+								else
+								{
+									if($append == '')
+									{
+										$append = 1;
+									}
+									else
+									{
+										$append++;
+									}
+								}
+							}
+							$this->setRedirectArg('app', 'fileshare');
+							$this->setRedirectArg('page', 'directory');
+							$this->setRedirectArg('directoryname', $dir->getPathBase64());
+						}
+					}
+					else
+					{
+						//Size issue
+						$this->setRedirectArg('app', 'fileshare');
+						$this->setRedirectArg('page', 'upload');
+						$this->setRedirectArg('directoryname', $dir->getPathBase64());
+					}
 				}
 			}
 		}

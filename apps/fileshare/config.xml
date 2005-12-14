@@ -18,6 +18,7 @@
 	<load class="FileShareDirectory" file="directory.class.php" />
 	<load class="FileShareCreateDirectory" file="createdirectory.class.php" />
 	<load class="FileShareSaveDirectory" file="savedirectory.class.php" />
+	<load class="FileShareFileDetails" file="filedetails.class.php" />
 
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
@@ -27,8 +28,10 @@
 	<view name="default" class="FileShareDefault" template="default.tpl" />
 	<view name="list" class="FileShareList" template="list.tpl" />
 	<view name="upload" class="FileShareUpload" template="upload.tpl" />
+	<view name="addversion" class="FileShareUpload" template="upload.tpl" />
 	<view name="download" class="FileShareDownload" template="download.tpl" />
 	<view name="createdirectory" class="FileShareCreateDirectory" template="createdirectory.tpl" />
+	<view name="filedetails" class="FileShareFileDetails" template="filedetails.tpl" />
 	
 	<view name="directory" class="FileShareDirectory" template="directory.tpl" />
 
@@ -37,6 +40,10 @@
 	<page name="upload" view="upload">
 		<option name="directoryname" class="AnyCharArgument" />
 	</page>
+	
+	<page name="addversion" view="addversion">
+		<option name="fileid" class="NumberArgument" />
+	</page>
 
 	<page name="createdirectory" view="createdirectory">
 		<option name="directoryname" class="AnyCharArgument" />
@@ -44,6 +51,10 @@
 
 	<page name="directory" view="directory">
 		<option name="directoryname" class="AnyCharArgument" />
+	</page>
+
+	<page name="filedetails" view="filedetails">
+		<argument name="filename" class="AnyCharArgument" />
 	</page>
 
 	<page name="download" view="download">
