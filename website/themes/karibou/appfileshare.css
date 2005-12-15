@@ -1,6 +1,11 @@
 .fileshare {
 }
 
+.fileshare a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * Large Icons View * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -97,6 +102,7 @@ font-size: 0.8em;
 	text-align: left;
 	overflow: hidden;
 	cursor: hand;
+	font-size: 0.85em;
 }
 
 .fileshare ul.detailed li:hover {
@@ -131,12 +137,28 @@ font-size: 0.8em;
 	background-position: 0px 4px;
 }
 
+.fileshare ul.detailed li span.unknown {
+	position: absolute;
+	float: left;
+	display: block;
+	width: 18px;
+	height: 24px;
+	background-image: url(images/fileshare/detailed/unknown.png);
+	background-repeat: no-repeat;
+	background-position: 9px 8px;
+	z-index: -1;
+}
+
+.fileshare ul.detailed li span.unknown span {
+	visibility: hidden;
+}
+
+
 .fileshare ul.detailed li .name {
 	float: left;
 	display: block;
-	width: 200px;
+	width: 180px;
 	padding-left: 23px;
-	font-size: 0.85em;
 	font-weight: bold;
 	overflow: hidden;
 }
@@ -146,7 +168,6 @@ font-size: 0.8em;
 	display: block;
 	width: 60px;
 	margin-left: 10px;
-	font-size: 0.85em;
 }
 
 .fileshare ul.detailed.directory  li .date {
@@ -156,16 +177,33 @@ font-size: 0.8em;
 .fileshare ul.detailed  li .date {
 	float: left;
 	display: block;
-	width: 150px;
-	font-size: 0.85em;
+	width: 100px;
+	overflow: hidden;
 }
 
 .fileshare ul.detailed  li .description {
 	float: left;
 	display: block;
-	width: 300px;
+	width: 250px;
 	margin-left: 10px;
-	font-size: 0.85em;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.fileshare ul.detailed  li .versionid {
+	float: left;
+	display: block;
+	width: 50px;
+	margin-left: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.fileshare ul.detailed  li .rights {
+	float: left;
+	display: block;
+	width: 50px;
+	margin-left: 10px;
 	white-space: nowrap;
 	overflow: hidden;
 }
@@ -173,13 +211,21 @@ font-size: 0.8em;
 .fileshare ul.detailed  li .downloadlink {
 	float: left;
 	display: block;
-	width: 30px;
+	width: 20px;
+	height: 24px;
 	margin-left: 10px;
 	font-size: 0.85em;
 	white-space: nowrap;
 	overflow: hidden;
 	font-weight: bold;
 	color: #000000;
+	
+	background-image: url(images/fileshare/detailed/download.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+.fileshare ul.detailed  li .downloadlink span {
+	visibility: hidden;
 }
 
 .fileshare ul.detailed li a span {
@@ -242,20 +288,22 @@ font-size: 0.8em;
 }
 
 .fileshare .filedetails label {
-	width: 120px;
+	width: 150px;
 	display: block;
 	float: left;
 	clear: both;
+	white-space: nowrap;
 }
 
-.fileshare .filedetails div.detail span {
+.fileshare .filedetails div.detail span, .fileshare .filedetails div.versions li.detail span {
 	font-weight: bold;
 }
 
-.fileshare .filedetails div.description label, .fileshare .filedetails div.versions label {
+.fileshare .filedetails div.description label, .fileshare .filedetails div.versions label.title  {
 	display: inline;
 	float: none;
 }
+
 
 .fileshare .filedetails div.description span {
 	display: block;
@@ -280,8 +328,18 @@ font-size: 0.8em;
 
 .fileshare .filedetails div.versions li {
 	border-left: 4px solid #acacac;
+	border-bottom: 1px dashed #acacac;
 	padding-left: 10px;
-	margin-bottom: 5px;
+	margin-right: 20px;
+	margin-bottom: 10px;
+}
+
+.fileshare .filedetails div.versions li.one  {
+	background-color: #f4f4f9;
+}
+
+.fileshare .filedetails div.versions li.two {
+	background-color: #fafaff;
 }
 
 .fileshare .filedetails div.versions li span {
@@ -293,6 +351,17 @@ font-size: 0.8em;
 	
 }
 
+
+/* Download Link */
+
+.fileshare .filedetails .downloadlink {
+	background-image: url(images/fileshare/detailed/download.png);
+	background-repeat: no-repeat;
+	background-position: center left;
+	padding-left: 20px;
+}
+
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * */
 
 
@@ -303,8 +372,6 @@ padding-bottom: 2px;
 
 .fileshare .uploadlink a, .fileshare .createdirectorylink a {
 clear: both;
-font-weight: bold;
-text-decoration: none;
 }
 
 .fileshare form {
