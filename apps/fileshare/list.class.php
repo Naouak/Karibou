@@ -16,7 +16,7 @@ class FileShareList extends Model
 {
 	public function build()
 	{
-		$myDir = new KDirectory(KARIBOU_PUB_DIR.'/fileshare/');
+		$myDir = new KDirectory(KARIBOU_PUB_DIR.'/fileshare/', $this->userFactory);
 		$this->assign("files",$myDir->returnFileList());
 	}
 }

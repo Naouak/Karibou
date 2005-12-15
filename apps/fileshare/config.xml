@@ -2,10 +2,12 @@
 	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
 
 	<load class="AnyCharArgument" file="../arguments/anycharargument.class.php" />
+	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
 
 	<load class="KDirectory" file="class/kdirectory.class.php" />
 	<load class="KFile" file="class/kfile.class.php" />
 	<load class="KDBFSElement" file="class/kdbfselement.class.php" />
+	<load class="KDBFSElementVersion" file="class/kdbfselementversion.class.php" />
 	<load class="KDBFSElementWriter" file="class/kdbfselementwriter.class.php" />
 
 	<load class="FileShareMenu" file="filesharemenu.class.php" />
@@ -59,6 +61,11 @@
 
 	<page name="download" view="download">
 		<argument name="filename" class="AnyCharArgument" />
+	</page>
+	
+	<page name="downloadversion" view="download">
+		<argument name="fileid" class="NumberArgument" />
+		<argument name="versionid" class="NumberArgument" />
 	</page>
 
 	<form action="savefile" class="FileShareSaveFile">

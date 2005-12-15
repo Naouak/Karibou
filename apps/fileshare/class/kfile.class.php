@@ -17,10 +17,13 @@ class KFile extends KDBFSElement
 	protected $rootdir;
 	protected $fullpath; //Contains the fullpath of the file
 	protected $path; //Contains the path of the file (from the rootdir)
+	
+	protected $userFactory;
 
-	function __construct($db, $path = FALSE, $rootdir = FALSE, $id = FALSE)
+	function __construct(PDO $db, UserFactory $userFactory, $path = FALSE, $rootdir = FALSE, $id = FALSE)
 	{
 		$this->db = $db;
+		$this->userFactory = $userFactory;
 		
 		if ($rootdir == FALSE)
 		{
@@ -39,11 +42,11 @@ class KFile extends KDBFSElement
 			
 			$this->path = $path;
 			
-			parent::__construct($db, 'file', $this->getPath());
+			parent::__construct($db, $userFactory, 'file', $this->getPath());
 		}
 		elseif ($id !== FALSE)
 		{
-			parent::__construct($db, FALSE, FALSE, $id);
+			parent::__construct($db, $userFactory, FALSE, FALSE, $id);
 			
 		}
 

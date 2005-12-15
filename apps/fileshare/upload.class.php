@@ -24,7 +24,7 @@ class FileShareUpload extends Model
 		{
 			//$dbfsFile = new KDBFSElement($this->db, FALSE, FALSE, $this->args['fileid']);
 			//$this->assign('dbfsFile', $dbfsFile);
-			$file = new KFile($this->db, FALSE, FALSE, $this->args['fileid']);
+			$file = new KFile($this->db, $this->userFactory, FALSE, FALSE, $this->args['fileid']);
 			$this->assign('myFile', $file);
 			
 		}

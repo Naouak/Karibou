@@ -26,10 +26,11 @@ protected $text;
 			{
 				//Check rights
 				
-				$myFile = new KFile ($this->db, FALSE,FALSE, $_POST["fileid"]);
+				$myFile = new KFile ($this->db, $this->userFactory, FALSE,FALSE, $_POST["fileid"]);
 
 				//Get last version id + 1
 				$id = $myFile->getLastVersionInfo("id");
+
 				$actualVersionId = $myFile->getLastVersionInfo("versionid");
 				$newVersionId = $actualVersionId + 1;
 				
@@ -64,7 +65,7 @@ protected $text;
 	
 								//Save file in fileshare_versions/id.versionid
 								move_uploaded_file($file['tmp_name'], $actualLocation);
-								
+
 								//Update db
 								$kdbfsw = new KDBFSElementWriter ($this->db, $id);
 										$kdbfsw->writeInfos(
@@ -73,7 +74,8 @@ protected $text;
 		
 												array (
 													"description"	=> $_POST["description"],
-													"versionid"	=> $newVersionId,
+													"uploadname"	=> $file['name'],
+													"versionid"		=> $newVersionId,
 													"user"		=> $this->currentUser->getId())
 											);
 								
@@ -102,7 +104,7 @@ protected $text;
 				}
 				else
 				{
-					Debug::kill("DBFS id issue");
+					Debug::kill("DBFS return issue");
 				}
 			}
 			else
@@ -110,11 +112,11 @@ protected $text;
 		
 				if (isset($_POST['directoryname']) && $_POST['directoryname'] != '')
 				{
-					$dir = new KDirectory($this->db, base64_decode($_POST['directoryname']));
+					$dir = new KDirectory($this->db, $this->userFactory, base64_decode($_POST['directoryname']));
 				}
 				else
 				{
-					$dir = new KDirectory($this->db);
+					$dir = new KDirectory($this->db, $this->userFactory);
 				}
 			
 				$this->text = new KText();
@@ -137,7 +139,7 @@ protected $text;
 						else
 						{
 						 
-							$kfile = new KFile(FALSE, $file['name']);
+							$kfile = new KFile($this->db, $this->userFactory, $file['name']);
 							
 							//$filename = $this->text->epureString($file['name']);
 							$shortfilename = $this->text->epureString($kfile->getShortName());
@@ -185,7 +187,8 @@ protected $text;
 											),
 	
 											array (
-												"versionid"	=> 0,
+												"versionid"	=> 1,
+												"uploadname"	=> $file['name'],
 												"description"	=> $_POST["description"],
 												"user"		=> $this->currentUser->getId())
 										);

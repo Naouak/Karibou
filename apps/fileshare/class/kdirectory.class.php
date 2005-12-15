@@ -20,11 +20,14 @@ class KDirectory extends KDBFSElement
 	protected $files = array();
 	protected $subdirs = array();
 	protected $exists;
+	
+	protected $userFactory;
 
-	function __construct(PDO $db, $path = "", $rootdir = FALSE)
+	function __construct(PDO $db, UserFactory $userFactory, $path = "", $rootdir = FALSE)
 	{
 	
 		$this->db = $db;
+		$this->userFactory = $userFactory;
 		
 		//Security
 		$path = str_replace ('/..', '', $path);
@@ -73,7 +76,7 @@ class KDirectory extends KDBFSElement
 			$this->exists = FALSE;
 		}
 		
-		parent::__construct($db, 'folder', $this->getPath());
+		parent::__construct($db, $this->userFactory, 'folder', $this->getPath());
 	}
 	
 	//Return true if directory exists
@@ -186,14 +189,14 @@ class KDirectory extends KDBFSElement
 
 	public function addFile ($filename)
 	{
-		$kfile = new KFile($this->db, $filename);
+		$kfile = new KFile($this->db, $this->userFactory, $filename);
 		
 		array_push($this->files, $kfile );
 	}
 	
 	public function addSubDir ($dirname)
 	{
-		array_push($this->subdirs, new KDirectory($this->db, $dirname) );
+		array_push($this->subdirs, new KDirectory($this->db, $this->userFactory, $dirname) );
 	}
 	
 	public function returnFileList()

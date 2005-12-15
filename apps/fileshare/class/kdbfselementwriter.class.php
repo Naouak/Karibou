@@ -148,9 +148,9 @@ class KDBFSElementWriter
 	{
 		$sql = "
 				INSERT INTO fileshare_versions
-					(`id`, `versionid`, `description`, `user`, `datetime`)
+					(`id`, `versionid`, `description`, `uploadname`, `user`, `datetime`)
 				VALUES
-					('".$this->id."', '".$this->versions["versionid"]."', '".$this->versions["description"]."', '".$this->versions["user"]."', NOW())
+					('".$this->id."', '".$this->versions["versionid"]."', '".$this->versions["description"]."', '".$this->versions["uploadname"]."', '".$this->versions["user"]."', NOW())
 			";			
 		try
 		{

@@ -19,7 +19,7 @@ class FileShareFileDetails extends Model
 		$app = $this->appList->getApp($this->appname);
 		$app->addView("menu", "header_menu", array("page"=>"filedetails"));
 	
-		$file = new KFile ($this->db, base64_decode($this->args["filename"]));
+		$file = new KFile ($this->db, $this->userFactory, base64_decode($this->args["filename"]));
 		
 		$this->assign("myFile", $file);
 	}
