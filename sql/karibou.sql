@@ -580,6 +580,7 @@ CREATE TABLE `admin_import` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
 -- 
 -- Structure de la table `fileshare_rights`
 -- 
@@ -617,7 +618,7 @@ CREATE TABLE `fileshare_versions` (
   `id` int(11) NOT NULL default '0',
   `versionid` int(11) NOT NULL default '0',
   `description` text NOT NULL,
+  `uploadname` text NOT NULL,
   `user` int(11) NOT NULL default '0',
   `datetime` datetime NOT NULL default '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
