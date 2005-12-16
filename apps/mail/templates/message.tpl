@@ -1,5 +1,6 @@
 <h1>##TITLE## ##FOR## {$username}</h1>
-<h2>##EMAIL_VIEW##</h2>
+<h2>{$header->subject}</h2>
+
 
 <div class="headbox">
 	##FROM## :
@@ -8,7 +9,7 @@
 	{$addr->personal} &lt;<a href="mailto:{$addr->mailbox}@{$addr->host}">{$addr->mailbox}@{$addr->host}</a>&gt;
 {/foreach}
 	<br />
-	##FOR## : 
+	##FOR## :
 {foreach name=to item=addr from=$header->to}
 	{if ! $smarty.foreach.to.first} , {/if}
 	{$addr->personal} &lt;<a href="mailto:{$addr->mailbox}@{$addr->host}">{$addr->mailbox}@{$addr->host}</a>&gt;
@@ -22,21 +23,14 @@
 {/foreach}
 	<br />
 {/if}
-{if $header->reply_to}
-	##Reply to## :
-{foreach name=reply_to item=addr from=$header->reply_to}
-	{if ! $smarty.foreach.reply_to.first} , {/if}
-	{$addr->personal} &lt;<a href="mailto:{$addr->mailbox}@{$addr->host}">{$addr->mailbox}@{$addr->host}</a>&gt;
-{/foreach}
-	<br />
-{/if}
 	<br />
 	##Date## : {$header->date}<br />
-	##SUBJECT## : {$header->subject}<br />
-	<br />
+	##SUBJECT## : {$header->subject}
+</div>
+<div class="headbox">
 	{if $uid_next}<a href="{kurl page='msg' mailbox=$mailbox uid=$uid_next}">##next##</a> | {/if}
 	{if $uid_prev}<a href="{kurl page='msg' mailbox=$mailbox uid=$uid_prev}">##previous##</a> | {/if}
-	<a href="{kurl page='reply' mailbox=$mailbox uid=$uid}">##Reply##</a> | 
+	<a href="{kurl page='reply' mailbox=$mailbox uid=$uid}">##Reply##</a> |
 	<a href="{kurl page='reply' mailbox=$mailbox uid=$uid opt='all'}">##Reply All##</a> |
 	<a href="{kurl page='remove'}?mailbox={$mailbox}&uid={$uid}">##Remove##</a>
 </div>

@@ -1,5 +1,5 @@
 <h1>##TITLE## ##FOR## {$username}</h1>
-<h2>##MAILBOX_VIEW##</h2>
+<h2>##MAILBOX_VIEW## : {$messagecount} ##messages##</h2>
 {if $loggedin}
 {include file="menumail.tpl"}
 <div id="maillist">
