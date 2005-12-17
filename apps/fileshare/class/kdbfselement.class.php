@@ -101,17 +101,14 @@ class KDBFSElement
 		try
 		{
 			$stmt = $this->db->query($sql);
+			$tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			unset($stmt);
+			return $tab[0];
 		}
 		catch(PDOException $e)
 		{
 			Debug::kill($e->getMessage());
 		}
-		
-		$tab = $stmt->fetch(PDO::FETCH_ASSOC);
-		
-		unset($stmt);
-		
-		return $tab;
 	}
 
 	//Method setting the $this->rights var

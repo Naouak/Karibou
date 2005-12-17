@@ -72,9 +72,17 @@ class KDBFSElementWriter
 		{
 			Debug::kill($e->getMessage());
 		}
-		$tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		unset($stmt);
-		$this->id = $tab[0]['max']+1;
+		
+		if (isset($stmt))
+		{
+			$tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			unset($stmt);
+			$this->id = $tab[0]['max']+1;
+		}
+		else
+		{
+			$this->id = 1;
+		}
 
 
 		//groupwner is null if there is no group owner
