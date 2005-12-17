@@ -316,9 +316,12 @@ class KDBFSElement
 					Debug::kill($e->getMessage());
 				}
 				
-				$tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				if (isset($stmt))
+				{
+					$tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				}
 				
-				if (isset($tab[0]["id"]))
+				if (isset($tab, $tab[0]["id"]))
 				{
 				
 					$thisid = $tab[0]["id"];
