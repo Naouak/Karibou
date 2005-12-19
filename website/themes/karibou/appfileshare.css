@@ -146,7 +146,8 @@ font-size: 0.8em;
 	background-image: url(images/fileshare/detailed/unknown.png);
 	background-repeat: no-repeat;
 	background-position: 9px 8px;
-	z-index: -1;
+	z-index: 1;
+	cursor: help;
 }
 
 .fileshare ul.detailed li span.unknown span {
@@ -349,6 +350,23 @@ font-size: 0.8em;
 
 .fileshare .filedetails div.versions {
 	
+}
+
+/* File details toolbox */
+
+.fileshare .filedetails .toolbox {
+visibility: hidden;
+	border:1px solid #000000;
+	background: transparent;
+	float: right;
+}
+
+.fileshare .filedetails .toolbox form {
+	border:1px solid #000000;
+	background: transparent;
+	padding: 0px;
+	margin: 0px;
+	display: inline;
 }
 
 
