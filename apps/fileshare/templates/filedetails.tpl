@@ -20,6 +20,12 @@
 	{/if}
 	
 	<div class="filedetails{if ($myFile->getExtension() != "")} {$myFile->getExtension()}{/if}">
+		<div class="toolbox">
+			<form method="post" action="{kurl page="savefile"}">
+				<input type="hidden" name="fileid" value="{$myFile->getElementId()}">
+				<input type="submit" name="delete" value="##DELETE##">
+			</form>
+		</div>
 		<div class="detail name">
 			<label for="name">##NAME## :</label> 
 			<span id="name">

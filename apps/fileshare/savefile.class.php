@@ -90,6 +90,7 @@ protected $text;
 								Debug::Kill ("Backup failed");
 							}
 						}
+						//CASE OF DELETION???
 						else
 						{
 							Debug::kill("No post file");
