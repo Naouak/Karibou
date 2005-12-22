@@ -17,13 +17,13 @@
 }
 
 .fileshare ul.largeicons li {
-float: left;
-margin: 10px;
-width: 150px;
-height: 100px;
-border: 1px solid #efefef;
-text-align: center;
-overflow: hidden;
+	float: left;
+	margin: 10px;
+	width: 150px;
+	height: 100px;
+	border: 1px solid #efefef;
+	text-align: center;
+	overflow: hidden;
 }
 
 .fileshare ul.largeicons.file li {
@@ -355,8 +355,7 @@ font-size: 0.8em;
 /* File details toolbox */
 
 .fileshare .filedetails .toolbox {
-visibility: hidden;
-	border:1px solid #000000;
+	border: 1px solid #000000;
 	background: transparent;
 	float: right;
 }
