@@ -57,6 +57,27 @@ class KDBFSElementWriter
 		}
 	}
 
+	public function setAsDeleted ()
+	{
+		if ($this->id != "")
+		{
+			$sql = "
+					UPDATE fileshare_sysinfos
+					SET `deleted` = 1
+					WHERE `id` = '".$this->id."'
+				";			
+			try
+			{
+				$stmt = $this->db->exec($sql);
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage());
+			}
+			unset($stmt);
+		}
+	}
+
 	//Method setting the $this->sysinfos var
 	function writeSysInfos ()
 	{

@@ -14,6 +14,7 @@
 
 	<load class="FileShareDefault" file="default.class.php" />
 	<load class="FileShareSaveFile" file="savefile.class.php" />
+	<load class="FileShareDeleteFile" file="deletefile.class.php" />
 	<load class="FileShareList" file="list.class.php" />
 	<load class="FileShareUpload" file="upload.class.php" />
 	<load class="FileShareDownload" file="download.class.php" />
@@ -34,8 +35,8 @@
 	<view name="download" class="FileShareDownload" template="download.tpl" />
 	<view name="createdirectory" class="FileShareCreateDirectory" template="createdirectory.tpl" />
 	<view name="filedetails" class="FileShareFileDetails" template="filedetails.tpl" />
-	
-	<view name="directory" class="FileShareDirectory" template="directory.tpl" />
+
+    <view name="directory" class="FileShareDirectory" template="directory.tpl" />
 
 	<page view="directory" />
 	
@@ -73,6 +74,10 @@
 	</form>
 	
 	<form action="savedirectory" class="FileShareSaveDirectory">
+		<redirect />
+	</form>
+
+	<form action="deletefile" class="FileShareDeleteFile">
 		<redirect />
 	</form>
 

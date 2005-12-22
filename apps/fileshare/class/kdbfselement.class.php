@@ -8,6 +8,10 @@
  * @package applications
  **/
 
+define ("READ", 4);
+define ("UPDATE", 2);
+define ("WRITE", 1);
+
 /**
  *
  * @package applications
@@ -28,6 +32,7 @@ class KDBFSElement
 	protected $versions;
 	
 	public $creator;
+	public $userrights;
 
 	function __construct (PDO $db, UserFactory $userFactory, $type = FALSE, $path = FALSE, $id = FALSE)
 	{
@@ -63,6 +68,8 @@ class KDBFSElement
 				Debug::kill("No decent way...");
 			}
 		}
+		
+		$this->getUserRights();
 	}
 
 	function retrieveAllInfos ()
@@ -95,7 +102,7 @@ class KDBFSElement
 		$sql = "
 				SELECT *
 				FROM fileshare_sysinfos
-				WHERE	fileshare_sysinfos.id = ".$this->getElementId()."
+				WHERE	id = ".$this->getElementId()."
 			";			
 			
 		try
@@ -305,6 +312,7 @@ class KDBFSElement
 						FROM fileshare_sysinfos
 						WHERE `name` = '".$name."'
 						AND `parent` $parenttxt
+						AND `deleted` = 0
 					";			
 					
 				try
@@ -446,6 +454,61 @@ class KDBFSElement
 			$this->path = $path;
 		}
 	}
+	
+	/*
+	Rights...
+	  DEC BIN
+	 - 4  100 : read
+	 - 2  010 : update (add new version...)
+	 - 1  001 : write (delete, rename...)
+	Which give :
+	 - 7 is administrator
+	 - 6 is contributor
+	 - 4 is reader
+	*/
+	public function getUserRights()
+	{
+		$currentUser = $this->userFactory->getCurrentUser();
+		$groupownerid = $this->getSysInfos("groupowner");
+		
+		if (
+				$currentUser->getId() == $this->getSysInfos("creator") 
+			||	$currentUser->getId() == $this->getLastVersionInfo("uploader")
+			|| 	(isset($groupownerid) && $groupownerid != NULL && $currentUser->isInGroup($this->db, $groupownerid)) )
+		{
+			$this->rights = READ|UPDATE|WRITE; //Full rights
+		}
+		else
+		{
+			$this->rights = READ|UPDATE; //Read & update rights
+		}
+	}
+	
+	public function canRead()
+	{
+		if ($this->rights & READ == READ)
+			return TRUE;
+		else
+			return FALSE;
+	}
+	
+	public function canUpdate()
+	{
+		if ($this->rights & UPDATE == UPDATE)
+			return TRUE;
+		else
+			return FALSE;
+	}
+	
+	public function canWrite()
+	{
+		if ($this->rights & WRITE == WRITE)
+			return TRUE;
+		else
+			return FALSE;
+	}
+	
+	
 
 }
 
