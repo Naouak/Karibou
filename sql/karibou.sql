@@ -605,6 +605,7 @@ CREATE TABLE `fileshare_sysinfos` (
   `creator` int(11) NOT NULL default '0',
   `groupowner` int(11) default '0',
   `type` enum('file','folder') NOT NULL default 'file',
+  `deleted` tinyint(1) NOT NULL default '0',
   `datetime` datetime NOT NULL default '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
