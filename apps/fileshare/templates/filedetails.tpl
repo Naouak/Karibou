@@ -20,14 +20,6 @@
 	{/if}
 	
 	<div class="filedetails{if ($myFile->getExtension() != "")} {$myFile->getExtension()}{/if}">
-		{if ($myFile->canWrite())}
-		<div class="toolbox">
-			<form method="post" action="{kurl page="deletefile"}">
-				<input type="hidden" name="fileid" value="{$myFile->getElementId()}">
-				<input type="submit" name="delete" value="##DELETE##">
-			</form>
-		</div>
-		{/if}
 		<div class="detail name">
 			<label for="name">##NAME## :</label> 
 			<span id="name">
@@ -102,6 +94,14 @@
 		<div class="downloadlink">
 			<a href="{kurl page="download" filename=$myFile->getPathBase64()}" title="##DOWNLOAD## {$myFile->getName()}">##DOWNLOAD## {$myFile->getName()}</a>
 		</div>
+		{if ($myFile->canWrite())}
+		<div class="toolbox">
+			<form method="post" action="{kurl page="deletefile"}" id="deletefile" name="deletefile">
+				<input type="hidden" name="fileid" value="{$myFile->getElementId()}">
+				<a href="#" onclick="if(confirm('##DELETE_ASKIFSURE##')){ldelim}document.deletefile.submit(){rdelim}else{ldelim}return false;{rdelim};">##DELETE_THIS_FILE##</a>
+			</form>
+		</div>
+		{/if}
 		
 	{if $myFile->existsInDB()}
 		{if $versions|@count>0}
@@ -179,12 +179,14 @@
 						{$myFile->getName()}</a>
 					</div>
 				</li>
-{/if}
+				{/if}
 			{/foreach}			
 			</ul>
+			{if $myFile->canUpdate()}
+			<a href="{kurl page="addversion" fileid=$myFile->getFileId()}" class="add">##ADD_NEW_VERSION##</a>
+			{/if}
 		</div>
 		{/if}
-		<a href="{kurl page="addversion" fileid=$myFile->getFileId()}">##ADD_NEW_VERSION##</a>
 	{/if}
 	</div>
 

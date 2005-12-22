@@ -200,4 +200,12 @@ Upload file
 		<translation language="fr">Inconnu dans la base de données</translation>
 		<translation language="en">Unknown in database</translation>
 	</sentence>
+	<sentence key="DELETE_THIS_FILE">
+		<translation language="fr">Supprimer ce fichier</translation>
+		<translation language="en">Delete this file</translation>
+	</sentence>
+	<sentence key="DELETE_ASKIFSURE">
+		<translation language="fr">Êtes-vous sûr de vouloir supprimer ce fichier ?</translation>
+		<translation language="en">Do you confirm your will to delete this file ?</translation>
+	</sentence>
 </translation>
