@@ -289,7 +289,7 @@ font-size: 0.8em;
 }
 
 .fileshare .filedetails label {
-	width: 150px;
+	width: 180px;
 	display: block;
 	float: left;
 	clear: both;
@@ -355,29 +355,46 @@ font-size: 0.8em;
 /* File details toolbox */
 
 .fileshare .filedetails .toolbox {
-	border: 1px solid #000000;
+	display: block;
 	background: transparent;
-	float: right;
+	border: 0px;
 }
 
 .fileshare .filedetails .toolbox form {
-	border:1px solid #000000;
 	background: transparent;
 	padding: 0px;
 	margin: 0px;
 	display: inline;
+	border: 0px;
+}
+
+.fileshare .filedetails .toolbox form a {
+	background-image: url(images/fileshare/detailed/trash.png);
+	background-repeat: no-repeat;
+	background-position: center left;
+	padding-left: 22px;
+	padding-top: 1px;
 }
 
 
 /* Download Link */
 
-.fileshare .filedetails .downloadlink {
+.fileshare .filedetails .downloadlink a {
 	background-image: url(images/fileshare/detailed/download.png);
 	background-repeat: no-repeat;
 	background-position: center left;
-	padding-left: 20px;
+	padding-left: 22px;
+	padding-top: 1px;
 }
 
+/* Add new version link */
+.fileshare .filedetails .versions a.add {
+	background-image: url(images/fileshare/detailed/add.png);
+	background-repeat: no-repeat;
+	background-position: center left;
+	padding-left: 22px;
+	padding-top: 1px;
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * */
 
