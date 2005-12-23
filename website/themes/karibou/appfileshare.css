@@ -371,9 +371,10 @@ font-size: 0.8em;
 .fileshare .filedetails .toolbox form a {
 	background-image: url(images/fileshare/detailed/trash.png);
 	background-repeat: no-repeat;
-	background-position: center left;
+	background-position: 0px left;
 	padding-left: 22px;
-	padding-top: 1px;
+	padding-top: 0px;
+	padding-bottom: 2px;
 }
 
 
@@ -382,18 +383,20 @@ font-size: 0.8em;
 .fileshare .filedetails .downloadlink a {
 	background-image: url(images/fileshare/detailed/download.png);
 	background-repeat: no-repeat;
-	background-position: center left;
+	background-position: 0px left;
 	padding-left: 22px;
-	padding-top: 1px;
+	padding-top: 0px;
+	padding-bottom: 2px;
 }
 
 /* Add new version link */
 .fileshare .filedetails .versions a.add {
 	background-image: url(images/fileshare/detailed/add.png);
 	background-repeat: no-repeat;
-	background-position: center left;
+	background-position: 0px left;
 	padding-left: 22px;
-	padding-top: 1px;
+	padding-top: 0px;
+	padding-bottom: 2px;
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -454,4 +457,89 @@ clear: both;
 }
 .fileshare form label {
 	font-weight: bold;
+}
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * Mini  App * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+.fileshare.mini ul {
+	margin: 0px;
+	margin-left: 20px;
+	margin-right: 20px;
+	padding: 0px;
+	list-style: none;
+}
+
+.fileshare.mini ul li {
+	margin-bottom: 10px;
+	line-height: 20px;
+	padding: 5px;
+	border-bottom: 1px dashed #afafaf;
+	overflow: hidden;
+}
+
+
+.fileshare.mini ul li span span {
+	font-weight: bold;
+}
+
+.fileshare.mini ul li span.hits, .fileshare.mini ul li span.uploader,  .fileshare.mini ul li span.description, .fileshare.mini ul li span.ago {
+	margin-left: 20px;
+	display: block;
+}
+
+.fileshare.mini ul li span.description span{
+	display: block;
+	margin-left: 20px;
+	color: #898989;
+}
+
+.fileshare.mini ul li span.name {
+	display: block;
+}
+
+.fileshare.mini ul li span.name a {
+	background-image: url(images/fileshare/detailed/default.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	padding-left: 22px;
+	padding-top: 0px;
+	padding-bottom: 2px;
+}
+
+.fileshare.mini ul li span.name a.xls {
+	background-image: url(images/fileshare/detailed/files/xls.png);
+}
+.fileshare.mini ul li span.name a.doc {
+	background-image: url(images/fileshare/detailed/files/doc.png);
+}
+.fileshare.mini ul li span.name a.ppt {
+	background-image: url(images/fileshare/detailed/files/ppt.png);
+}
+.fileshare.mini ul li span.name a.zip {
+	background-image: url(images/fileshare/detailed/files/zip.png);
+}
+.fileshare.mini ul li span.name a.pdf {
+	background-image: url(images/fileshare/detailed/files/pdf.png);
+}
+
+.fileshare.mini ul li a span.downloadlink {
+	float: right;
+	display: block;
+	width: 20px;
+	height: 24px;
+	font-size: 0.85em;
+	white-space: nowrap;
+	overflow: hidden;
+	font-weight: bold;
+	color: #000000;
+	z-index: 1;
+	
+	cursor: hand;
+	
+	background-image: url(images/fileshare/detailed/download.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+.fileshare.mini ul li a span.downloadlink span {
+	visibility: hidden;
 }
