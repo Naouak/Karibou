@@ -31,10 +31,12 @@ class KDBFSElement
 	protected $rights;
 	protected $versions;
 	
+	protected $stats;
+	
 	public $creator;
 	public $userrights;
 
-	function __construct (PDO $db, UserFactory $userFactory, $type = FALSE, $path = FALSE, $id = FALSE)
+	function __construct (PDO $db, UserFactory $userFactory, $type = FALSE, $path = FALSE, $id = FALSE, $data = FALSE)
 	{
 		$this->db			= $db;
 		$this->userFactory	= $userFactory;
@@ -44,6 +46,7 @@ class KDBFSElement
 			$this->sysinfos	= array();
 			$this->rights	= array();
 			$this->versions	= array();
+			$this->stats	= array();
 			
 			//Using the path to retrieve the infos
 			if ( ($type !== FALSE) && ($path !== FALSE) )
@@ -57,11 +60,16 @@ class KDBFSElement
 				}
 			}
 			//Using the id to retrieve the infos
-			elseif ($id !== FALSE)
+			elseif ($id !== FALSE && $data === FALSE)
 			{
 				$this->id = $id;
 				$this->retrieveAllInfos();
 				$this->setPathArray();
+			}
+			elseif ($id !== FALSE && $data !== FALSE)
+			{
+				$this->setAllInfos($data);
+				//Need to be loaded afterwards...
 			}
 			else
 			{
@@ -70,6 +78,34 @@ class KDBFSElement
 		}
 		
 		$this->getUserRights();
+	}
+
+	function setAllInfos ($data)
+	{
+		$this->id 						= $data["id"];
+		$this->sysinfos["id"] 			= $data["id"];
+		$this->sysinfos["parent"] 		= $data["parent"];
+		$this->sysinfos["name"] 		= $data["name"];
+		$this->sysinfos["creator"] 		= $data["creator"];
+		if ($this->getSysInfos("creator") !== FALSE)
+		{
+			$this->creator = $this->userFactory->prepareUserFromId($this->getSysInfos("creator"));
+		}
+		$this->setPathArray();
+
+		$version["id"] 					= $data["id"];
+		$version["versionid"] 			= $data["versionid"];
+		$version["description"] 		= $data["description"];
+		$version["user"] 				= $data["user"];
+		$version["datetime"] 			= $data["datetime"];
+		$version["timestamp"] 			= $data["timestamp"];
+		$version["user"] 				= $this->userFactory->prepareUserFromId($version["user"]);
+		$this->versions[0] 				= new KDBFSElementVersion ($version);
+
+		$this->stats[0] = array();
+		$this->stats[0]["elementid"]	= $data["id"];
+		$this->stats[0]["versionid"]	= $data["versionid"];
+		$this->stats[0]["hits"]			= $data["hits"];
 	}
 
 	function retrieveAllInfos ()
@@ -82,6 +118,8 @@ class KDBFSElement
 		{
 			$this->creator = $this->userFactory->prepareUserFromId($this->getSysInfos("creator"));
 		}
+		
+		$this->stats = $this->retrieveStats();
 	}
 
 	public function getSysInfos($key)
@@ -166,7 +204,7 @@ class KDBFSElement
 	protected function retrieveVersions ()
 	{
 		$sql = "
-				SELECT *
+				SELECT *, TIMESTAMP(datetime) AS timestamp
 				FROM fileshare_versions
 				WHERE	fileshare_versions.id = '".$this->getElementId()."'
 			";			
@@ -508,8 +546,84 @@ class KDBFSElement
 			return FALSE;
 	}
 	
+	/* Download stat function */
+	public function downloaded($versionid = FALSE)
+	{
+		if (!isset($versionid) || $versionid === FALSE)
+		{
+			$versionid = $this->getLastVersionInfo("versionid");
+		}
 	
+		$sql = "
+				INSERT INTO fileshare_stats
+					(`elementid`, `versionid`, `userid`, `datetime`)
+				VALUES
+					('".$this->getElementId()."', '".$versionid."', '".$this->userFactory->getCurrentUser()->getId()."', NOW())
+			";			
+		try
+		{
+			$stmt = $this->db->exec($sql);
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}
+		unset($stmt);
+	}
+	
+	public function getHitsByVersion($versionid = FALSE)
+	{
+		if (!isset($versionid) || $versionid === FALSE)
+		{
+			$versionid = $this->getLastVersionInfo("versionid");
+		}
+		
+		foreach($this->stats as $stat)
+		{
+			if ($stat["versionid"] == $versionid)
+			{
+				return $stat["hits"];
+			}
+		}
+		return NULL;
+	}
+	
+	public function retrieveStats ($versionid = FALSE)
+	{
+		if (!isset($versionid) || $versionid === FALSE)
+		{
+			$versionid = $this->getLastVersionInfo("versionid");
+		}
+		
+		$sql = "
+				SELECT count(*) as hits, versionid
+				FROM fileshare_stats
+				WHERE elementid = '".$this->getElementId()."'
+				GROUP BY versionid
+			";			
+			
+		try
+		{
+			$stmt = $this->db->query($sql);
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}
+		
+		$tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		
+		unset($stmt);
+		
+		return $tab;
+	}
 
+	public function getSecondsSinceLastUpdate ()
+	{
+		$updatedate	= $this->getLastVersionInfo("timestamp");
+		$nowdate	= mktime();
+		return ($nowdate-$updatedate);
+	}
 }
 
 ?>

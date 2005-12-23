@@ -108,7 +108,7 @@
 				<span class="versionid">{if $file->getLastVersionInfo("versionid") > 1}{$file->getLastVersionInfo("versionid")}{else}&nbsp;{/if}</span>
 				{*<span class="rights">?</span>*}
 			</a>
-			<a href="{kurl page="download" filename=$file->getPathBase64()}" title="{$file->getName()}">
+			<a href="{kurl page="download" filename=$file->getPathBase64()}" title="##DOWNLOAD## {$file->getName()}">
 				<span class="downloadlink"><span>##DOWNLOAD##</span></span>
 			</a>
 		</li>

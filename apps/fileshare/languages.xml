@@ -208,4 +208,48 @@ Upload file
 		<translation language="fr">Êtes-vous sûr de vouloir supprimer ce fichier ?</translation>
 		<translation language="en">Do you confirm your will to delete this file ?</translation>
 	</sentence>
+	<sentence key="DOWNLOAD_COUNT">
+		<translation language="fr">Téléchargements</translation>
+		<translation language="en">Downloads</translation>
+	</sentence>
+	<sentence key="AGO1">
+		<translation language="fr">Il y a</translation>
+		<translation language="en"></translation>
+	</sentence>
+	<sentence key="AGO2">
+		<translation language="fr"></translation>
+		<translation language="en">ago</translation>
+	</sentence>
+	<sentence key="SECOND">
+		<translation language="fr">minute</translation>
+		<translation language="en">minutes</translation>
+	</sentence>
+	<sentence key="MINUTE">
+		<translation language="fr">minute</translation>
+		<translation language="en">minute</translation>
+	</sentence>
+	<sentence key="HOUR">
+		<translation language="fr">heure</translation>
+		<translation language="en">hour</translation>
+	</sentence>
+	<sentence key="DAY">
+		<translation language="fr">jour</translation>
+		<translation language="en">day</translation>
+	</sentence>
+	<sentence key="S">
+		<translation language="fr">s</translation>
+		<translation language="en">s</translation>
+	</sentence>
+	<sentence key="LASTADDEDFILES">
+		<translation language="fr">Derniers fichiers ajoutés</translation>
+		<translation language="en">Last added files</translation>
+	</sentence>
+	<sentence key="MOSTDOWNLOADEDFILES">
+		<translation language="fr">Fichiers les plus téléchargés</translation>
+		<translation language="en">Most downloaded files</translation>
+	</sentence>
+	<sentence key="UPLOADED_BY">
+		<translation language="fr">Mis en ligne par</translation>
+		<translation language="en">Uploaded by</translation>
+	</sentence>
 </translation>

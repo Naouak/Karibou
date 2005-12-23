@@ -53,6 +53,12 @@
 			</span>
 		</div>
 		{if $myFile->existsInDB()}
+		<div class="detail hits">
+			<label for="hits">##DOWNLOAD_COUNT## :</label>
+			<span id="hits">
+				{$myFile->getHitsByVersion()}
+			</span>
+		</div>
 		<div class="detail uploader">
 			<label for="uploader">##UPLOADER## :</label>
 			<span id="uploader">
@@ -159,6 +165,12 @@
 						{else}
 							{$versionsize/1024|@round:1}KB
 						{/if}&nbsp;
+						</span>
+					</div>
+					<div class="detail hits">
+						<label for="hits">##DOWNLOAD_COUNT## :</label>
+						<span id="hits">
+							{$myFile->getHitsByVersion($version->getInfo("versionid"))}
 						</span>
 					</div>
 					<div class="detail uploadname">

@@ -38,6 +38,7 @@ class FileShareDownload extends Model
 					//echo fread ($handle, $file->getSize());
 					//fclose ($handle);
 					readfile($file->getFullPath());
+					$file->downloaded();
 					exit;
 				
 				}
@@ -56,6 +57,7 @@ class FileShareDownload extends Model
 					header("Pragma: no-cache");
 					header("Expires: 0");
 					readfile($versionFilePath);
+					$file->downloaded($this->args["versionid"]);
 					exit;
 			}
 		}

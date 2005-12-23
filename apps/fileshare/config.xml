@@ -9,6 +9,7 @@
 	<load class="KDBFSElement" file="class/kdbfselement.class.php" />
 	<load class="KDBFSElementVersion" file="class/kdbfselementversion.class.php" />
 	<load class="KDBFSElementWriter" file="class/kdbfselementwriter.class.php" />
+	<load class="KDBFSElementFactory" file="class/kdbfselementfactory.class.php" />
 
 	<load class="FileShareMenu" file="filesharemenu.class.php" />
 
@@ -22,6 +23,7 @@
 	<load class="FileShareCreateDirectory" file="createdirectory.class.php" />
 	<load class="FileShareSaveDirectory" file="savedirectory.class.php" />
 	<load class="FileShareFileDetails" file="filedetails.class.php" />
+	<load class="FileShareMini" file="mini.class.php" />
 
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
@@ -35,6 +37,7 @@
 	<view name="download" class="FileShareDownload" template="download.tpl" />
 	<view name="createdirectory" class="FileShareCreateDirectory" template="createdirectory.tpl" />
 	<view name="filedetails" class="FileShareFileDetails" template="filedetails.tpl" />
+	<view name="mini" class="FileShareMini" template="mini.tpl" />
 
     <view name="directory" class="FileShareDirectory" template="directory.tpl" />
 

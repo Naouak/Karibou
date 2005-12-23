@@ -20,7 +20,7 @@ class KFile extends KDBFSElement
 	
 	protected $userFactory;
 
-	function __construct(PDO $db, UserFactory $userFactory, $path = FALSE, $rootdir = FALSE, $id = FALSE)
+	function __construct(PDO $db, UserFactory $userFactory, $path = FALSE, $rootdir = FALSE, $id = FALSE, $data = FALSE)
 	{
 		$this->db = $db;
 		$this->userFactory = $userFactory;
@@ -46,7 +46,7 @@ class KFile extends KDBFSElement
 		}
 		elseif ($id !== FALSE)
 		{
-			parent::__construct($db, $userFactory, FALSE, FALSE, $id);
+			parent::__construct($db, $userFactory, FALSE, FALSE, $id, $data);
 			
 		}
 
