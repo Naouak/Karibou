@@ -12,6 +12,10 @@ class FileShareMenu extends Model
 
 		if( isset($this->args['permission']) && ($this->args['permission'] > _READ_ONLY_) )
 			$this->assign("uploadallowed", TRUE);
+
+		if( isset($this->args["folderExistsInDB"]) && ($this->args["folderExistsInDB"] == TRUE) )
+			$this->assign("folderExistsInDB", TRUE);			
+		
 	}
 }
 

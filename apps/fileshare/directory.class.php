@@ -36,7 +36,7 @@ class FileShareDirectory extends Model
 			$myDir = new KDirectory($this->db, $this->userFactory);
 		}
 
-		$app->addView("menu", "header_menu", array("page"=>"home", "myDirPathBase64"=>$myDir->getPathBase64(), "permission"=>$this->permission));
+		$app->addView("menu", "header_menu", array("page"=>"home", "myDirPathBase64"=>$myDir->getPathBase64(), "permission"=>$this->permission, "folderExistsInDB" => $myDir->existsInDB() ));
 
 		$this->assign("myDir",$myDir);
 		

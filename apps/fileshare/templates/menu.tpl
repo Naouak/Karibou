@@ -7,7 +7,7 @@
 	<li><strong>##UPLOAD_A_FILE##</strong></li>
 {elseif $page == "createdirectory"}
 	<li><strong>##CREATE_A_DIRECTORY##</strong></li>
-{elseif ($uploadallowed)}
+{elseif ($uploadallowed) && $folderExistsInDB}
 	<li><a href="{kurl page='upload' directoryname=$myDirPathBase64}">##UPLOAD_A_FILE##</a></li>
 	<li><a href="{kurl page='createdirectory' directoryname=$myDirPathBase64}">##CREATE_A_DIRECTORY##</a></li>
 {/if}
