@@ -177,29 +177,25 @@ class User
      */
     function getUserLink()
     {
-        /*
-        * Retourne le code XHTML affichant le surnom de l'user, son prénom et nom en alt et fait un lien vers l'annuaire
-        */
-       $pseudo = $this->surname;
-       // On supprime les '@' devant les pseudos
-       while(substr($pseudo,0,1)=="@")
-       {
-			$pseudo=substr($pseudo,1);
-       }
-       //Si le pseudo est vide, on prends le login
-       if ($pseudo=='')
-       {
-           $pseudo=$this->login;
-       }
-
-       $pseudo = htmlspecialchars($pseudo,ENT_QUOTES);
-
-      /* if ($this->IsInClub("Intranet"))
-       {
-           $pseudo = "@".$pseudo;
-       } */
+		if ($this->surname == '')
+		{
+			if ($this->firstname != '' || $this->lastname != '')
+			{
+				$pseudo = $this->firstname." ".$this->lastname;
+			}
+			else
+			{
+				$pseudo = $this->login;
+			}
+		}
+		else
+		{
+			$pseudo = $this->surname;
+		}
+		
+		$pseudo = htmlspecialchars($pseudo,ENT_QUOTES);
+		
 		return $pseudo;
-//       return "<span class=\"userLink\" title=\"" . $this->firstname . " " . $this->lastname . "\"><a href=\"/annuaire/~" . $this->login . "\">" . $pseudo . "</a></span>";
     }
     
     /**

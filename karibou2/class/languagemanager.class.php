@@ -110,9 +110,14 @@ class LanguageManager
 						{
 							$this->addSentence($translation["language"], $sentence["key"], $translation->text);
 						}
-						else
+						elseif (isset($translation["value"]) && ($translation["value"] != ""))
 						{						
 							$this->addSentence($translation["language"], $sentence["key"], $translation["value"]);
+						}
+						else
+						{
+							$this->addSentence($translation["language"], $sentence["key"], "");
+							Debug::display("Notice : ".$sentence["key"]." has an empty translation");
 						}
 					}
 				}
