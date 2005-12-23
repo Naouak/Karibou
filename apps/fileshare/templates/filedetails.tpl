@@ -56,7 +56,11 @@
 		<div class="detail hits">
 			<label for="hits">##DOWNLOAD_COUNT## :</label>
 			<span id="hits">
-				{$myFile->getHitsByVersion()}
+				{if $myFile->getHitsByVersion() != NULL}
+					{$myFile->getHitsByVersion()}
+				{else}
+					0
+				{/if}&nbsp;
 			</span>
 		</div>
 		<div class="detail uploader">
@@ -126,7 +130,7 @@
 							{$version->getInfo("versionid")}
 						{else}
 							##ORIGINAL##
-						{/if}
+						{/if}&nbsp;
 						</span>
 					</div>
 					<div class="detail date">
@@ -134,7 +138,7 @@
 						##UPLOADDATE## :
 						</label>
 						<span id="date_v{$version->getInfo("versionid")}">
-						{$version->getInfo("datetime")|date_format:"%d %B %Y @ %H:%M"}
+						{$version->getInfo("datetime")|date_format:"%d %B %Y @ %H:%M"}&nbsp;
 						</span>
 					</div>
 					<div class="detail uploader">
@@ -170,7 +174,11 @@
 					<div class="detail hits">
 						<label for="hits">##DOWNLOAD_COUNT## :</label>
 						<span id="hits">
-							{$myFile->getHitsByVersion($version->getInfo("versionid"))}
+							{if $myFile->getHitsByVersion($version->getInfo("versionid")) != NULL}
+								{$myFile->getHitsByVersion($version->getInfo("versionid"))}
+							{else}
+								0
+							{/if}&nbsp;
 						</span>
 					</div>
 					<div class="detail uploadname">
