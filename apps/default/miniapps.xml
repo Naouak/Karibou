@@ -12,5 +12,6 @@
 
 	<medium id ="news" app="news" view="mini" />
 	<medium id ="mail" app="mail" view="mini" />
+	<medium id ="fileshare" app="fileshare" view="mini" />
 
 </miniapps>

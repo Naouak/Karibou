@@ -94,11 +94,15 @@
         <translation language="en" value="My Notes" />
     </sentence>
     <sentence key="onlineusers">
+        <translation language="fr">Connectés</translation>
+        <translation language="en">Online users</translation>
+    </sentence>
+    <sentence key="fileshare">
         <translation language="fr">
-        	Connectés
+        	Partage de Fichiers
         </translation>
         <translation language="en">
-        	Online users
+        	File Share
         </translation>
     </sentence>
     <sentence key="CHANGEPASSWORD_TITLE">
