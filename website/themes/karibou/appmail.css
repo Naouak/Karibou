@@ -1,4 +1,3 @@
-
 .unread {
 	font-weight: bold;
 }
@@ -118,13 +117,34 @@ td.date {
 	border: 1px solid #999;
 	width: 660px;
 }
-.bodybox .mail {
+.bodybox pre{
+	font-size: 1.1em;
+}
+.bodybox .mail{
 	background-color: #fff;
 	border: 1px solid #fff;
+	list-style-type: none;
+	padding-left: 30px;
+	background-image: url(images/mail/read.png);
+	background-repeat: no-repeat;
+}
+.bodybox .unread{
+	background-position: 0 3px;
+	background-image: url(images/mail/unread.png);
+	background-repeat: no-repeat;
 }
 .bodybox .dragmail {
 	background-color: #fff;
 	border: 1px solid #444;
+	list-style-type: none;
+	padding-left: 30px;
+	background-image: url(images/mail/read.png);
+	background-repeat: no-repeat;
+}
+.bodybox .dragmail .unread{
+	background-position: 0 3px;
+	background-image: url(images/mail/unread.png);
+	background-repeat: no-repeat;
 }
 .bodybox textarea {
 	width: 650px;
