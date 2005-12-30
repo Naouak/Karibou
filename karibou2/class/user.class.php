@@ -283,6 +283,9 @@ class User
 		$qry_groups = "SELECT ".$cols." FROM ".$annudb.".groups";
 		$qry_groups .= $where_clause;
 		
+		//Added for usability with GroupList
+		$qry_groups .= "  ORDER BY `left` ASC";
+		
 		return $qry_groups;
 	}
 
@@ -291,6 +294,10 @@ class User
 		if( $this->grouptree !== FALSE )
 		{
 			return $this->grouptree;
+		}
+		else
+		{
+			$this->grouptree = new GroupList();
 		}
 		
 		$this->getGroups($db);
@@ -308,6 +315,7 @@ class User
 		{
 			$this->grouptree[] = new Group($tab);
 		}
+		
 		unset($stmt);
 		return $this->grouptree;
 	}

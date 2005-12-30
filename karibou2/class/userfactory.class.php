@@ -148,9 +148,9 @@ class UserFactory
 	}
 	
 	/**
-	 * renvoie une liste d'objets Club
+	 * renvoie une liste d'objets Group
 	 *
-	 * @return ObjectList liste des étudiants du club
+	 * @return ObjectList liste des utilisateurs du groupe
 	 */
 
 	function getGroups()
