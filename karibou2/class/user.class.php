@@ -323,7 +323,7 @@ class User
 	function isInGroup(PDO $db, $groupid)
 	{
 		$this->getAllGroups($db);
-		if (is_array($this->grouptree))
+		if (is_array($this->grouptree) || is_object($this->grouptree))
 		{
 			foreach($this->grouptree as $group)
 			{
