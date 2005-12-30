@@ -69,7 +69,7 @@ class AnnuaireProfile extends Model
 		//$this->assign('usergroups', $groups->getTree() );
 		$user->getGroups($this->db);
 		$userallgroups = $user->getAllGroups($this->db);
-		$this->assign("usergroups", $userallgroups->getTree());
+		$this->assign("usergroups", $userallgroups /*->getTree()*/);
 		
 		
 	}
