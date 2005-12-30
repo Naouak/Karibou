@@ -27,6 +27,15 @@
 	<div class="sendflashmaillink">
 		<a href="{kurl app="flashmail" page="writeto" userid=$user->getId()}" onclick="new Ajax.Updater('flashmail_headerbox_answer', '{kurl app="flashmail" page="headerbox_writeto" userid=$user->getId()}',{literal} {asynchronous:true, evalScripts:true}{/literal}); document.getElementById('flashmail_headerbox_answer').className='show'; return false;">##SEND_FLASHMAIL##</a>
 	</div>
+{*
+	<div class="groups">	
+		<h3>##BELONGS_TO_GROUPS##</h3>
+		<ul>
+			{include file="grouplist.tpl"}
+		</ul>
+	</div>
+*}
+	
 {if ($addresses|@count>0)}	
 	<div class="addresses">
 		<h3>##ADDRESSES##</h3>

@@ -16,8 +16,8 @@
 	<li><a href="{kurl page="groups"}">##USER_GROUPS##</a></li>
 {/if}
 
-{if $page == "profile"}
+{*if $page == "profile"}
 	<li><strong>##USER_LINK##</strong></li>
-{else}
+{else*}
 	<li><a href="{kurl username=$username}">##USER_LINK##</a></li>
-{/if}
+{*/if*}

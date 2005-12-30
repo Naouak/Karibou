@@ -1,17 +1,28 @@
-{include file="appnav.tpl"}
+<h1>##TITLE##</h1>
+<h3>##VIEWING_GROUP## {$thegroup.name}</h3>
+{assign var="lastgroupname" value=""}
 {foreach item=user from=$userlist}
-<div class="thumbnail">
-	<img src="{$user.picture}" /><br />
-	<div class="thumbtitle">
+	{if $lastgroupname != $user.groupname}
+		{assign var="lastgroupname" value=$user.groupname}
+		{assign var="lastgroupid" value=$user.groupid}
+	<hr style="clear: both;" />
+	<h4><a href="{kurl page="groupid" id=$lastgroupid}">
+		{$lastgroupname}
+	</h4>
+	<br />
+	{/if}
+	<div class="thumbnail">
+			<a href="{kurl page="" username=$user.login}"><img src="{$user.picture}" /></a><br />
+			<div class="thumbtitle"
 		<a href="{kurl page="" username=$user.login}">
-{if $user.firstname}
-		{$user.firstname} {$user.lastname}
-{else}
-		{$user.login}
-{/if}
+		{if $user.firstname}
+				{$user.firstname} {$user.lastname}
+		{else}
+				{$user.login}
+		{/if}
 		</a>
+			</div>
 	</div>
-</div>
 {/foreach}
 <br />
 <br />

@@ -60,9 +60,17 @@ class AnnuaireProfile extends Model
 			$this->assign('phone_types', array("WORK", "HOME", "FAX", "CELL", "PAGER") );
 			$this->assign('email_types', array("INTERNET", "AIM", "ICQ", "JABBER", "MSN", "SKYPE") );
 		}
-		
-		$user = $this->userFactory->prepareUserFromLogin($username);
+
+		$user = $this->userFactory->prepareUserFromLogin($username);		
 		$this->assign("user", $user);
+
+
+		//$groups = $this->userFactory->getGroups();
+		//$this->assign('usergroups', $groups->getTree() );
+		$user->getGroups($this->db);
+		$userallgroups = $user->getAllGroups($this->db);
+		$this->assign("usergroups", $userallgroups->getTree());
+		
 		
 	}
 }

@@ -1,6 +1,7 @@
 <?php
 /**
  * @copyright 2005 Jonathan Semczyk <jonathan.semczyk@free.fr>
+ * @copyright 2005 Antoine Leclercq <http://antoine.leclercq.netcv.org>
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU Public License
  * See the enclosed file COPYING for license information.
@@ -17,6 +18,10 @@ class GroupDisplay extends Model
 {
 	function build()
 	{
+	
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "groupdisplay") );
+	
 		if (isset($this->args['name']))
 		{
 			$select = "g.name='".$this->args['name']."'";
@@ -30,8 +35,30 @@ class GroupDisplay extends Model
 			Debug::kill("No argument");
 		}
 
+		//Select infos on the group to display
+		$qry = "SELECT
+				g.*
+			FROM 
+				".$GLOBALS['config']['bdd']["annuairedb"].".groups g
+			WHERE 
+				".$select;
+		try
+		{
+			$stmt = $this->db->prepare($qry);
+			$stmt->execute();
+		}
+		catch ( PDOException $e )
+		{
+			Debug::kill($e->getMessage() );
+		}
+		
+		$thegroup = $stmt->fetchAll(PDO::FETCH_ASSOC) ;
+
+		//Select all users that belong to "thegroup" (N levels)
 		$qry = "SELECT
 				u.login,
+				g.name as groupname,
+				g.id as groupid,
 				p.*
 			FROM 
 				".$GLOBALS['config']['bdd']["annuairedb"].".groups g ,
@@ -43,8 +70,9 @@ class GroupDisplay extends Model
 				g.id=gu.group_id AND
 				gu.user_id=u.id AND
 				gu.visibility='visible' AND
-				".$select."
-			ORDER BY p.lastname, p.firstname";
+				g.left >= ".$thegroup[0]["left"]." AND
+				g.right <= ".$thegroup[0]["right"]."
+			ORDER BY g.name, p.lastname, p.firstname";
 		try
 		{
 			$stmt = $this->db->prepare($qry);
@@ -67,6 +95,8 @@ class GroupDisplay extends Model
 			}
 		}
 		$this->assign('userlist', $userlist);
+		
+		$this->assign('thegroup', $thegroup[0]);
 		
 		if( $this->currentUser->isLogged() )
 		{

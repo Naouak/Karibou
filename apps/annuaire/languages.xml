@@ -383,4 +383,12 @@
 		<translation language="fr">Envoyer un message instantané (FlashMail)</translation>
 		<translation language="en">Send instant message (FlashMail)</translation>
 	</sentence>
+	<sentence key="VIEWING_GROUP">
+		<translation language="fr">Personnes du groupe</translation>
+		<translation language="en">People in group</translation>
+	</sentence>
+	<sentence key="BELONGS_TO_GROUPS">
+		<translation language="fr">Cet utilisateur appartient au(x) groupe(s) suivant(s)</translation>
+		<translation language="en">This user is member of the following group(s)</translation>
+	</sentence>
 </translation>
