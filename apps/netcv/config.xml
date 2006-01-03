@@ -40,6 +40,7 @@
 	<load class="NetCVSingleCVList"	file="class/netcvsinglecvlist.class.php" />
 	<load class="NetCVTempTranslation"	file="class/netcvtrans.temp.class.php" />
 	<load class="NetCVUser"				file="class/netcvuser.class.php" />
+	<load class="NetCVDB"				file="class/netcvdb.class.php" />
 	<load class="wiki2xhtmlBasic"		file="../wiki/wiki2xhtml.basic.class.php" />
 	
 	<load class="NetCVHome"				file="home.class.php" />
@@ -69,6 +70,7 @@
 	<load class="NetCVContactForm"	file="cvcontactform.class.php" />
 	<load class="NetCVContactFormSend"	file="cvcontactformsend.class.php" />
 	<load class="NetCVMenu" file="cvmenu.class.php" />
+	<load class="NetCVAllCV"	file="allcv.class.php" />
 
 	<view name="home"					class="NetCVHome"			template="home.tpl" />
 	<view name="cvgrouplistview"	class="NetCVGroupListView"	template="cvgrouplistview.tpl" />
@@ -88,6 +90,7 @@
 	<view name="cvcontentcheck"	class="NetCVContentCheck"	template="cvcontentcheck.tpl" />
 	<view name="cvcontactform"		class="NetCVContactForm"	template="cvcontactform.tpl" />
 	<view name="menu" class="NetCVMenu" template="menu.tpl" />
+	<view name="allcv"		class="NetCVAllCV"	template="allcv.tpl" />
 
 	<page name="" view="home" />
 	<page name="cv" view="cvdisplay">
@@ -172,6 +175,7 @@
 		<argument name="hostname"	class="UserName" />
 		<option name="lang"			class="AlphaNum" />
 	</page>
+	<page name="allcv" view="allcv" />
 
 	<form action="cvsinglecvsave" class="NetCVSingleCVSave">
 		<redirect />

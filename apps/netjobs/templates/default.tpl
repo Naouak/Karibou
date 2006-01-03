@@ -1,0 +1,1 @@
+<a href="{kurl page="jobdetails" jobid="1"}">JobDetails</a>

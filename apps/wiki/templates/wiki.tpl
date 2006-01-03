@@ -75,7 +75,7 @@
 	<li><a href="{kurl docu="$titre_wiki" mode="edit"}" title="">##ACTION_MODIFY##</a></li>
 	<li><a href="{kurl docu="$titre_wiki" mode="history"}" title="" >##HISTORY##</a></li>
 	{/if}
-	<li><a href="{kurl page="help"}" onclick="javascript:popup(this.href, 'aide_wiki', '800', '800', '800', '800');return false;" >##TITLE_WIKI_SYNTAX##</a></li>
+	<li><a href="{kurl page="help"}" onclick="javascript:popup(this.href, 'wiki_help', '800', '900', '200', '200');return false;" >##TITLE_WIKI_SYNTAX##</a></li>
 </ul>
 *}
 <h1>page : {$titre_wiki}</h1>

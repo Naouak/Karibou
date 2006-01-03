@@ -22,6 +22,7 @@
 	<load class="CalendarModel" file="calendarmodel.class.php" />
 	
 	<load class="CalendarByMonth" file="calendarbymonth.class.php" />
+	<load class="CalendarByWeek" file="calendarbyweek.class.php" />
 	<load class="CalendarByDay" file="calendarbyday.class.php" />
 	<load class="CalendarManage" file="calendarmanage.class.php" />
 
