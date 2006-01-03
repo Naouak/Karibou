@@ -1,10 +1,9 @@
 <h1>##NETJOBS##</h1>
-{if isset($myJob) && $myJob != FALSE}
 <h2>{if isset($myJob)}##JOBMODIFY##{else}##JOBADD##{/if}</h2>
 <div class="netjobs">
 	<a href="{kurl app="wiki" page="help"}" onclick="javascript:popup(this.href, 'wiki_help', '800', '900', '200', '200');return false;" >##TITLE_WIKI_SYNTAX##</a>
 	<form action="{kurl action="jobsave"}" method="post" class="jobedit">
-	{include file="formmessage.tpl"}
+	{*include file="formmessage.tpl"*}
 		{if isset($myJob)}
 			<input type="hidden" name="jobinfos[id]" value="{$myJob->getInfo("id")}">
 		{/if}
@@ -15,7 +14,7 @@
 			</li>
 			<li class="description">
 				<label for="description">##NEWS_DESCRIPTION## : </label>
-				<textarea name="jobinfos[description]" id="description" rows="10" cols="60" />{if isset($myJob)}{$myJob->getInfo("description")|escape:"html"}{/if}</textarea>
+				<textarea id="description" name="jobinfos[description]" rows="10" cols="60" />{if isset($myJob)}{$myJob->getInfo("description")|escape:"html"}{/if}</textarea>
 			</li>
 			<li class="type">
 				<label for="type">##JOBTYPE## :</label>
@@ -27,7 +26,15 @@
 			</li>
 			<li class="company">
 				<label for="company">##JOBCOMPANY## :</label>
-				<input type="text" id="company" name="jobinfos[company_id]" value="{if isset($myJob)}{$myJob->getInfo("company_id")|escape:"html"}{/if}" />
+				{if isset($myJob)}{assign var=jobcompanyid value=$myJob->getInfo("company_id")}{/if}
+				<select name="jobinfos[company_id]">
+					<option DISABLED>##JOBCHOOSECOMPANY##</option>
+					{foreach from=$allCompanies item="company"}
+						<option value="{$company->getInfo("id")}"{if $jobcompanyid == $company->getInfo("id")} SELECTED{/if}>{$company->getInfo("name")}</option>
+					{/foreach}
+				</select>
+				##OR##
+				<input type="text" id="company" name="newcompany" value="##JOBADDCOMPANY##" />
 			</li>			
 			<div class="button">
 				<input type="submit" value="{if isset($myJob)}##JOBSAVE##{else}##JOBCREATE##{/if}" />
@@ -35,6 +42,3 @@
 		</ul>
 	</form>
 </div>
-{else}
-##JOBNOTFOUND##
-{/if}

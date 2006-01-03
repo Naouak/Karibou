@@ -12,12 +12,13 @@
  *
  * @package applications
  **/
-class NJJobSave extends FormModel
+class NJCompanySave extends FormModel
 {
 	public function build()
 	{
-		if (isset($_POST["jobinfos"], $_POST["jobinfos"]["id"]))
+		if (isset($_POST["companyinfos"], $_POST["companyinfos"]["id"]))
 		{
+		/*
 			$NetJobs = new NetJobs($this->db, $this->userFactory);
 			$myJob = $NetJobs->getJobById($_POST["jobinfos"]["id"]);
 			if ($myJob->getInfo("user_id") == $this->currentUser->getId())
@@ -28,9 +29,11 @@ class NJJobSave extends FormModel
 			
 			$this->setRedirectArg('page', 'jobdetails');
 			$this->setRedirectArg('jobid', $_POST["jobinfos"]["id"]);
+		*/
 		}
-		elseif (isset($_POST["jobinfos"]))
+		elseif (isset($_POST["companyinfos"]))
 		{
+		/*
 			//create job
 		
 			$NetJobs = new NetJobs($this->db, $this->userFactory);
@@ -38,6 +41,7 @@ class NJJobSave extends FormModel
 		
 			$this->setRedirectArg('app', 'netjobs');
 			$this->setRedirectArg('page', '');
+		*/
 		}
 
 	}

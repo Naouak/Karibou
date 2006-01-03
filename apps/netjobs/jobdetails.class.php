@@ -17,8 +17,17 @@ class NJJobDetails extends Model
 	public function build()
 	{
 		$netJobs = new NetJobs ($this->db, $this->userFactory);
-		$myJob = $netJobs->getJobById($this->args["jobid"]);
-		$this->assign("myJob", $myJob);
+		
+		if (isset($this->args["jobid"]) && $this->args["jobid"] !="" && $myJob = $netJobs->getJobById($this->args["jobid"]))
+		{
+			$this->assign("myJob", $myJob);
+			
+			$menuApp = $this->appList->getApp($this->appname);
+			$menuApp->addView("menu", "header_menu", array("page" => "jobdetails", "jobid" => $myJob->getInfo("id")) );
+		}
+		else
+		{
+		}
 	}
 }
 

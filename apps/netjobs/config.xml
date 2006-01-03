@@ -25,7 +25,7 @@
 	<page name="jobdetails"	view="jobdetails">
 		<argument name="jobid" class="NumberArgument" />
 	</page>	<page name="jobedit"		view="jobedit">
-		<argument name="jobid" class="NumberArgument" />
+		<option name="jobid" class="NumberArgument" />
 	</page>
 
 	<form action="jobsave"	class="NJJobSave">

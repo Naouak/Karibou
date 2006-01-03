@@ -16,6 +16,12 @@ class NJDefault extends Model
 {
 	public function build()
 	{
+		$menuApp = $this->appList->getApp($this->appname);
+		$menuApp->addView("menu", "header_menu", array("page" => "default") );
+	
+		$netJobs = new NetJobs ($this->db, $this->userFactory);
+		$myJobs = $netJobs->getJobList();
+		$this->assign("myJobs", $myJobs);
 	}
 }
 

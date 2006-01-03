@@ -17,8 +17,22 @@ class NJJobEdit extends Model
 	public function build()
 	{
 		$netJobs = new NetJobs ($this->db, $this->userFactory);
-		$myJob = $netJobs->getJobById($this->args["jobid"]);
-		$this->assign("myJob", $myJob);
+		$allCompanies = $netJobs->getCompanyList();
+		$this->assign("allCompanies", $allCompanies);
+		if ( (isset($this->args["jobid"])) && ($this->args["jobid"] != "") && ($myJob = $netJobs->getJobById($this->args["jobid"])))
+		{
+			//Job modification
+			$this->assign("myJob", $myJob);
+			
+			$menuApp = $this->appList->getApp($this->appname);
+			$menuApp->addView("menu", "header_menu", array("page" => "jobedit", "jobid" => $myJob->getInfo("id")) );
+		}
+		else
+		{
+			//New job
+			$menuApp = $this->appList->getApp($this->appname);
+			$menuApp->addView("menu", "header_menu", array("page" => "jobedit") );
+		}
 	}
 }
 
