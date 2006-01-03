@@ -643,7 +643,6 @@ CREATE TABLE `fileshare_versions` (
   `datetime` datetime NOT NULL default '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
 -- 
 -- Structure de la table `netjobs_companies`
 -- 
@@ -652,15 +651,14 @@ DROP TABLE IF EXISTS `netjobs_companies`;
 CREATE TABLE `netjobs_companies` (
   `i` int(11) NOT NULL auto_increment,
   `id` int(11) NOT NULL default '0',
-  `version` int(11) NOT NULL default '0',
   `last` tinyint(1) NOT NULL default '0',
+  `deleted` tinyint(1) NOT NULL default '0',
   `user_id` int(11) NOT NULL default '0',
   `name` text NOT NULL,
   `description` text NOT NULL,
-  `creation_date` datetime NOT NULL default '0000-00-00 00:00:00',
-  `modification_date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`i`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -672,8 +670,8 @@ DROP TABLE IF EXISTS `netjobs_contact`;
 CREATE TABLE `netjobs_contact` (
   `i` int(11) NOT NULL auto_increment,
   `id` int(11) NOT NULL default '0',
-  `version` int(11) NOT NULL default '0',
   `last` tinyint(1) NOT NULL default '0',
+  `deleted` tinyint(1) NOT NULL default '0',
   `user_id` int(11) NOT NULL default '0',
   `presentation` text NOT NULL,
   `firstname` text NOT NULL,
@@ -695,8 +693,8 @@ DROP TABLE IF EXISTS `netjobs_jobs`;
 CREATE TABLE `netjobs_jobs` (
   `i` int(11) NOT NULL auto_increment,
   `id` int(11) NOT NULL default '0',
-  `version` int(11) NOT NULL default '0',
   `last` tinyint(1) NOT NULL default '0',
+  `deleted` tinyint(1) NOT NULL default '0',
   `user_id` int(11) NOT NULL default '0',
   `title` text NOT NULL,
   `description` text NOT NULL,
@@ -705,4 +703,5 @@ CREATE TABLE `netjobs_jobs` (
   `company_id` int(11) NOT NULL default '0',
   `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`i`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+
