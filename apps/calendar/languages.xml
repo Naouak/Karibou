@@ -25,7 +25,7 @@
 		<translation language="en">Manage Calendars</translation>
 	</sentence>
 	<sentence key="LOGOUT_TO_SAVE">
-		<translation language="fr">Afin que vos préférences générales soient enregistrées (dont vos préférences en matière d'abonnement aux calendrier), vous devez vous déconnecter correctement de l'Intranet à la fin de votre session. Vous pouvez le faire simplement en cliquant sur le bouton "Déconnecter".</translation>
+		<translation language="fr">Afin que vos préférences générales soient enregistrées (dont vos préférences en matière d'abonnement aux calendriers), vous devez vous déconnecter correctement de l'Intranet à la fin de votre session. Vous pouvez le faire simplement en cliquant sur le bouton "Déconnecter".</translation>
 		<translation language="en">In order to save your global preferences (as well as your calendar subscription preferences), you must logout properly from the Intranet at the end of your session. You can proceed easily by clicking on the "Logout" link.</translation>
 	</sentence>
 	<sentence key="Public Calendars">
