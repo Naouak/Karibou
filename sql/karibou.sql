@@ -656,9 +656,10 @@ CREATE TABLE `netjobs_companies` (
   `user_id` int(11) NOT NULL default '0',
   `name` text NOT NULL,
   `description` text NOT NULL,
+  `type` varchar(30) NOT NULL default '',
   `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`i`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -698,10 +699,13 @@ CREATE TABLE `netjobs_jobs` (
   `user_id` int(11) NOT NULL default '0',
   `title` text NOT NULL,
   `description` text NOT NULL,
+  `profile` text NOT NULL,
   `type` text NOT NULL,
+  `education` varchar(20) NOT NULL default '',
+  `experience_required` text NOT NULL,
   `salary` int(11) NOT NULL default '0',
   `company_id` int(11) NOT NULL default '0',
   `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`i`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
 
