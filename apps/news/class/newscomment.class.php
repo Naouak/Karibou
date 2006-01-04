@@ -48,6 +48,15 @@ class NewsComment
 	{
 		return $this->content;
 	}
+	
+	function getContentXHTML()
+	{
+        $wiki = new wiki2xhtmlBasic();
+        // initialisation variables
+        $wiki->wiki2xhtml();
+        $content = $wiki->transform($this->content);
+        return $content;
+	}
 
 	function getTitle()
 	{

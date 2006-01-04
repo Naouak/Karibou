@@ -93,7 +93,7 @@ class News
 						FROM news_comments
 						WHERE id_news = ".$this->getID()."
 						ORDER BY time
-						DESC;";
+						ASC;";
 			$resComments = $this->db->prepare($reqComments);
 			$resComments->execute();
 

@@ -53,7 +53,7 @@
 					{*<div class="controls"><a href="{$theArticleComments[j]->getID()}">Modifier</a> - <a href="#d/c/{$theArticleComments[j]->getID()}">Supprimer</a></div>*}
 					<div class="time">{$theArticleComments[j]->getDate()}</div>
 					<div class="title">{$theArticleComments[j]->getTitle()}</div>
-					<div class="content">{$theArticleComments[j]->getContent()}</div>
+					<div class="content">{$theArticleComments[j]->getContentXHTML()}</div>
 				</div>
 				{/section}
 			</div>
