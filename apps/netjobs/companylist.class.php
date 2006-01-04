@@ -12,7 +12,7 @@
  *
  * @package applications
  **/
-class NJDefault extends Model
+class NJCompanyList extends Model
 {
 	public function build()
 	{
@@ -20,12 +20,21 @@ class NJDefault extends Model
 		$menuApp->addView("menu", "header_menu", array("page" => "default") );
 
 		$netJobs = new NetJobs ($this->db, $this->userFactory);
-		$myJobs = $netJobs->getJobList();
+		
+		if (isset($this->args["maxjobs"]) && $this->args["maxjobs"] != "")
+		{
+			$maxjobs = $this->args["maxjobs"];
+		}
+		else
+		{
+			$maxjobs = FALSE;
+		}
+		
+		$myJobs = $netJobs->getJobList($maxjobs);
 		$this->assign("myJobs", $myJobs);
-
+		
 		$myCompanies = $netJobs->getCompanyList();
 		$this->assign("myCompanies", $myCompanies);
-
 	}
 }
 

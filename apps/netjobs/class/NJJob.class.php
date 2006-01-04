@@ -12,36 +12,21 @@
  *
  * @package applications
  **/
-class NJJob
+class NJJob extends NJElement
 {
-	protected $jobinfos;
 	public $company;
-	public $creator;
 
 	public function __construct(Array $jobinfos, UserFactory $userFactory)
 	{
-		$this->jobinfos = $jobinfos;
+		parent::__construct($jobinfos,$userFactory);
+		
+	}
 
-		$this->creator = $userFactory->prepareUserFromId($this->getInfo("user_id"));
-	}
-	
-	public function getInfo($key)
-	{
-		if (isset($this->jobinfos[$key]))
-		{
-			return $this->jobinfos[$key];
-		}
-		else
-		{
-			return FALSE;
-		}
-	}
-	
 	public function getCompanyInfo($key)
 	{
-		if (isset($this->company))
+		if (isset($this->company) && (is_object($this->company)) )
 		{
-			return $this->company->getInfos($key);
+			return $this->company->getInfo($key);
 		}
 		else
 		{

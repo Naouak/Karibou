@@ -18,18 +18,16 @@ class NJCompanySave extends FormModel
 	{
 		if (isset($_POST["companyinfos"], $_POST["companyinfos"]["id"]))
 		{
-		/*
 			$NetJobs = new NetJobs($this->db, $this->userFactory);
-			$myJob = $NetJobs->getJobById($_POST["jobinfos"]["id"]);
-			if ($myJob->getInfo("user_id") == $this->currentUser->getId())
+			$myCompany = $NetJobs->getCompanyById($_POST["companyinfos"]["id"]);
+			if ($myCompany->getInfo("user_id") == $this->currentUser->getId())
 			{
 				//Save modifications...
-				$NetJobs->saveJob($_POST["jobinfos"]);
+				$NetJobs->saveCompany($_POST["companyinfos"]);
 			}
 			
-			$this->setRedirectArg('page', 'jobdetails');
-			$this->setRedirectArg('jobid', $_POST["jobinfos"]["id"]);
-		*/
+			$this->setRedirectArg('page', 'companydetails');
+			$this->setRedirectArg('companyid', $_POST["companyinfos"]["id"]);
 		}
 		elseif (isset($_POST["companyinfos"]))
 		{

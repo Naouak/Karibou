@@ -12,27 +12,12 @@
  *
  * @package applications
  **/
-class NJCompany
+class NJCompany extends NJElement
 {
-	protected $companyinfos;
-
-	public function __construct(Array $companyinfos, UserFactory $userFactory)
+	public function __construct(Array $infos, UserFactory $userFactory)
 	{
-		$this->companyinfos = $companyinfos;
+		parent::__construct($infos, $userFactory);
 	}
-	
-	public function getInfo($key)
-	{
-		if (isset($this->companyinfos[$key]))
-		{
-			return $this->companyinfos[$key];
-		}
-		else
-		{
-			return FALSE;
-		}
-	}
-	
 }
 
 ?>

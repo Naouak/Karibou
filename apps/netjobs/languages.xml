@@ -1,255 +1,253 @@
 ﻿<translation>
-	<sentence key="FILESHARE">
-		<translation language="fr">
-		Fichiers
-		</translation>
-		<translation language="en">
-		FileShare
-		</translation>
+	<sentence key="NETJOBS">
+		<translation language="fr">NetJobs</translation>
+		<translation language="en">NetJobs</translation>
 	</sentence>
-	<sentence key="FILESHARE_TITLE">
-		<translation language="fr">
-		Partage de fichiers
-		</translation>
-		<translation language="en">
-		File sharing
-		</translation>
+	<sentence key="JOBTITLE">
+		<translation language="fr">Intitulé du poste</translation>
+		<translation language="en">Job title</translation>
 	</sentence>
-	<sentence key="FILESHARE_DESCRIPTION">
-		<translation language="fr">
-		Cliquez sur un fichier pour le télécharger. Si vous souhaitez ajouter un fichier pour qu'il puisse etre téléchargé, cliquez sur le bouton "Ajouter un fichier".
-		</translation>
-		<translation language="en">
-		Click on a file to proceed to download. If you want to add a file so that it can
-		be downloaded, click on the button "Upload a file".
-		</translation>
+	<sentence key="JOBDESCRIPTION">
+		<translation language="fr">Description du poste</translation>
+		<translation language="en">Job desription</translation>
 	</sentence>
-	<sentence key="UPLOAD_A_FILE">
-		<translation language="fr">
-Ajouter un fichier
-		</translation>
-		<translation language="en">
-Upload a file
-		</translation>
+	<sentence key="JOBPROFILE">
+		<translation language="fr">Profil du candidat</translation>
+		<translation language="en">Profile sought</translation>
 	</sentence>
-	<sentence key="FILEUPLOAD_DESCRIPTION">
-		<translation language="fr">
-Ce formulaire vous permet d'ajouter un fichier a la liste. Selectionnez le fichier que vous souhaitez ajouter puis cliquez sur le bouton "Ajouter ce fichier".
-		</translation>
-		<translation language="en">
-Upload a file using this form. Browse your hard drive to select the file, and click on "Upload file".
-		</translation>
+	<sentence key="JOBTYPE">
+		<translation language="fr">Type de contrat</translation>
+		<translation language="en">Contract type</translation>
 	</sentence>
-	<sentence key="UPLOAD_FILE">
-		<translation language="fr">
-Ajouter ce fichier
-		</translation>
-		<translation language="en">
-Upload file
-		</translation>
+	<sentence key="JOBSALARY">
+		<translation language="fr">Salaire annuel brut</translation>
+		<translation language="en">Year salary gross</translation>
 	</sentence>
-	<sentence key="DIRECTORYEMPTY">
-		<translation language="fr">
-			Ce répertoire est vide
-		</translation>
-		<translation language="en">
-			This directory is empty
-		</translation>
+	<sentence key="JOBCOMPANY">
+		<translation language="fr">Entreprise</translation>
+		<translation language="en">Company</translation>
 	</sentence>
-	<sentence key="BROWSINGDIRECTORY">
-		<translation language="fr">
-			Parcours du répertoire
-		</translation>
-		<translation language="en">
-			Browsing directory
-		</translation>
+	<sentence key="JOBCREATE">
+		<translation language="fr">Créer l'offre</translation>
+		<translation language="en">Create the offer</translation>
 	</sentence>
-	<sentence key="UPONELEVEL">
-		<translation language="fr">
-			Aller au répertoire parent
-		</translation>
-		<translation language="en">
-			To parent directory
-		</translation>
+	<sentence key="JOBCHOOSECOMPANY">
+		<translation language="fr">Choisissez l'entreprise...</translation>
+		<translation language="en">Choose the company...</translation>
 	</sentence>
-	<sentence key="UPLOADINGTO">
-		<translation language="fr">
-			Répertoire de destination
-		</translation>
-		<translation language="en">
-			Destination directory
-		</translation>
+	<sentence key="JOBADDCOMPANY">
+		<translation language="fr">Ajouter l'entreprise ici</translation>
+		<translation language="en">Add company here</translation>
 	</sentence>
-	<sentence key="CREATINGIN">
-		<translation language="fr">
-			La création se fera dans le répertoire
-		</translation>
-		<translation language="en">
-			Creation will be done in directory
-		</translation>
+	<sentence key="JOBSTARTDATE">
+		<translation language="fr">Date de début du contrat</translation>
+		<translation language="en">Job start date</translation>
 	</sentence>
-	<sentence key="CREATEDIRECTORY">
-		<translation language="fr">
-			Créer le répertoire
-		</translation>
-		<translation language="en">
-			Create directory
-		</translation>
+	<sentence key="JOBENDDATE">
+		<translation language="fr">Date de fin du contrat</translation>
+		<translation language="en">Job end date</translation>
 	</sentence>
-	<sentence key="CREATE_A_DIRECTORY">
-		<translation language="fr">
-			Créer un répertoire
-		</translation>
-		<translation language="en">
-			Create a directory
-		</translation>
+	<sentence key="OR">
+		<translation language="fr">ou</translation>
+		<translation language="en">or</translation>
 	</sentence>
-	<sentence key="CREATEDIRECTORY_DESCRIPTION">
-		<translation language="fr">
-			Vous êtes sur le point de créer un répertoire. Avant de procéder, veillez à ce qu'il ne soit pas redondant.
-		</translation>
-		<translation language="en">
-			You are about to create a directory. Before processing, please make sure that it won't be redundant with any other.
-		</translation>
+	<sentence key="JOBADD">
+		<translation language="fr">Ajout d'une nouvelle offre</translation>
+		<translation language="en">Add a new job offer</translation>
 	</sentence>
-	<sentence key="NAME">
-		<translation language="fr">Nom</translation>
-		<translation language="en">Name</translation>
+	<sentence key="TITLE_WIKI_SYNTAX">
+		<translation language="fr">Syntaxe de mise en forme</translation>
+		<translation language="en">Wiki syntax for formatting text</translation>
 	</sentence>
-	<sentence key="SIZE">
-		<translation language="fr">Taille</translation>
-		<translation language="en">Size</translation>
+	<sentence key="jobt_permanent">
+		<translation language="fr">Contrat à Durée Indéterminée</translation>
+		<translation language="en">Permanent</translation>
 	</sentence>
-	<sentence key="MODIFICATION_DATE">
-		<translation language="fr">Modifié le</translation>
-		<translation language="en">Modified on</translation>
+	<sentence key="jobt_tempcontract">
+		<translation language="fr">Contrat à Durée Déterminée</translation>
+		<translation language="en">Temporary contract</translation>
 	</sentence>
-	<sentence key="DESCRIPTION">
-		<translation language="fr">Description</translation>
-		<translation language="en">Description</translation>
+	<sentence key="jobt_interim">
+		<translation language="fr">Interim</translation>
+		<translation language="en">Interim</translation>
 	</sentence>
-	<sentence key="VERSION">
-		<translation language="fr">Version</translation>
-		<translation language="en">Version</translation>
+	<sentence key="jobt_internship">
+		<translation language="fr">Stage</translation>
+		<translation language="en">Internship</translation>
 	</sentence>
-	<sentence key="VERSIONID">
-		<translation language="fr">Version</translation>
-		<translation language="en">Version</translation>
+	<sentence key="JOBSAVE">
+		<translation language="fr">Mettre à jour l'offre</translation>
+		<translation language="en">Update job offer</translation>
+	</sentence> 
+	<sentence key="JOBPOSTDATE">
+		<translation language="fr">Date de mise à jour</translation>
+		<translation language="en">Update date</translation>
 	</sentence>
-	<sentence key="DOWNLOAD">
-		<translation language="fr">Télécharger</translation>
-		<translation language="en">Download</translation>
+	<sentence key="JOBEXPERIENCEREQUIRED">
+		<translation language="fr">Expérience requise</translation>
+		<translation language="en">Required experience</translation>
 	</sentence>
-	<sentence key="UPLOADER">
-		<translation language="fr">Posteur</translation>
-		<translation language="en">Uploadeur</translation>
+	<sentence key="JOBCREATOR">
+		<translation language="fr">Créateur de l'offre</translation>
+		<translation language="en">Job offer creator</translation>
 	</sentence>
-	<sentence key="CREATOR">
-		<translation language="fr">Créateur</translation>
-		<translation language="en">Creator</translation>
+	<sentence key="JOBEDIT">
+		<translation language="fr">Editer l'offre</translation>
+		<translation language="en">Edit offer</translation>
 	</sentence>
-	<sentence key="UPLOADNAME">
-		<translation language="fr">Nom du fichier uploadé</translation>
-		<translation language="en">File name before upload</translation>
+	<sentence key="JOBDELETE">
+		<translation language="fr">Supprimer l'offre</translation>
+		<translation language="en">Delete offer</translation>
 	</sentence>
-	<sentence key="UPLOADDATE ">
-		<translation language="fr">Date de mise en ligne</translation>
-		<translation language="en">Upload date</translation>
+	<sentence key="JOBDELETE_ASKIFSURE">
+		<translation language="fr">Êtes-vous sûr de vouloir supprimer l\\'offre ?</translation>
+		<translation language="en">Do you really want to delete this offer ?</translation>
 	</sentence>
-	<sentence key="VERSIONS">
-		<translation language="fr">Versions</translation>
-		<translation language="en">Versions</translation>
+	<sentence key="NONE">
+		<translation language="fr">Aucune</translation>
+		<translation language="en">None</translation>
 	</sentence>
-	<sentence key="ADD_NEW_VERSION">
-		<translation language="fr">Ajout d'une nouvelle version</translation>
-		<translation language="en">Add a new version</translation>
+	<sentence key="JOBEXPERIENCEREQUIRED_LETBLANKFORNONE">
+		<translation language="fr">Laisser vide si aucune expérience n'est requise</translation>
+		<translation language="en">Let blank if no experience is needed</translation>
 	</sentence>
-	<sentence key="OWNER">
-		<translation language="fr">Propriétaire</translation>
-		<translation language="en">Owner</translation>
+	<sentence key="JOBEDUCATIONLEVEL">
+		<translation language="fr">Niveau d'études</translation>
+		<translation language="en">Education level</translation>
 	</sentence>
-	<sentence key="ME">
-		<translation language="fr">Moi</translation>
-		<translation language="en">Me</translation>
+	<sentence key="jobel_none">
+		<translation language="fr">Aucun</translation>
+		<translation language="en">None</translation>
 	</sentence>
-	<sentence key="GROUPS">
-		<translation language="fr">Groupes</translation>
-		<translation language="en">Groups</translation>
+	<sentence key="jobel_bac+2">
+		<translation language="fr">Bac+2 / BTS</translation>
+		<translation language="en">Technician</translation>
 	</sentence>
-	<sentence key="FILEUPLOAD_ADDVERSION_DESCRIPTION">
-		<translation language="fr">L'ajout d'une nouvelle version de fichier permet de mettre à jour les documents facilement. Le fichier original sera sauvegardé ainsi que toutes les verions antérieures à celle que vous êtes sur le point de mettre en ligne. Votre fichier sera considéré comme la dernière référence. Attention le fichier que vous êtes sur le point de mettre en ligne conservera le nom initial du premier fichier qui a été mis en ligne.</translation>
-		<translation language="en">Adding a new file version gives you the opportunity to update your documents easily. The original file will be backuped as well as every previous version of this file. The new version you are going to upload will be considered as the last good file version. Important : the file you are going to upload will keep the name of the original file.</translation>
+	<sentence key="jobel_bac+3">
+		<translation language="fr">Bac+3 / Licence</translation>
+		<translation language="en">Bac+3</translation>
 	</sentence>
-	<sentence key="ADDING_A_NEW_VERSION">
-		<translation language="fr">Ajouter une nouvelle version au fichier</translation>
-		<translation language="en">Add a new version to file</translation>
+	<sentence key="jobel_bac+4">
+		<translation language="fr">Bac+4 / Maîtrise</translation>
+		<translation language="en">Bac+4</translation>
 	</sentence>
-	<sentence key="DOWNLOADORIGINALVERSIONOF">
-		<translation language="fr">Télécharger la version originale de</translation>
-		<translation language="en">Download original version of</translation>
+	<sentence key="jobel_bac+5">
+		<translation language="fr">Bac+5 / DESS / Master</translation>
+		<translation language="en">Master / Bac+5</translation>
 	</sentence>
-	<sentence key="ORIGINAL">
-		<translation language="fr">Originale</translation>
-		<translation language="en">Original</translation>
+	<sentence key="jobel_trader">
+		<translation language="fr">Ecole de Commerce</translation>
+		<translation language="en">Trade School</translation>
+	</sentence>	
+	<sentence key="jobel_engineer">
+		<translation language="fr">Ecole d'Ingénieurs</translation>
+		<translation language="en">Engineer School</translation>
 	</sentence>
-	<sentence key="DOESNOTEXISTINDB">
-		<translation language="fr">La nouvelle version de l'application de partage de fichier utilise une base de données pour stocker les informations relatives aux fichiers (descriptions, versions, etc.). Cependant, nous n'avons pas trouvé d'enregistrement dans la base de données concernant le fichier que vous êtes actuellement en train de visualiser. Il est fort probable que celui-ci ait été créé avant la mise en ligne de la nouvelle version de l'application de partage de fichiers. Vous ne pourrez pas gérer les versions pour ce fichier.</translation>
-		<translation language="en">The new version of the file sharing application takes advantage of the database in order to store file informations such as descriptions, versions, etc. But we couldn't find a database record for the file you are viewing at the moment. This is certainly happening because your file has been created before the update of the application. You won't be able to create new versions for this file.</translation>
+
+	<sentence key="compt_company">
+		<translation language="fr">Entreprise</translation>
+		<translation language="en">Company</translation>
 	</sentence>
-	<sentence key="UNKNOWNINDB">
-		<translation language="fr">Inconnu dans la base de données</translation>
-		<translation language="en">Unknown in database</translation>
+	<sentence key="compt_recruitingagency">
+		<translation language="fr">Cabinet de Recrutement</translation>
+		<translation language="en">Recruiting Agency</translation>
 	</sentence>
-	<sentence key="DELETE_THIS_FILE">
-		<translation language="fr">Supprimer ce fichier</translation>
-		<translation language="en">Delete this file</translation>
+	<sentence key="compt_interimagency">
+		<translation language="fr">Agence d'Interim</translation>
+		<translation language="en">Interim Agency</translation>
 	</sentence>
-	<sentence key="DELETE_ASKIFSURE">
-		<translation language="fr">Êtes-vous sûr de vouloir supprimer ce fichier ?</translation>
-		<translation language="en">Do you confirm your will to delete this file ?</translation>
+	<sentence key="compt_service">
+		<translation language="fr">Prestataire de service</translation>
+		<translation language="en">Service provider</translation>
 	</sentence>
-	<sentence key="DOWNLOAD_COUNT">
-		<translation language="fr">Téléchargements</translation>
-		<translation language="en">Downloads</translation>
+	<sentence key="compt_organisation">
+		<translation language="fr">Organisation / Association</translation>
+		<translation language="en">Organisation</translation>
 	</sentence>
-	<sentence key="AGO1">
-		<translation language="fr">Il y a</translation>
-		<translation language="en"></translation>
+	<sentence key="compt_other">
+		<translation language="fr">Autre</translation>
+		<translation language="en">Other</translation>
 	</sentence>
-	<sentence key="AGO2">
-		<translation language="fr"></translation>
-		<translation language="en">ago</translation>
+	
+	<sentence key="NETJOBS_TITLE">
+		<translation language="fr">NetJobs : Trouvez votre Job en ligne</translation>
+		<translation language="en">NetJobs : Find your job online</translation>
 	</sentence>
-	<sentence key="SECOND">
-		<translation language="fr">minute</translation>
-		<translation language="en">minutes</translation>
+	<sentence key="JOBNOTFOUND">
+		<translation language="fr">Offre non trouvée</translation>
+		<translation language="en">Offer not found</translation>
 	</sentence>
-	<sentence key="MINUTE">
-		<translation language="fr">minute</translation>
-		<translation language="en">minute</translation>
+	<sentence key="COMPANYNOTFOUND">
+		<translation language="fr">Entreprise non trouvée</translation>
+		<translation language="en">Company not found</translation>
+	</sentence> 
+	<sentence key="COMPANYSAVE">
+		<translation language="fr">Enregistrer les modifications</translation>
+		<translation language="en">Save modifications</translation>
+	</sentence> 
+	<sentence key="COMPANYCREATE">
+		<translation language="fr">Ajouter l'entreprise</translation>
+		<translation language="en">Add company</translation>
+	</sentence> 
+	<sentence key="COMPANYEDIT">
+		<translation language="fr">Editer l'entreprise</translation>
+		<translation language="en">Edit company</translation>
 	</sentence>
-	<sentence key="HOUR">
-		<translation language="fr">heure</translation>
-		<translation language="en">hour</translation>
+	<sentence key="COMPANYDELETE">
+		<translation language="fr">Supprimer l'entreprise</translation>
+		<translation language="en">Delete company</translation>
 	</sentence>
-	<sentence key="DAY">
-		<translation language="fr">jour</translation>
-		<translation language="en">day</translation>
+	<sentence key="COMPANYDELETE_ASKIFSURE">
+		<translation language="fr">Êtes-vous sûr de vouloir supprimer l\\'entreprise ?</translation>
+		<translation language="en">Do your really want to delete this company ?</translation>
 	</sentence>
-	<sentence key="S">
-		<translation language="fr">s</translation>
-		<translation language="en">s</translation>
+	
+	<sentence key="COMPANYTYPE">
+		<translation language="fr">Type d'entreprise</translation>
+		<translation language="en">Company type</translation>
 	</sentence>
-	<sentence key="LASTADDEDFILES">
-		<translation language="fr">Derniers fichiers ajoutés</translation>
-		<translation language="en">Last added files</translation>
+	<sentence key="COMPANYPOSTDATE">
+		<translation language="fr">Date de mise à jour</translation>
+		<translation language="en">Update date</translation>
 	</sentence>
-	<sentence key="MOSTDOWNLOADEDFILES">
-		<translation language="fr">Fichiers les plus téléchargés</translation>
-		<translation language="en">Most downloaded files</translation>
+	<sentence key="COMPANYDESCRIPTION">
+		<translation language="fr">Description de l'entreprise</translation>
+		<translation language="en">Company description</translation>
 	</sentence>
-	<sentence key="UPLOADED_BY">
-		<translation language="fr">Mis en ligne par</translation>
-		<translation language="en">Uploaded by</translation>
+	<sentence key="COMPANYJOBOFFERS">
+		<translation language="fr">Nombre d'offres de l'entreprise</translation>
+		<translation language="en">Number of offers for the company</translation>
+	</sentence>
+	<sentence key="COMPANYCREATOR">
+		<translation language="fr">Personne ayant ajouté l'entreprise</translation>
+		<translation language="en">User who added this company</translation>
+	</sentence>
+	<sentence key="NETJOBS_COMPANYTITLE">
+		<translation language="fr">Informations sur l'entreprise</translation>
+		<translation language="en">Details on the company</translation>
+	</sentence>
+	<sentence key="COMPANYNAME">
+		<translation language="fr">Informations sur l'entreprise</translation>
+		<translation language="en">Details on the company</translation>
+	</sentence>
+	<sentence key="NETJOBS_JOBLIST">
+		<translation language="fr">Liste des offres</translation>
+		<translation language="en">Offers list</translation>
+	</sentence>
+	<sentence key="LASTJOBS">
+		<translation language="fr">Dernières offres</translation>
+		<translation language="en">Last offers</translation>
+	</sentence>
+	<sentence key="COMPANIES">
+		<translation language="fr">Entreprises</translation>
+		<translation language="en">Companies</translation>
+	</sentence>
+	<sentence key="ALLJOBS">
+		<translation language="fr">Toutes les offres</translation>
+		<translation language="en">All jobs</translation>
+	</sentence>
+	<sentence key="COMPANYUNKNOWN">
+		<translation language="fr">Inconnue</translation>
+		<translation language="en">Unknown</translation>
 	</sentence>
 </translation>

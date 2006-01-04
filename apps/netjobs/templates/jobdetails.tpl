@@ -3,37 +3,53 @@
 <h3>##NETJOBS_JOBTITLE## : {$myJob->getInfo("title")}</h3>
 
 <div class="netjobs">
-<a href="{kurl page="jobedit" jobid=$myJob->getInfo("id")}">Edit</a>
 	<ul class="jobdetails">
 	
 		<li class="type">
 			<label for="type">##JOBTYPE## :</label>
-			<span name="type">{$myJob->getInfo("type")}</span>
+			<span name="type">{translate key=$myJob->getInfo("type")}</span>
 			</a>
 		</li>
 		
 		<li class="company">
 			<label for="company">##JOBCOMPANY## :</label>
-			<span name="company">{$myJob->getCompanyInfo("name")}</span>
-			</a>
+			{if ($myJob->getCompanyInfo("id") !== FALSE) }
+			<span name="company"><a href="{kurl page="companydetails" companyid=$myJob->getCompanyInfo("id")}">{$myJob->getCompanyInfo("name")}</a></span>
+			{else}
+			##COMPANYUNKNOWN##
+			{/if}
 		</li>
 
 		<li class="datetime">
 			<label for="datetime">##JOBPOSTDATE## : </label>
 			<span name="datetime">{$myJob->getInfo("datetime")}&nbsp;</span>
-			</a>
 		</li>
 		
 		<li class="description">
 			<label for="type">##JOBDESCRIPTION## : </label>
 			<span name="type">{$myJob->getInfo("description")}&nbsp;</span>
-			</a>
+		</li>
+		
+		<li class="profile">
+			<label for="type">##JOBPROFILE## : </label>
+			<span name="type">{$myJob->getInfo("profile")}&nbsp;</span>
 		</li>
 		
 		<li class="salary">
 			<label for="salary">##JOBSALARY## : </label>
 			<span name="salary">{$myJob->getInfo("salary")}&nbsp;</span>
-			</a>
+		</li>
+		
+		<li class="education">
+			<label for="education">##JOBEDUCATIONLEVEL## :</label>
+			<span name="education">
+				{if $myJob->getInfo("education") !== FALSE && ($myJob->getInfo("education") != "") }
+					{translate key=$myJob->getInfo("education")}
+				{else}
+					##jobel_none##
+				{/if}
+				&nbsp;
+			</span>
 		</li>
 		
 		<li class="experience_required">
@@ -46,7 +62,6 @@
 				{/if}
 				&nbsp;
 			</span>
-			</a>
 		</li>
 		
 		<li class="creator">
@@ -57,6 +72,18 @@
 		</li>
 
 	</ul>
+	
+	{if ($myJob->canUpdate())}
+	<div class="toolbox">
+		<span class="editlink"><a href="{kurl page="jobedit" jobid=$myJob->getInfo("id")}">##JOBEDIT##</a></span>
+		{if ($myJob->canWrite())}
+		<form method="post" action="{kurl page="jobsave"}" id="deletejob" name="delete">
+			<input type="hidden" name="jobiddelete" value="{$myJob->getInfo("id")}">
+			<a href="#" onclick="if(confirm('##JOBDELETE_ASKIFSURE##')){ldelim}document.deletejob.submit(){rdelim}else{ldelim}return false;{rdelim};">##JOBDELETE##</a>
+		</form>
+		{/if}
+	</div>
+	{/if}
 
 </div>
 {else}
