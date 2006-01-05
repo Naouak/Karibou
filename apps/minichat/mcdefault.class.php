@@ -10,7 +10,7 @@
  * @package applications
  **/
 
-class MiniChat extends Model
+class MCDefault extends Model
 {
 	public function build()
 	{
@@ -40,7 +40,6 @@ class MiniChat extends Model
 			}
 		}
 	
-	
 		if( isset($this->args['maxlines']) && $this->args['maxlines'] != "" )
 		{
 			$max = $this->args['maxlines'] ;
@@ -51,18 +50,17 @@ class MiniChat extends Model
 		}
 		$this->assign("maxlines", $max);
 		
-		$minichatPostList = new MinichatPostList($this->db, $this->userFactory);
-		
-		
-		$count = $minichatPostList->count();
 		
 		if(isset($this->args['pagenum']) && $this->args['pagenum'] != "")
 			$page = $this->args['pagenum'];
 		else
 			$page = 1;
+			
 		$this->assign("pagenum", $page);
+
+		$minichatMessageList = new MinichatMessageList($this->db, $this->userFactory);		
+		$page_count = ceil($minichatMessageList->count() / $max);
 		
-		$page_count = ceil($count / $max);
 		if($page_count > 1)
 		{
 			$pages = range(1, $page_count);
@@ -70,7 +68,7 @@ class MiniChat extends Model
 			$this->assign('page', $page);
 		}
 		
-		$this->assign("post", $minichatPostList->getMessages($max, $page));
+		$this->assign("post", $minichatMessageList->getMessages($max, $page));
 
 		$this->assign('permission', $this->permission);
 	}

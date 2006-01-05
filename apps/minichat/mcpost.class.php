@@ -9,7 +9,7 @@
  * @package applications
  **/
 
-class MiniChatPost extends FormModel
+class MCPost extends FormModel
 {
     public function build()
     {

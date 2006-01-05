@@ -2,7 +2,6 @@
 ##PAGE## # {$pagenum}
 {/if}
 
-{$max}
 	<ul>
         {foreach item=p from=$post}
         <li class="{cycle values="one,two"}">

@@ -10,7 +10,7 @@
  * @package applications
  **/
 
-class MinichatPost
+class MinichatMessage
 {
 	protected $time;
 	protected $auteur;

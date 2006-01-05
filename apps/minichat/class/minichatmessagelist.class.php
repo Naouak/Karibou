@@ -9,9 +9,7 @@
  * @package applications
  **/
 
-include("minichatpost.class.php");
-
-class MiniChatPostList
+class MiniChatMessageList
 {
 	protected $db;
 	protected $wiki;
@@ -66,7 +64,7 @@ class MiniChatPostList
 		}
 		while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) )
 		{
-			$line = new MinichatPost(
+			$line = new MinichatMessage(
 				$row['timestamp'], 
 				$this->userFactory->prepareUserFromId($row['id_auteur']), 
 				$row['post'],

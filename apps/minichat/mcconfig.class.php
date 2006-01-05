@@ -10,7 +10,7 @@
  * @package applications
  **/
 
-class MiniChatConfig extends Model
+class MCConfig extends Model
 {
 	function build()
 	{
