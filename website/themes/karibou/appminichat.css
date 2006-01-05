@@ -30,6 +30,12 @@
 	padding-left: 5px;
 }
 
+.minichat li .message p {
+	display: inline;
+	padding: 0px;
+	margin: 0px;
+}
+
 .minichat li acronym {
 	text-decoration: none;
 	border: 0px;
