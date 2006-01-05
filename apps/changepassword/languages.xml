@@ -10,12 +10,10 @@
     </sentence>
     <sentence key="CHANGEPASSWORD_DESCRIPTION">
         <translation language="fr">
-        Cette page vous permet de changer votre mot de passe. 
-        Entrez ci-dessous le nouveau mot de passe que vous souhaitez affecter à votre compte.
+        Cette page vous permet de changer votre mot de passe. Entrez ci-dessous le nouveau mot de passe que vous souhaitez affecter à votre compte.
         </translation>
         <translation language="en">
-        Change your password using the following form. Enter twice
-        the new password you want to use.
+        Change your password using the following form. Enter twice the new password you want to use.
         </translation>
     </sentence>
     <sentence key="CURRENTPASSWORD">
