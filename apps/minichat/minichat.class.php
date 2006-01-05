@@ -15,7 +15,11 @@ class MiniChat extends Model
 	public function build()
 	{
 	
-	
+		$app = $this->appList->getApp($this->appname);
+		$config = $app->getConfig();
+		$this->assign("config", $config);
+		
+		/* POST */
 		if (isset($_POST['post']))
 		{
 		$message = $_POST['post'];
@@ -43,29 +47,19 @@ class MiniChat extends Model
 		}
 		else
 		{
-			$max = 5 ;
+			$max = $config["max"]["small"] ;
 		}
 		$this->assign("maxlines", $max);
 		
-		$req_sql = 'SELECT COUNT(*) as nb FROM minichat';
-		try
-		{
-			$stmt = $this->db->query($req_sql);
-		}
-		catch(PDOException $e)
-		{
-			Debug::kill( $e->getMessage() );
-		}
-		$row = $stmt->fetch(PDO::FETCH_ASSOC);
-		$count = $row["nb"];
-		unset($stmt);
-		unset($row);
+		$minichatPostList = new MinichatPostList($this->db, $this->userFactory);
+		
+		
+		$count = $minichatPostList->count();
 		
 		if(isset($this->args['pagenum']) && $this->args['pagenum'] != "")
 			$page = $this->args['pagenum'];
 		else
 			$page = 1;
-		
 		$this->assign("pagenum", $page);
 		
 		$page_count = ceil($count / $max);
@@ -75,64 +69,10 @@ class MiniChat extends Model
 			$this->assign('pages', $pages);
 			$this->assign('page', $page);
 		}
-	
-		$req_sql = 'SELECT UNIX_TIMESTAMP(time) as timestamp, id_auteur, post 
-					FROM minichat ORDER BY time DESC LIMIT '.$max.' OFFSET '.(($page-1)*$max);
-
-		$post = array ();
-		try
-		{
-			$stmt = $this->db->query($req_sql);
-		}
-		catch( PDOException $e)
-		{
-			Debug::kill($e->getMessage());
-		}
-		while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) )
-		{
-			$line = new MinichatPost(
-				$row['timestamp'], 
-				$this->userFactory->prepareUserFromId($row['id_auteur']), 
-				$row['post']);
-			$post[] = $line;
-		}
-		$post = array_reverse($post);
-		$this->assign("post", $post);
+		
+		$this->assign("post", $minichatPostList->getMessages($max, $page));
 
 		$this->assign('permission', $this->permission);
-	}
-}
-
-class MinichatPost
-{
-	protected $time;
-	protected $auteur;
-	protected $txt_post;
-
-	function __construct($time, $auteur, $txt_post)
-	{
-		$this->time = $time;
-		$this->auteur = $auteur;
-		$this->txt_post = $txt_post;
-	}
-
-	function getAuthor()
-	{
-		return $this->auteur->getUserLink();
-	}
-	function getAuthorLogin()
-	{
-		return $this->auteur->getlogin();
-	}
-
-	function getDate()
-	{
-		return date('H:i', $this->time);
-	}
-
-	function getPost()
-	{
-		return $this->txt_post;
 	}
 }
 

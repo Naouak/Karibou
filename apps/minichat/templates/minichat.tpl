@@ -41,7 +41,7 @@
 <div class="minichat">
 	
 	<div id="minichat_live">
-	{include file="content.tpl"}	</div>
+	{include file="content.tpl" max=$config.max.normal}	</div>
 
     {if $permission > _READ_ONLY_}
     

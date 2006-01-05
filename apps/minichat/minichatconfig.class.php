@@ -14,13 +14,17 @@ class MiniChatConfig extends Model
 {
 	function build()
 	{
+	
+		$app = $this->appList->getApp($this->appname);
+		$config = $app->getConfig();
+	
 		if( isset($this->args['maxlines']) )
 		{
 			$this->assign('maxlines', $this->args['maxlines']);
 		}
 		else
 		{
-			$this->assign('maxlines', 15);
+			$this->assign('maxlines', $config["max"]["small"]);
 		}
 	}
 }
