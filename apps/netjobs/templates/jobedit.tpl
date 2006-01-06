@@ -72,6 +72,28 @@
 				##OR##
 				<input type="text" id="company" name="newcompany" value="##JOBADDCOMPANY##" />
 			</li>
+			<li class="country">
+				<label for="country">##JOBCOUNTRY## :</label>
+				{if isset($myJob)}{assign var=jobcountryid value=$myJob->getInfo("country_id")}{else}{*France = Default*}{assign var=jobcountryid value="99189"}{/if}
+				<select name="jobinfos[country_id]">
+					<option DISABLED>##JOBCHOOSECOUNTRY##</option>
+					{foreach from=$countries item="country"}
+						<option value="{$country.id}"{if $jobcountryid == $country.id} SELECTED{/if}>{$country.name|escape:"htmlall"}</option>
+					{/foreach}
+				</select>
+			</li>
+			<li class="city">
+				<label for="city">##JOBCITY## :</label>
+				{if isset($myJob)}
+					{assign var=jobcityid value=$myJob->getCity()}
+				{/if}
+				<select name="jobinfos[country_id]">
+					<option DISABLED>##JOBCHOOSECOUNTRY##</option>
+					{foreach from=$countries item="country"}
+						<option value="{$country.id}"{if $jobcountryid == $country.id} SELECTED{/if}>{$country.name|escape:"htmlall"}</option>
+					{/foreach}
+				</select>
+			</li>
 			<li class="contact">
 				<label for="company">##JOBCONTACT## :</label>
 				{if isset($myJob)}{assign var=jobcontactid value=$myJob->getInfo("contact_id")}{/if}

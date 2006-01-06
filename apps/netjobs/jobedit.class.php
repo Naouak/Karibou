@@ -17,8 +17,13 @@ class NJJobEdit extends Model
 	public function build()
 	{
 		$netJobs = new NetJobs ($this->db, $this->userFactory);
-		$allCompanies = $netJobs->getCompanyList();
-		$this->assign("allCompanies", $allCompanies);
+		
+		$geo = new Geo ($this->db, $this->userFactory);
+		
+		$this->assign("allCompanies", $netJobs->getCompanyList());
+		$this->assign("countries", $geo->getCountryList());
+		
+		
 		if ( (isset($this->args["jobid"])) && ($this->args["jobid"] != "") && ($myJob = $netJobs->getJobById($this->args["jobid"])))
 		{
 			//Job modification
@@ -33,6 +38,9 @@ class NJJobEdit extends Model
 			$menuApp = $this->appList->getApp($this->appname);
 			$menuApp->addView("menu", "header_menu", array("page" => "jobedit") );
 		}
+		
+
+		
 	}
 }
 
