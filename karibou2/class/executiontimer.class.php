@@ -17,7 +17,7 @@ class ExecutionTimer
 {
 	private static $ref;
 
-	protected $timeArray;
+	public $timeArray;
 	protected $currentTimeArray;
 	
 	public $display = true;
@@ -82,6 +82,40 @@ class ExecutionTimer
 		{
 			$html .= $key." : ".round($value, 3)." sec<br />\n";
 		}
+		return $html;
+	}
+	
+	function getTableHTML()
+	{
+		$html = "";
+		if( $this->display == false ) return $html;
+		
+		$html .= "<div style=\"text-align: left; border: 2px solid #000000; position: absolute; top:0px; right:0px; background: #ffffff;\"><pre>";
+
+		reset($this->timeArray);
+		arsort($this->timeArray);
+
+		$totaltime = $this->timeArray["Full Load"];
+		$toptimers = array();
+		
+		foreach ($this->timeArray as $action => $time)
+		{
+			$toptimers[$action] = array();
+			$toptimers[$action]["percent"] = number_format($time/$totaltime * 100,2);
+			$toptimers[$action]["time"] = number_format($time*1000,2);
+		}
+		
+		$html .= "<table border=1><tr><td style=\"font-weight: bold;\">Action</td><td style=\"font-weight: bold;\">Percent</td><td style=\"font-weight: bold;\">Time (msec)</td></tr>";
+		foreach($toptimers as $action => $info)
+		{
+			$html .= "<tr>";
+			$html .= "<td>".$action."</td>";
+			$html .= "<td>".$info["percent"]."%</td>";
+			$html .= "<td>".$info["time"]."</td>";
+			$html .= "</tr>";
+		}
+		$html .= "</table></div>";
+		
 		return $html;
 	}
 }

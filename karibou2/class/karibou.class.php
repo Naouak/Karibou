@@ -54,6 +54,8 @@ ClassLoader::add('KeyChain', KARIBOU_CLASS_DIR."/keychain.class.php");
 ClassLoader::add('KeyChainSession', KARIBOU_CLASS_DIR."/keychainsession.class.php");
 ClassLoader::add('KeyChainDB', KARIBOU_CLASS_DIR."/keychaindb.class.php");
 
+ClassLoader::add('Geo', KARIBOU_LIB_DIR."/geo/geo.class.php");
+
 /**
  * @todo move session_start() in a class
  */
@@ -66,12 +68,12 @@ session_start();
 
 function __autoload($className)
 {
-	ExecutionTimer::getRef()->stop("building Karibou");
-	ExecutionTimer::getRef()->start("Include __autoload");
+	//ExecutionTimer::getRef()->stop("building Karibou");
+	ExecutionTimer::getRef()->start("Include __autoload (".$className.")");
 	$file = ClassLoader::getFilename($className);
 	require_once $file;
-	ExecutionTimer::getRef()->stop("Include __autoload");
-	ExecutionTimer::getRef()->start("building Karibou");
+	ExecutionTimer::getRef()->stop("Include __autoload (".$className.")");
+	//ExecutionTimer::getRef()->start("building Karibou");
 }
 
 /**
