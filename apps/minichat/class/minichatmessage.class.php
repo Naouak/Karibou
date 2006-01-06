@@ -36,7 +36,7 @@ class MinichatMessage
 
 	function getDate()
 	{
-		return date('H:i', $this->time);
+		return date($this->time);
 	}
 
 	function getPost()
