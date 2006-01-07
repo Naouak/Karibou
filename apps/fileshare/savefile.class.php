@@ -26,7 +26,7 @@ protected $text;
 			{
 				//Check rights
 				
-				$myFile = new KFile ($this->db, $this->userFactory, FALSE,FALSE, $_POST["fileid"]);
+				$myFile = new KFile ($this->db, $this->userFactory, $this->permission, FALSE,FALSE, $_POST["fileid"]);
 
 				//Get last version id + 1
 				$id = $myFile->getLastVersionInfo("id");
@@ -113,11 +113,11 @@ protected $text;
 		
 				if (isset($_POST['directoryname']) && $_POST['directoryname'] != '')
 				{
-					$dir = new KDirectory($this->db, $this->userFactory, base64_decode($_POST['directoryname']));
+					$dir = new KDirectory($this->db, $this->userFactory, $this->permission, base64_decode($_POST['directoryname']));
 				}
 				else
 				{
-					$dir = new KDirectory($this->db, $this->userFactory);
+					$dir = new KDirectory($this->db, $this->userFactory, $this->permission);
 				}
 			
 				$this->text = new KText();
@@ -140,7 +140,7 @@ protected $text;
 						else
 						{
 						 
-							$kfile = new KFile($this->db, $this->userFactory, $file['name']);
+							$kfile = new KFile($this->db, $this->userFactory, $this->permission, $file['name']);
 							
 							//$filename = $this->text->epureString($file['name']);
 							$shortfilename = $this->text->epureString($kfile->getShortName());

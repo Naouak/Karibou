@@ -20,14 +20,16 @@ class KDirectory extends KDBFSElement
 	protected $files = array();
 	protected $subdirs = array();
 	protected $exists;
+	protected $permission;
 	
 	protected $userFactory;
 
-	function __construct(PDO $db, UserFactory $userFactory, $path = "", $rootdir = FALSE, $id = FALSE)
+	function __construct(PDO $db, UserFactory $userFactory, $permission, $path = "", $rootdir = FALSE, $id = FALSE)
 	{
 	
 		$this->db = $db;
 		$this->userFactory = $userFactory;
+		$this->permission = $permission;
 
 		if ($rootdir == FALSE)
 		{
@@ -41,7 +43,7 @@ class KDirectory extends KDBFSElement
 		
 		if ($id !== FALSE)
 		{
-			parent::__construct($db, $this->userFactory, 'folder', FALSE, $id);
+			parent::__construct($db, $this->userFactory, $this->permission, 'folder', FALSE, $id);
 		}
 		else
 		{
@@ -51,7 +53,7 @@ class KDirectory extends KDBFSElement
 		
 			$this->path = $path;
 
-			parent::__construct($db, $this->userFactory, 'folder', $this->getPath());
+			parent::__construct($db, $this->userFactory, $this->permission, 'folder', $this->getPath());
 		}
 		
 		
@@ -202,14 +204,14 @@ class KDirectory extends KDBFSElement
 
 	public function addFile ($filename)
 	{
-		$kfile = new KFile($this->db, $this->userFactory, $filename);
+		$kfile = new KFile($this->db, $this->userFactory, $this->permission, $filename);
 		
 		array_push($this->files, $kfile );
 	}
 	
 	public function addSubDir ($dirname)
 	{
-		array_push($this->subdirs, new KDirectory($this->db, $this->userFactory, $dirname) );
+		array_push($this->subdirs, new KDirectory($this->db, $this->userFactory, $this->permission, $dirname) );
 	}
 	
 	public function returnFileList()

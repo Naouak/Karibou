@@ -13,7 +13,7 @@ class FileShareMini extends Model
 {
 	public function build()
 	{
-		$myKDBFSElementFactory = new KDBFSElementFactory($this->db, $this->userFactory);
+		$myKDBFSElementFactory = new KDBFSElementFactory($this->db, $this->userFactory, $this->permission);
 		$this->assign("lastAddedFiles", $myKDBFSElementFactory->getLastAddedFiles());
 		$this->assign("mostDownloadedFiles", $myKDBFSElementFactory->getMostDownloadedFiles());
 	}

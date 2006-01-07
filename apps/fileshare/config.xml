@@ -32,7 +32,6 @@
 
 	<view name="menu" class="FileShareMenu" template="menu.tpl" />
 
-	<view name="default" class="FileShareDefault" template="default.tpl" />
 	<view name="list" class="FileShareList" template="list.tpl" />
 	<view name="upload" class="FileShareUpload" template="upload.tpl" />
 	<view name="addversion" class="FileShareUpload" template="upload.tpl" />

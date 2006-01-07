@@ -18,12 +18,12 @@ class FileShareMoveChooseWhere extends Model
 	{		$app = $this->appList->getApp($this->appname);
 		$app->addView("menu", "header_menu", array("page"=>"movewhere"));
 		
-		$myKDBFSElementFactory = new KDBFSElementFactory($this->db, $this->userFactory);
+		$myKDBFSElementFactory = new KDBFSElementFactory($this->db, $this->userFactory, $this->permission);
 		
 		if (isset($this->args["elementid"]) && $this->args["elementid"] != "")
 		{
-			$this->assign("myFile", new KFile($this->db, $this->userFactory, FALSE, FALSE, $this->args["elementid"]));
-			$myDirectory = new KDirectory($this->db, $this->userFactory, "");
+			$this->assign("myFile", new KFile($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $this->args["elementid"]));
+			$myDirectory = new KDirectory($this->db, $this->userFactory, $this->permission, "");
 			$this->assign("myDirectoryTree", $myDirectory->returnTree());
 		}
 	}

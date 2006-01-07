@@ -22,7 +22,7 @@ class FileShareDeleteFile extends FormModel
 			{
 				//Check rights
 				
-				$myFile = new KFile ($this->db, $this->userFactory, FALSE,FALSE, $_POST["fileid"]);
+				$myFile = new KFile ($this->db, $this->userFactory, $this->permission, FALSE,FALSE, $_POST["fileid"]);
 
 				//Get last version id + 1
 				$id = $myFile->getLastVersionInfo("id");

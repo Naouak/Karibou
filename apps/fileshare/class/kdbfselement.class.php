@@ -20,6 +20,7 @@ class KDBFSElement
 {
 	protected $db;
 	protected $userFactory;
+	protected $permission;
 	
 	protected $id;
 	
@@ -36,10 +37,11 @@ class KDBFSElement
 	public $creator;
 	public $userrights;
 
-	function __construct (PDO $db, UserFactory $userFactory, $type = FALSE, $path = FALSE, $id = FALSE, $data = FALSE)
+	function __construct (PDO $db, UserFactory $userFactory, $permission, $type = FALSE, $path = FALSE, $id = FALSE, $data = FALSE)
 	{
 		$this->db			= $db;
 		$this->userFactory	= $userFactory;
+		$this->permission = $permission;
 
 		if ($this->db !== FALSE)
 		{
@@ -524,7 +526,7 @@ class KDBFSElement
 	
 	public function canRead()
 	{
-		if (($this->rights & READ) == READ)
+		if ( (($this->rights & READ) == READ) || ($this->permission >= _FULL_WRITE_))
 			return TRUE;
 		else
 			return FALSE;
@@ -532,7 +534,7 @@ class KDBFSElement
 	
 	public function canUpdate()
 	{
-		if (($this->rights & UPDATE) == UPDATE)
+		if ( (($this->rights & UPDATE) == UPDATE) || ($this->permission >= _FULL_WRITE_))
 			return TRUE;
 		else
 			return FALSE;
@@ -540,7 +542,7 @@ class KDBFSElement
 	
 	public function canWrite()
 	{
-		if (($this->rights & WRITE) == WRITE)
+		if ( (($this->rights & WRITE) == WRITE) || ($this->permission >= _FULL_WRITE_))
 			return TRUE;
 		else
 			return FALSE;

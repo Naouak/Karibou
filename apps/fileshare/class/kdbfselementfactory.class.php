@@ -18,12 +18,14 @@ class KDBFSElementFactory
 	
 	protected $db;
 	protected $userFactory;
+	protected $permission;
 
-	function __construct(PDO $db, UserFactory $userFactory)
+	function __construct(PDO $db, UserFactory $userFactory, $permission)
 	{
 	
 		$this->db = $db;
 		$this->userFactory = $userFactory;
+		$this->permission = $permission;
 	}
 
 	public function getLastAddedFiles()
@@ -50,7 +52,7 @@ class KDBFSElementFactory
 			$files = array();
 			foreach ($tab as $data)
 			{
-				$files[] = new KFile($this->db, $this->userFactory, FALSE, FALSE, $data["id"], $data);
+				$files[] = new KFile($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $data["id"], $data);
 			}
 			return $files;
 		}
@@ -85,7 +87,7 @@ class KDBFSElementFactory
 			$files = array();
 			foreach ($tab as $data)
 			{
-				$files[] = new KFile($this->db, $this->userFactory, FALSE, FALSE, $data["id"], $data);
+				$files[] = new KFile($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $data["id"], $data);
 			}
 			return $files;
 		}
@@ -98,16 +100,16 @@ class KDBFSElementFactory
 	public function move ($elementid, $destinationid)
 	{
 		//Get elementid
-		$file = new KFile ($this->db, $this->userFactory, FALSE, FALSE, $elementid);
+		$file = new KFile ($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $elementid);
 		
 		if ($destinationid == "")
 		{
-			$destination = new KDirectory ($this->db, $this->userFactory, "");			
+			$destination = new KDirectory ($this->db, $this->userFactory, $this->permission, "");			
 			$set = "SET parent = NULL";
 		}
 		else
 		{
-			$destination = new KDirectory ($this->db, $this->userFactory, FALSE, FALSE, $destinationid);
+			$destination = new KDirectory ($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $destinationid);
 			$set = "SET parent = '".$destination->getElementId()."'";
 		}
 
@@ -142,7 +144,7 @@ class KDBFSElementFactory
 				
 			}
 		}
-		return new KFile($this->db, $this->userFactory, FALSE, FALSE, $elementid);
+		return new KFile($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $elementid);
 	}
 }
 

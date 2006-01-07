@@ -20,7 +20,7 @@ class FileShareDownload extends Model
 		
 		if (isset($this->args["filename"]) && $this->args["filename"] != "")
 		{
-			$file = new KFile ($this->db, $this->userFactory, base64_decode($this->args["filename"]));
+			$file = new KFile ($this->db, $this->userFactory, $this->permission, base64_decode($this->args["filename"]));
 			
 			//$filepath = KARIBOU_PUB_DIR.'/fileshare/'.base64_decode($this->args["filename"]);
 	
@@ -46,7 +46,7 @@ class FileShareDownload extends Model
 		}
 		elseif (isset($this->args["fileid"],$this->args["versionid"]) && $this->args["fileid"] != "" && $this->args["versionid"] != "")
 		{
-			$file = new KFile ($this->db, $this->userFactory, FALSE, FALSE, $this->args["fileid"]);
+			$file = new KFile ($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $this->args["fileid"]);
 			$versionFilePath = KARIBOU_PUB_DIR.'/fileshare/versions/'.$this->args["fileid"].".".$this->args["versionid"];
 			if (is_file($versionFilePath))
 			{

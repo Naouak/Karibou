@@ -18,13 +18,13 @@ class FileShareUpload extends Model
 	{
 		$app = $this->appList->getApp($this->appname);
 		$app->addView("menu", "header_menu", array("page"=>"uploadfile"));
-
+		//var_dump( $this->permission >= _FULL_WRITE_ );
 		//Uploading a new file version
 		if (isset($this->args['fileid']))
 		{
 			//$dbfsFile = new KDBFSElement($this->db, FALSE, FALSE, $this->args['fileid']);
 			//$this->assign('dbfsFile', $dbfsFile);
-			$file = new KFile($this->db, $this->userFactory, FALSE, FALSE, $this->args['fileid']);
+			$file = new KFile($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $this->args['fileid']);
 			$this->assign('myFile', $file);
 			
 		}

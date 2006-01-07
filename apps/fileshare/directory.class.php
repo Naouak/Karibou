@@ -29,11 +29,11 @@ class FileShareDirectory extends Model
 				}
 			}
 
-			$myDir = new KDirectory($this->db, $this->userFactory, $path);
+			$myDir = new KDirectory($this->db, $this->userFactory, $this->permission, $path);
 		}
 		else
 		{
-			$myDir = new KDirectory($this->db, $this->userFactory);
+			$myDir = new KDirectory($this->db, $this->userFactory, $this->permission);
 		}
 
 		$app->addView("menu", "header_menu", array("page"=>"home", "myDirPathBase64"=>$myDir->getPathBase64(), "permission"=>$this->permission, "folderExistsInDB" => $myDir->existsInDB()||$myDir->isRootDir() ));

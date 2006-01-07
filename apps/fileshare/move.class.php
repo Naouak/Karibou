@@ -15,7 +15,7 @@
 class FileShareMove extends FormModel
 {
 	public function build()
-	{		$myKDBFSElementFactory = new KDBFSElementFactory($this->db, $this->userFactory);
+	{		$myKDBFSElementFactory = new KDBFSElementFactory($this->db, $this->userFactory, $this->permission);
 		
 		if (isset($_POST["elementid"], $_POST["destinationid"]) && $_POST["elementid"] != "")
 		{
