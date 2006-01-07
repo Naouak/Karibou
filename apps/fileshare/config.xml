@@ -24,6 +24,8 @@
 	<load class="FileShareSaveDirectory" file="savedirectory.class.php" />
 	<load class="FileShareFileDetails" file="filedetails.class.php" />
 	<load class="FileShareMini" file="mini.class.php" />
+	<load class="FileShareMoveChooseWhere" file="movewhere.class.php" />
+	<load class="FileShareMove" file="move.class.php" />
 
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
@@ -38,6 +40,8 @@
 	<view name="createdirectory" class="FileShareCreateDirectory" template="createdirectory.tpl" />
 	<view name="filedetails" class="FileShareFileDetails" template="filedetails.tpl" />
 	<view name="mini" class="FileShareMini" template="mini.tpl" />
+	<view name="movewhere" class="FileShareMoveChooseWhere" template="movewhere.tpl" />
+	
 
     <view name="directory" class="FileShareDirectory" template="directory.tpl" />
 
@@ -72,7 +76,16 @@
 		<argument name="versionid" class="NumberArgument" />
 	</page>
 
+	<page name="movewhere" view="movewhere">
+		<argument name="elementid" class="NumberArgument" />
+		<option name="destinationid" class="NumberArgument" />
+	</page>
+
 	<form action="savefile" class="FileShareSaveFile">
+		<redirect />
+	</form>
+	
+	<form action="move" class="FileShareMove">
 		<redirect />
 	</form>
 	

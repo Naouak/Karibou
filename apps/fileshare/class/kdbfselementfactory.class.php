@@ -94,13 +94,56 @@ class KDBFSElementFactory
 			Debug::kill($e->getMessage());
 		}
 	}
-	/*
-	public function getLastAddedFiles ()
+
+	public function move ($elementid, $destinationid)
 	{
-		$this->setLastAddedFiles();
-		return $this->files;
+		//Get elementid
+		$file = new KFile ($this->db, $this->userFactory, FALSE, FALSE, $elementid);
+		
+		if ($destinationid == "")
+		{
+			$destination = new KDirectory ($this->db, $this->userFactory, "");			
+			$set = "SET parent = NULL";
+		}
+		else
+		{
+			$destination = new KDirectory ($this->db, $this->userFactory, FALSE, FALSE, $destinationid);
+			$set = "SET parent = '".$destination->getElementId()."'";
+		}
+
+		//Get destination path
+		if ($destination->canUpdate() && $file->canWrite())
+		{
+			$from = $file->getFullPath();
+			$to = $destination->getFullPath()."/".$file->getName();
+			//Move file physically
+			if(!is_file($to) && rename($from, $to))
+			{
+				//Move file in DB
+				
+				$sql = "
+					UPDATE fileshare_sysinfos
+					$set
+					WHERE id = '".$file->getElementId()."'
+					";
+					
+				try
+				{
+					$stmt = $this->db->exec($sql);
+					unset($stmt);
+				}
+				catch(PDOException $e)
+				{
+					Debug::kill($e->getMessage());
+				}
+			}
+			else
+			{
+				
+			}
+		}
+		return new KFile($this->db, $this->userFactory, FALSE, FALSE, $elementid);
 	}
-	*/
 }
 
 ?>

@@ -23,17 +23,12 @@ class KDirectory extends KDBFSElement
 	
 	protected $userFactory;
 
-	function __construct(PDO $db, UserFactory $userFactory, $path = "", $rootdir = FALSE)
+	function __construct(PDO $db, UserFactory $userFactory, $path = "", $rootdir = FALSE, $id = FALSE)
 	{
 	
 		$this->db = $db;
 		$this->userFactory = $userFactory;
-		
-		//Security
-		$path = str_replace ('/..', '', $path);
-		$path = str_replace ('../', '', $path);
-	
-		$this->path = $path;
+
 		if ($rootdir == FALSE)
 		{
 			$this->rootdir = KARIBOU_PUB_DIR.'/fileshare/share/';
@@ -42,7 +37,25 @@ class KDirectory extends KDBFSElement
 		{
 			$this->rootdir = $rootdir;
 		}
-		$this->fullpath = $this->rootdir.$this->path;
+
+		
+		if ($id !== FALSE)
+		{
+			parent::__construct($db, $this->userFactory, 'folder', FALSE, $id);
+		}
+		else
+		{
+			//Security
+			$path = str_replace ('/..', '', $path);
+			$path = str_replace ('../', '', $path);
+		
+			$this->path = $path;
+
+			parent::__construct($db, $this->userFactory, 'folder', $this->getPath());
+		}
+		
+		
+		$this->fullpath = $this->rootdir.$this->getPath();
 
 		if (is_dir($this->fullpath))
 		{
@@ -53,11 +66,11 @@ class KDirectory extends KDBFSElement
 				while (false !== ($entry = $d->read())) {
 				   if ($entry != '.' && $entry != '..' && $entry != '.htaccess')
 				   {
-						if (is_file($this->fullpath.$entry))
+						if (is_file($this->getFullPath().'/'.$entry))
 						{
 							$this->addFile($this->getPath()."/".$entry);
 						}
-						elseif (is_dir($this->fullpath.$entry))
+						elseif (is_dir($this->getFullPath().'/'.$entry))
 						{
 							$this->addSubDir($this->getPath()."/".$entry);
 						}
@@ -76,7 +89,7 @@ class KDirectory extends KDBFSElement
 			$this->exists = FALSE;
 		}
 		
-		parent::__construct($db, $this->userFactory, 'folder', $this->getPath());
+		
 	}
 	
 	//Return true if directory exists
@@ -207,6 +220,27 @@ class KDirectory extends KDBFSElement
 	public function returnSubDirList()
 	{
 		return $this->subdirs;
+	}
+	
+	public function returnTree($first = TRUE)
+	{	
+		$tree = array();
+		if ($first)
+		{
+			$tree[$this->getElementId()] = "/";
+		}
+		
+		$subdirs = $this->returnSubDirList();
+		foreach ($subdirs as $subdir)
+		{
+			if ($subdir->canUpdate())
+			{
+				$tree[$subdir->getElementId()] = $subdir->getPath();
+			}
+			$subdirtree = $subdir->returnTree(FALSE);
+			$tree = $tree + $subdirtree;
+		}
+		return $tree;
 	}
 }
 

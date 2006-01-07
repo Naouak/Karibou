@@ -252,4 +252,24 @@ Upload file
 		<translation language="fr">Mis en ligne par</translation>
 		<translation language="en">Uploaded by</translation>
 	</sentence>
+	<sentence key="MOVE_FILE">
+		<translation language="fr">Déplacer ce fichier</translation>
+		<translation language="en">Move this file</translation>
+	</sentence>
+	<sentence key="MOVING_ELEMENT">
+		<translation language="fr">Déplacement de</translation>
+		<translation language="en">Moving</translation>
+	</sentence>	
+	<sentence key="MOVING_TO">
+		<translation language="fr">Vers</translation>
+		<translation language="en">To</translation>
+	</sentence>
+	<sentence key="MOVE_BUTTON">
+		<translation language="fr">Déplacer</translation>
+		<translation language="en">Move</translation>
+	</sentence>
+	<sentence key="MOVE_DESCRIPTION">
+		<translation language="fr">Choisissez le répertoire vers lequel vous souhaitez déplacer ce fichier.</translation>
+		<translation language="en">Choose the directory to which you want to move the file.</translation>
+	</sentence>
 </translation>

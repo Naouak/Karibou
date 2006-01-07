@@ -524,7 +524,7 @@ class KDBFSElement
 	
 	public function canRead()
 	{
-		if ($this->rights & READ == READ)
+		if (($this->rights & READ) == READ)
 			return TRUE;
 		else
 			return FALSE;
@@ -532,7 +532,7 @@ class KDBFSElement
 	
 	public function canUpdate()
 	{
-		if ($this->rights & UPDATE == UPDATE)
+		if (($this->rights & UPDATE) == UPDATE)
 			return TRUE;
 		else
 			return FALSE;
@@ -540,7 +540,7 @@ class KDBFSElement
 	
 	public function canWrite()
 	{
-		if ($this->rights & WRITE == WRITE)
+		if (($this->rights & WRITE) == WRITE)
 			return TRUE;
 		else
 			return FALSE;

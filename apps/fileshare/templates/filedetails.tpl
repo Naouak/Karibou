@@ -106,6 +106,9 @@
 		</div>
 		{if ($myFile->canWrite())}
 		<div class="toolbox">
+			<div class="movelink">
+				<a href="{kurl page="movewhere" elementid=$myFile->getElementId()}">##MOVE_FILE##</a>
+			</div>
 			<form method="post" action="{kurl page="deletefile"}" id="deletefile" name="deletefile">
 				<input type="hidden" name="fileid" value="{$myFile->getElementId()}">
 				<a href="#" onclick="if(confirm('##DELETE_ASKIFSURE##')){ldelim}document.deletefile.submit(){rdelim}else{ldelim}return false;{rdelim};">##DELETE_THIS_FILE##</a>
