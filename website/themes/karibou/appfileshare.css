@@ -389,6 +389,16 @@ font-size: 0.8em;
 	padding-bottom: 2px;
 }
 
+/* Move Link */
+.fileshare .filedetails .movelink a {
+	background-image: url(images/fileshare/detailed/move.png);
+	background-repeat: no-repeat;
+	background-position: 0px left;
+	padding-left: 22px;
+	padding-top: 0px;
+	padding-bottom: 2px;
+}
+
 /* Add new version link */
 .fileshare .filedetails .versions a.add {
 	background-image: url(images/fileshare/detailed/add.png);
