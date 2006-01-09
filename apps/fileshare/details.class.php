@@ -17,7 +17,7 @@ class FileShareDetails extends Model
 	public function build()
 	{
 		$app = $this->appList->getApp($this->appname);
-		$app->addView("menu", "header_menu", array("page"=>"filedetails"));
+		$app->addView("menu", "header_menu", array("page"=>"details"));
 
 		if (isset($this->args["elementpath"]) && $this->args["elementpath"] != "")
 		{

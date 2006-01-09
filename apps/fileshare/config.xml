@@ -37,7 +37,6 @@
 	<view name="addversion" class="FileShareUpload" template="upload.tpl" />
 	<view name="download" class="FileShareDownload" template="download.tpl" />
 	<view name="createdirectory" class="FileShareCreateDirectory" template="createdirectory.tpl" />
-	<view name="filedetails" class="FileShareFileDetails" template="filedetails.tpl" />
 	<view name="details" class="FileShareDetails" template="details.tpl" />
 	
 	<view name="mini" class="FileShareMini" template="mini.tpl" />
@@ -63,11 +62,7 @@
 	<page name="directory" view="directory">
 		<option name="directoryname" class="AnyCharArgument" />
 	</page>
-
-	<page name="filedetails" view="details">
-		<argument name="elementpath" class="AnyCharArgument" />
-	</page>
-	<page name="details" view="details">
+	<page name="details" view="details">
 		<argument name="elementpath" class="AnyCharArgument" />
 	</page>
 

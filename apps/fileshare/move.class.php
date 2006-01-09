@@ -21,14 +21,14 @@ class FileShareMove extends FormModel
 		{
 			$myFile = $myKDBFSElementFactory->move($_POST["elementid"], $_POST["destinationid"]);
 			$this->setRedirectArg('app', 'fileshare');
-			$this->setRedirectArg('page', 'filedetails');
-			$this->setRedirectArg('filename', $myFile->getPathBase64());
+			$this->setRedirectArg('page', 'details');
+			$this->setRedirectArg('elementpath', $myFile->getPathBase64());
 		}
 		else
 		{
 			$this->setRedirectArg('app', 'fileshare');
 			$this->setRedirectArg('page', 'movewhere');
-			$this->setRedirectArg('filename', $_POST["elementid"]);
+			$this->setRedirectArg('elementpath', $_POST["elementid"]);
 		}
 	}
 	

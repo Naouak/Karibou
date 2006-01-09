@@ -80,8 +80,8 @@ protected $text;
 											);
 								
 								$this->setRedirectArg('app', 'fileshare');
-								$this->setRedirectArg('page', 'filedetails');
-								$this->setRedirectArg('filename', $myFile->getPathBase64());
+								$this->setRedirectArg('page', 'details');
+								$this->setRedirectArg('elementpath', $myFile->getPathBase64());
 								//$this->setRedirectArg('page', 'directory');
 								//$this->setRedirectArg('directoryname', $dir->getPathBase64());
 							}

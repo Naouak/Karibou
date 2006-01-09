@@ -10,7 +10,7 @@
 		<li>
 			<a href="{kurl page="directory" directoryname=$myElement->getParentPathBase64()}">
 				<span class="name">##UPONELEVEL##</span>
-				<span class="name">/{$myElement->getParentPath()}</span>
+				<span class="name">{$myElement->getParentPath()}</span>
 			</a>
 		</li>
 	</ul>
