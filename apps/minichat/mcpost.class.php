@@ -11,28 +11,30 @@
 
 class MCPost extends FormModel
 {
-    public function build()
-    {
-    if (isset($_POST['post']))
-    {
-    $message = $_POST['post'];
-    }
-    elseif (isset($_GET['post']))
-    {
-    $message = $_GET['post'];
-    }
-        $req_sql = "INSERT INTO minichat (time, id_auteur, post) VALUES (NOW(), " .
-             $this->currentUser->getID() . ", '" .
-             $message . "')";
-
-	try
+	public function build()
 	{
-		$this->db->exec($req_sql);
+		if ($this->currentUser->isLogged())
+		{
+			if (isset($_POST['post']))
+			{
+				$message = $_POST['post'];
+			}
+			elseif (isset($_GET['post']))
+			{
+			$message = $_GET['post'];
+			}
+				$req_sql = "INSERT INTO minichat (time, id_auteur, post) VALUES (NOW(), " .
+					 $this->currentUser->getID() . ", '" .
+					 $message . "')";
+			try
+			{
+				$this->db->exec($req_sql);
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage());
+			}
+		}
 	}
-	catch(PDOException $e)
-	{
-		Debug::kill($e->getMessage());
-	}
-    }
 }
 ?>

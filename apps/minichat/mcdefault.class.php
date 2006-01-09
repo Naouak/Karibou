@@ -19,24 +19,26 @@ class MCDefault extends Model
 		$config = $app->getConfig();
 		$this->assign("config", $config);
 		
-		/* POST */
-		if (isset($_POST['post']))
+		if ($this->currentUser->isLogged())
 		{
-		$message = $_POST['post'];
-		}
-		if (isset($message))
-		{
-			$req_sql = "INSERT INTO minichat 
-				(time, id_auteur, post) VALUES
-				(NOW(), " .	$this->currentUser->getID() . ", '" .$message . "')";
-		
-			try
+			/* POST */
+			if (isset($_POST['post']))
 			{
-				$this->db->exec($req_sql);
+			$message = $_POST['post'];
 			}
-			catch(PDOException $e)
+			if (isset($message))
 			{
-				Debug::kill($e->getMessage());
+				$req_sql = "INSERT INTO minichat 
+					(time, id_auteur, post) VALUES
+					(NOW(), " .	$this->currentUser->getID() . ", '" .$message . "')";
+				try
+				{
+					$this->db->exec($req_sql);
+				}
+				catch(PDOException $e)
+				{
+					Debug::kill($e->getMessage());
+				}
 			}
 		}
 	
