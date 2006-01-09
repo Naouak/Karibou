@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<config>
+		<param name="method">
+			<value name="method">ldap</value>
+		</param>
+	</config>
+
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+
+	<load class="Save" file="save.class.php" />
+	<load class="GiveEmail" file="giveemail.class.php" />
+	
+	<load class="EmailInterfaceLDAP" file="class/emailinterfaceldap.class.php" />
+	<load class="EmailInterface" file="class/emailinterface.class.php" />
+
+	<view name="default" class="GiveEmail" template="giveemail.tpl" />
+
+	<page view="default" />
+	
+	<form action="save" class="Save">
+		<redirect />
+	</form>
+	
+</app>

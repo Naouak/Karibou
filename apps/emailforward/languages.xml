@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<translation>
+    <sentence key="EMAILFORWARD">
+        <translation language="fr">
+        Configuration du transfert d'email
+        </translation>
+        <translation language="en">
+        Email forwarding configuration
+        </translation>
+    </sentence>
+    <sentence key="EMAILFORWARD_DESCRIPTION">
+        <translation language="fr">
+        Cette page vous permet de changer la configuration de votre transfert d'email. Lorsque le transfert d'email est activé, vos emails à destination de votre adresse {$email} ne sont plus stockés sur le serveur mais sont transférés sur l'email de votre choix.
+        Laissez le champ email vide si vous ne souhaitez pas activer le transfert d'email.
+        </translation>
+        <translation language="en">
+        This page allows you to change your email forwarding configuration. When email forwarding is enabled, emails sent to your address {$email} are transfered automatically to the email of your choice.
+        Leave the email text field empty if you want to disable email forwarding.
+        </translation>
+    </sentence>
+    <sentence key="EMAILFORWARD_ERROR">
+        <translation language="fr">
+        Une erreur s'est produite. La modification n'a pu être enregistrée.
+        </translation>
+        <translation language="en">
+        An error occured. Modification hasn't been saved.
+        </translation>
+    </sentence>
+    <sentence key="EMAILFORWARD_EMAILNOTVALID">
+        <translation language="fr">
+        L'adresse email fournie n'est pas valide.
+        </translation>
+        <translation language="en">
+        The email address you provided isn't valid.
+        </translation>
+    </sentence>
+    <sentence key="EMAILFORWARD_ERROR_UNKNOWN">
+        <translation language="fr">
+        Une erreur inconnue est survenue.
+        </translation>
+        <translation language="en">
+        An unknown error occured.
+        </translation>
+    </sentence>
+    <sentence key="EMAILFORWARD_EMAIL">
+        <translation language="fr">Adresse email</translation>
+        <translation language="en">Email address</translation>
+    </sentence>
+    <sentence key="EMAILFORWARD_CHANGE">
+        <translation language="fr">Enregistrer l'adresse email pour le transfert</translation>
+        <translation language="en">Save email address for email forwarding</translation>
+    </sentence>
+</translation>
