@@ -199,7 +199,7 @@ class KDirectory extends KDBFSElement
 
 	function getModificationDate()
 	{
-		return filemtime($this->fullpath);
+		return filectime($this->fullpath);
 	}
 
 	public function addFile ($filename)
@@ -222,6 +222,18 @@ class KDirectory extends KDBFSElement
 	public function returnSubDirList()
 	{
 		return $this->subdirs;
+	}
+	
+	public function isEmpty()
+	{
+		if (count($this->files) == 0 && count($this->subdirs) == 0)
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
 	}
 	
 	public function returnTree($first = TRUE)

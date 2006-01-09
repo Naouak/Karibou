@@ -7,7 +7,7 @@
 			{foreach from=$lastAddedFiles item="file"}
 				<li>
 					<span class="name">
-						<a href="{kurl page="filedetails" filename=$file->getPathBase64()}" title="{$file->getName()}" class="{if ($file->getExtension() != "")}{$file->getExtension()}{/if}">{$file->getSysInfos("name")} {if $file->getLastVersionInfo("versionid")>1}(v{$file->getLastVersionInfo("versionid")}){/if}</a>
+						<a href="{kurl page="details" elementpath=$file->getPathBase64()}" title="{$file->getName()}" class="{if ($file->getExtension() != "")}{$file->getExtension()}{/if}">{$file->getSysInfos("name")} {if $file->getLastVersionInfo("versionid")>1}(v{$file->getLastVersionInfo("versionid")}){/if}</a>
 					</span>
 					<a href="{kurl page="download" filename=$file->getPathBase64()}" title="##DOWNLOAD## {$file->getName()}">
 						<span class="downloadlink"><span>##DOWNLOAD##</span></span>
@@ -51,7 +51,7 @@
 			{foreach from=$mostDownloadedFiles item="file"}
 				<li>
 					<span class="name">
-						<a href="{kurl page="filedetails" filename=$file->getPathBase64()}" title="{$file->getName()}" class="{if ($file->getExtension() != "")}{$file->getExtension()}{/if}">{$file->getSysInfos("name")} {if $file->getLastVersionInfo("versionid")>1}(v{$file->getLastVersionInfo("versionid")}){/if}</a>
+						<a href="{kurl page="details" elementpath=$file->getPathBase64()}" title="{$file->getName()}" class="{if ($file->getExtension() != "")}{$file->getExtension()}{/if}">{$file->getSysInfos("name")} {if $file->getLastVersionInfo("versionid")>1}(v{$file->getLastVersionInfo("versionid")}){/if}</a>
 					</span>
 					<a href="{kurl page="download" filename=$file->getPathBase64()}" title="##DOWNLOAD## {$file->getName()}">
 						<span class="downloadlink"><span>##DOWNLOAD##</span></span>

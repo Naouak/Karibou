@@ -1,50 +1,55 @@
 <h1>##FILESHARE_TITLE##</h1>
-<h3>##FILEDETAILS## : {$myFile->getName()}</h3>
+<h3>{if $myElement->isFile()}##FILEDETAILS##{else}##DIRECTORYDETAILS##{/if} : {$myElement->getName()}</h3>
 
-{if $myFile->existsInDB()}
-	{assign var="versions" value=$myFile->getAllVersions()}
+{if $myElement->isFile() && $myElement->existsInDB()}
+	{assign var="versions" value=$myElement->getAllVersions()}
 {/if}
 
 <div class="fileshare">
 	<ul class="detailed directory">
 		<li>
-			<a href="{kurl page="directory" directoryname=$myFile->getParentPathBase64()}">
+			<a href="{kurl page="directory" directoryname=$myElement->getParentPathBase64()}">
 				<span class="name">##UPONELEVEL##</span>
-				<span class="name">/{$myFile->getParentPath()}</span>
+				<span class="name">/{$myElement->getParentPath()}</span>
 			</a>
 		</li>
 	</ul>
 
-	{if !$myFile->existsInDB()}
+	{if !$myElement->existsInDB()}
 		<div class="helper">##DOESNOTEXISTINDB##</div>
+	{elseif $myElement->isDirectory()}
+		<div class="helper">##DIRECTORYDETAILS_DESCRIPTION##</div>
 	{/if}
 	
-	<div class="filedetails{if ($myFile->getExtension() != "")} {$myFile->getExtension()}{/if}">
+	<div class="details{if ($myElement->isFile() && ($myElement->getExtension() != ""))} {$myElement->getExtension()}{elseif $myElement->isDirectory()} directory{/if}">
 		<div class="detail name">
 			<label for="name">##NAME## :</label> 
 			<span id="name">
-				{$myFile->getName()}&nbsp;
+				{$myElement->getName()}&nbsp;
 			</span>
 		</div>
-		{if $myFile->existsInDB()}
+		{if $myElement->existsInDB()}
 		<div class="detail description">
 			<label for="description">##DESCRIPTION## :</label>
 			<span id="description">
-				{$myFile->getLastVersionInfo("description")}&nbsp;
+				{$myElement->getLastVersionInfo("description")}&nbsp;
 			</span>
 		</div>
-		
+			{if $myElement->isFile()}
 		<div class="detail version">
 			<label for="version">##VERSION## :</label>
 			<span id="version">
-				{$myFile->getLastVersionInfo("versionid")}&nbsp;
+				{$myElement->getLastVersionInfo("versionid")}&nbsp;
 			</span>
 		</div>
+			{/if}
 		{/if}
+		
+		{if $myElement->isFile()}
 		<div class="detail size">
 			<label for="size">##SIZE## : </label>
 			<span id="size">
-			{assign var="filesize" value=$myFile->getSize()}
+			{assign var="filesize" value=$myElement->getSize()}
 			{if $filesize > 1024*1000}
 				{$filesize/1024/1000|@round:2}MB
 			{else}
@@ -52,77 +57,91 @@
 			{/if}&nbsp;
 			</span>
 		</div>
-		{if $myFile->existsInDB()}
+		{/if}
+		
+		{if $myElement->existsInDB()}
+			{if $myElement->isFile()}
 		<div class="detail hits">
 			<label for="hits">##DOWNLOAD_COUNT## :</label>
 			<span id="hits">
-				{if $myFile->getHitsByVersion() != NULL}
-					{$myFile->getHitsByVersion()}
+				{if $myElement->getHitsByVersion() != NULL}
+					{$myElement->getHitsByVersion()}
 				{else}
 					0
 				{/if}&nbsp;
 			</span>
 		</div>
+			{/if}
 		<div class="detail uploader">
 			<label for="uploader">##UPLOADER## :</label>
 			<span id="uploader">
-				{assign var="uploader" value=$myFile->getLastVersionInfo("user")}
+				{assign var="uploader" value=$myElement->getLastVersionInfo("user")}
 				<a href="{kurl app="annuaire" username=$uploader->getLogin()}">{$uploader->getUserLink()}</a>&nbsp;
 			</span>
 		</div>
 		<div class="detail creator">
 			<label for="creator">##CREATOR## :</label>
 			<span id="creator">
-				<a href="{kurl app="annuaire" username=$myFile->creator->getLogin()}">{$myFile->creator->getUserLink()}</a>&nbsp;
+				<a href="{kurl app="annuaire" username=$myElement->creator->getLogin()}">{$myElement->creator->getUserLink()}</a>&nbsp;
 			</span>
 		</div>
-			{if $myFile->getSysInfos("groupowner") != NULL}
+			{if $myElement->getSysInfos("groupowner") != NULL}
 		<div class="detail groupowner">
 			<label for="groupowner">##GROUPOWNER## :</label>
 			<span id="groupowner">
-				{$myFile->getSysInfos("groupowner")}&nbsp;
+				{$myElement->getSysInfos("groupowner")}&nbsp;
 			</span>
 		</div>
 			{/if}
 		{/if}
+		
 		{if $versions|@count>0}
 		<div class="detail uploadname">
 			<label for="uploadname">
 			##UPLOADNAME## :
 			</label>
 			<span id="uploadname">
-			{$myFile->getLastVersionInfo("uploadname")}&nbsp;
+			{$myElement->getLastVersionInfo("uploadname")}&nbsp;
 			</span>
-		</div>
-		{/if}
-		<div class="detail date">
-			<label for="date">##UPLOADDATE## :</label>
-			<span id="date">
-				{$myFile->getModificationDate()|date_format:"%d %B %Y @ %H:%M"}&nbsp;
-			</span>
-		</div>
-		<div class="downloadlink">
-			<a href="{kurl page="download" filename=$myFile->getPathBase64()}" title="##DOWNLOAD## {$myFile->getName()}">##DOWNLOAD## {$myFile->getName()}</a>
-		</div>
-		{if ($myFile->canWrite())}
-		<div class="toolbox">
-			<div class="movelink">
-				<a href="{kurl page="movewhere" elementid=$myFile->getElementId()}">##MOVE_FILE##</a>
-			</div>
-			<form method="post" action="{kurl page="deletefile"}" id="deletefile" name="deletefile">
-				<input type="hidden" name="fileid" value="{$myFile->getElementId()}">
-				<a href="#" onclick="if(confirm('##DELETE_ASKIFSURE##')){ldelim}document.deletefile.submit(){rdelim}else{ldelim}return false;{rdelim};">##DELETE_THIS_FILE##</a>
-			</form>
 		</div>
 		{/if}
 		
-	{if $myFile->existsInDB()}
+		<div class="detail date">
+			<label for="date">##UPLOADDATE## :</label>
+			<span id="date">
+				{$myElement->getModificationDate()|date_format:"%d %B %Y @ %H:%M"}&nbsp;
+			</span>
+		</div>
+		
+		{if $myElement->isFile()}
+		<div class="downloadlink">
+			<a href="{kurl page="download" filename=$myElement->getPathBase64()}" title="##DOWNLOAD## {$myElement->getName()}">##DOWNLOAD## {$myElement->getName()}</a>
+		</div>
+		{/if}
+		
+		{if ($myElement->existsInDB() && $myElement->canWrite())}
+		<div class="toolbox">
+			{if $myElement->isFile()}
+			<div class="movelink">
+				<a href="{kurl page="movewhere" elementid=$myElement->getElementId()}">##MOVE_FILE##</a>
+			</div>
+			{/if}
+			{if $myElement->isFile() || ($myElement->isDirectory() && $myElement->isEmpty())}
+			<form method="post" action="{kurl page="deletefile"}" id="deletefile" name="deletefile">
+				<input type="hidden" name="fileid" value="{$myElement->getElementId()}">
+				<a href="#" onclick="if(confirm('##DELETE_ASKIFSURE## {$myElement->getName()} ?')){ldelim}document.deletefile.submit(){rdelim}else{ldelim}return false;{rdelim};">##DELETE## {if $myElement->isFile()}##THIS_FILE##{else}##THIS_DIRECTORY##{/if}</a>
+			</form>
+			{/if}
+		</div>
+		{/if}
+		
+	{if $myElement->isFile() && $myElement->existsInDB()}
 		{if $versions|@count>0}
 		<div class="versions">
 			<label for="versions" class="title">##VERSIONS## :</label>
 			<ul id="versions">
 			{foreach from=$versions item=version}
-{if $myFile->getLastVersionInfo("versionid") != $version->getInfo("versionid")}
+				{if $myElement->getLastVersionInfo("versionid") != $version->getInfo("versionid")}
 				<li class="{cycle values="one,two"}">
 					<div class="detail versionid">
 						<label for="versionid_v{$version->getInfo("versionid")}">
@@ -177,8 +196,8 @@
 					<div class="detail hits">
 						<label for="hits">##DOWNLOAD_COUNT## :</label>
 						<span id="hits">
-							{if $myFile->getHitsByVersion($version->getInfo("versionid")) != NULL}
-								{$myFile->getHitsByVersion($version->getInfo("versionid"))}
+							{if $myElement->getHitsByVersion($version->getInfo("versionid")) != NULL}
+								{$myElement->getHitsByVersion($version->getInfo("versionid"))}
 							{else}
 								0
 							{/if}&nbsp;
@@ -193,20 +212,20 @@
 						</span>
 					</div>
 					<div class="downloadlink">
-						<a href="{kurl page="downloadversion" fileid=$myFile->getElementId() versionid=$version->getInfo("versionid")}">
+						<a href="{kurl page="downloadversion" fileid=$myElement->getElementId() versionid=$version->getInfo("versionid")}">
 						{if ($version->getInfo("versionid") == 1)}
 							##DOWNLOADORIGINALVERSIONOF##
 						{else}
 							##DOWNLOAD## ##VERSION## {$version->getInfo("versionid")} ##OF##
 						{/if}
-						{$myFile->getName()}</a>
+						{$myElement->getName()}</a>
 					</div>
 				</li>
 				{/if}
 			{/foreach}			
 			</ul>
-			{if $myFile->canUpdate()}
-			<a href="{kurl page="addversion" fileid=$myFile->getFileId()}" class="add">##ADD_NEW_VERSION##</a>
+			{if $myElement->canUpdate()}
+			<a href="{kurl page="addversion" fileid=$myElement->getFileId()}" class="add">##ADD_NEW_VERSION##</a>
 			{/if}
 		</div>
 		{/if}

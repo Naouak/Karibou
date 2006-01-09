@@ -18,40 +18,76 @@ class FileShareDeleteFile extends FormModel
 	public function build()
 	{
 		$currentUser = $this->userFactory->getCurrentUser();
-			if (isset($_POST["fileid"]))
-			{
-				//Check rights
+		if (isset($_POST["fileid"]))
+		{
+				$element = new KDBFSElement($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $_POST["fileid"]);
 				
-				$myFile = new KFile ($this->db, $this->userFactory, $this->permission, FALSE,FALSE, $_POST["fileid"]);
-
-				//Get last version id + 1
-				$id = $myFile->getLastVersionInfo("id");
-
-				$actualVersionId = $myFile->getLastVersionInfo("versionid");
-				
-				if ($myFile->canWrite() && isset($actualVersionId, $id) && ($actualVersionId !== FALSE) && ($actualVersionId != "") && ($id !== FALSE) && ($id != ""))
+				if ($element->getType() == "file")
 				{
-					$versionFilePath = KARIBOU_PUB_DIR.'/fileshare/versions/'.$id.".".$actualVersionId;
-							//Backup  / Move actual file in fvers/id.versionid
-							$actualLocation = $myFile->getFullPath();
+					$myElement = new KFile ($this->db, $this->userFactory, $this->permission, FALSE,FALSE, $_POST["fileid"]);
+				}
+				else
+				{
+					$myElement = new KDirectory ($this->db, $this->userFactory, $this->permission, FALSE,FALSE, $_POST["fileid"]);					
+				}
+				
 
-							if (copy($actualLocation, $versionFilePath))
-							{
-								//Copy uploaded file at backuped file original location
-								//Update db
-                                unlink($actualLocation);
-								$kdbfsw = new KDBFSElementWriter ($this->db, $id);
-								$kdbfsw->setAsDeleted();
-							}
-							else
-							{
-								Debug::Kill ("Backup failed");
-							}
-							$this->setRedirectArg('app', 'fileshare');
-							$this->setRedirectArg('page', 'directory');
-							$this->setRedirectArg('directoryname', $myFile->getParentPathBase64());
-                }
-        }
+
+				if ($myElement->isFile())
+				{
+					//Check rights
+		
+					//Get last version id + 1
+					$id = $myElement->getLastVersionInfo("id");
+		
+					$actualVersionId = $myElement->getLastVersionInfo("versionid");
+					
+					if ($myElement->canWrite() && isset($actualVersionId, $id) && ($actualVersionId !== FALSE) && ($actualVersionId != "") && ($id !== FALSE) && ($id != ""))
+					{
+						$versionFilePath = KARIBOU_PUB_DIR.'/fileshare/versions/'.$id.".".$actualVersionId;
+						//Backup  / Move actual file in fvers/id.versionid
+						$actualLocation = $myElement->getFullPath();
+
+						if (copy($actualLocation, $versionFilePath))
+						{
+							//Copy uploaded file at backuped file original location
+							//Update db
+                             unlink($actualLocation);
+							$kdbfsw = new KDBFSElementWriter ($this->db, $id);
+							$kdbfsw->setAsDeleted();
+						}
+						else
+						{
+							Debug::Kill ("Backup failed");
+						}
+						$this->setRedirectArg('app', 'fileshare');
+						$this->setRedirectArg('page', 'directory');
+						$this->setRedirectArg('directoryname', $myElement->getParentPathBase64());
+					}
+				}
+				elseif ($myElement->isDirectory())
+				{
+					if ($myElement->isEmpty())
+					{
+						if ($myElement->canWrite())
+						{
+							$kdbfsw = new KDBFSElementWriter ($this->db, $myElement->getElementId());
+							$kdbfsw->setAsDeleted();
+							
+							rmdir($myElement->getFullPath());
+						}
+						else
+						{
+						}
+					}
+					else
+					{
+					}
+					$this->setRedirectArg('app', 'fileshare');
+					$this->setRedirectArg('page', 'directory');
+					$this->setRedirectArg('directoryname', $myElement->getParentPathBase64());
+				}
+	   }
 		else
 		{
 			$this->setRedirectArg('app', 'fileshare');

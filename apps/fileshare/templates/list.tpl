@@ -82,6 +82,9 @@
 				<span class="versionid">{if $directory->getLastVersionInfo("versionid") > 1}{$directory->getLastVersionInfo("versionid")}{else}&nbsp;{/if}</span>
 				{*<span class="rights">?</span>*}
 			</a>
+			<a href="{kurl page="details" elementpath=$directory->getPathBase64()}" title="##VIEW_DIRECTORY## {$directory->getName()}">
+				<span class="detailslink"><span>##VIEW##</span></span>
+			</a>
 		</li>
 		{/foreach}
 	{/if}
@@ -93,7 +96,7 @@
 		{foreach item=file from=$files}
 		<li class="{if ($file->getExtension() != "")}{$file->getExtension()}{/if}">
 			{if !$file->existsInDb()}<span class="unknown" title="##UNKNOWNINDB##"><span>&nbsp;</span></span>{/if}
-			<a href="{kurl page="filedetails" filename=$file->getPathBase64()}" title="{$file->getName()}">
+			<a href="{kurl page="details" elementpath=$file->getPathBase64()}" title="{$file->getName()}">
 				<span class="name" title="{$file->getName()}">{$file->getShortName()}{if ($file->getExtension() != "")}.{$file->getExtension()|truncate:7:"":true}{/if}</span>
 				<span class="size">
 					{assign var="filesize" value=$file->getSize()}

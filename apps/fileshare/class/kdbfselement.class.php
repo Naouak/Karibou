@@ -51,7 +51,7 @@ class KDBFSElement
 			$this->stats	= array();
 			
 			//Using the path to retrieve the infos
-			if ( ($type !== FALSE) && ($path !== FALSE) )
+			if ( /*($type !== FALSE) &&*/ ($path !== FALSE) )
 			{
 				$this->path	= $path;
 				//$this->setPathArrayId();
@@ -261,39 +261,6 @@ class KDBFSElement
 		preg_match_all("/([^\/]+)/", $path, $out, PREG_PATTERN_ORDER);
 		return $out[1];
 	}
-/*	
-	public function getParentPath()
-	{
-		$patharray = $this->getPathArray();
-		if (count($patharray)>0)
-		{
-			array_pop($patharray);
-			$parentpath = "";
-			foreach ($patharray as $name)
-			{
-				$path .= "/".$name;
-			}
-			return $path;
-		}
-		else
-		{
-			return FALSE;
-		}
-	}
-	
-	public function getParentPath64()
-	{
-		$path = $this->getParentPath();
-		if (strlen($path) > 0)
-		{
-			return base64_encode($path);
-		}
-		else
-		{
-			return FALSE;
-		}
-	}
-*/
 
 	//Return parent path of actual dir
 	public function getParentPath()
@@ -625,6 +592,53 @@ class KDBFSElement
 		$updatedate	= $this->getLastVersionInfo("timestamp");
 		$nowdate	= mktime();
 		return ($nowdate-$updatedate);
+	}
+	
+	public function getType()
+	{
+		if ($this->getSysInfos("type") === FALSE)
+		{
+				if (is_file($this->getFullPath()))
+				{
+					return "file";
+				}
+				elseif (is_dir($this->getFullPath()))
+				{
+					return "folder";
+				}
+				else
+				{
+					return FALSE;
+				}
+		}
+		else
+		{
+			return $this->getSysInfos("type");
+		}
+	}
+	
+	public function isFile ()
+	{
+		if ($this->getType() == "file")
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+	
+	public function isDirectory ()
+	{
+		if ($this->getType() == "folder")
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
 	}
 }
 
