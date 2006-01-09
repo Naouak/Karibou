@@ -21,9 +21,10 @@ class Save extends FormModel
 		{
 			$this->text = new KText();
 			$ei = new EmailInterfaceLDAP($GLOBALS["config"]["ldap"]["rdn"],$GLOBALS["config"]["ldap"]["pwd"],$GLOBALS["config"]["ldap"]["jvd"]);	
+			$emaillogin = $this->currentUser->getLogin().$GLOBALS['config']['login']['post_username'];
 			if ( $this->text->checkEmail($_POST["email"]))
 			{
-					if( !$ei->changeMailDrop($email, $_POST["email"]) )
+					if( !$ei->changeMailDrop($emaillogin, $_POST["email"]) )
 					{
 						$_SESSION["emailforwardMessage"] = "UNKNOWNERROR";
 						Debug::kill($ei);
@@ -35,7 +36,7 @@ class Save extends FormModel
 			}
 			elseif ($_POST["email"] = "")
 			{
-				if( !$ei->removeMailDrop($email) )
+				if( !$ei->removeMailDrop($emaillogin) )
 				{
 					$_SESSION["emailforwardMessage"] = "UNKNOWNERROR";
 					Debug::kill($ei);
