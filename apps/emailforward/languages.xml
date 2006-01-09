@@ -10,13 +10,17 @@
     </sentence>
     <sentence key="EMAILFORWARD_DESCRIPTION">
         <translation language="fr">
-        Cette page vous permet de changer la configuration de votre transfert d'email. Lorsque le transfert d'email est activé, vos emails à destination de votre adresse {$email} ne sont plus stockés sur le serveur mais sont transférés sur l'email de votre choix.
+        Cette page vous permet de changer la configuration de votre transfert d'email. Lorsque le transfert d'email est activé, vos emails à destination de votre adresse __{$emaillogin}__ ne sont plus stockés sur le serveur mais sont transférés sur l'email de votre choix.
         Laissez le champ email vide si vous ne souhaitez pas activer le transfert d'email.
         </translation>
         <translation language="en">
-        This page allows you to change your email forwarding configuration. When email forwarding is enabled, emails sent to your address {$email} are transfered automatically to the email of your choice.
+        This page allows you to change your email forwarding configuration. When email forwarding is enabled, emails sent to your address __{$emaillogin}__ won't be stored on the server anymore but will be transfered automatically to the email of your choice.
         Leave the email text field empty if you want to disable email forwarding.
         </translation>
+    </sentence>
+    <sentence key="EMAILFORWARD_SUCCESS">
+        <translation language="fr">La modification a été appliquée avec succès.</translation>
+        <translation language="en">The new configuration has been applied successfully.</translation>
     </sentence>
     <sentence key="EMAILFORWARD_ERROR">
         <translation language="fr">

@@ -22,6 +22,7 @@ class GiveEmail extends Model
 		
 		$ei = new EmailInterfaceLDAP($GLOBALS["config"]["ldap"]["rdn"],$GLOBALS["config"]["ldap"]["pwd"],$GLOBALS["config"]["ldap"]["jvd"]);	
 		$emaillogin = $this->currentUser->getLogin().$GLOBALS['config']['login']['post_username'];
+		$this->assign("emaillogin", $emaillogin);
 		$this->assign("email", $ei->getMailDrop($emaillogin));
 	}
 }
