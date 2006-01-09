@@ -125,7 +125,7 @@
 		<translation language="en" value="Surname" />
 	</sentence>
 	<sentence key="BIRTHDAY">
-		<translation language="fr" value="Annivaisaire" />
+		<translation language="fr" value="Anniversaire" />
 		<translation language="en" value="Birthday" />
 	</sentence>
 	<sentence key="URL">
