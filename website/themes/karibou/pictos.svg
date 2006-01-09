@@ -22,6 +22,17 @@
   <defs
      id="defs4">
     <linearGradient
+       id="linearGradient6006">
+      <stop
+         style="stop-color:#007a06;stop-opacity:0.50276244;"
+         offset="0.0000000"
+         id="stop6008" />
+      <stop
+         style="stop-color:#007a06;stop-opacity:0;"
+         offset="1"
+         id="stop6010" />
+    </linearGradient>
+    <linearGradient
        id="linearGradient5683">
       <stop
          style="stop-color:#ffffff;stop-opacity:1.0000000;"
@@ -1030,6 +1041,15 @@
        r="52.789070"
        gradientTransform="matrix(6.789864,0.136814,-1.913564e-2,0.949673,-4364.184,-39.38957)"
        gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6006"
+       id="linearGradient6012"
+       x1="455.07373"
+       y1="98.607002"
+       x2="485.88904"
+       y2="16.273924"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -1038,9 +1058,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="717.68194"
-     inkscape:cy="30.118449"
+     inkscape:zoom="0.35000000"
+     inkscape:cx="668.88913"
+     inkscape:cy="282.54807"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="1390"
@@ -2346,5 +2366,34 @@
        style="fill:#007a06;fill-opacity:1.0000000;stroke:#009100;stroke-width:0.73096061;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
        d="M 755.28430,557.21016 L 761.62312,546.23373 L 750.64668,539.89493 L 752.29073,546.02635 C 743.11272,542.71615 736.56432,533.91044 736.61955,523.60161 C 736.65185,517.57366 738.73404,512.17103 742.51953,507.97853 L 742.31515,507.62386 C 734.79882,511.96344 730.51063,519.34683 730.46410,528.02584 C 730.39431,541.04586 740.85290,551.67602 753.84761,551.85120 L 755.28430,557.21016 z "
        id="path5693" />
+    <path
+       sodipodi:type="arc"
+       style="opacity:1.0000000;fill:url(#linearGradient6012);fill-opacity:1.0;fill-rule:nonzero;stroke:#000000;stroke-width:1.0120000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000"
+       id="path2347"
+       sodipodi:cx="455.07373"
+       sodipodi:cy="70.827812"
+       sodipodi:rx="54.043159"
+       sodipodi:ry="54.043159"
+       d="M 448.67927,124.49134 A 54.043159,54.043159 0 1 1 448.68054,124.49149"
+       sodipodi:start="1.6893956"
+       sodipodi:end="7.9725571"
+       sodipodi:open="true"
+       inkscape:export-filename="/home/web/karibou2/website_comex/themes/comex/text7480.png"
+       inkscape:export-xdpi="433.20001"
+       inkscape:export-ydpi="433.20001" />
+    <text
+       xml:space="preserve"
+       style="font-size:109.60183px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;fill:#464646;fill-opacity:1.0000000;stroke:#000000;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Monospace"
+       x="437.18298"
+       y="109.02727"
+       id="text7480"
+       sodipodi:linespacing="125.00000%"
+       inkscape:export-xdpi="433.20001"
+       inkscape:export-ydpi="433.20001"><tspan
+         sodipodi:role="line"
+         id="tspan7482"
+         x="437.18298"
+         y="109.02727"
+         style="font-size:109.60183px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Serif;fill:#464646;fill-opacity:1.0000000;stroke:#000000;stroke-opacity:1.0000000">i</tspan></text>
   </g>
 </svg>
