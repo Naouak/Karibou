@@ -17,12 +17,10 @@ class NJCompanyEdit extends Model
 	public function build()
 	{
 		$netJobs = new NetJobs ($this->db, $this->userFactory);
-		$allCompanies = $netJobs->getCompanyList();
-		$this->assign("allCompanies", $allCompanies);
-		
-		if ( (isset($this->args["companyid"])) && ($this->args["companyid"] != "") && ($myCompany = $netJobs->getCompanyById($this->args["companyid"])))
+
+		if ( (isset($this->args["companyid"])) && ($this->args["companyid"] != "") && ($this->args["companyid"] > 0) && ($myCompany = $netJobs->getCompanyById($this->args["companyid"])))
 		{
-			//Job modification
+			//Company modification
 			$this->assign("myCompany", $myCompany);
 			
 			$menuApp = $this->appList->getApp($this->appname);
@@ -30,9 +28,15 @@ class NJCompanyEdit extends Model
 		}
 		else
 		{
-			//New job
+			//New company
 			$menuApp = $this->appList->getApp($this->appname);
 			$menuApp->addView("menu", "header_menu", array("page" => "companyedit") );
+			
+			if (isset($this->args["jobid"]) && $this->args["jobid"] != "")
+			{
+				$myJob = $netJobs->getJobById($this->args["jobid"]);
+				$this->assign("myJob",$myJob);
+			}
 		}
 	}
 }

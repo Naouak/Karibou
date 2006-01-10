@@ -250,4 +250,16 @@
 		<translation language="fr">Inconnue</translation>
 		<translation language="en">Unknown</translation>
 	</sentence>
+	<sentence key="JOBCOMPANY_NEW_CHECKBOX">
+		<translation language="fr">Cochez cette case si l'entreprise que vous recherchez n'est pas dans la liste</translation>
+		<translation language="en">Check this checkbox if the company you are looking for is not in the list</translation>
+	</sentence>
+	<sentence key="JOB_COUNT1">
+		<translation language="fr">Voir les </translation>
+		<translation language="en">Display the</translation>
+	</sentence>
+	<sentence key="JOB_COUNT2">
+		<translation language="fr">offres</translation>
+		<translation language="en">opportunities</translation>
+	</sentence>
 </translation>

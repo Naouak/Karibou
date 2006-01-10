@@ -28,14 +28,38 @@ class NJJobSave extends FormModel
 			
 			$this->setRedirectArg('page', 'jobdetails');
 			$this->setRedirectArg('jobid', $_POST["jobinfos"]["id"]);
+			
+			if (isset($_POST["company_new"]) && $_POST["company_new"] == "on")
+			{
+				$this->setRedirectArg('app', 'netjobs');
+				$this->setRedirectArg('page', 'companyedit');
+				$this->setRedirectArg('companyid', 0);
+				$this->setRedirectArg('jobid', $_POST["jobinfos"]["id"]);
+			}
+			else
+			{
+				$this->setRedirectArg('app', 'netjobs');
+				$this->setRedirectArg('page', '');
+			}
+			
 		}
 		elseif (isset($_POST["jobinfos"]))
 		{
 			//create job
-			$NetJobs->saveJob($_POST["jobinfos"]);
-		
-			$this->setRedirectArg('app', 'netjobs');
-			$this->setRedirectArg('page', '');
+			$jobid = $NetJobs->saveJob($_POST["jobinfos"]);
+			
+			if (isset($_POST["company_new"]) && $_POST["company_new"] == "on")
+			{
+				$this->setRedirectArg('app', 'netjobs');
+				$this->setRedirectArg('page', 'companyedit');
+				$this->setRedirectArg('companyid', 0);
+				$this->setRedirectArg('jobid', $jobid);
+			}
+			else
+			{
+				$this->setRedirectArg('app', 'netjobs');
+				$this->setRedirectArg('page', '');
+			}
 		}
 		elseif (isset($_POST["jobiddelete"]))
 		{

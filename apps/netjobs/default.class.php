@@ -20,8 +20,10 @@ class NJDefault extends Model
 		$menuApp->addView("menu", "header_menu", array("page" => "default") );
 
 		$netJobs = new NetJobs ($this->db, $this->userFactory);
-		$myJobs = $netJobs->getJobList();
+		$myJobs = $netJobs->getJobList(5);
 		$this->assign("myJobs", $myJobs);
+
+		$this->assign("jobcount", $netJobs->countJobs());
 
 		$myCompanies = $netJobs->getCompanyList();
 		$this->assign("myCompanies", $myCompanies);

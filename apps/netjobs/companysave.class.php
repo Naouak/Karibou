@@ -16,30 +16,46 @@ class NJCompanySave extends FormModel
 {
 	public function build()
 	{
+		$netJobs = new NetJobs($this->db, $this->userFactory);
 		if (isset($_POST["companyinfos"], $_POST["companyinfos"]["id"]))
 		{
-			$NetJobs = new NetJobs($this->db, $this->userFactory);
-			$myCompany = $NetJobs->getCompanyById($_POST["companyinfos"]["id"]);
-			if ($myCompany->getInfo("user_id") == $this->currentUser->getId())
+			
+			$myCompany = $netJobs->getCompanyById($_POST["companyinfos"]["id"]);
+			
+			if ($myCompany->canWrite())
 			{
 				//Save modifications...
-				$NetJobs->saveCompany($_POST["companyinfos"]);
+				$netJobs->saveCompany($_POST["companyinfos"]);
 			}
 			
 			$this->setRedirectArg('page', 'companydetails');
 			$this->setRedirectArg('companyid', $_POST["companyinfos"]["id"]);
+			
 		}
-		elseif (isset($_POST["companyinfos"]))
+		elseif (isset($_POST["companyinfos"]) && isset($_POST["jobid"]))
 		{
-		/*
-			//create job
-		
-			$NetJobs = new NetJobs($this->db, $this->userFactory);
-			$NetJobs->saveJob($_POST["jobinfos"]);
-		
-			$this->setRedirectArg('app', 'netjobs');
-			$this->setRedirectArg('page', '');
-		*/
+			$myJob = $netJobs->getJobById($_POST["jobid"]);
+			
+			if ($myJob->canWrite())
+			{
+				$companyid = $netJobs->saveCompany($_POST["companyinfos"]);
+				$jobInfo = $myJob->getAllInfo();
+				$jobInfo["company_id"] = $companyid;
+				
+				$netJobs->saveJob($jobInfo);
+				
+				$this->setRedirectArg('app', 'netjobs');
+				$this->setRedirectArg('page', 'locationedit');
+				$this->setRedirectArg('jobid', $_POST["jobid"]);
+			}
+			else
+			{
+				$this->setRedirectArg('app', 'netjobs');
+				$this->setRedirectArg('page', '');
+			}
+		}
+		else
+		{
 		}
 
 	}

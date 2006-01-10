@@ -27,7 +27,7 @@ class NJJobList extends Model
 		}
 		else
 		{
-			$maxjobs = FALSE;
+			$maxjobs = 5;
 		}
 		
 		if (isset($this->args["page"]) && $this->args["page"] != "")
@@ -41,7 +41,7 @@ class NJJobList extends Model
 		$this->assign ("jobcount", $netJobs->countJobs());
 		$this->assign ("maxjobs", $maxjobs);
 		$this->assign ("page", $page);
-		
+
 		$myJobs = $netJobs->getJobList($maxjobs, $page);
 		$this->assign("myJobs", $myJobs);
 		

@@ -60,6 +60,11 @@ class NJElement
 			return FALSE;
 		}
 	}
+	
+	public function getAllInfo()
+	{
+		return $this->infos;
+	}
 
 	public function canRead()
 	{

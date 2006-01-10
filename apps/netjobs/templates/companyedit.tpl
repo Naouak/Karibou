@@ -1,11 +1,18 @@
 <h1>##NETJOBS##</h1>
+{if (isset($myJob))}
+<h2>##JOB_ADDING## {$myJob->getInfo("title")}</h2>
+<h3>##COMPANYADD##</h3>
+{else}
 <h2>{if isset($myCompany)}##COMPANYMODIFY##{else}##COMPANYADD##{/if}</h2>
+{/if}
 <div class="netjobs">
 	<a href="{kurl app="wiki" page="help"}" onclick="javascript:popup(this.href, 'wiki_help', '800', '900', '200', '200');return false;" >##TITLE_WIKI_SYNTAX##</a>
 	<form action="{kurl action="companysave"}" method="post" class="jobedit">
-	{*include file="formmessage.tpl"*}
 		{if isset($myCompany)}
 			<input type="hidden" name="companyinfos[id]" value="{$myCompany->getInfo("id")}">
+		{/if}
+		{if (isset($myJob))}
+			<input type="hidden" name="jobid" value="{$myJob->getInfo("id")}">
 		{/if}
 		<ul>
 			<li class="name">

@@ -38,14 +38,15 @@
 	
 	<page name="joblist"		view="joblist">
 		<option name="maxjobs"	class="NumberArgument" />
-		<option name="page"		class="NumberArgument" />
+		<option name="pageid"		class="NumberArgument" />
 	</page>
 
 	<page name="companydetails"	view="companydetails">
-		<argument name="companyid" class="NumberArgument" />
+		<argument name="companyid"	class="NumberArgument" />
 	</page>
 	<page name="companyedit"	view="companyedit">
-		<option name="companyid" class="NumberArgument" />
+<option name="companyid"	class="NumberArgument" />
+<option name="jobid" 		class="NumberArgument" />
 	</page>
 
 	<form action="jobsave"	class="NJJobSave">

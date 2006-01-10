@@ -6,19 +6,7 @@
 	<div class="jobs">
 		<h4>##LASTJOBS##</h4>
 		{include file="_joblist.tpl"}
-{*
-		<ul class="joblist">
-	{foreach from=$myJobs item="myJob"}
-			<li>
-				<span class="company">{$myJob->getCompanyInfo("name")|truncate:30:"..."}</span>
-				<span class="title"><a href="{kurl page="jobdetails" jobid=$myJob->getInfo("id")}">{$myJob->getInfo("title")}</a></span>
-				<span class="type">{$myJob->getInfo("description")|truncate:30:"..."}&nbsp;</span>
-				<span class="datetime">{$myJob->getInfo("datetime")}&nbsp;</span>
-			</li>
-	{/foreach}
-		</ul>
-*}
-		<a href="{kurl page="joblist"}">##ALLJOBS##</a>
+		<a href="{kurl page="joblist"}">##JOB_COUNT1## {$jobcount} ##JOB_COUNT2##</a>
 	</div>
 	
 	<div class="companies">

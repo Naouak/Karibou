@@ -153,7 +153,7 @@ class NetJobs
 			try
 			{
 				$stmtm = $this->db->query($sqlm);
-				$maxjobid = $stmtm->fetchAll(PDO::FETCH_ASSOC);
+				$maxcompanyid = $stmtm->fetchAll(PDO::FETCH_ASSOC);
 				$companyid = $maxcompanyid[0]["maxcompanyid"] + 1;
 				unset($stmtm);
 				
@@ -180,6 +180,7 @@ class NetJobs
 			{
 				$stmtc = $this->db->exec($sqlc);
 				unset($stmtc);
+				return $companyid;
 				
 			}
 			catch(PDOException $e)
@@ -187,20 +188,28 @@ class NetJobs
 				Debug::kill($e->getMessage());
 			}
 		}
+		else
+		{
+			return FALSE;
+		}
 	}
 	
 	/* JOBS */
-	public function getJobList($maxjobs = FALSE, $page = FALSE)
+	public function getJobList($max = FALSE, $page = FALSE)
 	{
 		$jobs = array();
-	
-		if ($maxjobs !== FALSE)
+		if ($page === FALSE)
+		{
+			$page = 1;
+		}
+
+		if ($max !== FALSE)
 		{
 			if ($page === FALSE)
 			{
-				$page = 0;
+				$page = 1;
 			}
-			$limit = "LIMIT ".$page * $maxjobs.", $maxjobs";
+			$limit = "LIMIT ".($page - 1) * $max.", $max";
 		}
 		else
 		{
@@ -424,12 +433,17 @@ class NetJobs
 			{
 				$stmtc = $this->db->exec($sqlc);
 				unset($stmtc);
+				return $jobid;
 				
 			}
 			catch(PDOException $e)
 			{
 				Debug::kill($e->getMessage());
 			}
+		}
+		else
+		{
+			return FALSE;
 		}
 	}
 	
