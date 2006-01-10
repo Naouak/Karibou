@@ -50,7 +50,14 @@ function kurl($params , $appList)
                     //Creation d'un nouvel argument, instanciation de la classe a partir du nom du parametre
                     $myApp = $appList->getApp($app);
                     $class = $myApp->getArgClass($page, $key) ;
-    				$arg = new $class($value);
+					if (class_exists($class))
+					{
+						$arg = new $class($value);
+					}
+					else
+					{
+						Debug::kill("Unknown class : ".$class);
+					}
 
     				//S'il y a plusieurs arguments, on les separe par des virgules
     				if( !$first ) $url .= ',';
