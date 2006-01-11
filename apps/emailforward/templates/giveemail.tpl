@@ -32,9 +32,10 @@
 	<form action="{kurl action="save"}" method="post">
 		<fieldset>
 			<legend>##EMAILFORWARD##</legend>
-			<label for="email">##EMAILFORWARD_EMAIL## :</label>
-			<input type="text" name="email" id="email" value="{$email}" />
-			<br />
+			<div class="email">
+				<label for="email">##EMAILFORWARD_EMAIL## :</label>
+				<input type="text" name="email" id="email" value="{$email}" />
+			</div>
 			<input type="submit" value="##EMAILFORWARD_CHANGE##" class="button" />
 		</fieldset>
 	</form>
