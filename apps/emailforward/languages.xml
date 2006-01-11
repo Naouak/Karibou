@@ -59,7 +59,7 @@
         <translation language="en">Email forwarding is enabled. All the emails sent to {$emaillogin} are forwarded to {$email}. Note : the emails are not stored on the server anymore. To disable Email forwarding, leave the "Email address" field empty and post the form.</translation>
     </sentence>
     <sentence key="EMAILFORWARD_DISABLED_MSG">
-        <translation language="fr">Le transfert d'email est désactivé. Les emails envoyés à {$emaillogin} sont stockés sur le serveur. Pour activer le transfert d'email, entrez l'adresse email sur laquelle vous souhaitez transférer vos emails ci-dessous. Info : ce peut être un compte Yahoo, Hotmail, Free, GMail, Wanadoo etc. Si vous activer le transfert, vos nouveaux emails reçus ne seront plus stockés sur ce serveur.</translation>
+        <translation language="fr">Le transfert d'email est désactivé. Les emails envoyés à {$emaillogin} sont stockés sur le serveur. Pour activer le transfert d'email, entrez l'adresse email sur laquelle vous souhaitez transférer vos emails ci-dessous. Info : ce peut être un compte Yahoo, Hotmail, Free, GMail, Wanadoo etc. Si vous activez le transfert, vos nouveaux emails reçus ne seront plus stockés sur ce serveur.</translation>
         <translation language="en">Email forwarding is disabled. Emails sent to {$emaillogin} are stored on the server. In order to enable email forwarding, type the email address to which you want to transfer your emails. This can be a Yahoo, Hotmail, Free, GMail, Wanadoo email account or any other. If you enable email forwarding, your new received emails won't be stored anymore on this server.</translation>
     </sentence>
 </translation>
