@@ -47,18 +47,22 @@
     </sentence>
     <sentence key="CHANGEPASSWORD">
         <translation language="fr">
-			Changer mon mot de passe
+			Mon mot de passe
         </translation>
         <translation language="en">
-			Change my password
+			My password
         </translation>
     </sentence>
     <sentence key="EDITPROFILE">
         <translation language="fr">
-			Éditer mon profil
+			Mon profil
         </translation>
         <translation language="en">
-			Edit my profile
+			My profile
         </translation>
+    </sentence>
+    <sentence key="CONFIGURE_EMAILFW">
+        <translation language="fr">Transfert d'email</translation>
+        <translation language="en">Email forwarding</translation>
     </sentence>
 </translation>
