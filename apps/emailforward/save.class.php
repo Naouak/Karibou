@@ -9,8 +9,6 @@
  * @package applications
  **/
 
-//ClassLoader::add('PasswordInterfaceLDAP', dirname(__FILE__).'/class/passwordinterfaceldap.class.php');
-
 class Save extends FormModel
 {
 	protected $text;
@@ -34,7 +32,7 @@ class Save extends FormModel
 						$_SESSION["emailforwardMessage"] = "OK";
 					}
 			}
-			elseif ($_POST["email"] = "")
+			elseif ($_POST["email"] == "")
 			{
 				if( !$ei->removeMailDrop($emaillogin) )
 				{

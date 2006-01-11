@@ -1,6 +1,7 @@
 <h1>##EMAILFORWARD##</h1>
 <div class="emailforward">
-	<div class="helper">##EMAILFORWARD_DESCRIPTION##</div>
+{*	<div class="helper">##EMAILFORWARD_DESCRIPTION##</div>*}
+
 	{if isset($message)}
 		{if ($message == "OK")}
 		<div class="success">
@@ -16,10 +17,25 @@
 		</div>		
 		{/if}
 	{/if}
+	
+{if isset($email) && $email != ""}
+	<div class="helper enabled">
+			##EMAILFORWARD_ENABLED_MSG##
+	</div>
+{else}
+	<div class="helper disabled">
+			##EMAILFORWARD_DISABLED_MSG##
+	</div>
+{/if}
+
+	
 	<form action="{kurl action="save"}" method="post">
-		<label for="email">##EMAILFORWARD_EMAIL## :</label>
-		<input type="text" name="email" id="email" value="{$email}" />
-		<br />
-		<input type="submit" value="##EMAILFORWARD_CHANGE##" class="button" />
+		<fieldset>
+			<legend>##EMAILFORWARD##</legend>
+			<label for="email">##EMAILFORWARD_EMAIL## :</label>
+			<input type="text" name="email" id="email" value="{$email}" />
+			<br />
+			<input type="submit" value="##EMAILFORWARD_CHANGE##" class="button" />
+		</fieldset>
 	</form>
 </div>

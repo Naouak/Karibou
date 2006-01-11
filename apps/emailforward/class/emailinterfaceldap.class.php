@@ -42,10 +42,8 @@ class EmailInterfaceLDAP extends EmailInterface
 
 	function getMailDrop ($email)
 	{
-		$mydn = $this->dnFromEmail ($email, $this->jvd);
-		
 		$sr = ldap_search($this->ldapconn, $this->jvd, "mail=".$email ); 
-		$info_maildrop = ldap_get_entries($ldapconn, $sr);
+		$info_maildrop = ldap_get_entries($this->ldapconn, $sr);
 
 		return $info_maildrop[0]["maildrop"][0];
 	}
