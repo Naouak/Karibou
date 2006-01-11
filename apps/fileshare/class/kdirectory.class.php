@@ -24,7 +24,7 @@ class KDirectory extends KDBFSElement
 	
 	protected $userFactory;
 
-	function __construct(PDO $db, UserFactory $userFactory, $permission, $path = "", $rootdir = FALSE, $id = FALSE)
+	function __construct(PDO $db, UserFactory $userFactory, $permission, $path = "", $rootdir = FALSE, $id = FALSE, $maxdepth = 1)
 	{
 	
 		$this->db = $db;
@@ -47,7 +47,7 @@ class KDirectory extends KDBFSElement
 		}
 		else
 		{
-			//Security
+			//Security... need more?
 			$path = str_replace ('/..', '', $path);
 			$path = str_replace ('../', '', $path);
 		
@@ -62,27 +62,33 @@ class KDirectory extends KDBFSElement
 		if (is_dir($this->fullpath))
 		{
 			$this->exists = TRUE;
-			
-			if ($d = dir($this->getFullPath()))
+			if ($maxdepth > 0 || $maxdepth === FALSE)
 			{
-				while (false !== ($entry = $d->read())) {
-				   if ($entry != '.' && $entry != '..' && $entry != '.htaccess')
-				   {
-						if (is_file($this->getFullPath().'/'.$entry))
-						{
-							$this->addFile($this->getPath()."/".$entry);
-						}
-						elseif (is_dir($this->getFullPath().'/'.$entry))
-						{
-							$this->addSubDir($this->getPath()."/".$entry);
-						}
-				   }
+				if ($d = dir($this->getFullPath()))
+				{
+					while (false !== ($entry = $d->read())) {
+					   if ($entry != '.' && $entry != '..' && $entry != '.htaccess')
+					   {
+							if (is_file($this->getFullPath().'/'.$entry))
+							{
+								$this->addFile($this->getPath()."/".$entry);
+							}
+							elseif (is_dir($this->getFullPath().'/'.$entry))
+							{
+								if ( ($maxdepth !== FALSE) && ($maxdepth > 0) )
+								{
+									$maxdepth -= 1;
+								}
+								$this->addSubDir($this->getPath()."/".$entry, $maxdepth);
+							}
+					   }
+					}
+					$d->close();
 				}
-				$d->close();
-			}
-			else
-			{
-				//Problem opening the directory
+				else
+				{
+					//Problem opening the directory
+				}
 			}
 		}
 		else
@@ -209,9 +215,9 @@ class KDirectory extends KDBFSElement
 		array_push($this->files, $kfile );
 	}
 	
-	public function addSubDir ($dirname)
+	public function addSubDir ($dirname, $maxdepth)
 	{
-		array_push($this->subdirs, new KDirectory($this->db, $this->userFactory, $this->permission, $dirname) );
+		array_push($this->subdirs, new KDirectory($this->db, $this->userFactory, $this->permission, $dirname, FALSE, FALSE, $maxdepth) );
 	}
 	
 	public function returnFileList()

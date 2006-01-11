@@ -23,7 +23,7 @@ class FileShareMoveChooseWhere extends Model
 		if (isset($this->args["elementid"]) && $this->args["elementid"] != "")
 		{
 			$this->assign("myFile", new KFile($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $this->args["elementid"]));
-			$myDirectory = new KDirectory($this->db, $this->userFactory, $this->permission, "");
+			$myDirectory = new KDirectory($this->db, $this->userFactory, $this->permission, "", FALSE, FALSE, FALSE);
 			$this->assign("myDirectoryTree", $myDirectory->returnTree());
 		}
 	}
