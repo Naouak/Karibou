@@ -1,0 +1,33 @@
+.emailforward {
+}
+
+.emailforward div.helper.enabled, .emailforward div.helper.disabled {
+	background-color: #ffffff;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	padding: 10px 10px 10px 40px;
+	border: 1px dashed #acacac;
+}
+
+.emailforward div.helper.enabled {
+	background-image: url(images/emailforward/enabled.png);
+}
+
+.emailforward div.helper.disabled {
+	background-image: url(images/emailforward/disabled.png);
+}
+
+.emailforward fieldset {
+	padding: 10px 10px 10px 150px;
+	background-image: url(images/emailforward/enveloppe.png);
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	line-height: 34px;
+}
+
+.emailforward fieldset input {
+	width: 200px;
+}
+.emailforward fieldset input.button{
+	width: 300px;
+}
