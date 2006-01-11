@@ -17,17 +17,31 @@
 	background-image: url(images/emailforward/disabled.png);
 }
 
-.emailforward fieldset {
-	padding: 10px 10px 10px 150px;
-	background-image: url(images/emailforward/enveloppe.png);
-	background-repeat: no-repeat;
-	background-position: 10px center;
-	line-height: 34px;
+.emailforward form {
+	margin: 0px;
+	padding: 0px;
 }
 
-.emailforward fieldset input {
+.emailforward form fieldset {
+	padding: 10px 10px 10px 150px;
+	margin: 0px;
+	background-image: url(images/emailforward/enveloppe.png);
+	background-repeat: no-repeat;
+	background-position: 10px 50%;
+}
+
+.emailforward form fieldset legend {
+
+}
+
+.emailforward form fieldset input {
 	width: 200px;
 }
-.emailforward fieldset input.button{
+.emailforward form fieldset input.button{
 	width: 300px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.emailforward form fieldset div.email {
+	margin-top: 10px;
 }

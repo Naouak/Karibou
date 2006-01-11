@@ -271,7 +271,7 @@ font-size: 0.8em;
 /* * * * * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * File Details * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * */
-.fileshare .details {
+.fileshare div.details {
 	background-image: url(images/fileshare/largeicons/default.png);
 	background-repeat: no-repeat;
 	background-position: 10px 10px;
@@ -280,28 +280,28 @@ font-size: 0.8em;
 	line-height: 30px;
 }
 
-.fileshare .details.xls {
+.fileshare div.details.xls {
 	background-image: url(images/fileshare/largeicons/files/xls.png);
 }
-.fileshare .details.doc {
+.fileshare div.details.doc {
 	background-image: url(images/fileshare/largeicons/files/doc.png);
 }
-.fileshare .details.ppt {
+.fileshare div.details.ppt {
 	background-image: url(images/fileshare/largeicons/files/ppt.png);
 }
-.fileshare .details.zip {
+.fileshare div.details.zip {
 	background-image: url(images/fileshare/largeicons/files/zip.png);
 }
-.fileshare .details.pdf {
+.fileshare div.details.pdf {
 	background-image: url(images/fileshare/largeicons/files/pdf.png);
 }
-.fileshare .details.directory {
+.fileshare div.details.directory {
 	background-position: 0px 10px;
 	background-image: url(images/fileshare/largeicons/directory.png);
 	padding-bottom: 20px;
 }
 
-.fileshare .details label {
+.fileshare div.details label {
 	width: 180px;
 	display: block;
 	float: left;
@@ -309,17 +309,17 @@ font-size: 0.8em;
 	white-space: nowrap;
 }
 
-.fileshare .details div.detail span, .fileshare .details div.versions li.detail span {
+.fileshare div.details div.detail span, .fileshare .details div.versions li.detail span {
 	font-weight: bold;
 }
 
-.fileshare .details div.description label, .fileshare .details div.versions label.title  {
+.fileshare div.details div.description label, .fileshare .details div.versions label.title  {
 	display: inline;
 	float: none;
 }
 
 
-.fileshare .details div.description span {
+.fileshare div.details div.description span {
 	display: block;
 	margin-left: 40px;
 	padding: 5px;
@@ -331,16 +331,16 @@ font-size: 0.8em;
 }
 
 /* versions */
-.fileshare .details div.versions {
+.fileshare div.details div.versions {
 	margin-top: 20px;
 }
 
-.fileshare .details div.versions ul {
+.fileshare div.details div.versions ul {
 	display: block;
 	list-style: none;
 }
 
-.fileshare .details div.versions li {
+.fileshare div.details div.versions li {
 	border-left: 4px solid #acacac;
 	border-bottom: 1px dashed #acacac;
 	padding-left: 10px;
@@ -348,32 +348,32 @@ font-size: 0.8em;
 	margin-bottom: 10px;
 }
 
-.fileshare .details div.versions li.one  {
+.fileshare div.details div.versions li.one  {
 	background-color: #f4f4f9;
 }
 
-.fileshare .details div.versions li.two {
+.fileshare div.details div.versions li.two {
 	background-color: #fafaff;
 }
 
-.fileshare .details div.versions li span {
+.fileshare div.details div.versions li span {
 	padding-left: 10px;
 	padding-right: 10px;
 }
 
-.fileshare .details div.versions {
+.fileshare div.details div.versions {
 	
 }
 
 /* File details toolbox */
 
-.fileshare .details .toolbox {
+.fileshare div.details .toolbox {
 	display: block;
 	background: transparent;
 	border: 0px;
 }
 
-.fileshare .details .toolbox form {
+.fileshare div.details .toolbox form {
 	background: transparent;
 	padding: 0px;
 	margin: 0px;
@@ -381,7 +381,7 @@ font-size: 0.8em;
 	border: 0px;
 }
 
-.fileshare .details .toolbox form a {
+.fileshare div.details .toolbox form a {
 	background-image: url(images/fileshare/detailed/trash.png);
 	background-repeat: no-repeat;
 	background-position: 0px left;
@@ -393,7 +393,7 @@ font-size: 0.8em;
 
 /* Download Link */
 
-.fileshare .details .downloadlink a {
+.fileshare div.details .downloadlink a {
 	background-image: url(images/fileshare/detailed/download.png);
 	background-repeat: no-repeat;
 	background-position: 0px left;
@@ -403,7 +403,7 @@ font-size: 0.8em;
 }
 
 /* Move Link */
-.fileshare .details .movelink a {
+.fileshare div.details .movelink a {
 	background-image: url(images/fileshare/detailed/move.png);
 	background-repeat: no-repeat;
 	background-position: 0px left;
@@ -413,7 +413,7 @@ font-size: 0.8em;
 }
 
 /* Add new version link */
-.fileshare .details .versions a.add {
+.fileshare div.details .versions a.add {
 	background-image: url(images/fileshare/detailed/add.png);
 	background-repeat: no-repeat;
 	background-position: 0px left;
