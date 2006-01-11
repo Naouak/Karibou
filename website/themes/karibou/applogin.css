@@ -47,13 +47,13 @@
 	text-decoration: none;
 }
 
-.login .changepassword, .login .logout,  .login .editprofile {
+.login .changepassword, .login .logout,  .login .editprofile, .login .configureemailfw {
 	text-align: center;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 13px;
+	margin-bottom: 13px;
 }
 
-.login .changepassword a, .login .logout a, .login .editprofile a {
+.login .changepassword a, .login .logout a, .login .editprofile a, .login .configureemailfw a {
 	text-decoration: none;
 	font-weight: bold;
 }
@@ -65,6 +65,15 @@
 	background-image: url(images/login/keyrenew20.png);
 	background-repeat: no-repeat;
 	background-position: 0 0;
+}
+
+.login .configureemailfw a {
+	padding-left: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-image: url(images/login/fwenveloppe.png);
+	background-repeat: no-repeat;
+	background-position: 0 5px;
 }
 
 .login .editprofile a {
