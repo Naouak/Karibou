@@ -32,12 +32,24 @@ class Login extends FormModel
 				$pass = $krypt->decrypt( $_POST['_crypt'] );
 			}
 			
-			$auth_user = $user;
-			if( isset($GLOBALS['config']['login']['post_username']) )
+			if (!preg_match('/^([a-zA-Z0-9\.\-_]+)@([a-zA-Z0-9\.\-_]+)$/', $user, $match))
 			{
-				$auth_user = $user . $GLOBALS['config']['login']['post_username'];
+				if( isset($GLOBALS['config']['login']['post_username']) )
+				{
+					$auth_user = $user . $GLOBALS['config']['login']['post_username'];
+				}
+				else
+				{
+					$auth_user = $user;
+				}
 			}
-
+			else
+			{
+				$auth_user = $user;
+				$user = $match[1]; //offset 1 is username
+				
+			}
+			
 			switch($GLOBALS['config']['login']['backend'])
 			{
 				case 'mysql':
