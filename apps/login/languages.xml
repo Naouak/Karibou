@@ -24,7 +24,7 @@
         <translation language="en" value="Register" />
     </sentence>
     <sentence key="LOGOUT">
-        <translation language="fr" value="Déconnecter" />
+        <translation language="fr" value="Quitter" />
         <translation language="en" value="Logout" />
     </sentence>
 
@@ -46,20 +46,12 @@
         <translation language="en" value="You didn't have created a KeyChain yet, you won't be able to use apps that uses it (like the webmail)." />
     </sentence>
     <sentence key="CHANGEPASSWORD">
-        <translation language="fr">
-			Mon mot de passe
-        </translation>
-        <translation language="en">
-			My password
-        </translation>
+        <translation language="fr">Mon mot de passe</translation>
+        <translation language="en">My password</translation>
     </sentence>
     <sentence key="EDITPROFILE">
-        <translation language="fr">
-			Mon profil
-        </translation>
-        <translation language="en">
-			My profile
-        </translation>
+        <translation language="fr">Mon profil</translation>
+        <translation language="en">My profile</translation>
     </sentence>
     <sentence key="CONFIGURE_EMAILFW">
         <translation language="fr">Transfert d'email</translation>
