@@ -8,14 +8,19 @@
 }
 
 .onlineusers li {
-	padding-left: 14px;
-	background-image: url(images/onlineusers/buddyicon.png);
-	background-repeat: no-repeat;
-	background-position: 0px 5px;
-	line-height: 28px;
+	line-height: 26px;
 }
 
 .onlineusers li a.userlink {
+	padding-left: 14px;
+	
+	background-image: url(images/onlineusers/buddyicon.png);
+	background-repeat: no-repeat;
+	background-position: 0px 5px;
+	
+	padding-top: 7px;
+	padding-bottom: 2px;
+	
 	font-weight: bold;
 	text-decoration: none;
 }

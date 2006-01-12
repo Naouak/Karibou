@@ -1,33 +1,49 @@
-
-.thumbnail {
+#content .directory .thumbnail {
 	float: left;
 	margin: 10px;
-	padding: 0px 0px 5px 0px;
+	padding: 0px 0px 0px 0px;
+	
 	border-top: 1px solid #acacac;
 	border-right: 2px solid #acacac;
 	border-bottom: 2px solid #acacac;
 	border-left: 1px solid #acacac;
+	
 	width: 150px;
-	height: 200px;
+	height: 204px;
 	text-align: center;
+	overflow: hidden;
 }
-.thumbnail img {
+
+#content .directory .thumbnail .image {
+	width: 150px;
+	height: 180px;
+}
+
+#content .directory .thumbnail .image img {
 	max-width: 150px;
 	max-height: 180px;
 	border: 0px;
 	padding: 0px;
-}
-.thumbnail a {
-	text-decoration: none;
+	margin: 0px;
 }
 
-
-.thumbtitle {
-	margin-top: 5px;
+#content .directory .thumbnail div.title {
+	margin: 0px;
+	padding: 0px;
 	font-size: 0.8em;
 	color: #444;
 	text-align: center;
+	height: 20px;
+	line-height: 20px;
+	vertical-align: middle;
 }
+
+#content .directory .thumbnail div.title a {
+	text-decoration: none;
+	margin: 0px;
+	padding: 0px;
+}
+
 
 .largefieldset {
 	border: 1px #aaa solid;
@@ -80,6 +96,11 @@
 	float: left;
 }
 
+.directory span.note {
+	padding-left: 20px;
+	font-style: italic;
+}	
+
 input.saveprofile {
 	text-align: center;
 	border: 1px solid #6699AA;
@@ -90,25 +111,25 @@ input.saveprofile {
 }
 
 /* User profile */
-#content .profile {
+#content .directory.profile {
 	border-left: 5px solid #c6c6c6;
 }
 
-#content .profile h3 {
+#content .directory.profile h3 {
 	border-left: 5px solid #cfcfcf;
 	border-bottom: 1px solid #c6c6c6;
 	margin: 10px 0px 0px 0px;
 	background: #efefef;
 }
 
-#content .profile h4 {
+#content .directory.profile h4 {
 	margin: 0px 0px 5px 0px;
 	padding: 0px;
 	text-align: center;
 	background: #efefef;
 }
 
-#content .profile img {
+#content .directory.profile img {
 	float: left;
 	margin: 5px;
 	padding: 5px;
@@ -116,7 +137,7 @@ input.saveprofile {
 	text-align: center;
 }
 
-#content .profile .infos {
+#content .directory.profile .infos {
 	float: left;
 	margin: 5px;
 	padding: 5px;
@@ -125,7 +146,7 @@ input.saveprofile {
 	line-height: 180%;
 }
 
-#content .profile .addresses .address {
+#content .directory.profile .addresses .address {
 	float: left;
 	width: 260px;
 	border: 1px dashed #afafaf;
@@ -134,7 +155,7 @@ input.saveprofile {
 	padding: 4px;
 }
 
-#content .profile .emails .email, #content .profile .phones .phone {
+#content .directory.profile .emails .email, #content .directory.profile .phones .phone {
 	float: left;
 	border: 1px dashed #afafaf;
 	color: #454545;
@@ -143,16 +164,16 @@ input.saveprofile {
 	text-align: center;
 }
 
-#content .profile a {
+#content .directory.profile a {
 	text-decoration: none;
 }
 
-#content .profile .editprofilelink {
-padding-top: 10px;
-margin-left: 5px;
+#content .directory.profile .editprofilelink {
+	padding-top: 10px;
+	margin-left: 5px;
 }
 
-#content .profile .sendflashmaillink {
-padding-top: 10px;
-margin-left: 5px;
+#content .directory.profile .sendflashmaillink {
+	padding-top: 10px;
+	margin-left: 5px;
 }
