@@ -20,6 +20,13 @@ class AnnuaireProfile extends Model
 {
 	function build()
 	{
+	
+		$app = $this->appList->getApp($this->appname);
+		$config = $app->getConfig();
+		$this->assign("image_width", $config["image"]["width"]);
+		$this->assign("image_height", $config["image"]["height"]);
+		$this->assign("image_weight", $config["image"]["weight"]);
+	
 		$username = $this->args['username'];
 		$this->assign("username", $username );
 		
@@ -70,6 +77,7 @@ class AnnuaireProfile extends Model
 		$user->getGroups($this->db);
 		$userallgroups = $user->getAllGroups($this->db);
 		$this->assign("usergroups", $userallgroups /*->getTree()*/);
+		
 		
 		
 	}

@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <app>
+
+	<config>
+		<param name="image">
+			<value name="width">150</value>
+			<value name="height">180</value>
+			<value name="weight">2</value>
+		</param>
+	</config>
+
+
 	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
 
 	<load class="UserName" file="../arguments/username.class.php" />

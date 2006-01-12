@@ -8,7 +8,7 @@
 	{$username}
 	{/if}
 </h2>
-<div class="profile">
+<div class="directory profile">
 	<img src="{$picture}" />
 	<div class="infos">
 		##FIRSTNAME## : <strong>{$profile.firstname}</strong><br />

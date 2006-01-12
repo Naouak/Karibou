@@ -18,11 +18,10 @@ ClassLoader::add('Profile', dirname(__FILE__).'/classes/profile.class.php');
  */
 class ModifyProfile extends FormModel
 {
-	protected $max_width = 140;
-	protected $max_height = 200;
-
 	function build()
 	{
+		$app = $this->appList->getApp($this->appname);
+		$config = $app->getConfig();
 	
 		$profile = array();
 		$addresses = array();
@@ -126,10 +125,10 @@ class ModifyProfile extends FormModel
 				$x = imagesx($im);
 				$y = imagesy($im);
 				
-				$x_ratio = $this->max_width / $x;
-				$y_ratio = $this->max_height / $y;
+				$x_ratio = $config["image"]["width"] / $x;
+				$y_ratio = $config["image"]["height"] / $y;
 				
-				if( $x_ratio > $x_ratio )
+				if( $x_ratio > $y_ratio )
 				{
 					$new_x = $x * $y_ratio;
 					$new_y = $y * $y_ratio;
@@ -144,7 +143,7 @@ class ModifyProfile extends FormModel
 				imagedestroy($im);
 				$profile = $p->getProfile() ;
 				if( !is_dir(KARIBOU_PUB_DIR.'/profile_pictures') ) mkdir(KARIBOU_PUB_DIR.'/profile_pictures');
-				imagejpeg($new_im, KARIBOU_PUB_DIR.'/profile_pictures/'.$profile['id'].'.jpg', 60);
+				imagejpeg($new_im, KARIBOU_PUB_DIR.'/profile_pictures/'.$profile['id'].'.jpg', 85);
 				imagedestroy($new_im);
 			}
 		}

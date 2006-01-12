@@ -391,4 +391,8 @@
 		<translation language="fr">Cet utilisateur appartient au(x) groupe(s) suivant(s)</translation>
 		<translation language="en">This user is member of the following group(s)</translation>
 	</sentence>
+	<sentence key="PICTURE_NOTE">
+		<translation language="fr">La photo doit être une image JPEG. Elle sera redimensionnée au format {$image_width} x {$image_height} pixels (largeur x longueur). Taille maximale : {$image_weight}Mo.</translation>
+		<translation language="en">Your picture must be a JPEG format. It'll be resized to {$image_width} x {$image_height} pixels (width x height). Max size : {$image_weight}MB.</translation>
+	</sentence>
 </translation>

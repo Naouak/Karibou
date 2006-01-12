@@ -1,5 +1,6 @@
 <h1>##TITLE##</h1>
 <h3>##VIEWING_GROUP## {$thegroup.name}</h3>
+<div class="directory">
 {assign var="lastgroupname" value=""}
 {foreach item=user from=$userlist}
 	{if $lastgroupname != $user.groupname}
@@ -26,3 +27,4 @@
 {/foreach}
 <br />
 <br />
+</div>
