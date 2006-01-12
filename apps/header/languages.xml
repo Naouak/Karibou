@@ -21,8 +21,8 @@
 		</translation>
 	</sentence>
 	<sentence key="LOGOUT">
-		<translation language="fr" value="déconnecter" />
-		<translation language="en" value="logout" />
+		<translation language="fr" value="Quitter" />
+		<translation language="en" value="Logout" />
 	</sentence>
 
 	<sentence key="APP_HOME">
