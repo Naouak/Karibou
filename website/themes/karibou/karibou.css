@@ -376,3 +376,67 @@ fieldset {
 	font-weight: bold;
 	text-decoration: none;
 }
+
+/* HintBox */
+div#hintbox {
+	position: absolute;
+	visibility: hidden;
+	z-index: 100;
+	overflow: hidden;
+	text-align: left;
+}
+
+div.hint {
+	padding: 15px 10px 15px 55px;
+	background-position : 5px 50%;
+	background-repeat : no-repeat;
+	width: 400px;
+}
+
+div.hint.help {
+	background-image : url(images/hintbox/help.png);
+	background-color: #fff3dd;
+	border: 1px solid #f0b337;
+}
+
+div.hint.notallowed {
+	background-image : url(images/hintbox/notallowed.png);
+	background-color: #ffdddd;
+	border: 1px solid #dd6666;
+}
+
+div.hint.warning {
+	background-image : url(images/hintbox/warning.png);
+	background-color: #ffdddd;
+	border: 1px solid #dd6666;
+}
+
+div.hint.info {
+	background-image : url(images/hintbox/info.png);
+	background-color: #ddddff;
+	border: 1px solid #7777dd;
+}
+
+div.hint.success {
+	background-image : url(images/hintbox/success.png);
+	background-color: #f0fff0;
+	border: 1px solid #99dd99;
+}
+
+div.hint.error {
+	background-image : url(images/hintbox/error.png);
+	background-color: #ffdddd;
+	border: 1px solid #dd6666;
+}
+
+div.hint.profile {
+	padding: 5px 5px 5px 5px;
+	background-color: #ddddff;
+	border: 1px solid #7777dd;
+	width: 160px;
+}
+div.hint.profile img {
+	float: left;
+	border: 1px solid #acacac;
+	margin-right: 10px;
+}

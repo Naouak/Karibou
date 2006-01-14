@@ -67,6 +67,7 @@
 	background-color: #fafafa;
 	width: 206px;
 	min-height: 50px;
+	overflow: hidden;
 }
 
 .mbox {
@@ -78,6 +79,7 @@
 	background-color: #fafafa;
 	width: 426px;
 	min-height: 80px;
+	overflow: hidden;
 }
 
 .lbox {
@@ -89,6 +91,7 @@
 	background-color: #fafafa;
 	width: 650px;
 	min-height: 80px;
+	overflow: hidden;
 }
 
 .handle {
