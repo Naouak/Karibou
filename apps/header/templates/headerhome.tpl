@@ -23,6 +23,11 @@
 {hook name="html_head"}
 </head>
 <body>
+
+{* HintBox support *}
+<div id="hintbox">&nbsp;</div>
+<script type="text/javascript" src="/themes/js/hintbox.js"></script>
+
 <div id="container">
 	<div id="top">
 	<div class="leftdeco">
