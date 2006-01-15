@@ -41,7 +41,6 @@ class OnlineUsersList extends Model
 		$this->assign("onlineusers", $onlineusers);
 		
 		$this->assign("islogged", $this->currentUser->isLogged());
-
 	}
 
 }
