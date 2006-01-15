@@ -13,25 +13,30 @@
 class MinichatMessage
 {
 	protected $time;
-	protected $auteur;
-	protected $txt_post;
+	protected $author;
+	protected $message;
 	protected $wiki;
 
-	function __construct($time, $auteur, $txt_post, $wiki)
+	function __construct($time, $author, $message, $wiki)
 	{
 		$this->time = $time;
-		$this->auteur = $auteur;
-		$this->txt_post = $txt_post;
+		$this->author = $author;
+		$this->message = $message;
 		$this->wiki = $wiki;
 	}
 
 	function getAuthor()
 	{
-		return $this->auteur->getUserLink();
+		return $this->author->getUserLink();
 	}
 	function getAuthorLogin()
 	{
-		return $this->auteur->getlogin();
+		return $this->author->getlogin();
+	}
+	
+	function getAuthorObject()
+	{
+		return $this->author;
 	}
 
 	function getDate()
@@ -41,12 +46,12 @@ class MinichatMessage
 
 	function getPost()
 	{
-		return $this->txt_post;
+		return $this->message;
 	}
 	
 	function getPostXHTML()
 	{
-		$content = $this->wiki->transform($this->txt_post);
+		$content = $this->wiki->transform($this->message);
 		return $content;
 	}
 }

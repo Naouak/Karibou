@@ -1,13 +1,17 @@
 {if ($pagenum != 1)}
 ##PAGE## # {$pagenum}
 {/if}
-
+   {if ($permission > _READ_ONLY_)}
+   	{assign var=showpicture value=true}
+   {else}
+      {assign var=showpicture value=false}
+   {/if}
 	<ul>
-        {foreach item=p from=$post}
+        {foreach item=m from=$post}
         <li class="{cycle values="one,two"}">
-            <span class="user"><a href="{kurl app='annuaire' username=$p->getAuthorLogin()}">{$p->getAuthor()}</a></span>
-            <span class="time"><acronym title="{$p->getDate()|date_format:"%A %d %B %Y @ %H:%M"}">{$p->getDate()|date_format:"%H:%M"}</acronym></span>
-            <span class="message">{$p->getPostXHTML()}</span>
+            <span class="user">{userlink user=$m->getAuthorObject() showpicture=$showpicture}{*<a href="{kurl app='annuaire' username=$m->getAuthorLogin()}">{$m->getAuthor()}</a>*}</span>
+            <span class="time"><acronym title="{$m->getDate()|date_format:"%A %d %B %Y @ %H:%M"}">{$m->getDate()|date_format:"%H:%M"}</acronym></span>
+            <span class="message">{$m->getPostXHTML()}</span>
         </li>
         {/foreach}
 	</ul>
