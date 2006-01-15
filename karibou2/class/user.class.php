@@ -116,14 +116,18 @@ class User
     }
     
     /**
+     * ...temp method replaced by getFullName()
      * @return String
      */
     function afficheUser($debug = FALSE)
     {
+    	/*
         /*
          * on renvoie le Prenom et Nom de l'utilisateur
-         */
+         *
        	return $this->firstname . " ". $this->lastname;
+      */
+		return $this->getFullName();
     }
     
     /**
@@ -175,28 +179,57 @@ class User
     /**
      * @return String
      */
-    function getUserLink()
+    function getDisplayName()
     {
 		if ($this->surname == '')
 		{
 			if ($this->firstname != '' || $this->lastname != '')
 			{
-				$pseudo = $this->firstname." ".$this->lastname;
+				$displayname = $this->firstname." ".$this->lastname;
 			}
 			else
 			{
-				$pseudo = $this->login;
+				$displayname = $this->login;
 			}
 		}
 		else
 		{
-			$pseudo = $this->surname;
+			$displayname = $this->surname;
 		}
 		
-		$pseudo = htmlspecialchars($pseudo,ENT_QUOTES);
+		$displayname = htmlspecialchars($displayname);
 		
-		return $pseudo;
+		return $displayname;
     }
+    
+    /**
+     * $firstname $lastname
+     */
+    function getFullName()
+    {
+		if ($this->firstname != '' || $this->lastname != '')
+		{
+			$fullname = $this->firstname." ".$this->lastname;
+		}
+		else
+		{
+			$fullname = $this->login;
+		}
+		
+		$fullname = htmlspecialchars($fullname);
+		return $fullname;
+		
+    }
+    
+    /**
+     * ... temp method replaced by getDisplayName()
+     * @return String
+     */
+    function getUserLink()
+    {
+		return $this->getDisplayName();
+    }
+    
     
     /**
 	 * @param PDO $db

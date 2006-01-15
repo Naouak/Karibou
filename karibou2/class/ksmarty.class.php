@@ -13,6 +13,8 @@ require_once 'smarty/Smarty.class.php';
 require_once dirname(__FILE__).'/smarty/kurl.function.php';
 require_once dirname(__FILE__).'/smarty/translate.function.php';
 require_once dirname(__FILE__).'/smarty/insertheader.function.php';
+require_once dirname(__FILE__).'/smarty/userlink.function.php';
+require_once dirname(__FILE__).'/smarty/khint.function.php';
 
 /**
  * Smarty template engine customization
@@ -38,6 +40,8 @@ class KSmarty extends Smarty
 		
 		$this->register_function('kurl', 'smarty_function_kurl');
 		$this->register_function('translate', 'smarty_function_translate');
+		$this->register_function('userlink', 'smarty_function_userlink');
+		$this->register_function('khint', 'smarty_function_khint');
 		
 		$this->hookManager = $hookManager;
 		$displayHook = array(&$this, 'displayHook');

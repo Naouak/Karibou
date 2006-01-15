@@ -71,7 +71,12 @@ function __autoload($className)
 	//ExecutionTimer::getRef()->stop("building Karibou");
 	ExecutionTimer::getRef()->start("Include __autoload (".$className.")");
 	$file = ClassLoader::getFilename($className);
-	require_once $file;
+	
+	if (!is_file($file))
+		Debug::kill("Missing class : ".$className);
+	else
+		require_once $file;
+	
 	ExecutionTimer::getRef()->stop("Include __autoload (".$className.")");
 	//ExecutionTimer::getRef()->start("building Karibou");
 }
