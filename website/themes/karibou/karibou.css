@@ -386,57 +386,108 @@ div#hintbox {
 	text-align: left;
 }
 
+.overzone {
+	cursor: help;
+}
+
 div.hint {
 	padding: 15px 10px 15px 55px;
 	background-position : 5px 50%;
 	background-repeat : no-repeat;
 	width: 400px;
+	color: #000000;
 }
 
-div.hint.help {
+div.hint.hint_help {
 	background-image : url(images/hintbox/help.png);
 	background-color: #fff3dd;
 	border: 1px solid #f0b337;
 }
 
-div.hint.notallowed {
+div.hint.hint_notallowed {
 	background-image : url(images/hintbox/notallowed.png);
 	background-color: #ffdddd;
 	border: 1px solid #dd6666;
 }
 
-div.hint.warning {
+div.hint.hint_warning {
 	background-image : url(images/hintbox/warning.png);
 	background-color: #ffdddd;
 	border: 1px solid #dd6666;
 }
 
-div.hint.info {
+div.hint.hint_info {
 	background-image : url(images/hintbox/info.png);
 	background-color: #ddddff;
 	border: 1px solid #7777dd;
 }
 
-div.hint.success {
+div.hint.hint_success {
 	background-image : url(images/hintbox/success.png);
 	background-color: #f0fff0;
 	border: 1px solid #99dd99;
 }
 
-div.hint.error {
+div.hint.hint_error {
 	background-image : url(images/hintbox/error.png);
 	background-color: #ffdddd;
 	border: 1px solid #dd6666;
 }
 
-div.hint.profile {
-	padding: 5px 5px 5px 5px;
+div.hint.hint_profile {
+	padding: 0px;
+	margin: 0px;
 	background-color: #ddddff;
 	border: 1px solid #7777dd;
-	width: 160px;
+	width: 150px;
+	overflow: hidden;
 }
-div.hint.profile img {
+div.hint.hint_profile img {
+	border-bottom: 1px solid #7777dd;
+	width: 150px;
+}
+div.hint.hint_profile span {
+	font-weight: bold;
+	display: block;
+	padding: 2px;
+	margin: 0px;
+	text-align: center;
+}
+
+/* Hint Overzone */
+
+div.overzone {
 	float: left;
-	border: 1px solid #acacac;
-	margin-right: 10px;
+	background-image: url(images/hintbox/20/help.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	margin: 3px;
+	padding: 0px;
+	width: 16px;
+	height: 16px;
+}
+
+div.overzone div span {
+	display: none;
+	visibility: hidden;
+	font-size: 0.1em;
+}
+
+div.overzone.overzone_help {
+	background-image : url(images/hintbox/small/help.png);
+}
+div.overzone.overzone_notallowed {
+	background-image : url(images/hintbox/small/notallowed.png);
+}
+div.overzone.overzone_warning {
+	background-image : url(images/hintbox/small/warning.png);
+}
+div.overzone.overzone_info {
+	background-image : url(images/hintbox/small/info.png);
+}
+div.overzone.overzone_success {
+	background-image : url(images/hintbox/small/success.png);
+}
+div.overzone.overzone_error {
+	background-image : url(images/hintbox/small/error.png);
 }
