@@ -271,7 +271,8 @@ class UserFactory
 					LOWER(u.login) login,
 					p.firstname,
 					p.lastname,
-					p.surname
+					p.surname,
+					u.profile_id
 				FROM
 					".$a.".users u LEFT OUTER JOIN ".$a.".profile p ON u.profile_id=p.id";
 			

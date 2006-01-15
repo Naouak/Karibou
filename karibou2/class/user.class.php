@@ -20,6 +20,11 @@ class User
 	 * @var Int
 	 */
 	protected $id=0;
+	
+	/**
+	 * @var Int
+	 */
+	protected $profile_id;
 
 	/**
 	 * @var String
@@ -67,7 +72,7 @@ class User
     	if( is_array($tab) )
     	{
 			$this->setFromTab($tab);
-	    }
+		}
 	}
 	
 	public function setFromTab($tab)
@@ -80,7 +85,8 @@ class User
 			if(isset($tab['firstname'])) $this->firstname = $tab['firstname'];
 			if(isset($tab['surname'])) $this->surname   = $tab['surname'];
 			if(isset($tab['email'])) $this->email     = $tab['email'];
-			if(isset($tab['picture'])) $this->picture     = $tab['picture'];
+			//if(isset($tab['picture'])) $this->picture     = $tab['picture'];
+			if(isset($tab['profile_id'])) $this->profile_id     = $tab['profile_id'];
 	    }
 	}
 	
@@ -100,19 +106,36 @@ class User
     	return $this->firstname;
     }
     
+    
+    /**
+     * @return Int
+     */
+    function getProfileId()
+    {
+    	if (isset($this->profile_id) && $this->profile_id !== FALSE)
+    	{
+    		return $this->profile_id;
+    	}
+    	else
+    	{
+    		return FALSE;
+    	}
+    }
+     
     /**
      * @return String
      */
     function getPicturePath()
     {
-	   if (isset($this->picture))
+	   if ($this->getProfileId())
 	   {
-			return $this->picture;
+	   	$picturepath = "/profile_pictures/".$this->getProfileId().".jpg";
+			if (is_file (KARIBOU_PUB_DIR.$picturepath))
+			{
+				return "/pub".$picturepath;
+			}
 		}
-		else
-		{
-			return "/themes/default/images/0.jpg";
-		}
+		return "/themes/default/images/0.jpg";
     }
     
     /**
