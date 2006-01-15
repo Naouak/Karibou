@@ -1,10 +1,9 @@
 <div class="news">
 	<h1>##NEWS##</h1>
-	
+
 	{if $permission > _READ_ONLY_}
 			<strong><a href="{kurl page="add"}">##ADD_ARTICLE##</a></strong>
 	{/if}
-	
 	
 	{include file="newsmessage.tpl"}
 	

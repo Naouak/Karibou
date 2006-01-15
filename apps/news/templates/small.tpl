@@ -4,7 +4,7 @@
 			{assign var="idNews" value=$theNews[i]->getID()}
 			{*assign var="newsLink" value="kurl app="news" page="view" id=$theArticle->getId()"*}
 		<div class="aSmallNews {cycle values="one,two"}">
-			<span class="title"><a href="{kurl app="news" page="view" id=$theArticle->getId()}">{if $theArticle->getTitle()==""}##NOTITLE##{else}{$theArticle->getTitle()|truncate:50:"...":false}{/if}</a></span>
+			<span class="title" title="{$theArticle->getTitle()}"><a href="{kurl app="news" page="view" id=$theArticle->getId()}">{if $theArticle->getTitle()==""}##NOTITLE##{else}{$theArticle->getTitle()|truncate:50:"...":false}{/if}</a></span>
 			<span class="author">##BY## <a href="{kurl app="annuaire" username=$theArticle->getAuthorLogin()}">{$theArticle->getAuthor()}</a></span>
 			<div class="time">{$theArticle->getDate()}</div>
 			<br />
