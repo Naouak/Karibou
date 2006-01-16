@@ -52,7 +52,11 @@
 			<div class="commentsShown">
 				{section name=j loop=$theArticleComments step=1}
 				<div class="aComment">
-					<div class="author">##BY## <a href="{kurl app="annuaire" username=$theArticleComments[j]->getAuthorLogin()}">{$theArticleComments[j]->getAuthor()}</a></div>
+					<div class="author">
+						##BY## 
+						{userlink user=$theArticleComments[j]->getAuthorObject() showpicture=true}
+						{*<a href="{kurl app="annuaire" username=$theArticleComments[j]->getAuthorLogin()}">{$theArticleComments[j]->getAuthor()}</a>*}
+					</div>
 					{*<div class="controls"><a href="{$theArticleComments[j]->getID()}">Modifier</a> - <a href="#d/c/{$theArticleComments[j]->getID()}">Supprimer</a></div>*}
 					<div class="time">{$theArticleComments[j]->getDate()}</div>
 					<div class="title">{$theArticleComments[j]->getTitle()}</div>
