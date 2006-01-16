@@ -23,6 +23,7 @@ $config['login']['server_options'] = "/imap/tls/novalidate-cert";
 $config['login']['post_username'] = "@telecomlille.net";
 $config['login']['createuser'] = TRUE;
 $config['login']['savepassword'] = TRUE;
+$config['login']['firsttimechangepassword'] = FALSE;
 
 
 $config['keychain']['storage'] = 'session';
