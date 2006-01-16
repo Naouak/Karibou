@@ -30,21 +30,24 @@ class LoginListener extends Listener
 			{
 				$this->messageManager->addMessage("default", "NOEMAIL");
 			}
-
-            if ($currentUser->getPref('changePassword') === FALSE)
-            {
-                //No changepassword pref set
-				$this->messageManager->addMessage("default", "CHANGEPASSWORD");
-            }
-            elseif ($currentUser->getPref('changePassword') == 0)
-            {
-                //No need to change password
-            }
-            elseif ($currentUser->getPref('changePassword') == 1)
-            {
-                //User must change password
-				$this->messageManager->addMessage("default", "CHANGEPASSWORD");
-            }
+			
+			if ( isset($GLOBALS['config']['login']['firsttimechangepassword']) && ($GLOBALS['config']['login']['firsttimechangepassword'] === TRUE))
+			{
+				if ($currentUser->getPref('changePassword') === FALSE)
+				{
+					 //No changepassword pref set
+					$this->messageManager->addMessage("default", "CHANGEPASSWORD");
+				}
+				elseif ($currentUser->getPref('changePassword') == 0)
+				{
+					 //No need to change password
+				}
+				elseif ($currentUser->getPref('changePassword') == 1)
+				{
+					 //User must change password
+					$this->messageManager->addMessage("default", "CHANGEPASSWORD");
+				}
+			}
 		}
 	}
 }
