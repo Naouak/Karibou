@@ -8,7 +8,10 @@
 		<div class="aNews">
 			<div class="time">{$theArticle->getDate()}</div>
 			<h1>{if $theArticle->getTitle()==""}##NOTITLE##{else}{$theArticle->getTitle()}{/if}</h1>
-			<div class="author">##BY## <a href="{kurl app="annuaire" username=$theArticle->getAuthorLogin()}">{$theArticle->getAuthor()}</a></div>
+			<div class="author">
+				##BY## {userlink user=$theArticle->getAuthorObject() showpicture=true}
+				{*<a href="{kurl app="annuaire" username=$theArticle->getAuthorLogin()}">{$theArticle->getAuthor()}</a>*}
+			</div>
 		{if ($theArticle->getAuthorId() == $currentUserId)}
 			<div class="controls">
 				<form action="{kurl app="news" page="modify" id="$idNews"}" method="get">

@@ -122,6 +122,11 @@ class News
 		return $this->id;
 	}
 
+	function getAuthorObject()
+	{
+		return $this->author;
+	}
+	
 	function getAuthorLogin()
 	{
 		return $this->author->getLogin();
