@@ -95,7 +95,14 @@ class User
      */
     function getLastname()
     {
-    	return $this->lastname;
+    	if (isset($this->lastname))
+    	{
+	    	return $this->lastname;
+		}
+		else
+		{
+			return FALSE;
+		}
     }
     
     /**
@@ -103,7 +110,14 @@ class User
      */
     function getFirstname()
     {
-    	return $this->firstname;
+    	if (isset($this->firstname))
+    	{
+	    	return $this->firstname;
+		}
+		else
+		{
+			return FALSE;
+		}
     }
     
     

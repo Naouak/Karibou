@@ -25,21 +25,32 @@ function userlink($params , $appList, &$smarty)
 		if (isset($params["user"]))
 		{
  			$user = $params["user"];
-			if ( ($user->getFirstname() != "") || ($user->getLastname() != "") )
+ 			
+			if ( is_object($user) && $user->getLogin() )
 			{
-				$fullName = addslashes($user->getFullName());
+ 				$firstname = $user->getFirstName();
+	 			$lastname = $user->getLastName();
+
+				if ( ($firstname != "") && ($lastname != "" ) )
+				{
+					$fullName = addslashes($user->getFullName());
+				}
+				else
+				{
+					$fullName = "<em>".$user->getLogin()."</em>";
+				}
+
+				$userlink = "<a href=\"".smarty_function_kurl(array("app" => annuaire, "username" => $user->getLogin()), $smarty)."\" class=\"userlink\"";
+				if (isset($params["showpicture"]) && ($params["showpicture"] === TRUE) )
+				{
+					$userlink .= " onMouseover=\"showhint('<img src=\'".$user->getPicturePath()."\' /><span>".$fullName."</span>','hint_profile');\" onMouseout=\"hidehint()\"";
+				}
+				$userlink .= ">".$user->getDisplayName()."</a>";
 			}
 			else
 			{
-				$fullName = "<em>".$user->getLogin()."</em>";
+				$userlink .= "?";
 			}
-			//$userlink = <a href="{kurl app="annuaire" username=$user.object->getLogin()}" class="userlink"{if $islogged} onMouseover="showhint('<img src=\'{$user.object->getPicturePath()}\' />{if ($user.object->getFirstname() != "")}<span>{$user.object->getFirstname()|escape:"quotes"} {$user.object->getLastname()|escape:"quotes"}</span>{else}<em>{$user.object->getLogin()}</em>{/if}','hint_profile');" onMouseout="hidehint()"{/if}>{if $user.object->getSurname() != ""}{$user.object->getSurname()}{elseif $user.object->getFirstname() != "" || $user.object->getLastname() != ""}{$user.object->getFirstname()} {$user.object->getLastname()}{else}{$user.object->getLogin()}{/if}</a>
-			$userlink = "<a href=\"".smarty_function_kurl(array("app" => annuaire, "username" => $user->getLogin()), $smarty)."\" class=\"userlink\"";
-			if (isset($params["showpicture"]) && ($params["showpicture"] === TRUE) )
-			{
-				$userlink .= " onMouseover=\"showhint('<img src=\'".$user->getPicturePath()."\' /><span>".$fullName."</span>','hint_profile');\" onMouseout=\"hidehint()\"";
-			}
-			$userlink .= ">".$user->getDisplayName()."</a>";
     	}
 	}
 	else
