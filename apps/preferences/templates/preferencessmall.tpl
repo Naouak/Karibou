@@ -1,4 +1,4 @@
-﻿<h3>##PREFERENCES##</h3>
+<h3>##PREFERENCES##</h3>
 <div class="preferences">
 
 	<form action="{kurl action=post}" method="post" name="french">
