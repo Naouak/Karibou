@@ -48,6 +48,7 @@ function positiontip(e)
 		//Find out how close the mouse is to the corner of the window
 		var rightedge = dall&&!window.opera? truebody().clientWidth-event.clientX-offsetxpoint : window.innerWidth-e.clientX-offsetxpoint-20
 		var bottomedge = dall&&!window.opera? truebody().clientHeight-event.clientY-offsetypoint : window.innerHeight-e.clientY-offsetypoint-20
+		var topedge = dall&&!window.opera? event.clientY+offsetypoint : e.clientY+offsetypoint-20
 		
 		var leftedge = (offsetxpoint<0)? offsetxpoint*(-1) : -1000
 		
@@ -57,7 +58,7 @@ function positiontip(e)
 			//move the horizontal position of the menu to the left by it's width
 			hintobject.style.left=dall? truebody().scrollLeft + event.clientX - hintobject.offsetWidth+"px" : window.pageXOffset+e.clientX - hintobject.offsetWidth+"px"
 		}
-		else if (curX<leftedge)
+		else if (curX < leftedge)
 		{
 			hintobject.style.left="5px"
 		}
@@ -66,17 +67,20 @@ function positiontip(e)
 			//position the horizontal position of the menu where the mouse is positioned
 			hintobject.style.left = curX + offsetxpoint + "px"
 		}
-		
+
 		//same concept with the vertical position
 		if (bottomedge < hintobject.offsetHeight)
 		{
-			hintobject.style.top=dall? truebody().scrollTop + event.clientY - hintobject.offsetHeight - offsetypoint+"px" : window.pageYOffset + e.clientY - hintobject.offsetHeight - offsetypoint+"px"
+			hintobject.style.top = dall? truebody().scrollTop + event.clientY - hintobject.offsetHeight - offsetypoint+"px" : window.pageYOffset + e.clientY - hintobject.offsetHeight - offsetypoint+"px"
 		}
 		else
 		{
 			hintobject.style.top = curY+offsetypoint + "px"
-			hintobject.style.visibility = "visible"
 		}
+
+		hintobject.style.visibility = "visible"
+
+
 	}
 }
 
