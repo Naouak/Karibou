@@ -43,7 +43,6 @@ class gmailReader extends Model
 						$items[] = array('title' => $entry->title[0] , 'summary'=> $entry->summary[0], 'link' => "http://mail.google.com/mail", 'author' => $author->name[0], 'emailAuthor' => $author->email[0]);
 					}
 				}
-				print_r($xml);
 				$title = $xml->title[0] ;
 				$nbMessages = $xml-> fullcount[0];
 				$this->assign("title", $title);
