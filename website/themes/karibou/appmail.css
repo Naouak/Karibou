@@ -116,6 +116,7 @@ td.date {
 	background-color: #fefefe;
 	border: 1px solid #999;
 	width: 660px;
+	overflow: auto;
 }
 .bodybox pre{
 	font-size: 1.1em;
