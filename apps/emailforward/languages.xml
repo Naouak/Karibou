@@ -55,7 +55,7 @@
         <translation language="en">Save email address for email forwarding</translation>
     </sentence>
     <sentence key="EMAILFORWARD_ENABLED_MSG">
-        <translation language="fr">Le transfert d'email est activé, tout vos emails envoyés à {$emaillogin} sont transférés à {$email}. Attention : ils ne sont plus stockés sur ce serveur. Pour désactiver le transfert d'email, laisser le champ "Adresse Email" vide et valider.</translation>
+        <translation language="fr">Le transfert d'email est activé, tous vos emails envoyés à {$emaillogin} sont transférés à {$email}. Attention : ils ne sont plus stockés sur ce serveur. Pour désactiver le transfert d'email, laisser le champ "Adresse Email" vide et valider.</translation>
         <translation language="en">Email forwarding is enabled. All the emails sent to {$emaillogin} are forwarded to {$email}. Note : the emails are not stored on the server anymore. To disable Email forwarding, leave the "Email address" field empty and post the form.</translation>
     </sentence>
     <sentence key="EMAILFORWARD_DISABLED_MSG">
