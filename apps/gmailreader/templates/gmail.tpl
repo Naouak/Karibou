@@ -1,4 +1,14 @@
-<h3>{$title}</h3>
+<div class="gmail">
+<h1>{$title}</h1>
+{if $nbMessages == 0}
+<p>##NOMESSAGE##</p>
+{else}
+<h2>{$nbMessages} {if $nbMessages == 1} ##UNREADMESSAGE## {else} ##UNREADMESSAGES## {/if}</h2>
+<ul>
+<li class="header"><span class="gmailauthor">##SENDER##</span><span class="gmailtitle">##SUBJECT##</span></li>
 {foreach item=item from=$items}
-<p><a href="{$item.link}">{$item.title|truncate:65}</a></p>
+<li><span class="gmailauthor" title="{$item.emailAuthor}">{$item.author}</span><span class="gmailtitle"><a href="{$item.link}" title="{$item.summary}">{$item.title|truncate:65}</a></span></li>
 {/foreach}
+</ul>
+{/if}
+</div>

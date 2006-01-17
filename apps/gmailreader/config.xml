@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <app>	
-	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
 
 	<load class="gmailReader" file="gmailreader.class.php" />
 	<load class="gmailReaderConfig" file="gmailreaderconfig.class.php" />

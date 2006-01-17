@@ -15,5 +15,25 @@
 	<sentence key="SUBMIT">
         <translation language="fr" value="Valider" />
         <translation language="en" value="Submit" />
+    </sentence>   
+	<sentence key="UNREADMESSAGE">
+        <translation language="fr" value="Message non lu" />
+        <translation language="en" value="Unread message" />
     </sentence>       
+	<sentence key="UNREADMESSAGES">
+        <translation language="fr" value="Messages non lus" />
+        <translation language="en" value="Unread messages" />
+    </sentence>
+	<sentence key="NOMESSAGE">
+        <translation language="fr" value="Aucun nouveau message" />
+        <translation language="en" value="No message" />
+    </sentence>
+   	<sentence key="SENDER">
+        <translation language="fr" value="Expéditeur" />
+        <translation language="en" value="From" />
+    </sentence>
+   	<sentence key="SUBJECT">
+        <translation language="fr" value="Object" />
+        <translation language="en" value="Subject" />
+    </sentence>     
 </translation>
