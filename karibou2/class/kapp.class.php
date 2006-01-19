@@ -252,7 +252,8 @@ class KApp
 
 		$this->config = array();
 		if(isset($xml->config, $xml->config[0]->param))
-		{
+		{	
+		/*
 			foreach($xml->config[0]->param as $param)
 			{
 				if( isset($param['name'], $param['value']) )
@@ -278,7 +279,102 @@ class KApp
 					}
 				}
 			}
+		*/
+			$this->config = $this->readConfigTree($xml->config[0]);
 		}
+	}
+	
+	function readConfigTree ($tree)
+	{
+		$varb = array();
+		$varc = array();
+
+		if (isset($tree->text) && $tree->text != "")
+		{
+			if (isset($param["name"]))
+			{
+				$vara = array();
+				$vara[$param["name"]] = $tree->text;
+			}
+			else
+			{
+				$vara = $tree->text;
+			}
+		}
+		if (!isset($vara) || !is_string($vara))
+		{
+			if (isset($tree->param) && count($tree->param)>0)
+			{
+				foreach($tree->param as $param)
+				{
+					if (isset($param["name"]))
+					{
+						$varb[$param["name"]] = $this->readConfigTree($param);
+					}
+					else
+					{
+						$varb[] = $this->readConfigTree($param);
+					}
+				}
+			}
+			
+			if (isset($tree->value))
+			{
+				if (is_array($tree->value) && count($tree->value)>0 )
+				{
+					foreach ($tree->value as $value)
+					{
+						if (isset($value["name"]))
+						{
+							$varc[$value["name"]] = $this->readConfigTree($value);
+						}
+						else
+						{
+							$varc[] = $this->readConfigTree($value);
+						}
+					}
+				}
+				else
+				{
+					if (isset($tree->value["name"]))
+					{
+						$varc[$tree->value["name"]] = $this->readConfigTree($tree->value);
+					}
+					else
+					{
+						$varc[] = $this->readConfigTree($tree->value);
+					}
+				}
+			}
+
+			if (isset($vara,$varb,$varc))
+			{
+				$var = array_merge($vara, $varb, $varc);
+			}
+			elseif (isset($vara,$varb))
+			{
+				$var = array_merge($vara, $varb);
+			}
+			elseif (isset($varb,$varc))
+			{
+				$var = array_merge($varb, $varc);
+			}
+			else
+			{
+				$var = array_merge($vara, $varc);
+			}
+			
+		}
+		elseif (isset($vara))
+		{
+			$var = $vara;
+		}
+		else
+		{
+			return NULL;
+		}
+
+		return $var;
 	}
 	
 	/**
