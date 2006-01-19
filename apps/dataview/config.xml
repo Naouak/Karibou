@@ -1,30 +1,60 @@
 <app>	
 	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
 
-	<load class="AnyCharArgument" file="../arguments/anycharargument.class.php" />
+	<config>
+		<param name="sources">
+			<param name="dataview_experiences">
+				<param name="public">
+						<value>company</value>
+						<value>address</value>
+						<value>country</value>
+						<value>web</value>
+						<value>domain</value>
+						<value>department</value>
+						<value>student_year</value>
+						<value>student_jobtitle</value>
+						<value>student_project</value>
+						<value>student_fullname</value>
+				</param>
+				<param name="private">
+						<value>contact_fullname</value>
+						<value>contact_jobtitle</value>
+						<value>contact_email</value>
+						<value>contact_phone</value>
+				</param>
+			</param>
+		</param>
+	</config>
 
-	<load class="KDataView" file="class/kdataview.class.php" />
-	<load class="KDataViewDB" file="class/kdataviewdb.class.php" />
-	<load class="KDataViewRecord" file="class/kdataviewrecord.class.php" />
+	<load class="AnyCharArgument"	file="../arguments/anycharargument.class.php" />
 
-	<load class="KDataViewMenu" file="kdataview.class.php" />
+	<load class="KDataView"			file="class/kdataview.class.php" />
+	<load class="KDataViewSource"	file="class/kdataviewsource.class.php" />
+	<load class="KDataViewRecord"	file="class/kdataviewrecord.class.php" />
 
-	<load class="DVDefault" file="default.class.php" />
+	<load class="KDataViewMenu"		file="kdataview.class.php" />
 
-	<header app="header" view="default" />
-	<footer app="footer" view="default" />
+	<load class="DVDefault"			file="default.class.php" />
+	<load class="DVList"			file="list.class.php" />
+	<load class="DVDetails"			file="details.class.php" />
 
-	<view name="menu" class="DVMenu" template="menu.tpl" />
+	<header app="header"	view="default" />
+	<footer app="footer"	view="default" />
 
-	<view name="default" class="DVDefault" template="default.tpl" />
-	<view name="list" class="DVList" template="list.tpl" />
-	<view name="details" class="DVDetails" template="details.tpl" />
+	<view name="menu"		class="DVMenu"		template="menu.tpl" />
+
+	<view name="default"	class="DVDefault"	template="default.tpl" />
+	<view name="list"		class="DVList"		template="list.tpl" />
+	<view name="details"	class="DVDetails"	template="details.tpl" />
 	
 	<page view="default" />
 	
-	<page name="details" view="details">
-		<option name="id" class="AnyCharArgument" />
+	<page name="details"	view="details">
+		<option name="source"	class="AnyCharArgument" />
+		<option name="id"	class="AnyCharArgument" />
 	</page>
 
-	<page name="list" view="list" />
+	<page name="list" view="list">
+		<option name="source"	class="AnyCharArgument" />
+	</page>
 </app>

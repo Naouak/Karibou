@@ -1,12 +1,14 @@
 <h1>##DATAVIEW##</h1>
 <h2>##DATAVIEW_DETAILS##</h2>
 
-{if ($sources|@count >0)}
-<ul>
-	{foreach from=$sources item=source}
-	<li>{$source->getName()}</li>
+{if ($records|@count >0)}
+<table>
+	{foreach from=$records item=record}
+	<tr>
+		<td>{$record}</td>
+	</tr>
 	{/foreach}
-</ul>
+</table>
 {else}
 ##DV_NODATASOURCE##
 {/if}

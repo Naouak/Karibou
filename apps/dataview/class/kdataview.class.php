@@ -12,15 +12,33 @@
  *
  * @package applications
  **/
-class KFile extends KDataView
+class KDataView
 {
 	protected $db;
 	protected $userFactory;
+	public $sources;
 
 	function __construct(PDO $db, UserFactory $userFactory)
 	{
 		$this->db = $db;
 		$this->userFactory = $userFactory;
+	}
+	
+	function addSource ($tablename, Array $data)
+	{
+		$this->sources[$tablename] = new KDataViewSource($this->db, $this->userFactory, $tablename, $data);
+	}
+	
+	function getSource ($tablename)
+	{
+		if (isset($this->sources[$tablename]))
+		{
+			return $this->sources[$tablename];
+		}
+		else
+		{
+			return FALSE;
+		}
 	}
 }
 

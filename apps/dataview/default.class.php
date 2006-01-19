@@ -12,7 +12,7 @@
  * 
  * @package applications
  **/
-class DVList extends Model
+class DVDefault extends Model
 {
 	public function build()
 	{
@@ -21,20 +21,12 @@ class DVList extends Model
 		
 		$myDV = new KDataView($this->db, $this->userFactory);
 		
-		if ( isset($this->args["source"]) && $this->args["source"] != "" && isset($config["sources"][$this->args["source"]]) )
+		foreach ($config["sources"] as $tablename => $source)
 		{
-			$myDV->addSource($this->args["source"], $config["sources"][$this->args["source"]]);
-
-			$mySource = $myDV->getSource($this->args["source"]);
-			$this->assign("source", $mySource );
-			
-			$myRecords = $mySource->getRecords();
-			$this->assign("records", $myRecords );
+			$myDV->addSource($tablename, $source);
 		}
-		else
-		{
-			Debug::kill($this->args["source"]);
-		}
+		
+		$this->assign("sources", $myDV->sources);
 	}
 }
 
