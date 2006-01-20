@@ -18,6 +18,7 @@ class DVDefault extends Model
 	{
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
+		$app->addView("menu", "header_menu", array("page"=>"default"));
 		
 		$myDV = new KDataView($this->db, $this->userFactory);
 		

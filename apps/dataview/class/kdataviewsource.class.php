@@ -100,6 +100,47 @@ class KDataViewSource
 		}
 	}
 	
+	function getRecordsFromSearch($keyword, $fields, $limit = FALSE, $page = 1)
+	{
+		$where = "WHERE";
+		foreach ($fields as $field)
+		{
+			if ($where != "WHERE")
+			{
+				$where .= " OR ";
+			}
+			$where .= " (".$field." LIKE '%".$keyword."%')";
+		}
+		
+		$page--;
+		if ($limit !== FALSE)
+		{
+			$limit = "LIMIT ".($page * $limit).",".$limit;
+		}
+		else
+		{
+			$limit = "";
+		}
+	
+		$sql = "
+				SELECT *
+				FROM ".$this->getTableName()."
+				$where
+				$limit";
+			
+		try
+		{
+			$stmt = $this->db->query($sql);
+			$tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			unset($stmt);
+			return $tab;
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}
+	}
+	
 	/* Count Records */
 	function countRecords()
 	{
@@ -121,9 +162,6 @@ class KDataViewSource
 		}
 	}
 	
-	function getRecordsFromSearch ($field, $search)
-	{
-	}
 }
 
 ?>

@@ -42,6 +42,21 @@
 		</span>
 		<ul class="menu">
 			<li><a href="{kurl app=""}">##APP_HOME##</a></li>
+			{*
+			<li>
+				<select>
+					<option disabled>##DEFAULT_QUICKLINKS##</option>
+					<option disabled>##APP_NEWS##</option>
+					<option disabled>##APP_EMAIL##</option>
+					<option disabled>##APP_DIRECTORY##</option>
+					<option disabled>##APP_ADDRESSBOOK##</option>
+					<option disabled>##APP_FILESHARE##</option>
+					<option disabled>##APP_CALENDAR##</option>
+					<option disabled>##APP_NETCV##</option>
+					<option disabled>##APP_CONTACT##</option>
+				</select>
+			</li>
+			*}
 			{hook name="header_menu"}
 	 	</ul>
 	</div>

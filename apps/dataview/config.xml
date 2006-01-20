@@ -4,10 +4,17 @@
 	<config>
 		<param name="sources">
 			<param name="dataview_experiences">
+				<param name="list">
+						<value>company_name</value>
+						<value>company_country</value>
+						<value>student_year</value>
+						<value>student_jobtitle</value>
+						<value>student_fullname</value>
+				</param>
 				<param name="public">
-						<value>company</value>
-						<value>address</value>
-						<value>country</value>
+						<value>company_name</value>
+						<value>company_address</value>
+						<value>company_country</value>
 						<value>web</value>
 						<value>domain</value>
 						<value>department</value>
@@ -41,6 +48,8 @@
 	<load class="DVDefault"			file="default.class.php" />
 	<load class="DVList"			file="list.class.php" />
 	<load class="DVDetails"			file="details.class.php" />
+	<load class="DVSearch"			file="search.class.php" />
+	<load class="DVMenu"			file="dataviewmenu.class.php" />
 
 	<header app="header"	view="default" />
 	<footer app="footer"	view="default" />
@@ -50,15 +59,22 @@
 	<view name="default"	class="DVDefault"	template="default.tpl" />
 	<view name="list"		class="DVList"		template="list.tpl" />
 	<view name="details"	class="DVDetails"	template="details.tpl" />
+	<view name="search"		class="DVSearch"	template="search.tpl" />
 	
 	<page view="default" />
-	
+
+	<page name="list" view="list">
+		<argument name="source"	class="AnyCharArgument" />
+		<option name="pagenum"	class="NumberArgument" />
+	</page>
+
 	<page name="details"	view="details">
 		<argument name="source"	class="AnyCharArgument" />
 		<option name="recordid"	class="AnyCharArgument" />
 	</page>
 
-	<page name="list" view="list">
+	<page name="search" view="search">
 		<argument name="source"	class="AnyCharArgument" />
-		<option name="pagenum"	class="NumberArgument" />
-	</page></app>
+	</page>
+	
+</app>
