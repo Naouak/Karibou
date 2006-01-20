@@ -55,7 +55,7 @@ class KDataViewSource
 		$page--;
 		if ($limit !== FALSE)
 		{
-			$limit = "LIMIT ".$page*$limit.",".$limit;
+			$limit = "LIMIT ".($page * $limit).",".$limit;
 		}
 		else
 		{
@@ -65,7 +65,7 @@ class KDataViewSource
 		$sql = "
 				SELECT *
 				FROM ".$this->getTableName()."
-			";			
+			".$limit;			
 			
 		try
 		{
@@ -73,6 +73,47 @@ class KDataViewSource
 			$tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			unset($stmt);
 			return $tab;
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}
+	}
+
+	function getRecordById($recordid)
+	{
+		$sql = "
+				SELECT *
+				FROM ".$this->getTableName()."
+				WHERE id = ".$recordid."";			
+			
+		try
+		{
+			$stmt = $this->db->query($sql);
+			$tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			unset($stmt);
+			return $tab[0];
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}
+	}
+	
+	/* Count Records */
+	function countRecords()
+	{
+		$sql = "
+				SELECT count(id) as nbrecords
+				FROM ".$this->getTableName()."
+			";			
+			
+		try
+		{
+			$stmt = $this->db->query($sql);
+			$tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			unset($stmt);
+			return $tab[0]["nbrecords"];
 		}
 		catch(PDOException $e)
 		{

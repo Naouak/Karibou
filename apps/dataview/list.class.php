@@ -28,8 +28,23 @@ class DVList extends Model
 			$mySource = $myDV->getSource($this->args["source"]);
 			$this->assign("source", $mySource );
 			
-			$myRecords = $mySource->getRecords();
+			if (isset($this->args["pagenum"]) && $this->args["pagenum"] != "")
+			{
+				$pagenum = $this->args["pagenum"];
+			}
+			else
+			{
+				$pagenum = 1;
+			}
+			$this->assign("pagenum", $pagenum);
+			$this->assign("maxlines", $config["list"]["maxlines"]);
+			
+			$this->assign("nbrecords", $mySource->countRecords());
+			
+			$myRecords = $mySource->getRecords($config["list"]["maxlines"], $pagenum);
 			$this->assign("records", $myRecords );
+			
+			$this->assign("publicfields", $config["sources"][$this->args["source"]]["public"] );
 		}
 		else
 		{

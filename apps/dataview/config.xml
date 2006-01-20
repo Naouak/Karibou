@@ -24,9 +24,13 @@
 				</param>
 			</param>
 		</param>
+		<param name="list">
+			<value name="maxlines">20</value>
+		</param>
 	</config>
 
 	<load class="AnyCharArgument"	file="../arguments/anycharargument.class.php" />
+	<load class="NumberArgument"	file="../arguments/numberargument.class.php" />
 
 	<load class="KDataView"			file="class/kdataview.class.php" />
 	<load class="KDataViewSource"	file="class/kdataviewsource.class.php" />
@@ -50,11 +54,11 @@
 	<page view="default" />
 	
 	<page name="details"	view="details">
-		<option name="source"	class="AnyCharArgument" />
-		<option name="id"	class="AnyCharArgument" />
+		<argument name="source"	class="AnyCharArgument" />
+		<option name="recordid"	class="AnyCharArgument" />
 	</page>
 
 	<page name="list" view="list">
-		<option name="source"	class="AnyCharArgument" />
-	</page>
-</app>
+		<argument name="source"	class="AnyCharArgument" />
+		<option name="pagenum"	class="NumberArgument" />
+	</page></app>
