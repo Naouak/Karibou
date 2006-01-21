@@ -6,8 +6,10 @@
 
 {if $page == "list"}
 	<li>##DV_LIST##</li>
-{elseif $page == "details"}
+{else}
+	{if $page == "details" || $page == "search" }
 	<li><a href="{kurl page='list' source=$source}">##DV_LIST##</a></li>
+	{/if}
 {/if}
 
 {if $page == "search"}

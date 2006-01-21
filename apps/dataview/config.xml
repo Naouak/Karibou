@@ -75,6 +75,8 @@
 
 	<page name="search" view="search">
 		<argument name="source"	class="AnyCharArgument" />
+		<option name="keyword" class="AnyCharArgument" />
+		<option name="pagenum" class="NumberArgument" />
 	</page>
 	
 </app>

@@ -1,12 +1,22 @@
 	<div class="navigation">
 		<div class="links">
 		{if ($pagenum > 1) }
-			<a href="{kurl page="list" source=$source->getTableName() pagenum=$pagenum-1}" class="previous">##DV_PREVIOUS##</a>
+			{if (isset($keyword))}
+			<a href="{kurl page="search" source=$source->getTableName() keyword=$keyword pagenum=$pagenum-1}" class="previous">
+			{else}
+			<a href="{kurl page="list" source=$source->getTableName() pagenum=$pagenum-1}" class="previous">
+			{/if}
+			##DV_PREVIOUS##</a>
 		{else}
 			<span class="previous">&nbsp;</span>
 		{/if}
 		{if ($pagenum*$maxlines < $nbrecords) }
-			<a href="{kurl page="list" source=$source->getTableName() pagenum=$pagenum+1}" class="next">##DV_NEXT##</a>
+			{if (isset($keyword))}
+			<a href="{kurl page="search" source=$source->getTableName() keyword=$keyword pagenum=$pagenum+1}" class="next">
+			{else}
+			<a href="{kurl page="list" source=$source->getTableName() pagenum=$pagenum+1}" class="next">
+			{/if}
+			##DV_NEXT##</a>
 		{else}
 			<span class="next">&nbsp;</span>
 		{/if}

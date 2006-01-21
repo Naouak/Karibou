@@ -142,12 +142,29 @@ class KDataViewSource
 	}
 	
 	/* Count Records */
-	function countRecords()
+	function countRecords($keyword = FALSE, $fields = FALSE)
 	{
+		if ($keyword === FALSE)
+		{
+			$where = "";
+		}
+		else
+		{
+			$where = "WHERE";
+			foreach ($fields as $field)
+			{
+				if ($where != "WHERE")
+				{
+					$where .= " OR ";
+				}
+				$where .= " (".$field." LIKE '%".$keyword."%')";
+			}		
+		}
+		
 		$sql = "
 				SELECT count(id) as nbrecords
 				FROM ".$this->getTableName()."
-			";			
+				$where";			
 			
 		try
 		{

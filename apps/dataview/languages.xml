@@ -53,4 +53,34 @@
 		<translation language="fr">Liste</translation>
 		<translation language="en">List</translation>
 	</sentence>
+
+	<sentence key="DV_RESULT">
+		<translation language="fr">résultat</translation>
+		<translation language="en">result</translation>
+	</sentence>
+
+	<sentence key="DV_RESULTS">
+		<translation language="fr">résultats</translation>
+		<translation language="en">results</translation>
+	</sentence>
+	
+	<sentence key="DV_FORSEARCHKEYWORD">
+		<translation language="fr">pour le mot clé</translation>
+		<translation language="en">for keyword</translation>
+	</sentence>	
+	
+	<sentence key="DV_SEARCH">
+		<translation language="fr">Recherche</translation>
+		<translation language="en">Search</translation>
+	</sentence>
+
+	<sentence key="DV_NOSEARCHRESULTSFOR">
+		<translation language="fr">Aucun résultat pour le mot clé</translation>
+		<translation language="en">No result for keyword</translation>
+	</sentence>
+	
+	<sentence key="DATAVIEW_DEFAULT">
+		<translation language="fr">L'application de consultation de données vous permet d'accéder aux données stockées dans les diverses bases de données mises à disposition</translation>
+		<translation language="en">The data view application has been designed in order to give you access to data stored in database</translation>
+	</sentence>
 </translation>

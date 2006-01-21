@@ -29,9 +29,7 @@ class DVSearch extends Model
 
 			$mySource = $myDV->getSource($this->args["source"]);
 			$this->assign("source", $mySource );
-			$this->assign("nbrecords", $mySource->countRecords());
 			
-			/* ??? */
 			if (isset($this->args["pagenum"]) && $this->args["pagenum"] != "")
 			{
 				$pagenum = $this->args["pagenum"];
@@ -42,7 +40,7 @@ class DVSearch extends Model
 			}
 			$this->assign("pagenum", $pagenum);
 			$this->assign("maxlines", $config["list"]["maxlines"]);
-			
+
 			
 			$this->assign("publicfields", $config["sources"][$this->args["source"]]["public"] );
 			$this->assign("listfields", $config["sources"][$this->args["source"]]["list"] );
@@ -51,8 +49,19 @@ class DVSearch extends Model
 			
 			if (isset($_POST["keyword"]) && trim($_POST["keyword"]) != "")
 			{
-				$records = $mySource->getRecordsFromSearch($_POST["keyword"], $allfields);
+				$keyword = $_POST["keyword"];
+			}
+			elseif (isset($this->args["keyword"]) && $this->args["keyword"] != "")
+			{
+				$keyword = $this->args["keyword"];
+			}
+
+			if (isset($keyword))
+			{
+				$this->assign("nbrecords", $mySource->countRecords($keyword, $allfields));
+				$records = $mySource->getRecordsFromSearch($keyword, $allfields, $config["list"]["maxlines"], $pagenum);
 				$this->assign("records", $records);
+				$this->assign("keyword", $keyword);
 			}
 		}
 		else
