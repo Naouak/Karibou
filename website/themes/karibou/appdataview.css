@@ -48,10 +48,10 @@
 
 .dataview table.list tr td.detailslink a {
 	display: block;
-	background-image: url(images/dataview/magnifier.png);
+	background-image: url(images/dataview/details.png);
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
-	width: 16px;
+	width: 21px;
 	height: 20px;
 }
 .dataview table.list tr td.detailslink span {
@@ -121,4 +121,28 @@
 .dataview div.record div.field.public.company_name span {
 	font-size: 130%;
 	font-weight: bold;
+}
+
+/* Source list */
+.dataview ul.sources {
+	list-style: none;
+}
+
+.dataview ul.sources li a{
+	background-image: url(images/dataview/source50.png);
+	background-repeat: no-repeat;
+	background-position: 20px 50%;
+	display: block;
+	padding: 10px 10px 10px 85px;
+	margin: 10px;
+	height: 60px;
+	font-size: 1.4em;
+	border: 1px solid #dbdbdb;
+	width: 300px;
+	text-decoration: none;
+}
+
+.dataview ul.sources li a span {
+	display: block;
+	margin-top: 20px;
 }
