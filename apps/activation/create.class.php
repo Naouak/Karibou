@@ -73,7 +73,7 @@ class ActivationCreate extends Model
 		$email_alternatif = $_SESSION['activation_email'];
 
 		//$email = strtolower($this->deleteAccent($item['prenom'])).".".strtolower($this->deleteAccent($item['nom']))."@".$this->domain;
-		$email = strtolower (KText::epureString($item['prenom'].".".$item['nom'])."@".$this->domain);
+		$email = strtolower (KText::epureString(trim($item['prenom']).".".trim($item['nom']) )."@".$this->domain);
 		$lafiliere = $item["promotype"];
 		$lapromo = $item["promo"];
 		
