@@ -309,7 +309,14 @@ class KApp
 				{
 					if (isset($param["name"]))
 					{
-						$varb[$param["name"]] = $this->readConfigTree($param);
+						if (!isset($param["value"]))
+						{
+							$varb[$param["name"]] = $this->readConfigTree($param);
+						}
+						else
+						{
+							$varb[$param["name"]] = $param["value"];
+						}
 					}
 					else
 					{
