@@ -36,7 +36,7 @@ class ActivationCreate extends Model
 			$this->assign('message', 'compte déjà créé');
 		}
 	}
-	
+/*
 	function deleteAccent ($chaine)
 	{
 		$chaine = str_replace("'", "", $chaine);
@@ -47,7 +47,7 @@ class ActivationCreate extends Model
 		"ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ",
 		"AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn" ) );
 	}
-
+*/
 	function generate_password($length)
 	{
 		$vowels = array("a",  "e",  "i",  "o",  "u",  "ae",  "ou",  "io",  
@@ -58,6 +58,7 @@ class ActivationCreate extends Model
 			            "ch",  "ph",  "st",  "sl",  "cl");
 		$vowel_count = count($vowels);
 		$consonant_count = count($consonants);
+		$pass = "";
 		for ($i = 0; $i < $length; ++$i)
 		{
 			$pass .= $consonants[rand(0,  $consonant_count - 1)] .
@@ -71,13 +72,13 @@ class ActivationCreate extends Model
 		$id = $item['id'];
 		$email_alternatif = $_SESSION['activation_email'];
 
-		$email = strtolower($this->deleteAccent($item['prenom']))
-			.".".strtolower($this->deleteAccent($item['nom']))."@".$this->domain;
+		//$email = strtolower($this->deleteAccent($item['prenom'])).".".strtolower($this->deleteAccent($item['nom']))."@".$this->domain;
+		$email = strtolower (KText::epureString($item['prenom'].".".$item['nom'])."@".$this->domain);
 		$lafiliere = $item["promotype"];
 		$lapromo = $item["promo"];
 		
 		$add_email = $email;
-		$add_mailbox = "telecomlille.net/";
+		$add_mailbox = $GLOBALS['config']['mail']['domain']."/";
 		$add_mailbox .= substr($add_email,0,1)."/";
 		$add_mailbox .= substr($add_email,1,1)."/";
 		$add_mailbox .= substr($add_email,0,strpos($add_email,'@'))."/";
