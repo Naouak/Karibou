@@ -43,7 +43,7 @@ class KText
 
 	function epureString ($string)
 	{
-		$string = $this->removeAccents($string);
+		$string = KText::removeAccents($string);
 		$string = preg_replace("/[^.A-Za-z0-9 _-]/", '',$string);
 		return $string;
 	}
@@ -51,7 +51,7 @@ class KText
 	//Thanks SSI for the following methods
 	function removeAccents ($string)
 	{
-		if ($this->seemsUTF8($string)) {
+		if (KText::seemsUTF8($string)) {
 				$chars = array(
 					chr(195).chr(128) => 'A', chr(195).chr(129) => 'A',
 					chr(195).chr(130) => 'A', chr(195).chr(131) => 'A',
