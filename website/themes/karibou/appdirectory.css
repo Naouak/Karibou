@@ -17,6 +17,7 @@
 #content .directory .thumbnail .image {
 	width: 150px;
 	height: 180px;
+	overflow: hidden;
 }
 
 #content .directory .thumbnail .image img {

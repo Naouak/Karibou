@@ -390,7 +390,6 @@ div#hintbox {
 	visibility: hidden;
 	z-index: 100;
 	overflow: hidden;
-	text-align: left;
 }
 
 .overzone {
@@ -450,15 +449,13 @@ div.hint.hint_profile {
 	overflow: hidden;
 }
 div.hint.hint_profile img {
-	border-bottom: 1px solid #7777dd;
-	width: 150px;
 }
 div.hint.hint_profile span {
 	font-weight: bold;
 	display: block;
 	padding: 2px;
 	margin: 0px;
-	text-align: center;
+	border-top: 1px solid #7777dd;
 }
 
 /* Hint Overzone */
