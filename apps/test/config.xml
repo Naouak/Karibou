@@ -1,9 +1,10 @@
 <app>
 	<load class="Test" file="Test.class.php" />
 	<load class="TestView" file="testview.class.php" />
+	<load class="TestPost" file="post.class.php" />
 	
-	<header app="header" view="simple" />
-	<footer app="footer" view="simple" />
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
 
 	<view name="default" class="Test" template="test.tpl" />
 	<view name="view" class="TestView" template="testview.tpl" />
@@ -14,5 +15,9 @@
 		<header app="empty" view="default" />
 		<footer app="empty" view="default" />
 	</page>
+	
+	<form action="post" class="TestPost">
+		<redirect />
+	</form>
 	
 </app>
