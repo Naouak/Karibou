@@ -16,6 +16,9 @@ abstract class FormModel extends Model
 {
 	private $form;
 	
+	//Needed for SmartyValidate
+	public $smarty;
+	
 
 	function __construct(
 		PDO $p_db,
@@ -44,6 +47,16 @@ abstract class FormModel extends Model
 		
 		//Gestion des messages
 		$this->formMessage = new FormMessage();
+
+		ExecutionTimer::getRef()->start("New Smarty");
+		$this->smarty = new KSmarty($kapp, $this->appList, $this->languageManager, FALSE, $this->currentUser->getPref("lang"));
+		$this->smarty->template_dir = $templatedir.'/';
+		$this->smarty->compile_dir = KARIBOU_COMPILE_DIR.'/'.get_class($this).'/';
+		if(!is_dir($this->smarty->compile_dir)) mkdir($this->smarty->compile_dir);
+		$this->smarty->config_dir = KARIBOU_CONFIG_DIR.'/';
+		$this->smarty->cache_dir = KARIBOU_CACHE_DIR.'/'.get_class($this).'/';
+		if(!is_dir($this->smarty->cache_dir)) mkdir($this->smarty->cache_dir);
+		ExecutionTimer::getRef()->stop("New Smarty");
 	}
 	
 	

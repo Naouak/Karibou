@@ -16,6 +16,8 @@ require_once dirname(__FILE__).'/smarty/insertheader.function.php';
 require_once dirname(__FILE__).'/smarty/userlink.function.php';
 require_once dirname(__FILE__).'/smarty/khint.function.php';
 
+require_once dirname(__FILE__).'/smarty/SmartyValidate/SmartyValidate.class.php';
+
 /**
  * Smarty template engine customization
  * 
@@ -32,7 +34,7 @@ class KSmarty extends Smarty
 	protected $hookManager;
 	
 	function KSmarty($kapp, AppList $appList, LanguageManager $languageManager, 
-		HookManager $hookManager, $language="")
+		$hookManager, $language="")
 	{
 		$this->Smarty();
 		$this->kapp = $kapp;
@@ -42,8 +44,12 @@ class KSmarty extends Smarty
 		$this->register_function('translate', 'smarty_function_translate');
 		$this->register_function('userlink', 'smarty_function_userlink');
 		$this->register_function('khint', 'smarty_function_khint');
+		array_push ($this->plugins_dir, dirname(__FILE__).'/smarty/SmartyValidate/plugins');
 		
-		$this->hookManager = $hookManager;
+		if ($hookManager !== FALSE)
+		{
+			$this->hookManager = $hookManager;
+		}
 		$displayHook = array(&$this, 'displayHook');
 		$this->register_function('hook', $displayHook);
 
