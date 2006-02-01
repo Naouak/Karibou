@@ -12,7 +12,7 @@
 			<div class="time">{$theArticle->getDate()}</div>
 			<br />
 			{$theArticle->getContentXHTML()|strip_tags|truncate:300:"...":false}
-			{if ($theArticle->getContentXHTML()|strip_tags|@count_characters)>300}
+			{if ($theArticle->getContentXHTML()|strip_tags|@count_characters:true)>=300}
 				<a href="{kurl app="news" page="view" id=$theArticle->getId()}">##DISPLAY_WHOLE_ARTICLE##</a>
 			{/if}<br />
 			<em><a href="{kurl app="news" page="view" id=$theArticle->getID() displayComments="1"}">{$theArticle->getNbComments()} ##COMMENT##{if (($theArticle->getNbComments())>1)}s{/if}</a></em> : <a href="{kurl page="addcomment" id=$idNews}">##ADD_COMMENT##</a>
