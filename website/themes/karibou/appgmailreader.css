@@ -15,8 +15,8 @@ div.gmail h2{
 }
 .gmail ul li{
 	width: 800px;
-	height: 50px;
-	min-height: 50px;
+	height: 30px;
+	min-height: 30px;
 	/*margin-bottom: 10px;*/
 }
 
