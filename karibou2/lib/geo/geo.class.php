@@ -42,7 +42,27 @@ class Geo
 				FROM geo_countries
 				ORDER BY name ASC
 			";
-			
+
+		try
+		{
+				$stmt = $this->db->query($sql);
+				$countries = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				return $countries;
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}
+	}
+	
+	public function getCountyList($countryid)
+	{
+		$sql = "
+				SELECT id, name
+				FROM geo_counties_$countryid
+				ORDER BY name ASC
+			";
+
 		try
 		{
 				$stmt = $this->db->query($sql);
