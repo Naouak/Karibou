@@ -324,7 +324,7 @@ class NetJobs
 				//Fetch all displayed companies infos
 				$sqlc = "
 						SELECT *
-						FROM netjobs_company
+						FROM netjobs_companies
 						WHERE
 							$companiesidSQL
 					";
@@ -426,7 +426,7 @@ class NetJobs
 				$job = new NJJob($jobinfos[0],$this->userFactory);
 				
 				$sqlc = "
-						SELECT 	netjobs_companies.*, UNIX_TIMESTAMP(netjobs_jobs.datetime) AS timestamp,
+						SELECT 	netjobs_companies.*, UNIX_TIMESTAMP(netjobs_companies.datetime) AS timestamp,
 									".$this->locationInfosSQLSelect."
 						FROM	netjobs_companies
 						LEFT OUTER JOIN netjobs_locations 
