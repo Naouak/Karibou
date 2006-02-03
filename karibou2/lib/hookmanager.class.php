@@ -85,8 +85,8 @@ class HookManager
 				$textLines .= $v['model']->fetch($v['template']);
 			}
 		}
-        else
-        {
+		else
+		{
 	  		Debug::display("[HookManager] Display Hook : " . $hookname . " <em>(empty)</em>");
 		}
 		return "jon".$textLines;

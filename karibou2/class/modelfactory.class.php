@@ -25,6 +25,7 @@ class ModelFactory
 	protected $eventManager;
 	protected $messageManager;
 	protected $data;
+	protected $smarty;
 	
 	function __construct(
 		ModelBuilder $modelbuilder,
@@ -34,7 +35,8 @@ class ModelFactory
 		HookManager $hookManager,
 		LanguageManager $languageManager,
 		EventManager $eventManager,
-		MessageManager $messageManager
+		MessageManager $messageManager,
+		KSmarty $smarty
 		 )
 	{
 		$this->modelbuilder = $modelbuilder;
@@ -45,7 +47,9 @@ class ModelFactory
 		$this->eventManager = $eventManager;
 		$this->messageManager = $messageManager;
 		$this->appList = $appList;
+		$this->smarty = $smarty;
 		$this->data = array();
+
 	}
 	
 	/**
@@ -58,8 +62,8 @@ class ModelFactory
 		if( !isset($this->data[$uniq_id]) )
 		{
 			$this->data[$uniq_id] = new $model($this->db, $appname, $this->userFactory, $this->appList, 
-				$templatedir, $this->hookManager, $this->languageManager, $this->eventManager, $this->messageManager,
-				$permission, $args);
+				$templatedir, $this->hookManager, $this->languageManager, $this->eventManager, 
+				$this->messageManager, $this->smarty, $permission, $args);
 			$this->data[$uniq_id]->smarty->caching = false;
 			$this->modelbuilder[] = $this->data[$uniq_id];
 		}

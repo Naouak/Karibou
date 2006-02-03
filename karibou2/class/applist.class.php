@@ -46,6 +46,7 @@ class AppList extends ObjectList
 	protected $languageManager;
 	protected $hookManager;
 	protected $messageManager;
+	protected $smarty;
 
 	/**
 	 * @param PDO $db
@@ -70,6 +71,12 @@ class AppList extends ObjectList
 		$permissionsFactory = new PermissionsFactory($this->db);
 		$this->permissions = $permissionsFactory->getPermissions($this->currentUser);
 		unset ($permissionsFactory);
+
+
+		ExecutionTimer::getRef()->start("New Smarty");
+		$this->smarty = new KSmarty($this, $this->languageManager, 
+			$this->hookManager, $userFactory->getCurrentUser()->getPref("lang"));
+		ExecutionTimer::getRef()->stop("New Smarty");
 	}
 
 	function __destruct()
@@ -110,7 +117,8 @@ class AppList extends ObjectList
 			$this->languageManager,
 			$this->hookManager,
 			$this->eventManager,
-			$this->messageManager
+			$this->messageManager,
+			$this->smarty
 			 );
 		return $this->data[$name];
 

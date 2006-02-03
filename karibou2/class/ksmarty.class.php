@@ -33,11 +33,10 @@ class KSmarty extends Smarty
 	protected $languageManager;
 	protected $hookManager;
 	
-	function KSmarty($kapp, AppList $appList, LanguageManager $languageManager, 
+	function KSmarty(AppList $appList, LanguageManager $languageManager, 
 		$hookManager, $language="")
 	{
 		$this->Smarty();
-		$this->kapp = $kapp;
 		$this->appList = $appList;
 		
 		$this->register_function('kurl', 'smarty_function_kurl');
@@ -72,6 +71,10 @@ class KSmarty extends Smarty
 	function getApp()
 	{
 		return $this->kapp;
+	}
+	function setApp($app)
+	{
+		$this->kapp = $app;
 	}
 	function getAppList()
 	{

@@ -36,6 +36,10 @@ abstract class Model
 	 * @var String
 	 */
 	public $appname;
+		/**
+	 * @var String
+	 */
+	protected $templatedir;
 	
 	/**
 	 * droit de lecture par défaut
@@ -95,6 +99,7 @@ abstract class Model
 		LanguageManager $languageManager,
 		EventManager $eventManager,
 		MessageManager $messageManager,
+		KSmarty $smarty,
 		$permission = _READ_ONLY_,
 		$args = array() )
 	{
@@ -102,6 +107,7 @@ abstract class Model
 		$this->args = $args;
 		$this->db = $p_db;
 		$this->appname = $kapp;
+		$this->templatedir = $templatedir;
 		$this->userFactory = $userFactory;
 		$this->currentUser = $userFactory->getCurrentUser();
 		
@@ -120,16 +126,7 @@ abstract class Model
 		
 		$this->messageManager = $messageManager;
 
-		ExecutionTimer::getRef()->start("New Smarty");
-		$this->smarty = new KSmarty($kapp, $this->appList, $this->languageManager, $this->hookManager, $this->currentUser->getPref("lang"));
-
-		$this->smarty->template_dir = $templatedir.'/';
-		$this->smarty->compile_dir = KARIBOU_COMPILE_DIR.'/'.get_class($this).'/';
-		if(!is_dir($this->smarty->compile_dir)) mkdir($this->smarty->compile_dir);
-		$this->smarty->config_dir = KARIBOU_CONFIG_DIR.'/';
-		$this->smarty->cache_dir = KARIBOU_CACHE_DIR.'/'.get_class($this).'/';
-		if(!is_dir($this->smarty->cache_dir)) mkdir($this->smarty->cache_dir);
-		ExecutionTimer::getRef()->stop("New Smarty");
+		$this->smarty = $smarty;
 	}
 	
 	protected function getConfig()
@@ -144,11 +141,14 @@ abstract class Model
 	{
 		if( is_array($name)  && !$value )
 		{
-			$this->smarty->assign($name);
+			foreach($name as $key => $value)
+			{
+				$this->vars[$key] = $value;
+			}
 		}
 		else
 		{
-			$this->smarty->assign($name, $value);
+			$this->vars[$name] = $value;
 		}
 	}
 	
@@ -160,10 +160,41 @@ abstract class Model
 	 */
 	function fetch($template)
 	{
-		return $this->smarty->fetch($template);
+		ExecutionTimer::getRef()->start("Config Smarty");
+		$this->smarty->clear_all_assign();
+		$this->smarty->template_dir = $this->templatedir.'/';
+		$this->smarty->compile_dir = KARIBOU_COMPILE_DIR.'/'.get_class($this).'/';
+		if(!is_dir($this->smarty->compile_dir)) mkdir($this->smarty->compile_dir);
+		$this->smarty->config_dir = KARIBOU_CONFIG_DIR.'/';
+		$this->smarty->cache_dir = KARIBOU_CACHE_DIR.'/'.get_class($this).'/';
+		if(!is_dir($this->smarty->cache_dir)) mkdir($this->smarty->cache_dir);
+		$this->smarty->setApp($this->appname);
+		ExecutionTimer::getRef()->stop("Config Smarty");
+
+		foreach($this->vars as $key => $value)
+		{
+			$this->smarty->assign($key, $value);
+		}
+		$html = $this->smarty->fetch($template);
+		return $html;
 	}
 	function display($template)
 	{
+		ExecutionTimer::getRef()->start("Config Smarty");
+		$this->smarty->clear_all_assign();
+		$this->smarty->template_dir = $this->templatedir.'/';
+		$this->smarty->compile_dir = KARIBOU_COMPILE_DIR.'/'.get_class($this).'/';
+		if(!is_dir($this->smarty->compile_dir)) mkdir($this->smarty->compile_dir);
+		$this->smarty->config_dir = KARIBOU_CONFIG_DIR.'/';
+		$this->smarty->cache_dir = KARIBOU_CACHE_DIR.'/'.get_class($this).'/';
+		if(!is_dir($this->smarty->cache_dir)) mkdir($this->smarty->cache_dir);
+		$this->smarty->setApp($this->appname);
+		ExecutionTimer::getRef()->stop("Config Smarty");
+
+		foreach($this->vars as $key => $value)
+		{
+			$this->smarty->assign($key, $value);
+		}
 		$this->smarty->display($template);
 	}
 }

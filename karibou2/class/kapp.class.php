@@ -103,7 +103,8 @@ class KApp
 		LanguageManager $languageManager, 
 		HookManager $hookManager,
 		EventManager $eventManager,
-		MessageManager $messageManager
+		MessageManager $messageManager,
+		KSmarty $smarty
 		 )
 	{
 //		Debug::display("Building KApp ".$name." ($permission)");
@@ -123,7 +124,9 @@ class KApp
 		$this->hookManager = $hookManager;
 		$this->eventManager = $eventManager;
 
-		$this->modelFactory = new ModelFactory($modelbuilder, $this->db, $this->userFactory, $appList, $this->hookManager, $this->languageManager, $this->eventManager, $this->messageManager);
+		$this->modelFactory = new ModelFactory($modelbuilder, $this->db, $this->userFactory, 
+			$appList, $this->hookManager, $this->languageManager, 
+				$this->eventManager, $this->messageManager, $smarty);
 		
 		$this->permission = $permission;
 		//Lecture des configs

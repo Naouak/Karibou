@@ -198,6 +198,7 @@ class Karibou
 		}
 		$modelbuilder = new ModelBuilder();
 		
+
 		$this->appList = new AppList($modelbuilder, $this->db, $this->userFactory, 
 			$this->languageManager, $this->hookManager, $this->eventManager, $this->messageManager );
 		
