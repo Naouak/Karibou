@@ -26,9 +26,6 @@ class NJJobSave extends FormModel
 				$NetJobs->saveJob($_POST["jobinfos"]);
 			}
 			
-			$this->setRedirectArg('page', 'jobdetails');
-			$this->setRedirectArg('jobid', $_POST["jobinfos"]["id"]);
-			
 			if (isset($_POST["company_new"]) && $_POST["company_new"] == "on")
 			{
 				$this->setRedirectArg('app', 'netjobs');
@@ -38,9 +35,28 @@ class NJJobSave extends FormModel
 			}
 			else
 			{
+				//go to contact edit page (if existing company)
 				$this->setRedirectArg('app', 'netjobs');
-				$this->setRedirectArg('page', '');
+				$this->setRedirectArg('page', 'contactchoose');
+				$this->setRedirectArg('companyid', $_POST["jobinfos"]["company_id"]);
+				$this->setRedirectArg('jobid', $_POST["jobinfos"]["id"]);
+
+				/*
+				$this->setRedirectArg('app', 'addressbook');
+				$this->setRedirectArg('page', 'addnj');
+				$this->setRedirectArg('jobid', $_POST["jobinfos"]["id"]);
+				$this->setRedirectArg('companyid', $_POST["jobinfos"]["company_id"]);
+				$this->setRedirectArg('companyid', "job");
+				*/
 			}
+			/*
+			else
+			{
+				$this->setRedirectArg('app', 'netjobs');
+				$this->setRedirectArg('page', 'locationedit');
+				$this->setRedirectArg('jobid', $_POST["jobinfos"]["id"]);
+			}
+			*/
 			
 		}
 		elseif (isset($_POST["jobinfos"]))
@@ -50,6 +66,7 @@ class NJJobSave extends FormModel
 			
 			if (isset($_POST["company_new"]) && $_POST["company_new"] == "on")
 			{
+				//go to company edit page (if new company)
 				$this->setRedirectArg('app', 'netjobs');
 				$this->setRedirectArg('page', 'companyedit');
 				$this->setRedirectArg('companyid', 0);
@@ -57,9 +74,19 @@ class NJJobSave extends FormModel
 			}
 			else
 			{
+				//go to contact edit page (if existing company)
+				$this->setRedirectArg('app', 'netjobs');
+				$this->setRedirectArg('page', 'contactchoose');
+				$this->setRedirectArg('companyid', $_POST["jobinfos"]["company_id"]);
+				$this->setRedirectArg('jobid', $jobid);
+			}
+			/*
+			else
+			{
 				$this->setRedirectArg('app', 'netjobs');
 				$this->setRedirectArg('page', '');
 			}
+			*/
 		}
 		elseif (isset($_POST["jobiddelete"]))
 		{

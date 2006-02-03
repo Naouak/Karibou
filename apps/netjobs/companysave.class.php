@@ -16,16 +16,16 @@ class NJCompanySave extends FormModel
 {
 	public function build()
 	{
-		$netJobs = new NetJobs($this->db, $this->userFactory);
+		$NetJobs = new NetJobs($this->db, $this->userFactory);
 		if (isset($_POST["companyinfos"], $_POST["companyinfos"]["id"]))
 		{
 			
-			$myCompany = $netJobs->getCompanyById($_POST["companyinfos"]["id"]);
+			$myCompany = $NetJobs->getCompanyById($_POST["companyinfos"]["id"]);
 			
 			if ($myCompany->canWrite())
 			{
 				//Save modifications...
-				$netJobs->saveCompany($_POST["companyinfos"]);
+				$NetJobs->saveCompany($_POST["companyinfos"]);
 			}
 			
 			$this->setRedirectArg('page', 'companydetails');
@@ -34,19 +34,34 @@ class NJCompanySave extends FormModel
 		}
 		elseif (isset($_POST["companyinfos"]) && isset($_POST["jobid"]))
 		{
-			$myJob = $netJobs->getJobById($_POST["jobid"]);
+			$myJob = $NetJobs->getJobById($_POST["jobid"]);
 			
 			if ($myJob->canWrite())
 			{
-				$companyid = $netJobs->saveCompany($_POST["companyinfos"]);
+				$companyid = $NetJobs->saveCompany($_POST["companyinfos"]);
 				$jobInfo = $myJob->getAllInfo();
 				$jobInfo["company_id"] = $companyid;
 				
-				$netJobs->saveJob($jobInfo);
+				$NetJobs->saveJob($jobInfo);
 				
 				$this->setRedirectArg('app', 'netjobs');
 				$this->setRedirectArg('page', 'locationedit');
 				$this->setRedirectArg('jobid', $_POST["jobid"]);
+			}
+			else
+			{
+				$this->setRedirectArg('app', 'netjobs');
+				$this->setRedirectArg('page', '');
+			}
+		}
+		elseif (isset($_POST["companyiddelete"]))
+		{
+			$myCompany = $NetJobs->getCompanyById($_POST["companyiddelete"]);
+			if ($myCompany->canWrite())
+			{
+				$NetJobs->deleteCompany($_POST["companyiddelete"]);
+				$this->setRedirectArg('app', 'netjobs');
+				$this->setRedirectArg('page', '');
 			}
 			else
 			{

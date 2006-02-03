@@ -21,7 +21,7 @@ class NJJobList extends Model
 
 		$netJobs = new NetJobs ($this->db, $this->userFactory);
 
-		if (isset($this->args["maxjobs"]) && $this->args["maxjobs"] != "")
+		if (isset($this->args["maxjobs"]) && $this->args["maxjobs"] != "" && $this->args["maxjobs"] > 0)
 		{
 			$maxjobs = $this->args["maxjobs"];
 		}
@@ -30,23 +30,37 @@ class NJJobList extends Model
 			$maxjobs = 5;
 		}
 		
-		if (isset($this->args["page"]) && $this->args["page"] != "")
+		if (isset($this->args["pagenum"]) && $this->args["pagenum"] != "" && $this->args["pagenum"] > 0)
 		{
-			$page = $this->args["page"];
+			$page = $this->args["pagenum"];
 		}
 		else
 		{
 			$page = FALSE;
 		}
+		
+		if (isset($this->args["companyid"]) && $this->args["companyid"] != "")
+		{
+			$companyid = $this->args["companyid"];
+			$myCompany = $netJobs->getCompanyById($companyid);
+			$this->assign("myCompany", $myCompany);
+		}
+		else
+		{
+			$companyid = FALSE;
+		}
+		
 		$this->assign ("jobcount", $netJobs->countJobs());
 		$this->assign ("maxjobs", $maxjobs);
 		$this->assign ("page", $page);
 
-		$myJobs = $netJobs->getJobList($maxjobs, $page);
+		$myJobs = $netJobs->getJobList($maxjobs, $page, $companyid);
 		$this->assign("myJobs", $myJobs);
 		
+		/*
 		$myCompanies = $netJobs->getCompanyList();
 		$this->assign("myCompanies", $myCompanies);
+		*/
 	}
 }
 

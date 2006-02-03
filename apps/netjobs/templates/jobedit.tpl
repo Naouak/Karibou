@@ -12,7 +12,7 @@
 			<ul>
 				<li class="title">
 					<label for="title">##JOBTITLE## :</label>
-					<input type="text" id="title" name="jobinfos[title]" value="{if isset($myJob)}{$myJob->getInfo("title")|escape:"html"}{/if}" />
+					<input type="text" id="title" name="jobinfos[title]" size="55" value="{if isset($myJob)}{$myJob->getInfo("title")|escape:"html"}{/if}" />
 				</li>
 				<li class="description">
 					<label for="description">##JOBDESCRIPTION## : </label>
@@ -60,7 +60,8 @@
 				*}
 				<li class="salary">
 					<label for="salary">##JOBSALARY## :</label>
-					<input type="text" id="salary" name="jobinfos[salary]" value="{if isset($myJob)}{$myJob->getInfo("salary")|escape:"html"}{/if}" />
+					<input type="text" id="salary" name="jobinfos[salary]" size="4" maxlength="4" value="{if isset($myJob)}{$myJob->getInfo("salary")|escape:"html"}{/if}" />
+					K€ (##JOB_KEURO##)
 				</li>
 			</ul>
 		</fieldset>
@@ -83,6 +84,7 @@
 			</ul>
 		</fieldset>
 
+		{*
 		<fieldset>
 			<legend>##JOB_CONTACT##</legend>
 			<ul>
@@ -98,6 +100,7 @@
 				</li>		
 			</ul>
 		</fieldset>
+		*}
 		<div class="button">
 			<input type="submit" value="{if isset($myJob)}##JOBSAVE##{else}##JOBCREATE##{/if}" />
 		</div>

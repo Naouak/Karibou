@@ -1,9 +1,9 @@
 <h1>##NETJOBS##</h1>
 {if (isset($myJob))}
-<h2>##JOB_ADDING## {$myJob->getInfo("title")}</h2>
-<h3>##COMPANYADD##</h3>
+<h2>##JOB_ADDING## &quot;{$myJob->getInfo("title")}&quot;</h2>
+<h3>##COMPANY_ADD##</h3>
 {else}
-<h2>{if isset($myCompany)}##COMPANYMODIFY##{else}##COMPANYADD##{/if}</h2>
+<h2>{if isset($myCompany)}##COMPANY_MODIFY##{else}##COMPANY_ADD##{/if}</h2>
 {/if}
 <div class="netjobs">
 	<a href="{kurl app="wiki" page="help"}" onclick="javascript:popup(this.href, 'wiki_help', '800', '900', '200', '200');return false;" >##TITLE_WIKI_SYNTAX##</a>

@@ -16,11 +16,26 @@ class NetJobs
 {
 	protected $db;
 	protected $userFactory;
+	protected $profileFactory;
+	
+	protected $locationInfosSQLSelect;
 
 	public function __construct(PDO $db, UserFactory $userFactory)
 	{
 		$this->db = $db;
 		$this->userFactory = $userFactory;
+		
+		$this->locationInfosSQLSelect = "
+							netjobs_locations.type				AS locationinfos_type,
+							netjobs_locations.country_id		AS locationinfos_country_id,
+							netjobs_locations.county_id		AS locationinfos_county_id,
+							netjobs_locations.department_id	AS locationinfos_department_id,
+							netjobs_locations.city_id			AS locationinfos_city_id,
+							netjobs_locations.country_name	AS locationinfos_country_name,
+							netjobs_locations.county_name		AS locationinfos_county_name,
+							netjobs_locations.department_name	AS locationinfos_department_name,
+							netjobs_locations.city_name		AS locationinfos_city_name
+							";
 	}
 	
 	/* COMPANIES */
@@ -29,16 +44,19 @@ class NetJobs
 		$companies = array();
 	
 		$sql = "
-				SELECT *
+				SELECT	netjobs_companies.*, UNIX_TIMESTAMP(netjobs_companies.datetime) AS timestamp,
+							".$this->locationInfosSQLSelect."
 				FROM netjobs_companies
+				LEFT OUTER JOIN netjobs_locations 
+					ON (netjobs_companies.id = netjobs_locations.id) && (netjobs_locations.type = 'company')
 				WHERE
-					last = 1
+					netjobs_companies.last = 1
 				AND
-					deleted = 0
+					netjobs_companies.deleted = 0
 				ORDER BY
-					datetime
+					netjobs_companies.datetime
 					DESC,
-					name
+					netjobs_companies.name
 					ASC
 			";			
 			
@@ -71,22 +89,22 @@ class NetJobs
 	public function getCompanyById($companyid)
 	{
 		$sql = "
-				SELECT netjobs_companies.*, COUNT(netjobs_jobs.id) as joboffers
-				FROM netjobs_companies, netjobs_jobs
+				SELECT	netjobs_companies.*, UNIX_TIMESTAMP(netjobs_companies.datetime) AS timestamp,
+							COUNT(netjobs_jobs.id) as joboffers,
+							".$this->locationInfosSQLSelect."
+				FROM netjobs_companies
+				LEFT OUTER JOIN netjobs_jobs
+					ON (netjobs_companies.id = netjobs_jobs.company_id) && (netjobs_jobs.deleted = 0) && (netjobs_jobs.last = 1)
+				LEFT OUTER JOIN netjobs_locations 
+					ON (netjobs_companies.id = netjobs_locations.id) && (netjobs_locations.type = 'company')
 				WHERE
 					netjobs_companies.id = '$companyid'
 				AND
 					netjobs_companies.last = 1
-				AND
-					netjobs_companies.id = netjobs_jobs.company_id
-				AND
-					netjobs_jobs.last = 1
-				AND
-					netjobs_jobs.deleted = 0
 				GROUP BY
 					netjobs_companies.id
 				ORDER BY
-					datetime
+					netjobs_companies.datetime
 					DESC
 			";			
 			
@@ -98,7 +116,7 @@ class NetJobs
 			if (count($companyinfos)>0)
 			{
 				$company = new NJCompany($companyinfos[0],$this->userFactory);
-				
+				/*
 				$sqlc = "
 						SELECT *
 						FROM netjobs_companies
@@ -107,6 +125,7 @@ class NetJobs
 						AND
 							last = 1
 					";
+				*/
 				return $company;
 			}
 			else
@@ -194,15 +213,43 @@ class NetJobs
 		}
 	}
 	
+	public function deleteCompany ($companyid)
+	{
+		
+
+		$sqlu = "
+				UPDATE netjobs_companies
+				SET deleted = '1', datetime = NOW()
+				WHERE
+					id = '".$companyid."'
+				AND
+					last = 1
+			";
+			
+		try
+		{
+			$stmtu = $this->db->exec($sqlu);
+			unset($stmtu);
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}
+		
+	}
+	
 	/* JOBS */
-	public function getJobList($max = FALSE, $page = FALSE)
+	public function getJobList($max = FALSE, $page = FALSE, $companyid = FALSE)
 	{
 		$jobs = array();
+		
+		//Need a page ?
 		if ($page === FALSE)
 		{
 			$page = 1;
 		}
 
+		//Has a max number of lines to display ?
 		if ($max !== FALSE)
 		{
 			if ($page === FALSE)
@@ -215,16 +262,39 @@ class NetJobs
 		{
 			$limit = "";
 		}
+		
+		//Return jobs posted by a specific company ?
+		if ($companyid !== FALSE)
+		{
+			$companySQLSelect = "netjobs_companies.id as companyid,";
+			$companySQLCondition = "
+				AND netjobs_companies.id = netjobs_jobs.company_id
+				AND netjobs_companies.id = $companyid
+				AND netjobs_companies.last = 1
+				AND netjobs_companies.deleted = 0";
+			$companySQLFrom = ", netjobs_companies";
+		}
+		else
+		{
+			$companySQLSelect = $companySQLCondition = $companySQLFrom = "";
+		}
 	
 		$sql = "
-				SELECT *
-				FROM netjobs_jobs
+				SELECT
+					netjobs_jobs.*, UNIX_TIMESTAMP(netjobs_jobs.datetime) AS timestamp, $companySQLSelect
+					".$this->locationInfosSQLSelect."
+				FROM
+					netjobs_jobs $companySQLFrom
+				LEFT OUTER JOIN
+					netjobs_locations 
+					ON (netjobs_jobs.id = netjobs_locations.id) && (netjobs_locations.type = 'job')
 				WHERE
-					last = '1'
+					netjobs_jobs.last = '1'
 				AND
-					deleted = 0
+					netjobs_jobs.deleted = 0
+				$companySQLCondition
 				ORDER BY
-					datetime
+					netjobs_jobs.datetime
 					DESC
 				$limit
 			";			
@@ -237,38 +307,56 @@ class NetJobs
 			
 			if (count($jobsinfos)>0)
 			{
+				$companiesidSQL = "";
 				foreach ($jobsinfos as $jobinfos)
 				{
-				
 					$jobs[] = new NJJob($jobinfos,$this->userFactory);
-					/*
-					$sqlc = "
-							SELECT *
-							FROM netjobs_company
-							WHERE	id = '".$job->getInfo("company_id")."'
-						";
-							
-					try
+					if ($companiesidSQL == "")
 					{
-						$stmtc = $this->db->query($sqlc);
-						$companyinfos = $stmtc->fetchAll(PDO::FETCH_ASSOC);
-						unset($stmtc);
-						if (count($companyinfos)>0)
+						$companiesidSQL .= "id = ".$jobinfos["company_id"];
+					}
+					else
+					{
+						$companiesidSQL .= " OR id = ".$jobinfos["company_id"];
+					}
+				}
+				
+				//Fetch all displayed companies infos
+				$sqlc = "
+						SELECT *
+						FROM netjobs_company
+						WHERE
+							$companiesidSQL
+					";
+						
+				try
+				{
+					$stmtc = $this->db->query($sqlc);
+					$companiesinfos = array();
+					while ($companyinfos = $stmtc->fetch(PDO::FETCH_ASSOC))
+					{
+						$companiesinfos[$companyinfos["id"]] = $companyinfos;
+					}
+					unset($stmtc);
+
+					foreach ($jobs as $job)
+					{
+						if (isset($companiesinfos[$job->getInfo("company_id")]))
 						{
-							$job->company = new NJCompany($companyinfos[0],$this->userFactory);
+							$job->company = new NJCompany($companiesinfos[$job->getInfo("company_id")],$this->userFactory);;
 						}
 						else
 						{
 							$job->company = FALSE;
-						}
-						
+						}						
 					}
-					catch(PDOException $e)
-					{
-						Debug::kill($e->getMessage());
-					}
-					*/
+					
 				}
+				catch(PDOException $e)
+				{
+					Debug::kill($e->getMessage());
+				}
+				
 			}
 			else
 			{
@@ -312,14 +400,19 @@ class NetJobs
 	public function getJobById($jobid)
 	{
 		$sql = "
-				SELECT *
-				FROM netjobs_jobs
+				SELECT 	netjobs_jobs.*, UNIX_TIMESTAMP(netjobs_jobs.datetime) AS timestamp, netjobs_contacts.contact_id as contactid,
+							".$this->locationInfosSQLSelect."
+				FROM		netjobs_jobs
+				LEFT OUTER JOIN netjobs_locations 
+					ON (netjobs_jobs.id = netjobs_locations.id) && (netjobs_locations.type = 'job')
+				LEFT OUTER JOIN netjobs_contacts
+					ON (netjobs_jobs.id = netjobs_contacts.id) && (netjobs_contacts.type = 'job')
 				WHERE
-					id = '$jobid'
+					netjobs_jobs.id = '$jobid'
 				AND
-					last = 1
+					netjobs_jobs.last = 1
 				ORDER BY
-					datetime
+					netjobs_jobs.datetime
 					DESC
 			";			
 			
@@ -333,12 +426,15 @@ class NetJobs
 				$job = new NJJob($jobinfos[0],$this->userFactory);
 				
 				$sqlc = "
-						SELECT *
-						FROM netjobs_companies
+						SELECT 	netjobs_companies.*, UNIX_TIMESTAMP(netjobs_jobs.datetime) AS timestamp,
+									".$this->locationInfosSQLSelect."
+						FROM	netjobs_companies
+						LEFT OUTER JOIN netjobs_locations 
+							ON (netjobs_companies.id = netjobs_locations.id) && (netjobs_locations.type = 'company')
 						WHERE
-							id = '".$job->getInfo("company_id")."'
+							netjobs_companies.id = '".$job->getInfo("company_id")."'
 						AND
-							last = 1
+							netjobs_companies.last = 1
 					";
 						
 				try
@@ -418,6 +514,12 @@ class NetJobs
 			}
 		}
 		
+		//If no company is assigned to this job, set company_id to 0
+		if (!isset($jobinfos["company_id"]))
+		{
+			$jobinfos["company_id"] = 0;
+		}
+		
 		if (isset($jobid))
 		{
 			$currentUser = $this->userFactory->getCurrentUser();
@@ -447,6 +549,151 @@ class NetJobs
 		}
 	}
 	
+	public function saveJobLocation ($jobid, $locationinfos)
+	{
+		
+		$sql = "
+				SELECT *
+				FROM
+					netjobs_locations
+				WHERE
+					`id` = '$jobid'
+				AND `type` = 'job'
+			";
+		try
+		{
+			$stmt = $this->db->query($sql);
+			$locationinfosSQL = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			unset($stmt);
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}
+
+		if (count($locationinfosSQL) == 0)
+		{
+			//insert
+			$columns = "";
+			$values = "";
+			foreach ($locationinfos as $key => $value)
+			{
+				$columns	.= "`".$key."`, ";
+				$values 	.= "'".$value."',";
+			}
+			
+
+			$sqlc = "
+					INSERT INTO netjobs_locations
+					(`id`, `type`, $columns `datetime`)
+					VALUES
+					('".$jobid."', 'job', $values NOW())
+				";
+					
+			try
+			{
+				$stmtc = $this->db->exec($sqlc);
+				unset($stmtc);
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage());
+			}
+		}
+		else
+		{
+			//update
+			//insert
+			$set = "";
+			foreach ($locationinfos as $key => $value)
+			{
+				$set .= "`".$key."` = '".$value."',";
+			}
+			
+			$sqlu = "
+					UPDATE netjobs_locations
+					SET
+						$set
+						datetime = NOW()
+					WHERE
+							`id` = $jobid
+						AND
+							`type` = 'job'
+				";
+					
+			try
+			{
+				$stmtu = $this->db->exec($sqlu);
+				unset($stmtu);
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage());
+			}
+		}
+
+		return $jobid;
+	}
+	
+	/**
+	 * Saves contact choice in table netjobs_contacts
+	 */
+	public function saveContactChoice ($jobid, $companyid, $contactid)
+	{
+		//Deleting contacts of the job (this only permits one contact per job)
+		$sqld = "
+			DELETE FROM
+				netjobs_contacts
+			WHERE
+				`id` = '$jobid'
+			AND
+				`type` = 'job'
+				";
+	
+		try
+		{
+			$stmtd = $this->db->exec($sqld);
+			unset($stmtd);
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}
+		
+		//Choosing that contact for the job and the company
+		$sqlc1 = "
+				INSERT INTO netjobs_contacts
+				(`contact_id`, `id`, `type`, `datetime`)
+				VALUES
+				('$contactid', '$jobid', 'job', NOW())
+				ON DUPlICATE KEY
+					UPDATE `datetime` = NOW(); 
+			";
+		$sqlc2 = "
+				INSERT INTO netjobs_contacts
+				(`contact_id`, `id`, `type`, `datetime`)
+				VALUES
+				('$contactid', '$companyid', 'company', NOW())
+				ON DUPlICATE KEY
+					UPDATE `datetime` = NOW(); 
+			";
+				
+		try
+		{
+			$stmtc1 = $this->db->exec($sqlc1);
+			$stmtc2 = $this->db->exec($sqlc2);
+			unset($stmtc1);
+			unset($stmtc2);
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+			return FALSE;
+		}
+		return TRUE;
+		
+	}
+	
 	public function deleteJob ($jobid)
 	{
 		
@@ -472,7 +719,81 @@ class NetJobs
 		
 	}
 	
+	/* Contacts */
+	public function getContactListInCompany ($companyid)
+	{
+		if (!isset($this->profileFactory))
+		{
+			$this->profileFactory = new ProfileFactory($this->db, "addressbook");
+		}
+	
+		//Selecting company contacts id
+		$sql = "
+				SELECT contact_id
+				FROM
+					netjobs_contacts
+				WHERE
+					`type` = 'company'
+				AND
+					`id` = $companyid
+			";
+		try
+		{
+			$stmt = $this->db->query($sql);
+			$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			unset($stmt);
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}
 
+		$contactsids = array();
+		if (count($results)>0)
+		{
+			foreach($results as $results)
+			{
+				$contactsids[] = $results["contact_id"];
+			}
+		}
+		//Fetching contacts profiles
+		$profiles = $this->profileFactory->fetchFromIds($contactsids);
+		return $profiles;		
+	}
+	
+	public function getContactById ($contactid)
+	{
+		if ($contactid != "" && $contactid > 0)
+		{
+			if (!isset($this->profileFactory))
+			{
+				$this->profileFactory = new ProfileFactory($this->db, "addressbook");
+			}
+			$profile = $this->profileFactory->fetchFromId($contactid);
+			
+			if ($profile !== FALSE)
+			{
+				$this->profileFactory->fetchAddresses($profile);
+				$this->profileFactory->fetchPhones($profile);
+				$this->profileFactory->fetchEmails($profile);
+		
+				return array (
+							"profile"	=> $profile->getProfile(),
+							"addresses"	=> $profile->getAddresses(),
+							"phones" 	=> $profile->getPhones(),
+							"emails"		=> $profile->getEmails()
+								);
+			}
+			else
+			{
+				return FALSE;
+			}
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
 	
 }
 

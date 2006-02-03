@@ -8,6 +8,9 @@
 	<load class="NJJob"				file="class/NJJob.class.php" />
 	<load class="NJCompany"			file="class/NJCompany.class.php" />
 
+	<load class="ProfileFactory"	file="../annuaire/classes/profilefactory.class.php" />
+	<load class="Profile"			file="../annuaire/classes/profile.class.php" />
+
 	<load class="NJMenu"				file="netjobsmenu.class.php" />
 	<load class="NJDefault"			file="default.class.php" />
 	<load class="NJJobDetails"		file="jobdetails.class.php" />
@@ -17,17 +20,27 @@
 	<load class="NJCompanyDetails"	file="companydetails.class.php" />
 	<load class="NJCompanyEdit"		file="companyedit.class.php" />
 	<load class="NJCompanySave"		file="companysave.class.php" />
+	<load class="NJContactDetails"		file="contactdetails.class.php" />
+	<load class="NJContactChoose"		file="contactchoose.class.php" />
+	<load class="NJContactChoiceSave"		file="contactchoicesave.class.php" />
+	<load class="NJLocationDetails"	file="locationdetails.class.php" />
+	<load class="NJLocationEdit"		file="locationedit.class.php" />
+	<load class="NJLocationSave"		file="locationsave.class.php" />
 
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 
-	<view name="menu"			class="NJMenu"				template="menu.tpl" />
-	<view name="default"		class="NJDefault"			template="default.tpl" />
+	<view name="menu"				class="NJMenu"				template="menu.tpl" />
+	<view name="default"			class="NJDefault"			template="default.tpl" />
 	<view name="jobdetails"		class="NJJobDetails"		template="jobdetails.tpl" />
-	<view name="jobedit"		class="NJJobEdit"			template="jobedit.tpl" />
-	<view name="joblist"		class="NJJobList"			template="joblist.tpl" />
+	<view name="jobedit"			class="NJJobEdit"			template="jobedit.tpl" />
+	<view name="joblist"			class="NJJobList"			template="joblist.tpl" />
 	<view name="companydetails"	class="NJCompanyDetails"	template="companydetails.tpl" />
-	<view name="companyedit"	class="NJCompanyEdit"		template="companyedit.tpl" />
+	<view name="companyedit"		class="NJCompanyEdit"		template="companyedit.tpl" />
+	<view name="contactdetails"	class="NJContactDetails"	template="contactdetails.tpl" />
+	<view name="contactchoose"		class="NJContactChoose"		template="contactchoose.tpl" />
+	<view name="locationdetails"	class="NJLocationDetails"	template="locationdetails.tpl" />
+	<view name="locationedit"		class="NJLocationEdit"		template="locationedit.tpl" />
 
 	<page view="default" />
 	<page name="jobdetails"	view="jobdetails">
@@ -37,23 +50,44 @@
 	</page>
 	
 	<page name="joblist"		view="joblist">
-		<option name="maxjobs"	class="NumberArgument" />
-		<option name="pageid"		class="NumberArgument" />
+		<option name="maxjobs"		class="NumberArgument" />
+		<option name="pagenum"		class="NumberArgument" />
+		<option name="companyid"	class="NumberArgument" />
 	</page>
 
 	<page name="companydetails"	view="companydetails">
 		<argument name="companyid"	class="NumberArgument" />
 	</page>
 	<page name="companyedit"	view="companyedit">
-<option name="companyid"	class="NumberArgument" />
-<option name="jobid" 		class="NumberArgument" />
+		<option name="companyid"	class="NumberArgument" />
+		<option name="jobid" 		class="NumberArgument" />
+	</page>
+	
+	<page name="contactchoose"	view="contactchoose">
+		<option name="companyid"	class="NumberArgument" />
+		<option name="jobid" 		class="NumberArgument" />
+	</page>
+	<page name="contactdetails"	view="contactdetails">
+		<argument name="contactid"	class="NumberArgument" />
+	</page>
+	
+	<page name="locationdetails"	view="locationddetails">
+		<argument name="jobid"	class="NumberArgument" />
+	</page>
+	<page name="locationedit"	view="locationedit">
+		<option name="jobid" 		class="NumberArgument" />
 	</page>
 
 	<form action="jobsave"	class="NJJobSave">
 		<redirect />
 	</form>
+	<form action="contactchoicesave"	class="NJContactChoiceSave">
+		<redirect />
+	</form>
 	<form action="companysave"	class="NJCompanySave">
 		<redirect />
 	</form>
-
+	<form action="locationsave"	class="NJLocationSave">
+		<redirect />
+	</form>
 </app>

@@ -12,23 +12,18 @@
  *
  * @package applications
  **/
-class NJJobDetails extends Model
+class NJLocationDetails extends Model
 {
 	public function build()
 	{
 		$netJobs = new NetJobs ($this->db, $this->userFactory);
 		
-		if (isset($this->args["jobid"]) && $this->args["jobid"] !="" && $myJob = $netJobs->getJobById($this->args["jobid"]))
+		if (isset($this->args["companyid"]) && $this->args["companyid"] !="" && $myCompany = $netJobs->getCompanyById($this->args["companyid"]))
 		{
-			$this->assign("myJob", $myJob);
-			
-			if ($myJob->getInfo("contactid") != "" && $myJob->getInfo("contactid") > 0)
-			{
-				$this->assign("myContact", $netJobs->getContactById($myJob->getInfo("contactid")));
-			}
+			$this->assign("myCompany", $myCompany);
 			
 			$menuApp = $this->appList->getApp($this->appname);
-			$menuApp->addView("menu", "header_menu", array("page" => "jobdetails", "jobid" => $myJob->getInfo("id")) );
+			$menuApp->addView("menu", "header_menu", array("page" => "jobdetails", "companyid" => $myCompany->getInfo("id")) );
 		}
 		else
 		{

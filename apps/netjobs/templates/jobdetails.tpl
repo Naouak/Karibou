@@ -8,7 +8,6 @@
 		<li class="type">
 			<label for="type">##JOBTYPE## :</label>
 			<span name="type">{translate key=$myJob->getInfo("type")}</span>
-			</a>
 		</li>
 		
 		<li class="company">
@@ -19,6 +18,17 @@
 			##COMPANYUNKNOWN##
 			{/if}
 		</li>
+		
+		{if isset($myContact) && $myContact|@count>0}
+		<li class="contact">
+			<label for="contact">##JOBCONTACT## :</label>
+			{if ($myContact.profile.id !== FALSE) }
+			<span name="contact"><a href="{kurl page="contactdetails" contactid=$myContact.profile.id}">{$myContact.profile.firstname} {$myContact.profile.lastname}</a></span>
+			{else}
+			##COMPANYUNKNOWN##
+			{/if}
+		</li>
+		{/if}
 
 		<li class="datetime">
 			<label for="datetime">##JOBPOSTDATE## : </label>
@@ -72,6 +82,12 @@
 		</li>
 
 	</ul>
+
+<hr />
+--Location :--
+<br />
+{$myJob->getLocationInfo("country_id")}
+
 	
 	{if ($myJob->canUpdate())}
 	<div class="toolbox">
@@ -79,7 +95,7 @@
 		{if ($myJob->canWrite())}
 		<form method="post" action="{kurl page="jobsave"}" id="deletejob" name="delete">
 			<input type="hidden" name="jobiddelete" value="{$myJob->getInfo("id")}">
-			<a href="#" onclick="if(confirm('##JOBDELETE_ASKIFSURE##')){ldelim}document.deletejob.submit(){rdelim}else{ldelim}return false;{rdelim};">##JOBDELETE##</a>
+			<a href="#" onclick="if(confirm('##JOBDELETE_ASKIFSURE##')){ldelim}document.getElementById('deletejob').submit(){rdelim}else{ldelim}return false;{rdelim};">##JOBDELETE##</a>
 		</form>
 		{/if}
 	</div>

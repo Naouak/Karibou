@@ -49,6 +49,8 @@ class NJElement
 		
 	}
 
+	/* Infos methods */
+
 	public function getInfo($key)
 	{
 		if (isset($this->infos[$key]))
@@ -60,11 +62,34 @@ class NJElement
 			return FALSE;
 		}
 	}
+		
+	public function getLocationInfo($key)
+	{
+		if (isset($this->infos["locationinfos_".$key]))
+		{
+			return $this->infos["locationinfos_".$key];
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
 	
 	public function getAllInfo()
 	{
 		return $this->infos;
 	}
+
+
+	public function getSecondsSinceLastUpdate ()
+	{
+		$updatedate	= $this->getInfo("timestamp");
+		$nowdate	= mktime();
+		return ($nowdate-$updatedate);
+	}
+
+
+	/* Rights methods */
 
 	public function canRead()
 	{
@@ -88,6 +113,19 @@ class NJElement
 			return TRUE;
 		else
 			return FALSE;
+	}
+
+
+	/* Location methods */
+	public function getLocation()
+	{
+		$location = array();
+		if (TRUE)
+		{
+
+		}
+		
+		return $location;
 	}
 
 }

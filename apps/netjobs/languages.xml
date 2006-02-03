@@ -3,6 +3,10 @@
 		<translation language="fr">NetJobs</translation>
 		<translation language="en">NetJobs</translation>
 	</sentence>
+	<sentence key="NETJOBS_JOBTITLE">
+		<translation language="fr">Offre</translation>
+		<translation language="en">Offer</translation>
+	</sentence>
 	<sentence key="JOBTITLE">
 		<translation language="fr">Intitulé du poste</translation>
 		<translation language="en">Job title</translation>
@@ -52,8 +56,8 @@
 		<translation language="en">or</translation>
 	</sentence>
 	<sentence key="JOBADD">
-		<translation language="fr">Ajout d'une nouvelle offre</translation>
-		<translation language="en">Add a new job offer</translation>
+		<translation language="fr">Ajouter une offre</translation>
+		<translation language="en">Add a job offer</translation>
 	</sentence>
 	<sentence key="TITLE_WIKI_SYNTAX">
 		<translation language="fr">Syntaxe de mise en forme</translation>
@@ -227,12 +231,20 @@
 		<translation language="en">Details on the company</translation>
 	</sentence>
 	<sentence key="COMPANYNAME">
-		<translation language="fr">Informations sur l'entreprise</translation>
-		<translation language="en">Details on the company</translation>
+		<translation language="fr">Nom de l'entreprise</translation>
+		<translation language="en">Name of the company</translation>
 	</sentence>
 	<sentence key="NETJOBS_JOBLIST">
 		<translation language="fr">Liste des offres</translation>
-		<translation language="en">Offers list</translation>
+		<translation language="en">Job list</translation>
+	</sentence>
+	<sentence key="NETJOBS_JOBLIST_BY_COMPANY">
+		<translation language="fr">Liste des offres de l'entreprise</translation>
+		<translation language="en">Job list for company</translation>
+	</sentence>
+	<sentence key="COMPANY_VIEWALLJOBS">
+		<translation language="fr">Voir toutes les offres de cette entreprise</translation>
+		<translation language="en">View all jobs in this company</translation>
 	</sentence>
 	<sentence key="LASTJOBS">
 		<translation language="fr">Dernières offres</translation>
@@ -261,5 +273,167 @@
 	<sentence key="JOB_COUNT2">
 		<translation language="fr">offres</translation>
 		<translation language="en">opportunities</translation>
+	</sentence>
+	<sentence key="JOB_KEURO">
+		<translation language="fr">en milliers d'euros</translation>
+		<translation language="en">thousands euros</translation>
+	</sentence>
+	<sentence key="JOB_ADDING">
+		<translation language="fr">Ajout de l'offre</translation>
+		<translation language="en">Adding job</translation>
+	</sentence>
+	<sentence key="JOB_UPDATE">
+		<translation language="fr">Mise à jour de l'offre</translation>
+		<translation language="en">Job update</translation>
+	</sentence>
+	<sentence key="COMPANY_ADD">
+		<translation language="fr">Ajout d'une entreprise</translation>
+		<translation language="en">Adding company</translation>
+	</sentence>
+	<sentence key="COMPANY_MODIFY">
+		<translation language="fr">Modification des informations de l'entreprise</translation>
+		<translation language="en">Company details modification</translation>
+	</sentence>
+	<sentence key="JOB_LOCATION_ADD">
+		<translation language="fr">Localisation de l'offre</translation>
+		<translation language="en">Job location</translation>	</sentence>
+	<sentence key="JOB_LOCATION_ADD">
+		<translation language="fr">Localisation de l'offre</translation>
+		<translation language="en">Job location</translation>
+	</sentence>
+	<sentence key="JOB_LOCATION_DESCRIPTION">
+		<translation language="fr">Sélectionnez ici la localisation de l'offre.
+		C'est à dire là où le travail se déroulera.
+		La localisation de l'offre peut être différente de la localisation de l'entreprise.</translation>
+		<translation language="en">Choose here the job location. This is where the job will take place.
+		The job location can be different from the company location.</translation>
+	</sentence>
+	<sentence key="JOB_LOCATION">
+		<translation language="fr">Localisation de l'offre</translation>
+		<translation language="en">Job location</translation>
+	</sentence>
+	<sentence key="JOB_LOCATION_COUNTRY">
+		<translation language="fr">Pays</translation>
+		<translation language="en">Country</translation>
+	</sentence>
+	<sentence key="JOB_LOCATION_COUNTRY_CHOOSE">
+		<translation language="fr">Sélectionnez le pays</translation>
+		<translation language="en">Choose the country</translation>
+	</sentence>
+	<sentence key="JOB_LOCATION_CITY_POSTCODE">
+		<translation language="fr">Code postal</translation>
+		<translation language="en">Post code</translation>
+	</sentence>
+	<sentence key="JOB_LOCATION_CITY_NAME">
+		<translation language="fr">Ville</translation>
+		<translation language="en">City</translation>
+	</sentence>
+	<sentence key="JOB_LOCATION_CREATE">
+		<translation language="fr">Enregistrer la localisation</translation>
+		<translation language="en">Save location</translation>
+	</sentence>
+	<sentence key="JOB_LOCATION_SAVE">
+		<translation language="fr">Mettre à jour la localisation</translation>
+		<translation language="en">Update location</translation>
+	</sentence>
+	<sentence key="JOB_INFOS">
+		<translation language="fr">Informations relatives à l'offre</translation>
+		<translation language="en">Information on the offer</translation>
+	</sentence>
+	<sentence key="JOB_COMPANY">
+		<translation language="fr">Informations relatives à l'entreprise</translation>
+		<translation language="en">Information on the company</translation>
+	</sentence>
+	<sentence key="JOB_LOCATION_COUNTY_NAME">
+		<translation language="fr">Région</translation>
+		<translation language="en">County</translation>
+	</sentence>
+	<sentence key="JOB_LOCATION_COUNTY_CHOOSE">
+		<translation language="fr">Choisissez la région</translation>
+		<translation language="en">Choose the county</translation>
+	</sentence>
+	<sentence key="JOB_CONTACT">
+		<translation language="fr">Contact</translation>
+		<translation language="en">Contact</translation>
+	</sentence>
+	<sentence key="JOB_CHOOSECONTACT">
+		<translation language="fr">Choisissez le contact</translation>
+		<translation language="en">Choose the contact</translation>
+	</sentence>
+	<sentence key="JOB_CREATECONTACT">
+		<translation language="fr">Nouveau contact</translation>
+		<translation language="en">Create a new contact</translation>
+	</sentence>
+	<sentence key="JOB_CHOOSECONTACT">
+		<translation language="fr">Choisissez le contact pour cette offre</translation>
+		<translation language="en">Choose the contact for this job</translation>
+	</sentence>
+	<sentence key="JOB_CONTACTDETAILS">
+		<translation language="fr">Informations sur le contact</translation>
+		<translation language="en">Contact information</translation>
+	</sentence>
+	<sentence key="CONTACT_UNKNOWN">
+		<translation language="fr">Ce contact est inconnu</translation>
+		<translation language="en">This contact doesn't exist</translation>
+	</sentence>
+	<sentence key="CONTACT_FIRSTNAME">
+		<translation language="fr">Prénom</translation>
+		<translation language="en">Firstname</translation>
+	</sentence>
+	<sentence key="CONTACT_LASTNAME">
+		<translation language="fr">Nome</translation>
+		<translation language="en">Lastname</translation>
+	</sentence>
+	<sentence key="CONTACT_WEBSITE">
+		<translation language="fr">Site Web</translation>
+		<translation language="en">Website</translation>
+	</sentence>
+	<sentence key="CONTACT_NOTE">
+		<translation language="fr">Note</translation>
+		<translation language="en">Note</translation>
+	</sentence>
+	<sentence key="CONTACT_EDIT_LINK">
+		<translation language="fr">Editer les informations de ce contact</translation>
+		<translation language="en">Edit this contact details</translation>
+	</sentence>
+	<sentence key="CONTACT_ADDRESSES">
+		<translation language="fr">Adresses</translation>
+		<translation language="en">Addresses</translation>
+	</sentence>
+	<sentence key="CONTACT_PHONES">
+		<translation language="fr">Numéros de téléphone</translation>
+		<translation language="en">Phone numbers</translation>
+	</sentence>
+	<sentence key="CONTACT_EMAILS">
+		<translation language="fr">Adresses email</translation>
+		<translation language="en">Email addresses</translation>
+	</sentence>
+	<sentence key="AGO1">
+		<translation language="fr">Il y a</translation>
+		<translation language="en"></translation>
+	</sentence>
+	<sentence key="AGO2">
+		<translation language="fr"></translation>
+		<translation language="en">ago</translation>
+	</sentence>
+	<sentence key="SECOND">
+		<translation language="fr">minute</translation>
+		<translation language="en">minutes</translation>
+	</sentence>
+	<sentence key="MINUTE">
+		<translation language="fr">minute</translation>
+		<translation language="en">minute</translation>
+	</sentence>
+	<sentence key="HOUR">
+		<translation language="fr">heure</translation>
+		<translation language="en">hour</translation>
+	</sentence>
+	<sentence key="DAY">
+		<translation language="fr">jour</translation>
+		<translation language="en">day</translation>
+	</sentence>
+	<sentence key="S">
+		<translation language="fr">s</translation>
+		<translation language="en">s</translation>
 	</sentence>
 </translation>
