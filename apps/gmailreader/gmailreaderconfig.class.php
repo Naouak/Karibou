@@ -17,20 +17,23 @@ class gmailReaderConfig  extends Model
 {
 	public function build()
 	{
-		if( isset($this->args['gmaillogin']) )
+		$this->assign('gmaillogin', $this->userFactory->getCurrentUser()->getPref('gmaillogin'));
+		$this->assign('gmailpass', $this->userFactory->getCurrentUser()->getPref('gmailpass'));
+		$this->assign('gmailmax', $this->userFactory->getCurrentUser()->getPref('gmailmax'));
+/*		
+		if( isset($this->userFactory->getCurrentUser()->getPref('gmaillogin')) )
 		{
-			$this->assign('gmaillogin', $this->args['gmaillogin']);
+			$this->assign('gmaillogin', $this->userFactory->getCurrentUser()->getPref('gmaillogin'));
 		}
-		if( isset($this->args['gmailpass']) )
+		if( isset($this->userFactory->getCurrentUser()->getPref('gmailpass')) )
 		{
-			$this->assign('gmailpass', $this->args['gmailpass']);
+			$this->assign('gmailpass', $this->userFactory->getCurrentUser()->getPref('gmailpass'));
 		}
-		if( isset($this->args['gmailmax']) )
+		if( isset($this->userFactory->getCurrentUser()->getPref('gmailmax')) )
 		{
-			$this->assign('gmailmax', $this->args['gmailmax']);
+			$this->assign('gmailmax', $this->userFactory->getCurrentUser()->getPref('gmailmax'));
 		}
-//		$this->assign('feed', "https://".$this->args['gmaillogin'].":".$this->args['gmailpass']."@mail.google.com/mail/feed/atom");
-//		$this->userFactory->getCurrentUser()->getPref("...")
+*/		
 	}
 }
 

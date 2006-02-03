@@ -1,29 +1,29 @@
-<?php
+<?php 
 /**
  * @version $Id:  gmailreader.class.php,v 0.1 2006/01/14 00:00:00 dat Exp $
  * @copyright 2006 Arnaud Cosson
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU Public License
  * See the enclosed file COPYING for license information.
- *
+ * 
  * @package applications
  **/
 
-/**
- *
+/** 
+ * 
  * @package applications
  **/
 class gmailReader extends Model
 {
 	public function build()
 	{
-		// Les preferences sont recuperees pour generer le feed
 		$gmaillogin = $this->userFactory->getCurrentUser()->getPref('gmaillogin');
 		$gmailpass = $this->userFactory->getCurrentUser()->getPref('gmailpass');
-		$gmailmax = $this->userFactory->getCurrentUser()->getPref('gmailmax');
+		$gmailmax = $this->userFactory->getCurrentUser()->getPref('gmailmax');				
 
-		if( isset($gmaillogin, $gmailpass, $gmailmax) )
+		if( isset($gmaillogin, $gmailpass, $gmailmax) && $gmaillogin !== FALSE && $gmailpass !== FALSE && $gmailmax !== FALSE)
 		{
+			$this->assign("config", true);
 			$rss_file = "https://".$gmaillogin.":".$gmailpass."@mail.google.com/mail/feed/atom";
 			$rss_feed = new XMLCache(KARIBOU_CACHE_DIR.'/xml_rss');
 			if( $rss_feed->loadURL($rss_file) )
@@ -32,7 +32,7 @@ class gmailReader extends Model
 				$title = "No suitable Feed found";
 				$items = array();
 				$i = 0;
-
+				
 				if ( isset($xml->entry) )
 				{
 					foreach($xml->entry as $entry)
@@ -45,18 +45,27 @@ class gmailReader extends Model
 				}
 				$title = $xml->title[0] ;
 				$nbMessages = $xml-> fullcount[0];
-				$this->assign("title", $title);
-				$this->assign("nbMessages", $nbMessages);
-				$this->assign("items", $items);
+
+				if ($title != NULL)
+				{
+					$this->assign("title", $title);
+					$this->assign("nbMessages", $nbMessages);
+					$this->assign("items", $items);
+				}
+				else
+				{
+					$this->assign("title", "Failed");
+				}
 			}
 			else
 			{
-				$this->assign("title", "Failed to Load URL");
+				$this->assign("title", "Failed");
 			}
 		}
 		else
 		{
 			$this->assign("title", "Gmail Reader");
+			$this->assign("config", false);
 		}
 	}
 }

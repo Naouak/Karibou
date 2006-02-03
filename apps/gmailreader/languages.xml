@@ -35,5 +35,21 @@
    	<sentence key="SUBJECT">
         <translation language="fr" value="Object" />
         <translation language="en" value="Subject" />
-    </sentence>     
+    </sentence>
+   	<sentence key="LOADFAILED">
+        <translation language="fr" value="Le flux n'a pas été chargé correctement." />
+        <translation language="en" value="Feed unloaded." />
+    </sentence>    
+   	<sentence key="ERROR">
+        <translation language="fr" value="Erreur" />
+        <translation language="en" value="Error" />
+    </sentence>
+   	<sentence key="NOCONFIG">
+        <translation language="fr" value="Vous n'avez pas encore configuré votre Gmail Reader." />
+        <translation language="en" value="Gmail Reader not configured yet." />
+    </sentence>
+   	<sentence key="LINKCONFIG">
+        <translation language="fr" value="Configurer mon Gmail Reader" />
+        <translation language="en" value="Configure my Gmail Reader" />
+    </sentence>    
 </translation>
