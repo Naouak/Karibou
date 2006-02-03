@@ -36,7 +36,7 @@ td.date {
 
 .menubox {
 	float: left;
-	margin: 10px;
+	margin: 10px 0 10px 10px;
 	padding: 10px;
 	background-color: #fafafa;
 	border: 1px solid #999;
@@ -73,7 +73,8 @@ td.date {
 }
 
 .headbox {
-	margin: 10px 10px 10px 190px;
+	/*float: left;*/
+	margin: 10px 10px 10px 10px;
 	padding: 10px;
 	background-color: #fafafa;
 	border: 1px solid #999;
@@ -111,7 +112,8 @@ td.date {
 }
 
 .bodybox {
-	margin: 10px 10px 10px 190px;
+	/*float:left;*/
+	margin: 10px 10px 10px 10px;
 	padding: 10px;
 	background-color: #fefefe;
 	border: 1px solid #999;
@@ -188,4 +190,7 @@ td.date {
 	white-space: nowrap;
 	border-right: 2px solid #66ee66;
 	padding-left: 5px;
+}
+#maillist{
+	padding-left: 190px;
 }
