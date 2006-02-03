@@ -1,0 +1,163 @@
+.netjobs {
+	padding-left: 20px;
+	padding-right: 20px;
+	
+}
+
+.netjobs a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.netjobs ul {
+}
+
+#container #content .netjobs h4 {
+	margin: 0px;
+	padding: 0px;
+}
+
+/* Default page : Jobs */
+.netjobs .jobs {
+	width: 500px;
+	float: left;
+}
+
+#container #content .netjobs .jobs h4 {
+	width: 500px;
+	height: 56px;
+	background-image: url(images/netjobs/boxes/top.jobs.500.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+
+#container #content .netjobs .jobs h4 span {
+	display: block;
+	padding: 18px 0px 0px 90px;
+	font-size: 1.2em;
+	color: #fff;
+}
+
+.netjobs .jobs ul.joblist li {
+	border-left: 1px solid #fdbf5e;
+	border-right: 1px solid #fdbf5e;
+}
+
+.netjobs .jobs ul.joblist {
+	background-image: url(images/netjobs/boxes/bottom.jobs.500.png);
+	background-repeat: no-repeat;
+	background-position: 0px bottom;
+}
+
+.netjobs .jobs a.viewalljobs {
+	display: block;
+	background-image: url(images/netjobs/jobs/viewalljobs.png);
+	background-repeat: no-repeat;
+	background-position: 0px bottom;
+	width: 275px;
+	height: 47px;
+	float: left;
+	margin-top: 11px;
+}
+
+.netjobs .jobs a.viewalljobs span {
+	display: block;
+	padding-left: 50px;
+	padding-top: 12px;
+	color: #ffffff;
+	font-size: 1.2em;
+}
+
+.netjobs .jobs a.addjob {
+	float: right;
+}
+
+.netjobs a.addjob {
+	display: block;
+	background-image: url(images/netjobs/jobs/addjob.png);
+	background-repeat: no-repeat;
+	background-position: 0px bottom;
+	width: 210px;
+	height: 54px;
+	margin-top: 5px;
+}
+
+.netjobs a.addjob span {
+	display: block;
+	padding-left: 52px;
+	padding-top: 18px;
+	color: #ffffff;
+	font-size: 1.1em;
+}
+
+/* Default page : Companies */
+.netjobs .companies {
+	width: 300px;
+	float: right;
+	overflow: hidden;
+	padding: 0px;
+}
+
+#container #content .netjobs .companies h4 {
+	width: 300px;
+	height: 51px;
+	background-image: url(images/netjobs/boxes/top.companies.300.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+
+#container #content .netjobs .companies h4 span {
+	display: block;
+	padding: 15px 0px 0px 80px;
+	font-size: 1.1em;
+	color: #fff;
+}
+.netjobs .companies ul.companylist li{
+	border-left: 1px solid #65b5df;
+	border-right: 1px solid #65b5df;
+}
+.netjobs .companies ul.companylist {
+	background-image: url(images/netjobs/boxes/bottom.companies.300.png);
+	background-repeat: no-repeat;
+	background-position: 0px bottom;
+}
+
+#container #content .netjobs .companies ul.companylist .name, #container #content .netjobs .companies ul.companylist .description, #container #content .netjobs .companies ul.companylist .datetime {
+	margin: 0px;
+	padding: 0px;
+	width: auto;
+}
+
+.netjobs ul.joblist, .netjobs ul.companylist {
+	margin: 0px;
+	padding: 0px 0px 10px 0px;
+	list-style: none;
+}
+
+.netjobs .jobs ul.joblist li, .netjobs .companies ul.companylist li {
+	padding: 1px 4px 1px 0px;
+}
+
+/* Job list */
+ul.joblist li .title a {
+	background-image: url(images/netjobs/jobs/bullet.png);
+	background-repeat: no-repeat;
+	background-position: 0px 3px;
+	padding-left: 10px;
+	
+}
+
+ul.joblist li .ago {
+	padding-left: 20px;
+	color: #acacac;
+	font-style: italic;
+}
+
+/* Company list */
+ul.companylist li .name a {
+	background-image: url(images/netjobs/companies/bullet.png);
+	background-repeat: no-repeat;
+	background-position: 0px 3px;
+	padding-left: 10px;
+	
+}
