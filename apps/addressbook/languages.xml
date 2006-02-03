@@ -198,6 +198,10 @@
 		<translation language="fr" value="Travail" />
 		<translation language="en" value="Work" />
 	</sentence>
+	<sentence key="HOME">
+		<translation language="fr" value="Personnel" />
+		<translation language="en" value="Home" />
+	</sentence>
 	<sentence key="DOM">
 		<translation language="fr" value="Domestique" />
 		<translation language="en" value="Domestic" />
@@ -248,7 +252,7 @@
 	</sentence>
 	<sentence key="USER_PROFILE_EDIT">
 		<translation language="fr">
-			Édition du profil contact
+			Édition du profil du contact
 		</translation>
 		<translation language="en">
 			Editing your contact profile
@@ -272,10 +276,10 @@
 	</sentence>
 	<sentence key="SAVE_PROFILE">
 		<translation language="fr">
-			Enregistrer les modifications
+			Enregistrer les informations
 		</translation>
 		<translation language="en">
-			Save modifications
+			Save contact details
 		</translation>	</sentence>
 	<sentence key="TYPE">
 		<translation language="fr">
@@ -305,4 +309,13 @@
 		<translation language="en">
 			Note
 		</translation>	</sentence>
+	<sentence key="PICTURE_NOTE">
+		<translation language="fr">La photo doit être une image JPEG. Elle sera redimensionnée au format {$image_width} x {$image_height} pixels (largeur x longueur). Taille maximale : {$image_weight}Mo.</translation>
+		<translation language="en">Your picture must be a JPEG format. It'll be resized to {$image_width} x {$image_height} pixels (width x height). Max size : {$image_weight}MB.</translation>
+	</sentence>
+	
+	<sentence key="NETJOBS_TITLE">
+		<translation language="fr">NetJobs : Trouvez votre Job en ligne</translation>
+		<translation language="en">NetJobs : Find your job online</translation>
+	</sentence>
 </translation>

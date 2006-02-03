@@ -1,10 +1,21 @@
-<h1>##TITLE##</h1>
+{if ($netjobs)}
+<h1>##NETJOBS_TITLE##</h1>
 <h2>
-	##USER_PROFILE_EDIT## :
+	##USER_PROFILE_EDIT##
 	{if ($profile.firstname != "" && $profile.lastname != "")}
-	{$profile.firstname} {$profile.lastname}
+	 : {$profile.firstname} {$profile.lastname}
 	{/if}
 </h2>
+{else}
+<h1>##TITLE##</h1>
+<h2>
+	##USER_PROFILE_EDIT##
+	{if ($profile.firstname != "" && $profile.lastname != "")}
+	 : {$profile.firstname} {$profile.lastname}
+	{/if}
+</h2>
+{/if}
+
 <script>
 var address_next_id = 1;
 var phone_next_id = 1;
@@ -123,16 +134,24 @@ function add_email()
 			<input id="firstname" type="text" name="firstname" value="{$profile.firstname}" /><br class="spacer" />
 		<label for="lastname">##LASTNAME##</label>
 			<input id="lastname" type="text" name="lastname" value="{$profile.lastname}" /><br class="spacer" />
+	{if !(isset($netjobs) && ($netjobs == TRUE))}
 		<label for="surname">##SURNAME##</label>
 			<input id="surname" type="text" name="surname" value="{$profile.surname}" /><br class="spacer" />
 		<label for="birthday">##BIRTHDAY##</label>
 			<input id="birthday" type="text" name="birthday" value="{$profile.birthday}" /><br class="spacer" />
+	{else}
+			<input type="hidden" name="surname" value="">
+			<input type="hidden" name="birthday" value="">
+	{/if}
 		<label for="url">##URL##</label>
 			<input id="url" type="text" name="url" value="{$profile.url}" /><br class="spacer" />
 		<label for="note">##NOTE##</label>
 			<textarea id="note" name="note">{$profile.note}</textarea><br class="spacer" />
+	{if !(isset($netjobs) && ($netjobs == TRUE))}
 		<label for="picture">##PICTURE##</label>
 			<input id="picture" type="file" name="picture" /><br class="spacer" />
+			<span class="note">##PICTURE_NOTE##</span>
+	{/if}
 	</fieldset>
 	
 	
@@ -293,6 +312,14 @@ function add_email()
 	</noscript>
 	<div id="emails_div"></div>
 	</fieldset>
+	
+	{if (isset($netjobs) && $netjobs)}
+	<input type="hidden" name="netjobs" value="1">
+	<input type="hidden" name="jobid" value="{$jobid}">
+	<input type="hidden" name="companyid" value="{$companyid}">
+	<input type="hidden" name="njtype" value="{$njtype}">
+	{/if}
+	
 	<input type="submit" name="save" value="##SAVE_PROFILE##" class="saveprofile" />
 	<br class="spacer" />
 </form>

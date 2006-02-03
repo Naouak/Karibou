@@ -18,11 +18,11 @@ ClassLoader::add('Profile', dirname(__FILE__).'/../annuaire/classes/profile.clas
  */
 class AddressBookPost extends FormModel
 {
-	protected $max_width = 140;
-	protected $max_height = 200;
-
 	function build()
 	{
+		$app = $this->appList->getApp($this->appname);
+		$config = $app->getConfig();
+	
 		$profile = array();
 		$addresses = array();
 		$address_args = 'type|poaddress|extaddress|street|city|region|postcode|country|delete';
@@ -96,8 +96,59 @@ class AddressBookPost extends FormModel
 			$factory->insertAll($p, $addresses_tab, $phones_tab, $emails_tab);
 
 		}
-		$this->setRedirectArg("profile_id", $p->getId() );
+		
+		//NetJobs : Linking contact to job (if exists) & company
+		if (isset($_POST["netjobs"]) && $_POST["netjobs"] == 1)
+		{
+			$sql = "";		
+			if (isset($_POST["jobid"]) && $_POST["jobid"] != "")
+			{
+					$sql .= "INSERT INTO netjobs_contacts (`contact_id`, `type`, `id`, `datetime`) VALUES (".$p->getId().", 'job', '".$_POST["jobid"]."', NOW() ) ON DUPLICATE KEY UPDATE `datetime` = NOW(); ";
+			}
+			
+			if (isset($_POST["companyid"]) && $_POST["companyid"] != "")
+			{
+					$sql .= "INSERT INTO netjobs_contacts (`contact_id`, `type`, `id`, `datetime`) VALUES (".$p->getId().", 'company', '".$_POST["companyid"]."', NOW() ) ON DUPLICATE KEY UPDATE `datetime` = NOW(); ";
+			}
+			else
+			{
+				Debug::kill("No CompanyID!");
+			}
+			
+			try
+			{
+				$stmt = $this->db->exec($sql);
+				
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill( $e->getMessage() );
+			}
 
+
+		
+			$this->setRedirectArg("app", "netjobs" );
+			if (isset($_POST["jobid"]) && $_POST["jobid"] != "")
+			{
+				$this->setRedirectArg("page", "locationedit" );
+				$this->setRedirectArg("jobid", $_POST["jobid"] );
+			}
+			elseif (isset($_POST['profile_id']))
+			{
+				$this->setRedirectArg("page", "contactdetails" );
+				$this->setRedirectArg("contactid", $_POST['profile_id'] );
+			}
+			else
+			{
+				Debug::kill("No JobID or ProfileID!");
+			}
+		}
+		else
+		{
+			$this->setRedirectArg("profile_id", $p->getId() );
+		}
+
+		/* Dealing with picture upload */
 		if( isset($_FILES['picture']) && !empty($_FILES['picture']['name'])  )
 		{
 			switch( strtolower($_FILES['picture']['type']) )
@@ -123,8 +174,8 @@ class AddressBookPost extends FormModel
 				$x = imagesx($im);
 				$y = imagesy($im);
 				
-				$x_ratio = $this->max_width / $x;
-				$y_ratio = $this->max_height / $y;
+				$x_ratio = $config["image"]["width"] / $x;
+				$y_ratio = $config["image"]["height"] / $y;
 				
 				if( $x_ratio > $x_ratio )
 				{

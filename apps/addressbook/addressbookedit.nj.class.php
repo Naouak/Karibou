@@ -16,7 +16,7 @@ ClassLoader::add('Profile', dirname(__FILE__).'/../annuaire/classes/profile.clas
  * 
  * @package applications
  */
-class AddressBookProfile extends Model
+class AddressBookEditNJ extends Model
 {
 	function build()
 	{
@@ -64,12 +64,11 @@ class AddressBookProfile extends Model
 		$menuApp = $this->appList->getApp($this->appname);
 		$menuApp->addView("menu", "header_menu", array("page" => "profile", "edit" => $editmode, "profile_id" => $this->args['profile_id']) );
 		
-		if( isset( $this->args['act'] ) && ($this->args['act']=='edit') )
-		{
-			$this->assign('addr_types', array("DOM", "INTL", "POSTAL", "HOME", "WORK") );
-			$this->assign('phone_types', array("WORK", "HOME", "FAX", "CELL", "PAGER") );
-			$this->assign('email_types', array("INTERNET", "AIM", "ICQ", "JABBER", "MSN", "SKYPE") );
-		}
+		$this->assign('addr_types', array("DOM", "INTL", "POSTAL", "HOME", "WORK") );
+		$this->assign('phone_types', array("WORK", "HOME", "FAX", "CELL", "PAGER") );
+		$this->assign('email_types', array("INTERNET", "AIM", "ICQ", "JABBER", "MSN", "SKYPE") );
+		
+		$this->assign('netjobs', TRUE);
 	}
 }
 
