@@ -1,28 +1,15 @@
 ﻿<translation>
 	<sentence key="FILESHARE">
-		<translation language="fr">
-		Fichiers
-		</translation>
-		<translation language="en">
-		FileShare
-		</translation>
+		<translation language="fr">Fichiers</translation>
+		<translation language="en">FileShare</translation>
 	</sentence>
 	<sentence key="FILESHARE_TITLE">
-		<translation language="fr">
-		Partage de fichiers
-		</translation>
-		<translation language="en">
-		File sharing
-		</translation>
+		<translation language="fr">Partage de fichiers</translation>
+		<translation language="en">File sharing</translation>
 	</sentence>
 	<sentence key="FILESHARE_DESCRIPTION">
-		<translation language="fr">
-		Cliquez sur un fichier pour le télécharger. Si vous souhaitez ajouter un fichier pour qu'il puisse etre téléchargé, cliquez sur le bouton "Ajouter un fichier".
-		</translation>
-		<translation language="en">
-		Click on a file to proceed to download. If you want to add a file so that it can
-		be downloaded, click on the button "Upload a file".
-		</translation>
+		<translation language="fr">Cliquez sur un fichier pour le télécharger. Si vous souhaitez ajouter un fichier pour qu'il puisse etre téléchargé, cliquez sur le bouton "Ajouter un fichier".</translation>
+		<translation language="en">Click on a file to proceed to download. If you want to add a file so that it can	be downloaded, click on the button "Upload a file".</translation>
 	</sentence>
 	<sentence key="UPLOAD_A_FILE">
 		<translation language="fr">
