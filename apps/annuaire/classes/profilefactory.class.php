@@ -54,25 +54,106 @@ class ProfileFactory
 	}
 	function fetchFromId($profile_id)
 	{
-		$qry = "SELECT p.*
-			FROM  ".$this->profile_table." p
-			WHERE p.id=".$profile_id."" ;
-		try
+		if ($profile_id != "" && $profile_id > 0)
 		{
-			$stmt = $this->db->prepare($qry);
-			$stmt->execute();
-		}
-		catch(PDOException $e)
-		{
-			Debug::kill($e->getMessage());
-		}
-		if( $profile = $stmt->fetch(PDO::FETCH_ASSOC) )
-		{	
+			//Check if _user table exists
+			if ($this->profile_table == "profile")
+			{
+				$qry = "
+					SELECT
+						p.*
+					FROM
+						".$this->profile_table." p
+					WHERE
+						p.id = ".$profile_id."" ;
+			}
+			else
+			{
+				$qry = "
+					SELECT
+						p.*, ".$this->profile_table."_user.user_id AS userid
+					FROM
+						".$this->profile_table." p
+					LEFT JOIN
+						".$this->profile_table."_user
+						ON
+							".$this->profile_table."_user.profile_id = p.id
+					WHERE
+						p.id = ".$profile_id."";
+			}
+			
+			try
+			{
+				$stmt = $this->db->prepare($qry);
+				$stmt->execute();
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage());
+			}
+			if( $profile = $stmt->fetch(PDO::FETCH_ASSOC) )
+			{	
+				unset($stmt);
+				return new Profile($profile);
+			}
 			unset($stmt);
-			return new Profile($profile);
 		}
-		unset($stmt);
 		return FALSE;
+	}
+	
+	/**
+	 * Fetch profiles from multiple ids
+	 */
+	function fetchFromIds($ids)
+	{
+		if (count($ids)>0)
+		{
+			$whereids = "";
+			foreach ($ids as $id)
+			{
+				if ($whereids == "")
+				{
+					$whereids .= "p.id = '$id'";
+				}
+				else
+				{
+					$whereids .= "OR id = '$id'";
+				}
+			}
+			
+			$qry = "
+				SELECT
+					p.*
+				FROM
+					".$this->profile_table." p
+				WHERE 
+					$whereids ";
+			try
+			{
+				$stmt = $this->db->prepare($qry);
+				$stmt->execute();
+				
+				$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				
+				$profiles = array();
+				foreach($results as $result)
+				{
+					$profiles[] = new Profile($result);
+				}
+				unset($stmt);
+				
+				return $profiles;
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage());
+			}
+			return FALSE;
+		}
+		else
+		{
+			return array();
+		}
 	}
 
 	function fetchAddresses($profile)
@@ -239,17 +320,27 @@ class ProfileFactory
 	
 	function insertAll($profile, $tab_addresses, $tab_phones, $tab_emails)
 	{
-		$qry  = "DELETE FROM ".$this->profile_table."_address WHERE profile_id=".$profile->getId()." ; ";
-		$qry .= "DELETE FROM ".$this->profile_table."_phone WHERE profile_id=".$profile->getId()." ; ";
-		$qry .= "DELETE FROM ".$this->profile_table."_email WHERE profile_id=".$profile->getId()." ; ";
+		//No multi-query for PDO::exec -> causes general error "2013 Lost connection to MySQL server during query"
+		//tested with PHP5.0, 5.1 & 5.1.2
+		//See : http://bugs.php.net/bug.php?id=36228
 		
-		$qry .= $this->insertAddressesQuery($profile, $tab_addresses);
-		$qry .= $this->insertPhonesQuery($profile, $tab_phones);
-		$qry .= $this->insertEmailsQuery($profile, $tab_emails);
+	
+		$qry1 = "DELETE FROM ".$this->profile_table."_address WHERE profile_id=".$profile->getId()." ; \n";
+		$qry2 = "DELETE FROM ".$this->profile_table."_phone WHERE profile_id=".$profile->getId()." ; \n";
+		$qry3 = "DELETE FROM ".$this->profile_table."_email WHERE profile_id=".$profile->getId()." ; \n";
+		
+		$qry4 = $this->insertAddressesQuery($profile, $tab_addresses);
+		$qry5 = $this->insertPhonesQuery($profile, $tab_phones);
+		$qry6 = $this->insertEmailsQuery($profile, $tab_emails);
 		
 		try
 		{
-			$this->db->exec($qry);
+			$this->db->exec($qry1);
+			$this->db->exec($qry2);
+			$this->db->exec($qry3);
+			$this->db->exec($qry4);
+			$this->db->exec($qry5);
+			$this->db->exec($qry6);
 		}
 		catch(PDOException $e)
 		{
@@ -260,19 +351,28 @@ class ProfileFactory
 	
 	function updateAll($profile, $tab_profile, $tab_addresses, $tab_phones, $tab_emails)
 	{
-//		Debug::kill($tab_addresses);
-		$qry  = "DELETE FROM ".$this->profile_table."_address WHERE profile_id=".$profile->getId()." ; ";
-		$qry .= "DELETE FROM ".$this->profile_table."_phone WHERE profile_id=".$profile->getId()." ; ";
-		$qry .= "DELETE FROM ".$this->profile_table."_email WHERE profile_id=".$profile->getId()." ; ";
+		//No multi-query for PDO::exec -> causes general error "2013 Lost connection to MySQL server during query"
+		//tested with PHP5.0, 5.1 & 5.1.2
+		//See : http://bugs.php.net/bug.php?id=36228
 		
-		$qry .= $this->updateProfileQuery($profile, $tab_profile);
-		$qry .= $this->insertAddressesQuery($profile, $tab_addresses);
-		$qry .= $this->insertPhonesQuery($profile, $tab_phones);
-		$qry .= $this->insertEmailsQuery($profile, $tab_emails);
-//		Debug::kill($qry);
+		$qry1 = "DELETE FROM ".$this->profile_table."_address WHERE profile_id=".$profile->getId()." ; ";
+		$qry2 = "DELETE FROM ".$this->profile_table."_phone WHERE profile_id=".$profile->getId()." ; ";
+		$qry3 = "DELETE FROM ".$this->profile_table."_email WHERE profile_id=".$profile->getId()." ; ";
+		
+		$qry4 = $this->updateProfileQuery($profile, $tab_profile);
+		$qry5 = $this->insertAddressesQuery($profile, $tab_addresses);
+		$qry6 = $this->insertPhonesQuery($profile, $tab_phones);
+		$qry7 = $this->insertEmailsQuery($profile, $tab_emails);
+
 		try
 		{
-			$this->db->exec($qry);
+			$this->db->exec($qry1);
+			$this->db->exec($qry2);
+			$this->db->exec($qry3);
+			$this->db->exec($qry4);
+			$this->db->exec($qry5);
+			$this->db->exec($qry6);
+			$this->db->exec($qry7);
 		}
 		catch(PDOException $e)
 		{
