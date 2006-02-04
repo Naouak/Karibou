@@ -18,6 +18,7 @@ class ExecutionTimer
 	private static $ref;
 
 	public $timeArray;
+	public $countArray;
 	protected $currentTimeArray;
 	
 	public $display = true;
@@ -62,12 +63,14 @@ class ExecutionTimer
 			{
 				$this->timeArray[$mark] += 
 					$this->getmicrotime() - $this->startTimeArray[$mark];
+				$this->countArray[$mark]++;
 				unset($this->startTimeArray[$mark]);
 			}
 			else
 			{
 				$this->timeArray[$mark] = 
 					$this->getmicrotime() - $this->startTimeArray[$mark];
+				$this->countArray[$mark] = 1 ;
 				unset($this->startTimeArray[$mark]);
 			}
 		}
@@ -80,7 +83,7 @@ class ExecutionTimer
 		reset($this->timeArray);
 		while(list($key, $value) = each($this->timeArray))
 		{
-			$html .= $key." : ".round($value, 3)." sec<br />\n";
+			$html .= $key." (".$this->countArray[$key].") : ".round($value, 3)." sec<br />\n";
 		}
 		return $html;
 	}
@@ -109,7 +112,7 @@ class ExecutionTimer
 		foreach($toptimers as $action => $info)
 		{
 			$html .= "<tr>";
-			$html .= "<td>".$action."</td>";
+			$html .= "<td>".$action." (".$this->countArray[$action].")</td>";
 			$html .= "<td>".$info["percent"]."%</td>";
 			$html .= "<td>".$info["time"]."</td>";
 			$html .= "</tr>";

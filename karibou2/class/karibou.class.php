@@ -68,8 +68,7 @@ session_start();
 
 function __autoload($className)
 {
-	//ExecutionTimer::getRef()->stop("building Karibou");
-	ExecutionTimer::getRef()->start("Include __autoload (".$className.")");
+	//ExecutionTimer::getRef()->stop("building Karibou");	ExecutionTimer::getRef()->start("ALL __autoload");	ExecutionTimer::getRef()->start("Include __autoload (".$className.")");
 	$file = ClassLoader::getFilename($className);
 	
 	if (!is_file($file))
@@ -78,7 +77,7 @@ function __autoload($className)
 		require_once $file;
 	
 	ExecutionTimer::getRef()->stop("Include __autoload (".$className.")");
-	//ExecutionTimer::getRef()->start("building Karibou");
+	ExecutionTimer::getRef()->stop("ALL __autoload");	//ExecutionTimer::getRef()->start("building Karibou");
 }
 
 /**
