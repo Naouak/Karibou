@@ -8,23 +8,18 @@ div.gmail h2{
 	min-height: 35px;
 	vertical-align: middle;
 }
-.gmail ul{
+
+/* Big */
+.gmail ul.big {
 	margin: 1em;
-	list-style-type: none;
 	width: 800px;
 }
-.gmail ul li{
+.gmail ul.big li{
 	width: 800px;
 	height: 30px;
 	min-height: 30px;
-	/*margin-bottom: 10px;*/
 }
-
-.gmail ul li:hover{
-	background-color: #efefef;
-}
-
-.gmail ul li .gmailauthor {
+.gmail ul.big li .gmailauthor {
 	display: block;
 	width: 120px;
 	float: left;
@@ -33,17 +28,20 @@ div.gmail h2{
 	font-weight: bold;
 	overflow: hidden;
 	vertical-align: middle;
+	white-space: nowrap;
+	padding-right: 10px;
 }
-.gmail ul li .gmailtitle{
+.gmail ul.big li .gmailtitle {
 	display: block;
-	width: 580px;
+	width: 540px;
 	float: left;
 	padding-top: 5px;
 	font-weight: bold;
 	overflow: hidden;
 	vertical-align: middle;
 }
-.gmail ul li.header{
+
+.gmail ul.big li.header{
 	background-color: #bcbcbc;
 	height: 25px;
 	min-height: 25px;
@@ -51,6 +49,50 @@ div.gmail h2{
 	font-weight: bold;
 	background-image: none;
 }
+
+.gmail ul.big li .ago {
+	display: block;
+	float: right;
+}
+
+/* Mini */
+.gmail ul.mini{
+	font-size: 80%;
+	overflow: hidden;
+}
+
+.gmail ul.mini li .gmailtitle {
+	display: block;
+	font-weight: bold;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.gmail ul.mini li {
+	margin-bottom: 3px;
+	padding-left: 22px;
+	background-image: url(images/gmailreader/gmail.png);
+	background-repeat: no-repeat;
+	background-position: 0px center;
+}
+
+
+/* Both */
+.gmail ul li .gmailtitle a {
+	text-decoration: none;
+}
+.gmail ul li .ago {
+	font-style: italic;
+	color: #acacac;
+}
 .gmail ul li.header:hover {
 	background-color: #bcbcbc;
+}
+.gmail ul li:hover{
+	background-color: #efefef;
+}
+.gmail ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
 }
