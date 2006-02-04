@@ -9,8 +9,8 @@
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 	
-	<view name="minigmail" class="gmailReader" template="minigmail.tpl" />
-	<view name="minigmailconfig" class="gmailReaderConfig" template="minigmailconfig.tpl" />
+	<view name="mini" class="gmailReader" template="minigmail.tpl" />
+	<view name="miniconfig" class="gmailReaderConfig" template="minigmailconfig.tpl" />
 
 	<view name="gmail" class="gmailReader" template="gmail.tpl" />
 	<view name="gmailconfig" class="gmailReaderConfig" template="gmailconfig.tpl" />

@@ -33,7 +33,7 @@
         <translation language="en" value="From" />
     </sentence>
    	<sentence key="SUBJECT">
-        <translation language="fr" value="Object" />
+        <translation language="fr" value="Objet" />
         <translation language="en" value="Subject" />
     </sentence>
    	<sentence key="LOADFAILED">
@@ -52,4 +52,32 @@
         <translation language="fr" value="Configurer mon Gmail Reader" />
         <translation language="en" value="Configure my Gmail Reader" />
     </sentence>    
+	<sentence key="AGO1">
+		<translation language="fr">Il y a</translation>
+		<translation language="en"></translation>
+	</sentence>
+	<sentence key="AGO2">
+		<translation language="fr"></translation>
+		<translation language="en">ago</translation>
+	</sentence>
+	<sentence key="SECOND">
+		<translation language="fr">minute</translation>
+		<translation language="en">minutes</translation>
+	</sentence>
+	<sentence key="MINUTE">
+		<translation language="fr">minute</translation>
+		<translation language="en">minute</translation>
+	</sentence>
+	<sentence key="HOUR">
+		<translation language="fr">heure</translation>
+		<translation language="en">hour</translation>
+	</sentence>
+	<sentence key="DAY">
+		<translation language="fr">jour</translation>
+		<translation language="en">day</translation>
+	</sentence>
+	<sentence key="S">
+		<translation language="fr">s</translation>
+		<translation language="en">s</translation>
+	</sentence>
 </translation>

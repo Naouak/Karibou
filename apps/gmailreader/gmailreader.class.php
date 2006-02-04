@@ -40,7 +40,7 @@ class gmailReader extends Model
 						$i++;
 						if( $i > $gmailmax ) break;
 						$author = $entry->author[0];
-						$items[] = array('title' => $entry->title[0] , 'summary'=> $entry->summary[0], 'link' => "http://mail.google.com/mail", 'author' => $author->name[0], 'emailAuthor' => $author->email[0]);
+						$items[] = array('title' => $entry->title[0] , 'summary'=> $entry->summary[0], 'link' => "http://mail.google.com/mail", 'author' => $author->name[0], 'emailAuthor' => $author->email[0], 'issued' => $this->parseDate($entry->issued[0]->text) );
 					}
 				}
 				$title = $xml->title[0] ;
@@ -67,6 +67,15 @@ class gmailReader extends Model
 			$this->assign("title", "Gmail Reader");
 			$this->assign("config", false);
 		}
+	}
+	
+	public function parseDate($gdate)
+	{
+		preg_match("/([0-9]+)-([0-9]+)-([0-9]+)[A-Z]+([0-9]+):([0-9]+):([0-9]+)[A-Z]/", $gdate, $array);
+		$date = date("U", mktime ($array[4], $array[5], $array[6], $array[2], $array[3], $array[1]));
+		//$date = mktime ($array[4], $array[5], $array[6], $array[2], $array[3], $array[1]);
+		return (time() - $date);
+		
 	}
 }
 
