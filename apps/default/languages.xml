@@ -105,6 +105,14 @@
         	File Share
         </translation>
     </sentence>
+    <sentence key="gmailreader">
+        <translation language="fr">
+        	Lecteur GMail
+        </translation>
+        <translation language="en">
+        	GMail Reader
+        </translation>
+    </sentence>
     <sentence key="CHANGEPASSWORD_TITLE">
         <translation language="fr">
         	Changement du mot de passe
