@@ -17,6 +17,8 @@
 
 	{if !$myElement->existsInDB()}
 		<div class="helper">##DOESNOTEXISTINDB##</div>
+	{elseif $myElement->isFile()}
+		<div class="helper">##FILEDETAILS_DESCRIPTION##</div>
 	{elseif $myElement->isDirectory()}
 		<div class="helper">##DIRECTORYDETAILS_DESCRIPTION##</div>
 	{/if}

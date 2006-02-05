@@ -41,9 +41,8 @@
 	
 	<view name="mini" class="FileShareMini" template="mini.tpl" />
 	<view name="movewhere" class="FileShareMoveChooseWhere" template="movewhere.tpl" />
-	
 
-    <view name="directory" class="FileShareDirectory" template="directory.tpl" />
+	<view name="directory" class="FileShareDirectory" template="directory.tpl" />
 
 	<page view="directory" />
 	

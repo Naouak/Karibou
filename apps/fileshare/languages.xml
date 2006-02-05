@@ -287,4 +287,8 @@ Upload file
 		<translation language="fr">Pour supprimer un répertoire dont vous êtes modérateur, celui-ci doit être vide.</translation>
 		<translation language="en">In order to remove a folder you own, the folder must be empty.</translation>
 	</sentence>
+	<sentence key="FILEDETAILS_DESCRIPTION">
+		<translation language="fr">Si vous souhaitez modifier ce fichier, cliquez sur "Télécharger" et enregistrez (ne cliquez pas sur ouvrir) ce fichier dans votre espace de travail personnel sur votre ordinateur. Une fois modifié, cliquez sur "Ajout d'une nouvelle version" afin de mettre en ligne votre version modifiée du fichier.</translation>
+		<translation language="en">If you want to modify this file, click on the "Download" link and save this file (do not click on "Open") to your personnal workspace on your computer. Once you have modified this file, click on "Add a new version" and upload your modified version of the file.</translation>
+	</sentence>
 </translation>
