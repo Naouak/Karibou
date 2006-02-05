@@ -1,7 +1,6 @@
 .netjobs {
 	padding-left: 20px;
 	padding-right: 20px;
-	
 }
 
 .netjobs a {
@@ -10,6 +9,20 @@
 }
 
 .netjobs ul {
+	list-style: none;
+}
+
+.netjobs ul li label {
+	float: left;
+	display: block;
+	width: 240px;
+	padding-left: 10px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.netjobs ul li {
+	line-height: 160%;
 }
 
 #container #content .netjobs h4 {
@@ -139,18 +152,39 @@
 }
 
 /* Job list */
-ul.joblist li .title a {
+ul.joblist li .title {
+	display: block;
+	float: left;
+	width: 75%;
+	overflow: hidden;
+}
+#content ul.joblist li .title a {
 	background-image: url(images/netjobs/jobs/bullet.png);
 	background-repeat: no-repeat;
 	background-position: 0px 3px;
 	padding-left: 10px;
-	
+	color: #e48500;
+	white-space: nowrap;
 }
 
 ul.joblist li .ago {
-	padding-left: 20px;
+	display: block;
+	float: right;
+	width: 25%;
+	background-color: #ffffff;
 	color: #acacac;
 	font-style: italic;
+	text-align: right;
+}
+
+ul.joblist li .company {
+	display: block;
+	clear: both;
+	padding-left: 30px;
+}
+
+#content ul.joblist li .company a {
+	color: #2287bb;
 }
 
 /* Company list */
@@ -160,4 +194,61 @@ ul.companylist li .name a {
 	background-position: 0px 3px;
 	padding-left: 10px;
 	
+}
+
+
+
+/* Details : Job */
+.netjobs .jobdetails {
+	border: 1px solid #fdbf5e;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.netjobs .jobdetails span {
+	font-weight: bold;
+}
+
+.netjobs .jobdetails span.textzone {
+	display: block;
+	clear: both;
+	border: 1px solid #ecdcac;
+	background-color: #fff9f0;
+	margin-left: 50px;
+	margin-bottom: 10px;
+	padding: 5px;
+	width: 90%;
+	font-weight: normal;
+}
+
+.netjobs .toolbox a {
+	display: block;
+	width: 212px;
+	height: 54px;
+}
+
+.netjobs .toolbox a span {
+	display: block;
+	padding-left: 60px;
+	padding-top: 18px;
+	color: #ffffff;
+}
+
+.netjobs .toolbox a.edit {
+	float: left;
+	background-image: url(images/netjobs/jobs/edit.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+
+.netjobs .toolbox a.delete {
+	float: left;
+	margin-left: 20px;
+	background-image: url(images/netjobs/jobs/delete.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+
+.netjobs .toolbox a.delete span {
+	color: #ac0000;
 }
