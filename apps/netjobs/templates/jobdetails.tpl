@@ -12,21 +12,25 @@
 		
 		<li class="company">
 			<label for="company">##JOBCOMPANY## :</label>
+			<span name="company">
 			{if ($myJob->getCompanyInfo("id") !== FALSE) }
-			<span name="company"><a href="{kurl page="companydetails" companyid=$myJob->getCompanyInfo("id")}">{$myJob->getCompanyInfo("name")}</a></span>
+				<a href="{kurl page="companydetails" companyid=$myJob->getCompanyInfo("id")}">{$myJob->getCompanyInfo("name")}</a>&nbsp;
 			{else}
 			##COMPANYUNKNOWN##
 			{/if}
+			</span>
 		</li>
 		
 		{if isset($myContact) && $myContact|@count>0}
 		<li class="contact">
-			<label for="contact">##JOBCONTACT## :</label>
+			<label for="contact">##JOB_CONTACT## :</label>
+			<span name="contact">
 			{if ($myContact.profile.id !== FALSE) }
-			<span name="contact"><a href="{kurl page="contactdetails" contactid=$myContact.profile.id}">{$myContact.profile.firstname} {$myContact.profile.lastname}</a></span>
+				<a href="{kurl page="contactdetails" contactid=$myContact.profile.id}">{$myContact.profile.firstname} {$myContact.profile.lastname}</a>&nbsp;
 			{else}
 			##COMPANYUNKNOWN##
 			{/if}
+			</span>
 		</li>
 		{/if}
 
@@ -37,12 +41,12 @@
 		
 		<li class="description">
 			<label for="type">##JOBDESCRIPTION## : </label>
-			<span name="type">{$myJob->getInfo("description")}&nbsp;</span>
+			<span name="type" class="textzone">{$myJob->getInfo("description")}&nbsp;</span>
 		</li>
 		
 		<li class="profile">
 			<label for="type">##JOBPROFILE## : </label>
-			<span name="type">{$myJob->getInfo("profile")}&nbsp;</span>
+			<span name="type" class="textzone">{$myJob->getInfo("profile")}&nbsp;</span>
 		</li>
 		
 		<li class="salary">
@@ -64,10 +68,11 @@
 		
 		<li class="experience_required">
 			<label for="type">##JOBEXPERIENCEREQUIRED## :</label>
-			<span name="type">
-				{if ($myJob->getInfo("experience_required")) > 0}
+				{if ($myJob->getInfo("experience_required")) != ""}
+			<span name="type" class="textzone">
 					{$myJob->getInfo("experience_required")}
 				{else}
+			<span name="type">
 					##NONE##
 				{/if}
 				&nbsp;
@@ -81,21 +86,14 @@
 			</span>
 		</li>
 
-	</ul>
-
-<hr />
---Location :--
-<br />
-{$myJob->getLocationInfo("country_id")}
-
-	
+	</ul>	
 	{if ($myJob->canUpdate())}
 	<div class="toolbox">
-		<span class="editlink"><a href="{kurl page="jobedit" jobid=$myJob->getInfo("id")}">##JOBEDIT##</a></span>
+		<a href="{kurl page="jobedit" jobid=$myJob->getInfo("id")}" class="edit"><span>##JOBEDIT##</span></a>
 		{if ($myJob->canWrite())}
 		<form method="post" action="{kurl page="jobsave"}" id="deletejob" name="delete">
 			<input type="hidden" name="jobiddelete" value="{$myJob->getInfo("id")}">
-			<a href="#" onclick="if(confirm('##JOBDELETE_ASKIFSURE##')){ldelim}document.getElementById('deletejob').submit(){rdelim}else{ldelim}return false;{rdelim};">##JOBDELETE##</a>
+			<a href="#" onclick="if(confirm('##JOBDELETE_ASKIFSURE##')){ldelim}document.getElementById('deletejob').submit(){rdelim}else{ldelim}return false;{rdelim};" class="delete"><span>##JOBDELETE##</span></a>
 		</form>
 		{/if}
 	</div>

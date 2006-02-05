@@ -2,8 +2,6 @@
 	{foreach from=$myJobs item="myJob"}
 			<li>
 				<span class="title"><a href="{kurl page="jobdetails" jobid=$myJob->getInfo("id")}">{if ($myJob->getInfo("title") != "")}{$myJob->getInfo("title")}{else}##JOB_EMPTYTITLE##{/if}</a></span>
-				{*<span class="type">{$myJob->getInfo("description")|truncate:30:"..."}&nbsp;</span>
-				<span class="datetime">{$myJob->getInfo("datetime")}&nbsp;</span>*}
 				<span class="ago">
 					##AGO1##
 					{assign var="since" value=$myJob->getSecondsSinceLastUpdate()}
@@ -18,8 +16,8 @@
 					{/if}
 					##AGO2##
 				</span>
-				<span class="">
-					{$myJob->getCompanyInfo("name")}
+				<span class="company">
+					##JOB_IN## <a href="{kurl page="companydetails" companyid=$myJob->getCompanyInfo("id")}">{$myJob->getCompanyInfo("name")}</a>
 				</span>
 			</li>
 	{/foreach}

@@ -3,6 +3,7 @@
 <div class="netjobs">
 	<a href="{kurl page="jobedit"}" class="addjob"><span>##JOBADD##</span></a>
 	{include file="_joblist.tpl"}
+	
 	{assign var="nbpages" value=$jobcount/$maxjobs}
 	{if $nbpages > 1}
 		{section name=jobs loop=($jobcount/$maxjobs) start=1 step=1}

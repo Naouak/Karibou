@@ -278,6 +278,10 @@
 		<translation language="fr">en milliers d'euros</translation>
 		<translation language="en">thousands euros</translation>
 	</sentence>
+	<sentence key="JOB_IN">
+		<translation language="fr">chez</translation>
+		<translation language="en">in</translation>
+	</sentence>
 	<sentence key="JOB_ADDING">
 		<translation language="fr">Ajout de l'offre</translation>
 		<translation language="en">Adding job</translation>
