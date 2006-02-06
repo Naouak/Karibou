@@ -4,7 +4,9 @@
 	<div class="jobs">
 		<h4><span>##LASTJOBS##</span></h4>
 		{include file="_joblist.tpl"}
+		{if ($jobcount>1)}
 		<a href="{kurl page="joblist"}" class="viewalljobs"><span>##JOB_COUNT1## {$jobcount} ##JOB_COUNT2##</span></a>
+		{/if}
 		<a href="{kurl page="jobedit"}" class="addjob"><span>##JOBADD##</span></a>
 	</div>
 	
@@ -21,5 +23,5 @@
 		</ul>
 	</div>
 	
-	<hr class="clear">
+	<br class="clear">
 </div>

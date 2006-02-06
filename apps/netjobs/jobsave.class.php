@@ -40,23 +40,7 @@ class NJJobSave extends FormModel
 				$this->setRedirectArg('page', 'contactchoose');
 				$this->setRedirectArg('companyid', $_POST["jobinfos"]["company_id"]);
 				$this->setRedirectArg('jobid', $_POST["jobinfos"]["id"]);
-
-				/*
-				$this->setRedirectArg('app', 'addressbook');
-				$this->setRedirectArg('page', 'addnj');
-				$this->setRedirectArg('jobid', $_POST["jobinfos"]["id"]);
-				$this->setRedirectArg('companyid', $_POST["jobinfos"]["company_id"]);
-				$this->setRedirectArg('companyid', "job");
-				*/
 			}
-			/*
-			else
-			{
-				$this->setRedirectArg('app', 'netjobs');
-				$this->setRedirectArg('page', 'locationedit');
-				$this->setRedirectArg('jobid', $_POST["jobinfos"]["id"]);
-			}
-			*/
 			
 		}
 		elseif (isset($_POST["jobinfos"]))
@@ -64,7 +48,7 @@ class NJJobSave extends FormModel
 			//create job
 			$jobid = $NetJobs->saveJob($_POST["jobinfos"]);
 			
-			if (isset($_POST["company_new"]) && $_POST["company_new"] == "on")
+			if ($_POST["jobinfos"]["company_id"] == "new")
 			{
 				//go to company edit page (if new company)
 				$this->setRedirectArg('app', 'netjobs');
@@ -80,13 +64,6 @@ class NJJobSave extends FormModel
 				$this->setRedirectArg('companyid', $_POST["jobinfos"]["company_id"]);
 				$this->setRedirectArg('jobid', $jobid);
 			}
-			/*
-			else
-			{
-				$this->setRedirectArg('app', 'netjobs');
-				$this->setRedirectArg('page', '');
-			}
-			*/
 		}
 		elseif (isset($_POST["jobiddelete"]))
 		{

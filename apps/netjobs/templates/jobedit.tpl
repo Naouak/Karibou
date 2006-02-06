@@ -16,16 +16,16 @@
 				</li>
 				<li class="description">
 					<label for="description">##JOBDESCRIPTION## : </label>
-					<textarea id="description" name="jobinfos[description]" rows="5" cols="60" />{if isset($myJob)}{$myJob->getInfo("description")|escape:"html"}{/if}</textarea>
+					<textarea id="description" name="jobinfos[description]" rows="5" cols="60">{if isset($myJob)}{$myJob->getInfo("description")|escape:"html"}{/if}</textarea>
 				</li>
 				<li class="profile">
 					<label for="profile">##JOBPROFILE## : </label>
-					<textarea id="profile" name="jobinfos[profile]" rows="5" cols="60" />{if isset($myJob)}{$myJob->getInfo("profile")|escape:"html"}{/if}</textarea>
+					<textarea id="profile" name="jobinfos[profile]" rows="5" cols="60">{if isset($myJob)}{$myJob->getInfo("profile")|escape:"html"}{/if}</textarea>
 				</li>
 				<li class="experiencerequired">
 					<label for="experiencerequired">##JOBEXPERIENCEREQUIRED## :</label>
-					<textarea id="experiencerequired" name="jobinfos[experience_required]" rows="3" cols="60" />{if isset($myJob)}{$myJob->getInfo("experience_required")|escape:"html"}{/if}</textarea>
-					<span class="info">##JOBEXPERIENCEREQUIRED_LETBLANKFORNONE##</span>
+					<textarea id="experiencerequired" name="jobinfos[experience_required]" rows="3" cols="60">{if isset($myJob)}{$myJob->getInfo("experience_required")|escape:"html"}{/if}</textarea>
+					<span class="note">##JOBEXPERIENCEREQUIRED_LETBLANKFORNONE##</span>
 				</li>
 				<li class="type">
 					<label for="type">##JOBTYPE## :</label>
@@ -73,34 +73,16 @@
 					<label for="company">##JOBCOMPANY## :</label>
 					{if isset($myJob)}{assign var=jobcompanyid value=$myJob->getInfo("company_id")}{/if}
 					<select name="jobinfos[company_id]">
-						<option DISABLED>##JOBCHOOSECOMPANY##</option>
+						<option value="new">##JOBCOMPANY_NEW##</option>
 						{foreach from=$allCompanies item="company"}
 							<option value="{$company->getInfo("id")}"{if $jobcompanyid == $company->getInfo("id")} SELECTED{/if}>{$company->getInfo("name")}</option>
 						{/foreach}
 					</select>
-					<br />
-					<input type="checkbox" name="company_new"><label for="company_new">##JOBCOMPANY_NEW_CHECKBOX##</label>
+					{khint langmessage="JOBCOMPANY_NEW_NOTE" type="info"}
 				</li>
 			</ul>
 		</fieldset>
 
-		{*
-		<fieldset>
-			<legend>##JOB_CONTACT##</legend>
-			<ul>
-				<li class="contact">
-					<label for="company">##JOBCONTACT## :</label>
-					{if isset($myJob)}{assign var=jobcontactid value=$myJob->getInfo("contact_id")}{/if}
-					<select name="jobinfos[company_id]">
-						<option DISABLED>##JOBCHOOSECOMPANY##</option>
-						{foreach from=$allCompanies item="company"}
-							<option value="{$company->getInfo("id")}"{if $jobcompanyid == $company->getInfo("id")} SELECTED{/if}>{$company->getInfo("name")}</option>
-						{/foreach}
-					</select>
-				</li>		
-			</ul>
-		</fieldset>
-		*}
 		<div class="button">
 			<input type="submit" value="{if isset($myJob)}##JOBSAVE##{else}##JOBCREATE##{/if}" />
 		</div>

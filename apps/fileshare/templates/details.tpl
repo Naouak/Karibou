@@ -89,7 +89,7 @@
 		</div>
 			{if $myElement->getSysInfos("groupowner") != NULL}
 		<div class="detail groupowner">
-			<label for="groupowner">##GROUPOWNER## :</label>
+			<label for="groupowner">##FILEDETAILS_GROUPOWNER## :</label>
 			<span id="groupowner">
 				{$myElement->getSysInfos("groupowner")}&nbsp;
 			</span>
@@ -218,7 +218,7 @@
 						{if ($version->getInfo("versionid") == 1)}
 							##DOWNLOADORIGINALVERSIONOF##
 						{else}
-							##DOWNLOAD## ##VERSION## {$version->getInfo("versionid")} ##OF##
+							##DOWNLOAD## ##VERSION## {$version->getInfo("versionid")} ##FILEDETAILS_OF##
 						{/if}
 						{$myElement->getName()}</a>
 					</div>

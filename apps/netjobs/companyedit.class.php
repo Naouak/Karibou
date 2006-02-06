@@ -35,7 +35,10 @@ class NJCompanyEdit extends Model
 			if (isset($this->args["jobid"]) && $this->args["jobid"] != "")
 			{
 				$myJob = $netJobs->getJobById($this->args["jobid"]);
-				$this->assign("myJob",$myJob);
+				if ($myJob !== FALSE)
+				{
+					$this->assign("myJob",$myJob);
+				}
 			}
 		}
 	}
