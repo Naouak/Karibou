@@ -393,14 +393,14 @@ div#hintbox {
 }
 
 .overzone {
-	cursor: help;
+	/* cursor: help; */
 }
 
 div.hint {
 	padding: 15px 10px 15px 55px;
 	background-position : 5px 50%;
 	background-repeat : no-repeat;
-	width: 400px;
+	/* width: 400px; */
 	color: #000000;
 }
 
@@ -461,19 +461,18 @@ div.hint.hint_profile span {
 /* Hint Overzone */
 
 div.overzone {
-	float: left;
+	display: inline;
 	background-image: url(images/hintbox/20/help.png);
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
-	margin: 3px;
 	padding: 0px;
-	width: 16px;
-	height: 16px;
 }
 
-div.overzone div span {
+div.overzone span {
+	/*
 	display: none;
 	visibility: hidden;
+	*/
 	font-size: 0.1em;
 }
 

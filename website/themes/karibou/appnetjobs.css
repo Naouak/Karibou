@@ -25,6 +25,10 @@
 	line-height: 160%;
 }
 
+#container #content .netjobs .profile {
+	border: 0px;
+}
+
 #container #content .netjobs h4 {
 	margin: 0px;
 	padding: 0px;
@@ -170,7 +174,7 @@ ul.joblist li .title {
 ul.joblist li .ago {
 	display: block;
 	float: right;
-	width: 25%;
+	width: 24%;
 	background-color: #ffffff;
 	color: #acacac;
 	font-style: italic;
@@ -197,6 +201,24 @@ ul.companylist li .name a {
 }
 
 
+/* Details */
+.netjobs .toolbox {
+	margin-left: 20%;
+	margin-top: 20px;
+	margin-bottom: 74px;
+}
+.netjobs .toolbox a {
+	display: block;
+	width: 212px;
+	height: 54px;
+}
+
+.netjobs .toolbox a span {
+	display: block;
+	padding-left: 60px;
+	padding-top: 18px;
+	color: #ffffff;
+}
 
 /* Details : Job */
 .netjobs .jobdetails {
@@ -221,27 +243,14 @@ ul.companylist li .name a {
 	font-weight: normal;
 }
 
-.netjobs .toolbox a {
-	display: block;
-	width: 212px;
-	height: 54px;
-}
-
-.netjobs .toolbox a span {
-	display: block;
-	padding-left: 60px;
-	padding-top: 18px;
-	color: #ffffff;
-}
-
-.netjobs .toolbox a.edit {
+.netjobs .jobdetails .toolbox a.edit {
 	float: left;
 	background-image: url(images/netjobs/jobs/edit.png);
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
 }
 
-.netjobs .toolbox a.delete {
+.netjobs .jobdetails .toolbox a.delete {
 	float: left;
 	margin-left: 20px;
 	background-image: url(images/netjobs/jobs/delete.png);
@@ -249,6 +258,72 @@ ul.companylist li .name a {
 	background-position: 0px 0px;
 }
 
-.netjobs .toolbox a.delete span {
+.netjobs .jobdetails .toolbox a.delete span {
 	color: #ac0000;
+}
+
+/* Details : Company */
+.netjobs .companydetails {
+	border: 1px solid #2287bb;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.netjobs .companydetails span {
+	font-weight: bold;
+}
+
+.netjobs .companydetails span.textzone {
+	display: block;
+	clear: both;
+	border: 1px solid #ecdcac;
+	background-color: #fff9f0;
+	margin-left: 50px;
+	margin-bottom: 10px;
+	padding: 5px;
+	width: 90%;
+	font-weight: normal;
+}
+
+.netjobs .companydetails .toolbox a.edit {
+	float: left;
+	background-image: url(images/netjobs/companies/edit.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+
+.netjobs .companydetails .toolbox a.delete {
+	float: left;
+	margin-left: 20px;
+	background-image: url(images/netjobs/companies/delete.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+
+.netjobs .companydetails .toolbox a.delete span {
+	color: #ff7777;
+}
+
+/* Edit */
+.netjobs fieldset {
+	padding: 20px;
+}
+
+.netjobs fieldset ul li {
+	margin-top: 10px;
+}
+
+.netjobs .button {
+	margin: 20px;
+	text-align: center;
+}
+.netjobs .button input {
+	font-weight: bold;
+}
+
+.netjobs fieldset ul li .note {
+	display: block;
+	font-style: italic;
+	margin-left: 30px;
+	color: #565656;
 }
