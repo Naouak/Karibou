@@ -40,10 +40,10 @@ function smarty_function_khint($params, &$smarty)
 			//return code that will be located inside a tag
 			$hint .= " onMouseover=\"showhint('".$message."','hint_".$type."');\" onMouseout=\"hidehint()\"";
 
-			if (!!isset($params["insidetag"]) || $params["insidetag"] === FALSE)
+			if (!isset($params["insidetag"]) || $params["insidetag"] === FALSE)
 			{
 				//return full hint zone
-				$hint = "<div class=\"overzone overzone_".$type."\" ".$hint."\"><span>".$type."</span></div>";
+				$hint = "<div class=\"overzone overzone_".$type."\" ".$hint."\"><span><img src=\"/themes/karibou/images/hintbox/small/blank.png\" title=\"$hint\"></span></div>";
 			}
     	}
 	}
