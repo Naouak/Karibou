@@ -35,7 +35,7 @@ class NewsView extends Model
 		//& affectation des variables a afficher
 		if ($this->article->loadFromId($this->db, $this->args['id']))
 		{
-			if ($this->currentUser->isInGroup($this->db, $this->article->getGroup()) || ($this->article->getAuthorId() == $this->currentUser->getId()) )
+			//if ($this->currentUser->isInGroup($this->db, $this->article->getGroup()) || ($this->article->getAuthorId() == $this->currentUser->getId()) )
 			{
 				$this->assign("theArticle", $this->article);
 				$this->assign("currentUserId", $this->currentUser->getId());
@@ -61,9 +61,9 @@ class NewsView extends Model
 				}
 				
 			}
-			else
+			//else
 			{
-				$this->assign("notingroup", TRUE);
+			//	$this->assign("notingroup", TRUE);
 				//L'utilisateur n'appartient pas au groupe de destination
 			}
 		}

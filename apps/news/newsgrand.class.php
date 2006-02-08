@@ -31,9 +31,9 @@ class NewsGrand extends Model
 		$req_sql = "
 			SELECT count(news.id) as nb
 			FROM news
-			WHERE (news.last = 1 AND news.deleted = 0)
-			AND ((news.id_groups IN (".$this->currentUser->getGroupTreeQuery().")) OR (news.id_author = '".$this->currentUser->getId()."'))
-		";
+			WHERE (news.last = 1 AND news.deleted = 0) ";
+//			AND ((news.id_groups IN (".$this->currentUser->getGroupTreeQuery().")) OR (news.id_author = '".$this->currentUser->getId()."'))
+//		";
 		$stmt = $this->db->prepare($req_sql);
 		$stmt->execute();
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -60,9 +60,9 @@ class NewsGrand extends Model
 		$reqSqlAllArticles = "
 			SELECT news.id, news.id_author, news.id_groups, news.title, news.content, UNIX_TIMESTAMP(news.time) as timestamp, count(news_comments.id) as nb_comments
 			FROM news LEFT OUTER JOIN news_comments ON news.id = news_comments.id_news
-			WHERE (news.last = 1 AND news.deleted = 0)
-			AND ((news.id_groups IN (".$this->currentUser->getGroupTreeQuery().")) OR (news.id_author = '".$this->currentUser->getId()."'))
-			GROUP BY news.id
+			WHERE (news.last = 1 AND news.deleted = 0) ".
+			//AND ((news.id_groups IN (".$this->currentUser->getGroupTreeQuery().")) OR (news.id_author = '".$this->currentUser->getId()."'))
+			"GROUP BY news.id
 			ORDER BY timestamp
 			DESC
 			LIMIT $max OFFSET ".(($page-1)*$max).";
