@@ -13,10 +13,10 @@
  */
 class GeoLocation
 {
-	protected $country;	//Pays
-	protected $county;	//Région
+	protected $country;		//Pays
+	protected $county;		//Région
 	protected $department;	//Département
-	protected $city;	//Ville
+	protected $city;		//Ville
 
 	public function __construct($country, $county = FALSE, $department = FALSE, $city = FALSE)
 	{

@@ -184,10 +184,10 @@ class Karibou
 
 		//Instanciation du gestionnaire de langages
 		
-		$this->languageManager = new LanguageManager();
-		$this->hookManager = new HookManager();
-		$this->eventManager = new EventManager();
-		$this->messageManager = new MessageManager();
+		$this->languageManager	= new LanguageManager();
+		$this->hookManager		= new HookManager();
+		$this->eventManager		= new EventManager();
+		$this->messageManager	= new MessageManager();
 		
 		//Definition du langage de l'utilisateur
 		//TODO -> A deplacer

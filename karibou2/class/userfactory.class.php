@@ -101,9 +101,6 @@ class UserFactory
 			// on récupère en session
 			if($reFetch)
 			{
-				//Modif par DaT... Update
-				//$this->currentUser = new CurrentUser();
-				
 				$this->currentUser = new CurrentUser();
 				$this->currentUser->update($this->db, $this->currentUser->getLogin());
 				$_SESSION['currentUser'] = serialize($this->currentUser);
@@ -257,7 +254,7 @@ class UserFactory
 		return $this->usersArrayByLogin[$username];
 	}	
 	/**
-	 * Après préparation, va rechercher les étudiants en BDD
+	 * Après préparation, va rechercher les utilisateurs en BDD
 	 */
 	function setUserList()
 	{

@@ -16,12 +16,19 @@ class Geo
 	protected $db;
 	protected $userFactory;
 	protected $lang;
+	
+	protected $preparelist;
 
 	public function __construct(PDO $db, UserFactory $userFactory)
 	{
 		$this->db = $db;
 		$this->userFactory = $userFactory;
-		
+		$this->prepare = array();
+		$this->preparelist["countries"]		= array();
+		$this->preparelist["counties"]		= array();
+		$this->preparelist["department"]	= array();
+		$this->preparelist["cities"]		= array();
+
 		$currentUser = $this->userFactory->getCurrentUser();
 		
 		if ($currentUser->getPref("lang") != "")
@@ -78,6 +85,36 @@ class Geo
 	public function getCityFromSearch($countryid, $search)
 	{
 
+	}
+	
+	/* Prepare functions */
+	public function prepareFromId($location)
+	{
+		if (isset($location["city_id"]) && $location["city_id"] != "")
+		{
+			$this->preparelist["cities"][] = $location["city_id"];
+		}
+		
+		if (isset($location["department_id"]) && $location["department_id"] != "")
+		{
+			$this->preparelist["departments"][] = $location["department_id"];
+		}
+		
+		if (isset($location["county_id"]) && $location["county_id"] != "")
+		{
+			$this->preparelist["county"][] = $location["county_id"];
+		}
+		
+		if (isset($location["country_id"]) && $location["country_id"] != "")
+		{
+			$this->preparelist["country"][] = $location["country_id"];
+		}
+	}
+	
+	public function setFromPrepare()
+	{
+		//Select SQL
+		var_dump($this->preparelist);
 	}
 }
 
