@@ -182,7 +182,6 @@ ul.joblist li .ago {
 }
 
 ul.joblist li .company {
-	display: block;
 	clear: both;
 	padding-left: 30px;
 }
@@ -222,9 +221,21 @@ ul.companylist li .name a {
 
 /* Details : Job */
 .netjobs .jobdetails {
-	border: 1px solid #fdbf5e;
-	padding: 10px;
+	/*border: 1px solid #fdbf5e;*/
+	padding: 0px;
 	margin-bottom: 10px;
+}
+
+.netjobs .jobdetails fieldset.job {
+	border: 1px solid #fdbf5e;
+}
+
+.netjobs .jobdetails fieldset.company {
+	border: 1px solid #65b5df;
+}
+
+.netjobs .jobdetails fieldset.contact {
+	border: 1px solid #fdbf5e;
 }
 
 .netjobs .jobdetails span {
@@ -234,13 +245,21 @@ ul.companylist li .name a {
 .netjobs .jobdetails span.textzone {
 	display: block;
 	clear: both;
-	border: 1px solid #ecdcac;
-	background-color: #fff9f0;
 	margin-left: 50px;
 	margin-bottom: 10px;
 	padding: 5px;
 	width: 90%;
 	font-weight: normal;
+}
+
+.netjobs .jobdetails .job span.textzone {
+	border: 1px solid #ecdcac;
+	background-color: #fff9f0;	
+}
+
+.netjobs .jobdetails .company span.textzone {
+	border: 1px solid #2287bb;
+	background-color: #f0f9ff;	
 }
 
 .netjobs .jobdetails .toolbox a.edit {
