@@ -643,7 +643,10 @@ CREATE TABLE `fileshare_versions` (
   `datetime` datetime NOT NULL default '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `netjobs_companies`;
+-- 
+-- Structure de la table `netjobs_companies`
+-- 
+
 CREATE TABLE `netjobs_companies` (
   `i` int(11) NOT NULL auto_increment,
   `id` int(11) NOT NULL default '0',
@@ -663,7 +666,6 @@ CREATE TABLE `netjobs_companies` (
 -- Structure de la table `netjobs_contacts`
 -- 
 
-DROP TABLE IF EXISTS `netjobs_contacts`;
 CREATE TABLE `netjobs_contacts` (
   `contact_id` int(11) NOT NULL default '0',
   `type` enum('job','company') NOT NULL default 'job',
@@ -678,7 +680,6 @@ CREATE TABLE `netjobs_contacts` (
 -- Structure de la table `netjobs_jobs`
 -- 
 
-DROP TABLE IF EXISTS `netjobs_jobs`;
 CREATE TABLE `netjobs_jobs` (
   `i` int(11) NOT NULL auto_increment,
   `id` int(11) NOT NULL default '0',
@@ -695,7 +696,7 @@ CREATE TABLE `netjobs_jobs` (
   `company_id` int(11) NOT NULL default '0',
   `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`i`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=86 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=90 ;
 
 -- --------------------------------------------------------
 
@@ -703,7 +704,6 @@ CREATE TABLE `netjobs_jobs` (
 -- Structure de la table `netjobs_locations`
 -- 
 
-DROP TABLE IF EXISTS `netjobs_locations`;
 CREATE TABLE `netjobs_locations` (
   `id` int(11) NOT NULL default '0',
   `type` enum('job','company') NOT NULL default 'job',
@@ -718,7 +718,6 @@ CREATE TABLE `netjobs_locations` (
   `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`id`,`type`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
 
 
 -- 
