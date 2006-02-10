@@ -1,5 +1,4 @@
 	{if ($onlineusers|@count)>0}
-	{khint langmessage="NOUSERCONNECTED" type="info" insidetag=FALSE}
 		<ul>
 		{foreach from=$onlineusers key=key item=user}
 		    <li>
