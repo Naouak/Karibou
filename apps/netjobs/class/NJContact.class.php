@@ -12,7 +12,7 @@
  *
  * @package applications
  **/
-class NJContact extends Profile
+class NJContact extends NJElement
 {
 	public $companies;
 	public $jobs;
@@ -22,6 +22,55 @@ class NJContact extends Profile
 		parent::__construct($contactinfos,$userFactory);
 		
 	}
+
+	public function getProfileInfo($key)
+	{
+		if (isset($this->infos["profile"], $this->infos["profile"][$key]))
+		{
+			return $this->infos["profile"][$key];
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+	
+	public function getAddresses()
+	{
+		if (isset($this->infos["addresses"]))
+		{
+			return $this->infos["addresses"];
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+	
+	public function getPhones()
+	{
+		if (isset($this->infos["phones"]))
+		{
+			return $this->infos["phones"];
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+
+	public function getEmails()
+	{
+		if (isset($this->infos["emails"]))
+		{
+			return $this->infos["emails"];
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+
 
 	public function getCompanyInfo($key)
 	{

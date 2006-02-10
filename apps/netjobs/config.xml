@@ -7,6 +7,7 @@
 	<load class="NJElement"			file="class/NJElement.class.php" />
 	<load class="NJJob"				file="class/NJJob.class.php" />
 	<load class="NJCompany"			file="class/NJCompany.class.php" />
+	<load class="NJContact"			file="class/NJContact.class.php" />
 
 	<load class="ProfileFactory"	file="../annuaire/classes/profilefactory.class.php" />
 	<load class="Profile"			file="../annuaire/classes/profile.class.php" />

@@ -17,7 +17,11 @@
 					##AGO2##
 				</span>
 				<span class="company">
+				{if $myJob->getCompanyInfo("id") !== FALSE}
 					##JOB_IN## <a href="{kurl page="companydetails" companyid=$myJob->getCompanyInfo("id")}">{$myJob->getCompanyInfo("name")}</a>
+				{else}
+					##JOB_IN## <em>##COMPANYUNKNOWN##</em>
+				{/if}
 				</span>
 			</li>
 	{/foreach}

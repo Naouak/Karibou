@@ -25,11 +25,12 @@ class NJContactDetails extends Model
 			if ($myContact !== FALSE)
 			{
 				$this->assign("myContact", $myContact);
-
-				if ($myContact["profile"]["userid"] == $this->userFactory->getCurrentUser()->getId())
+/*
+				if ($myContact->getProfileInfo("userid") == $this->userFactory->getCurrentUser()->getId())
 				{
 					$this->assign("edit", TRUE);
 				}
+*/
 			}
 		
 			$menuApp = $this->appList->getApp($this->appname);

@@ -75,6 +75,19 @@ class NJElement
 		}
 	}
 	
+	public function getAllLocationInfo()
+	{
+		$locationinfos = array();
+		foreach ($this->infos as $key => $info)
+		{
+			if (preg_match("/^locationinfos\_([A-Za-z0-9_]+)$/", $key, $match))
+			{
+				$locationinfos[$match[1]] = $info;
+			}
+		}
+		return $locationinfos;
+	}
+	
 	public function getAllInfo()
 	{
 		return $this->infos;
@@ -117,15 +130,9 @@ class NJElement
 
 
 	/* Location methods */
-	public function getLocation()
+	public function getFullLocationString()
 	{
-		$location = array();
-		if (TRUE)
-		{
-
-		}
-		
-		return $location;
+		Geo::prepareFromId($this->getAllLocationInfo());
 	}
 
 }

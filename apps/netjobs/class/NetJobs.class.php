@@ -776,13 +776,15 @@ class NetJobs
 				$this->profileFactory->fetchAddresses($profile);
 				$this->profileFactory->fetchPhones($profile);
 				$this->profileFactory->fetchEmails($profile);
-		
-				return array (
+				
+				$cprofile = $profile->getProfile();
+				return new NJContact (array (
 							"profile"	=> $profile->getProfile(),
 							"addresses"	=> $profile->getAddresses(),
 							"phones" 	=> $profile->getPhones(),
-							"emails"		=> $profile->getEmails()
-								);
+							"emails"	=> $profile->getEmails(),
+							"user_id"	=> $cprofile["userid"]
+								), $this->userFactory);
 			}
 			else
 			{
