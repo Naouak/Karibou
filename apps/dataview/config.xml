@@ -30,7 +30,24 @@
 						<value>contact_phone</value>
 				</param>
 			</param>
+			
+			<param name="dataview_internship">
+				<param name="list">
+						<value>company_name</value>
+						<value>company_country</value>
+				</param>
+				<param name="useronlyviewshisdata">
+					<value>yes</value>
+				</param>
+				<param name="userid">
+					<value>userid</value>
+				</param>
+				<param name="versionid">
+					<value>versionid</value>
+				</param>
+			</param>
 		</param>
+	
 		<param name="list">
 			<value name="maxlines">20</value>
 		</param>
@@ -42,8 +59,6 @@
 	<load class="KDataView"			file="class/kdataview.class.php" />
 	<load class="KDataViewSource"	file="class/kdataviewsource.class.php" />
 	<load class="KDataViewRecord"	file="class/kdataviewrecord.class.php" />
-
-	<load class="KDataViewMenu"		file="kdataview.class.php" />
 
 	<load class="DVDefault"			file="default.class.php" />
 	<load class="DVList"			file="list.class.php" />

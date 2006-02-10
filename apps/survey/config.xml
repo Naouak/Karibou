@@ -1,0 +1,53 @@
+<app>	
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+
+	<config>
+
+		<param name="list">
+			<value name="maxlines">20</value>
+		</param>
+	</config>
+
+	<load class="AnyCharArgument"	file="../arguments/anycharargument.class.php" />
+	<load class="NumberArgument"	file="../arguments/numberargument.class.php" />
+
+	<load class="KSurveyFactory"		file="class/ksurveyfactory.class.php" />
+	<load class="KSElement"				file="class/kselement.class.php" />
+	<load class="KSSurvey"				file="class/kssurvey.class.php" />
+	<load class="KSQuestion"		file="class/ksquestion.class.php" />
+	<load class="KSAnswer"			file="class/ksanswer.class.php" />
+	<load class="KSMenu"					file="surveymenu.class.php" />
+
+	<load class="KSDefault"				file="default.class.php" />
+	<load class="KSList"					file="list.class.php" />
+	<load class="KSDisplayQuestions"	file="displayquestions.class.php" />
+	<load class="KSDisplayAnswers"	file="displayanswers.class.php" />
+	<load class="KSSaveAnswers"		file="saveanswers.class.php" />
+	
+
+	<header app="header"	view="default" />
+	<footer app="footer"	view="default" />
+
+	<view name="menu"		class="KSMenu"		template="menu.tpl" />
+
+	<view name="default"						class="KSDefault"						template="default.tpl" />
+	<view name="displayquestions"			class="KSDisplayQuestions"			template="displayquestions.tpl" />
+	<view name="displayanswers"			class="KSDisplayAnswers"			template="displayanswers.tpl" />
+	
+	<page view="default" />
+
+	<page name="displayquestions" view="displayquestions">
+		<argument name="surveyid"	class="NumberArgument" />
+		<option name="pagenum"	class="NumberArgument" />
+	</page>
+
+	<page name="displayanswers"	view="displayanswers">
+		<option name="userid"		class="NumberArgument" />
+		<option name="allversions"	class="NumberArgument" />
+	</page>
+	
+	<form action="saveanswers"	class="KSSaveAnswers">
+		<redirect />
+	</form>
+	
+</app>

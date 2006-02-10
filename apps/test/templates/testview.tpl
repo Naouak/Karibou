@@ -1,5 +1,4 @@
-    
-    <form method="post" action="{kurl page="post"}">
+<form method="post" action="{kurl page="post"}">
     {validate id="fullname" message="Full Name Cannot Be Empty"}
     Full Name: <input type="text" name="FullName" value="{$FullName|escape}"><br />
 	
@@ -20,4 +19,4 @@
     password2: <input type="password" name="password2" size="10" value="{$password2|escape}"><br />
 
     <input type="submit">
-    </form>   
+</form>   

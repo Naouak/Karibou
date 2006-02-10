@@ -9,7 +9,7 @@
 	<small id ="mytof" app="mytof" view="mini" configview="miniconfig" />
 	<small id ="mynotes" app="mynotes" view="mini" configview="miniconfig" />
 	<small id ="onlineusers" app="onlineusers" view="mini" />
-	<small id ="gmailreader" app="gmailreader" view="mini" />
+	<small id ="gmailreader" app="gmailreader" view="mini" configview="miniconfig" />
 
 	<medium id ="news" app="news" view="mini" />
 	<medium id ="mail" app="mail" view="mini" />

@@ -1,5 +1,5 @@
 <h3>Gmail Config</h3>
-<form action="{kurl action="post"}" method="post">
+{*<form action="{kurl action="post"}" method="post">*}
 ##LOGIN## <input type="text" name="gmaillogin" value="{$gmaillogin}" /><br />
 ##PASSWORD## <input type="password" name="gmailpass" value="{$gmailpass}" /><br />
 ##NUMOFELEMENTS##
@@ -9,5 +9,5 @@
 	<option value="7" {if $max==7} SELECTED{/if}>7</option>
 	<option value="9" {if $max==9} SELECTED{/if}>9</option>
 </select>
-<input type="submit" value="##SUBMIT##" />
-</form>
+{*<input type="submit" value="##SUBMIT##" />*}
+{*</form>*}

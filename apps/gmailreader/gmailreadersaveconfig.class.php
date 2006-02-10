@@ -36,11 +36,11 @@ class gmailReaderSaveConfig  extends FormModel
 		$currentUser = $this->userFactory->getCurrentUser();
 //		echo 'gmaillogin : '.$_POST['gmaillogin'];
 		$prefName = 'gmaillogin';
-		$currentUser->setPref($prefName, $_POST['gmaillogin']);
+		$currentUser->setPref($prefName, $this->args['gmaillogin']);
 		$prefName = 'gmailpass';
-		$currentUser->setPref($prefName, $_POST['gmailpass']);
+		$currentUser->setPref($prefName, $this->args['gmailpass']);
 		$prefName = 'gmailmax';
-		$currentUser->setPref($prefName, $_POST['gmailmax']);
+		$currentUser->setPref($prefName, $this->args['gmailmax']);
 		$this->setRedirectArg('page', '');
 	}
 }
