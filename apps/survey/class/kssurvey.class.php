@@ -17,12 +17,20 @@ class KSSurvey extends KSElement
 	protected $questions;
 	protected $answers;
 
-	function getAllQuestions()
+	/**
+	 * Get all methods
+	 */ 
+	public function getAllQuestions()
 	{
 		return $this->questions;
 	}
+	public function getAllAnswers()
+	{
+		return $this->answers;
+	}
 
-	function getQuestionById($questionid)
+
+	public function getQuestionById($questionid)
 	{
 		foreach ($this->questions as $id => $question)
 		{
@@ -38,19 +46,23 @@ class KSSurvey extends KSElement
 	/**
 	 * Set methods
 	 */
-	function setQuestions ($questions)
+	public function setQuestions ($questions)
 	{
 		$this->questions = $questions;
 	}	
-	function setAnswers ($answers)
+	public function setAnswers ($answers)
 	{
 		$this->answers = $answers;
+	}
+	public function setAnswerById($questionid, $answer)
+	{
+		$this->answers[$questionid] = new KSAnswer(array("questionid" => $questionid, "value" => $answer),$this->userFactory);;
 	}
 	
 	/**
 	 * This method get the last answer of the user for the question defined by the questionid
 	 */
-	function getAnswer ($questionid)
+	public function getAnswerById ($questionid)
 	{
 		if (isset($this->answers[$questionid]))
 		{

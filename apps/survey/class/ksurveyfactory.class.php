@@ -194,6 +194,100 @@ class KSurveyFactory
 		
 		$survey->setAnswers($answers);
 	}
+	
+	/* Save user answers */
+	function saveAnswers ($survey)
+	{
+		//Taking into account only questions to avoid forged answers id
+		$questions = $survey->getAllQuestions();
+		$userid = $this->userFactory->getCurrentUser()->getId();
+		$surveyid = $survey->getInfo("id");
+
+		//Set to 0 the `last` column
+		$sql = "
+				UPDATE
+					survey_answers
+				SET
+					`last` = 0
+				WHERE
+					surveyid = '$surveyid'
+				AND
+					userid = '$userid'
+			";
+		try
+		{
+			$stmt = $this->db->exec($sql);
+			unset($stmt);
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}
+		
+
+		//Find max version id + 1
+		$versionid = 1;
+		$sql = "
+				SELECT
+					MAX(`versionid`) AS maxversionid
+				FROM
+					survey_answers
+				WHERE
+					surveyid = '$surveyid'
+				AND
+					userid = '$userid'
+			";			
+			
+		try
+		{
+			$stmt = $this->db->query($sql);
+			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			$versionid = $result[0]["maxversionid"]+1;
+			unset($stmt);
+			
+			//Building the new insert request
+			$insertsql = "";
+			foreach ($questions as $question)
+			{
+				if ($insertsql != "")
+				{
+					$insertsql .= ", ";
+				}
+	
+				$questionid = $question->getInfo("id");
+				$insertsql .= "
+					(	$surveyid,
+						$questionid,
+						$versionid,
+						1,
+					 '".$survey->getAnswerById($questionid)."',
+					 	$userid,
+					 	NOW())";
+			}
+			$sql = "
+					INSERT INTO
+						survey_answers
+					(`surveyid`,`questionid`,`versionid`,`last`,`value`,`userid`, `datetime`)
+					VALUES
+						$insertsql
+				";
+				
+			try
+			{
+				$stmt = $this->db->exec($sql);
+				unset($stmt);
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage());
+			}
+			
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}	
+	}
 
 }
 
