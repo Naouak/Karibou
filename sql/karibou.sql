@@ -720,6 +720,20 @@ CREATE TABLE `netjobs_locations` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
+CREATE TABLE `survey_answers` (
+  `i` int(11) NOT NULL auto_increment,
+  `surveyid` int(11) NOT NULL default '0',
+  `questionid` int(11) NOT NULL default '0',
+  `versionid` int(11) NOT NULL default '0',
+  `last` tinyint(1) NOT NULL default '0',
+  `value` text NOT NULL,
+  `userid` int(11) NOT NULL default '0',
+  `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (`i`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+
+-- --------------------------------------------------------
+
 -- 
 -- Structure de la table `survey_questions`
 -- 
