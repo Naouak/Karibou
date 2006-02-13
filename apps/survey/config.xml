@@ -14,15 +14,15 @@
 	<load class="KSurveyFactory"		file="class/ksurveyfactory.class.php" />
 	<load class="KSElement"				file="class/kselement.class.php" />
 	<load class="KSSurvey"				file="class/kssurvey.class.php" />
-	<load class="KSQuestion"		file="class/ksquestion.class.php" />
-	<load class="KSAnswer"			file="class/ksanswer.class.php" />
-	<load class="KSMenu"					file="surveymenu.class.php" />
+	<load class="KSQuestion"			file="class/ksquestion.class.php" />
+	<load class="KSAnswer"				file="class/ksanswer.class.php" />
+	<load class="KSMenu"				file="surveymenu.class.php" />
 
 	<load class="KSDefault"				file="default.class.php" />
-	<load class="KSList"					file="list.class.php" />
+	<load class="KSList"				file="list.class.php" />
 	<load class="KSDisplayQuestions"	file="displayquestions.class.php" />
-	<load class="KSDisplayAnswers"	file="displayanswers.class.php" />
-	<load class="KSSaveAnswers"		file="saveanswers.class.php" />
+	<load class="KSDisplayAnswers"		file="displayanswers.class.php" />
+	<load class="KSSaveAnswers"			file="saveanswers.class.php" />
 	
 
 	<header app="header"	view="default" />
@@ -30,9 +30,9 @@
 
 	<view name="menu"		class="KSMenu"		template="menu.tpl" />
 
-	<view name="default"						class="KSDefault"						template="default.tpl" />
-	<view name="displayquestions"			class="KSDisplayQuestions"			template="displayquestions.tpl" />
-	<view name="displayanswers"			class="KSDisplayAnswers"			template="displayanswers.tpl" />
+	<view name="default"				class="KSDefault"				template="default.tpl" />
+	<view name="displayquestions"		class="KSDisplayQuestions"		template="displayquestions.tpl" />
+	<view name="displayanswers"			class="KSDisplayAnswers"		template="displayanswers.tpl" />
 	
 	<page view="default" />
 
@@ -42,6 +42,7 @@
 	</page>
 
 	<page name="displayanswers"	view="displayanswers">
+		<argument name="surveyid"	class="NumberArgument" />
 		<option name="userid"		class="NumberArgument" />
 		<option name="allversions"	class="NumberArgument" />
 	</page>

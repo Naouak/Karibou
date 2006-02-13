@@ -11,4 +11,8 @@
 		<translation language="fr">s</translation>
 		<translation language="en">s</translation>
 	</sentence>
+	<sentence key="KS_ANSWERSSAVED">
+		<translation language="fr">Vos réponses ont été enregistrées correctement</translation>
+		<translation language="en">The answers you provided have been saved correctly</translation>
+	</sentence>
 </translation>

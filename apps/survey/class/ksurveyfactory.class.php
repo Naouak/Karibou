@@ -154,6 +154,7 @@ class KSurveyFactory
 	/**
 	 * Connector that links the user answers to the KSSurvey questions
 	 */
+	/*
 	function setUserAnswersToQuestions ($survey)
 	{
 		$answers = array();
@@ -167,6 +168,8 @@ class KSurveyFactory
 					surveyid = '".$survey->getInfo("id")."'
 				AND
 					userid = '".$this->userFactory->getCurrentUser()->getId()."'
+				AND
+					last = 1
 			";			
 			
 		try
@@ -181,6 +184,56 @@ class KSurveyFactory
 				{
 				
 					$answers[$answerinfos["questionid"]] = new KSAnswer($answerinfos,$this->userFactory);
+				}
+			}
+			else
+			{
+			}
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}
+		
+		$survey->setAnswers($answers);
+	}
+	*/
+	/**
+	 * Connector that links the user answers to the KSSurvey questions
+	 */
+	function setAllAnswers ($survey)
+	{
+		$answers = array();
+	
+		$sql = "
+				SELECT
+					*
+				FROM
+					survey_answers
+				WHERE
+					surveyid = '".$survey->getInfo("id")."'
+				AND
+					last = 1
+				ORDER BY
+					userid ASC, questionid ASC
+			";			
+			
+		try
+		{
+			$stmt = $this->db->query($sql);
+			$allanswersinfos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			unset($stmt);
+			
+			if (count($allanswersinfos)>0)
+			{
+				$userid = '';
+				foreach ($allanswersinfos as $answerinfos)
+				{
+					if (!isset($answers[$answerinfos["userid"]]))
+					{
+						$answers[$answerinfos["userid"]] = array();
+					}
+					$answers[$answerinfos["userid"]][$answerinfos["questionid"]] = new KSAnswer($answerinfos,$this->userFactory);
 				}
 			}
 			else

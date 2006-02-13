@@ -37,6 +37,8 @@ class KSSaveAnswers extends FormModel
 					}
 					
 					$mySF->saveAnswers($mySurvey);
+					
+					$_SESSION["survey_answerssaved"] = TRUE;
 				}
 	}
 }

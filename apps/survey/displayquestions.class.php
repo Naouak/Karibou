@@ -27,6 +27,12 @@ class KSDisplayQuestions extends Model
 			$mySurvey = $mySF->getSurveyById($this->args["surveyid"]);
 			$mySF->setQuestionsToSurvey($mySurvey);
 			$mySF->setUserAnswersToQuestions($mySurvey);
+			
+			if (isset($_SESSION["survey_answerssaved"]) && $_SESSION["survey_answerssaved"] === TRUE)
+			{
+				$this->assign("answerssaved", TRUE);
+				unset($_SESSION["survey_answerssaved"]);
+			}
 		}
 		
 		$this->assign("mySurvey", $mySurvey);

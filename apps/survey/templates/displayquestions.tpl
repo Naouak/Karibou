@@ -1,5 +1,16 @@
-{$mySurvey->getAllQuestions()|@count} ##KS_QUESTION##{if $mySurvey->getAllQuestions()|@count > 0}##KS_S##{/if}
+<h1>##SURVEY##</h1>
+<h2>{$mySurvey->getInfo("name")}</h2>
+{if $answerssaved}
+	<div class="success">##KS_ANSWERSSAVED##</div>
+{else}
+	{if $mySurvey->getInfo("description") != ""}
+	<div class="helper">
+		{$mySurvey->getInfo("description")}
+	</div>
+	{/if}
+{/if}
 
+{$mySurvey->getAllQuestions()|@count} ##KS_QUESTION##{if $mySurvey->getAllQuestions()|@count > 0}##KS_S##{/if}
 <form method="post" action="{kurl action="saveanswers"}">
 	<ul>
 	{foreach from=$mySurvey->getAllQuestions() item=question}
