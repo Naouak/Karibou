@@ -20,7 +20,7 @@
 		<translation language="en">Profile sought</translation>
 	</sentence>
 	<sentence key="JOBTYPE">
-		<translation language="fr">Type de contrat</translation>
+		<translation language="fr">Typme de contrat</translation>
 		<translation language="en">Contract type</translation>
 	</sentence>
 	<sentence key="JOBSALARY">
@@ -50,6 +50,10 @@
 	<sentence key="JOBENDDATE">
 		<translation language="fr">Date de fin du contrat</translation>
 		<translation language="en">Job end date</translation>
+	</sentence>
+	<sentence key="JOBLOCATION">
+		<translation language="fr">Localisation</translation>
+		<translation language="en">Location</translation>
 	</sentence>
 	<sentence key="OR">
 		<translation language="fr">ou</translation>
@@ -198,7 +202,7 @@
 		<translation language="en">Edit company</translation>
 	</sentence>
 	<sentence key="COMPANYDELETE">
-		<translation language="fr">Supprimer l'entreprise</translation>
+		<translation language="fr">Supprimer</translation>
 		<translation language="en">Delete company</translation>
 	</sentence>
 	<sentence key="COMPANYDELETE_ASKIFSURE">
@@ -425,8 +429,8 @@
 		<translation language="en">ago</translation>
 	</sentence>
 	<sentence key="SECOND">
-		<translation language="fr">minute</translation>
-		<translation language="en">minutes</translation>
+		<translation language="fr">seconde</translation>
+		<translation language="en">seconde</translation>
 	</sentence>
 	<sentence key="MINUTE">
 		<translation language="fr">minute</translation>

@@ -30,7 +30,7 @@
 				
 				<li class="location">
 					<label for="type">##JOBLOCATION## :</label>
-					<span name="type">{$myJob->getFullLocationString()}</span>
+					<span name="type">{$myJob->getInfo("locationstring")}&nbsp;</span>
 				</li>
 				
 				{if isset($myContact) && $myContact->getProfileInfo("id")}

@@ -30,8 +30,8 @@ function update_county()
 </script>
 
 <h1>##NETJOBS_TITLE##</h1>
-<h2>{if (isset($myJob))}##JOB_UPDATE##{else}##JOB_ADDING##{/if} &quot;{$myJob->getInfo("title")}&quot;</h2>
-<h3>##JOB_LOCATION_ADD##</h3>
+{*<h2>{if (isset($myJob))}##JOB_UPDATE##{else}##JOB_ADDING##{/if}</h2>*}
+<h3>##JOB_LOCATION_ADD## &quot;{$myJob->getInfo("title")}&quot;</h3>
 <div class="netjobs">
 	<div class="helper">
 		##JOB_LOCATION_DESCRIPTION##

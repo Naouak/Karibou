@@ -17,6 +17,7 @@ class NetJobs
 	protected $db;
 	protected $userFactory;
 	protected $profileFactory;
+	protected $geo;
 	
 	protected $locationInfosSQLSelect;
 
@@ -24,6 +25,7 @@ class NetJobs
 	{
 		$this->db = $db;
 		$this->userFactory = $userFactory;
+		$this->geo = new Geo($db,$userFactory);
 		
 		$this->locationInfosSQLSelect = "
 							netjobs_locations.type				AS locationinfos_type,
@@ -45,14 +47,19 @@ class NetJobs
 	
 		$sql = "
 				SELECT	netjobs_companies.*, UNIX_TIMESTAMP(netjobs_companies.datetime) AS timestamp,
+							COUNT(netjobs_jobs.id) as joboffers,
 							".$this->locationInfosSQLSelect."
 				FROM netjobs_companies
+				LEFT OUTER JOIN netjobs_jobs
+					ON (netjobs_companies.id = netjobs_jobs.company_id) && (netjobs_jobs.deleted = 0) && (netjobs_jobs.last = 1)
 				LEFT OUTER JOIN netjobs_locations 
 					ON (netjobs_companies.id = netjobs_locations.id) && (netjobs_locations.type = 'company')
 				WHERE
 					netjobs_companies.last = 1
 				AND
 					netjobs_companies.deleted = 0
+				GROUP BY
+					netjobs_companies.id
 				ORDER BY
 					netjobs_companies.datetime
 					DESC,
@@ -425,6 +432,8 @@ class NetJobs
 			{
 				$job = new NJJob($jobinfos[0],$this->userFactory);
 				
+				$job->setInfo("locationstring", $this->getFullLocationString($job->getAllLocationInfo()));
+				
 				$sqlc = "
 						SELECT 	netjobs_companies.*, UNIX_TIMESTAMP(netjobs_companies.datetime) AS timestamp,
 									".$this->locationInfosSQLSelect."
@@ -795,6 +804,13 @@ class NetJobs
 		{
 			return FALSE;
 		}
+	}
+	
+	/* Temp Location method */
+	/* Location methods */
+	public function getFullLocationString($location)
+	{
+		return $this->geo->getLocationString($location);
 	}
 	
 }

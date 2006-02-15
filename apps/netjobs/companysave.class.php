@@ -19,7 +19,7 @@ class NJCompanySave extends FormModel
 		$NetJobs = new NetJobs($this->db, $this->userFactory);
 		if (isset($_POST["companyinfos"], $_POST["companyinfos"]["id"]))
 		{
-			
+			//Company exists & just modifying company
 			$myCompany = $NetJobs->getCompanyById($_POST["companyinfos"]["id"]);
 			
 			if ($myCompany->canWrite())
@@ -36,17 +36,23 @@ class NJCompanySave extends FormModel
 		{
 			$myJob = $NetJobs->getJobById($_POST["jobid"]);
 			
+			//Adding company in job edit mode
 			if ($myJob->canWrite())
 			{
+				//Adding company
 				$companyid = $NetJobs->saveCompany($_POST["companyinfos"]);
+
+				//Linking company to job
 				$jobInfo = $myJob->getAllInfo();
 				$jobInfo["company_id"] = $companyid;
-				
 				$NetJobs->saveJob($jobInfo);
 				
-				$this->setRedirectArg('app', 'netjobs');
-				$this->setRedirectArg('page', 'locationedit');
+				$this->setRedirectArg('app', 'addressbook');
+				$this->setRedirectArg('page', 'addnj');
 				$this->setRedirectArg('jobid', $_POST["jobid"]);
+				$this->setRedirectArg('companyid', $companyid);
+				$this->setRedirectArg('type', "job");
+				
 			}
 			else
 			{
@@ -56,6 +62,7 @@ class NJCompanySave extends FormModel
 		}
 		elseif (isset($_POST["companyiddelete"]))
 		{
+			//Deleting company
 			$myCompany = $NetJobs->getCompanyById($_POST["companyiddelete"]);
 			if ($myCompany->canWrite())
 			{

@@ -22,7 +22,6 @@ class NJContactChoose extends Model
 		{
 			//Job modification
 			$this->assign("myJob", $myJob);
-			
 			$menuApp = $this->appList->getApp($this->appname);
 			$menuApp->addView("menu", "header_menu", array("page" => "jobedit", "jobid" => $myJob->getInfo("id")) );
 		}

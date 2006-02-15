@@ -29,9 +29,9 @@ class NJLocationEdit extends Model
 			
 			if ($myJob->canWrite())
 			{
-				$location = $myJob->getLocation();
+				//$location = $myJob->getLocation();
 				$this->assign("myJob", $myJob);
-				$this->assign("location", $location);
+				//$this->assign("location", $location);
 			}
 			else
 			{

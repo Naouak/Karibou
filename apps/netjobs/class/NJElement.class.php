@@ -62,6 +62,11 @@ class NJElement
 			return FALSE;
 		}
 	}
+	
+	public function setInfo($key, $value)
+	{
+		$this->infos[$key] = $value;
+	}
 		
 	public function getLocationInfo($key)
 	{
@@ -127,14 +132,6 @@ class NJElement
 		else
 			return FALSE;
 	}
-
-
-	/* Location methods */
-	public function getFullLocationString()
-	{
-		Geo::prepareFromId($this->getAllLocationInfo());
-	}
-
 }
 
 ?>

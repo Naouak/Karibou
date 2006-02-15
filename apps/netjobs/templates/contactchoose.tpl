@@ -7,7 +7,7 @@
 			<ul>
 				<li class="contact">
 					<label for="contactid">##JOB_CONTACT## :</label>
-					{if isset($myJob)}{assign var=jobcontactid value=$myJob->getInfo("contact_id")}{/if}
+					{if isset($myJob)}{assign var=jobcontactid value=$myJob->getInfo("contactid")}{/if}
 					<select name="contactid">
 						<option DISABLED>##JOB_CHOOSECONTACT##</option>
 						<option value="new">##JOB_CREATECONTACT##</option>
