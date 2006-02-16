@@ -22,6 +22,7 @@
 	<load class="KSList"				file="list.class.php" />
 	<load class="KSDisplayQuestions"	file="displayquestions.class.php" />
 	<load class="KSDisplayAnswers"		file="displayanswers.class.php" />
+	<load class="KSDisplayUserAnswers"	file="displayuseranswers.class.php" />
 	<load class="KSSaveAnswers"			file="saveanswers.class.php" />
 	
 
@@ -33,6 +34,7 @@
 	<view name="default"				class="KSDefault"				template="default.tpl" />
 	<view name="displayquestions"		class="KSDisplayQuestions"		template="displayquestions.tpl" />
 	<view name="displayanswers"			class="KSDisplayAnswers"		template="displayanswers.tpl" />
+	<view name="displayuseranswers"		class="KSDisplayUserAnswers"	template="displayuseranswers.tpl" />
 	
 	<page view="default" />
 
@@ -43,8 +45,11 @@
 
 	<page name="displayanswers"	view="displayanswers">
 		<argument name="surveyid"	class="NumberArgument" />
-		<option name="userid"		class="NumberArgument" />
-		<option name="allversions"	class="NumberArgument" />
+	</page>
+	
+	<page name="displayuseranswers"	view="displayuseranswers">
+		<argument name="surveyid"	class="NumberArgument" />
+		<argument name="userid"		class="NumberArgument" />
 	</page>
 	
 	<form action="saveanswers"	class="KSSaveAnswers">

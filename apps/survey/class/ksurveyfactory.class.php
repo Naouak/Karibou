@@ -33,10 +33,13 @@ class KSurveyFactory
 		$surveys = array();
 	
 		$sql = "
-				SELECT	*
+				SELECT	survey_surveys.*, survey_answers.userid as answeruserid
 				FROM survey_surveys
+				LEFT JOIN survey_answers ON survey_surveys.id = survey_answers.surveyid
+				WHERE survey_answers.userid = ".$this->userFactory->getCurrentUser()->getId()."
+				GROUP BY survey_surveys.id
 				ORDER BY
-					datetime
+					survey_surveys.datetime
 					DESC
 			";			
 			
@@ -74,11 +77,16 @@ class KSurveyFactory
 		$surveys = array();
 	
 		$sql = "
-				SELECT	*
+				SELECT	survey_surveys.*, survey_answers.userid as answeruserid
 				FROM survey_surveys
-				WHERE id = '$surveyid'
+				LEFT JOIN survey_answers ON survey_surveys.id = survey_answers.surveyid
+				WHERE
+					id = '$surveyid'
+					AND
+					survey_answers.userid = ".$this->userFactory->getCurrentUser()->getId()."
+				GROUP BY survey_surveys.id
 				ORDER BY
-					datetime
+					survey_surveys.datetime
 					DESC
 			";			
 			
@@ -154,10 +162,20 @@ class KSurveyFactory
 	/**
 	 * Connector that links the user answers to the KSSurvey questions
 	 */
-	/*
-	function setUserAnswersToQuestions ($survey)
+	function setUserAnswersToQuestions ($survey, $userid = FALSE)
 	{
 		$answers = array();
+	
+		if ($userid == FALSE)
+		{
+			//If userid not specified, this means we need the current user "last" answers
+			$uid = $this->userFactory->getCurrentUser()->getId();
+		}
+		else
+		{
+			//If userid is specified, this means we need all answers from the specified user
+			$uid = $userid;
+		}
 	
 		$sql = "
 				SELECT
@@ -167,13 +185,47 @@ class KSurveyFactory
 				WHERE
 					surveyid = '".$survey->getInfo("id")."'
 				AND
-					userid = '".$this->userFactory->getCurrentUser()->getId()."'
-				AND
-					last = 1
-			";			
+					userid = '".$uid."'
+				";
+
+		if ($userid === FALSE)
+		{
+			$sql .= "
+					AND
+						last = 1
+					";
+		}
+		
+		$sql .= "
+					ORDER BY datetime DESC
+				";
 			
 		try
 		{
+			$stmt = $this->db->query($sql);
+			$allanswersinfos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			unset($stmt);
+			
+			if (count($allanswersinfos)>0)
+			{
+				$userid = '';
+				foreach ($allanswersinfos as $answerinfos)
+				{
+					if (!isset($answers[$answerinfos["userid"]]))
+					{
+						$answers[$answerinfos["userid"]] = array();
+					}
+					if (!isset($answers[$answerinfos["userid"]][$answerinfos["versionid"]]))
+					{
+						$answers[$answerinfos["userid"]][$answerinfos["versionid"]] = array();
+					}
+					$answers[$answerinfos["userid"]][$answerinfos["versionid"]][$answerinfos["questionid"]] = new KSAnswer($answerinfos,$this->userFactory);
+				}
+			}
+			else
+			{
+			}
+		/*
 			$stmt = $this->db->query($sql);
 			$answersinfos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			unset($stmt);
@@ -189,6 +241,7 @@ class KSurveyFactory
 			else
 			{
 			}
+		*/
 		}
 		catch(PDOException $e)
 		{
@@ -197,7 +250,6 @@ class KSurveyFactory
 		
 		$survey->setAnswers($answers);
 	}
-	*/
 	/**
 	 * Connector that links the user answers to the KSSurvey questions
 	 */
@@ -233,7 +285,11 @@ class KSurveyFactory
 					{
 						$answers[$answerinfos["userid"]] = array();
 					}
-					$answers[$answerinfos["userid"]][$answerinfos["questionid"]] = new KSAnswer($answerinfos,$this->userFactory);
+					if (!isset($answers[$answerinfos["userid"]][$answerinfos["versionid"]]))
+					{
+						$answers[$answerinfos["userid"]][$answerinfos["versionid"]] = array();
+					}
+					$answers[$answerinfos["userid"]][$answerinfos["versionid"]][$answerinfos["questionid"]] = new KSAnswer($answerinfos,$this->userFactory);
 				}
 			}
 			else

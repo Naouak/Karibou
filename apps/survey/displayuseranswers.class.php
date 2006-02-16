@@ -12,27 +12,28 @@
  * 
  * @package applications
  **/
-class KSDisplayAnswers extends Model
+class KSDisplayUserAnswers extends Model
 {
 	public function build()
 	{
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
 		$app->addView("menu", "header_menu", array("page"=>"displayanswers"));
-		
 		$mySF = new KSurveyFactory ($this->db, $this->userFactory);
 		if ($this->permission >= _ADMIN_)
 		{
-			if (isset($this->args["surveyid"]) && $this->args["surveyid"] != "")
+			if (isset($this->args["surveyid"],$this->args["userid"]) && $this->args["surveyid"] != "" && $this->args["userid"] != "")
 			{
 
 				$mySurvey = $mySF->getSurveyById($this->args["surveyid"]);
 				
 				$mySF->setQuestionsToSurvey($mySurvey);
-				$mySF->setAllAnswers($mySurvey);
-				$this->assign("answers", $mySurvey->getAllAnswers());
+				$mySF->setUserAnswersToQuestions($mySurvey, $this->args["userid"]);
+				$answers = $mySurvey->getAllAnswers();
+				
+				$this->assign("answers", $answers);
 
-
+				$this->assign("currentUser", $this->userFactory->getCurrentUser());
 
 				$this->assign("mySurvey", $mySurvey);
 			}

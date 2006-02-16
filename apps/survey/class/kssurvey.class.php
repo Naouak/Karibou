@@ -65,10 +65,22 @@ class KSSurvey extends KSElement
 	public function getAnswerById ($questionid)
 	{
 		reset($this->answers);
-		$answer = current($this->answers);
-		if (isset($answer[$questionid]))
+		$answers = current($this->answers);
+		if (isset($answers[$questionid]))
 		{
-			return $answer[$questionid]->getInfo("value");
+			return $answers[$questionid]->getInfo("value");
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+	
+	public function userAnswered()
+	{
+		if ($this->getInfo("answeruserid") > 0)
+		{
+			return TRUE;
 		}
 		else
 		{

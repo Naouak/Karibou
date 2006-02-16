@@ -8,20 +8,34 @@
 {/if}
 
 <table border="1">
-	{foreach name="answers" from=$answers item="answer"}
+	{foreach name="answers" from=$answers item="answer" key="userid"}
 		{if $smarty.foreach.answers.first}
+	<tr>
+		<td>
+				##KS_DETAILS##
+		</td>
+		<td>
+				##KS_USER##
+		</td>
 			{foreach from=$answer key=key item=item}
 		<td>
-				{$mySurvey->getQuestionById($key)->getInfo("name")}
-		<td>
+				{assign var=question value=$mySurvey->getQuestionById($key)}
+				{$question->getInfo("name")}
+		</td>
 			{/foreach}
+	</tr>
 		{/if}
 	<tr>
-	
+		<td>
+				<a href="{kurl page="displayuseranswers" surveyid=$mySurvey->getInfo("id") userid=$userid}"><span>##KS_DETAILS##</span></a>
+		</td>
+		<td style="witdh: 10px; overflow: hidden;">
+			{userlink user=$answer[$userid]->creator showpicture=true}
+		</td>
 		{foreach from=$answer key=key item=item}
 		<td>
 			{$item->getInfo("value")}
-		<td>
+		</td>
 		{/foreach}
 	</tr>
 	{/foreach}
