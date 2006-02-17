@@ -1,0 +1,65 @@
+.survey {
+}
+
+.survey ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.survey .nbquestions {
+	text-align: center;
+	font-weight: bold;
+}
+
+.survey form.questions {
+	padding: 0;
+	margin: 0;
+}
+
+.survey form.questions ul li {
+	padding: 5px 0px 5px 30px;
+	border-top: 1px dashed #acacac;
+}
+
+.survey form.questions ul li span {
+	display: block;
+	padding-left: 34px;
+	background-image: url(images/survey/question.shadow.20.png);
+	background-repeat: no-repeat;
+	background-position: 0px 50%;
+}
+
+.survey form.questions ul li.first {
+	border-top: none;
+}
+
+.survey form.questions ul li label {
+	display: block;
+}
+
+.survey form.questions ul li .field {
+	margin-left: 40px;
+}
+
+.survey form.questions .button {
+	margin: 20px;
+	text-align: center;
+}
+.survey form.questions .button input {
+	font-weight: bold;
+}
+
+/* Survey list */
+.survey ul.surveys li.survey {
+	padding: 10px 10px 10px 60px;
+	background-image: url(images/survey/survey.45.png);
+	background-repeat: no-repeat;
+	background-position: 0px 50%;
+	margin-left: 20px;
+	margin-bottom: 5px;
+}
+.survey ul.surveys li.survey ul {
+	margin-left: 30px;
+	
+}
