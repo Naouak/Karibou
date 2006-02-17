@@ -56,7 +56,7 @@ function kurl($params , $appList)
 					}
 					else
 					{
-						Debug::kill("Unknown class : ".$class);
+						Debug::kill("[Unknown] Class : ".$class." / Key : ".$key." / Page  :".$page);
 					}
 
     				//S'il y a plusieurs arguments, on les separe par des virgules
