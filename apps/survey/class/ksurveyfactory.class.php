@@ -36,7 +36,7 @@ class KSurveyFactory
 				SELECT	survey_surveys.*, survey_answers.userid as answeruserid
 				FROM survey_surveys
 				LEFT JOIN survey_answers ON survey_surveys.id = survey_answers.surveyid
-				WHERE survey_answers.userid = ".$this->userFactory->getCurrentUser()->getId()."
+					AND survey_answers.userid = ".$this->userFactory->getCurrentUser()->getId()."
 				GROUP BY survey_surveys.id
 				ORDER BY
 					survey_surveys.datetime
@@ -79,11 +79,10 @@ class KSurveyFactory
 		$sql = "
 				SELECT	survey_surveys.*, survey_answers.userid as answeruserid
 				FROM survey_surveys
-				LEFT JOIN survey_answers ON survey_surveys.id = survey_answers.surveyid
+				LEFT JOIN survey_answers ON survey_surveys.id = survey_answers.surveyid 
+					AND survey_answers.userid = ".$this->userFactory->getCurrentUser()->getId()."
 				WHERE
 					id = '$surveyid'
-					AND
-					survey_answers.userid = ".$this->userFactory->getCurrentUser()->getId()."
 				GROUP BY survey_surveys.id
 				ORDER BY
 					survey_surveys.datetime

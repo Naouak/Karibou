@@ -43,4 +43,52 @@
 		<translation language="fr">Réponses de</translation>
 		<translation language="en">Answers of</translation>
 	</sentence>
+	<sentence key="KS_DATE">
+		<translation language="fr">Date</translation>
+		<translation language="en">Date</translation>
+	</sentence>
+	<sentence key="KS_VERSIONID">
+		<translation language="fr">Version</translation>
+		<translation language="en">Version</translation>
+	</sentence>
+	<sentence key="KS_DISPLAYANSWERS">
+		<translation language="fr">Voir les réponses de tous les utilisateurs</translation>
+		<translation language="en">View all users answers</translation>
+	</sentence>	
+	<sentence key="KS_NOPERMISSION">
+		<translation language="fr">Vous n'avez pas la permission d'accéder à cette page.</translation>
+		<translation language="en">You have not been authorised to access this page.</translation>
+	</sentence>
+	<sentence key="KS_QUESTIONNAME">
+		<translation language="fr">Nom de la question</translation>
+		<translation language="en">Question name</translation>
+	</sentence>
+	<sentence key="KS_QUESTIONDESCRIPTION">
+		<translation language="fr">Description de la question</translation>
+		<translation language="en">Question description</translation>
+	</sentence>
+	<sentence key="KS_ADDQUESTION">
+		<translation language="fr">Ajouter une question</translation>
+		<translation language="en">Add question</translation>
+	</sentence>
+	<sentence key="KS_QUESTIONTYPE">
+		<translation language="fr">Type de question</translation>
+		<translation language="en">Question type</translation>
+	</sentence>
+	<sentence key="KS_SURVENAME">
+		<translation language="fr">Nom du sondage</translation>
+		<translation language="en">Survey name</translation>
+	</sentence>
+	<sentence key="KS_SURVEYDESCRIPTION">
+		<translation language="fr">Description du sondage</translation>
+		<translation language="en">Survey description</translation>
+	</sentence>
+	<sentence key="KS_QUESTIONS">
+		<translation language="fr">Questions</translation>
+		<translation language="en">Questions</translation>
+	</sentence>
+	<sentence key="KS_SURVEYDETAILS">
+		<translation language="fr">Détails du sondage</translation>
+		<translation language="en">Survey details</translation>
+	</sentence>
 </translation>

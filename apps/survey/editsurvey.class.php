@@ -12,22 +12,24 @@
  * 
  * @package applications
  **/
-class KSDefault extends Model
+class KSEditSurvey extends Model
 {
 	public function build()
 	{
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
-		$app->addView("menu", "header_menu", array("page"=>"default"));
-
-		if ($this->permission >= _ADMIN_)
-		{
-			$this->assign("admin", true);
-		}
+		$app->addView("menu", "header_menu", array("page"=>"editsurvey"));
 		
 		$mySF = new KSurveyFactory ($this->db, $this->userFactory);
 		
-		$this->assign("surveys", $mySF->getSurveyList());
+		if (isset($this->args["surveyid"]) && $this->args["surveyid"] != "")
+		{
+			$mySurvey = $mySF->getSurveyById($this->args["surveyid"]);
+			$mySF->setQuestionsToSurvey($mySurvey);
+
+			$this->assign("mySurvey", $mySurvey);
+		}
+		
 	}
 }
 

@@ -24,7 +24,8 @@
 	<load class="KSDisplayAnswers"		file="displayanswers.class.php" />
 	<load class="KSDisplayUserAnswers"	file="displayuseranswers.class.php" />
 	<load class="KSSaveAnswers"			file="saveanswers.class.php" />
-	
+	<load class="KSEditSurvey"			file="editsurvey.class.php" />
+	<load class="KSSaveSurvey"			file="savesurvey.class.php" />
 
 	<header app="header"	view="default" />
 	<footer app="footer"	view="default" />
@@ -35,6 +36,7 @@
 	<view name="displayquestions"		class="KSDisplayQuestions"		template="displayquestions.tpl" />
 	<view name="displayanswers"			class="KSDisplayAnswers"		template="displayanswers.tpl" />
 	<view name="displayuseranswers"		class="KSDisplayUserAnswers"	template="displayuseranswers.tpl" />
+	<view name="editsurvey"				class="KSEditSurvey"			template="editsurvey.tpl" />
 	
 	<page view="default" />
 
@@ -51,7 +53,11 @@
 		<argument name="surveyid"	class="NumberArgument" />
 		<argument name="userid"		class="NumberArgument" />
 	</page>
-	
+
+	<page name="editsurvey"			view="editsurvey">
+		<option name="surveyid"	class="NumberArgument" />
+	</page>
+
 	<form action="saveanswers"	class="KSSaveAnswers">
 		<redirect />
 	</form>

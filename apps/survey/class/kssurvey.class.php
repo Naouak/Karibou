@@ -15,6 +15,9 @@
 class KSSurvey extends KSElement
 {
 	protected $questions;
+	
+	//$this->answers[$userid][$versionid][$questionid]
+	//3 level array containing the users answers versioned to the questions
 	protected $answers;
 
 	/**
@@ -56,19 +59,35 @@ class KSSurvey extends KSElement
 	}
 	public function setAnswerById($questionid, $answer)
 	{
-		$this->answers[$questionid] = new KSAnswer(array("questionid" => $questionid, "value" => $answer),$this->userFactory);;
+		if (!isset($this->answers))
+		{
+			$this->answers = array();
+		}
+		if (!isset($this->answers[$this->userFactory->getCurrentUser()->getId()]))
+		{
+			$this->answers[$this->userFactory->getCurrentUser()->getId()] = array();
+		}
+		$this->answers[$this->userFactory->getCurrentUser()->getId()][0][$questionid] = new KSAnswer(array("questionid" => $questionid, "value" => $answer),$this->userFactory);
 	}
 	
 	/**
-	 * This method get the last answer of the user for the question defined by the questionid
+	 * This method get a answer for the question defined by the questionid
+	 * It works decently only in the cas where there is one version of answers of one user
 	 */
 	public function getAnswerById ($questionid)
 	{
-		reset($this->answers);
-		$answers = current($this->answers);
-		if (isset($answers[$questionid]))
+		if (count($this->answers)>0)
 		{
-			return $answers[$questionid]->getInfo("value");
+			reset($this->answers);
+			$answers = current(current($this->answers));
+			if (isset($answers[$questionid]))
+			{
+				return $answers[$questionid]->getInfo("value");
+			}
+			else
+			{
+				return FALSE;
+			}
 		}
 		else
 		{
@@ -76,6 +95,9 @@ class KSSurvey extends KSElement
 		}
 	}
 	
+	/**
+	 * This method defines if the user has already answered the survey
+	 */
 	public function userAnswered()
 	{
 		if ($this->getInfo("answeruserid") > 0)

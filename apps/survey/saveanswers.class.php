@@ -35,7 +35,6 @@ class KSSaveAnswers extends FormModel
 							$mySurvey->setAnswerById($match[1], $value);
 						}
 					}
-					
 					$mySF->saveAnswers($mySurvey);
 					
 					$_SESSION["survey_answerssaved"] = TRUE;

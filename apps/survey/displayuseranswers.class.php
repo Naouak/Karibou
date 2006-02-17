@@ -16,14 +16,16 @@ class KSDisplayUserAnswers extends Model
 {
 	public function build()
 	{
-		$app = $this->appList->getApp($this->appname);
-		$config = $app->getConfig();
-		$app->addView("menu", "header_menu", array("page"=>"displayanswers"));
 		$mySF = new KSurveyFactory ($this->db, $this->userFactory);
 		if ($this->permission >= _ADMIN_)
 		{
 			if (isset($this->args["surveyid"],$this->args["userid"]) && $this->args["surveyid"] != "" && $this->args["userid"] != "")
 			{
+				$this->assign("admin", true);
+				//Menu
+				$app = $this->appList->getApp($this->appname);
+				$config = $app->getConfig();
+				$app->addView("menu", "header_menu", array("page"=>"displayuseranswers", "surveyid"=>$this->args["surveyid"]));
 
 				$mySurvey = $mySF->getSurveyById($this->args["surveyid"]);
 				
