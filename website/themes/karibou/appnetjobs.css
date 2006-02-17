@@ -210,6 +210,7 @@ ul.companylist li .name a {
 	display: block;
 	width: 212px;
 	height: 54px;
+	white-space: nowrap;
 }
 
 .netjobs .toolbox a span {
