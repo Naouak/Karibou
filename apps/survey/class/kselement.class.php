@@ -126,6 +126,12 @@ class KSElement
 		
 		return $location;
 	}
+	
+	/* Set method */
+	public function setInfo($key, $value)
+	{
+		$this->infos[$key] = $value;
+	}
 
 }
 

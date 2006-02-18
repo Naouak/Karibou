@@ -61,5 +61,8 @@
 	<form action="saveanswers"	class="KSSaveAnswers">
 		<redirect />
 	</form>
+	<form action="savesurvey"	class="KSSaveSurvey">
+		<redirect />
+	</form>
 	
 </app>

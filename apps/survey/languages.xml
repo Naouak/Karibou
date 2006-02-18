@@ -75,7 +75,7 @@
 		<translation language="fr">Type de question</translation>
 		<translation language="en">Question type</translation>
 	</sentence>
-	<sentence key="KS_SURVENAME">
+	<sentence key="KS_SURVEYNAME">
 		<translation language="fr">Nom du sondage</translation>
 		<translation language="en">Survey name</translation>
 	</sentence>

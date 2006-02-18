@@ -303,7 +303,9 @@ class KSurveyFactory
 		$survey->setAnswers($answers);
 	}
 	
-	/* Save user answers */
+	/**
+	 * Save user answers
+	 */
 	function saveAnswers ($survey)
 	{
 		//Taking into account only questions to avoid forged answers id
@@ -395,6 +397,71 @@ class KSurveyFactory
 		{
 			Debug::kill($e->getMessage());
 		}	
+	}
+
+	/**
+	 * Save survey details & questions
+	 */
+	public function saveSurveyDetails($survey)
+	{
+		if ($survey->getInfo("id") !== FALSE)
+		{
+			//Update if exists
+			$sql = "
+					UPDATE
+						survey_surveys
+					SET
+						name = '".$survey->getInfo("name")."',
+						description = '".$survey->getInfo("description")."'
+					WHERE
+						id = '".$survey->getInfo("id")."'
+				";			
+				
+			try
+			{
+				$stmt = $this->db->exec($sql);
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage());
+			}
+		}
+		else
+		{
+			//Create if it doesn't
+			$sql = "
+					INSERT INTO
+						survey_surveys
+					(name, description, userid, datetime)
+					VALUES
+						('".$survey->getInfo("name")."',
+						'".$survey->getInfo("description")."',
+						'".$this->userFactory->getCurrentUser()->getId()."',
+						NOW())
+				";			
+				
+			try
+			{
+				$stmt = $this->db->exec($sql);
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage());
+			}
+		}
+		
+				
+	}
+	
+	public function saveSurveyQuestions($survey)
+	{
+		//Create insert or update request for each question
+		
+		//For each question
+		foreach ($survey->getAllQuestions() as $questionid => $question)
+		{
+			var_dump($questionid);
+		}
 	}
 
 }

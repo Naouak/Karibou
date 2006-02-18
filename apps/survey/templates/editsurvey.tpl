@@ -7,7 +7,7 @@
 			<ul>
 				<li>
 					<span>
-						<label for="ks_surveyname">##KS_SURVENAME##</label>
+						<label for="ks_surveyname">##KS_SURVEYNAME##</label>
 						<input name="ks_surveyname" value="{if isset($mySurvey)}{$mySurvey->getInfo("name")}{/if}" class="field" />
 					</span>
 				</li>
@@ -41,8 +41,8 @@
 						</li>
 						<li>
 							<span>
-								<label for="ks_q{$question->getInfo("id")}_description">##KS_QUESTIONTYPE##</label>
-								<input name="ks_q{$question->getInfo("id")}_description" class="field"  value="{$question->getInfo("type")}" />
+								<label for="ks_q{$question->getInfo("id")}_type">##KS_QUESTIONTYPE##</label>
+								<input name="ks_q{$question->getInfo("id")}_type" class="field"  value="{$question->getInfo("type")}" />
 							</span>
 						</li>
 					</ul>
