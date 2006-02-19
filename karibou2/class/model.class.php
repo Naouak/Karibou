@@ -164,6 +164,7 @@ abstract class Model
 		// problème avec les hook, smarty appelé recursivement efface des valeurs
 		// ça fonction mieux en commentant cette ligne mais faut trouvé un contournement
 		//$this->smarty->clear_all_assign();
+		$this->smarty->quick_hack_clear_values();
 		$this->smarty->template_dir = $this->templatedir.'/';
 		$this->smarty->compile_dir = KARIBOU_COMPILE_DIR.'/'.get_class($this).'/';
 		if(!is_dir($this->smarty->compile_dir)) mkdir($this->smarty->compile_dir);
@@ -186,6 +187,7 @@ abstract class Model
 		// problème avec les hook, smarty appelé recursivement efface des valeurs
 		// ça fonction mieux en commentant cette ligne mais faut trouvé un contournement
 		//$this->smarty->clear_all_assign();
+		$this->smarty->quick_hack_clear_values();
 		$this->smarty->template_dir = $this->templatedir.'/';
 		$this->smarty->compile_dir = KARIBOU_COMPILE_DIR.'/'.get_class($this).'/';
 		if(!is_dir($this->smarty->compile_dir)) mkdir($this->smarty->compile_dir);

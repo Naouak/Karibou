@@ -141,6 +141,11 @@ class KSmarty extends Smarty
 			$this->hookManager->display($param["name"]);
 		}
 	}
+	
+	function quick_hack_clear_values()
+	{
+		unset($this->_tpl_vars['config']);
+	}
 
 }
 
