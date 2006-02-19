@@ -76,6 +76,18 @@ class ExecutionTimer
 		}
 	}
 	
+	function getText()
+	{
+		$html = "";
+		if( $this->display == false ) return $html;
+		reset($this->timeArray);
+		while(list($key, $value) = each($this->timeArray))
+		{
+			$html .= $key." (".$this->countArray[$key].") : ".round($value, 3)." sec\n";
+		}
+		return $html;
+	}
+	
 	function getHTML()
 	{
 		$html = "";

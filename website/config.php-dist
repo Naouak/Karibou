@@ -43,6 +43,11 @@ define("KARIBOU_DAEMON_DIR", dirname(__FILE__).'/../daemons');
 define("KARIBOU_PUB_DIR", dirname(__FILE__).'/pub');
 define("KARIBOU_THEMES_URL", "/themes");
 
+define("KARIBOU_DEBUG", true); // stdout // file
+define("KARIBOU_DEBUG_METHOD", "file"); // stdout // file
+define("KARIBOU_DEBUG_TYPE", "text"); // text // html
+define("KARIBOU_DEBUG_FILENAME", "/home/jon/projets/karibou/logs/karibou.log");
+
 /* STYLES */
 
 $config['style'][0]['titre']        = "karibou";

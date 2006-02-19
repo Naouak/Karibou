@@ -1,6 +1,7 @@
 <br />
-<a href="" onclick="new Ajax.Updater('{$id}_content', '{kurl page="miniappeditview" miniapp=$id}', {ldelim}asynchronous:true, evalScripts:true{rdelim}); return false;" >
-	<span class="edit">back</span>
+<a href="" title="back"
+	onclick="new Ajax.Updater('{$id}_content', '{kurl page="miniappeditview" miniapp=$id}', {ldelim}asynchronous:true, evalScripts:true{rdelim}); return false;" >
+	<span class="edit"><span class="text">back</span></span>
 </a>
 
 <form id="{$id}_form" method="POST" 

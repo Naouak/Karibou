@@ -19,8 +19,8 @@ class AccueilModel extends Model
 {
 	function build()
 	{
-		$app = $this->appList->getApp($this->appname);
-		$app->addView("menu", "header_menu");
+		$thisapp = $this->appList->getApp($this->appname);
+		$thisapp->addView("menu", "header_menu");
 
 		$currentUser = $this->userFactory->getCurrentUser();
 
@@ -41,13 +41,13 @@ class AccueilModel extends Model
 			$minichat = $miniapps->getNewApp('minichat', array('maxlines'=>5));
 			$containers->setApps( $c1, array($login, $minichat) ) ;
             
-            $c2_apps = array();
-            if( $this->currentUser->isLogged() )
-            {
-			    	$c2_apps[] = $miniapps->getNewApp('mail');
-                $c2_apps[] = $miniapps->getNewApp('news');
-            }
-		    $containers->setApps( $c2, $c2_apps ) ;
+			$c2_apps = array();
+			if( $this->currentUser->isLogged() )
+			{
+			 	$c2_apps[] = $miniapps->getNewApp('mail');
+			   $c2_apps[] = $miniapps->getNewApp('news');
+			}
+			$containers->setApps( $c2, $c2_apps ) ;
 
 			$c3_apps = array();
 			$c3_apps[] = $miniapps->getNewApp('onlineusers');
@@ -56,34 +56,28 @@ class AccueilModel extends Model
 
 			$currentUser->setPref('miniapps', $miniapps );
 			$currentUser->setPref('containers', $containers );
+			$currentUser->savePrefs($this->db);
 		}
 		
-		if( isset($this->args['act']) && $this->args['act'] == 'edit' )
+		$miniapp_view = 'miniappedit';
+		$this->assign("miniapps", $miniapps->getConfig() );
+		$default = $containers->getDefaultApps();
+		
+		foreach($default as $app)
 		{
-			$miniapp_view = 'miniappedit';
-			$this->assign("miniapps", $miniapps->getConfig() );
-			$default = $containers->getDefaultApps();
-			
-			foreach($default as $app)
+			if( isset($miniapps[$app]) )
 			{
-				if( isset($miniapps[$app]) )
-				{
-					$a = $this->appList->getApp($this->appname);
-					$args = $miniapps[$app];
-					$args['id'] = $app;
-					$a->addView(
-						$miniapp_view ,
-						"default_container",
-						$args
-					);
-				}
+				//$a = $this->appList->getApp($this->appname); //thisapp
+				$args = $miniapps[$app];
+				$args['id'] = $app;
+				$thisapp->addView(
+					$miniapp_view ,
+					"default_container",
+					$args
+				);
 			}
 		}
-		else
-		{
-			$miniapp_view = 'miniappview';
-		}
-		
+
 		$cont = array();
 		foreach( $containers as $key => $c )
 		{
@@ -92,10 +86,10 @@ class AccueilModel extends Model
 			{
 				if( isset($miniapps[$app]) )
 				{
-					$a = $this->appList->getApp($this->appname);
+					//$a = $this->appList->getApp($this->appname);
 					$args = $miniapps[$app];
 					$args['id'] = $app;
-					$a->addView(
+					$thisapp->addView(
 						$miniapp_view ,
 						$key,
 						$args
@@ -103,6 +97,8 @@ class AccueilModel extends Model
 				}
 			}
 		}
+		$this->assign("containers", $cont);
+		//Debug::display($this);
 
 		$this->assign("messages", $this->messageManager->getMessages("default"));
 		if (isset($this->currentUser))
@@ -110,7 +106,6 @@ class AccueilModel extends Model
 			$this->assign("username", $this->currentUser->getLogin());
 		}
 
-		$this->assign("containers", $cont);
 	}
 }
 

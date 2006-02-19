@@ -1,18 +1,3 @@
-﻿-- phpMyAdmin SQL Dump
--- version 2.6.2-pl1
--- http://www.phpmyadmin.net
--- 
--- Serveur: localhost
--- Généré le : Dimanche 21 Août 2005 à 22:08
--- Version du serveur: 4.1.12
--- Version de PHP: 5.1.0b3
--- 
--- Base de données: `karibou`
--- 
-
--- --------------------------------------------------------
-
-
 DROP TABLE IF EXISTS `keychain`;
 CREATE TABLE `keychain` (
   `user_id` int(11) NOT NULL default '0',

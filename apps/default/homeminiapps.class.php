@@ -76,10 +76,15 @@ class HomeMiniApps extends ObjectList
 	{
 		foreach( $array as $id)
 		{
-			if( isset($this->data[$id]) )
-			{
-				unset($this->data[$id]);
-			}
+			$this->deleteApp($id);
+		}
+	}
+	
+	function deleteApp($id)
+	{
+		if( isset($this->data[$id]) )
+		{
+			unset($this->data[$id]);
 		}
 	}
 	

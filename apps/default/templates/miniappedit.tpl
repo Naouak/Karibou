@@ -1,5 +1,5 @@
 <div id="{$id}" class="{$size}box" >
-<span class="handle">drag here</span>
+{*<div class="handle">drag here</div>*}
 <div id="{$id}_content">
 {include file="miniappeditview.tpl"}
 </div>

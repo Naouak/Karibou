@@ -1,41 +1,208 @@
 <div class="home">
-{if (isset($messages) && $messages !== FALSE)}
-<h1>##ACTION_REQUIRED##</h1>
-	{foreach from=$messages item=message}
-		{if ($message == "NOEMAIL")}
-			{*L'utilisateur n'a pas d'email référencé dans son profil*}
-			{assign var="nodisplay" value="TRUE"}
-			<h2>##ADDEMAIL_TITLE##</h2>
-			<div class="warning">
-			##ADDEMAIL##
-			</div>
-			{if (isset($username))}
-			<strong><a href="{kurl app="annuaire" username=$username act="edit"}">##MODIFYPROFILE_LINK##</a></strong>
-			{/if}
-        {elseif ($message == "CHANGEPASSWORD")}
-			{*Chnge password*}
-			{assign var="nodisplay" value="TRUE"}
-			<h2>##CHANGEPASSWORD_TITLE##</h2>
-			<div class="warning">
-			##CHANGEPASSWORD_DESCRIPTION##
-			</div>
-			<strong><a href="{kurl app="changepassword"}">##CHANGEPASSWORD_LINK##</a></strong>
-		{/if}
+	<script type="text/javascript" language="javascript">
+	// <![CDATA[
+	
+	var save_url = '{kurl action="saveapps"}';
+	var delete_url = '{kurl action="deleteapps"}';
+	
+	var containers = [
+			"default_container" ,
+	{foreach name=c1 key=key item=c from=$containers}
+			{if ! $smarty.foreach.c1.first},  {/if}"{$key}"
 	{/foreach}
-{/if}
-
-{if (isset($nodisplay) && $nodisplay == TRUE)}
-	{*Don't display the home page*}
-{else}
-	<a  id="personalise_button" href="{kurl act='edit'}">##EDIT##</a>
+			] ;
+	
+	var accept_small = ['sbox'];
+	var accept_medium = ['sbox', 'mbox'];
+	var accept_large = ['sbox', 'mbox', 'lbox'];
+	
+	function getSerializedData()
+	{ldelim}
+		return KSortable.serialize('default_container'){foreach key=key item=c from=$containers}+"&"+Sortable.serialize('{$key}'){/foreach} ;
+	{rdelim}
+	
+	function createSortable()
+	{ldelim}
+	{foreach key=key item=c from=$containers}
+		KSortable.create("{$key}" ,
+		{ldelim}
+			dropOnEmpty:true,
+			tag:'div',
+			overlap:'horizontal',
+			handle: 'handle',
+			constraint: false,
+			containment: containers ,
+	{if $c=="s"}
+			accept: accept_small,
+	{elseif $c=="m"}
+			accept: accept_medium,
+	{elseif $c=="l"}
+			accept: accept_large,
+	{/if}
+			onUpdate:function()
+			{ldelim}
+				new Ajax.Request(save_url,
+					{ldelim}
+					asynchronous: true , 
+					method: 'post' , 
+					postBody: getSerializedData()
+					{rdelim}
+				);
+			{rdelim}		
+		{rdelim}
+		) ;
+	{/foreach}
+		
+		KSortable.create("default_container" ,
+		{ldelim}
+			tag:'div',
+			overlap:'horizontal',
+			handle: 'handle',
+			constraint: false,
+			containment: containers ,
+			onUpdate:function()
+			{ldelim}
+				new Ajax.Request(save_url,
+					{ldelim}
+					asynchronous: true , 
+					method: 'post' , 
+					postBody: getSerializedData()
+					{rdelim}
+				);
+			{rdelim}
+		{rdelim}
+		) ;
+		
+		
+	{rdelim}
+	
+	
+	var handlerFunc = function(t)
+	{ldelim}
+	    createSortable();
+	{rdelim}
+	
+	var insertFunc = function(id, content)
+	{ldelim}
+	    div = $(id);
+	    div.innerHTML += content;
+	{rdelim}
+	
+	function submit_form(form_id, content_id)
+	{ldelim}
+		var f = document.getElementById(form_id);
+		inputList = f.getElementsByTagName('input');
+		var queryComponents = new Array();
+		for( i=0 ; i < inputList.length ; i++ )
+		{ldelim}
+			myInput = inputList.item(i);
+			if( myInput.type == 'file' ) return true;
+			if( myInput.name )
+			{ldelim}
+				queryComponents.push(
+	        	  encodeURIComponent(myInput.name) + "=" + 
+	        	  encodeURIComponent(myInput.value) );
+			{rdelim}
+		{rdelim}
+	
+		areaList = f.getElementsByTagName('textarea');
+		for( i=0 ; i < areaList.length ; i++ )
+		{ldelim}
+			myArea = areaList.item(i);
+			if( myArea.name )
+			{ldelim}
+				queryComponents.push(
+	        	  encodeURIComponent(myArea.name) + "=" + 
+	        	  encodeURIComponent(myArea.value) );
+			{rdelim}
+		{rdelim}
+	
+		selectList = f.getElementsByTagName('select');
+		for( i=0 ; i < selectList.length ; i++ )
+		{ldelim}
+			mySelect = selectList.item(i);
+			if( mySelect.name )
+			{ldelim}
+				queryComponents.push(
+	        	  encodeURIComponent(mySelect.name) + "=" + 
+	        	  encodeURIComponent(mySelect.value) );
+	       	{rdelim}
+		{rdelim}
+	
+	
+		var post_vars = queryComponents.join("&");
+	
+		new Ajax.Updater(content_id, '{kurl page="miniappconfigajax"}', {ldelim}
+				asynchronous:true,
+				evalScripts:true,
+				method:'post',
+				postBody:post_vars
+			{rdelim});
+		return false;
+	{rdelim}
+	
+	// ]]>
+	</script>
+	
 	<h1>##HEADER_PAGE_TITLE##</h1>
+	<a id="personalise_button" href="#" onclick="return editHomeApps();">edit</a>
 	<br class="spacer" />
 	{hook name="html_head"}
-	{foreach key=key item=size from=$containers}
-	<div id="{$key}" class="cont_{$size}col left" >
+	
+	<script>
+		var gDisplayedHomeApps = false;
+		function editHomeApps()
+		{ldelim}
+			var elts = document.getElementsByTagName("div");
+			var e;
+			gDisplayedHomeApps = !gDisplayedHomeApps;
+			for( e in elts )
+			{ldelim}
+				if( Element.hasClassName(elts[e], "configbar") )
+				{ldelim}
+					if( gDisplayedHomeApps )
+					{ldelim}
+						Element.removeClassName(elts[e], "hidden");
+					{rdelim}
+					else
+					{ldelim}
+						Element.addClassName(elts[e], "hidden");
+					{rdelim}
+				{rdelim}
+			{rdelim}
+		{rdelim}
+	</script>
+	
+	<div class="configbar hidden" >
+	##CHOOSECONTAINER##
+	<a href="{kurl action='setcontainers'}?size=sms"><img src="/themes/default/images/home/sms.png" alt="Small Medium Small" /></a> 
+	<a href="{kurl action='setcontainers'}?size=sl"><img src="/themes/default/images/home/sl.png" alt="Small Large" /></a> 
+	<a href="{kurl action='setcontainers'}?size=ls"><img src="/themes/default/images/home/ls.png" alt="Large Small" /></a> 
+	<a href="{kurl action='setcontainers'}?size=mm"><img src="/themes/default/images/home/mm.png" alt="Medium Medium" /></a> 
+	<a href="{kurl action='setcontainers'}?size=ssss"><img src="/themes/default/images/home/ssss.png" alt="Small Small Small Small" /></a>
+	</div>
+	
+	<div class="configbar hidden" >
+		##ADDMINIAPP##
+	{foreach item=app from=$miniapps}
+		<a href="{kurl action='addapp'}?app={$app.id}" onclick="new Ajax.Updater('default_container', '{kurl page='miniappaddajax' miniapp=$app.id}', {ldelim}asynchronous:true, evalScripts:true, onComplete:handlerFunc, insertion:insertFunc {rdelim}); return false;">{translate key=$app.id}</a> |
+	{/foreach}
+	</div>
+
+	<div id="default_container" class="default_container" >
+	{hook name="default_container"}
+	</div>
+	<br class="spacer" />
+	
+	{foreach key=key item=c from=$containers}
+	<div id="{$key}" class="cont_{$c}col left view" >
 	{hook name=$key}
 	</div>
 	{/foreach}
-{/if}
 	<br class="spacer" />
+	
+	<script>
+		createSortable();
+	</script>
+
 </div>

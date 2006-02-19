@@ -62,6 +62,27 @@ function testReturn ()
 		$this->data[$id]['apps'] = $apps;
 	}
 	
+	function	deleteApp($id)
+	{
+		foreach($this->data as $data_key => $container)
+		{
+			foreach($container['apps'] as $index => $app_id)
+			{
+				if( $id == $app_id )
+				{
+					unset($this->data[$data_key]['apps'][$index]);
+				}
+			}
+		}
+		foreach($this->default as $index => $app_id)
+		{
+			if( $id == $app_id )
+			{
+				unset($this->default[$index]);
+			}
+		}
+	}
+	
 	function setSizes($str)
 	{
 		$final_cnt = 0;

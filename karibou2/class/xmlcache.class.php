@@ -63,6 +63,7 @@ class XMLCache
 	
 	function load($xml, $from_url = false)
 	{
+		ExecutionTimer::getRef()->start("XMLCache Load");
 		$this->xmlfile = $xml;
 		$this->cacheid = md5($xml);
 		$this->cachefile = $this->cachedir.'/'.$this->cacheid.".php";
@@ -74,6 +75,7 @@ class XMLCache
 		}
 		include($this->cachefile);
 		$this->xml = &$xml0;
+		ExecutionTimer::getRef()->stop("XMLCache Load");
 		return TRUE;
 	}
 	

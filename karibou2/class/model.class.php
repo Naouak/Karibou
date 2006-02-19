@@ -137,13 +137,13 @@ abstract class Model
 	/**
 	 * Fonction à utiliser pour passer une variable au template
 	 */
-	public function assign($name, $value=FALSE)
+	public function assign($name, $value=NULL)
 	{
-		if( is_array($name)  && !$value )
+		if( is_array($name)  && ($value==NULL) )
 		{
-			foreach($name as $key => $value)
+			foreach($name as $key => $v)
 			{
-				$this->vars[$key] = $value;
+				$this->vars[$key] = $v;
 			}
 		}
 		else
@@ -161,7 +161,9 @@ abstract class Model
 	function fetch($template)
 	{
 		ExecutionTimer::getRef()->start("Config Smarty");
-		$this->smarty->clear_all_assign();
+		// problème avec les hook, smarty appelé recursivement efface des valeurs
+		// ça fonction mieux en commentant cette ligne mais faut trouvé un contournement
+		//$this->smarty->clear_all_assign();
 		$this->smarty->template_dir = $this->templatedir.'/';
 		$this->smarty->compile_dir = KARIBOU_COMPILE_DIR.'/'.get_class($this).'/';
 		if(!is_dir($this->smarty->compile_dir)) mkdir($this->smarty->compile_dir);
@@ -181,7 +183,9 @@ abstract class Model
 	function display($template)
 	{
 		ExecutionTimer::getRef()->start("Config Smarty");
-		$this->smarty->clear_all_assign();
+		// problème avec les hook, smarty appelé recursivement efface des valeurs
+		// ça fonction mieux en commentant cette ligne mais faut trouvé un contournement
+		//$this->smarty->clear_all_assign();
 		$this->smarty->template_dir = $this->templatedir.'/';
 		$this->smarty->compile_dir = KARIBOU_COMPILE_DIR.'/'.get_class($this).'/';
 		if(!is_dir($this->smarty->compile_dir)) mkdir($this->smarty->compile_dir);

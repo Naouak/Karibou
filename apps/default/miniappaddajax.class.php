@@ -37,7 +37,6 @@ class MiniAppAddAjax extends Model
 			{
 				$this->assign('config', true);
 			}
-
 			$currentUser->setPref('containers', $containers );
 			$currentUser->setPref('miniapps', $miniapps );
 			Debug::$display = false;

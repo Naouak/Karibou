@@ -171,9 +171,12 @@ h3 {
 	background-color: #fa0;
 	color: #fff;
 	cursor: move;
-	position: absolute;
 	top: 0px;
 	left: 0px;
+}
+
+.sbox h3, .mbox h3, .lbox h3 {
+	cursor: move;
 }
 
 .sbox .edit {

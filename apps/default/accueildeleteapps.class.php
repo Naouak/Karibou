@@ -21,6 +21,7 @@ class AccueilDeleteApps extends FormModel
 	{
 		$currentUser = $this->userFactory->getCurrentUser();
 		$miniapps = $currentUser->getPref('miniapps');
+		$containers = $currentUser->getPref('containers');
 		
 		foreach( $_POST as $name => $post )
 		{
@@ -28,9 +29,18 @@ class AccueilDeleteApps extends FormModel
 			{
 				$miniapps->deleteApps($post);
 			}
+			
+			if( preg_match('/^delete_id$/', $name) )
+			{
+				$miniapps->deleteApp($post);
+				$containers->deleteApp($post);
+			}
+				
 		}
 		
 		$currentUser->setPref('miniapps', $miniapps );
+		$currentUser->setPref('containers', $containers );
+		$currentUser->savePrefs($this->db);
 	}
 }
 

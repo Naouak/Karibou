@@ -101,7 +101,7 @@ font-size: 0.8em;
 	border: 0px solid #efefef;
 	text-align: left;
 	overflow: hidden;
-	cursor: hand;
+	cursor: move ;
 	font-size: 0.85em;
 }
 
@@ -238,7 +238,7 @@ font-size: 0.8em;
 }
 
 .fileshare ul.detailed li a span {
-	cursor: hand;
+	cursor: move;
 }
 
 .fileshare ul.detailed li a {
@@ -384,7 +384,7 @@ font-size: 0.8em;
 .fileshare div.details .toolbox form a {
 	background-image: url(images/fileshare/detailed/trash.png);
 	background-repeat: no-repeat;
-	background-position: 0px left;
+	background-position: top left;
 	padding-left: 22px;
 	padding-top: 0px;
 	padding-bottom: 2px;
@@ -396,7 +396,7 @@ font-size: 0.8em;
 .fileshare div.details .downloadlink a {
 	background-image: url(images/fileshare/detailed/download.png);
 	background-repeat: no-repeat;
-	background-position: 0px left;
+	background-position: top left;
 	padding-left: 22px;
 	padding-top: 0px;
 	padding-bottom: 2px;
@@ -406,7 +406,7 @@ font-size: 0.8em;
 .fileshare div.details .movelink a {
 	background-image: url(images/fileshare/detailed/move.png);
 	background-repeat: no-repeat;
-	background-position: 0px left;
+	background-position: top left;
 	padding-left: 22px;
 	padding-top: 0px;
 	padding-bottom: 2px;
@@ -416,7 +416,7 @@ font-size: 0.8em;
 .fileshare div.details .versions a.add {
 	background-image: url(images/fileshare/detailed/add.png);
 	background-repeat: no-repeat;
-	background-position: 0px left;
+	background-position: top left;
 	padding-left: 22px;
 	padding-top: 0px;
 	padding-bottom: 2px;
@@ -557,7 +557,7 @@ clear: both;
 	color: #000000;
 	z-index: 1;
 	
-	cursor: hand;
+	cursor: move;
 	
 	background-image: url(images/fileshare/detailed/download.png);
 	background-repeat: no-repeat;

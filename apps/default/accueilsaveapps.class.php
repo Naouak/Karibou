@@ -44,7 +44,7 @@ class AccueilSaveApps extends FormModel
 		}
 		
 		$currentUser->setPref('containers', $containers );
-		$currentUser->savePrefs($this->db );
+		$currentUser->savePrefs($this->db);
 	}
 }
 
