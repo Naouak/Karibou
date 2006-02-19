@@ -91,4 +91,8 @@
 		<translation language="fr">Détails du sondage</translation>
 		<translation language="en">Survey details</translation>
 	</sentence>
+	<sentence key="KS_QUESTIONDELETE">
+		<translation language="fr">Supprimer la question</translation>
+		<translation language="en">Delete question</translation>
+	</sentence>
 </translation>

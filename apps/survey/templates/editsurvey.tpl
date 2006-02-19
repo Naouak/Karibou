@@ -30,19 +30,29 @@
 						<li>
 							<span>
 								<label for="ks_q{$question->getInfo("id")}_name">##KS_QUESTIONNAME##</label>
-								<input name="ks_q{$question->getInfo("id")}_name" class="field" value="{$question->getInfo("name")}" />
+								<input type="text" name="ks_q{$question->getInfo("id")}_name" class="field" value="{$question->getInfo("name")}" />
 							</span>
 						</li>
 						<li>
 							<span>
 								<label for="ks_q{$question->getInfo("id")}_description">##KS_QUESTIONDESCRIPTION##</label>
-								<input name="ks_q{$question->getInfo("id")}_description" class="field"  value="{$question->getInfo("description")}" />
+								<input type="text" name="ks_q{$question->getInfo("id")}_description" class="field"  value="{$question->getInfo("description")}" />
 							</span>
 						</li>
 						<li>
 							<span>
 								<label for="ks_q{$question->getInfo("id")}_type">##KS_QUESTIONTYPE##</label>
-								<input name="ks_q{$question->getInfo("id")}_type" class="field"  value="{$question->getInfo("type")}" />
+								<select name="ks_q{$question->getInfo("id")}_type" class="field">
+									<option value="text" {if $question->getInfo("type") == "text"}SELECTED{/if}>Text</option>
+									<option value="numeric" {if $question->getInfo("type") == "numeric"}SELECTED{/if}>Numeric</option>
+									<option value="date" {if $question->getInfo("type") == "date"}SELECTED{/if}>Date</option>
+								</select>
+							</span>
+						</li>
+						<li>
+							<span>
+								<label for="ks_q{$question->getInfo("id")}_delete">##KS_QUESTIONDELETE##</label>
+								<input type="checkbox" name="ks_q{$question->getInfo("id")}_delete" class="field" value="delete" />
 							</span>
 						</li>
 					</ul>
@@ -66,8 +76,8 @@
 						</li>
 						<li>
 							<span>
-								<label for="ks_q{$question->getInfo("id")}_description">##KS_QUESTIONTYPE##</label>
-								<input name="ks_q{$question->getInfo("id")}_description" class="field"  value="{$question->getInfo("type")}" />
+								<label for="ks_qn1_type">##KS_QUESTIONTYPE##</label>
+								<input name="ks_qn1_type" class="field" />
 							</span>
 						</li>
 					</ul>

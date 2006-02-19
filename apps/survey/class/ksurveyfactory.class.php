@@ -460,7 +460,78 @@ class KSurveyFactory
 		//For each question
 		foreach ($survey->getAllQuestions() as $questionid => $question)
 		{
-			var_dump($questionid);
+			$this->saveSurveyQuestion($question);
+		}
+	}
+	
+	public function saveSurveyQuestion($question)
+	{
+		if ($question->getInfo("delete") == "delete")
+		{
+			//Delete question
+			$sql = "
+					DELETE FROM
+						survey_questions
+					WHERE
+						id = '".$question->getInfo("id")."'
+				";			
+				
+			try
+			{
+				$stmt = $this->db->exec($sql);
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage());
+			}
+		}
+		elseif ($question->getInfo("id") !== FALSE)
+		{
+			//Update if exists
+			$sql = "
+					UPDATE
+						survey_questions
+					SET
+						`type` = '".$question->getInfo("type")."',
+						name = '".$question->getInfo("name")."',
+						description = '".$question->getInfo("description")."',
+						datetime = NOW()
+					WHERE
+						id = '".$question->getInfo("id")."'
+				";			
+				
+			try
+			{
+				$stmt = $this->db->exec($sql);
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage());
+			}
+		}
+		elseif ($question->getInfo("name") != "")
+		{
+			//Create if it doesn't
+			$sql = "
+					INSERT INTO
+						survey_questions
+					(surveyid, `type`, name, description, datetime)
+					VALUES
+						('".$question->getInfo("surveyid")."',
+						'".$question->getInfo("type")."',
+						'".$question->getInfo("name")."',
+						'".$question->getInfo("description")."',
+						NOW())
+				";			
+				
+			try
+			{
+				$stmt = $this->db->exec($sql);
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage());
+			}
 		}
 	}
 
