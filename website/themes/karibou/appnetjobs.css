@@ -196,7 +196,24 @@ ul.companylist li .name a {
 	background-repeat: no-repeat;
 	background-position: 0px 3px;
 	padding-left: 10px;
-	
+	white-space: nowrap;
+}
+
+ul.companylist li .nboffers {
+	display: block;
+	float: right;
+	width: 34%;
+	background-color: #ffffff;
+	color: #acacac;
+	font-style: italic;
+	text-align: right;
+}
+
+ul.companylist li .name {
+	display: block;
+	float: left;
+	width: 63%;
+	overflow: hidden;
 }
 
 
@@ -263,14 +280,14 @@ ul.companylist li .name a {
 	background-color: #f0f9ff;	
 }
 
-.netjobs .jobdetails .toolbox a.edit {
+#content .netjobs .jobdetails .toolbox a.edit {
 	float: left;
 	background-image: url(images/netjobs/jobs/edit.png);
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
 }
 
-.netjobs .jobdetails .toolbox a.delete {
+#content .netjobs .jobdetails .toolbox a.delete {
 	float: left;
 	margin-left: 20px;
 	background-image: url(images/netjobs/jobs/delete.png);
@@ -305,7 +322,7 @@ ul.companylist li .name a {
 	font-weight: normal;
 }
 
-.netjobs .companydetails .toolbox a.edit {
+#content .netjobs .companydetails .toolbox a.edit {
 	float: left;
 	background-image: url(images/netjobs/companies/edit.png);
 	background-repeat: no-repeat;
@@ -323,6 +340,27 @@ ul.companylist li .name a {
 .netjobs .companydetails .toolbox a.delete span {
 	color: #ff7777;
 }
+
+/* Details : Contact */
+#content .netjobs .contactdetails .toolbox a.edit {
+	float: left;
+	background-image: url(images/netjobs/companies/edit.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+
+.netjobs .contactdetails .toolbox a.delete {
+	float: left;
+	margin-left: 20px;
+	background-image: url(images/netjobs/companies/delete.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+
+.netjobs .contactdetails .toolbox a.delete span {
+	color: #ff7777;
+}
+
 
 /* Edit */
 .netjobs fieldset {

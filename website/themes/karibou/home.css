@@ -99,57 +99,58 @@
 }
 
 
-.del {
+#content .sbox .del, #content .mbox .del, #content .lbox .del {
 	width: 16px;
 	height: 16px;
 	background-image: url("/themes/karibou/images/del.png");
 	visibility: hidden;
 }
-.del .text {
+#content .sbox .del .text, #content .mbox .del .text, #content .lbox .del .text {
 	display: none;
 }
 
-.sbox:hover .del {
+#content .sbox:hover .del {
 	position: absolute;
 	top: 1px;
 	left: 190px;
 	visibility: visible;
 }
-.mbox:hover .del {
+#content .mbox:hover .del {
 	position: absolute;
 	top: 1px;
 	left: 410px;
 	visibility: visible;
 }
-.lbox:hover .del {
+#content .lbox:hover .del {
 	position: absolute;
 	top: 1px;
 	left: 630px;
 	visibility: visible;
 }
 
-.edit {
+#content .sbox .edit, #content .mbox .edit, #content .lbox .edit {
 	width: 16px;
 	height: 16px;
 	background-image: url("/themes/karibou/images/edit.png");
 	visibility: hidden;
 }
-.edit .text {
+#content .sbox .edit .text, #content .mbox .edit .text, #content .lbox .edit .text {
 	display: none;
 }
-.sbox:hover .edit {
+
+#content .sbox:hover .edit {
 	position: absolute;
 	top: 1px;
 	left: 1px;
 	visibility: visible;
 }
-.mbox:hover .edit {
+#content .mbox:hover .edit {
 	position: absolute;
 	top: 1px;
 	left: 1px;
 	visibility: visible;
 }
-.lbox:hover .edit {
+#content .lbox:hover .edit {
 	position: absolute;
 	top: 1px;
 	left: 1px;
