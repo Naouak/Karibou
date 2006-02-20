@@ -35,6 +35,9 @@ class NJContactChoiceSave extends FormModel
 				{
 					//Save modifications...
 					$NetJobs->saveContactChoice($_POST["jobid"], $_POST["companyid"], $_POST["contactid"]);
+					$this->setRedirectArg('app', 'netjobs');
+					$this->setRedirectArg('page', 'locationedit');
+					$this->setRedirectArg('jobid', $_POST["jobid"]);
 				}
 			}
 			else
