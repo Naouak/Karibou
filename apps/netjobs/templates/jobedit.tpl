@@ -1,5 +1,5 @@
-<h1>##NETJOBS##</h1>
-<h2>{if isset($myJob)}##JOBMODIFY##{else}##JOBADD##{/if}</h2>
+<h1>##NETJOBS_TITLE##</h1>
+<h2>{if isset($myJob)}##JOB_MODIFY##{else}##JOBADD##{/if}</h2>
 <div class="netjobs">
 	<a href="{kurl app="wiki" page="help"}" onclick="javascript:popup(this.href, 'wiki_help', '800', '900', '200', '200');return false;" >##TITLE_WIKI_SYNTAX##</a>
 	<form action="{kurl action="jobsave"}" method="post" class="jobedit">

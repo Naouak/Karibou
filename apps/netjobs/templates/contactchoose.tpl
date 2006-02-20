@@ -21,6 +21,8 @@
 		</fieldset>
 		<input type="hidden" name="jobid" value="{$jobid}">
 		<input type="hidden" name="companyid" value="{$companyid}">
-		<input type="submit">
+		<div class="button">
+			<input type="submit">
+		</div>
 	</form>
 </div>

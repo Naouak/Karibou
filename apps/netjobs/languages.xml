@@ -176,7 +176,6 @@
 		<translation language="fr">Autre</translation>
 		<translation language="en">Other</translation>
 	</sentence>
-	
 	<sentence key="NETJOBS_TITLE">
 		<translation language="fr">NetJobs : Trouvez votre Job en ligne</translation>
 		<translation language="en">NetJobs : Find your job online</translation>
@@ -313,6 +312,10 @@
 	<sentence key="COMPANY_MODIFY">
 		<translation language="fr">Modification des informations de l'entreprise</translation>
 		<translation language="en">Company details modification</translation>
+	</sentence>
+	<sentence key="JOB_MODIFY">
+		<translation language="fr">Modification des informations de l'offre</translation>
+		<translation language="en">Offer details modification</translation>
 	</sentence>
 	<sentence key="JOB_LOCATION_ADD">
 		<translation language="fr">Localisation de l'offre</translation>
