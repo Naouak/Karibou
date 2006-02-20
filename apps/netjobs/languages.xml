@@ -279,7 +279,11 @@
 		<translation language="en">Display the</translation>
 	</sentence>
 	<sentence key="JOB_COUNT2">
-		<translation language="fr">offres</translation>
+		<translation language="fr">offre</translation>
+		<translation language="en">opportunitie</translation>
+	</sentence>
+	<sentence key="JOB_OFFER">
+		<translation language="fr">offre</translation>
 		<translation language="en">opportunities</translation>
 	</sentence>
 	<sentence key="JOB_KEURO">
@@ -297,6 +301,10 @@
 	<sentence key="JOB_UPDATE">
 		<translation language="fr">Mise à jour de l'offre</translation>
 		<translation language="en">Job update</translation>
+	</sentence>
+	<sentence key="JOB_NOOFFER">
+		<translation language="fr">Aucune offre</translation>
+		<translation language="en">No offer</translation>
 	</sentence>
 	<sentence key="COMPANY_ADD">
 		<translation language="fr">Ajout d'une entreprise</translation>
@@ -407,6 +415,10 @@
 	<sentence key="CONTACT_EDIT_LINK">
 		<translation language="fr">Editer les informations de ce contact</translation>
 		<translation language="en">Edit this contact details</translation>
+	</sentence>
+	<sentence key="CONTACTEDIT">
+		<translation language="fr">Editer ce contact</translation>
+		<translation language="en">Edit this contact</translation>
 	</sentence>
 	<sentence key="CONTACT_ADDRESSES">
 		<translation language="fr">Adresses</translation>

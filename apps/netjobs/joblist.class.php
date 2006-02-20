@@ -27,7 +27,8 @@ class NJJobList extends Model
 		}
 		else
 		{
-			$maxjobs = 3;
+			//TEMP
+			$maxjobs = 90;
 		}
 		
 		if (isset($this->args["pagenum"]) && $this->args["pagenum"] != "" && $this->args["pagenum"] > 0)

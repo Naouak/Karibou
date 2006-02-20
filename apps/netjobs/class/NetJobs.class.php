@@ -108,6 +108,8 @@ class NetJobs
 					netjobs_companies.id = '$companyid'
 				AND
 					netjobs_companies.last = 1
+				AND
+					netjobs_companies.deleted = 0
 				GROUP BY
 					netjobs_companies.id
 				ORDER BY
@@ -249,7 +251,7 @@ class NetJobs
 	public function getJobList($max = FALSE, $page = FALSE, $companyid = FALSE)
 	{
 		$jobs = array();
-		
+
 		//Need a page ?
 		if ($page === FALSE)
 		{
@@ -285,7 +287,7 @@ class NetJobs
 		{
 			$companySQLSelect = $companySQLCondition = $companySQLFrom = "";
 		}
-	
+
 		$sql = "
 				SELECT
 					netjobs_jobs.*, UNIX_TIMESTAMP(netjobs_jobs.datetime) AS timestamp, $companySQLSelect
@@ -333,7 +335,13 @@ class NetJobs
 						SELECT *
 						FROM netjobs_companies
 						WHERE
-							$companiesidSQL
+							($companiesidSQL)
+						AND
+							(
+							netjobs_companies.last = 1
+						AND
+							netjobs_companies.deleted = 0
+							);
 					";
 						
 				try
@@ -444,6 +452,8 @@ class NetJobs
 							netjobs_companies.id = '".$job->getInfo("company_id")."'
 						AND
 							netjobs_companies.last = 1
+						AND
+							netjobs_companies.deleted = 0
 					";
 						
 				try

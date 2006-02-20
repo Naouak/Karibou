@@ -24,12 +24,20 @@ class NJJobDetails extends Model
 			
 			if ($myJob->getInfo("contactid") != "" && $myJob->getInfo("contactid") > 0)
 			{
-				$this->assign("myContact", $netJobs->getContactById($myJob->getInfo("contactid")));
+				$contact = $netJobs->getContactById($myJob->getInfo("contactid"));
+				if (isset($contact) && $contact !== FALSE)
+				{
+					$this->assign("myContact", $contact);
+				}
 			}
 			
 			if ($myJob->getInfo("company_id") != "" && $myJob->getInfo("company_id") > 0)
 			{
-				$this->assign("myCompany", $netJobs->getCompanyById($myJob->getInfo("company_id")));
+				$company = $netJobs->getCompanyById($myJob->getInfo("company_id"));
+				if (isset($company) && $company !== FALSE)
+				{
+					$this->assign("myCompany", $company);
+				}
 			}
 			
 			$menuApp = $this->appList->getApp($this->appname);

@@ -1,3 +1,4 @@
+{if isset($myCompany) && is_object($myCompany)}
 		<ul>
 			<li class="name">
 				<label for="name">##COMPANYNAME## :</label>
@@ -39,3 +40,6 @@
 			</li>
 	
 		</ul>
+{else}
+##COMPANYNOTFOUND##
+{/if}
