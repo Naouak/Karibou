@@ -37,10 +37,20 @@ class NJJobList extends Model
 		}
 		else
 		{
-			$page = FALSE;
+			$page = 1;
 		}
 		
-		if (isset($this->args["companyid"]) && $this->args["companyid"] != "")
+		if (isset($this->args["search"]) && $this->args["search"] != "")
+		{
+			$search = urldecode($this->args["search"]);
+		$this->assign ("search", $search);
+		}
+		else
+		{
+			$search = FALSE;
+		}
+		
+		if (isset($this->args["companyid"]) && $this->args["companyid"] != "" && $this->args["companyid"] > 0)
 		{
 			$companyid = $this->args["companyid"];
 			$myCompany = $netJobs->getCompanyById($companyid);
@@ -51,11 +61,11 @@ class NJJobList extends Model
 			$companyid = FALSE;
 		}
 		
-		$this->assign ("jobcount", $netJobs->countJobs());
+		$this->assign ("jobcount", $netJobs->countJobs($companyid, $search));
 		$this->assign ("maxjobs", $maxjobs);
-		$this->assign ("page", $page);
+		$this->assign ("pagenum", $page);
 
-		$myJobs = $netJobs->getJobList($maxjobs, $page, $companyid);
+		$myJobs = $netJobs->getJobList($maxjobs, $page, $companyid, $search);
 		$this->assign("myJobs", $myJobs);
 		
 		/*

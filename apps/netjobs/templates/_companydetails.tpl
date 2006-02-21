@@ -11,6 +11,12 @@
 				<span name="type">{translate key=$myCompany->getInfo("type")}</span>
 				</a>
 			</li>
+			
+			<li class="activity">
+				<label for="activity">##COMPANYACTIVITY## :</label>
+				<span name="activity">{translate key=$myCompany->getInfo("activity")}</span>
+				</a>
+			</li>
 	
 			<li class="datetime">
 				<label for="datetime">##COMPANYPOSTDATE## : </label>

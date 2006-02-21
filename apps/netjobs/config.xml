@@ -27,6 +27,8 @@
 	<load class="NJLocationDetails"	file="locationdetails.class.php" />
 	<load class="NJLocationEdit"		file="locationedit.class.php" />
 	<load class="NJLocationSave"		file="locationsave.class.php" />
+	<load class="NJJobSearchRedirect"		file="jobsearchredirect.class.php" />
+	<load class="NJJobListFromSearch"		file="joblist.class.php" />
 
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
@@ -36,6 +38,7 @@
 	<view name="jobdetails"		class="NJJobDetails"		template="jobdetails.tpl" />
 	<view name="jobedit"			class="NJJobEdit"			template="jobedit.tpl" />
 	<view name="joblist"			class="NJJobList"			template="joblist.tpl" />
+	<view name="jobsearch"			class="NJJobListFromSearch"	template="joblist.tpl" />
 	<view name="companydetails"	class="NJCompanyDetails"	template="companydetails.tpl" />
 	<view name="companyedit"		class="NJCompanyEdit"		template="companyedit.tpl" />
 	<view name="contactdetails"	class="NJContactDetails"	template="contactdetails.tpl" />
@@ -54,6 +57,7 @@
 		<option name="maxjobs"		class="NumberArgument" />
 		<option name="pagenum"		class="NumberArgument" />
 		<option name="companyid"	class="NumberArgument" />
+		<option name="search"		class="AnyCharArgument" />
 	</page>
 
 	<page name="companydetails"	view="companydetails">
@@ -82,6 +86,9 @@
 	<form action="jobsave"	class="NJJobSave">
 		<redirect />
 	</form>
+	<form action="jobsearchredirect"	class="NJJobSearchRedirect">
+		<redirect />
+	</form>	
 	<form action="contactchoicesave"	class="NJContactChoiceSave">
 		<redirect />
 	</form>

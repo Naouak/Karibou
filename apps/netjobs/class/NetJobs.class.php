@@ -199,9 +199,9 @@ class NetJobs
 			
 			$sqlc = "
 					INSERT INTO netjobs_companies
-					(id, last, user_id, name, description, type, datetime)
+					(id, last, user_id, name, description, type, activity, datetime)
 					VALUES
-					('".$companyid."', 1, '".$currentUser->getId()."','".$companyinfos["name"]."', '".$companyinfos["description"]."', '".$companyinfos["type"]."', NOW())
+					('".$companyid."', 1, '".$currentUser->getId()."','".$companyinfos["name"]."', '".$companyinfos["description"]."', '".$companyinfos["type"]."', '".$companyinfos["activity"]."', NOW())
 				";
 					
 			try
@@ -248,7 +248,7 @@ class NetJobs
 	}
 	
 	/* JOBS */
-	public function getJobList($max = FALSE, $page = FALSE, $companyid = FALSE)
+	public function getJobList($max = FALSE, $page = FALSE, $companyid = FALSE, $search = FALSE)
 	{
 		$jobs = array();
 
@@ -287,10 +287,25 @@ class NetJobs
 		{
 			$companySQLSelect = $companySQLCondition = $companySQLFrom = "";
 		}
+		
+		//Search mode activated ?
+		if ($search !== FALSE)
+		{
+			$searchSQLSelect 		= "MATCH (title,description) AGAINST (CONVERT(_latin1'$search' USING utf8)) AS score,";
+			$searchSQLCondition	= "AND MATCH (title,description) AGAINST (CONVERT(_latin1'$search' USING utf8))";
+			$searchSQLOrder		= "score DESC,";
+		}
+		else
+		{
+			$searchSQLSelect = $searchSQLCondition = $searchSQLOrder = "";
+		}
+		
 
 		$sql = "
 				SELECT
-					netjobs_jobs.*, UNIX_TIMESTAMP(netjobs_jobs.datetime) AS timestamp, $companySQLSelect
+					netjobs_jobs.*,
+					$searchSQLSelect
+					UNIX_TIMESTAMP(netjobs_jobs.datetime) AS timestamp, $companySQLSelect
 					".$this->locationInfosSQLSelect."
 				FROM
 					netjobs_jobs $companySQLFrom
@@ -301,10 +316,11 @@ class NetJobs
 					netjobs_jobs.last = '1'
 				AND
 					netjobs_jobs.deleted = 0
+				$searchSQLCondition
 				$companySQLCondition
 				ORDER BY
-					netjobs_jobs.datetime
-					DESC
+					$searchSQLOrder
+					netjobs_jobs.datetime DESC
 				$limit
 			";			
 			
@@ -385,18 +401,50 @@ class NetJobs
 		return $jobs;
 	}
 	
-	public function countJobs()
+	public function countJobs($companyid = FALSE, $search = FALSE)
 	{
+	
+		//Return jobs posted by a specific company ?
+		if ($companyid !== FALSE)
+		{
+			$companySQLSelect = "netjobs_companies.id as companyid,";
+			$companySQLCondition = "
+				AND netjobs_companies.id = netjobs_jobs.company_id
+				AND netjobs_companies.id = $companyid
+				AND netjobs_companies.last = 1
+				AND netjobs_companies.deleted = 0";
+			$companySQLFrom = ", netjobs_companies";
+		}
+		else
+		{
+			$companySQLSelect = $companySQLCondition = $companySQLFrom = "";
+		}
+		
+		//Search mode activated ?
+		if ($search !== FALSE)
+		{
+			$searchSQLSelect 		= "MATCH (title,description) AGAINST (CONVERT(_latin1'$search' USING utf8)) AS score,";
+			$searchSQLCondition	= "AND MATCH (title,description) AGAINST (CONVERT(_latin1'$search' USING utf8))";
+			$searchSQLOrder		= "score DESC,";
+		}
+		else
+		{
+			$searchSQLSelect = $searchSQLCondition = $searchSQLOrder = "";
+		}
+		
+
 		$sql = "
-				SELECT 
-					COUNT(id) AS jobcount
+				SELECT
+					count(netjobs_jobs.id) as jobcount
 				FROM
 					netjobs_jobs
 				WHERE
-					last = '1'
+					netjobs_jobs.last = '1'
 				AND
-					deleted = 0
-			";			
+					netjobs_jobs.deleted = 0
+				$searchSQLCondition
+				$companySQLCondition
+			";				
 			
 		try
 		{
@@ -545,9 +593,9 @@ class NetJobs
 			
 			$sqlc = "
 					INSERT INTO netjobs_jobs
-					(id, last, user_id, title, description, profile, type, education, salary, experience_required, company_id, datetime)
+					(id, last, user_id, title, description, profile, type, education, role, salary, experience_required, company_id, datetime)
 					VALUES
-					('".$jobid."', 1, '".$currentUser->getId()."','".$jobinfos["title"]."', '".$jobinfos["description"]."', '".$jobinfos["profile"]."', '".$jobinfos["type"]."', '".$jobinfos["education"]."', '".$jobinfos["salary"]."', '".$jobinfos["experience_required"]."', '".$jobinfos["company_id"]."', NOW())
+					('".$jobid."', 1, '".$currentUser->getId()."','".$jobinfos["title"]."', '".$jobinfos["description"]."', '".$jobinfos["profile"]."', '".$jobinfos["type"]."', '".$jobinfos["education"]."', '".$jobinfos["role"]."', '".$jobinfos["salary"]."', '".$jobinfos["experience_required"]."', '".$jobinfos["company_id"]."', NOW())
 				";
 					
 			try

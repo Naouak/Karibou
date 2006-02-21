@@ -17,6 +17,11 @@
 					<span name="type"><em>{translate key=$myJob->getInfo("type")}</em></span>
 				</li>
 				
+				<li class="role">
+					<label for="role">##JOBROLE## :</label>
+					<span name="role">{translate key=$myJob->getInfo("role")}</span>
+				</li>
+				
 				<li class="company">
 					<label for="company">##JOBCOMPANY## :</label>
 					<span name="company">

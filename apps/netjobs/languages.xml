@@ -39,6 +39,10 @@
 		<translation language="fr">Choisissez l'entreprise...</translation>
 		<translation language="en">Choose the company...</translation>
 	</sentence>
+	<sentence key="JOBSEARCH">
+		<translation language="fr">Chercher</translation>
+		<translation language="en">Search</translation>
+	</sentence>
 	<sentence key="JOBADDCOMPANY">
 		<translation language="fr">Ajouter l'entreprise ici</translation>
 		<translation language="en">Add company here</translation>
@@ -152,6 +156,83 @@
 		<translation language="en">Engineer School</translation>
 	</sentence>
 
+	<sentence key="JOBROLE">
+		<translation language="fr">Fonction</translation>
+		<translation language="en">Role</translation>
+	</sentence>
+	<sentence key="jobr_administration">
+		<translation language="fr">Administration</translation>
+		<translation language="en">Administration</translation>
+	</sentence>
+	<sentence key="jobr_finance">
+		<translation language="fr">Finance / Comptabilité / Gestion</translation>
+		<translation language="en">Finance / Accounting</translation>
+	</sentence>
+	<sentence key="jobr_audit">
+		<translation language="fr">Audit</translation>
+		<translation language="en">Audit</translation>
+	</sentence>
+	<sentence key="jobr_consulting">
+		<translation language="fr">Conseil</translation>
+		<translation language="en">Consulting</translation>
+	</sentence>
+	<sentence key="jobr_law">
+		<translation language="fr">Juridique / Fiscal</translation>
+		<translation language="en">Law related</translation>
+	</sentence>
+	<sentence key="jobr_hrtraining">
+		<translation language="fr">Ressources Humaines / Formation</translation>
+		<translation language="en">Human Resources / Training</translation>
+	</sentence>
+	<sentence key="jobr_researchdevelopment">
+		<translation language="fr">Recherche / Développement</translation>
+		<translation language="en">Research / Studies</translation>
+	</sentence>
+	<sentence key="jobr_healthsocial">
+		<translation language="fr">Santé / Social</translation>
+		<translation language="en">Health / Social</translation>
+	</sentence>
+	<sentence key="jobr_logisticbuyer">
+		<translation language="fr">Logistique / Achat</translation>
+		<translation language="en">Logistic / Buyer</translation>
+	</sentence>
+	<sentence key="jobr_productionsecurity">
+		<translation language="fr">Production / Securité</translation>
+		<translation language="en">Production / Security</translation>
+	</sentence>
+	<sentence key="jobr_computer">
+		<translation language="fr">Informatique</translation>
+		<translation language="en">Computers</translation>
+	</sentence>
+	<sentence key="jobr_telecomnetworks">
+		<translation language="fr">Télécom / Réseaux</translation>
+		<translation language="en">Telecom / Networks</translation>
+	</sentence>
+	<sentence key="jobr_multimediainternet">
+		<translation language="fr">Multimedia / Internet</translation>
+		<translation language="en">Multimedia / Internet</translation>
+	</sentence>
+	<sentence key="jobr_sales">
+		<translation language="fr">Commercial / Vente</translation>
+		<translation language="en">Sales</translation>
+	</sentence>
+	<sentence key="jobr_export">
+		<translation language="fr">Export</translation>
+		<translation language="en">Export</translation>
+	</sentence>
+	<sentence key="jobr_marketing">
+		<translation language="fr">Marketing</translation>
+		<translation language="en">Marketing</translation>
+	</sentence>
+	<sentence key="jobr_communication">
+		<translation language="fr">Communication</translation>
+		<translation language="en">Communication</translation>
+	</sentence>
+	<sentence key="jobr_officeleadership">
+		<translation language="fr">Direction Générale</translation>
+		<translation language="en">Office Leadership</translation>
+	</sentence>
+
 	<sentence key="compt_company">
 		<translation language="fr">Entreprise</translation>
 		<translation language="en">Company</translation>
@@ -176,6 +257,48 @@
 		<translation language="fr">Autre</translation>
 		<translation language="en">Other</translation>
 	</sentence>
+
+	<sentence key="COMPANYACTIVITY">
+		<translation language="fr">Secteur d'activité</translation>
+		<translation language="en">Activity</translation>
+	</sentence>
+	<sentence key="compa_construction">
+		<translation language="fr">Construction / BTP</translation>
+		<translation language="en">Construction</translation>
+	</sentence>
+	<sentence key="compa_realestate">
+		<translation language="fr">Immobilier</translation>
+		<translation language="en">Real estate</translation>
+	</sentence>	
+	<sentence key="compa_bankinsurance">
+		<translation language="fr">Banque / Assurance</translation>
+		<translation language="en">Bank / Insurance</translation>
+	</sentence>
+	<sentence key="compa_distribution">
+		<translation language="fr">Distribution</translation>
+		<translation language="en">Distribution</translation>
+	</sentence>
+	<sentence key="compa_infotelecom">
+		<translation language="fr">Information / Télécom / Internet</translation>
+		<translation language="en">Information / Telecom / Internet</translation>
+	</sentence>
+	<sentence key="compa_commonpublic">
+		<translation language="fr">Publique / Collectivités / Organisation</translation>
+		<translation language="en">Public / Organisation</translation>
+	</sentence>
+	<sentence key="compa_services">
+		<translation language="fr">Services</translation>
+		<translation language="en">Services</translation>
+	</sentence>
+	<sentence key="compa_industry">
+		<translation language="fr">Industrie</translation>
+		<translation language="en">Industry</translation>
+	</sentence>
+	<sentence key="compa_other">
+		<translation language="fr">Autre</translation>
+		<translation language="en">Other</translation>
+	</sentence>
+
 	<sentence key="NETJOBS_TITLE">
 		<translation language="fr">NetJobs : Trouvez votre Job en ligne</translation>
 		<translation language="en">NetJobs : Find your job online</translation>
@@ -244,6 +367,30 @@
 	<sentence key="NETJOBS_JOBLIST_BY_COMPANY">
 		<translation language="fr">Liste des offres de l'entreprise</translation>
 		<translation language="en">Job list for company</translation>
+	</sentence>
+	<sentence key="NETJOBS_JOBLIST_FOR_SEARCH">
+		<translation language="fr">Résultat de la recherche</translation>
+		<translation language="en">Results for keyword</translation>
+	</sentence>
+	<sentence key="NETJOBS_JOBLIST_PREVIOUSPAGE">
+		<translation language="fr">Page précédente</translation>
+		<translation language="en">Previous page</translation>
+	</sentence>
+	<sentence key="NETJOBS_JOBLIST_NEXTPAGE">
+		<translation language="fr">Page suivante</translation>
+		<translation language="en">Next page</translation>
+	</sentence>
+	<sentence key="NETJOBS_JOBLIST_OFFERSFOUND">
+		<translation language="fr">offres trouvées</translation>
+		<translation language="en">offers found</translation>
+	</sentence>
+	<sentence key="NETJOBS_JOBLIST_OFFERFOUND">
+		<translation language="fr">offre trouvée</translation>
+		<translation language="en">offer found</translation>
+	</sentence>
+	<sentence key="PAGE">
+		<translation language="fr">Page</translation>
+		<translation language="en">Page</translation>
 	</sentence>
 	<sentence key="COMPANY_VIEWALLJOBS">
 		<translation language="fr">Voir toutes les offres de cette entreprise</translation>

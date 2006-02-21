@@ -8,6 +8,10 @@
 		<a href="{kurl page="joblist"}" class="viewalljobs"><span>##JOB_COUNT1## {$jobcount} ##JOB_COUNT2##{if $jobcount>1}##S##{/if}</span></a>
 		{/if}
 		<a href="{kurl page="jobedit"}" class="addjob"><span>##JOBADD##</span></a>
+		<form action="{kurl action="jobsearchredirect"}" method="post" class="searchjob">
+			<input type="text" class="searchfield" name="jobsearch" />
+			<input type="submit" value="##JOBSEARCH##" class="searchbutton" />
+		</form>
 	</div>
 	
 	<div class="companies">

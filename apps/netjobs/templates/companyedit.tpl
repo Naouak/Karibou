@@ -37,6 +37,19 @@
 						<option value="compt_other"{if isset($myCompany) && $myCompany->getInfo("type") == "jobt_interim"} SELECTED{/if}>##compt_other##</option>
 					</select>
 				</li>
+				<li class="sector">
+					<label for="type">##COMPANYACTIVITY## :</label>
+					<select id="type" name="companyinfos[activity]">
+						<option value="compa_construction"{if isset($myCompany) && $myCompany->getInfo("sector") == "compa_construction"} SELECTED{/if}>##compa_construction##</option>
+						<option value="compa_realestate"{if isset($myCompany) && $myCompany->getInfo("sector") == "compa_realestate"} SELECTED{/if}>##compa_realestate##</option>
+						<option value="compa_bankinsurance"{if isset($myCompany) && $myCompany->getInfo("sector") == "compa_bankinsurance"} SELECTED{/if}>##compa_bankinsurance##</option>
+						<option value="compa_distribution"{if isset($myCompany) && $myCompany->getInfo("sector") == "compa_distribution"} SELECTED{/if}>##compa_distribution##</option>
+						<option value="compa_infotelecom"{if isset($myCompany) && $myCompany->getInfo("sector") == "compa_infotelecom"} SELECTED{/if}>##compa_infotelecom##</option>
+						<option value="compa_commonpublic"{if isset($myCompany) && $myCompany->getInfo("sector") == "compa_commonpublic"} SELECTED{/if}>##compa_commonpublic##</option>
+						<option value="compa_services"{if isset($myCompany) && $myCompany->getInfo("sector") == "compa_services"} SELECTED{/if}>##compa_services##</option>
+						<option value="compa_industry"{if isset($myCompany) && $myCompany->getInfo("sector") == "compa_industry"} SELECTED{/if}>##compa_industry##</option>
+						<option value="compa_other"{if isset($myCompany) && $myCompany->getInfo("sector") == "compa_other"} SELECTED{/if}>##compa_other##</option>					</select>
+				</li>
 			</ul>
 		</fieldset>
 
