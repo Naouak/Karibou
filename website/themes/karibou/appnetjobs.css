@@ -107,6 +107,46 @@
 	font-size: 1.1em;
 }
 
+/* Default page : Jobs > Search bar */
+.netjobs form.searchjob {
+	display: block;
+	clear: both;
+	padding: 0px 0px 0px 80px;
+	margin: 10px 0px 0px 0px;
+	width: 500px;
+	height: 51px;
+	background-image: url(images/netjobs/jobs/search.png);
+	background-repeat: no-repeat;
+	background-position: 0px bottom;
+}
+
+.netjobs form.searchjob input.searchfield {
+	display: block;
+	float: left;
+	margin: 15px 20px 0px 0px;
+	width: 250px;
+	border: 1px solid #acacac;
+	text-align: center;
+	font-weight: bold;
+	height: 20px;
+}
+
+.netjobs form.searchjob input.searchbutton {
+	display: block;
+	float: left;
+	width: 119px;
+	height: 27px;
+	background-color: transparent;
+	background-image: url(images/netjobs/jobs/searchbutton.png);
+	background-repeat: no-repeat;
+	background-position: 0px bottom;
+	padding: 0px 0px 5px 12px;
+	margin-top: 13px;
+	border: 0px;
+	color: #ffffff;
+	font-weight: bold;
+}
+
 /* Default page : Companies */
 .netjobs .companies {
 	width: 300px;
@@ -159,7 +199,7 @@
 ul.joblist li .title {
 	display: block;
 	float: left;
-	width: 75%;
+	width: 72%;
 	overflow: hidden;
 }
 #content ul.joblist li .title a {
