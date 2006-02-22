@@ -747,3 +747,18 @@ CREATE TABLE `survey_surveys` (
   `datetime` text NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+
+CREATE TABLE `forum_messages` (
+  `id` int(11) NOT NULL default '0',
+  `forumid` int(11) NOT NULL default '0',
+  `originalmessageid` int(11) default NULL,
+  `replymessageid` int(11) default NULL,
+  `last` tinyint(1) NOT NULL default '0',
+  `deleted` tinyint(1) NOT NULL default '0',
+  `subject` text NOT NULL,
+  `description` text NOT NULL,
+  `userid` int(11) NOT NULL default '0',
+  `datetime` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
