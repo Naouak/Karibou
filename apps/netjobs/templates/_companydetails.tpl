@@ -6,7 +6,7 @@
 				</a>
 			</li>
 			
-			{if ($myJob->getInfo("type") !== FALSE && $myCompany->getInfo("type") != "")}
+			{if ($myCompany->getInfo("type") !== FALSE && $myCompany->getInfo("type") != "")}
 			<li class="type">
 				<label for="type">##COMPANYTYPE## :</label>
 				<span name="type">{translate key=$myCompany->getInfo("type")}&nbsp;</span>
