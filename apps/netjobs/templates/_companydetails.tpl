@@ -2,19 +2,21 @@
 		<ul>
 			<li class="name">
 				<label for="name">##COMPANYNAME## :</label>
-				<span name="name">{$myCompany->getInfo("name")}</span>
+				<span name="name">{$myCompany->getInfo("name")}&nbsp;</span>
 				</a>
 			</li>
 			
+			{if ($myJob->getInfo("type") !== FALSE && $myCompany->getInfo("type") != "")}
 			<li class="type">
 				<label for="type">##COMPANYTYPE## :</label>
-				<span name="type">{translate key=$myCompany->getInfo("type")}</span>
+				<span name="type">{translate key=$myCompany->getInfo("type")}&nbsp;</span>
 				</a>
 			</li>
+			{/if}
 			
 			<li class="activity">
 				<label for="activity">##COMPANYACTIVITY## :</label>
-				<span name="activity">{translate key=$myCompany->getInfo("activity")}</span>
+				<span name="activity">{translate key=$myCompany->getInfo("activity")}&nbsp;</span>
 				</a>
 			</li>
 	

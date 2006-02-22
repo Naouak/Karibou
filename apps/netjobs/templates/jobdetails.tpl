@@ -9,18 +9,20 @@
 			<ul>
 				<li class="title">
 					<label for="title">##JOBTITLE## :</label>
-					<span name="title">{$myJob->getInfo("title")}</span>
+					<span name="title">{$myJob->getInfo("title")}&nbsp;</span>
 				</li>
 			
 				<li class="type">
 					<label for="type">##JOBTYPE## :</label>
-					<span name="type"><em>{translate key=$myJob->getInfo("type")}</em></span>
+					<span name="type"><em>{translate key=$myJob->getInfo("type")}</em>&nbsp;</span>
 				</li>
 				
+				{if ($myJob->getInfo("role") !== FALSE && $myJob->getInfo("role") != "")}
 				<li class="role">
 					<label for="role">##JOBROLE## :</label>
-					<span name="role">{translate key=$myJob->getInfo("role")}</span>
+					<span name="role"><em>{translate key=$myJob->getInfo("role")}</em>&nbsp;</span>
 				</li>
+				{/if}
 				
 				<li class="company">
 					<label for="company">##JOBCOMPANY## :</label>
