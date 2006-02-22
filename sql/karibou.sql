@@ -683,6 +683,11 @@ CREATE TABLE `netjobs_jobs` (
   PRIMARY KEY  (`i`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=90 ;
 
+
+ALTER TABLE `netjobs_jobs` ADD FULLTEXT `SearchIndex` (
+`title` ,
+`description`
+)
 -- --------------------------------------------------------
 
 -- 
@@ -749,6 +754,18 @@ CREATE TABLE `survey_surveys` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 
+CREATE TABLE `forum_forums` (
+  `id` int(11) NOT NULL default '0',
+  `name` text NOT NULL,
+  `description` text NOT NULL,
+  `userid` text NOT NULL,
+  `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO `forum_forums` VALUES (1, 'Test Forum', 'This is the Test Forum', '1', '0000-00-00 00:00:00');
+
+
 CREATE TABLE `forum_messages` (
   `id` int(11) NOT NULL default '0',
   `forumid` int(11) NOT NULL default '0',
@@ -761,4 +778,3 @@ CREATE TABLE `forum_messages` (
   `userid` int(11) NOT NULL default '0',
   `datetime` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
