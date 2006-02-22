@@ -1,7 +1,8 @@
 		<ul class="messagelist">
 	{foreach from=$myMessages item="myMessage"}
 			<li>
-				<span class="title"><a href="{kurl page="discussiondetails" forumid=$myForum->getInfo("id") messageid=$myMessage->getId()}">{if ($myJob->getInfo("title") != "")}{$myJob->getInfo("title")}{else}##JOB_EMPTYTITLE##{/if}</a></span>
+				<span class="title"><a href="{kurl page="messageedit" forumid=$myForum->getInfo("id") messageid=$myMessage->getInfo("id")}">{if ($myMessage->getInfo("subject") != "")}{$myMessage->getInfo("subject")}{else}##KF_MESSAGE_EMPTYTITLE##{/if}</a></span>
+				{*
 				<span class="ago">
 					##AGO1##
 					{assign var="since" value=$myJob->getSecondsSinceLastUpdate()}
@@ -16,13 +17,7 @@
 					{/if}
 					##AGO2##
 				</span>
-				<span class="company">
-				{if $myJob->getCompanyInfo("id") !== FALSE}
-					##JOB_IN## <a href="{kurl page="companydetails" companyid=$myJob->getCompanyInfo("id")}">{$myJob->getCompanyInfo("name")}</a>
-				{else}
-					##JOB_IN## <em>##COMPANYUNKNOWN##</em>
-				{/if}
-				</span>
+				*}
 			</li>
 	{/foreach}
 		</ul>

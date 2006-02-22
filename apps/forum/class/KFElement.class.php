@@ -28,23 +28,31 @@ class KFElement
 
 	function __construct(Array $infos, UserFactory $userFactory)
 	{
-		$this->infos = $infos;
-		$this->userFactory = $userFactory;
-		
-		if ($this->getInfo("userid") !== FALSE)
+		if (count($infos) > 0)
 		{
-			$this->creator = $userFactory->prepareUserFromId($this->getInfo("user_id"));
-		}
-		
-		$this->currentUser = $this->userFactory->getCurrentUser();
-		
-		if ($this->getInfo("userid") == $this->currentUser->getId())
-		{
-			$this->rights = READ | UPDATE | WRITE;
+			$this->infos = $infos;
+			$this->userFactory = $userFactory;
+			
+			if ($this->getInfo("userid") !== FALSE && $this->getInfo("userid") > 0)
+			{
+				$this->creator = $userFactory->prepareUserFromId($this->getInfo("userid"));
+			}
+			
+			$this->currentUser = $this->userFactory->getCurrentUser();
+			
+			if ($this->getInfo("userid") == $this->currentUser->getId())
+			{
+				$this->rights = READ | UPDATE | WRITE;
+			}
+			else
+			{
+				$this->rights = READ;
+			}
+			return TRUE;
 		}
 		else
 		{
-			$this->rights = READ;
+			return FALSE;
 		}
 		
 	}
@@ -71,6 +79,17 @@ class KFElement
 	public function getAllInfo()
 	{
 		return $this->infos;
+	}
+	
+	/**
+	 * Method setting automatically the element info from an array (can be a post array)
+	 */
+	public function setInfosFromArray($array)
+	{
+		foreach ($array as $key => $value)
+		{
+			$this->setInfo($key, $value);
+		}
 	}
 
 

@@ -12,7 +12,9 @@
 	<load class="KFForum"		file="class/KFForum.class.php" />
 	<load class="KFElement"		file="class/KFElement.class.php" />
 	
-	<load class="KFDefault"		file="default.class.php" />
+	<load class="KFDefault"			file="default.class.php" />
+	<load class="KFMessageEdit"	file="messageedit.class.php" />
+	<load class="KFMessageSave"	file="messagesave.class.php" />
 
 	<load class="ForumMenu" file="forummenu.class.php" />
 
@@ -20,17 +22,14 @@
 	<footer app="footer" view="default" />
 
 	<view name="default"		class="KFDefault"		template="default.tpl" />
-	<view name="threadlist"		class="KFThreadList"	template="threadlist.tpl" />
+	<view name="messagelist"		class="KFMessageList"	template="messagelist.tpl" />
+	<view name="messageedit"		class="KFMessageEdit"	template="messageedit.tpl" />
 
 	<page name="" view="default" />
 
 	<page name="forumlist" view="threadlist" />
-	<page name="threadlist" view="threadlist">
-		<argument name="forumid" class="NumberArgument" />
-	</page>
 	<page name="messagelist" view="message">
 		<argument name="forumid" class="NumberArgument" />
-		<argument name="threadid" class="NumberArgument" />
 	</page>
 
 
@@ -38,24 +37,16 @@
 	<page name="forumedit" view="forumedit">
 		<option name="forumid" class="NumberArgument" />
 	</page>
-	<page name="threadedit" view="threadedit">
-		<argument name="forumid" class="NumberArgument" />
-		<option name="threadid" class="NumberArgument" />
-	</page>
 	<page name="messageedit" view="messageedit">
 		<argument name="forumid" class="NumberArgument" />
-		<argument name="threadid" class="NumberArgument" />
 		<option name="messageid" class="NumberArgument" />
 	</page>
 
 
 	<form action="forumsave" class="KFForumSave">
 		<redirect />
-	</form>
-	<form action="forumsave" class="KFThreadSave">
-		<redirect />
-	</form>
-	<form action="forumsave" class="KFMessageSave">
+	</form>
+	<form action="messagesave" class="KFMessageSave">
 		<redirect />
 	</form>
 	

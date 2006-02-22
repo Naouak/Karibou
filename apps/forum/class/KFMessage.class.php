@@ -14,9 +14,9 @@
  **/
 class KFMessage extends KFElement
 {
-	public function __construct(Array $jobinfos, UserFactory $userFactory)
+	public function __construct(Array $infos, UserFactory $userFactory)
 	{
-		parent::__construct($jobinfos,$userFactory);
+		parent::__construct($infos, $userFactory);
 		
 	}	
 }

@@ -19,9 +19,15 @@ class KFDefault extends Model
 		$menuApp = $this->appList->getApp($this->appname);
 		$menuApp->addView("menu", "header_menu", array("page" => "default") );
 
+		$forumid = 1;
+
 		$factory = new KFFactory ($this->db, $this->userFactory);
-		$myThreads = $factory->getThreadList();
-		$this->assign("myThreads", $myThreads);
+		
+		$myForum = $factory->getForumById($forumid);
+		$this->assign("myForum", $myForum);
+				
+		$myMessages = $factory->getMessageList($forumid);
+		$this->assign("myMessages", $myMessages);
 	}
 }
 

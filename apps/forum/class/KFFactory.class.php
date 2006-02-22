@@ -28,16 +28,16 @@ class KFFactory
 		
 	}
 	
-	/* COMPANIES */
+	/* Forums */
 	public function getForumList()
 	{
-		$companies = array();
+		$forums = array();
 	
 		$sql = "
 				SELECT
-					forum_forums.*
+					forum_forums.*,
 					COUNT(forum_messages.id) as nbmessages,
-					TIMESTAMP(MAX(forum_messages.date)) as lastmessagedate
+					TIMESTAMP(MAX(forum_messages.datetime)) as lastmessagedate
 				FROM
 					forum_forums
 				LEFT OUTER JOIN forum_messages
@@ -60,7 +60,7 @@ class KFFactory
 				foreach ($infos as $info)
 				{
 				
-					$threads[] = new KFForum($info, $this->userFactory);
+					$forums[] = new KFForum($info, $this->userFactory);
 				}
 			}
 			else
@@ -72,22 +72,22 @@ class KFFactory
 			Debug::kill($e->getMessage());
 		}
 		
-		return $threads;
+		return $forums;
 	}
 	
-	public function getForumById($threadid)
+	public function getForumById($forumid)
 	{
 		$sql = "
 				SELECT
-					forum_forums.*
+					forum_forums.*,
 					COUNT(forum_messages.id) as nbmessages,
-					TIMESTAMP(MAX(forum_messages.date)) as lastmessagedate
+					TIMESTAMP(MAX(forum_messages.datetime)) as lastmessagedate
 				FROM
 					forum_forums
 				LEFT OUTER JOIN forum_messages
-					ON (forum_forums.id = forum_messages.threadid) && (forum_messages.deleted = 0) && (forum_messages.last = 1)
+					ON (forum_forums.id = forum_messages.forumid) && (forum_messages.deleted = 0) && (forum_messages.last = 1)
 				WHERE
-					forum_forums.id = '$threadid'
+					forum_forums.id = '$forumid'
 				GROUP BY
 					forum_forums.id
 			";			
@@ -99,8 +99,8 @@ class KFFactory
 			unset($stmt);
 			if (count($infos)>0)
 			{
-				$thread = new KFForum($infos[0],$this->userFactory);
-				return $thread;
+				$forum = new KFForum($infos[0],$this->userFactory);
+				return $forum;
 			}
 			else
 			{
@@ -115,20 +115,147 @@ class KFFactory
 		return FALSE;
 	}
 
+	/* Messages */
+	public function getMessageList()
+	{
+		return $this->getElementList("KFMessage");
+	}
+	public function getMessageById($id)
+	{
+		return $this->getElementById($id, "KFMessage");
+	}
+	public function createMessage($forumid)
+	{
+		return new KFMessage(
+			array(
+				"userid" => $this->userFactory->getCurrentUser()->getId(),
+		 		"forumid" => $forumid
+		 	) ,$this->userFactory);
+	}
+
+	/* Generalisation */
 	protected function _getElementParams($element)
 	{
+		if (is_object($element))
+		{
+			$elementclass = get_class($element);
+		}
+		elseif (is_string($element))
+		{
+			$elementclass = $element;
+		}
+	
 		$params = array();
-		if (get_class($element) == "KFForum")
+		if (isset($elementclass))
 		{
-			$params["dbTable"]	= 'forum_forums';
-			$params["dbFields"]	= array('name', 'description');
+			if ($elementclass == "KFForum")
+			{
+				$params["dbTable"]	= 'forum_forums';
+				$params["dbFields"]	= array('name', 'description');
+			}
+			elseif ($elementclass == "KFMessage")
+			{
+				$params["dbTable"] = 'forum_messages';
+				$params["dbFields"] = array('forumid', 'subject', 'description');
+			}
 		}
-		elseif (get_class($element) == "KFMessage")
+		return $params;
+	}
+	
+	public function getElementList($elementclass)
+	{
+		$elements = array();
+		$params = $this->_getElementParams($elementclass);
+		$dbTable = $params["dbTable"];
+		$dbFields = $params["dbFields"];
+	
+		$sql = "
+				SELECT
+					$dbTable.*
+				FROM
+					$dbTable
+				WHERE
+					$dbTable.last = 1
+				AND
+					$dbTable.deleted = 0
+				ORDER BY
+					datetime
+					DESC
+			";			
+			
+		try
 		{
-			$params["dbTable"] = 'forum_messages';
-			$params["dbFields"] = array('subject', 'title');
+			$stmt = $this->db->query($sql);
+			$infos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			unset($stmt);
+			
+			if (count($infos)>0)
+			{
+				foreach ($infos as $info)
+				{
+				
+					$elements[] = new $elementclass($info, $this->userFactory);
+				}
+			}
+			else
+			{
+			}
 		}
-		retun $params;
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}
+		
+		return $elements;
+	}
+	
+	public function getElementById($elementid, $elementclass)
+	{
+		$elements = array();
+		$params = $this->_getElementParams($elementclass);
+		$dbTable = $params["dbTable"];
+		$dbFields = $params["dbFields"];
+	
+		$sql = "
+				SELECT
+					$dbTable.*
+				FROM
+					$dbTable
+				WHERE
+					$dbTable.last = 1
+				AND
+					$dbTable.deleted = 0
+				AND
+					$dbTable.id = $elementid
+				ORDER BY
+					datetime
+					DESC
+			";			
+			
+		try
+		{
+			$stmt = $this->db->query($sql);
+			$infos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			unset($stmt);
+			
+			if (count($infos)>0)
+			{
+				foreach ($infos as $info)
+				{
+				
+					$elements = new $elementclass($info, $this->userFactory);
+				}
+			}
+			else
+			{
+			}
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}
+		
+		return $elements;
 	}
 
 	public function saveElement ($element)
@@ -166,7 +293,7 @@ class KFFactory
 			{
 				$stmtm = $this->db->query($sqlm);
 				$maxelementid = $stmtm->fetchAll(PDO::FETCH_ASSOC);
-				$elementid = $maxcompanyid[0]["maxelementid"] + 1;
+				$elementid = $maxelementid[0]["maxelementid"] + 1;
 				unset($stmtm);
 				
 			}
@@ -178,7 +305,7 @@ class KFFactory
 		
 		if (isset($elementid))
 		{
-			$SQLFieldName = "";
+			$SQLFieldName = $SQLFieldsInsert = $SQLFieldsValues = "";
 			foreach ($dbFields as $dbField)
 			{
 				$SQLFieldsInsert .= ", $dbField";
@@ -189,7 +316,7 @@ class KFFactory
 			
 			$sqlc = "
 					INSERT INTO $dbTable
-					(id, last, user_id, datetime $SQLFieldsInsert)
+					(id, last, userid, datetime $SQLFieldsInsert)
 					VALUES
 					('".$elementid."', 1, '".$currentUser->getId()."', NOW() $SQLFieldsValues)
 				";
@@ -198,7 +325,7 @@ class KFFactory
 			{
 				$stmtc = $this->db->exec($sqlc);
 				unset($stmtc);
-				return $companyid;
+				return $elementid;
 				
 			}
 			catch(PDOException $e)
