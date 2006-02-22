@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+	
+	<load class="NumberArgument"	file="../arguments/numberargument.class.php" />
+	<load class="PageArgument"	file="../arguments/pageargument.class.php" />
+	<load class="ElementId"		file="../arguments/elementid.class.php" />
+
+	<load class="KFFactory"		file="class/KFFactory.class.php" />
+	<load class="KFThread"		file="class/KFThread.class.php" />
+	<load class="KFMessage"		file="class/KFMessage.class.php" />
+	<load class="KFForum"		file="class/KFForum.class.php" />
+	<load class="KFElement"		file="class/KFElement.class.php" />
+	
+	<load class="KFDefault"		file="default.class.php" />
+
+	<load class="ForumMenu" file="forummenu.class.php" />
+
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<view name="default"		class="KFDefault"		template="default.tpl" />
+	<view name="threadlist"		class="KFThreadList"	template="threadlist.tpl" />
+
+	<page name="" view="default" />
+
+	<page name="forumlist" view="threadlist" />
+	<page name="threadlist" view="threadlist">
+		<argument name="forumid" class="NumberArgument" />
+	</page>
+	<page name="messagelist" view="message">
+		<argument name="forumid" class="NumberArgument" />
+		<argument name="threadid" class="NumberArgument" />
+	</page>
+
+
+
+	<page name="forumedit" view="forumedit">
+		<option name="forumid" class="NumberArgument" />
+	</page>
+	<page name="threadedit" view="threadedit">
+		<argument name="forumid" class="NumberArgument" />
+		<option name="threadid" class="NumberArgument" />
+	</page>
+	<page name="messageedit" view="messageedit">
+		<argument name="forumid" class="NumberArgument" />
+		<argument name="threadid" class="NumberArgument" />
+		<option name="messageid" class="NumberArgument" />
+	</page>
+
+
+	<form action="forumsave" class="KFForumSave">
+		<redirect />
+	</form>
+	<form action="forumsave" class="KFThreadSave">
+		<redirect />
+	</form>
+	<form action="forumsave" class="KFMessageSave">
+		<redirect />
+	</form>
+	
+</app>
