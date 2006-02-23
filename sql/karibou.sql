@@ -628,10 +628,9 @@ CREATE TABLE `fileshare_versions` (
   `datetime` datetime NOT NULL default '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 
--- Structure de la table `netjobs_companies`
--- 
 
+
+DROP TABLE IF EXISTS `netjobs_companies`;
 CREATE TABLE `netjobs_companies` (
   `i` int(11) NOT NULL auto_increment,
   `id` int(11) NOT NULL default '0',
@@ -641,30 +640,23 @@ CREATE TABLE `netjobs_companies` (
   `name` text NOT NULL,
   `description` text NOT NULL,
   `type` varchar(30) NOT NULL default '',
+  `activity` varchar(30) NOT NULL default '',
   `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`i`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
 
--- 
--- Structure de la table `netjobs_contacts`
--- 
-
+DROP TABLE IF EXISTS `netjobs_contacts`;
 CREATE TABLE `netjobs_contacts` (
   `contact_id` int(11) NOT NULL default '0',
-  `type` enum('job','company') NOT NULL default 'job',
   `id` int(11) NOT NULL default '0',
-  `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`contact_id`,`type`,`id`)
+  `type` enum('job','company') NOT NULL default 'job',
+  `datetime` datetime NOT NULL default '0000-00-00 00:00:00'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
 
--- 
--- Structure de la table `netjobs_jobs`
--- 
 
+DROP TABLE IF EXISTS `netjobs_jobs`;
 CREATE TABLE `netjobs_jobs` (
   `i` int(11) NOT NULL auto_increment,
   `id` int(11) NOT NULL default '0',
@@ -676,24 +668,16 @@ CREATE TABLE `netjobs_jobs` (
   `profile` text NOT NULL,
   `type` text NOT NULL,
   `education` varchar(20) NOT NULL default '',
+  `role` varchar(30) NOT NULL default '',
   `experience_required` text NOT NULL,
   `salary` int(11) NOT NULL default '0',
   `company_id` int(11) NOT NULL default '0',
   `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`i`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=90 ;
+  PRIMARY KEY  (`i`),
+  FULLTEXT KEY `SearchIndex` (`title`,`description`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-
-ALTER TABLE `netjobs_jobs` ADD FULLTEXT `SearchIndex` (
-`title` ,
-`description`
-)
--- --------------------------------------------------------
-
--- 
--- Structure de la table `netjobs_locations`
--- 
-
+DROP TABLE IF EXISTS `netjobs_locations`;
 CREATE TABLE `netjobs_locations` (
   `id` int(11) NOT NULL default '0',
   `type` enum('job','company') NOT NULL default 'job',
@@ -705,9 +689,9 @@ CREATE TABLE `netjobs_locations` (
   `county_name` text NOT NULL,
   `department_name` text NOT NULL,
   `city_name` text NOT NULL,
-  `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`id`,`type`)
+  `datetime` datetime NOT NULL default '0000-00-00 00:00:00'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 
 
 CREATE TABLE `survey_answers` (
@@ -721,12 +705,6 @@ CREATE TABLE `survey_answers` (
   `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`i`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
-
--- --------------------------------------------------------
-
--- 
--- Structure de la table `survey_questions`
--- 
 
 CREATE TABLE `survey_questions` (
   `id` int(11) NOT NULL auto_increment,
