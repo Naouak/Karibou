@@ -5,11 +5,8 @@
 }
 
 #default_container {
-	background-color: #effeef;
 	padding: 0px;
-	margin: 5px;
-	width: 680px;
-	min-height: 0px;
+	margin: 0px;
 }
 
 #delete_container {

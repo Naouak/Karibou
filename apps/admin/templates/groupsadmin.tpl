@@ -1,7 +1,5 @@
 
-<ul>
-{include file="grouptree.tpl" grouptree=$grouptree}
-</ul>
+{include file="grouptree.tpl" grouptree=$grouptree key=0}
 
 <form action="{kurl action='addgroup'}" method="POST">
 	<label for="input_name">Name : </label>

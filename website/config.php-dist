@@ -1,5 +1,10 @@
 <?php
 
+// en prod on supprime le reporting d'erreurs
+Debug::$display = false;
+//error_reporting(E_STRICT);
+error_reporting(E_NONE);
+
 $config['txt_title']    = 'Da K4ar1b0u !';
 $config['session_name'] = '_KARIBOU_';
 
@@ -13,18 +18,23 @@ $config['bdd']['dsn']    = 'mysql:dbname='.$config['bdd']['frameworkdb'].';host=
 $config['bdd']['username']    = '##DBUSER##';
 $config['bdd']['password']    = '##DBPASS##';
 
-//$config['login']['backend'] = "mysql";
+$config['login']['backend'] = "mysql";
+$config['login']['server'] = "localhost";
+$config['login']['server_username'] = "root";
+$config['login']['server_password'] = "";
+$config['login']['server_schema'] = "annuaire";
+
+/*
 $config['login']['backend'] = "imap";
 $config['login']['server'] = "mail.telecomlille.net";
-//$config['login']['server_username'] = "";
-//$config['login']['server_password'] = "";
 $config['login']['server_schema'] = "INBOX";
 $config['login']['server_options'] = "/imap/tls/novalidate-cert";
 $config['login']['post_username'] = "@telecomlille.net";
+*/
+
 $config['login']['createuser'] = TRUE;
 $config['login']['savepassword'] = TRUE;
 $config['login']['firsttimechangepassword'] = FALSE;
-
 
 $config['keychain']['storage'] = 'session';
 

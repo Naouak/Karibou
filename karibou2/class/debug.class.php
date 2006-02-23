@@ -27,6 +27,8 @@ class Debug
 	
 	function __construct()
 	{
+		if( isset($GLOBALS['config']['debug_display']) )
+			self::$display = $GLOBALS['config']['debug_display'];
 	}
 	
 	function kill($txt)
