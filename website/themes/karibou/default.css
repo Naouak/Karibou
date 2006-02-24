@@ -29,5 +29,6 @@
 /* hack to have :hover behaviour on any elements for Internet Explorer */
 
 body {
-	behavior:url("/themes/js/csshover.htc");
+	/*behavior:url("/themes/js/csshover.htc");*/
+	/*Removed because loading this script on the home page takes 100% CPU on a P733 for 10 seconds */
 }
