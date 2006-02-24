@@ -148,8 +148,15 @@ class Geo
 						{
 								$stmt = $this->db->query($sql);
 								$counties = $stmt->fetchAll(PDO::FETCH_ASSOC);
-								$county = $counties[0];
-								$locationString .= " &gt; ".$county["name"];
+								if (isset($counties[0]))
+								{
+									$county = $counties[0];
+									$locationString .= " &gt; ".$county["name"];
+								}
+								else
+								{
+									$locationString .= "";
+								}
 								unset($stmt);
 						}
 						catch(PDOException $e)
