@@ -1,4 +1,3 @@
-
 * {
 	margin: 0px;
 	padding: 0px;
@@ -10,8 +9,7 @@ ul {
 
 body {
 	background-color: #eee;
-	font-family: sans-serif;
-	font-size: 0.8em;
+	font: 0.8em sans-serif;
 	text-align: center;
 	margin: 0px;
 	padding: 0px;
@@ -20,34 +18,32 @@ body {
 table {
 	font-size: 1em;
 }
+a {
+	color: #4e80c9;
+}
+a:hover {
+	text-decoration: underline;
+}
 
 #container {
 	text-align: left;
 	width: 900px;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 0px auto 0px auto;
 }
 
 #top {
-	background-image: url("images/top-back.png");
-	background-repeat: repeat-x;
+	background: url("images/top-back.png") repeat-x;
 	height: 80px;
 	width: 900px;
-	margin: 10px 0px 0px 0px;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 10px auto 0px auto;
 }
 #top .leftdeco {
-	background-image: url("images/top-left.png");
-	background-repeat: no-repeat;
-	background-position: left;
+	background: url("images/top-left.png") no-repeat left;
 	height: 80px;
 }
 
 #top .rightdeco {
-	background-image: url("images/top-right.png");
-	background-repeat: no-repeat;
-	background-position: right;
+	background: url("images/top-right.png") no-repeat right;
 	height: 80px;
 }
 #top .activate {
@@ -57,22 +53,21 @@ table {
 #top .menu {
 	position: relative;
 	top: 35px;
+	left: 0px;
 	text-align: left;
 	padding: 0px;
 	margin: 0px;
-	left: 0px;
 	font-size: 0.9em;
 }
 
 #top .menu li a.highlight {
-color: #ff5555;
+	color: #ff5555;
 }
 
 #top li {
 	display: inline;
 	margin: 0px 0px 0px 10px;
-	font-weight: bold;
-	font-size: 0.9em;
+	font: 0.9em bold;
 }
 
 /* Top links */
@@ -84,58 +79,44 @@ color: #ff5555;
 
 #top a:hover {
 	color: #3e70b9;
-	text-decoration: underline;
 }
 
 #banner {
-	background-image: url("images/banner-back.png");
-	background-repeat: repeat-x;
+	background: url("images/banner-back.png") repeat-x;
 	height: 115px;
 	width: 900px;
-	margin: 0px 10px 0px 9px;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 0px auto 0px auto;
 }
 
 #banner .leftdeco {
-	background-image: url("images/banner-left.png");
-	background-repeat: no-repeat;
-	background-position: left;
+	background: url("images/banner-left.png") no-repeat left;
 	height: 115px;
 }
 
 #banner .rightdeco {
-	background-image: url("images/banner-right.png");
-	background-repeat: no-repeat;
-	background-position: right;
+	background: url("images/banner-right.png") no-repeat right;
 	height: 115px;
 }
 
 #main {
-	background-color: #fff;
-	background-repeat: repeat-x;
-	background-position: bottom;
+	background: #fff;
 	margin-left: auto;
 	margin-right: auto;
 	width: 900px;
 }
 
 #main .leftdeco {
-	background-image: url("images/content-left.png");
-	background-repeat: repeat-y;
-	background-position: left;
+	background: url("images/content-left.png") repeat-y left;
 }
 
 #main .rightdeco {
-	background-image: url("images/content-right.png");
-	background-repeat: repeat-y;
-	background-position: right;
+	background: url("images/content-right.png") repeat-y right;
 }
 
 #boxbar {
 	width: 255px;
 	float: right;
-	margin: 0px 0px 0px 0px;
+	margin: 0px;
 }
 
 #boxbar h3,p {
@@ -165,38 +146,26 @@ color: #ff5555;
 
 #content h2 {
 	font-size: 1.35em;
-	color: #038D41;
 	font-weight: bold;
+	color: #038D41;
 	text-align: left;
 }
 
 #content h3 {
 	font-size: 1.2em;
+	font-weight: bold;
 	color: #3c3c5c;
 	margin: 0px 0px 5px 0px;
 	padding: 0px 0px 0px 5px;
 	text-align: left;
 	border-left: 4px solid #afafaf;
 }
-/*
-#content h2 {
-	padding: 15px 0px 0px 20px;
-	margin: 0px;
-	font-size: 1.2em;
-	color: #23A17D;
-}
-*/
 
 #content h4 {
 	margin: 10px 0px 0px 20px;
 	font-weight: bold;
 }
-#content li {
-/*	margin: 0px 0px 0px 40px;*/
-}
-#content a {
-	color: #4e80c9;
-}
+
 #content code {
 	margin: 10px 10px 10px 30px;
 }
@@ -308,19 +277,19 @@ color: #ff5555;
 
 .clear {
 	clear: both;
-	border: 0px;
+	border: 0;
 	background: transparent;
 	height: 1px;
-	padding: 0px;
-	margin: 0px;
+	padding: 0;
+	margin: 0;
 	font-size: 1px;
 }
 
 #content .clear {
 	clear: both;
-	border: 0px;
-	margin: 0px;
-	padding: 0px;
+	border: 0;
+	margin: 0;
+	padding: 0;
 	background: none;
 }
 
@@ -331,36 +300,6 @@ color: #ff5555;
 
 ul {
 	padding-left: 15px;
-}
-
-/* App Navigation */
-.appNav {
-	margin-bottom: 10px;
-	margin-top: 5px;
-}
-
-ul.appNav  {
-	border: 1px solid #acacac;
-	height: 20px;
-	text-align: center;
-	margin: 0px;
-	padding: 5px;
-	list-style: none;
-}
-
-ul.appNav li  {
-	float: left;
-	margin: 0 10px;
-	padding: 2px;	
-}
-
-ul.appNav a {
-	display: block;
-	text-decoration: none;
-	font-weight: bold;
-}
-ul.appNav a:hover {
-	text-decoration: underline;
 }
 
 legend {
@@ -374,8 +313,7 @@ fieldset {
 #kariboulink {
 	text-align: center;
 	color: #5c5c5c;
-	margin-top: 5px;
-	margin-bottom: 10px;
+	margin: 5px 0 10px 0;
 }
 
 #kariboulink a {
