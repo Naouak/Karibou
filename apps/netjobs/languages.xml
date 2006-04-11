@@ -20,7 +20,7 @@
 		<translation language="en">Profile sought</translation>
 	</sentence>
 	<sentence key="JOBTYPE">
-		<translation language="fr">Typme de contrat</translation>
+		<translation language="fr">Type de contrat</translation>
 		<translation language="en">Contract type</translation>
 	</sentence>
 	<sentence key="JOBSALARY">
@@ -68,7 +68,7 @@
 		<translation language="en">Add a job offer</translation>
 	</sentence>
 	<sentence key="TITLE_WIKI_SYNTAX">
-		<translation language="fr">Syntaxe de mise en forme</translation>
+		<translation language="fr">Syntaxe Wiki de mise en forme</translation>
 		<translation language="en">Wiki syntax for formatting text</translation>
 	</sentence>
 	<sentence key="jobt_permanent">
