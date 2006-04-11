@@ -29,6 +29,10 @@
 		<translation language="fr" value="Accueil" />
 		<translation language="en" value="Homepage" />
 	</sentence>
+	<sentence key="APP_NETJOBS">
+		<translation language="fr" value="NetJobs" />
+		<translation language="en" value="NetJobs" />
+	</sentence>
 	<sentence key="APP_EMAIL">
 		<translation language="fr" value="E-Mail" />
 		<translation language="en" value="E-Mail" />
