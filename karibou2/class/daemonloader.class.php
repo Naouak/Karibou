@@ -67,14 +67,14 @@ class DaemonLoader
 		{
 			if( is_dir($f) && is_file($f."/".$configfile) )
 			{
-				$this->loadDaemon($f."/".$configfile);
+				$this->loadDaemon(basename($f) , $f."/".$configfile);
 			}
 		}
 	}
 	
-	public function loadDaemon($configfile)
+	public function loadDaemon($name, $configfile)
 	{
-		$xmlconfig = new XMLCache( KARIBOU_CACHE_DIR.'/xml_daemon' );
+		$xmlconfig = new XMLCache( KARIBOU_CACHE_DIR.'/daemon_'.$name );
 		$xmlconfig->loadFile( $configfile );
 		$xml = $xmlconfig->getXML();
 		

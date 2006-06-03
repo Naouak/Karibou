@@ -76,10 +76,14 @@ class ExecutionTimer
 		}
 	}
 	
-	function getText()
+	function getText($p_key = null)
 	{
 		$html = "";
 		if( $this->display == false ) return $html;
+
+		if( $p_key != null )
+			return $p_key." (".$this->countArray[$p_key].") : ".round($this->timeArray[$p_key], 3)." sec";
+			
 		reset($this->timeArray);
 		while(list($key, $value) = each($this->timeArray))
 		{

@@ -130,7 +130,7 @@ class KApp
 		
 		$this->permission = $permission;
 		//Lecture des configs
-		$this->xmlconfig = new XMLCache( KARIBOU_CACHE_DIR.'/xml_app' );
+		$this->xmlconfig = new XMLCache( KARIBOU_CACHE_DIR.'/'.$this->name );
 		$this->xmlconfig->loadFile( $configfile );
 		$this->readConfig( $this->xmlconfig->getXML() );
 
@@ -138,7 +138,7 @@ class KApp
 		$languageFile = $this->relativeDir."/languages.xml";
 		if (is_file($languageFile))
 		{
-			$xmlcacheLanguage = new XMLCache(KARIBOU_CACHE_DIR.'/xml_lang');
+			$xmlcacheLanguage = new XMLCache(KARIBOU_CACHE_DIR.'/'.$this->name);
 			$xmlcacheLanguage->loadFile($languageFile);
 			$this->loadLanguages( $xmlcacheLanguage->getXML() );
 		}
