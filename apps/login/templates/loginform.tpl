@@ -42,6 +42,11 @@ function cryptPass()
 {/if}
 <h3>##TITLE_AUTH##</h3>
 <div class="login">
+{section name=m loop=$loginMessages step=1}
+	<div class="error">
+		{$loginMessages[m].1}
+	</div>
+{/section}
 	<form action="{kurl app="login"}" method="post">
 		<label for="_user" class="username">##USERNAME##</label> <input id="_user" name="_user" type="text"/><br />
 		<label for="_pass" class="password">##PASSWORD##</label> <input id="_pass" name="_pass" type="password"/><br />

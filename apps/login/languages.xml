@@ -23,6 +23,10 @@
         <translation language="fr" value="Créer un compte" />
         <translation language="en" value="Register" />
     </sentence>
+    <sentence key="LOGINFAILED">
+        <translation language="fr" value="Erreur d'authentification" />
+        <translation language="en" value="Login Failed" />
+    </sentence>
     <sentence key="LOGOUT">
         <translation language="fr" value="Quitter" />
         <translation language="en" value="Logout" />

@@ -70,6 +70,10 @@ class LoginForm extends Model
 		} else {
 			$this->assign ("allowaccountcreation", TRUE);
 		}
+		
+		$this->assign("loginMessages", $this->formMessage->getSession());
+		$this->formMessage->flush();
+
 	}
 }
 

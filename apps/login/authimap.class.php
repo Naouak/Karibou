@@ -30,7 +30,7 @@ class AuthImap extends Auth
 			$folder = $GLOBALS['config']['login']['server_schema'];
 			$options = $GLOBALS['config']['login']['server_options'];
 			
-			if( $imap = imap_open("{".$server.$options."}".$folder, $user, $pass, OP_HALFOPEN) )
+			if( $imap = @imap_open("{".$server.$options."}".$folder, $user, $pass, OP_HALFOPEN) )
 			{
 				imap_close($imap);
 				return true;
