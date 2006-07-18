@@ -28,7 +28,7 @@ class BaseUrl
 		$this->app = "accueil";
 		if( isset($GLOBALS['config']["base_url"]) )
 		{
-			$this->base_url = $GLOBALS['config']["base_url"];
+			$this->base_url = $GLOBALS['config']["base_url"].'/';
 		}
 		else
 		{

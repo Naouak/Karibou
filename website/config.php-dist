@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 $config['txt_title']    = 'Da K4ar1b0u !';
 $config['session_name'] = '_KARIBOU_';
 
-$config['base_url'] = substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['SCRIPT_NAME'], '/')).'/';
+$config['base_url'] = substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['SCRIPT_NAME'], '/'));
 $config['site']['base_url'] = 'http://'.$_SERVER["SERVER_NAME"].$config['base_url'];
 
 $config['bdd']['frameworkdb'] = "##DBDEFAULT##";

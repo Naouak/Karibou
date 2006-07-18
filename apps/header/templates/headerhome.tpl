@@ -8,13 +8,13 @@
 	<title>
 		##HEADER_PAGE_TITLE## :: ##KPOWERED##
 	</title>
-	<link rel="stylesheet" type="text/css" href="{$smarty.server.SCRIPT_NAME|replace:"index.php":""}{$cssFile}" media="screen" title="Normal" />
+	<link rel="stylesheet" type="text/css" href="{$karibou.base_url}{$cssFile}" media="screen" title="Normal" />
 {foreach item=style from=$styles}
-	<link rel="alternate stylesheet" type="text/css" href="{$smarty.server.SCRIPT_NAME|replace:"index.php":""}{$style.home_css}" media="screen" title="{$style.titre}" />
+	<link rel="alternate stylesheet" type="text/css" href="{$karibou.base_url}{$style.home_css}" media="screen" title="{$style.titre}" />
 {/foreach}
-	<script type="text/javascript" src="{$smarty.server.SCRIPT_NAME|replace:"index.php":""}/themes/js/prototype.js"></script>
-	<script type="text/javascript" src="{$smarty.server.SCRIPT_NAME|replace:"index.php":""}/themes/js/scriptaculous.js"></script>
-	<script type="text/javascript" src="{$smarty.server.SCRIPT_NAME|replace:"index.php":""}/themes/js/karibou.js"></script>
+	<script type="text/javascript" src="{$karibou.base_url}/themes/js/prototype.js"></script>
+	<script type="text/javascript" src="{$karibou.base_url}/themes/js/scriptaculous.js"></script>
+	<script type="text/javascript" src="{$karibou.base_url}/themes/js/karibou.js"></script>
 	<script type="text/javascript">
 {literal}
 		function popup(adresse, nom, hauteur, largeur, haut, gauche){
