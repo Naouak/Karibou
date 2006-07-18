@@ -3,16 +3,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<base href="http://{$smarty.server.HTTP_HOST}{$smarty.server.SCRIPT_NAME|replace:"index.php":""}" />
+	<base href="http://{$smarty.server.HTTP_HOST}{$smarty.server.SCRIPT_NAME|replace:"index.php":""}" />
 	<title>
 		##HEADER_PAGE_TITLE## :: ##KPOWERED##
 	</title>
-	<link rel="stylesheet" type="text/css" href="{$cssFile}" media="screen" title="Normal" />
+	<link rel="stylesheet" type="text/css" href="{$smarty.server.SCRIPT_NAME|replace:"index.php":""}{$cssFile}" media="screen" title="Normal" />
 {foreach item=style from=$styles}
-	<link rel="alternate stylesheet" type="text/css" href="{$style.home_css}" media="screen" title="{$style.titre}" />
+	<link rel="alternate stylesheet" type="text/css" href="{$smarty.server.SCRIPT_NAME|replace:"index.php":""}{$style.home_css}" media="screen" title="{$style.titre}" />
 {/foreach}
-	<script type="text/javascript" src="/themes/js/prototype.js"></script>
-	<script type="text/javascript" src="/themes/js/scriptaculous.js"></script>
-	<script type="text/javascript" src="/themes/js/karibou.js"></script>
+	<script type="text/javascript" src="{$smarty.server.SCRIPT_NAME|replace:"index.php":""}/themes/js/prototype.js"></script>
+	<script type="text/javascript" src="{$smarty.server.SCRIPT_NAME|replace:"index.php":""}/themes/js/scriptaculous.js"></script>
+	<script type="text/javascript" src="{$smarty.server.SCRIPT_NAME|replace:"index.php":""}/themes/js/karibou.js"></script>
 	<script type="text/javascript">
 {literal}
 		function popup(adresse, nom, hauteur, largeur, haut, gauche){

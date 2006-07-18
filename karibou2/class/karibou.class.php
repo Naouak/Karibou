@@ -173,6 +173,7 @@ class Karibou
 		// va créer la page en fonction des paramètres dans l'url,
 		// et crée l'objet BaseUrl
 		$this->baseUrl = BaseURL :: getRef();
+		//$this->baseUrl->parseURL($_SERVER['REQUEST_URI']);substr($_SERVER['REQUEST_URI'], strrpos($_SERVER['SCRIPT_NAME'], '/'))
 		$this->baseUrl->parseURL($_SERVER['REQUEST_URI']);
 
 		$this->connectDB();

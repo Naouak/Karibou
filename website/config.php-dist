@@ -1,15 +1,15 @@
 <?php
 
 // en prod on supprime le reporting d'erreurs
-Debug::$display = false;
+//
 //error_reporting(E_STRICT);
-error_reporting(E_NONE);
+error_reporting(E_ALL);
 
 $config['txt_title']    = 'Da K4ar1b0u !';
 $config['session_name'] = '_KARIBOU_';
 
-$config['site']['base_url'] = 'http://'.$_SERVER["SERVER_NAME"].'/';
-$config['base_url'] = '/';
+$config['base_url'] = substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['SCRIPT_NAME'], '/')).'/';
+$config['site']['base_url'] = 'http://'.$_SERVER["SERVER_NAME"].$config['base_url'];
 
 $config['bdd']['frameworkdb'] = "##DBDEFAULT##";
 $config['bdd']['annuairedb'] = "##DBANNUAIRE##";
@@ -54,8 +54,8 @@ define("KARIBOU_PUB_DIR", dirname(__FILE__).'/pub');
 define("KARIBOU_THEMES_URL", "/themes");
 
 define("KARIBOU_DEBUG", true); // stdout // file
-define("KARIBOU_DEBUG_METHOD", "file"); // stdout // file
-define("KARIBOU_DEBUG_TYPE", "text"); // text // html
+define("KARIBOU_DEBUG_METHOD", "stdout"); // stdout // file
+define("KARIBOU_DEBUG_TYPE", "html"); // text // html
 define("KARIBOU_DEBUG_FILENAME", "/home/jon/projets/karibou/logs/karibou.log");
 
 /* STYLES */

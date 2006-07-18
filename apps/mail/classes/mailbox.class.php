@@ -42,9 +42,11 @@ class Mailbox
 	
 	function connect($uri, $login, $pass)
 	{
-		if( $this->imap = @imap_open($uri, $login, $pass) )
-		{
-			$this->connected = true;
+		if (function_exists('imap_open')) {
+			if( $this->imap = @imap_open($uri, $login, $pass) )
+			{
+				$this->connected = true;
+			}
 		}
 	}
 	

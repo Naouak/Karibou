@@ -59,6 +59,7 @@ class BaseUrl
 		}
 		
 		// facile y a rien => on quitte
+
 		if ( ereg("^".$this->base_url."$", $p_url) )
 		{
 			$this->app = "default";
@@ -77,7 +78,7 @@ class BaseUrl
 		}
 		//Logout rajouté par DaT (2005.07.13 @ 11h37)
 		//Il y a peut-être une méthode plus sympa de gérer le logout non ?
-		else if ($_GET["reason"] == "logout")
+		else if (isset($_GET["reason"]) && $_GET["reason"] == "logout")
 		{
 			$this->app = "default";
 		}

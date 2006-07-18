@@ -1,9 +1,6 @@
 <?php
 
-if( !is_file(dirname(__FILE__).'/config.php') )
-{
-	die("Must create a config File.");
-}
+include('check.php');
 
 require_once dirname(__FILE__).'/config.php';
 require_once KARIBOU_DIR.'/class/karibou.class.php';
@@ -28,6 +25,7 @@ $timer->stop("Full Load");
 
 unset($karibou);
 //Debug::display($timer->getTableHTML());
+
 Debug::display($timer->getText());
 Debug::flushMessages();
 
