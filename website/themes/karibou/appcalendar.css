@@ -2,20 +2,39 @@
 	position: relative;
 	margin: 10px;
 	padding: 10px;
-	height: 800px;
-	width: 630px;
+	height: 540px;
+	width: 600px;
+	overflow-y: scroll;
+	overflow: -moz-scrollbars-vertical;
 }
 
-#calendar .hours {
+#calendar-hours {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	width: 630px;
+	width: 600px;
 }
-#calendar .hours div {
-	height: 49px;
+#calendar-select {
+	position: absolute;
+	top: 0px;
+	left: 20px;
+	width: 580px;
+}
+#calendar .hour {
 	border-top: 1px dashed #666;
+	margin-top: -1px;
 }
+#calendar .selected {
+	background-color: #ddd;
+}
+
+#calendar .timespan {
+	background-color: #eee;
+}
+#calendar .workingtimespan {
+	background-color: #fff;
+}
+
 
 #calendar .events {
 	position: absolute;
@@ -24,10 +43,8 @@
 }
 
 #calendar_sidebar {
-	position: absolute;
-	top: 0px;
-	left: 640px;
-	width: 240px;
+	float: right;
+	width: 220px;
 }
 
 .event{
@@ -63,43 +80,43 @@
 }
 
 .event_size_1 {
-	width: 590px;
+	width: 560px;
 }
 .event_size_2 {
-	width: 290px;
+	width: 270px;
 }
 .event_size_3 {
-	width: 190px;
+	width: 180px;
 }
 .event_size_4 {
-	width: 140px;
+	width: 130px;
 }
 .event_size_5 {
-	width: 110px;
+	width: 100px;
 }
 .event_size_6 {
-	width: 90px;
+	width: 85px;
 }
 
 .newcolumn_2 {
 	position: relative;
-	left: 300px;
+	left: 280px;
 }
 .newcolumn_3 {
 	position: relative;
-	left: 200px;
+	left: 190px;
 }
 .newcolumn_4 {
 	position: relative;
-	left: 150px;
+	left: 140px;
 }
 .newcolumn_5 {
 	position: relative;
-	left: 120px;
+	left: 110px;
 }
 .newcolumn_6 {
 	position: relative;
-	left: 100px;
+	left: 95px;
 }
 
 
