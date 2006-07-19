@@ -47,7 +47,7 @@ class HomeMiniApps extends ObjectList
 	
 	function getConfig()
 	{
-		$xml = new XMLCache(KARIBOU_CACHE_DIR.'/xml_miniapps');
+		$xml = new XMLCache(KARIBOU_CACHE_DIR.'/default');
 		$xml->loadFile(dirname(__FILE__).'/miniapps.xml');
 		$apps = $xml->getXML();
 		

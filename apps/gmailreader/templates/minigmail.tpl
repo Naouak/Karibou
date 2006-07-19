@@ -1,4 +1,4 @@
-<h3>Gmail</h3>
+<h3 class="handle">Gmail</h3>
 <div class="gmail">
 	<ul class="mini">
 	{include file="_maillist.tpl" maxauthorlength="15" maxtitlelength="30"}

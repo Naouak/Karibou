@@ -31,7 +31,7 @@
 	<textarea name="description" id="description">{if isset($event)}{$event->description}{/if}</textarea>
 	<br class="spacer" />
 	<label for="startdate">##STARTDATE##</label>
-		{html_select_date ???all_extra='onchange="javascript:ctrl_dates();"'??  day_extra='class="input_xs"' month_extra='class="input_m"' year_extra='class="input_s"' prefix="startdate" start_year="-1" end_year="+3" field_order="DMY" time=$event->startdate}{*time="YYYY-MM-DD"*}
+		{html_select_date all_extra='onchange="javascript:ctrl_dates();"'  day_extra='class="input_xs"' month_extra='class="input_m"' year_extra='class="input_s"' prefix="startdate" start_year="-1" end_year="+3" field_order="DMY" time=$event->startdate}{*time="YYYY-MM-DD"*}
 		<span class="text">##AT##</span>
 		{html_select_time hour_extra='class="input_xs"' minute_extra='class="input_xs"' prefix="startdate" use_24_hours=true minute_interval=15 display_seconds=false time=$event->startdate}
 	<br class="spacer" />

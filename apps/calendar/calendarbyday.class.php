@@ -45,7 +45,7 @@ class CalendarByDay extends CalendarModel
 		$adminCalendars = $myCalendars->getAdminCalendars();
 		
 		$start = new Date($currentDate);
-		$start->setHour(8);
+		$start->setHour(0);
 		$start->setMinute(0);
 		$start->setSecond(0);
 		$stop = new Date($currentDate);

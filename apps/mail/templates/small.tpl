@@ -1,4 +1,4 @@
-<h3>Mail</h3>
+<h3 class="handle">Mail</h3>
 <div class="mail">
 	{if $messagecount}
 		<div class="messagesnb">

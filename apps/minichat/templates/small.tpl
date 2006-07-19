@@ -45,7 +45,7 @@ setInterval("new Ajax.Updater('minichat_live', '{kurl app="minichat" page="conte
 	</script>
 
 
-<h3>Mini Chat</h3>
+<h3 class="handle">Mini Chat</h3>
 <div class="minichat">
 	<div id="minichat_live">
 		{include file="content.tpl"}

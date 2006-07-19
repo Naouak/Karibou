@@ -1,4 +1,4 @@
-<h3>##NEWS##</h3>
+<h3 class="handle">##NEWS##</h3>
 		{section name=i loop=$theNews step=1}
 			{assign var="theArticle" value=$theNews[i]}
 			{assign var="idNews" value=$theNews[i]->getID()}

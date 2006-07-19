@@ -1,4 +1,4 @@
-
+<h3 class="handle">##CALENDAR##</h3>
 <table summary="calendar" class="calendar_month_mini" cellspacing="0" cellpadding="0">
 	<caption>
 		<a href="{kurl app="calendar" page="" year=$previousMonth->getYear() month=$previousMonth->getMonth() day=$currentDate->getDay()}" title="{$previousMonth->getTime()|date_format:"%B %Y"}">
