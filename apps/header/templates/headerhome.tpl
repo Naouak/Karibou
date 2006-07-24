@@ -4,7 +4,6 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<base href="http://{$smarty.server.HTTP_HOST}{$smarty.server.SCRIPT_NAME|replace:"index.php":""}" />
-	<base href="http://{$smarty.server.HTTP_HOST}{$smarty.server.SCRIPT_NAME|replace:"index.php":""}" />
 	<title>
 		##HEADER_PAGE_TITLE## :: ##KPOWERED##
 	</title>
