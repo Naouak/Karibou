@@ -13,7 +13,6 @@ special classname... (sucks)*}
 		else
 		{
 		        f.className = "flashmail showed";
-				//new Effect.Appear(f);
 		}
 
 		return false;
@@ -30,17 +29,13 @@ special classname... (sucks)*}
 
 	<script type="text/javascript" language="javascript">
 	// <![CDATA[
-
-{*setInterval("new Ajax.Updater('flashmail_headerbox_full', '{kurl app="flashmail" page="headerbox_content"}',{literal} {asynchronous:true, evalScripts:true}{/literal});", 3000);*}
-		setInterval("flashmail_headerbox_update()", 20000);
-
+		setInterval("flashmail_headerbox_update()", 40000);
 	// ]]>
 	</script>
 	
 	
 	<script type="text/javascript" language="javascript">
 	// <![CDATA[
-
 {literal}
 	function submit_flashmail_form(form_id, content_id)
 	{
