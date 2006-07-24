@@ -68,10 +68,10 @@
 				<br />
 {if $event->admin}
 				<a href="{kurl page='editEvent' calendarid=$event->calendarid eventid=$event->uid}">##EDITEVENT##</a>
-				<form action="{kurl page='deleteEvent'}" method="POST" name="deleteEvent">
+				<form action="{kurl page='deleteEvent'}" method="POST" name="deleteEvent{$event->uid}">
                     <input type="hidden" name="calendarid" value="{$event->calendarid}" />
                     <input type="hidden" name="eventid" value="{$event->uid}" />
-                    <a href="#" onClick="javascript:document.deleteEvent.submit()">##DELETEEVENT##</a>
+                    <a href="#" onClick="javascript:document.deleteEvent{$event->uid}.submit()">##DELETEEVENT##</a>
 				</form>
 {/if}
 			</p>

@@ -10,17 +10,7 @@
 		f.enddateYear.value 	= f.startdateYear.value;
 		f.enddateMonth.value 	= f.startdateMonth.value;
 	}
-	/*
-	function ctrl_dates_end()
-	{
-		var f = document.forms[0];	
-		f.startdateDay.value 	= f.enddateDay.value;
-		f.startdateMinute.value	= f.enddateMinute.value;
-		f.startdateHour.value 	= parseInt(f.enddateHour.value)-1;
-		f.startdateYear.value 	= f.enddateYear.value;
-		f.startdateMonth.value 	= f.enddateMonth.value;
-	}
-	*/
+	//Ajouter le contrôle des dates de fin (pour éviter les dates inversées)
 {/literal}
 	// ]]>
 	</script>

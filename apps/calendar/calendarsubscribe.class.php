@@ -54,7 +54,7 @@ class CalendarSubscribe extends FormModel
 				{
 					$subscribed[] = $_GET['id'];
 					$this->currentUser->setPref('subscribed_calendars', $subscribed);
-					$currentUser->savePrefs($this->db );
+					$this->currentUser->savePrefs($this->db );
 				}
 			}
 		}
