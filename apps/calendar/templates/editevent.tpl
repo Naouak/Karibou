@@ -1,3 +1,30 @@
+	<script type="text/javascript" language="javascript">
+	// <![CDATA[
+{literal}
+	function ctrl_dates_start()
+	{
+		var f = document.forms[0];
+		f.enddateDay.value 		= f.startdateDay.value;
+		f.enddateMinute.value 	= f.startdateMinute.value;
+		f.enddateHour.value 	= f.startdateHour.value;
+		f.enddateYear.value 	= f.startdateYear.value;
+		f.enddateMonth.value 	= f.startdateMonth.value;
+	}
+	/*
+	function ctrl_dates_end()
+	{
+		var f = document.forms[0];	
+		f.startdateDay.value 	= f.enddateDay.value;
+		f.startdateMinute.value	= f.enddateMinute.value;
+		f.startdateHour.value 	= parseInt(f.enddateHour.value)-1;
+		f.startdateYear.value 	= f.enddateYear.value;
+		f.startdateMonth.value 	= f.enddateMonth.value;
+	}
+	*/
+{/literal}
+	// ]]>
+	</script>
+
 <h1>##CALENDAR##</h1>
 {include file="messages.tpl"}
 <h2>{if isset($event)}##EDITEVENT##{else}##ADDEVENT##{/if}</h2>
@@ -5,7 +32,7 @@
 <a href="{kurl app="wiki" page="help"}" onclick="javascript:popup(this.href, 'wiki_help', '800', '900', '200', '200');return false;" >##TITLE_WIKI_SYNTAX##</a>
 {if !isset($event) && isset($calendarid) && isset($eventid)}(##ERROR_SO_ADDING##){/if}
 {if ($calendars|@count > 0)}
-<form action="{kurl page="saveEvent"}" method="post">
+<form action="{kurl page="saveEvent"}" method="post" name="editEvent">
 	<fieldset class="largefieldset">
 {if isset($event)}
 	<input type="hidden" name="eventid" value="{$eventid}" />
@@ -31,9 +58,9 @@
 	<textarea name="description" id="description">{if isset($event)}{$event->description}{/if}</textarea>
 	<br class="spacer" />
 	<label for="startdate">##STARTDATE##</label>
-		{html_select_date all_extra='onchange="javascript:ctrl_dates();"'  day_extra='class="input_xs"' month_extra='class="input_m"' year_extra='class="input_s"' prefix="startdate" start_year="-1" end_year="+3" field_order="DMY" time=$event->startdate}{*time="YYYY-MM-DD"*}
+		{html_select_date all_extra='onchange="javascript:ctrl_dates_start();"' day_extra='class="input_xs"' month_extra='class="input_m"' year_extra='class="input_s"' prefix="startdate" start_year="-1" end_year="+3" field_order="DMY" time=$event->startdate}{*time="YYYY-MM-DD"*}
 		<span class="text">##AT##</span>
-		{html_select_time hour_extra='class="input_xs"' minute_extra='class="input_xs"' prefix="startdate" use_24_hours=true minute_interval=15 display_seconds=false time=$event->startdate}
+		{html_select_time all_extra='onchange="javascript:ctrl_dates_start();"' hour_extra='class="input_xs"' minute_extra='class="input_xs"' prefix="startdate" use_24_hours=true minute_interval=15 display_seconds=false time=$event->startdate}
 	<br class="spacer" />
 	<label for="enddate">##ENDDATE##</label>
 		{html_select_date day_extra='class="input_xs"' month_extra='class="input_m"' year_extra='class="input_s"' prefix="enddate" start_year="-1" end_year="+3" field_order="DMY" time=$event->stopdate}
