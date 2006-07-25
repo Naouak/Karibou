@@ -23,7 +23,7 @@ $config['login']['server'] = "localhost";
 $config['login']['server_username'] = "root";
 $config['login']['server_password'] = "";
 $config['login']['server_schema'] = "annuaire";
-
+$config['login']['allowaccountcreation'] = FALSE;
 /*
 $config['login']['backend'] = "imap";
 $config['login']['server'] = "mail.telecomlille.net";
@@ -31,10 +31,11 @@ $config['login']['server_schema'] = "INBOX";
 $config['login']['server_options'] = "/imap/tls/novalidate-cert";
 $config['login']['post_username'] = "@telecomlille.net";
 */
-
 $config['login']['createuser'] = TRUE;
 $config['login']['savepassword'] = TRUE;
 $config['login']['firsttimechangepassword'] = FALSE;
+
+$config['mail']['domain'] = 'domain.com';
 
 $config['keychain']['storage'] = 'session';
 
@@ -52,6 +53,8 @@ define("KARIBOU_APP_DIR", dirname(__FILE__).'/../apps');
 define("KARIBOU_DAEMON_DIR", dirname(__FILE__).'/../daemons');
 define("KARIBOU_PUB_DIR", dirname(__FILE__).'/pub');
 define("KARIBOU_THEMES_URL", "/themes");
+define("KARIBOU_SMARTY_DIR", "smarty");
+
 
 define("KARIBOU_DEBUG", true); // stdout // file
 define("KARIBOU_DEBUG_METHOD", "stdout"); // stdout // file

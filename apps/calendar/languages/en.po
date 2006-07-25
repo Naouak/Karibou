@@ -1,0 +1,152 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+msgid "EVENTADDED"
+msgstr "Event added"
+
+msgid "EVENTMODIFIED"
+msgstr "Event modified"
+
+msgid "MANAGE"
+msgstr "Manage Calendars"
+
+msgid "LOGOUT_TO_SAVE"
+msgstr "In order to save your global preferences (as well as your calendar subscription preferences), you must logout properly from the Intranet at the end of your session. You can proceed easily by clicking on the \"Logout\" link."
+
+msgid "Public Calendars"
+msgstr "Public Calendars"
+
+msgid "Subscribed Calendars"
+msgstr "Subscribed Calendars"
+
+msgid "Admin Calendars"
+msgstr "Calendars you can edit"
+
+msgid "subscribe"
+msgstr "subscribe"
+
+msgid "unsubscribe"
+msgstr "unsubscribe"
+
+msgid "edit"
+msgstr "edit"
+
+msgid "DAYVIEW"
+msgstr "Day View Calendar"
+
+msgid "NOCALENDAR"
+msgstr "You don't have any calendar to display, try to go to the page \"Manage Calendars\" to create a new calendar or tu subscribe to an existing one."
+
+msgid "ADDCALENDAR"
+msgstr "Create a calendar"
+
+msgid "ADDEVENT"
+msgstr "Create an event"
+
+msgid "WEEK"
+msgstr "Week"
+
+msgid "CANTADDEVENT"
+msgstr "You can't add event."
+
+msgid "CALENDARNAME"
+msgstr "Calendar name"
+
+msgid "CALENDARTYPE"
+msgstr "Calendar type"
+
+msgid "PUBLIC"
+msgstr "Public"
+
+msgid "PRIVATE"
+msgstr "Private"
+
+msgid "SAVECALENDAR"
+msgstr "Save calendar"
+
+msgid "EDITEVENT"
+msgstr "Edit event"
+
+msgid "SUMMARY"
+msgstr "Title"
+
+msgid "STARTDATE"
+msgstr "Start date"
+
+msgid "ENDDATE"
+msgstr "End date"
+
+msgid "LOCATION"
+msgstr "Location"
+
+msgid "CATEGORY"
+msgstr "Category"
+
+msgid "PRIORITY"
+msgstr "Priority"
+
+msgid "RECURRENCE"
+msgstr "Recurrence"
+
+msgid "SAVEEVENT"
+msgstr "Save event"
+
+msgid "LECTURE"
+msgstr "Lecture"
+
+msgid "MEETING"
+msgstr "Meeting"
+
+msgid "RENDEZVOUS"
+msgstr "Rendez-vous"
+
+msgid "PARTY"
+msgstr "Party"
+
+msgid "CONFERENCE"
+msgstr "Conference"
+
+msgid "LOW"
+msgstr "Low"
+
+msgid "NORMAL"
+msgstr "Normal"
+
+msgid "HIGH"
+msgstr "High"
+
+msgid "EVERYDAY"
+msgstr "Every day"
+
+msgid "EVERYWEEK"
+msgstr "Every week"
+
+msgid "EVERYMONTH"
+msgstr "Every month"
+
+msgid "EVERYYEAR"
+msgstr "Every year"
+
+msgid "AT"
+msgstr "at"
+
+msgid "CALENDARDEST"
+msgstr "Calendar editors"
+
+msgid "DELETEEVENT"
+msgstr "Delete event"
+
+msgid "EVENTDELETED"
+msgstr "The event has been deleted"
+
+msgid "EVENTNOTDELETED"
+msgstr "The event has not been deleted"
+

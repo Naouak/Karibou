@@ -1,0 +1,170 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+msgid "FILESHARE"
+msgstr "FileShare"
+
+msgid "FILESHARE_TITLE"
+msgstr "File sharing"
+
+msgid "FILESHARE_DESCRIPTION"
+msgstr "Click on a file to proceed to download. If you want to add a file so that it can be downloaded, click on the button \"Upload a file\"."
+
+msgid "UPLOAD_A_FILE"
+msgstr "Upload a file"
+
+msgid "FILEUPLOAD_DESCRIPTION"
+msgstr "Upload a file using this form. Browse your hard drive to select the file, and click on \"Upload file\"."
+
+msgid "UPLOAD_FILE"
+msgstr "Upload file"
+
+msgid "DIRECTORYEMPTY"
+msgstr "This directory is empty"
+
+msgid "BROWSINGDIRECTORY"
+msgstr "Browsing directory"
+
+msgid "UPONELEVEL"
+msgstr "To parent directory"
+
+msgid "UPLOADINGTO"
+msgstr "Destination directory"
+
+msgid "CREATINGIN"
+msgstr "Creation will be done in directory"
+
+msgid "CREATEDIRECTORY"
+msgstr "Create directory"
+
+msgid "CREATE_A_DIRECTORY"
+msgstr "Create a directory"
+
+msgid "CREATEDIRECTORY_DESCRIPTION"
+msgstr "You are about to create a directory. Before processing, please make sure that it won't be redundant with any other."
+
+msgid "NAME"
+msgstr "Name"
+
+msgid "SIZE"
+msgstr "Size"
+
+msgid "MODIFICATION_DATE"
+msgstr "Modified on"
+
+msgid "VERSION"
+msgstr "Version"
+
+msgid "VERSIONID"
+msgstr "Version"
+
+msgid "DOWNLOAD"
+msgstr "Download"
+
+msgid "UPLOADER"
+msgstr "Uploadeur"
+
+msgid "CREATOR"
+msgstr "Creator"
+
+msgid "UPLOADNAME"
+msgstr "File name before upload"
+
+msgid "UPLOADDATE "
+msgstr "Upload date"
+
+msgid "VERSIONS"
+msgstr "Versions"
+
+msgid "ADD_NEW_VERSION"
+msgstr "Add a new version"
+
+msgid "OWNER"
+msgstr "Owner"
+
+msgid "ME"
+msgstr "Me"
+
+msgid "GROUPS"
+msgstr "Groups"
+
+msgid "FILEUPLOAD_ADDVERSION_DESCRIPTION"
+msgstr "Adding a new file version gives you the opportunity to update your documents easily. The original file will be backuped as well as every previous version of this file. The new version you are going to upload will be considered as the last good file version. Important : the file you are going to upload will keep the name of the original file."
+
+msgid "ADDING_A_NEW_VERSION"
+msgstr "Add a new version to file"
+
+msgid "DOWNLOADORIGINALVERSIONOF"
+msgstr "Download original version of"
+
+msgid "ORIGINAL"
+msgstr "Original"
+
+msgid "DOESNOTEXISTINDB"
+msgstr "The new version of the file sharing application takes advantage of the database in order to store file and folder information such as descriptions, versions, etc. But we couldn't find a database record for the file you are viewing at the moment. This is certainly happening because the file or directory you are viewing has been created before the update of the application. If this is a file, you won't be able to add new versions to it."
+
+msgid "UNKNOWNINDB"
+msgstr "Unknown in database"
+
+msgid "DELETE_ASKIFSURE"
+msgstr "Do you confirm your will to delete"
+
+msgid "DOWNLOAD_COUNT"
+msgstr "Downloads"
+
+msgid "LASTADDEDFILES"
+msgstr "Last added files"
+
+msgid "MOSTDOWNLOADEDFILES"
+msgstr "Most downloaded files"
+
+msgid "UPLOADED_BY"
+msgstr "Uploaded by"
+
+msgid "MOVE_FILE"
+msgstr "Move this file"
+
+msgid "MOVING_ELEMENT"
+msgstr "Moving"
+
+msgid "MOVING_TO"
+msgstr "To"
+
+msgid "MOVE_BUTTON"
+msgstr "Move"
+
+msgid "MOVE_DESCRIPTION"
+msgstr "Choose the directory to which you want to move the file."
+
+msgid "THIS_DIRECTORY"
+msgstr "this directory"
+
+msgid "DIRECTORYDETAILS"
+msgstr "Directory details"
+
+msgid "VIEW_DIRECTORY"
+msgstr "Directory details for"
+
+msgid "FILEDETAILS"
+msgstr "File details"
+
+msgid "DIRECTORYDETAILS_DESCRIPTION"
+msgstr "In order to remove a folder you own, the folder must be empty."
+
+msgid "FILEDETAILS_DESCRIPTION"
+msgstr "If you want to modify this file, click on the \"Download\" link and save this file (do not click on \"Open\") to your personnal workspace on your computer. Once you have modified this file, click on \"Add a new version\" and upload your modified version of the file."
+
+msgid "FILEDETAILS_OF"
+msgstr "of"
+
+msgid "FILEDETAILS_GROUPOWNER"
+msgstr "Group owner"
+

@@ -1,0 +1,425 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+msgid "NETJOBS"
+msgstr "NetJobs"
+
+msgid "NETJOBS_JOBTITLE"
+msgstr "Offer"
+
+msgid "JOBDESCRIPTION"
+msgstr "Job desription"
+
+msgid "JOBPROFILE"
+msgstr "Profile sought"
+
+msgid "JOBTYPE"
+msgstr "Contract type"
+
+msgid "JOBSALARY"
+msgstr "Year salary gross"
+
+msgid "JOBCOMPANY"
+msgstr "Company"
+
+msgid "JOBCREATE"
+msgstr "Create the offer"
+
+msgid "JOBCHOOSECOMPANY"
+msgstr "Choose the company..."
+
+msgid "JOBSEARCH"
+msgstr "Search"
+
+msgid "JOBADDCOMPANY"
+msgstr "Add company here"
+
+msgid "JOBSTARTDATE"
+msgstr "Job start date"
+
+msgid "JOBENDDATE"
+msgstr "Job end date"
+
+msgid "JOBLOCATION"
+msgstr "Location"
+
+msgid "OR"
+msgstr "or"
+
+msgid "JOBADD"
+msgstr "Add a job offer"
+
+msgid "jobt_permanent"
+msgstr "Permanent"
+
+msgid "jobt_tempcontract"
+msgstr "Temporary contract"
+
+msgid "jobt_interim"
+msgstr "Interim"
+
+msgid "jobt_internship"
+msgstr "Internship"
+
+msgid "JOBSAVE"
+msgstr "Update job offer"
+
+msgid "JOBPOSTDATE"
+msgstr "Update date"
+
+msgid "JOBEXPERIENCEREQUIRED"
+msgstr "Required experience"
+
+msgid "JOBCREATOR"
+msgstr "Job offer creator"
+
+msgid "JOBEDIT"
+msgstr "Edit offer"
+
+msgid "JOBDELETE"
+msgstr "Delete offer"
+
+msgid "JOBDELETE_ASKIFSURE"
+msgstr "Do you really want to delete this offer ?"
+
+msgid "JOBEXPERIENCEREQUIRED_LETBLANKFORNONE"
+msgstr "Let blank if no experience is needed"
+
+msgid "JOBEDUCATIONLEVEL"
+msgstr "Education level"
+
+msgid "jobel_none"
+msgstr "None"
+
+msgid "jobel_bac+2"
+msgstr "Technician"
+
+msgid "jobel_bac+3"
+msgstr "Bac+3"
+
+msgid "jobel_bac+4"
+msgstr "Bac+4"
+
+msgid "jobel_bac+5"
+msgstr "Master / Bac+5"
+
+msgid "jobel_trader"
+msgstr "Trade School"
+
+msgid "jobel_engineer"
+msgstr "Engineer School"
+
+msgid "JOBROLE"
+msgstr "Role"
+
+msgid "jobr_administration"
+msgstr "Administration"
+
+msgid "jobr_finance"
+msgstr "Finance / Accounting"
+
+msgid "jobr_audit"
+msgstr "Audit"
+
+msgid "jobr_consulting"
+msgstr "Consulting"
+
+msgid "jobr_law"
+msgstr "Law related"
+
+msgid "jobr_hrtraining"
+msgstr "Human Resources / Training"
+
+msgid "jobr_researchdevelopment"
+msgstr "Research / Studies"
+
+msgid "jobr_healthsocial"
+msgstr "Health / Social"
+
+msgid "jobr_logisticbuyer"
+msgstr "Logistic / Buyer"
+
+msgid "jobr_productionsecurity"
+msgstr "Production / Security"
+
+msgid "jobr_computer"
+msgstr "Computers"
+
+msgid "jobr_telecomnetworks"
+msgstr "Telecom / Networks"
+
+msgid "jobr_multimediainternet"
+msgstr "Multimedia / Internet"
+
+msgid "jobr_sales"
+msgstr "Sales"
+
+msgid "jobr_export"
+msgstr "Export"
+
+msgid "jobr_marketing"
+msgstr "Marketing"
+
+msgid "jobr_communication"
+msgstr "Communication"
+
+msgid "jobr_officeleadership"
+msgstr "Office Leadership"
+
+msgid "compt_company"
+msgstr "Company"
+
+msgid "compt_recruitingagency"
+msgstr "Recruiting Agency"
+
+msgid "compt_interimagency"
+msgstr "Interim Agency"
+
+msgid "compt_service"
+msgstr "Service provider"
+
+msgid "compt_organisation"
+msgstr "Organisation"
+
+msgid "compt_other"
+msgstr "Other"
+
+msgid "COMPANYACTIVITY"
+msgstr "Activity"
+
+msgid "compa_construction"
+msgstr "Construction"
+
+msgid "compa_realestate"
+msgstr "Real estate"
+
+msgid "compa_bankinsurance"
+msgstr "Bank / Insurance"
+
+msgid "compa_distribution"
+msgstr "Distribution"
+
+msgid "compa_infotelecom"
+msgstr "Information / Telecom / Internet"
+
+msgid "compa_commonpublic"
+msgstr "Public / Organisation"
+
+msgid "compa_services"
+msgstr "Services"
+
+msgid "compa_industry"
+msgstr "Industry"
+
+msgid "compa_other"
+msgstr "Other"
+
+msgid "JOBNOTFOUND"
+msgstr "Offer not found"
+
+msgid "COMPANYNOTFOUND"
+msgstr "Company not found"
+
+msgid "COMPANYSAVE"
+msgstr "Save modifications"
+
+msgid "COMPANYCREATE"
+msgstr "Add company"
+
+msgid "COMPANYEDIT"
+msgstr "Edit company"
+
+msgid "COMPANYDELETE"
+msgstr "Delete company"
+
+msgid "COMPANYDELETE_ASKIFSURE"
+msgstr "Do your really want to delete this company ?"
+
+msgid "COMPANYTYPE"
+msgstr "Company type"
+
+msgid "COMPANYPOSTDATE"
+msgstr "Update date"
+
+msgid "COMPANYDESCRIPTION"
+msgstr "Company description"
+
+msgid "COMPANYJOBOFFERS"
+msgstr "Number of offers for the company"
+
+msgid "COMPANYCREATOR"
+msgstr "User who added this company"
+
+msgid "NETJOBS_COMPANYTITLE"
+msgstr "Details on the company"
+
+msgid "COMPANYNAME"
+msgstr "Name of the company"
+
+msgid "NETJOBS_JOBLIST"
+msgstr "Job list"
+
+msgid "NETJOBS_JOBLIST_BY_COMPANY"
+msgstr "Job list for company"
+
+msgid "NETJOBS_JOBLIST_FOR_SEARCH"
+msgstr "Results for keyword"
+
+msgid "NETJOBS_JOBLIST_PREVIOUSPAGE"
+msgstr "Previous page"
+
+msgid "NETJOBS_JOBLIST_NEXTPAGE"
+msgstr "Next page"
+
+msgid "NETJOBS_JOBLIST_OFFERSFOUND"
+msgstr "offers found"
+
+msgid "NETJOBS_JOBLIST_OFFERFOUND"
+msgstr "offer found"
+
+msgid "PAGE"
+msgstr "Page"
+
+msgid "COMPANY_VIEWALLJOBS"
+msgstr "View all jobs in this company"
+
+msgid "LASTJOBS"
+msgstr "Last offers"
+
+msgid "COMPANIES"
+msgstr "Companies"
+
+msgid "ALLJOBS"
+msgstr "All jobs"
+
+msgid "COMPANYUNKNOWN"
+msgstr "Unknown"
+
+msgid "JOBCOMPANY_NEW"
+msgstr "Add a company"
+
+msgid "JOBCOMPANY_NEW_NOTE"
+msgstr "Select \"Add a company\" if the company is not in the list"
+
+msgid "JOB_COUNT1"
+msgstr "Display the"
+
+msgid "JOB_COUNT2"
+msgstr "opportunitie"
+
+msgid "JOB_OFFER"
+msgstr "opportunities"
+
+msgid "JOB_KEURO"
+msgstr "thousands euros"
+
+msgid "JOB_IN"
+msgstr "in"
+
+msgid "JOB_ADDING"
+msgstr "Adding job"
+
+msgid "JOB_UPDATE"
+msgstr "Job update"
+
+msgid "JOB_NOOFFER"
+msgstr "No offer"
+
+msgid "COMPANY_ADD"
+msgstr "Adding company"
+
+msgid "COMPANY_MODIFY"
+msgstr "Company details modification"
+
+msgid "JOB_MODIFY"
+msgstr "Offer details modification"
+
+msgid "JOB_LOCATION_ADD"
+msgstr "Job location"
+
+msgid "JOB_LOCATION_DESCRIPTION"
+msgstr "Choose here the job location. This is where the job will take place. The job location can be different from the company location."
+
+msgid "JOB_LOCATION"
+msgstr "Job location"
+
+msgid "JOB_LOCATION_COUNTRY"
+msgstr "Country"
+
+msgid "JOB_LOCATION_COUNTRY_CHOOSE"
+msgstr "Choose the country"
+
+msgid "JOB_LOCATION_CITY_POSTCODE"
+msgstr "Post code"
+
+msgid "JOB_LOCATION_CITY_NAME"
+msgstr "City"
+
+msgid "JOB_LOCATION_CREATE"
+msgstr "Save location"
+
+msgid "JOB_LOCATION_SAVE"
+msgstr "Update location"
+
+msgid "JOB_INFOS"
+msgstr "Information on the offer"
+
+msgid "JOB_COMPANY"
+msgstr "Information on the company"
+
+msgid "JOB_LOCATION_COUNTY_NAME"
+msgstr "County"
+
+msgid "JOB_LOCATION_COUNTY_CHOOSE"
+msgstr "Choose the county"
+
+msgid "JOB_CONTACT"
+msgstr "Contact"
+
+msgid "JOB_CREATECONTACT"
+msgstr "Create a new contact"
+
+msgid "JOB_CHOOSECONTACT"
+msgstr "Choose the contact for this job"
+
+msgid "JOB_CONTACTDETAILS"
+msgstr "Contact information"
+
+msgid "CONTACT_UNKNOWN"
+msgstr "This contact doesn't exist"
+
+msgid "CONTACT_FIRSTNAME"
+msgstr "Firstname"
+
+msgid "CONTACT_LASTNAME"
+msgstr "Lastname"
+
+msgid "CONTACT_WEBSITE"
+msgstr "Website"
+
+msgid "CONTACT_NOTE"
+msgstr "Note"
+
+msgid "CONTACT_EDIT_LINK"
+msgstr "Edit this contact details"
+
+msgid "CONTACTEDIT"
+msgstr "Edit this contact"
+
+msgid "CONTACT_ADDRESSES"
+msgstr "Addresses"
+
+msgid "CONTACT_PHONES"
+msgstr "Phone numbers"
+
+msgid "CONTACT_EMAILS"
+msgstr "Email addresses"
+

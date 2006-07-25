@@ -1,0 +1,80 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+msgid "DIRECTORY_HOME"
+msgstr "Accueil Annuaire"
+
+msgid "DIRECTORY"
+msgstr "Annuaire"
+
+msgid "DIRECTORY_DESCRIPTION"
+msgstr "L'annuaire vous permet de rechercher rapidement les coordonnées des différents utilisateurs de l'Intranet. Pensez à mettre à jour vos informations régulièrement en utilisant le lien \"Mon profil\"."
+
+msgid "USER_PROFILE"
+msgstr "Profil utilisateur"
+
+msgid "NO_RESULT"
+msgstr "Aucun résultat"
+
+msgid "USER_GROUPS_TREE"
+msgstr "Arbre des groupes d'utilisateurs"
+
+msgid "USER_GROUPS_TREE_DESCRIPTION"
+msgstr "L'arbre des groupes d'utilisateurs présenté ci-dessous présente la liste de l'ensemble des groupes qui composent l'intranet. En cliquant sur un groupe, vous afficherez les utilisateurs qui composent ce groupe."
+
+msgid "USER_GROUPS"
+msgstr "Groupes d'utilisateurs"
+
+msgid "GROUPS_DESCRIPTION"
+msgstr "Groupes d'utilisateurs"
+
+msgid "USER_SEARCH"
+msgstr "Recherche d'utilisateurs"
+
+msgid "SEARCH"
+msgstr "Recherche"
+
+msgid "RESULT"
+msgstr "résultat"
+
+msgid "SEARCH_RESULTS"
+msgstr "Résultats de la recherche"
+
+msgid "TITLE"
+msgstr "Annuaire des utilisateurs"
+
+msgid "SEARCH_TITLE"
+msgstr "Rechercher"
+
+msgid "GROUPS_LINK"
+msgstr "Groupes"
+
+msgid "USER_LINK"
+msgstr "Mon Profil"
+
+msgid "EDIT_LINK"
+msgstr "C'est mon profil et je souhaite éditer mes informations"
+
+msgid "USER_PROFILE_EDIT"
+msgstr "Édition du profil utilisateur"
+
+msgid "NO_ACCESS"
+msgstr "Vous ne pouvez pas modifier ce profil"
+
+msgid "SEND_FLASHMAIL"
+msgstr "Envoyer un message instantané (FlashMail)"
+
+msgid "VIEWING_GROUP"
+msgstr "Personnes du groupe"
+
+msgid "BELONGS_TO_GROUPS"
+msgstr "Cet utilisateur appartient au(x) groupe(s) suivant(s)"
+

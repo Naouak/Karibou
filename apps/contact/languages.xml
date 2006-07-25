@@ -40,7 +40,7 @@
         This contact form gives you the opportunity to send a message to the intranet administrators.
         </translation>
     </sentence>
-    <sentence key="FROM">
+    <sentence key="FROM_EMAIL">
         <translation language="fr">
         De (email)
         </translation>

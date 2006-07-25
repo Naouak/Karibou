@@ -97,6 +97,7 @@ class LanguageManager
 	 **/
 	function loadLanguages ($xml)
 	{
+		/*
 		if( isset( $xml->sentence ) )
 		{
 			foreach($xml->sentence as $sentence)
@@ -123,6 +124,7 @@ class LanguageManager
 				}
 			}
 		}
+		*/
 	}
 	
 	/**

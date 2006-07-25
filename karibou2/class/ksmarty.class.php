@@ -135,7 +135,8 @@ class KSmarty extends Smarty
 	}
 	function translate_key($key)
 	{
-		return $this->languageManager->getTranslation($key);
+		//return $this->languageManager->getTranslation($key);
+		return gettext($key);
 	}
 
 

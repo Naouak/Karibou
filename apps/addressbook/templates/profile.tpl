@@ -1,4 +1,4 @@
-<h1>##TITLE##</h1>
+<h1>##ADDRESSBOOK_TITLE##</h1>
 <h2>
 	##PROFILE_INFO## :
 	{if ($profile.firstname != "" && $profile.lastname != "")}

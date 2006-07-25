@@ -1,0 +1,48 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+
+msgid "CHANGEPASSWORD_TITLE"
+msgstr "Changement du mot de passe"
+
+msgid "CHANGEPASSWORD_DESCRIPTION"
+msgstr "Cette page vous permet de changer votre mot de passe. Entrez ci-dessous le nouveau mot de passe que vous souhaitez affecter à votre compte."
+
+msgid "CURRENTPASSWORD"
+msgstr "Mot de passe actuel"
+
+msgid "NEWPASSWORD1"
+msgstr "Nouveau mot de passe souhaité"
+
+msgid "NEWPASSWORD2"
+msgstr "Entrer une seconde fois le nouveau mot de passe"
+
+msgid "CHANGE_PASSWORD"
+msgstr "Changer mon mot de passe"
+
+msgid "PASSWORDCHANGED_ERROR"
+msgstr "Une erreur s'est produite. Votre mot de passe n'a pas été changé."
+
+msgid "PASSWORDCHANGED_SUCCESS"
+msgstr "Votre mot de passe a été changé."
+
+msgid "PASSWORDCHANGED_ERROR_MINLENGTH"
+msgstr "Votre mot de passe est trop court"
+
+msgid "PASSWORDCHANGED_ERROR_DONTMATCH"
+msgstr "Vos (nouveaux) mots de passe sont différents"
+
+msgid "PASSWORDCHANGED_ERROR_UNKNOWN"
+msgstr "Une erreur inconnue est survenue"
+
+msgid "PASSWORDCHANGED_ERROR_WRONGPASSWORD"
+msgstr "Vous n'avez pas saisi votre mot de passe actuel correctement"
+

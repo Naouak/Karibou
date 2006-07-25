@@ -316,7 +316,7 @@
 		Back
 		</translation>
 	</sentence>
-	<sentence key="HOME">
+	<sentence key="HOMEPAGE">
 		<translation language="fr">
 		Accueil
 		</translation>
@@ -466,14 +466,6 @@
 		</translation>
 		<translation language="en">
 		Add a section
-		</translation>
-	</sentence>Vous n'avez pas encore créé de section à ce CV.
-	<sentence key="NO_SECTION">
-		<translation language="fr">
-		Vous n'avez pas encore créé de section.
-		</translation>
-		<translation language="en">
-		You haven't created a section yet.
 		</translation>
 	</sentence>
 	<sentence key="CREATE_FIRST_SECTION">
@@ -633,15 +625,15 @@
 		Nom
 		</translation>
 		<translation language="en">
-		Last name
+		Lastname
 		</translation>
 	</sentence>
 	<sentence key="EMAIL">
 		<translation language="fr">
-		Adresse email
+		Email
 		</translation>
 		<translation language="en">
-		Email address
+		Email
 		</translation>
 	</sentence>
 	<sentence key="ADDRESS">
@@ -702,15 +694,15 @@
 	</sentence>
 	<sentence key="JOBTITLE">
 		<translation language="fr">
-		Nom du poste actuel / recherché
+		Intitulé du poste
 		</translation>
 		<translation language="en">
-		Job title (current / sought)
+		Job title
 		</translation>
 	</sentence>
 	<sentence key="UPDATE">
 		<translation language="fr">
-		Mettre a jour
+		Mettre à jour
 		</translation>
 		<translation language="en">
 		Update
@@ -758,10 +750,10 @@
 	</sentence>
 	<sentence key="TITLE_WIKI_SYNTAX">
 		<translation language="fr">
-		Utilisez la syntaxe wiki pour mettre en forme la description
+		Aide sur la mise en forme (syntaxe wiki)
 		</translation>
 		<translation language="en">
-		How to format your description using the wiki syntax
+		How to format your text (wiki syntax)
 		</translation>
 	</sentence>
 	<sentence key="ADDRESS_IN_USE">

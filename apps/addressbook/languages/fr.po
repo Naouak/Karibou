@@ -1,0 +1,38 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+msgid "ADDRESSBOOK"
+msgstr "Carnet d'Adresses"
+
+msgid "ADDRESSBOOK_HOME"
+msgstr "Accueil du carnet d'adresses"
+
+msgid "ADDRESSBOOK_DESCRIPTION"
+msgstr "Le carnet d'adresses vous permet de gérer vos contacts. Vous pouvez ainsi retrouver rapidement les coordonnées de vos amis et collègues. Petit plus, dans l'application email, lorsque vous êtes dans les champs TO, CC ou BCC, la saisie semi-automatique vous permet de ne pas avoir à entrer l'adresse complète de vos contacts qui sont présents dans votre carnet d'adresses."
+
+msgid "CONTACT_ADD"
+msgstr "Ajouter un contact"
+
+msgid "CONTACT_LIST"
+msgstr "Liste de contacts"
+
+msgid "ADDRESSBOOK_TITLE"
+msgstr "Carnet d'adresses"
+
+msgid "CREATELINK"
+msgstr "Créer"
+
+msgid "ADDRESSBOOK_EDIT_LINK"
+msgstr "Je souhaite éditer ce contact"
+
+msgid "CONTACT_PROFILE_EDIT"
+msgstr "Édition du profil du contact"
+

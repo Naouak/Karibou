@@ -204,8 +204,8 @@ Upload file
 		<translation language="en">ago</translation>
 	</sentence>
 	<sentence key="SECOND">
-		<translation language="fr">minute</translation>
-		<translation language="en">minutes</translation>
+		<translation language="fr">seconde</translation>
+		<translation language="en">second</translation>
 	</sentence>
 	<sentence key="MINUTE">
 		<translation language="fr">minute</translation>

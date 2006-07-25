@@ -184,7 +184,7 @@
         <translation language="en" value="Username" />
     </sentence>
     <sentence key="FIRSTNAME">
-        <translation language="fr" value="Prenom" />
+        <translation language="fr" value="Prénom" />
         <translation language="en" value="Firstname" />
     </sentence>
     <sentence key="LASTNAME">
@@ -345,10 +345,10 @@
     </sentence>
     <sentence key="SAVE_PROFILE">
         <translation language="fr">
-        	Enregistrer mes modifications
+        	Enregistrer les informations
         </translation>
         <translation language="en">
-			Save my modifications
+			Save details
         </translation>
     </sentence>
     <sentence key="TYPE">
@@ -369,10 +369,10 @@
 	</sentence>
 	<sentence key="NOTE">
 		<translation language="fr">
-			Message au monde
+			Note
 		</translation>
 		<translation language="en">
-			Your message
+			Note
 		</translation>
 	</sentence>
 	<sentence key="NO_ACCESS">

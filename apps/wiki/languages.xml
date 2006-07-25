@@ -4,8 +4,8 @@
         <translation language="en" value="Home" />
     </sentence>
 	<sentence key="TITLE_WIKI_SYNTAX">
-        <translation language="fr" value="Syntaxe wiki" />
-        <translation language="en" value="Wiki syntax" />
+        <translation language="fr" value="Aide sur la mise en forme (syntaxe wiki)" />
+        <translation language="en" value="How to format your text (wiki syntax)" />
     </sentence>
     
     <sentence key="ACTION_MODIFY">

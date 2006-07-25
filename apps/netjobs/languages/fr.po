@@ -1,0 +1,425 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+msgid "NETJOBS"
+msgstr "NetJobs"
+
+msgid "NETJOBS_JOBTITLE"
+msgstr "Offre"
+
+msgid "JOBDESCRIPTION"
+msgstr "Description du poste"
+
+msgid "JOBPROFILE"
+msgstr "Profil du candidat"
+
+msgid "JOBTYPE"
+msgstr "Type de contrat"
+
+msgid "JOBSALARY"
+msgstr "Salaire annuel brut"
+
+msgid "JOBCOMPANY"
+msgstr "Entreprise"
+
+msgid "JOBCREATE"
+msgstr "Créer l'offre"
+
+msgid "JOBCHOOSECOMPANY"
+msgstr "Choisissez l'entreprise..."
+
+msgid "JOBSEARCH"
+msgstr "Chercher"
+
+msgid "JOBADDCOMPANY"
+msgstr "Ajouter l'entreprise ici"
+
+msgid "JOBSTARTDATE"
+msgstr "Date de début du contrat"
+
+msgid "JOBENDDATE"
+msgstr "Date de fin du contrat"
+
+msgid "JOBLOCATION"
+msgstr "Localisation"
+
+msgid "OR"
+msgstr "ou"
+
+msgid "JOBADD"
+msgstr "Ajouter une offre"
+
+msgid "jobt_permanent"
+msgstr "Contrat à Durée Indéterminée"
+
+msgid "jobt_tempcontract"
+msgstr "Contrat à Durée Déterminée"
+
+msgid "jobt_interim"
+msgstr "Interim"
+
+msgid "jobt_internship"
+msgstr "Stage"
+
+msgid "JOBSAVE"
+msgstr "Mettre à jour l'offre"
+
+msgid "JOBPOSTDATE"
+msgstr "Date de mise à jour"
+
+msgid "JOBEXPERIENCEREQUIRED"
+msgstr "Expérience requise"
+
+msgid "JOBCREATOR"
+msgstr "Créateur de l'offre"
+
+msgid "JOBEDIT"
+msgstr "Editer l'offre"
+
+msgid "JOBDELETE"
+msgstr "Supprimer l'offre"
+
+msgid "JOBDELETE_ASKIFSURE"
+msgstr "Êtes-vous sûr de vouloir supprimer l'offre ?"
+
+msgid "JOBEXPERIENCEREQUIRED_LETBLANKFORNONE"
+msgstr "Laisser vide si aucune expérience n'est requise"
+
+msgid "JOBEDUCATIONLEVEL"
+msgstr "Niveau d'études"
+
+msgid "jobel_none"
+msgstr "Aucun"
+
+msgid "jobel_bac+2"
+msgstr "Bac+2 / BTS"
+
+msgid "jobel_bac+3"
+msgstr "Bac+3 / Licence"
+
+msgid "jobel_bac+4"
+msgstr "Bac+4 / Maîtrise"
+
+msgid "jobel_bac+5"
+msgstr "Bac+5 / DESS / Master"
+
+msgid "jobel_trader"
+msgstr "Ecole de Commerce"
+
+msgid "jobel_engineer"
+msgstr "Ecole d'Ingénieurs"
+
+msgid "JOBROLE"
+msgstr "Fonction"
+
+msgid "jobr_administration"
+msgstr "Administration"
+
+msgid "jobr_finance"
+msgstr "Finance / Comptabilité / Gestion"
+
+msgid "jobr_audit"
+msgstr "Audit"
+
+msgid "jobr_consulting"
+msgstr "Conseil"
+
+msgid "jobr_law"
+msgstr "Juridique / Fiscal"
+
+msgid "jobr_hrtraining"
+msgstr "Ressources Humaines / Formation"
+
+msgid "jobr_researchdevelopment"
+msgstr "Recherche / Développement"
+
+msgid "jobr_healthsocial"
+msgstr "Santé / Social"
+
+msgid "jobr_logisticbuyer"
+msgstr "Logistique / Achat"
+
+msgid "jobr_productionsecurity"
+msgstr "Production / Securité"
+
+msgid "jobr_computer"
+msgstr "Informatique"
+
+msgid "jobr_telecomnetworks"
+msgstr "Télécom / Réseaux"
+
+msgid "jobr_multimediainternet"
+msgstr "Multimedia / Internet"
+
+msgid "jobr_sales"
+msgstr "Commercial / Vente"
+
+msgid "jobr_export"
+msgstr "Export"
+
+msgid "jobr_marketing"
+msgstr "Marketing"
+
+msgid "jobr_communication"
+msgstr "Communication"
+
+msgid "jobr_officeleadership"
+msgstr "Direction Générale"
+
+msgid "compt_company"
+msgstr "Entreprise"
+
+msgid "compt_recruitingagency"
+msgstr "Cabinet de Recrutement"
+
+msgid "compt_interimagency"
+msgstr "Agence d'Interim"
+
+msgid "compt_service"
+msgstr "Prestataire de service"
+
+msgid "compt_organisation"
+msgstr "Organisation / Association"
+
+msgid "compt_other"
+msgstr "Autre"
+
+msgid "COMPANYACTIVITY"
+msgstr "Secteur d'activité"
+
+msgid "compa_construction"
+msgstr "Construction / BTP"
+
+msgid "compa_realestate"
+msgstr "Immobilier"
+
+msgid "compa_bankinsurance"
+msgstr "Banque / Assurance"
+
+msgid "compa_distribution"
+msgstr "Distribution"
+
+msgid "compa_infotelecom"
+msgstr "Information / Télécom / Internet"
+
+msgid "compa_commonpublic"
+msgstr "Publique / Collectivités / Organisation"
+
+msgid "compa_services"
+msgstr "Services"
+
+msgid "compa_industry"
+msgstr "Industrie"
+
+msgid "compa_other"
+msgstr "Autre"
+
+msgid "JOBNOTFOUND"
+msgstr "Offre non trouvée"
+
+msgid "COMPANYNOTFOUND"
+msgstr "Entreprise non trouvée"
+
+msgid "COMPANYSAVE"
+msgstr "Enregistrer les modifications"
+
+msgid "COMPANYCREATE"
+msgstr "Ajouter l'entreprise"
+
+msgid "COMPANYEDIT"
+msgstr "Editer l'entreprise"
+
+msgid "COMPANYDELETE"
+msgstr "Supprimer"
+
+msgid "COMPANYDELETE_ASKIFSURE"
+msgstr "Êtes-vous sûr de vouloir supprimer l'entreprise ?"
+
+msgid "COMPANYTYPE"
+msgstr "Type d'entreprise"
+
+msgid "COMPANYPOSTDATE"
+msgstr "Date de mise à jour"
+
+msgid "COMPANYDESCRIPTION"
+msgstr "Description de l'entreprise"
+
+msgid "COMPANYJOBOFFERS"
+msgstr "Nombre d'offres de l'entreprise"
+
+msgid "COMPANYCREATOR"
+msgstr "Personne ayant ajouté l'entreprise"
+
+msgid "NETJOBS_COMPANYTITLE"
+msgstr "Informations sur l'entreprise"
+
+msgid "COMPANYNAME"
+msgstr "Nom de l'entreprise"
+
+msgid "NETJOBS_JOBLIST"
+msgstr "Liste des offres"
+
+msgid "NETJOBS_JOBLIST_BY_COMPANY"
+msgstr "Liste des offres de l'entreprise"
+
+msgid "NETJOBS_JOBLIST_FOR_SEARCH"
+msgstr "Résultat de la recherche"
+
+msgid "NETJOBS_JOBLIST_PREVIOUSPAGE"
+msgstr "Page précédente"
+
+msgid "NETJOBS_JOBLIST_NEXTPAGE"
+msgstr "Page suivante"
+
+msgid "NETJOBS_JOBLIST_OFFERSFOUND"
+msgstr "offres trouvées"
+
+msgid "NETJOBS_JOBLIST_OFFERFOUND"
+msgstr "offre trouvée"
+
+msgid "PAGE"
+msgstr "Page"
+
+msgid "COMPANY_VIEWALLJOBS"
+msgstr "Voir toutes les offres de cette entreprise"
+
+msgid "LASTJOBS"
+msgstr "Dernières offres"
+
+msgid "COMPANIES"
+msgstr "Entreprises"
+
+msgid "ALLJOBS"
+msgstr "Toutes les offres"
+
+msgid "COMPANYUNKNOWN"
+msgstr "Inconnue"
+
+msgid "JOBCOMPANY_NEW"
+msgstr "Ajouter une entreprise"
+
+msgid "JOBCOMPANY_NEW_NOTE"
+msgstr "Sélectionnez \"Ajouter une entreprise\" si l'entreprise n'est pas dans la liste"
+
+msgid "JOB_COUNT1"
+msgstr "Voir les "
+
+msgid "JOB_COUNT2"
+msgstr "offre"
+
+msgid "JOB_OFFER"
+msgstr "offre"
+
+msgid "JOB_KEURO"
+msgstr "en milliers d'euros"
+
+msgid "JOB_IN"
+msgstr "chez"
+
+msgid "JOB_ADDING"
+msgstr "Ajout de l'offre"
+
+msgid "JOB_UPDATE"
+msgstr "Mise à jour de l'offre"
+
+msgid "JOB_NOOFFER"
+msgstr "Aucune offre"
+
+msgid "COMPANY_ADD"
+msgstr "Ajout d'une entreprise"
+
+msgid "COMPANY_MODIFY"
+msgstr "Modification des informations de l'entreprise"
+
+msgid "JOB_MODIFY"
+msgstr "Modification des informations de l'offre"
+
+msgid "JOB_LOCATION_ADD"
+msgstr "Localisation de l'offre"
+
+msgid "JOB_LOCATION_DESCRIPTION"
+msgstr "Sélectionnez ici la localisation de l'offre. C'est à dire là où le travail se déroulera. La localisation de l'offre peut être différente de la localisation de l'entreprise."
+
+msgid "JOB_LOCATION"
+msgstr "Localisation de l'offre"
+
+msgid "JOB_LOCATION_COUNTRY"
+msgstr "Pays"
+
+msgid "JOB_LOCATION_COUNTRY_CHOOSE"
+msgstr "Sélectionnez le pays"
+
+msgid "JOB_LOCATION_CITY_POSTCODE"
+msgstr "Code postal"
+
+msgid "JOB_LOCATION_CITY_NAME"
+msgstr "Ville"
+
+msgid "JOB_LOCATION_CREATE"
+msgstr "Enregistrer la localisation"
+
+msgid "JOB_LOCATION_SAVE"
+msgstr "Mettre à jour la localisation"
+
+msgid "JOB_INFOS"
+msgstr "Informations relatives à l'offre"
+
+msgid "JOB_COMPANY"
+msgstr "Informations relatives à l'entreprise"
+
+msgid "JOB_LOCATION_COUNTY_NAME"
+msgstr "Région"
+
+msgid "JOB_LOCATION_COUNTY_CHOOSE"
+msgstr "Choisissez la région"
+
+msgid "JOB_CONTACT"
+msgstr "Contact"
+
+msgid "JOB_CREATECONTACT"
+msgstr "Nouveau contact"
+
+msgid "JOB_CHOOSECONTACT"
+msgstr "Choisissez le contact pour cette offre"
+
+msgid "JOB_CONTACTDETAILS"
+msgstr "Informations sur le contact"
+
+msgid "CONTACT_UNKNOWN"
+msgstr "Ce contact est inconnu"
+
+msgid "CONTACT_FIRSTNAME"
+msgstr "Prénom"
+
+msgid "CONTACT_LASTNAME"
+msgstr "Nom"
+
+msgid "CONTACT_WEBSITE"
+msgstr "Site Web"
+
+msgid "CONTACT_NOTE"
+msgstr "Note"
+
+msgid "CONTACT_EDIT_LINK"
+msgstr "Editer les informations de ce contact"
+
+msgid "CONTACTEDIT"
+msgstr "Editer ce contact"
+
+msgid "CONTACT_ADDRESSES"
+msgstr "Adresses"
+
+msgid "CONTACT_PHONES"
+msgstr "Numéros de téléphone"
+
+msgid "CONTACT_EMAILS"
+msgstr "Adresses email"
+

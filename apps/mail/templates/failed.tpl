@@ -1,2 +1,2 @@
-<h3>##TITLE##</h3>
+<h3>##WEBMAIL_TITLE##</h3>
 <p>{translate key=$message}</p>

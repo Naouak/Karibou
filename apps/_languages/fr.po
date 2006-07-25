@@ -1,0 +1,249 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+
+msgid "BY"
+msgstr "par"
+
+msgid "ADDRESSES"
+msgstr "Adresses"
+
+msgid "PHONES"
+msgstr "Numéros de téléphone"
+
+msgid "EMAILS"
+msgstr "Adresses email"
+
+msgid "ADD_A_PHONE_NUMBER"
+msgstr "Ajouter un numéro de téléphone"
+
+msgid "ADD_AN_ADDRESS"
+msgstr "Ajouter une adresse"
+
+msgid "ADD_AN_EMAIL"
+msgstr "Ajouter une adresse email"
+
+msgid "FIRSTNAME"
+msgstr "Prénom"
+
+msgid "LASTNAME"
+msgstr "Nom"
+
+msgid "SURNAME"
+msgstr "Surnom"
+
+msgid "BIRTHDAY"
+msgstr "Anniversaire"
+
+msgid "URL"
+msgstr "Site Web"
+
+msgid "PICTURE"
+msgstr "Photo"
+
+msgid "ADDRESSTYPE"
+msgstr "Type"
+
+msgid "PHONETYPE"
+msgstr "Type"
+
+msgid "EMAILTYPE"
+msgstr "Type"
+
+msgid "POADDRESS"
+msgstr "Postale"
+
+msgid "EXTADDRESS"
+msgstr "Extension"
+
+msgid "STREET"
+msgstr "Rue"
+
+msgid "CITY"
+msgstr "Ville"
+
+msgid "REGION"
+msgstr "Region"
+
+msgid "POSTCODE"
+msgstr "Code Postal"
+
+msgid "COUNTRY"
+msgstr "Pays"
+
+msgid "PHONENUMBER"
+msgstr "Numero"
+
+msgid "EMAILADDRESS"
+msgstr "Adresse"
+
+msgid "DELETE"
+msgstr "Supprimer"
+
+msgid "WORK"
+msgstr "Travail"
+
+msgid "HOME"
+msgstr "Personnel"
+
+msgid "DOM"
+msgstr "Domestique"
+
+msgid "INTL"
+msgstr "International"
+
+msgid "POSTAL"
+msgstr "Postale"
+
+msgid "FAX"
+msgstr "Telecopie"
+
+msgid "CELL"
+msgstr "Telephone Mobile"
+
+msgid "PAGER"
+msgstr "Pager"
+
+msgid "INTERNET"
+msgstr "E-Mail Internet"
+
+msgid "AIM"
+msgstr "AIM"
+
+msgid "ICQ"
+msgstr "ICQ"
+
+msgid "JABBER"
+msgstr "JABBER"
+
+msgid "MSN"
+msgstr "MSN"
+
+msgid "SKYPE"
+msgstr "SKYPE"
+
+msgid "PROFILE_INFO"
+msgstr "Informations du profil"
+
+msgid "CREATE_NEW_ENTRY"
+msgstr "Créer une nouvelle entrée ici"
+
+msgid "SAVE_PROFILE"
+msgstr "Enregistrer les informations"
+
+msgid "TYPE"
+msgstr "Type"
+
+msgid "EDIT"
+msgstr "Editer"
+
+msgid "WEBSITE"
+msgstr "Site web"
+
+msgid "NOTE"
+msgstr "Note"
+
+msgid "PICTURE_NOTE"
+msgstr "La photo doit être une image JPEG. Elle sera redimensionnée au format {$image_width} x {$image_height} pixels (largeur x longueur). Taille maximale : {$image_weight}Mo."
+
+msgid "NETJOBS_TITLE"
+msgstr "NetJobs : Trouvez votre Job en ligne"
+
+msgid "MESSAGE"
+msgstr "Message"
+
+msgid "FOR"
+msgstr "pour"
+
+msgid "LOGIN"
+msgstr "Nom d'Utilisateur"
+
+msgid "JOBTITLE"
+msgstr "Intitulé du poste"
+
+msgid "TITLE_WIKI_SYNTAX"
+msgstr "Aide sur la mise en forme (syntaxe wiki)"
+
+msgid "NONE"
+msgstr "Aucune"
+
+msgid "AGO1"
+msgstr "Il y a"
+
+msgid "AGO2"
+msgstr ""
+
+msgid "SECOND"
+msgstr "seconde"
+
+msgid "MINUTE"
+msgstr "minute"
+
+msgid "HOUR"
+msgstr "heure"
+
+msgid "DAY"
+msgstr "jour"
+
+msgid "S"
+msgstr "s"
+
+msgid "USERNAME"
+msgstr "Nom d'utilisateur"
+
+msgid "PASSWORD"
+msgstr "Mot de passe"
+
+msgid "OK"
+msgstr "Valider"
+
+msgid "LOGOUT"
+msgstr "Quitter"
+
+msgid "KEYCHAINLOCKED"
+msgstr "Ton trousseau de clefs est verrouillé avec une phrase secrète differente de ton mot de passe de session. Bien que cela te fournisse une meilleur sécurité tu veux peut-etre déverrouiller le trousseau automatiquement. Utilise simplement le meme mot de passe que pour t'enregistrer. Sinon déverrouille manuellement ton trousseau en utilisant le formulaire ci-dessous"
+
+msgid "ADD_COMMENT"
+msgstr "Ajouter un commentaire"
+
+msgid "APPLY_MODIFICATIONS"
+msgstr "Appliquer les modifications"
+
+msgid "CREATE_THE_CV"
+msgstr "Créer le CV"
+
+msgid "CANCEL"
+msgstr "Annuler"
+
+msgid "EMAIL"
+msgstr "Email"
+
+msgid "UPDATE"
+msgstr "Mettre à jour"
+
+msgid "SUBJECT"
+msgstr "Sujet"
+
+msgid "CHANGEPASSWORD_TITLE"
+msgstr "Changement du mot de passe"
+
+msgid "DESCRIPTION"
+msgstr "Description"
+
+msgid "THIS_FILE"
+msgstr "ce fichier"
+
+msgid "CALENDAR"
+msgstr "Calendrier"
+
+msgid "NEXTDAYEVENTS"
+msgstr "Evènements du lendemain"
+

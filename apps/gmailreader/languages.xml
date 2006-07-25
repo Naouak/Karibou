@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <translation>
 	<sentence key="LOGIN">
-        <translation language="fr" value="Identifiant : " />
-        <translation language="en" value="Login: " />
+        <translation language="fr" value="Nom d'Utilisateur" />
+        <translation language="en" value="Username" />
     </sentence>
 	<sentence key="PASSWORD">
-        <translation language="fr" value="Mot de passe : " />
-        <translation language="en" value="Password: " />
+        <translation language="fr" value="Mot de passe" />
+        <translation language="en" value="Password" />
     </sentence>
 	<sentence key="NUMOFELEMENTS">
         <translation language="fr" value="Nombre d'éléments : " />
@@ -33,7 +33,7 @@
         <translation language="en" value="From" />
     </sentence>
    	<sentence key="SUBJECT">
-        <translation language="fr" value="Objet" />
+        <translation language="fr" value="Sujet" />
         <translation language="en" value="Subject" />
     </sentence>
    	<sentence key="LOADFAILED">
@@ -61,8 +61,8 @@
 		<translation language="en">ago</translation>
 	</sentence>
 	<sentence key="SECOND">
-		<translation language="fr">minute</translation>
-		<translation language="en">minutes</translation>
+		<translation language="fr">seconde</translation>
+		<translation language="en">second</translation>
 	</sentence>
 	<sentence key="MINUTE">
 		<translation language="fr">minute</translation>

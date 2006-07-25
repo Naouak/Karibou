@@ -1,0 +1,249 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+
+msgid "BY"
+msgstr "by"
+
+msgid "ADDRESSES"
+msgstr "Addresses"
+
+msgid "PHONES"
+msgstr "Phone numbers"
+
+msgid "EMAILS"
+msgstr "Email addresses"
+
+msgid "ADD_A_PHONE_NUMBER"
+msgstr "Add a phone number"
+
+msgid "ADD_AN_ADDRESS"
+msgstr "Add an address"
+
+msgid "ADD_AN_EMAIL"
+msgstr "Add an email address"
+
+msgid "FIRSTNAME"
+msgstr "Firstname"
+
+msgid "LASTNAME"
+msgstr "Lastname"
+
+msgid "SURNAME"
+msgstr "Surname"
+
+msgid "BIRTHDAY"
+msgstr "Birthday"
+
+msgid "URL"
+msgstr "Website"
+
+msgid "PICTURE"
+msgstr "Picture"
+
+msgid "ADDRESSTYPE"
+msgstr "Type"
+
+msgid "PHONETYPE"
+msgstr "Type"
+
+msgid "EMAILTYPE"
+msgstr "Type"
+
+msgid "POADDRESS"
+msgstr "P.O. Address"
+
+msgid "EXTADDRESS"
+msgstr "Extension"
+
+msgid "STREET"
+msgstr "Street"
+
+msgid "CITY"
+msgstr "City"
+
+msgid "REGION"
+msgstr "Region"
+
+msgid "POSTCODE"
+msgstr "Postcode"
+
+msgid "COUNTRY"
+msgstr "Country"
+
+msgid "PHONENUMBER"
+msgstr "Number"
+
+msgid "EMAILADDRESS"
+msgstr "Address"
+
+msgid "DELETE"
+msgstr "Delete"
+
+msgid "WORK"
+msgstr "Work"
+
+msgid "HOME"
+msgstr "Home"
+
+msgid "DOM"
+msgstr "Domestic"
+
+msgid "INTL"
+msgstr "International"
+
+msgid "POSTAL"
+msgstr "Postal"
+
+msgid "FAX"
+msgstr "FAX"
+
+msgid "CELL"
+msgstr "Cellular"
+
+msgid "PAGER"
+msgstr "Pager"
+
+msgid "INTERNET"
+msgstr "Internet Mail"
+
+msgid "AIM"
+msgstr "AIM"
+
+msgid "ICQ"
+msgstr "ICQ"
+
+msgid "JABBER"
+msgstr "JABBER"
+
+msgid "MSN"
+msgstr "MSN"
+
+msgid "SKYPE"
+msgstr "SKYPE"
+
+msgid "PROFILE_INFO"
+msgstr "Profile information"
+
+msgid "CREATE_NEW_ENTRY"
+msgstr "Create a new entry here"
+
+msgid "SAVE_PROFILE"
+msgstr "Save details"
+
+msgid "TYPE"
+msgstr "Type"
+
+msgid "EDIT"
+msgstr "Edit"
+
+msgid "WEBSITE"
+msgstr "Web site"
+
+msgid "NOTE"
+msgstr "Note"
+
+msgid "PICTURE_NOTE"
+msgstr "Your picture must be a JPEG format. It'll be resized to {$image_width} x {$image_height} pixels (width x height). Max size : {$image_weight}MB."
+
+msgid "NETJOBS_TITLE"
+msgstr "NetJobs : Find your job online"
+
+msgid "MESSAGE"
+msgstr "Message"
+
+msgid "FOR"
+msgstr "for"
+
+msgid "LOGIN"
+msgstr "Username"
+
+msgid "JOBTITLE"
+msgstr "Job title"
+
+msgid "TITLE_WIKI_SYNTAX"
+msgstr "How to format your text (wiki syntax)"
+
+msgid "NONE"
+msgstr "None"
+
+msgid "AGO1"
+msgstr ""
+
+msgid "AGO2"
+msgstr "ago"
+
+msgid "SECOND"
+msgstr "second"
+
+msgid "MINUTE"
+msgstr "minute"
+
+msgid "HOUR"
+msgstr "hour"
+
+msgid "DAY"
+msgstr "day"
+
+msgid "S"
+msgstr "s"
+
+msgid "USERNAME"
+msgstr "Username"
+
+msgid "PASSWORD"
+msgstr "Password"
+
+msgid "OK"
+msgstr "Ok"
+
+msgid "LOGOUT"
+msgstr "Logout"
+
+msgid "KEYCHAINLOCKED"
+msgstr "Your KeyChain is locked with a pass-phrase different from your password. While it provides more security you might want it to be automaticaly unlocked. Simply reset it to be the as your session password (less secure)."
+
+msgid "ADD_COMMENT"
+msgstr "Add a comment"
+
+msgid "APPLY_MODIFICATIONS"
+msgstr "Apply modifications"
+
+msgid "CREATE_THE_CV"
+msgstr "Create the CV"
+
+msgid "CANCEL"
+msgstr "Cancel"
+
+msgid "EMAIL"
+msgstr "Email"
+
+msgid "UPDATE"
+msgstr "Update"
+
+msgid "SUBJECT"
+msgstr "Subject"
+
+msgid "CHANGEPASSWORD_TITLE"
+msgstr "Changing your password"
+
+msgid "DESCRIPTION"
+msgstr "Description"
+
+msgid "THIS_FILE"
+msgstr "this file"
+
+msgid "CALENDAR"
+msgstr "Calendar"
+
+msgid "NEXTDAYEVENTS"
+msgstr "Next day events"
+

@@ -4,7 +4,7 @@
         <translation language="fr" value="Email" />
         <translation language="en" value="Email" />
     </sentence>
-    <sentence key="TITLE">
+    <sentence key="WEBMAIL_TITLE">
         <translation language="fr" value="Client WebMail IMAP" />
         <translation language="en" value="WebMail IMAP Client" />
     </sentence>
@@ -26,10 +26,10 @@
     </sentence>
     <sentence key="FOR">
         <translation language="fr">
-			Pour
+			pour
         </translation>
         <translation language="en">
-			For
+			for
         </translation>
     </sentence>
     <sentence key="MAILBOX_VIEW">

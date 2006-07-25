@@ -1,0 +1,65 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+msgid "WEBMAIL_TITLE"
+msgstr "Client WebMail IMAP"
+
+msgid "KEYCHAINLOCK"
+msgstr "Erreur : Impossible de debloquer le KeyChain"
+
+msgid "SAVEDSERVER"
+msgstr "Utiliser une connexion sauvegardée : "
+
+msgid "COMPOSELINK"
+msgstr "Ecrire un e-mail"
+
+msgid "WROTE"
+msgstr "à écrit"
+
+msgid "MAILBOX_VIEW"
+msgstr "Mes messages électroniques"
+
+msgid "EMAIL_VIEW"
+msgstr "Visualisation d'un email"
+
+msgid "FROM"
+msgstr "De"
+
+msgid "Reply to"
+msgstr "Répondre à"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "previous"
+msgstr "Précédent"
+
+msgid "next"
+msgstr "Suivant"
+
+msgid "Remove"
+msgstr "Supprimer"
+
+msgid "Reply"
+msgstr "Répondre"
+
+msgid "Reply All"
+msgstr "Répondre à tous"
+
+msgid "hide"
+msgstr "Cacher les Messages supprimés"
+
+msgid "show all"
+msgstr "Montrer les Messages supprimés"
+
+msgid "expunge"
+msgstr "Vider les Messages supprimés"
+

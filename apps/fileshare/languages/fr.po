@@ -1,0 +1,170 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+msgid "FILESHARE"
+msgstr "Fichiers"
+
+msgid "FILESHARE_TITLE"
+msgstr "Partage de fichiers"
+
+msgid "FILESHARE_DESCRIPTION"
+msgstr "Cliquez sur un fichier pour le télécharger. Si vous souhaitez ajouter un fichier pour qu'il puisse etre téléchargé, cliquez sur le bouton \"Ajouter un fichier\"."
+
+msgid "UPLOAD_A_FILE"
+msgstr "Ajouter un fichier"
+
+msgid "FILEUPLOAD_DESCRIPTION"
+msgstr "Ce formulaire vous permet d'ajouter un fichier a la liste. Selectionnez le fichier que vous souhaitez ajouter puis cliquez sur le bouton \"Ajouter ce fichier\"."
+
+msgid "UPLOAD_FILE"
+msgstr "Ajouter ce fichier"
+
+msgid "DIRECTORYEMPTY"
+msgstr "Ce répertoire est vide"
+
+msgid "BROWSINGDIRECTORY"
+msgstr "Parcours du répertoire"
+
+msgid "UPONELEVEL"
+msgstr "Aller au répertoire parent"
+
+msgid "UPLOADINGTO"
+msgstr "Répertoire de destination"
+
+msgid "CREATINGIN"
+msgstr "La création se fera dans le répertoire"
+
+msgid "CREATEDIRECTORY"
+msgstr "Créer le répertoire"
+
+msgid "CREATE_A_DIRECTORY"
+msgstr "Créer un répertoire"
+
+msgid "CREATEDIRECTORY_DESCRIPTION"
+msgstr "Vous êtes sur le point de créer un répertoire. Avant de procéder, veillez à ce qu'il ne soit pas redondant."
+
+msgid "NAME"
+msgstr "Nom"
+
+msgid "SIZE"
+msgstr "Taille"
+
+msgid "MODIFICATION_DATE"
+msgstr "Modifié le"
+
+msgid "VERSION"
+msgstr "Version"
+
+msgid "VERSIONID"
+msgstr "Version"
+
+msgid "DOWNLOAD"
+msgstr "Télécharger"
+
+msgid "UPLOADER"
+msgstr "Posteur"
+
+msgid "CREATOR"
+msgstr "Créateur"
+
+msgid "UPLOADNAME"
+msgstr "Nom du fichier uploadé"
+
+msgid "UPLOADDATE "
+msgstr "Date de mise en ligne"
+
+msgid "VERSIONS"
+msgstr "Versions"
+
+msgid "ADD_NEW_VERSION"
+msgstr "Ajout d'une nouvelle version"
+
+msgid "OWNER"
+msgstr "Propriétaire"
+
+msgid "ME"
+msgstr "Moi"
+
+msgid "GROUPS"
+msgstr "Groupes"
+
+msgid "FILEUPLOAD_ADDVERSION_DESCRIPTION"
+msgstr "L'ajout d'une nouvelle version de fichier permet de mettre à jour les documents facilement. Le fichier original sera sauvegardé ainsi que toutes les verions antérieures à celle que vous êtes sur le point de mettre en ligne. Votre fichier sera considéré comme la dernière référence. Attention le fichier que vous êtes sur le point de mettre en ligne conservera le nom initial du premier fichier qui a été mis en ligne."
+
+msgid "ADDING_A_NEW_VERSION"
+msgstr "Ajouter une nouvelle version au fichier"
+
+msgid "DOWNLOADORIGINALVERSIONOF"
+msgstr "Télécharger la version originale de"
+
+msgid "ORIGINAL"
+msgstr "Originale"
+
+msgid "DOESNOTEXISTINDB"
+msgstr "La nouvelle version de l'application de partage de fichier utilise une base de données pour stocker les informations relatives aux fichiers et répertoires (descriptions, versions, etc.). Cependant, nous n'avons pas trouvé d'enregistrement dans la base de données concernant le fichier ou répertoire que vous êtes actuellement en train de visualiser. Il est fort probable que celui-ci ait été créé avant la mise en ligne de la nouvelle version de l'application de partage de fichiers. Vous ne pourrez pas gérer les versions pour ce fichier si ça en est un."
+
+msgid "UNKNOWNINDB"
+msgstr "Inconnu dans la base de données"
+
+msgid "DELETE_ASKIFSURE"
+msgstr "Êtes-vous sûr de vouloir supprimer"
+
+msgid "DOWNLOAD_COUNT"
+msgstr "Téléchargements"
+
+msgid "LASTADDEDFILES"
+msgstr "Derniers fichiers ajoutés"
+
+msgid "MOSTDOWNLOADEDFILES"
+msgstr "Fichiers les plus téléchargés"
+
+msgid "UPLOADED_BY"
+msgstr "Mis en ligne par"
+
+msgid "MOVE_FILE"
+msgstr "Déplacer ce fichier"
+
+msgid "MOVING_ELEMENT"
+msgstr "Déplacement de"
+
+msgid "MOVING_TO"
+msgstr "Vers"
+
+msgid "MOVE_BUTTON"
+msgstr "Déplacer"
+
+msgid "MOVE_DESCRIPTION"
+msgstr "Choisissez le répertoire vers lequel vous souhaitez déplacer ce fichier."
+
+msgid "THIS_DIRECTORY"
+msgstr "ce répertoire"
+
+msgid "DIRECTORYDETAILS"
+msgstr "Information sur le répertoire"
+
+msgid "VIEW_DIRECTORY"
+msgstr "Information sur le répertoire"
+
+msgid "FILEDETAILS"
+msgstr "Information sur le fichier"
+
+msgid "DIRECTORYDETAILS_DESCRIPTION"
+msgstr "Pour supprimer un répertoire dont vous êtes modérateur, celui-ci doit être vide."
+
+msgid "FILEDETAILS_DESCRIPTION"
+msgstr "Si vous souhaitez modifier ce fichier, cliquez sur \"Télécharger\" et enregistrez (ne cliquez pas sur ouvrir) ce fichier dans votre espace de travail personnel sur votre ordinateur. Une fois modifié, cliquez sur \"Ajout d'une nouvelle version\" afin de mettre en ligne votre version modifiée du fichier."
+
+msgid "FILEDETAILS_OF"
+msgstr "de"
+
+msgid "FILEDETAILS_GROUPOWNER"
+msgstr "Groupe propriétaire"
+

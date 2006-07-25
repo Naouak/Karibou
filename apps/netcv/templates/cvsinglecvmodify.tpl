@@ -2,7 +2,7 @@
 	{include file="applinks.tpl"}
 
 	<div class="breadcrumbs">
-		##YOU_ARE_HERE##: <a href="{kurl app="netcv"}">##HOME##</a> :: {if (isset($myNetCVGroup) && ($myNetCVGroup != FALSE))}<a href="{kurl app="netcv"}">CV &quot;{$myNetCVGroup->getInfo("name")}&quot;</a>{else}##CV_CREATION##{/if}
+		##YOU_ARE_HERE##: <a href="{kurl app="netcv"}">##HOMEPAGE##</a> :: {if (isset($myNetCVGroup) && ($myNetCVGroup != FALSE))}<a href="{kurl app="netcv"}">CV &quot;{$myNetCVGroup->getInfo("name")}&quot;</a>{else}##CV_CREATION##{/if}
 	</div>
 
 {include file="messages.tpl"}

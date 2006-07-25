@@ -13,7 +13,7 @@
 		{/if}
 	{/if}
 	<form action="{kurl action="send"}" method="post">
-		<label for="from">##FROM## :</label>
+		<label for="from">##FROM_EMAIL## :</label>
 		<input type="text" name="from" id="from" value="" />
 		<br /><br />
 		<label for="subject">##SUBJECT## :</label>

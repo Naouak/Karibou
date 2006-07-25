@@ -18,7 +18,7 @@ function crypt(id)
 {rdelim}
 </script>
 {/if}
-<h1>##TITLE## ##FOR## {$username}</h1>
+<h1>##WEBMAIL_TITLE## ##FOR## {$username}</h1>
 <p><a href="{kurl page=compose}">##COMPOSELINK##</a></p>
 {foreach name=pref key=k item=pref from=$connections}
 {if $smarty.foreach.pref.first}

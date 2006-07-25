@@ -1,0 +1,80 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+msgid "BACKHOME"
+msgstr "Back to home page"
+
+msgid "DEFAULT_EDIT"
+msgstr "Personnalise my home page"
+
+msgid "CHOOSECONTAINER"
+msgstr "Choose a container model : "
+
+msgid "ADDMINIAPP"
+msgstr "Add a mini-app : "
+
+msgid "TRASH"
+msgstr "Trash"
+
+msgid "ADDEMAIL"
+msgstr "You must add at least one email to your profile in order to have fully access to the intranet. This email will be used as contact email if you can't access to the intranet (lost password...)."
+
+msgid "ADDEMAIL_TITLE"
+msgstr "You must add an email to your profile"
+
+msgid "ACTION_REQUIRED"
+msgstr "Action required"
+
+msgid "MODIFYPROFILE_LINK"
+msgstr "Click here to update your profile"
+
+msgid "login"
+msgstr "Login Box"
+
+msgid "mail"
+msgstr "E-Mail"
+
+msgid "calendar"
+msgstr "Calendar"
+
+msgid "news"
+msgstr "News"
+
+msgid "minichat"
+msgstr "Mini-Chat"
+
+msgid "prefs"
+msgstr "Language Selector"
+
+msgid "rssreader"
+msgstr "RSS Reader"
+
+msgid "mytof"
+msgstr "My Picture"
+
+msgid "mynotes"
+msgstr "My Notes"
+
+msgid "onlineusers"
+msgstr "Online users"
+
+msgid "fileshare"
+msgstr "File Share"
+
+msgid "gmailreader"
+msgstr "GMail Reader"
+
+msgid "DEFAULT_CHANGEPASSWORD_DESCRIPTION"
+msgstr "In order to ensure your account security, you must change your password. Click on the link below to go to the \"change password\" page."
+
+msgid "CHANGEPASSWORD_LINK"
+msgstr "To the \"change password\" page."
+

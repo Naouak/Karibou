@@ -1,0 +1,125 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+msgid "NEWS"
+msgstr "Actualités"
+
+msgid "ADD_ARTICLE"
+msgstr "Ajouter un article"
+
+msgid "ADDED_ARTICLE"
+msgstr "Article ajouté"
+
+msgid "ADD_ERROR"
+msgstr "Une erreur s'est produite lors de l'enregistrement du nouvel article."
+
+msgid "PAGES"
+msgstr "Pages"
+
+msgid "NO_RIGHT_TO_MODIFY"
+msgstr "Vous n'êtes pas autorisé à modifier cet article."
+
+msgid "MODIFY_ARTICLE"
+msgstr "Modifier l'article"
+
+msgid "POST_MODIFIED_ARTICLE"
+msgstr "Poster l'article"
+
+msgid "MODIFIED_ARTICLE"
+msgstr "L'article a été modifié"
+
+msgid "MODIFY_ERROR"
+msgstr "Une erreur s'est produite lors de la modification de l'article."
+
+msgid "NOT_AUTHORIZED_TO_MODIFY"
+msgstr "Vous n'avez pas l'autorisation de modifier cet article."
+
+msgid "NOT_AUTHORIZED_TO_VIEW"
+msgstr "Vous n'avez pas l'autorisation de visualiser cet article."
+
+msgid "NOT_AUTHORIZED_TO_DELETE"
+msgstr "Vous n'avez pas l'autorisation de supprimer cet article."
+
+msgid "NOT_AUTHORIZED_TO_POST_COMMENTS"
+msgstr "Vous n'avez pas l'autorisation de modifier cet article ou de poster des commentaires."
+
+msgid "ACTION_ERROR"
+msgstr "Erreur: L'action demandée est inconnue."
+
+msgid "NO_ID"
+msgstr "Aucun identifiant d'article disponible."
+
+msgid "NO_TITLE_FOR_COMMENT"
+msgstr "Un commentaire doit avoir un titre."
+
+msgid "NO_DESCRIPTION_FOR_COMMENT"
+msgstr "Un commentaire doit avoir une description."
+
+msgid "COMMENT_POSTED"
+msgstr "Le commentaire a été posté."
+
+msgid "COMMENT_POST_ERROR"
+msgstr "Une erreur s'est produite lors de l'enregistrement du commentaire."
+
+msgid "DELETED_ARTICLE"
+msgstr "L'article a été supprimé."
+
+msgid "POST_NEW_ARTICLE"
+msgstr "Poster le nouvel article"
+
+msgid "NEWS_TITLE"
+msgstr "Titre"
+
+msgid "NEWS_DESCRIPTION"
+msgstr "Description"
+
+msgid "COMMENT_TITLE"
+msgstr "Titre"
+
+msgid "COMMENT_DESCRIPTION"
+msgstr "Description"
+
+msgid "COMMENT"
+msgstr "commentaire"
+
+msgid "DISPLAY_COMMENTS"
+msgstr "Afficher les commentaires"
+
+msgid "HIDE_COMMENTS"
+msgstr "Cacher les commentaires"
+
+msgid "DISPLAY_WHOLE_ARTICLE"
+msgstr "Voir l'article complet"
+
+msgid "NEWS_GROUPS_DESTINATION"
+msgstr "Pour"
+
+msgid "ARTICLE_NOT_FOUND"
+msgstr "L'article que vous recherchez n'a pas été trouvé."
+
+msgid "SURE_TO_DELETE_ARTICLE"
+msgstr "Cela va supprimer l'article !nÊtes-vous sûr de vouloir continuer ?"
+
+msgid "MODIFY"
+msgstr "Modifier"
+
+msgid "NOTITLE"
+msgstr "Sans titre"
+
+msgid "POST_COMMENT_ON_ARTICLE"
+msgstr "Poster un commentaire sur cet article"
+
+msgid "ADD_A_COMMENT_TO_ARTICLE"
+msgstr "Ajouter un commentaire à l'article"
+
+msgid "NEWS_VIEW_ARCHIVES"
+msgstr "Voir les archives"
+

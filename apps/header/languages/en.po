@@ -1,0 +1,50 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+msgid "HEADER_PAGE_TITLE"
+msgstr "The Intranet in english !"
+
+msgid "HEADER_PAGE_DESCRIPTION"
+msgstr "Karibou V2 has now an effective multilanguage system in order to allow its fellow developpers to create international apps!"
+
+msgid "KPOWERED"
+msgstr "Powered by Karibou"
+
+msgid "APP_HOME"
+msgstr "Homepage"
+
+msgid "APP_NETJOBS"
+msgstr "NetJobs"
+
+msgid "APP_EMAIL"
+msgstr "E-Mail"
+
+msgid "APP_CALENDAR"
+msgstr "Calendar"
+
+msgid "APP_NEWS"
+msgstr "News"
+
+msgid "APP_DIRECTORY"
+msgstr "Directory"
+
+msgid "APP_NETCV"
+msgstr "NetCV"
+
+msgid "APP_ADDRESSBOOK"
+msgstr "Address Book"
+
+msgid "APP_FILESHARE"
+msgstr "File Sharing"
+
+msgid "LOADING"
+msgstr "Loading"
+

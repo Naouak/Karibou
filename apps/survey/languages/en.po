@@ -1,0 +1,83 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+msgid "SURVEY"
+msgstr "Survey"
+
+msgid "SURVEY_DEFAULT"
+msgstr "Survey management application"
+
+msgid "KS_QUESTION"
+msgstr "question"
+
+msgid "KS_USER"
+msgstr "User"
+
+msgid "KS_S"
+msgstr "s"
+
+msgid "KS_ANSWERSSAVED"
+msgstr "The answers you provided have been saved correctly"
+
+msgid "KS_SEEALLANSWERS"
+msgstr "See all answers (admin)"
+
+msgid "KS_ANSWERSURVEY"
+msgstr "Answer this survey"
+
+msgid "KS_ANSWERSURVEYAGAIN"
+msgstr "View and modify my answers to this survey"
+
+msgid "KS_DETAILS"
+msgstr "Details"
+
+msgid "KS_ANSWERSOF"
+msgstr "Answers of"
+
+msgid "KS_DATE"
+msgstr "Date"
+
+msgid "KS_VERSIONID"
+msgstr "Version"
+
+msgid "KS_DISPLAYANSWERS"
+msgstr "View all users answers"
+
+msgid "KS_NOPERMISSION"
+msgstr "You have not been authorised to access this page."
+
+msgid "KS_QUESTIONNAME"
+msgstr "Question name"
+
+msgid "KS_QUESTIONDESCRIPTION"
+msgstr "Question description"
+
+msgid "KS_ADDQUESTION"
+msgstr "Add question"
+
+msgid "KS_QUESTIONTYPE"
+msgstr "Question type"
+
+msgid "KS_SURVEYNAME"
+msgstr "Survey name"
+
+msgid "KS_SURVEYDESCRIPTION"
+msgstr "Survey description"
+
+msgid "KS_QUESTIONS"
+msgstr "Questions"
+
+msgid "KS_SURVEYDETAILS"
+msgstr "Survey details"
+
+msgid "KS_QUESTIONDELETE"
+msgstr "Delete question"
+

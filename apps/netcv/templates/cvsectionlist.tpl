@@ -3,7 +3,7 @@
 	{include file="applinks.tpl"}
 	
 	<div class="breadcrumbs">
-		##YOU_ARE_HERE##: <a href="{kurl app="netcv"}">##HOME##</a> :: <a href="{kurl app="netcv"}">CV &quot;{$myNetCVGroup->getInfo("name")}&quot;</a> :: <a href="{kurl app="netcv" page="cvsectionlist" cvid=$cvid gid=$gid}">{$myNetCVLanguage->getNameByCode($myNetCVSingleCV->getInfo("lang"))}</a>
+		##YOU_ARE_HERE##: <a href="{kurl app="netcv"}">##HOMEPAGE##</a> :: <a href="{kurl app="netcv"}">CV &quot;{$myNetCVGroup->getInfo("name")}&quot;</a> :: <a href="{kurl app="netcv" page="cvsectionlist" cvid=$cvid gid=$gid}">{$myNetCVLanguage->getNameByCode($myNetCVSingleCV->getInfo("lang"))}</a>
 	</div>
 
 	{if ($mySections|@count > 0)}

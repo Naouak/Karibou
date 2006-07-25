@@ -1,7 +1,7 @@
 {if ($netjobs)}
 <h1>##NETJOBS_TITLE##</h1>
 <h2>
-	##USER_PROFILE_EDIT##
+	##CONTACT_PROFILE_EDIT##
 	{if ($profile.firstname != "" && $profile.lastname != "")}
 	 : {$profile.firstname} {$profile.lastname}
 	{/if}
@@ -9,7 +9,7 @@
 {else}
 <h1>##TITLE##</h1>
 <h2>
-	##USER_PROFILE_EDIT##
+	##CONTACT_PROFILE_EDIT##
 	{if ($profile.firstname != "" && $profile.lastname != "")}
 	 : {$profile.firstname} {$profile.lastname}
 	{/if}

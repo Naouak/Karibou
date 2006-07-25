@@ -4,11 +4,11 @@
 		<translation language="fr" value="Carnet d'Adresses" />
 		<translation language="en" value="Address Book" />
 	</sentence>
-	<sentence key="DIRECTORY_HOME">
+	<sentence key="ADDRESSBOOK_HOME">
 		<translation language="fr" value="Accueil du carnet d'adresses" />
 		<translation language="en" value="Address book home" />
 	</sentence>
-	<sentence key="DIRECTORY_DESCRIPTION">
+	<sentence key="ADDRESSBOOK_DESCRIPTION">
 		<translation language="fr">
 				Le carnet d'adresses vous permet de gérer vos contacts. Vous pouvez ainsi retrouver rapidement les coordonnées de vos amis et collègues. Petit plus, dans l'application email, lorsque vous êtes dans les champs TO, CC ou BCC, la saisie semi-automatique vous permet de ne pas avoir à entrer l'adresse complète de vos contacts qui sont présents dans votre carnet d'adresses.
 		</translation>
@@ -32,23 +32,7 @@
 				Contact list
 		</translation>
 	</sentence>
-	<sentence key="USER_SEARCH">
-		<translation language="fr">
-				Recherche de contact
-		</translation>
-		<translation language="en">
-				Contact search
-		</translation>
-	</sentence>
-	<sentence key="SEARCH_TITLE">
-		<translation language="fr">
-				Recherche
-		</translation>
-		<translation language="en">
-				Search
-		</translation>
-	</sentence>
-	<sentence key="TITLE">
+	<sentence key="ADDRESSBOOK_TITLE">
 		<translation language="fr" value="Carnet d'adresses" />
 		<translation language="en" value="Address Book" />
 	</sentence>
@@ -56,7 +40,7 @@
 		<translation language="fr" value="Créer" />
 		<translation language="en" value="Create" />
 	</sentence>
-	<sentence key="EDIT_LINK">
+	<sentence key="ADDRESSBOOK_EDIT_LINK">
 		<translation language="fr">
 			Je souhaite éditer ce contact
 		</translation>
@@ -113,7 +97,7 @@
 		</translation>
 	</sentence>
 	<sentence key="FIRSTNAME">
-		<translation language="fr" value="Prenom" />
+		<translation language="fr" value="Prénom" />
 		<translation language="en" value="Firstname" />
 	</sentence>
 	<sentence key="LASTNAME">
@@ -131,10 +115,6 @@
 	<sentence key="URL">
 		<translation language="fr" value="Site Web" />
 		<translation language="en" value="Website" />
-	</sentence>
-	<sentence key="NOTE">
-		<translation language="fr" value="Notes" />
-		<translation language="en" value="Notes" />
 	</sentence>
 	<sentence key="PICTURE">
 		<translation language="fr" value="Photo" />
@@ -250,7 +230,7 @@
 		<translation language="fr" value="SKYPE" />
 		<translation language="en" value="SKYPE" />
 	</sentence>
-	<sentence key="USER_PROFILE_EDIT">
+	<sentence key="CONTACT_PROFILE_EDIT">
 		<translation language="fr">
 			Édition du profil du contact
 		</translation>
@@ -260,10 +240,10 @@
 	</sentence>
 	<sentence key="PROFILE_INFO">
 		<translation language="fr">
-			Informations du contact
+			Informations du profil
 		</translation>
 		<translation language="en">
-			Contact information
+			Profile information
 		</translation>
 	</sentence>
 	<sentence key="CREATE_NEW_ENTRY">
@@ -279,7 +259,7 @@
 			Enregistrer les informations
 		</translation>
 		<translation language="en">
-			Save contact details
+			Save details
 		</translation>	</sentence>
 	<sentence key="TYPE">
 		<translation language="fr">
@@ -303,12 +283,8 @@
 			Web site
 		</translation>	</sentence>
 	<sentence key="NOTE">
-		<translation language="fr">
-			Note
-		</translation>
-		<translation language="en">
-			Note
-		</translation>	</sentence>
+		<translation language="fr">Note</translation>
+		<translation language="en">Note</translation>	</sentence>
 	<sentence key="PICTURE_NOTE">
 		<translation language="fr">La photo doit être une image JPEG. Elle sera redimensionnée au format {$image_width} x {$image_height} pixels (largeur x longueur). Taille maximale : {$image_weight}Mo.</translation>
 		<translation language="en">Your picture must be a JPEG format. It'll be resized to {$image_width} x {$image_height} pixels (width x height). Max size : {$image_weight}MB.</translation>

@@ -15,7 +15,7 @@
 	{/if}
 
 	<div class="breadcrumbs">
-		##YOU_ARE_HERE##: <a href="{kurl page=""}">##HOME##</a> :: <a href="{kurl page=""}">CV &quot;{$myNetCVGroup->getInfo("name")}&quot;</a> :: <a href="{kurl app="netcv" page="cvsectionlist" cvid=$cvid gid=$gid}">{$myNetCVLanguage->getNameByCode($myNetCVSingleCV->getInfo("lang"))}</a> :: {if $mySection != FALSE}<a href="{kurl page="cvitemlist" cvid=$cvid gid=$gid pid=$id}">{$mySection->infos}</a>{else}##SECTION_CREATION##{/if}
+		##YOU_ARE_HERE##: <a href="{kurl page=""}">##HOMEPAGE##</a> :: <a href="{kurl page=""}">CV &quot;{$myNetCVGroup->getInfo("name")}&quot;</a> :: <a href="{kurl app="netcv" page="cvsectionlist" cvid=$cvid gid=$gid}">{$myNetCVLanguage->getNameByCode($myNetCVSingleCV->getInfo("lang"))}</a> :: {if $mySection != FALSE}<a href="{kurl page="cvitemlist" cvid=$cvid gid=$gid pid=$id}">{$mySection->infos}</a>{else}##SECTION_CREATION##{/if}
 	</div>
 
 	

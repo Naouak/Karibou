@@ -134,6 +134,7 @@ class KApp
 		$this->xmlconfig->loadFile( $configfile );
 		$this->readConfig( $this->xmlconfig->getXML() );
 
+		/*
 		//Lecture des traductions
 		$languageFile = $this->relativeDir."/languages.xml";
 		if (is_file($languageFile))
@@ -142,6 +143,7 @@ class KApp
 			$xmlcacheLanguage->loadFile($languageFile);
 			$this->loadLanguages( $xmlcacheLanguage->getXML() );
 		}
+		*/
 
 	}
 

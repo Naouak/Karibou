@@ -19,7 +19,7 @@ function crypt(id)
 </script>
 {/if}
 <h3>
-	##TITLE##
+	##KEYCHAIN_TITLE##
 {if $unlocked}
 	(##UNLOCKED##)
 {else}

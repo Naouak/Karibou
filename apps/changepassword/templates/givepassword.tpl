@@ -1,4 +1,4 @@
-<h1>##CHANGEPASSWORD##</h1>
+<h1>##CHANGEPASSWORD_TITLE##</h1>
 <div class="changepassword">
 	<p>##CHANGEPASSWORD_DESCRIPTION##<p>
 	{if isset($message)}

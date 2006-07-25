@@ -1,0 +1,29 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+msgid "REPASSWORD"
+msgstr "Retaper le mot de passe"
+
+msgid "ACCOUNT_CREATION_TITLE"
+msgstr "Création de compte"
+
+msgid "ACCOUNT_CREATION_BUTTON"
+msgstr "Créer le compte"
+
+msgid "ACCOUNT_CREATION_CANCEL"
+msgstr "Annuler"
+
+msgid "NO_ACCOUNT_CREATION_TITLE"
+msgstr "Création de compte en ligne désactivée"
+
+msgid "NO_ACCOUNT_CREATION_DESCRIPTION"
+msgstr "La création de compte en ligne a été désactivée par les administrateurs. Utilisez le formulaire de contact si vous souhaitez porter une réclammation."
+

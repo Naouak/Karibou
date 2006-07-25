@@ -1,4 +1,4 @@
-<h1>##TITLE## ##FOR## {$username}</h1>
+<h1>##WEBMAIL_TITLE## ##FOR## {$username}</h1>
 <h2>{$header->subject}</h2>
 
 

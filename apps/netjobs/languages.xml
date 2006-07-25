@@ -68,8 +68,8 @@
 		<translation language="en">Add a job offer</translation>
 	</sentence>
 	<sentence key="TITLE_WIKI_SYNTAX">
-		<translation language="fr">Syntaxe Wiki de mise en forme</translation>
-		<translation language="en">Wiki syntax for formatting text</translation>
+		<translation language="fr">Aide sur la mise en forme (syntaxe wiki)</translation>
+		<translation language="en">How to format your text (wiki syntax)</translation>
 	</sentence>
 	<sentence key="jobt_permanent">
 		<translation language="fr">Contrat à Durée Indéterminée</translation>
@@ -466,9 +466,6 @@
 	</sentence>
 	<sentence key="JOB_LOCATION_ADD">
 		<translation language="fr">Localisation de l'offre</translation>
-		<translation language="en">Job location</translation>	</sentence>
-	<sentence key="JOB_LOCATION_ADD">
-		<translation language="fr">Localisation de l'offre</translation>
 		<translation language="en">Job location</translation>
 	</sentence>
 	<sentence key="JOB_LOCATION_DESCRIPTION">
@@ -525,10 +522,6 @@
 	<sentence key="JOB_CONTACT">
 		<translation language="fr">Contact</translation>
 		<translation language="en">Contact</translation>
-	</sentence>
-	<sentence key="JOB_CHOOSECONTACT">
-		<translation language="fr">Choisissez le contact</translation>
-		<translation language="en">Choose the contact</translation>
 	</sentence>
 	<sentence key="JOB_CREATECONTACT">
 		<translation language="fr">Nouveau contact</translation>
@@ -592,7 +585,7 @@
 	</sentence>
 	<sentence key="SECOND">
 		<translation language="fr">seconde</translation>
-		<translation language="en">seconde</translation>
+		<translation language="en">second</translation>
 	</sentence>
 	<sentence key="MINUTE">
 		<translation language="fr">minute</translation>

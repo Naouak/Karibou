@@ -50,8 +50,8 @@
         <translation language="en" value="Group Permissions" />
     </sentence>
     <sentence key="OK">
-        <translation language="fr" value="Valider les modifications : " />
-        <translation language="en" value="Send modifications : " />
+        <translation language="fr" value="Valider" />
+        <translation language="en" value="Ok" />
     </sentence>
 
 </translation>

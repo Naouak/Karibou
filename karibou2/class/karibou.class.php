@@ -196,6 +196,20 @@ class Karibou
 		{
 			$this->languageManager->setCurrentLanguage($lang);
 		}
+
+		if (isset($lang) && $lang != '') {
+			$language = $lang;
+		} else {
+			$language = 'fr';
+		}
+		putenv("LANG=$language"); 
+		setlocale(LC_ALL, $language);
+		$domain = 'messages';
+		$translations_dir = dirname(__FILE__)."/../../locale/";
+		bindtextdomain($domain, $translations_dir); 
+		bind_textdomain_codeset('messages', 'UTF-8');
+		textdomain($domain);
+
 		$modelbuilder = new ModelBuilder();
 		
 

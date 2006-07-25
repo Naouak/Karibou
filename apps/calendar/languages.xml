@@ -142,7 +142,7 @@
 	</sentence>
 	<sentence key="PUBLIC">
 		<translation language="fr">
-		Publique
+		Public
 		</translation>
 		<translation language="en">
 		Public
@@ -357,12 +357,8 @@
 		</translation>
 	</sentence>
 	<sentence key="AT">
-		<translation language="fr">
-		à
-		</translation>
-		<translation language="en">
-		at
-		</translation>
+		<translation language="fr">à</translation>
+		<translation language="en">at</translation>
 	</sentence>
 	<sentence key="CALENDARDEST">
 		<translation language="fr">
@@ -398,10 +394,10 @@
 	</sentence>
     <sentence key="TITLE_WIKI_SYNTAX">
         <translation language="fr">
-   	     Aide sur la mise en forme "syntaxe wiki" dans le champ "Description"
+   	     Aide sur la mise en forme (syntaxe wiki)
         </translation>
         <translation language="en">
-	        How to format your text using the wiki syntax in the "Description" field
+	    How to format your text (wiki syntax)
         </translation>
     </sentence>
 </translation>

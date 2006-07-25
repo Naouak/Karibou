@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <translation>
-    <sentence key="CHANGEPASSWORD">
+    <sentence key="CHANGEPASSWORD_TITLE">
         <translation language="fr">
         Changement du mot de passe
         </translation>

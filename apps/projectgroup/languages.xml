@@ -41,14 +41,6 @@
         Projects
         </translation>
     </sentence>
-    <sentence key="NOPROJECT">
-        <translation language="fr">
-        Il n'y a pas encore de projet de cree
-        </translation>
-        <translation language="en">
-        There is no project yet
-        </translation>
-    </sentence>
     <sentence key="PROJECTGROUP_GROUPLIST">
         <translation language="fr">
         Liste des groupes du projet

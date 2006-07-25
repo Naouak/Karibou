@@ -145,7 +145,7 @@
 	</script>
 	
 	<h1>##HEADER_PAGE_TITLE##</h1>
-	<a id="personalise_button" href="#" onclick="return editHomeApps();">edit</a>
+	<a id="personalise_button" href="#" onclick="return editHomeApps();">##DEFAULT_EDIT##</a>
 	<br class="spacer" />
 	{hook name="html_head"}
 	

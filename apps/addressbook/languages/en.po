@@ -1,0 +1,38 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+msgid "ADDRESSBOOK"
+msgstr "Address Book"
+
+msgid "ADDRESSBOOK_HOME"
+msgstr "Address book home"
+
+msgid "ADDRESSBOOK_DESCRIPTION"
+msgstr "The address book offers you to manage your contacts. This way, you can easily find friends or colleagues contact information. In the mail application, when you are typing the name of one of your contact in the TO, CC or BCC fields, the auto-complete system will let you choose from the contacts available in your adress book."
+
+msgid "CONTACT_ADD"
+msgstr "Add a contact"
+
+msgid "CONTACT_LIST"
+msgstr "Contact list"
+
+msgid "ADDRESSBOOK_TITLE"
+msgstr "Address Book"
+
+msgid "CREATELINK"
+msgstr "Create"
+
+msgid "ADDRESSBOOK_EDIT_LINK"
+msgstr "I want to update this contact"
+
+msgid "CONTACT_PROFILE_EDIT"
+msgstr "Editing your contact profile"
+

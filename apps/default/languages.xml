@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <translation>
-    <sentence key="TITLE">
-        <translation language="fr" value="Cool un Annuaire" />
-        <translation language="en" value="User Profiles" />
-    </sentence>
     <sentence key="BACKHOME">
         <translation language="fr" value="Retour à la page d'accueil" />
         <translation language="en" value="Back to home page" />
     </sentence>
-    <sentence key="EDIT">
+    <sentence key="DEFAULT_EDIT">
         <translation language="fr" value="Personnaliser ma page d'accueil" />
         <translation language="en" value="Personnalise my home page" />
     </sentence>
@@ -121,7 +117,7 @@
         	Changing your password
         </translation>
     </sentence>
-	 <sentence key="CHANGEPASSWORD_DESCRIPTION">
+	 <sentence key="DEFAULT_CHANGEPASSWORD_DESCRIPTION">
         <translation language="fr">
         	Pour garantir la sécurité de votre compte, vous devez changer de mot de passe.
         	Suivez le lien ci-dessous pour vous rendre sur la page de changement de mot de passe.
