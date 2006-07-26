@@ -78,7 +78,7 @@ msgstr "Creator"
 msgid "UPLOADNAME"
 msgstr "File name before upload"
 
-msgid "UPLOADDATE "
+msgid "UPLOADDATE"
 msgstr "Upload date"
 
 msgid "VERSIONS"

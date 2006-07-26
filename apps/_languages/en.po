@@ -10,9 +10,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
 
-msgid "BY"
-msgstr "by"
-
 msgid "ADDRESSES"
 msgstr "Addresses"
 
@@ -157,23 +154,47 @@ msgstr "Your picture must be a JPEG format. It'll be resized to {$image_width} x
 msgid "NETJOBS_TITLE"
 msgstr "NetJobs : Find your job online"
 
-msgid "MESSAGE"
-msgstr "Message"
-
 msgid "FOR"
 msgstr "for"
 
 msgid "LOGIN"
 msgstr "Username"
 
-msgid "JOBTITLE"
-msgstr "Job title"
+msgid "CALENDAR"
+msgstr "Calendar"
+
+msgid "NEXTDAYEVENTS"
+msgstr "Next day events"
+
+msgid "CANCEL"
+msgstr "Cancel"
+
+msgid "DESCRIPTION"
+msgstr "Description"
+
+msgid "NONE"
+msgstr "None"
 
 msgid "TITLE_WIKI_SYNTAX"
 msgstr "How to format your text (wiki syntax)"
 
-msgid "NONE"
-msgstr "None"
+msgid "CHANGEPASSWORD_TITLE"
+msgstr "Changing your password"
+
+msgid "SUBJECT"
+msgstr "Subject"
+
+msgid "MESSAGE"
+msgstr "Message"
+
+msgid "USERNAME"
+msgstr "Username"
+
+msgid "PASSWORD"
+msgstr "Password"
+
+msgid "OK"
+msgstr "Ok"
 
 msgid "AGO1"
 msgstr ""
@@ -196,14 +217,11 @@ msgstr "day"
 msgid "S"
 msgstr "s"
 
-msgid "USERNAME"
-msgstr "Username"
+msgid "THIS_FILE"
+msgstr "this file"
 
-msgid "PASSWORD"
-msgstr "Password"
-
-msgid "OK"
-msgstr "Ok"
+msgid "BY"
+msgstr "by"
 
 msgid "LOGOUT"
 msgstr "Logout"
@@ -211,8 +229,8 @@ msgstr "Logout"
 msgid "KEYCHAINLOCKED"
 msgstr "Your KeyChain is locked with a pass-phrase different from your password. While it provides more security you might want it to be automaticaly unlocked. Simply reset it to be the as your session password (less secure)."
 
-msgid "ADD_COMMENT"
-msgstr "Add a comment"
+msgid "EMAIL"
+msgstr "Email"
 
 msgid "APPLY_MODIFICATIONS"
 msgstr "Apply modifications"
@@ -220,30 +238,12 @@ msgstr "Apply modifications"
 msgid "CREATE_THE_CV"
 msgstr "Create the CV"
 
-msgid "CANCEL"
-msgstr "Cancel"
-
-msgid "EMAIL"
-msgstr "Email"
+msgid "JOBTITLE"
+msgstr "Job title"
 
 msgid "UPDATE"
 msgstr "Update"
 
-msgid "SUBJECT"
-msgstr "Subject"
-
-msgid "CHANGEPASSWORD_TITLE"
-msgstr "Changing your password"
-
-msgid "DESCRIPTION"
-msgstr "Description"
-
-msgid "THIS_FILE"
-msgstr "this file"
-
-msgid "CALENDAR"
-msgstr "Calendar"
-
-msgid "NEXTDAYEVENTS"
-msgstr "Next day events"
+msgid "ADD_COMMENT"
+msgstr "Add a comment"
 

@@ -9,10 +9,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
-
-msgid "CHANGEPASSWORD_TITLE"
-msgstr "Changing your password"
-
 msgid "CHANGEPASSWORD_DESCRIPTION"
 msgstr "Change your password using the following form. Enter twice the new password you want to use."
 

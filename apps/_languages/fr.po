@@ -10,9 +10,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
 
-msgid "BY"
-msgstr "par"
-
 msgid "ADDRESSES"
 msgstr "Adresses"
 
@@ -157,23 +154,47 @@ msgstr "La photo doit être une image JPEG. Elle sera redimensionnée au format 
 msgid "NETJOBS_TITLE"
 msgstr "NetJobs : Trouvez votre Job en ligne"
 
-msgid "MESSAGE"
-msgstr "Message"
-
 msgid "FOR"
 msgstr "pour"
 
 msgid "LOGIN"
 msgstr "Nom d'Utilisateur"
 
-msgid "JOBTITLE"
-msgstr "Intitulé du poste"
+msgid "CALENDAR"
+msgstr "Calendrier"
+
+msgid "NEXTDAYEVENTS"
+msgstr "Evènements du lendemain"
+
+msgid "CANCEL"
+msgstr "Annuler"
+
+msgid "DESCRIPTION"
+msgstr "Description"
+
+msgid "NONE"
+msgstr "Aucune"
 
 msgid "TITLE_WIKI_SYNTAX"
 msgstr "Aide sur la mise en forme (syntaxe wiki)"
 
-msgid "NONE"
-msgstr "Aucune"
+msgid "CHANGEPASSWORD_TITLE"
+msgstr "Changement du mot de passe"
+
+msgid "SUBJECT"
+msgstr "Sujet"
+
+msgid "MESSAGE"
+msgstr "Message"
+
+msgid "USERNAME"
+msgstr "Nom d'utilisateur"
+
+msgid "PASSWORD"
+msgstr "Mot de passe"
+
+msgid "OK"
+msgstr "Valider"
 
 msgid "AGO1"
 msgstr "Il y a"
@@ -196,14 +217,11 @@ msgstr "jour"
 msgid "S"
 msgstr "s"
 
-msgid "USERNAME"
-msgstr "Nom d'utilisateur"
+msgid "THIS_FILE"
+msgstr "ce fichier"
 
-msgid "PASSWORD"
-msgstr "Mot de passe"
-
-msgid "OK"
-msgstr "Valider"
+msgid "BY"
+msgstr "par"
 
 msgid "LOGOUT"
 msgstr "Quitter"
@@ -211,8 +229,8 @@ msgstr "Quitter"
 msgid "KEYCHAINLOCKED"
 msgstr "Ton trousseau de clefs est verrouillé avec une phrase secrète differente de ton mot de passe de session. Bien que cela te fournisse une meilleur sécurité tu veux peut-etre déverrouiller le trousseau automatiquement. Utilise simplement le meme mot de passe que pour t'enregistrer. Sinon déverrouille manuellement ton trousseau en utilisant le formulaire ci-dessous"
 
-msgid "ADD_COMMENT"
-msgstr "Ajouter un commentaire"
+msgid "EMAIL"
+msgstr "Email"
 
 msgid "APPLY_MODIFICATIONS"
 msgstr "Appliquer les modifications"
@@ -220,30 +238,12 @@ msgstr "Appliquer les modifications"
 msgid "CREATE_THE_CV"
 msgstr "Créer le CV"
 
-msgid "CANCEL"
-msgstr "Annuler"
-
-msgid "EMAIL"
-msgstr "Email"
+msgid "JOBTITLE"
+msgstr "Intitulé du poste"
 
 msgid "UPDATE"
 msgstr "Mettre à jour"
 
-msgid "SUBJECT"
-msgstr "Sujet"
-
-msgid "CHANGEPASSWORD_TITLE"
-msgstr "Changement du mot de passe"
-
-msgid "DESCRIPTION"
-msgstr "Description"
-
-msgid "THIS_FILE"
-msgstr "ce fichier"
-
-msgid "CALENDAR"
-msgstr "Calendrier"
-
-msgid "NEXTDAYEVENTS"
-msgstr "Evènements du lendemain"
+msgid "ADD_COMMENT"
+msgstr "Ajouter un commentaire"
 

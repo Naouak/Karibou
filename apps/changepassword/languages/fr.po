@@ -9,10 +9,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
-
-msgid "CHANGEPASSWORD_TITLE"
-msgstr "Changement du mot de passe"
-
 msgid "CHANGEPASSWORD_DESCRIPTION"
 msgstr "Cette page vous permet de changer votre mot de passe. Entrez ci-dessous le nouveau mot de passe que vous souhaitez affecter à votre compte."
 

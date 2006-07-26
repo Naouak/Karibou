@@ -139,7 +139,7 @@ Upload file
 		<translation language="fr">Nom du fichier uploadé</translation>
 		<translation language="en">File name before upload</translation>
 	</sentence>
-	<sentence key="UPLOADDATE ">
+	<sentence key="UPLOADDATE">
 		<translation language="fr">Date de mise en ligne</translation>
 		<translation language="en">Upload date</translation>
 	</sentence>
