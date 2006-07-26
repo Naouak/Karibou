@@ -28,7 +28,7 @@ class NetCVSingleCVSave extends FormModel
 				$myNetCVUser->updateSingleCV($gid,$_POST["netcvSingleCVId"], $cvInfos);
 				$this->setRedirectArg('app', 'netcv');
 				$this->setRedirectArg('page', '');
-				$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("TRANSLATION_MODIFIED"));
+				$this->formMessage->add (FormMessage::SUCCESS, gettext("TRANSLATION_MODIFIED"));
 			} else {
 				//Creation d'une nouvelle version du CV (langue)
 
@@ -38,7 +38,7 @@ class NetCVSingleCVSave extends FormModel
 				$this->setRedirectArg('page', 'cvsectionlist');
 				$this->setRedirectArg('gid',  $gid);
 				$this->setRedirectArg('cvid',  $cvid);
-				$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("TRANSLATION_CREATED"));
+				$this->formMessage->add (FormMessage::SUCCESS, gettext("TRANSLATION_CREATED"));
 			}
 	
 		} else {

@@ -111,7 +111,7 @@ class Login extends FormModel
 			}
 			else // Login Failed
 			{
-				$this->formMessage->add (FormMessage::FATAL_ERROR, $this->languageManager->getTranslation("LOGINFAILED"));
+				$this->formMessage->add (FormMessage::FATAL_ERROR, gettext("LOGINFAILED"));
 				$this->formMessage->setSession();
 			}
 		}

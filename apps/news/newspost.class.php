@@ -45,10 +45,10 @@ class NewsPost extends FormModel
 						
                         $insertRes = $this->db->prepare($req_sql);
 						if ($insertRes->execute()) {
-							$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("ADDED_ARTICLE"));
+							$this->formMessage->add (FormMessage::SUCCESS, gettext("ADDED_ARTICLE"));
 							$this->setRedirectArg('page', '');
 						} else {
-							$this->formMessage->add (FormMessage::FATAL_ERROR, $this->languageManager->getTranslation("ADD_ERROR"));
+							$this->formMessage->add (FormMessage::FATAL_ERROR, gettext("ADD_ERROR"));
 							$this->setRedirectArg('page', 'modify');
 						}
 					}
@@ -70,16 +70,16 @@ class NewsPost extends FormModel
 
                             $insertReq = $this->db->prepare($req_sql_insert);
 							if ($insertReq->execute()) {
-								$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("MODIFIED_ARTICLE"));
+								$this->formMessage->add (FormMessage::SUCCESS, gettext("MODIFIED_ARTICLE"));
 								$this->setRedirectArg('page', '');
 							} else {
-								$this->formMessage->add (FormMessage::FATAL_ERROR, $this->languageManager->getTranslation("MODIFY_ERROR"));
+								$this->formMessage->add (FormMessage::FATAL_ERROR, gettext("MODIFY_ERROR"));
 								$this->setRedirectArg('page', 'modify');
 								$this->setRedirectArg('id', $_POST['id']);
 							}
 
 						} else {
-							$this->formMessage->add (FormMessage::WARNING, $this->languageManager->getTranslation("NOT_AUTHORIZED_TO_MODIFY"));
+							$this->formMessage->add (FormMessage::WARNING, gettext("NOT_AUTHORIZED_TO_MODIFY"));
 						}
 					}
 				}
@@ -87,15 +87,15 @@ class NewsPost extends FormModel
 				{
 					//Ajout d'un commentaire de news
 					if ( !isset ($_POST['id_news']) ) {
-						$this->formMessage->add (FormMessage::FATAL_ERROR, $this->languageManager->getTranslation("NO_ID"));
+						$this->formMessage->add (FormMessage::FATAL_ERROR, gettext("NO_ID"));
 						$this->setRedirectArg('page', 'addcomment');
 					} elseif ( !isset ($_POST['title']) || ($_POST['title'] == "") ) {
-						$this->formMessage->add (FormMessage::NOTICE, $this->languageManager->getTranslation("NO_TITLE_FOR_COMMENT"));
+						$this->formMessage->add (FormMessage::NOTICE, gettext("NO_TITLE_FOR_COMMENT"));
 						$this->setCurrentComment($_POST['id_news'],"",$_POST['content']);
 						$this->setRedirectArg('page', 'addcomment');
 						$this->setRedirectArg('id', $_POST['id_news']);
 					} elseif ( !isset ($_POST['content']) || ($_POST['content'] == "") ) {
-						$this->formMessage->add (FormMessage::NOTICE, $this->languageManager->getTranslation("NO_DESCRIPTION_FOR_COMMENT"));
+						$this->formMessage->add (FormMessage::NOTICE, gettext("NO_DESCRIPTION_FOR_COMMENT"));
 						$this->setCurrentComment($_POST['id_news'], $_POST['title'],"");
 						$this->setRedirectArg('page', 'addcomment');
 						$this->setRedirectArg('id', $_POST['id_news']);
@@ -108,12 +108,12 @@ class NewsPost extends FormModel
 						
 						//Gestion des erreurs / succes
 						if ($newNewsCommentSQLResponse->execute()) {
-							$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("COMMENT_POSTED"));
+							$this->formMessage->add (FormMessage::SUCCESS, gettext("COMMENT_POSTED"));
 							$this->setRedirectArg('page', 'view');
 							$this->setRedirectArg('id', $_POST['id_news']);
 							$this->setRedirectArg('displayComments', 1);
 						} else {
-							$this->formMessage->add (FormMessage::FATAL_ERROR, $this->languageManager->getTranslation("COMMENT_POST_ERROR"));
+							$this->formMessage->add (FormMessage::FATAL_ERROR, gettext("COMMENT_POST_ERROR"));
 							$this->setRedirectArg('page', 'addcomment');
 							$this->setRedirectArg('id', $_POST['id_news']);
 						}
@@ -138,24 +138,24 @@ class NewsPost extends FormModel
 						//Gestion des erreurs / succes
                         $insertReq = $this->db->prepare($req_sql_insert);
 						if ($insertReq->execute()) {
-							$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("DELETED_ARTICLE"));
+							$this->formMessage->add (FormMessage::SUCCESS, gettext("DELETED_ARTICLE"));
 						} else {
-							$this->formMessage->add (FormMessage::FATAL_ERROR, $this->languageManager->getTranslation("MODIFY_ERROR"));
+							$this->formMessage->add (FormMessage::FATAL_ERROR, gettext("MODIFY_ERROR"));
 						}
 						$this->setRedirectArg('page', '');
 					} else {
-						$this->formMessage->add (FormMessage::WARNING, $this->languageManager->getTranslation("NOT_AUTHORIZED_TO_DELETE"));
+						$this->formMessage->add (FormMessage::WARNING, gettext("NOT_AUTHORIZED_TO_DELETE"));
 						$this->setRedirectArg('page', '');
 					}
 				} else {
-						$this->formMessage->add (FormMessage::FATAL_ERROR, $this->languageManager->getTranslation("ACTION_ERROR"));
+						$this->formMessage->add (FormMessage::FATAL_ERROR, gettext("ACTION_ERROR"));
 						$this->setRedirectArg('page', '');
 				}
 			}
 		} else {
 			//Accès en lecture seule !
 			//Interdiction de supprimer
-			$this->formMessage->add (FormMessage::WARNING, $this->languageManager->getTranslation("NOT_AUTHORIZED_TO_POST_COMMENTS"));
+			$this->formMessage->add (FormMessage::WARNING, gettext("NOT_AUTHORIZED_TO_POST_COMMENTS"));
 			$this->setRedirectArg('page', '');
 		}
 

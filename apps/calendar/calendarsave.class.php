@@ -44,7 +44,7 @@ class CalendarSave extends FormModel
 					{
 						Debug::kill($e->getMessage());
 					}
-					$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("CALENDARMODIFIED"));
+					$this->formMessage->add (FormMessage::SUCCESS, gettext("CALENDARMODIFIED"));
 				}
 				else
 				{
@@ -73,7 +73,7 @@ class CalendarSave extends FormModel
 					{
 						Debug::kill($e->getMessage());
 					}
-					$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("CALENDARADDED"));
+					$this->formMessage->add (FormMessage::SUCCESS, gettext("CALENDARADDED"));
 				}
 			
 				$this->setRedirectArg('app', 'calendar');

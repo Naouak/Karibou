@@ -19,7 +19,7 @@ class NetCVSingleCVDelete extends Model
 			//Mise a jour d'une version de CV existante
 			$myNetCVUser->deleteSingleCV($this->args["gid"],$this->args["cvid"]);
 
-			$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("DELETED_LANG_CV"));
+			$this->formMessage->add (FormMessage::SUCCESS, gettext("DELETED_LANG_CV"));
 			$this->formMessage->setSession();
 		}
 	}

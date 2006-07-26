@@ -27,7 +27,6 @@ abstract class FormModel extends Model
 		AppList $appList,
 		$templatedir,
 		HookManager $hookManager,
-		LanguageManager $languageManager,
 		EventManager $eventManager,
 		MessageManager $messageManager,
 		KSmarty $smarty,
@@ -42,7 +41,6 @@ abstract class FormModel extends Model
 		$this->eventManager = $eventManager;
 		$this->messageManager = $messageManager;
 		$this->currentUser = $userFactory->getCurrentUser();
-		$this->languageManager = $languageManager;
 		$this->smarty = $smarty;
 		
 		$this->appList = $appList;

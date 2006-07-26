@@ -22,7 +22,7 @@ class NetCVGroupDelete extends Model
         
         if (isset($this->args['gid'])) {
 			$myNetCVGroup = $myNetCVGroupList->returnGroupById ($this->args['gid']);
-			$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("DELETED_CV"));
+			$this->formMessage->add (FormMessage::SUCCESS, gettext("DELETED_CV"));
 			$this->formMessage->setSession();
 
 			$this->assign("gid", $this->args['gid']);

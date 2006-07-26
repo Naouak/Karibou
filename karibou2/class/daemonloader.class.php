@@ -28,10 +28,6 @@ class DaemonLoader
 	 */
 	protected $applist;
 	/**
-	 * @var LanguageManager
-	 */
-	protected $languageManager;
-	/**
 	 * @var HookManager
 	 */
 	protected $hookManager;
@@ -49,12 +45,11 @@ class DaemonLoader
 	 * @param UserFactory $userFactory
 	 */ 
 	public function __construct(PDO $db, UserFactory $userFactory, AppList $applist,
-		LanguageManager $languageManager, HookManager $hookManager, EventManager $eventManager, MessageManager $messageManager)
+		HookManager $hookManager, EventManager $eventManager, MessageManager $messageManager)
 	{
 		$this->db = $db;
 		$this->userFactory = $userFactory;
 		$this->applist = $applist;
-		$this->languageManager = $languageManager;
 		$this->hookManager = $hookManager;
 		$this->eventManager = $eventManager;
 		$this->messageManager = $messageManager;
@@ -99,7 +94,6 @@ class DaemonLoader
 					$this->userFactory,
 					$this->applist,
 					$this->hookManager,
-					$this->languageManager,
 					$this->eventManager,
 					$this->messageManager
 					);

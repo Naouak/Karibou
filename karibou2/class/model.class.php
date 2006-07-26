@@ -75,11 +75,6 @@ abstract class Model
 	protected $hookManager;
 
 	/*
-	 * Objet de gestion des langues
-	 */
-	public $languageManager;
-
-	/*
 	 * Objet de gestion des événements
 	 */
 	protected $eventManager;
@@ -96,7 +91,6 @@ abstract class Model
 		AppList $appList,
 		$templatedir,
 		HookManager $hookManager,
-		LanguageManager $languageManager,
 		EventManager $eventManager,
 		MessageManager $messageManager,
 		KSmarty $smarty,
@@ -119,9 +113,6 @@ abstract class Model
 		//Gestion des ancres
 		$this->hookManager = $hookManager;
 		
-		//Gestion des langues
-		$this->languageManager = $languageManager;
-
 		$this->eventManager = $eventManager;
 		
 		$this->messageManager = $messageManager;

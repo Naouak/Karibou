@@ -75,7 +75,6 @@ class KApp
 	
 	protected $templatedir;
 	
-	protected $languageManager;
 	protected $eventManager;
 	protected $messageManager;
 	protected $xmlconfig;
@@ -100,7 +99,6 @@ class KApp
 		UserFactory $userFactory, 
 		AppList $appList, 
 		$permission, 
-		LanguageManager $languageManager, 
 		HookManager $hookManager,
 		EventManager $eventManager,
 		MessageManager $messageManager,
@@ -116,7 +114,6 @@ class KApp
 		
 		$this->relativeDir = dirname($configfile);
 		
-		$this->languageManager = $languageManager;
 		$this->messageManager = $messageManager;
 
 		$this->viewList = array();
@@ -125,26 +122,13 @@ class KApp
 		$this->eventManager = $eventManager;
 
 		$this->modelFactory = new ModelFactory($modelbuilder, $this->db, $this->userFactory, 
-			$appList, $this->hookManager, $this->languageManager, 
-				$this->eventManager, $this->messageManager, $smarty);
+			$appList, $this->hookManager, $this->eventManager, $this->messageManager, $smarty);
 		
 		$this->permission = $permission;
 		//Lecture des configs
 		$this->xmlconfig = new XMLCache( KARIBOU_CACHE_DIR.'/'.$this->name );
 		$this->xmlconfig->loadFile( $configfile );
 		$this->readConfig( $this->xmlconfig->getXML() );
-
-		/*
-		//Lecture des traductions
-		$languageFile = $this->relativeDir."/languages.xml";
-		if (is_file($languageFile))
-		{
-			$xmlcacheLanguage = new XMLCache(KARIBOU_CACHE_DIR.'/'.$this->name);
-			$xmlcacheLanguage->loadFile($languageFile);
-			$this->loadLanguages( $xmlcacheLanguage->getXML() );
-		}
-		*/
-
 	}
 
 	function __destruct()
@@ -199,14 +183,6 @@ class KApp
 	function getConfig()
 	{
 		return $this->config;
-	}
-
-	/**
-	 * Lecture du fichier de langue de l'appli
-	 */
-	protected function loadLanguages (&$xml)
-	{
-        $this->languageManager->loadLanguages($xml);
 	}
 
 	/**

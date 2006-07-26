@@ -28,11 +28,11 @@ class NetCVItemSave extends FormModel
             			   //Update
 								$myNetCV->updateElementInfos ($_POST["netcvTitleItemId"],$_POST["netcvTitleItem"]);
 								$titleID = $_POST["netcvTitleItemId"];
-								$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("ELEMENT_UPDATED"));
+								$this->formMessage->add (FormMessage::SUCCESS, gettext("ELEMENT_UPDATED"));
             			} else {
             			   //Insert & link !
        				       $titleID = $myNetCV->insertElementLevel($_POST["pid"],$_POST["netcvTitleItem"]);
-								$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("ELEMENT_ADDED"));
+								$this->formMessage->add (FormMessage::SUCCESS, gettext("ELEMENT_ADDED"));
             			}
 
             		   if (isset($_POST["netcvSubtitleItemId"]) && $_POST["netcvSubtitleItemId"] != "") {

@@ -30,14 +30,15 @@ class KSmarty extends Smarty
 
 	protected $language;
 	
-	protected $languageManager;
 	protected $hookManager;
 	
-	function KSmarty(AppList $appList, LanguageManager $languageManager, 
-		$hookManager, $language="")
+	protected $currentLanguage;
+	
+	function KSmarty(AppList $appList, $hookManager, $currentLanguage="")
 	{
 		$this->Smarty();
 		$this->appList = $appList;
+		$this->currentLanguage = $currentLanguage;
 		
 		$this->register_function('kurl', 'smarty_function_kurl');
 		$this->register_function('translate', 'smarty_function_translate');
@@ -52,7 +53,6 @@ class KSmarty extends Smarty
 		$displayHook = array(&$this, 'displayHook');
 		$this->register_function('hook', $displayHook);
 
-		$this->languageManager = $languageManager;
 		
 		$prefilterTranslation = array (&$this,'prefilterTranslation');
 		$this->register_prefilter($prefilterTranslation);
@@ -66,7 +66,7 @@ class KSmarty extends Smarty
 	function fetch($_smarty_tpl_file, $_smarty_cache_id = null, $_smarty_compile_id = null, $_smarty_display = false) {
 	  // We need to set the cache id and the compile id so a new script will be
 	  // compiled for each language. This makes things really fast ;-)
-	  $_smarty_compile_id = $this->languageManager->getCurrentLanguage().'-'.$_smarty_compile_id;
+	  $_smarty_compile_id = $this->currentLanguage.'-'.$_smarty_compile_id;
 	  $_smarty_cache_id = $_smarty_compile_id;
 
 	  // Now call parent method
@@ -101,7 +101,7 @@ class KSmarty extends Smarty
 					 return false;
 
 			if (!isset($compile_id)) {
-					 $compile_id = $this->languageManager->getCurrentLanguage().'-'.$this->compile_id;
+					 $compile_id = $this->currentLanguage.'-'.$this->compile_id;
 					 $cache_id = $compile_id;
 			}
 
@@ -135,7 +135,6 @@ class KSmarty extends Smarty
 	}
 	function translate_key($key)
 	{
-		//return $this->languageManager->getTranslation($key);
 		return gettext($key);
 	}
 

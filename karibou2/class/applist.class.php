@@ -43,7 +43,6 @@ class AppList extends ObjectList
 	 */
 	protected $permissions;
 	
-	protected $languageManager;
 	protected $hookManager;
 	protected $messageManager;
 	protected $smarty;
@@ -55,7 +54,7 @@ class AppList extends ObjectList
 	 * @param Permissions $permissions
 	 */
 	public function __construct(ModelBuilder $modelbuilder, PDO $db, UserFactory $userFactory,
-		LanguageManager $languageManager, HookManager $hookManager, EventManager $eventManager, MessageManager $messageManager)
+		HookManager $hookManager, EventManager $eventManager, MessageManager $messageManager)
 	{
 		parent::__construct();
 		$this->modelbuilder = $modelbuilder;
@@ -63,7 +62,6 @@ class AppList extends ObjectList
 		$this->currentUser = $userFactory->getCurrentUser();
 		$this->baseUrl = BaseURL :: getRef();
 		$this->userFactory = $userFactory;
-		$this->languageManager = $languageManager;
 		$this->hookManager = $hookManager;
 		$this->eventManager = $eventManager;
 		$this->messageManager = $messageManager;
@@ -74,8 +72,7 @@ class AppList extends ObjectList
 
 
 		ExecutionTimer::getRef()->start("New Smarty");
-		$this->smarty = new KSmarty($this, $this->languageManager, 
-			$this->hookManager, $userFactory->getCurrentUser()->getPref("lang"));
+		$this->smarty = new KSmarty($this, $this->hookManager, $userFactory->getCurrentUser()->getPref("lang"));
 		ExecutionTimer::getRef()->stop("New Smarty");
 	}
 
@@ -114,7 +111,6 @@ class AppList extends ObjectList
 			$this->userFactory,
 			$this,
 			$this->permissions->get($name),
-			$this->languageManager,
 			$this->hookManager,
 			$this->eventManager,
 			$this->messageManager,

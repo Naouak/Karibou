@@ -34,7 +34,7 @@ class NetCVPersonalInfoSave extends FormModel
 				$myNetCVSingleCV = new NetCVSingleCV ($this->db);
 				$myNetCVSingleCV->load ($myNetCVUser->getInfo("id"), $_POST["gid"], $_POST["cvid"]);
 				$myNetCVSingleCV->updateInfos($userInfos);
-				$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("CV_PERSONAL_INFO_UPDATED"));
+				$this->formMessage->add (FormMessage::SUCCESS, gettext("CV_PERSONAL_INFO_UPDATED"));
 			} else {
 		    	$myNetCVUser = new NetCVUser($this->db, $this->currentUser,TRUE);
 
@@ -51,7 +51,7 @@ class NetCVPersonalInfoSave extends FormModel
 					WHERE username='".$myNetCVUser->getInfo("username")."'";
 				$updatePersonalInfoRes = $this->db->prepare($updatePersonalInfoReq);
 				$updatePersonalInfoRes->execute();
-				$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("DEFAULT_PERSONAL_INFO_UPDATED"));
+				$this->formMessage->add (FormMessage::SUCCESS, gettext("DEFAULT_PERSONAL_INFO_UPDATED"));
 			}
 		}
 		$this->formMessage->setSession();

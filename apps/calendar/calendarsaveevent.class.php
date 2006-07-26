@@ -61,12 +61,12 @@ class CalendarSaveEvent extends FormModel
 				{
 					$myCalendarEvent->uid = $_POST["eventid"];
 					$myCalendarWriter->updateEvent($myCalendarEvent);
-					$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("EVENTMODIFIED"));
+					$this->formMessage->add (FormMessage::SUCCESS, gettext("EVENTMODIFIED"));
 				}
 				else
 				{
 					$myCalendarWriter->addEvent($myCalendarEvent);
-					$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("EVENTADDED"));
+					$this->formMessage->add (FormMessage::SUCCESS, gettext("EVENTADDED"));
 				}
 			
 				$this->setRedirectArg('app', 'calendar');

@@ -39,11 +39,6 @@ abstract class Listener
 	protected $hookManager;
 
 	/*
-	 * Objet de gestion des langues
-	 */
-	protected $languageManager;
-
-	/*
 	 * Objet de gestion des événements
 	 */
 	protected $eventManager;
@@ -53,7 +48,6 @@ abstract class Listener
 		UserFactory $userFactory,
 		AppList $appList,
 		HookManager $hookManager,
-		LanguageManager $languageManager,
 		EventManager $eventManager,
 		MessageManager $messageManager
 		)
@@ -63,7 +57,6 @@ abstract class Listener
 		$this->currentUser = $userFactory->getCurrentUser();
 		$this->appList = $appList;
 		$this->hookManager = $hookManager;
-		$this->languageManager = $languageManager;
 		$this->eventManager = $eventManager;
 		$this->messageManager = $messageManager;
 	}

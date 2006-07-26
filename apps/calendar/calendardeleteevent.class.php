@@ -34,18 +34,18 @@ class CalendarDeleteEvent extends FormModel
 			if ( $tab = $stmt->fetchAll(PDO::FETCH_ASSOC) )
 			{
 				$event = new CalendarEventDB($tab[0]);
-if ($event->authorid == $this->currentUser->getId())
-{
-$myCalendarWriter = new CalendarWriterDB($this->db, $_POST["calendarid"]);
-if ($myCalendarWriter->deleteEvent($event))
-{
-    $this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("EVENTDELETED"));
-}
-else
-{
-    $this->formMessage->add (FormMessage::WARNING, $this->languageManager->getTranslation("EVENTNOTDELETED"));
-}
-}
+				if ($event->authorid == $this->currentUser->getId())
+				{
+					$myCalendarWriter = new CalendarWriterDB($this->db, $_POST["calendarid"]);
+					if ($myCalendarWriter->deleteEvent($event))
+					{
+						$this->formMessage->add (FormMessage::SUCCESS, gettext("EVENTDELETED"));
+					}
+					else
+					{
+						$this->formMessage->add (FormMessage::WARNING, gettext("EVENTNOTDELETED"));
+					}
+				}
 			}
 			else
 			{

@@ -34,7 +34,6 @@ ClassLoader::add('FormModel', KARIBOU_CLASS_DIR.'/formmodel.class.php');
 ClassLoader::add('ModelFactory', KARIBOU_CLASS_DIR.'/modelfactory.class.php');
 ClassLoader::add('ModelBuilder', KARIBOU_CLASS_DIR.'/modelbuilder.class.php');
 ClassLoader::add('KSmarty', KARIBOU_CLASS_DIR."/ksmarty.class.php");
-ClassLoader::add('LanguageManager', KARIBOU_CLASS_DIR."/languagemanager.class.php");
 ClassLoader::add('Listener', KARIBOU_CLASS_DIR."/listener.class.php");
 ClassLoader::add('Event', KARIBOU_CLASS_DIR."/event.class.php");
 ClassLoader::add('EventManager', KARIBOU_CLASS_DIR."/eventmanager.class.php");
@@ -149,13 +148,14 @@ class Karibou
 	protected $appHeader;
 	protected $appFooter;
 	
-	//protected $languageManager;
 	
 	//Le gestionnaire d'accroche
 	protected $hookManager;
-	protected $languageManager;
 	protected $eventManager;
 	protected $messageManager;
+	
+	//Langue courante
+	protected $currentLanguage;
 
 	function __construct()
 	{
@@ -185,25 +185,20 @@ class Karibou
 
 		//Instanciation du gestionnaire de langages
 		
-		$this->languageManager	= new LanguageManager();
 		$this->hookManager		= new HookManager();
 		$this->eventManager		= new EventManager();
 		$this->messageManager	= new MessageManager();
 		
 		//Definition du langage de l'utilisateur
 		//TODO -> A deplacer
-		if( $lang = $this->currentUser->getPref("lang") )
-		{
-			$this->languageManager->setCurrentLanguage($lang);
-		}
-
+		$lang = $this->currentUser->getPref("lang");
 		if (isset($lang) && $lang != '') {
-			$language = $lang;
+			$this->currentLanguage = $lang;
 		} else {
-			$language = 'fr';
+			$this->currentLanguage = 'fr';
 		}
-		putenv("LANG=$language"); 
-		setlocale(LC_ALL, $language);
+		putenv("LANG=".$this->currentLanguage); 
+		setlocale(LC_ALL, $this->currentLanguage);
 		$domain = 'messages';
 		$translations_dir = dirname(__FILE__)."/../../locale/";
 		bindtextdomain($domain, $translations_dir); 
@@ -214,7 +209,7 @@ class Karibou
 		
 
 		$this->appList = new AppList($modelbuilder, $this->db, $this->userFactory, 
-			$this->languageManager, $this->hookManager, $this->eventManager, $this->messageManager );
+			$this->hookManager, $this->eventManager, $this->messageManager );
 		
 		// on créé la page
 		$this->appName = $this->baseUrl->getApp();
@@ -237,7 +232,7 @@ class Karibou
 		else
 		{
 			$daemonLoader = new DaemonLoader($this->db, $this->userFactory, $this->appList,
-				$this->languageManager, $this->hookManager, $this->eventManager, $this->messageManager );
+				$this->hookManager, $this->eventManager, $this->messageManager );
 			$daemonLoader->loadDaemonDir(KARIBOU_DAEMON_DIR);
 			$this->eventManager->sendEvent("load");
 			$this->eventManager->performActions();

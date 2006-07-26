@@ -34,7 +34,7 @@ class NetCVGroupSave extends FormModel
 			$nbHostname = $nbHostname[0]["nb_hostname"];
 			if ($nbHostname > 0)
 			{
-				$this->formMessage->add (FormMessage::FATAL_ERROR, $this->languageManager->getTranslation("ADDRESS_IN_USE"));
+				$this->formMessage->add (FormMessage::FATAL_ERROR, gettext("ADDRESS_IN_USE"));
 				$this->setRedirectArg('app', 'netcv');
 				$this->setRedirectArg('page', 'cvgroupmodify');
 				$this->setRedirectArg('gid',  $_POST["gid"]);
@@ -46,14 +46,14 @@ class NetCVGroupSave extends FormModel
 	                //Teste si l'identifiant de section passe en parametre est un nombre
 						if ($gid_int > 0) {
 							$myNetCVGroupList->updateInfos ($gid_int, array("name" => $_POST["netcvGroupName"], "hostname" => $_POST["netcvGroupHostName"], "skin_id" => $_POST["netcvGroupSkin"], "diffusion" => $_POST["netcvGroupDiffusion"], "emailDisplay" => $_POST["netcvGroupEmailDisplay"]));
-							$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("CV_MODIFIED"));
+							$this->formMessage->add (FormMessage::SUCCESS, gettext("CV_MODIFIED"));
 	                }
 					$this->setRedirectArg('app', 'netcv');
 					$this->setRedirectArg('page', '');
 	    		} else {
 	
 					$gid = $myNetCVGroupList->insertGroup (array("name" => $_POST["netcvGroupName"], "hostname" => $_POST["netcvGroupHostName"], "skin_id" => $_POST["netcvGroupSkin"], "diffusion" => $_POST["netcvGroupDiffusion"], "emailDisplay" => $_POST["netcvGroupEmailDisplay"]));
-					$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("CV_ADDED"));
+					$this->formMessage->add (FormMessage::SUCCESS, gettext("CV_ADDED"));
 	
 					$this->setRedirectArg('app', 'netcv');
 					$this->setRedirectArg('page', 'cvsinglecvmodify');
@@ -62,7 +62,7 @@ class NetCVGroupSave extends FormModel
 			}
 		} else {
             //Le nom du groupe doit etre renseigne
-				$this->formMessage->add (FormMessage::FATAL_ERROR, $this->languageManager->getTranslation("NO_EMPTY_FIELD"));
+				$this->formMessage->add (FormMessage::FATAL_ERROR, gettext("NO_EMPTY_FIELD"));
 				$this->setRedirectArg('app', 'netcv');
 				$this->setRedirectArg('page', 'cvgroupmodify');
 		}

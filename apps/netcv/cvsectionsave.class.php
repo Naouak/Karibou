@@ -30,11 +30,11 @@ class NetCVSectionSave extends FormModel
 					//Teste si l'identifiant de section passe en parametre est un nombre					
 					if ($sid_int > 0) {
 						$myNetCVSingleCVContent->updateElementInfos ($_POST["netcvSectionId"],$_POST["netcvSectionName"]);
-						$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("SECTION_MODIFIED"));
+						$this->formMessage->add (FormMessage::SUCCESS, gettext("SECTION_MODIFIED"));
 					}
 				} else {
 					$sid_int = $myNetCVSingleCVContent->insertElementLevel (0,$_POST["netcvSectionName"]);
-					$this->formMessage->add (FormMessage::SUCCESS, $this->languageManager->getTranslation("SECTION_ADDED"));
+					$this->formMessage->add (FormMessage::SUCCESS, gettext("SECTION_ADDED"));
 				}
 				
 				if (isset($_POST["netcvToSectionList"]) && ($_POST["netcvToSectionList"] != "") ) {

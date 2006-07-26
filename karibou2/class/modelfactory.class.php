@@ -21,7 +21,6 @@ class ModelFactory
 	protected $userFactory;
 	protected $appList;
 	protected $hookManager;
-	protected $languageManager;
 	protected $eventManager;
 	protected $messageManager;
 	protected $data;
@@ -33,7 +32,6 @@ class ModelFactory
 		UserFactory $userFactory,
 		AppList $appList,
 		HookManager $hookManager,
-		LanguageManager $languageManager,
 		EventManager $eventManager,
 		MessageManager $messageManager,
 		KSmarty $smarty
@@ -43,7 +41,6 @@ class ModelFactory
 		$this->db = $db;
 		$this->userFactory = $userFactory;
 		$this->hookManager = $hookManager;
-		$this->languageManager = $languageManager;
 		$this->eventManager = $eventManager;
 		$this->messageManager = $messageManager;
 		$this->appList = $appList;
@@ -62,7 +59,7 @@ class ModelFactory
 		if( !isset($this->data[$uniq_id]) )
 		{
 			$this->data[$uniq_id] = new $model($this->db, $appname, $this->userFactory, $this->appList, 
-				$templatedir, $this->hookManager, $this->languageManager, $this->eventManager, 
+				$templatedir, $this->hookManager, $this->eventManager, 
 				$this->messageManager, $this->smarty, $permission, $args);
 			$this->data[$uniq_id]->smarty->caching = false;
 			$this->modelbuilder[] = $this->data[$uniq_id];
