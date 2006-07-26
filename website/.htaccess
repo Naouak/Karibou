@@ -2,6 +2,6 @@
 RewriteEngine On
 
 RewriteRule ^themes/	-			[L]
-RewriteRule ^pub/	-			[L]
+RewriteRule ^pub/	-				[L]
 RewriteRule ^.*$		index.php	[L]
 

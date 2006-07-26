@@ -79,7 +79,7 @@ function kurl($params , $appList)
     
 	//$url = '/'.$app.$page.$url;
 
-    $url = $GLOBALS['config']['base_url'].$app.$page.$url;
+    $url = $GLOBALS['config']['base_url'].'/'.$app.$page.$url;
 	if(isset($server))
 	{
 		$url = $proto."://".$server.$url;
