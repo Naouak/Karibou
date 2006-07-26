@@ -97,23 +97,29 @@ function do_file($file, $dir, $lang)
 		
 		//Créer le fichier de traductions globales
 		foreach ($translations as $key => $msg) {
-			ob_start();
+			if (FILE == 'oui') {
+				ob_start();
+			}
 			if (count($GLOBALS['keys'][$key]) > 1 && !in_array($key,$GLOBALS['globalised'])) {
 				//Il y a un duplicate sur cette clé
 				echo "msgid \"".$key."\"\n";
 				echo "msgstr \"".fs($msg)."\"\n\n";
 				$GLOBALS['globalised'][] = $key;
 			}
-			$buffer = ob_get_clean();
-			$po_file_from_xml = PATH.'/_languages/'.$lang.'.po';
-			file_put_contents($po_file_from_xml, $buffer, FILE_APPEND);
+			if (FILE == 'oui') {
+				$buffer = ob_get_clean();
+				$po_file_from_xml = PATH.'/_languages/'.$lang.'.po';
+				file_put_contents($po_file_from_xml, $buffer, FILE_APPEND);
+			}
 		}
 		if (isset($po_file_from_xml))
 			echo "\n\n -> Traductions <strong>GLOBALES</strong> enregistr&eacute;es dans le fichier <strong>".$po_file_from_xml."</strong>.";
 		
 		
 		//Créer fichier .po à partir du XML (si po inexistant et xml existant)
-		ob_start();
+		if (FILE == 'oui') {
+			ob_start();
+		}
 ?>
 msgid ""
 msgstr ""
@@ -134,9 +140,11 @@ msgstr ""
 				echo "msgstr \"".fs($msg)."\"\n\n";
 			}
 		}
-		$buffer = ob_get_clean();
-		$po_file_from_xml = $lang_dir.'/'.$lang.'.po';
-		file_put_contents($po_file_from_xml, $buffer);
+		if (FILE == 'oui') {
+			$buffer = ob_get_clean();
+			$po_file_from_xml = $lang_dir.'/'.$lang.'.po';
+			file_put_contents($po_file_from_xml, $buffer);
+		}
 		echo "\nTraductions enregistr&eacute;es dans le fichier <strong>".$po_file_from_xml."</strong>.";
 	}
 }
