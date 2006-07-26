@@ -39,6 +39,33 @@ class KDirectory extends KDBFSElement
 		{
 			$this->rootdir = $rootdir;
 		}
+		
+		//Test if directory doesn't exist
+		if (!is_dir($this->rootdir))
+		{
+			if (!is_dir(KARIBOU_PUB_DIR.'/fileshare/'))
+			{
+				if (mkdir (KARIBOU_PUB_DIR.'/fileshare/', 0770) && mkdir ($this->rootdir, 0770))
+				{
+					//Creation succeeded
+				} 
+				else
+				{
+					die('Error creating directory');
+				}
+			}
+			else
+			{
+				if (mkdir (KARIBOU_PUB_DIR.'/fileshare/share/', 0770))
+				{
+					//Creation succeeded
+				} 
+				else
+				{
+					die('Error creating directory');
+				}
+			}
+		}
 
 		
 		if ($id !== FALSE)
