@@ -47,6 +47,22 @@
 	width: 220px;
 }
 
+#divEditEvent {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	background-color: #eee;
+	border: 1px #aaa solid;
+}
+
+.hide {
+	visibility: hidden;
+}
+
+.show {
+	visibility: visible;
+}
+
 .event{
 	z-index: 1;
 	position: absolute;

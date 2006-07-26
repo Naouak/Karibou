@@ -5,7 +5,18 @@
 ##NOCALENDAR##
 </div>
 {/if}
-
+<script>
+var start_date = {ldelim}
+	year: '{$today->getYear()}',
+	month: '{$today->getMonth()}',
+	day: '{$today->getDay()}'
+{rdelim}
+var stop_date = {ldelim}
+	year: '{$today->getYear()}',
+	month: '{$today->getMonth()}',
+	day: '{$today->getDay()}'
+{rdelim}
+</script>
 <script type="text/javascript" src="/themes/js/calendar.js"></script>
 
 
@@ -39,7 +50,7 @@
 
 <script>
 	KCalendar.createHours("calendar-hours");
-	KCalendar.createSelect("calendar-select");
+	KCalendar.createSelect("calendar-select", "{kurl page='inlineAddEvent'}");
 </script>
 
 <div class="events">
@@ -88,3 +99,4 @@
 
 </div>
 
+<div id="divEditEvent" class="hide"></div>

@@ -3,6 +3,7 @@ var KCalendar = {
 	
 	startHour : 0,
 	endHour : 24,	
+	size : 2, // do not change it for now !
 	
 	sessionstarted : false,
 	selectionStart : 0,
@@ -19,11 +20,42 @@ var KCalendar = {
 		Element.addClassName(cell, "selected");
 	},
 
-	endSelect : function(event) {
+	endSelect : function(event, url) {
 		this.sessionstarted = false;
 		var cell = this.fetchCellAt( event.pageX , event.pageY );
 		//Element.removeClassName(cell, "selected");
 		//alert(this.selectionStart+"/"+this.selectionEnd);
+		
+		var queryComponents = new Array();
+		
+		start_date.hour = Math.floor((this.selectionStart)/this.size) ;
+		start_date.minute = (this.selectionStart%this.size) *(60/this.size);
+		stop_date.hour = Math.floor((this.selectionEnd+1)/this.size) ;
+		stop_date.minute = ((this.selectionEnd+1)%this.size) *(60/this.size);
+		
+		for( i in start_date )
+		{
+			queryComponents.push(
+				"start" + encodeURIComponent(i) + "=" + 
+				encodeURIComponent(start_date[i]) );
+		}
+		for( i in stop_date )
+		{
+			queryComponents.push(
+				"stop" + encodeURIComponent(i) + "=" + 
+				encodeURIComponent(stop_date[i]) );
+		}
+		var post_vars = queryComponents.join("&");
+
+		new Ajax.Updater("divEditEvent", url, {
+			asynchronous:true,
+			evalScripts:true,
+			method:'post',
+			postBody: post_vars
+		});
+
+		Element.removeClassName($("divEditEvent"), "hide");
+		Element.addClassName($("divEditEvent"), "show");
 		this.clearSelected();
 	},
 
@@ -165,10 +197,10 @@ var KCalendar = {
 		calendar.parentNode.scrollTop = document.getElementById("calhour-8").offsetTop;
 	},
 
-	createSelect : function ( elementid ) {
+	createSelect : function ( elementid, url ) {
 		this.calendar = $( elementid );
 		this.calendar.setAttribute("onmousedown", "KCalendar.startSelect(event);");
-		this.calendar.setAttribute("onmouseup", "KCalendar.endSelect(event);");
+		this.calendar.setAttribute("onmouseup", "KCalendar.endSelect(event, '"+url+"');");
 		this.calendar.setAttribute("onmousemove", "KCalendar.mouseMove(event);");
 
 		var div;

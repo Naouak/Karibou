@@ -26,10 +26,10 @@ class ModelBuilder extends ObjectList
 	{
 		foreach($this as $model)
 		{
-			Debug::display("Building ".$model->appname." (".get_class($model).")");
-			ExecutionTimer::getRef()->start("Building ".$model->appname." (".get_class($model).")");
+			Debug::display("Building app: ".$model->appname." (model: ".get_class($model).")");
+			ExecutionTimer::getRef()->start("Building Model ".$model->appname." (".get_class($model).")");
 			$model->build();
-			ExecutionTimer::getRef()->stop("Building ".$model->appname." (".get_class($model).")");
+			ExecutionTimer::getRef()->stop("Building Model ".$model->appname." (".get_class($model).")");
 		}
 	}
 }

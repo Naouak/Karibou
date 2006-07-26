@@ -224,6 +224,7 @@ class Karibou
 			
 			// On deconnecte de la base de données avant de commencer à afficher
 			unset($this->db);
+
 			if ( $location = $model->getLocation() )
 			{
 				header("Location: ".$location);

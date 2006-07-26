@@ -100,6 +100,27 @@
 	</page>
 	<page name="manage" view="manage" />
 
+	<page name="inlineAddEvent" view="addEvent">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" />
+		<option name="startyear" class="NumberArgument"/>
+		<option name="startmonth" class="NumberArgument"/>
+		<option name="startday" class="NumberArgument"/>
+		<option name="starthour" class="NumberArgument"/>
+		<option name="startminute" class="NumberArgument"/>
+		<option name="stopyear" class="NumberArgument"/>
+		<option name="stopmonth" class="NumberArgument"/>
+		<option name="stopday" class="NumberArgument"/>
+		<option name="stophour" class="NumberArgument"/>
+		<option name="stopminute" class="NumberArgument"/>
+	</page>
+	<page name="inlineEditEvent" view="editEvent">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" />
+		<argument name="calendarid" class="NumberArgument"/>
+		<argument name="eventid" class="NumberArgument"/>
+	</page>
+
 	<form action="deleteEvent" class="CalendarDeleteEvent">
 		<referer />
 	</form>
@@ -115,4 +136,6 @@
 	<form action="unsubscribe" class="CalendarUnsubscribe">
 		<referer />
 	</form>
+	
+
 </header>

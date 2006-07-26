@@ -24,7 +24,7 @@ $karibou->display();
 $timer->stop("Full Load");
 
 unset($karibou);
-Debug::display($timer->getTableHTML());
+//Debug::display($timer->getTableHTML());
 
 Debug::display($timer->getText());
 Debug::flushMessages();
