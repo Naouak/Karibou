@@ -19,4 +19,4 @@
     password2: <input type="password" name="password2" size="10" value="{$password2|escape}"><br />
 
     <input type="submit">
-</form>   
+</form>

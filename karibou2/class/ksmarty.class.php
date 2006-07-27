@@ -15,6 +15,7 @@ require_once dirname(__FILE__).'/smarty/translate.function.php';
 require_once dirname(__FILE__).'/smarty/insertheader.function.php';
 require_once dirname(__FILE__).'/smarty/userlink.function.php';
 require_once dirname(__FILE__).'/smarty/khint.function.php';
+require_once dirname(__FILE__).'/smarty/t.block.php';
 
 require_once dirname(__FILE__).'/smarty/SmartyValidate/SmartyValidate.class.php';
 
@@ -40,10 +41,12 @@ class KSmarty extends Smarty
 		$this->appList = $appList;
 		$this->currentLanguage = $currentLanguage;
 		
-		$this->register_function('kurl', 'smarty_function_kurl');
-		$this->register_function('translate', 'smarty_function_translate');
-		$this->register_function('userlink', 'smarty_function_userlink');
-		$this->register_function('khint', 'smarty_function_khint');
+		$this->register_function('kurl', 		'smarty_function_kurl');
+		$this->register_function('translate', 	'smarty_function_translate');
+		$this->register_function('userlink', 	'smarty_function_userlink');
+		$this->register_function('khint', 		'smarty_function_khint');
+		$this->register_block	('t', 			'smarty_block_t');
+		
 		array_push ($this->plugins_dir, dirname(__FILE__).'/smarty/SmartyValidate/plugins');
 		
 		if ($hookManager !== FALSE)
@@ -54,6 +57,8 @@ class KSmarty extends Smarty
 		$this->register_function('hook', $displayHook);
 
 		
+		//Utilisation d'un prefilter et non d'un postfilter pour permettre la compatibilité avec 
+		//la version précédente du gestionnaire de traductions (possibilité d'intégration de variables smarty)
 		$prefilterTranslation = array (&$this,'prefilterTranslation');
 		$this->register_prefilter($prefilterTranslation);
 		

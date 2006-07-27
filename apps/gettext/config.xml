@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+	
+	<load class="AlphaNum"			file="../arguments/alphanum.class.php" />
+	<load class="GetTextDefault"	file="default.class.php" />
+	<load class="GetTextCompile"	file="compile.class.php" />
+
+	<view name="default" class="GetTextDefault" template="default.tpl" />
+	<view name="compile" class="GetTextCompile" template="compile.tpl" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<page view="default" />
+	
+	<page name="compile" view="compile" />
+
+	<form action="config" class="KeyChainPost">
+		<referer />
+	</form>
+</app>

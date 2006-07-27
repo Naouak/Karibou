@@ -200,8 +200,7 @@ class Karibou
 		putenv("LANG=".$this->currentLanguage); 
 		setlocale(LC_ALL, $this->currentLanguage);
 		$domain = 'messages';
-		$translations_dir = dirname(__FILE__)."/../../locale/";
-		bindtextdomain($domain, $translations_dir); 
+		bindtextdomain($domain, KARIBOU_LOCALE_DIR); 
 		bind_textdomain_codeset('messages', 'UTF-8');
 		textdomain($domain);
 
