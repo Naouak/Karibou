@@ -1,0 +1,149 @@
+#container #account {
+	position: absolute;
+	display: block;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 22px; /* A CHANGER */
+	white-space: nowrap;
+	overflow: hidden;
+	
+	background-color: #000;
+	color: #fff;
+	font-size: 1em;
+	font-weight: bold;
+}
+#container #account .user {
+	display: block;
+	float: left;
+	padding: 0px 20px 0px 0px;
+	background-image: url(images/account/userlinker.png);
+	background-repeat: no-repeat;
+	background-position: right 0px;
+	width: 15%;
+	height: 22px;
+	text-align: center;
+	overflow: hidden;
+	/*
+	min-width: 300px;
+	width:expression(document.body.clientWidth < 300? "300px": "auto" ); 
+	*/
+}
+#container #account .user strong {
+	display: block;
+	padding-top: 2px;
+}
+#container #account ul {
+	float: left;
+	margin-left: 50px; 
+	padding-top: 2px;
+}
+#container #account li {
+	display: block;
+	margin-right: 0px;
+	margin-left: 20px;
+	float: left;
+}
+#container #account li a {
+	color: #fff;
+	padding: 2px 0px 0px 24px;
+	background-repeat: no-repeat;
+	line-height: 17px;
+}
+#container #account li.preferences a {
+	background-image: url(images/account/preferences.png);
+	background-position: left 1px;
+}
+#container #account li.confidentiality a {
+	background-image: url(images/account/confidentiality.png);
+	background-position: left 3px;
+}
+#container #account li.security a {
+	background-image: url(images/account/security.png);
+	background-position: left 3px;
+}
+#container #account li.logout a {
+	background-image: url(images/account/logout.png);
+	background-position: left 3px;
+}
+
+
+
+/* Form : Login Line */
+div#account form.login {
+	display: block;
+	height: 22px;
+	padding: 0px;
+}
+
+div#account form.login label {
+	margin-left: 10px;
+	font-size: 1em;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+div#account form.login input {
+	border: 1px solid #b0b0b0;
+	height: 19px;
+	color: #a0a0a0;
+	text-align: center;
+	vertical-align: top;
+	background-color: #fff;
+}
+html>body div#account form.login input {
+	height: 17px;
+}
+/* Ignoré par IE */
+html>body div#account form.login input {
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+div#account form.login input.email {
+	background-image: url(images/login/small/email.png);
+	background-repeat: no-repeat;
+	background-position: 1px 1px;
+	padding-left: 24px;
+}
+
+div#account form.login input.password {
+	background-image: url(images/login/small/key.png);
+	background-repeat: no-repeat;
+	background-position: 1px 1px;
+	padding-left: 18px;
+}
+
+div#account form.login input.button {
+	background-image: url(images/login/small/login.png);
+	background-repeat: no-repeat;
+	height: 16px;
+	width: 69px;
+	border: 0px;
+	text-align: left;
+	padding-left: 69px;
+	margin-top: 3px;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+div#account form.login a.forgotten {
+	padding-right: 20px;
+	color: #fff;
+	font-weight: normal;
+}
+
+div#account form.login a.inscription {
+	background-image: url(images/login/small/inscription.png);
+	background-repeat: no-repeat;
+	background-position: 1px 4px;
+	padding-bottom: 4px;
+	padding-top: 1px;
+	padding-right: 10px;
+}
+div#account form.login a.inscription span {
+	visibility: hidden;
+}
+div#account form.login a.inscription:hover {
+	text-decoration: none;
+}

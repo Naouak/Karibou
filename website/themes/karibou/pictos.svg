@@ -7,14 +7,14 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="841.88975pt"
    height="595.27559pt"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.42.2"
-   sodipodi:docbase="C:\Applis\k2\k2\website\themes\karibou"
+   inkscape:version="0.44"
+   sodipodi:docbase="E:\web\karibou2\website\themes\karibou"
    sodipodi:docname="pictos.svg"
    inkscape:export-filename="C:\Applis\ssa\karibou2\website\themes\karibou\redenveloppe.png"
    inkscape:export-xdpi="48.000000"
@@ -2932,6 +2932,66 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
+       style="opacity:1;color:black;fill:#777;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       id="rect3490"
+       width="83.979294"
+       height="18.075346"
+       x="228.51575"
+       y="792.04517"
+       rx="2.891762"
+       ry="2.8917623"
+       inkscape:export-filename="E:\web\inkateo.com\dev\images\dev\menudev\themes\default\images\navigation\grey.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <rect
+       ry="2.8917623"
+       rx="2.8917623"
+       y="792.04517"
+       x="169.51575"
+       height="18.075346"
+       width="57.979294"
+       id="rect3488"
+       style="opacity:1;color:black;fill:#a20095;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       inkscape:export-filename="E:\web\inkateo.com\dev\images\dev\menudev\themes\default\images\navigation\purple.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <rect
+       style="opacity:1;color:black;fill:#00a200;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       id="rect3484"
+       width="65.479294"
+       height="18.075346"
+       x="103.01575"
+       y="792.04517"
+       rx="2.8917623"
+       ry="2.8917623"
+       inkscape:export-filename="E:\web\inkateo.com\dev\images\dev\menudev\themes\default\images\navigation\green.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <rect
+       ry="2.8917623"
+       rx="2.8917623"
+       y="792.04517"
+       x="28.537315"
+       height="18.075346"
+       width="73.671677"
+       id="rect3482"
+       style="opacity:1;color:black;fill:#f90;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       inkscape:export-filename="E:\web\inkateo.com\dev\images\dev\menudev\themes\default\images\navigation\orange.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <rect
+       style="opacity:1;color:black;fill:#000079;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       id="rect3478"
+       width="103.0166"
+       height="18.075346"
+       x="-75.306877"
+       y="792.04517"
+       rx="2.8917623"
+       ry="2.8917623"
+       inkscape:export-filename="e:\web\inkateo.com\dev\images\dev\menudev\themes\default\images\navigation\communicate.png"
+       inkscape:export-xdpi="298.7868"
+       inkscape:export-ydpi="298.7868" />
+    <rect
        y="91.534653"
        x="256.23505"
        height="38.031120"
@@ -4686,7 +4746,7 @@
          style="font-size:45.002857px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient2678);fill-opacity:1.0000000;stroke:#ffffff;stroke-width:0.41060319pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Symbol"
          xml:space="preserve"><tspan
            style="font-size:45.002857px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient2678);fill-opacity:1.0000000;stroke:#ffffff;stroke-opacity:1.0000000;font-family:Symbol"
-           y="99.681190"
+           y="99.68119"
            x="809.84027"
            id="tspan4043"
            sodipodi:role="line">?</tspan></text>
@@ -4726,7 +4786,7 @@
            sodipodi:role="line"
            id="tspan7693"
            x="809.84027"
-           y="43.431190"
+           y="43.43119"
            style="font-size:45.002857px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1.0000000;stroke:#ffffff;stroke-opacity:1.0000000;font-family:Symbol">?</tspan></text>
     </g>
     <g
@@ -4930,7 +4990,7 @@
          style="font-size:31.056168px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
          xml:space="preserve"><tspan
            y="655.46057"
-           x="69.851120"
+           x="69.85112"
            id="tspan1366"
            sodipodi:role="line">Vendredi 3 février 2006</tspan></text>
       <text
@@ -4971,7 +5031,7 @@
              style="fill:#f18c0e;fill-opacity:1.0000000"
              sodipodi:role="line"
              id="tspan1362"
-             x="-626.01160"
+             x="-626.0116"
              y="416.23776">Night</tspan></text>
       </g>
       <path
@@ -5046,7 +5106,7 @@
        xml:space="preserve"
        inkscape:export-filename="C:\Applis\k2\k2\website\themes\karibou\images\survey\survey.40.png"><tspan
          style="font-size:45.002857px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient2761);fill-opacity:1.0000000;stroke:#ffffff;stroke-opacity:1.0000000;font-family:Symbol"
-         y="194.43350"
+         y="194.4335"
          x="700.94586"
          id="tspan2697"
          sodipodi:role="line">?</tspan></text>
@@ -5078,7 +5138,7 @@
            sodipodi:role="line"
            id="tspan2729"
            x="809.84027"
-           y="99.681190"
+           y="99.68119"
            style="font-size:45.002857px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient2733);fill-opacity:1.0000000;stroke:#ffffff;stroke-opacity:1.0000000;font-family:Symbol">?</tspan></text>
     </g>
     <rect
@@ -5118,7 +5178,7 @@
          style="font-size:45.002857px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient2745);fill-opacity:1.0000000;stroke:#ffffff;stroke-width:0.41060319pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Symbol"
          xml:space="preserve"><tspan
            style="font-size:45.002857px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient2745);fill-opacity:1.0000000;stroke:#ffffff;stroke-opacity:1.0000000;font-family:Symbol"
-           y="99.681190"
+           y="99.68119"
            x="809.84027"
            id="tspan2741"
            sodipodi:role="line">?</tspan></text>
@@ -5162,8 +5222,291 @@
            sodipodi:role="line"
            id="tspan2753"
            x="809.84027"
-           y="99.681190"
+           y="99.68119"
            style="font-size:45.002857px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient2757);fill-opacity:1.0000000;stroke:#ffffff;stroke-opacity:1.0000000;font-family:Symbol">?</tspan></text>
     </g>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;fill:white;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="-66.414909"
+       y="803.54327"
+       id="text2569"><tspan
+         sodipodi:role="line"
+         id="tspan2571"
+         x="-66.414909"
+         y="803.54327">Communiquer</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;opacity:1;color:black;fill:white;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;font-family:Bitstream Vera Sans"
+       x="36.151157"
+       y="803.54327"
+       id="text2573"
+       inkscape:export-filename="E:\web\inkateo.com\dev\images\dev\menudev\themes\default\images\navigation\organise.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan2575"
+         x="36.151157"
+         y="803.54327">Organiser</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;opacity:1;color:black;fill:white;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;font-family:Bitstream Vera Sans"
+       x="110.02953"
+       y="803.52771"
+       id="text2577"
+       inkscape:export-filename="E:\web\inkateo.com\dev\images\dev\menudev\themes\default\images\navigation\share.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan2579"
+         x="110.02953"
+         y="803.52771">Partager</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;opacity:1;color:black;fill:white;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;font-family:Bitstream Vera Sans"
+       x="178.16922"
+       y="804.04327"
+       id="text2581"
+       inkscape:export-filename="E:\web\inkateo.com\dev\images\dev\menudev\themes\default\images\navigation\job.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan2583"
+         x="178.16922"
+         y="804.04327">Emploi</tspan></text>
+    <text
+       id="text2585"
+       y="803.54327"
+       x="235.95784"
+       style="font-size:12px;font-style:normal;font-weight:normal;fill:white;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;font-variant:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;opacity:1;color:black;fill-rule:nonzero;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;visibility:visible;display:inline;overflow:visible"
+       xml:space="preserve"
+       inkscape:export-filename="E:\web\inkateo.com\dev\images\dev\menudev\themes\default\images\navigation\admin.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         y="803.54327"
+         x="235.95784"
+         id="tspan2587"
+         sodipodi:role="line">Administrer</tspan></text>
+    <rect
+       style="opacity:1;color:black;fill:#000079;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       id="rect3480"
+       width="401.9902"
+       height="17.67767"
+       x="-78.488853"
+       y="807.20374"
+       rx="0"
+       ry="0" />
+    <rect
+       ry="2.8917623"
+       rx="2.891762"
+       y="885.04517"
+       x="228.51575"
+       height="18.075346"
+       width="83.979294"
+       id="rect4377"
+       style="opacity:1;color:black;fill:#777;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" />
+    <rect
+       style="opacity:1;color:black;fill:#bbba76;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       id="rect4379"
+       width="57.979294"
+       height="18.075346"
+       x="169.51575"
+       y="885.04517"
+       rx="2.8917623"
+       ry="2.8917623" />
+    <rect
+       ry="2.8917623"
+       rx="2.8917623"
+       y="885.04517"
+       x="103.01575"
+       height="18.075346"
+       width="65.479294"
+       id="rect4381"
+       style="opacity:1;color:black;fill:#bbba76;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" />
+    <rect
+       style="opacity:1;color:black;fill:#f90;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       id="rect4383"
+       width="73.671677"
+       height="18.075346"
+       x="28.537315"
+       y="885.04517"
+       rx="2.8917623"
+       ry="2.8917623" />
+    <rect
+       ry="2.8917623"
+       rx="2.8917623"
+       y="885.04517"
+       x="-75.306877"
+       height="18.075346"
+       width="103.0166"
+       id="rect4385"
+       style="opacity:1;color:black;fill:#bbba76;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" />
+    <text
+       id="text4387"
+       y="896.54327"
+       x="-66.414909"
+       style="font-size:12px;font-style:normal;font-weight:normal;fill:white;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="896.54327"
+         x="-66.414909"
+         id="tspan4389"
+         sodipodi:role="line">Communiquer</tspan></text>
+    <text
+       id="text4391"
+       y="896.54327"
+       x="36.151157"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;opacity:1;color:black;fill:white;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="896.54327"
+         x="36.151157"
+         id="tspan4393"
+         sodipodi:role="line">Organiser</tspan></text>
+    <text
+       id="text4395"
+       y="896.52771"
+       x="110.02953"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;opacity:1;color:black;fill:white;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="896.52771"
+         x="110.02953"
+         id="tspan4397"
+         sodipodi:role="line">Partager</tspan></text>
+    <text
+       id="text4399"
+       y="897.04327"
+       x="178.16922"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;opacity:1;color:black;fill:white;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="897.04327"
+         x="178.16922"
+         id="tspan4401"
+         sodipodi:role="line">Emploi</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;opacity:1;color:black;fill:white;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;font-family:Bitstream Vera Sans"
+       x="235.95784"
+       y="896.54327"
+       id="text4403"><tspan
+         sodipodi:role="line"
+         id="tspan4405"
+         x="235.95784"
+         y="896.54327">Administrer</tspan></text>
+    <rect
+       ry="0"
+       rx="0"
+       y="900.20374"
+       x="-78.488853"
+       height="17.67767"
+       width="401.9902"
+       id="rect4407"
+       style="opacity:1;color:black;fill:#f90;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" />
+    <rect
+       ry="0"
+       rx="0"
+       y="807.20374"
+       x="-78.488853"
+       height="17.67767"
+       width="401.9902"
+       id="rect6181"
+       style="opacity:1;color:black;fill:#000079;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" />
+    <rect
+       style="opacity:1;color:black;fill:white;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       id="rect6209"
+       width="401.9902"
+       height="18.17767"
+       x="-78.488853"
+       y="806.95374"
+       rx="0"
+       ry="0" />
+    <rect
+       inkscape:export-ydpi="300"
+       inkscape:export-xdpi="300"
+       inkscape:export-filename="E:\web\inkateo.com\dev\images\dev\menudev\themes\default\images\navigation\grey.png"
+       ry="2.8917623"
+       rx="2.891762"
+       y="973.04517"
+       x="228.51575"
+       height="18.075346"
+       width="83.979294"
+       id="rect6211"
+       style="opacity:1;color:black;fill:#777;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" />
+    <rect
+       inkscape:export-ydpi="300"
+       inkscape:export-xdpi="300"
+       inkscape:export-filename="E:\web\inkateo.com\dev\images\dev\menudev\themes\default\images\navigation\purple.png"
+       style="opacity:1;color:black;fill:#a20095;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       id="rect6213"
+       width="57.979294"
+       height="18.075346"
+       x="169.51575"
+       y="973.04517"
+       rx="2.8917623"
+       ry="2.8917623" />
+    <rect
+       inkscape:export-ydpi="300"
+       inkscape:export-xdpi="300"
+       inkscape:export-filename="E:\web\inkateo.com\dev\images\dev\menudev\themes\default\images\navigation\green.png"
+       ry="2.8917623"
+       rx="2.8917623"
+       y="973.04517"
+       x="103.01575"
+       height="18.075346"
+       width="65.479294"
+       id="rect6215"
+       style="opacity:1;color:black;fill:#00a200;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" />
+    <rect
+       inkscape:export-ydpi="300"
+       inkscape:export-xdpi="300"
+       inkscape:export-filename="E:\web\inkateo.com\dev\images\dev\menudev\themes\default\images\navigation\orange.png"
+       style="opacity:1;color:black;fill:#f90;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       id="rect6217"
+       width="73.671677"
+       height="18.075346"
+       x="28.537315"
+       y="973.04517"
+       rx="2.8917623"
+       ry="2.8917623" />
+    <rect
+       inkscape:export-ydpi="298.74945"
+       inkscape:export-xdpi="298.74945"
+       inkscape:export-filename="e:\web\inkateo.com\dev\images\dev\menudev\themes\default\images\navigation\blue.png"
+       ry="2.8917623"
+       rx="2.8917623"
+       y="973.04517"
+       x="-75.306877"
+       height="18.075346"
+       width="103.0166"
+       id="rect6219"
+       style="opacity:1;color:black;fill:#000079;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" />
+    <rect
+       ry="0"
+       rx="0"
+       y="988.20374"
+       x="-78.488853"
+       height="17.67767"
+       width="401.9902"
+       id="rect6241"
+       style="opacity:1;color:black;fill:#000079;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" />
+    <rect
+       style="opacity:1;color:black;fill:#000079;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       id="rect6243"
+       width="401.9902"
+       height="17.67767"
+       x="-78.488853"
+       y="988.20374"
+       rx="0"
+       ry="0" />
+    <rect
+       ry="0"
+       rx="0"
+       y="987.95374"
+       x="-78.488853"
+       height="18.17767"
+       width="401.9902"
+       id="rect6245"
+       style="opacity:1;color:black;fill:white;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       inkscape:export-filename="E:\web\inkateo.com\dev\images\dev\menudev\themes\default\images\navigation\rect6245.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
   </g>
 </svg>

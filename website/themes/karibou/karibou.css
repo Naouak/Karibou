@@ -3,12 +3,7 @@
 	padding: 0px;
 }
 
-ul {
-	margin-left: 10px;
-}
-
 body {
-	background-color: #eee;
 	font: 0.8em sans-serif;
 	text-align: center;
 	margin: 0px;
@@ -18,6 +13,20 @@ body {
 table {
 	font-size: 1em;
 }
+
+ul {
+	margin-left: 10px;
+	padding-left: 15px;
+}
+
+legend {
+	font-weight: bold;
+}
+
+fieldset {
+	line-height: 230%;
+}
+
 a {
 	color: #4e80c9;
 }
@@ -27,10 +36,10 @@ a:hover {
 
 #container {
 	text-align: left;
-	width: 900px;
-	margin: 0px auto 0px auto;
+	/* width: 900px; */
+	/* margin: 0px auto 0px auto; */
 }
-
+/*
 #top {
 	background: url("images/top-back.png") repeat-x;
 	height: 80px;
@@ -70,7 +79,7 @@ a:hover {
 	font: 0.9em bold;
 }
 
-/* Top links */
+/* Top links *
 
 #top a {
 	color: #4e80c9;
@@ -97,14 +106,13 @@ a:hover {
 	background: url("images/banner-right.png") no-repeat right;
 	height: 115px;
 }
-
+*/
 #main {
 	background: #fff;
-	margin-left: auto;
-	margin-right: auto;
-	width: 900px;
+	margin-top: 5em;
+	/* width: 900px; */
 }
-
+/*
 #main .leftdeco {
 	background: url("images/content-left.png") repeat-y left;
 }
@@ -112,7 +120,9 @@ a:hover {
 #main .rightdeco {
 	background: url("images/content-right.png") repeat-y right;
 }
+*/
 
+/*
 #boxbar {
 	width: 255px;
 	float: right;
@@ -126,6 +136,9 @@ a:hover {
 	font-size: 1.2em;
 	color: #237DA1;
 }
+
+*/
+
 
 #content1 {
 	margin: 0px 10px 0px 10px;
@@ -169,6 +182,45 @@ a:hover {
 #content code {
 	margin: 10px 10px 10px 30px;
 }
+
+
+/* * * * * */
+/*  Footer */
+/* * * * * */
+ul#footer {
+	clear: both;
+	background-color: #000;
+	height: 20px;
+	text-align: center;
+	color: #fff;
+	padding-left: 35%;
+	padding-right: 0px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	overflow: hidden;
+	margin: 0px;
+}
+ul#footer a {
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+ul#footer  {
+	list-style: none;
+}
+ul#footer li {
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-left: 1px solid #fff;
+	height: 18px;
+	overflow: hidden;
+}
+ul#footer li.first {
+	border-left: 0px;
+}
+/*
 #footer {
 	clear: both;
 	background-image: url("images/footer-back.png");
@@ -214,10 +266,11 @@ a:hover {
 #footerlogo:hover .mask {
 	visibility: visible;
 }
-
-/*
-	FORMMESSAGES
 */
+
+/* * * * * * * * * * * * */
+/*      Form Message     */
+/* * * * * * * * * * * * */
 .error {
 	margin: 5px;
 	padding: 4px;
@@ -254,7 +307,6 @@ a:hover {
 	text-align: center;
 }
 
-/* helper */
 .helper {
 	border: 1px solid #acacef;
 	background: #fafaff;
@@ -298,29 +350,6 @@ a:hover {
 	display: none;
 }
 
-ul {
-	padding-left: 15px;
-}
-
-legend {
-	font-weight: bold;
-}
-
-fieldset {
-	line-height: 230%;
-}
-
-#kariboulink {
-	text-align: center;
-	color: #5c5c5c;
-	margin: 5px 0 10px 0;
-}
-
-#kariboulink a {
-	color: #5c5c5c;
-	font-weight: bold;
-	text-decoration: none;
-}
 
 /* HintBox */
 div#hintbox {

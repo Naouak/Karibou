@@ -1,7 +1,8 @@
-
 @import 'autocompleter.css';
 @import 'karibou.css';
 @import 'home.css';
+@import 'navigation.css';
+@import 'account.css';
 
 @import 'apponlineusers.css';
 @import 'appminichat.css';
@@ -25,10 +26,3 @@
 @import 'appcalendar_time_8_20.css';
 @import 'appcalendar_duration.css';
 @import 'appcalendar_month.css';
-
-/* hack to have :hover behaviour on any elements for Internet Explorer */
-
-body {
-	/*behavior:url("/themes/js/csshover.htc");*/
-	/*Removed because loading this script on the home page takes 100% CPU on a P733 for 10 seconds */
-}

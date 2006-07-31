@@ -19,49 +19,57 @@
 		function popup(adresse, nom, hauteur, largeur, haut, gauche){
 			window.open(adresse, nom,'menubar=false, status=false, location=false, scrollbar=false, resizable=false, height='+hauteur+', width='+largeur+', top='+haut+', left='+gauche);
 		}
+		
+		//Barre de navigation du site 
+		var navCategories = new Array("Communicate","Organize","Share","Jobs","Admin");
+
+		function LoadSiteNavigation() {
+			HideAppsLinks();
+		}
+
+		function ShowAppsLinks(strMenu) {
+		  HideAppsLinks();
+		  document.getElementById(strMenu).style.visibility="visible";
+		}
+
+		function HideAppsLinks() {
+			for(i in navCategories) {
+				if (document.getElementById("menu"+navCategories[i])) {
+					with(document.getElementById("menu"+navCategories[i]).style) {
+						visibility="hidden";
+					}
+				}
+			}
+		}
 {/literal}
 	</script>
 {hook name="html_head"}
 </head>
-<body>
+<body onload="LoadSiteNavigation();">
 
 {* HintBox support *}
 <div id="hintbox">&nbsp;</div>
 <script type="text/javascript" src="/themes/js/hintbox.js"></script>
 
 <div id="container">
+{*
 	<div id="top">
-	<div class="leftdeco">
-	<div class="rightdeco">
-		<span id="surnom">
-		{if $currentUserName}
-			{$currentUserName}
-			( <a href="{kurl app="login" action="logout"}">##LOGOUT##</a> )
-		{else}
-		&nbsp;
-		{/if}
-		</span>
-		<ul class="menu">
-			<li><a href="{kurl app=""}">##APP_HOME##</a></li>
-			{*
-			<li>
-				<select>
-					<option disabled>##DEFAULT_QUICKLINKS##</option>
-					<option disabled>##APP_NEWS##</option>
-					<option disabled>##APP_EMAIL##</option>
-					<option disabled>##APP_DIRECTORY##</option>
-					<option disabled>##APP_ADDRESSBOOK##</option>
-					<option disabled>##APP_FILESHARE##</option>
-					<option disabled>##APP_CALENDAR##</option>
-					<option disabled>##APP_NETCV##</option>
-					<option disabled>##APP_CONTACT##</option>
-				</select>
-			</li>
-			*}
-			{hook name="header_menu"}
-	 	</ul>
-	</div>
-	</div>
+		<div class="leftdeco">
+			<div class="rightdeco">
+				<span id="surnom">
+				{if $currentUserName}
+					{$currentUserName}
+					( <a href="{kurl app="login" action="logout"}">##LOGOUT##</a> )
+				{else}
+				&nbsp;
+				{/if}
+				</span>
+				<ul class="menu">
+					<li><a href="{kurl app=""}">##APP_HOME##</a></li>
+					{hook name="header_menu"}
+				</ul>
+			</div>
+		</div>
 	</div>
 	
 	<div id="banner">
@@ -69,7 +77,7 @@
 			<div class="rightdeco"></div>
 		</div>
 	</div>
-	
+*}
 	<div id="main">
 	<div class="leftdeco">
 	<div class="rightdeco">

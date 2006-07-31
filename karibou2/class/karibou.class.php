@@ -295,13 +295,6 @@ class Karibou
 				$GLOBALS['config']['bdd']["dsn"], 
 				$GLOBALS['config']['bdd']["username"], 
 				$GLOBALS['config']['bdd']["password"]);
-/*
-			$this->db = new PDO(
-				$GLOBALS['config']['bdd']["dsn"], 
-				$GLOBALS['config']['bdd']["username"], 
-				$GLOBALS['config']['bdd']["password"]);
-*/
-			//$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); 
 		}
 		catch (PDOException $e)
 		{
@@ -350,7 +343,5 @@ class Karibou
 		}
 	}
 }
-
-
 
 ?>
