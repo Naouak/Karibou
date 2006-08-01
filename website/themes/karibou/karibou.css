@@ -110,6 +110,7 @@ a:hover {
 #main {
 	background: #fff;
 	margin-top: 5em;
+
 	/* width: 900px; */
 }
 /*
@@ -146,6 +147,7 @@ a:hover {
 #content {
 	float: left;
 	width: 880px;
+	margin-bottom: 2em;
 }
 
 #content p,h1 {

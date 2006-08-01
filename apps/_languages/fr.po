@@ -247,3 +247,14 @@ msgstr "Mettre à jour"
 msgid "ADD_COMMENT"
 msgstr "Ajouter un commentaire"
 
+msgid "APP_CREDITS"
+msgstr "Crédits"
+
+msgid "APP_FLASHMAILS"
+msgstr "FlashMails"
+
+msgid "APP_MINICHAT"
+msgstr "MiniChat"
+
+msgid "APP_GMAILREADER"
+msgstr "Lecteur GMAIL"

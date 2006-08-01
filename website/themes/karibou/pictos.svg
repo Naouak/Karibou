@@ -22,6 +22,33 @@
   <defs
      id="defs4">
     <linearGradient
+       id="linearGradient3581">
+      <stop
+         id="stop3583"
+         offset="0"
+         style="stop-color:white;stop-opacity:0.5089286;" />
+      <stop
+         style="stop-color:white;stop-opacity:0.11607143;"
+         offset="0.52293581"
+         id="stop3585" />
+      <stop
+         id="stop3587"
+         offset="1.0000000"
+         style="stop-color:#ffffff;stop-opacity:0.0000000;" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3538">
+      <stop
+         style="stop-color:white;stop-opacity:1;"
+         offset="0"
+         id="stop3540" />
+      <stop
+         style="stop-color:white;stop-opacity:0;"
+         offset="1"
+         id="stop3543" />
+    </linearGradient>
+    <linearGradient
        inkscape:collect="always"
        id="linearGradient2124">
       <stop
@@ -2868,6 +2895,50 @@
        fx="858.00439"
        fy="23.484613"
        r="19.920237" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6712"
+       id="radialGradient2625"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.786223,-0.121496,5.989263e-2,0.836255,-2431.484,-2595.025)"
+       cx="401.78812"
+       cy="1756.7540"
+       fx="401.78812"
+       fy="1756.7540"
+       r="541.11150" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3538"
+       id="radialGradient3545"
+       cx="-2365.7894"
+       cy="-472.79425"
+       fx="-2365.7894"
+       fy="-472.79425"
+       r="414.99915"
+       gradientTransform="matrix(1,0,0,0.765813,0,-110.7221)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3581"
+       id="radialGradient3574"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(7.207717e-2,-1.113817e-2,5.490671e-3,7.666387e-2,132.6938,207.0086)"
+       cx="401.78812"
+       cy="1756.754"
+       fx="401.78812"
+       fy="1756.754"
+       r="541.11151" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3581"
+       id="radialGradient3591"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(7.207717e-2,-1.113817e-2,5.490671e-3,7.666387e-2,119.2148,315.0864)"
+       cx="401.78812"
+       cy="1756.754"
+       fx="401.78812"
+       fy="1756.754"
+       r="541.11151" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -2931,6 +3002,15 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <rect
+       style="opacity:1;color:black;fill:black;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       id="rect2627"
+       width="153.08862"
+       height="120.56171"
+       x="150.72466"
+       y="343.73065"
+       rx="2.891762"
+       ry="2.8917623" />
     <rect
        style="opacity:1;color:black;fill:#777;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.80500001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
        id="rect3490"
@@ -5508,5 +5588,59 @@
        inkscape:export-filename="E:\web\inkateo.com\dev\images\dev\menudev\themes\default\images\navigation\rect6245.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300" />
+    <rect
+       transform="matrix(0.977736,-0.209839,0.209839,0.977736,0,0)"
+       y="435.58868"
+       x="111.63633"
+       height="38.618793"
+       width="65.482986"
+       id="rect2613"
+       style="fill:#d21616;fill-opacity:1;fill-rule:nonzero;stroke:white;stroke-width:1.90655124;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="E:\web\karibou2\website\themes\karibou\images\flashmail\whiteenveloppe.png"
+       inkscape:export-xdpi="48.000000"
+       inkscape:export-ydpi="48.000000" />
+    <path
+       sodipodi:nodetypes="ccccscc"
+       id="path2615"
+       d="M 200.72989,402.91187 L 204.69053,421.36629 L 208.65117,439.82071 L 234.78252,416.78543 C 234.78252,416.78543 236.12748,415.57832 235.89113,414.6701 C 235.65475,413.76188 233.83703,413.15257 233.83703,413.15257 L 200.72989,402.91187 z "
+       style="fill:#d21616;fill-opacity:1;fill-rule:nonzero;stroke:white;stroke-width:1.90655077;stroke-linecap:round;stroke-linejoin:round;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="E:\web\karibou2\website\themes\karibou\images\flashmail\whiteenveloppe.png"
+       inkscape:export-xdpi="48.000000"
+       inkscape:export-ydpi="48.000000" />
+    <path
+       style="fill:#d21616;fill-opacity:1;fill-rule:nonzero;stroke:white;stroke-width:1.90655077;stroke-linecap:round;stroke-linejoin:round;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 264.39367,389.86949 L 268.22128,407.70408 L 272.0489,425.53869 L 239.88447,415.59999 C 239.88447,415.59999 238.22046,415.06951 238.06862,414.17536 C 237.91677,413.28121 239.27712,412.0234 239.27712,412.0234 L 264.39367,389.86949 z "
+       id="path2617"
+       sodipodi:nodetypes="ccccscc"
+       inkscape:export-filename="E:\web\karibou2\website\themes\karibou\images\flashmail\whiteenveloppe.png"
+       inkscape:export-xdpi="48.000000"
+       inkscape:export-ydpi="48.000000" />
+    <path
+       style="fill:#d21616;fill-opacity:1;fill-rule:nonzero;stroke:white;stroke-width:1.90655077;stroke-linecap:round;stroke-linejoin:round;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 210.08696,439.27606 L 270.72601,426.26188 L 234.84858,406.87209 L 210.08696,439.27606 z "
+       id="path2619"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="E:\web\karibou2\website\themes\karibou\images\flashmail\whiteenveloppe.png"
+       inkscape:export-xdpi="48.000000"
+       inkscape:export-ydpi="48.000000" />
+    <path
+       sodipodi:nodetypes="ccccscc"
+       id="path2621"
+       d="M 202.61942,402.49055 L 232.42398,396.09398 L 262.22857,389.69741 L 239.17803,413.43643 C 239.17803,413.43643 237.95904,414.66806 236.47335,414.96185 C 234.98769,415.25564 233.23532,414.61157 233.23532,414.61157 L 202.61942,402.49055 z "
+       style="fill:#d21616;fill-opacity:1;fill-rule:nonzero;stroke:white;stroke-width:1.90655077;stroke-linecap:round;stroke-linejoin:round;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="E:\web\karibou2\website\themes\karibou\images\flashmail\whiteenveloppe.png"
+       inkscape:export-xdpi="48.000000"
+       inkscape:export-ydpi="48.000000" />
+    <rect
+       transform="matrix(0.977736,-0.209839,0.209839,0.977736,0,0)"
+       y="433.85925"
+       x="110.11921"
+       height="42.252583"
+       width="67.452904"
+       id="rect2623"
+       style="fill:url(#radialGradient3591);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.32728291;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="E:\web\karibou2\website\themes\karibou\images\flashmail\whiteenveloppe.png"
+       inkscape:export-xdpi="48.000000"
+       inkscape:export-ydpi="48.000000" />
   </g>
 </svg>

@@ -33,8 +33,7 @@ class HeaderHome extends Model
 		
 		if( $this->currentUser->isLogged() )
 		{
-			$this-> assign("currentUserName", 
-				$this->currentUser->afficheUser() );
+			$this-> assign("currentUserName", $this->currentUser->afficheUser() );
 		}
 		
 		//$header = $this->appList->getApp("flashmail");

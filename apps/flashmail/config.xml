@@ -19,6 +19,7 @@
 	<view name="default" class="FlashMailList" template="default.tpl" />
 	<view name="list" class="FlashMailList" template="list.tpl" />
 	<view name="unreadlist" class="UnReadFlashMailList" template="list.tpl" />
+	<view name="account_headerbox" class="FlashMailHeaderBox" template="account_headerbox.tpl" />
 	<view name="headerbox" class="FlashMailHeaderBox" template="headerbox.tpl" />
 	<view name="headerbox_content" class="UnReadFlashMailList" template="headerbox_content.tpl" />
 	<view name="popupscript" class="FlashMailScript" template="flashmailscript.tpl" />
@@ -43,6 +44,11 @@
 	
 	<page name="writeto" view="write">
 		<option name="userid" class="NumberArgument" />
+	</page>
+
+	<page name="account_headerbox" view="account_headerbox">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
 	</page>
 
 	<page name="headerbox" view="headerbox">

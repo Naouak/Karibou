@@ -85,4 +85,4 @@
 	<div id="content1">
 	<div id="content">
 	
-{hook name="page_content_start"}		
+{hook name="page_content_start"}

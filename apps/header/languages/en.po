@@ -48,3 +48,5 @@ msgstr "File Sharing"
 msgid "LOADING"
 msgstr "Loading"
 
+msgid "APP_GMAIL"
+msgstr "Lecteur GMAIL"

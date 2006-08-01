@@ -29,8 +29,9 @@ class FlashMailListener extends Listener
 				//$flashmail->addView("popupscript", "html_head");
 				//$flashmail->addView("headerbox", "page_content_start");
 			}
-			$flashmail->addView("headerbox", "page_content_start");
-			$flashmail->addView("writebox", "page_content_start");
+			$flashmail->addView("account_headerbox",	"footer_account_start");
+			$flashmail->addView("unreadlist",			"flashmail_unreadlist");
+			$flashmail->addView("account_writebox",		"footer_account_start");
 		}
 	}
 }

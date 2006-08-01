@@ -48,3 +48,5 @@ msgstr "Fichiers"
 msgid "LOADING"
 msgstr "Chargement"
 
+msgid "APP_GMAIL"
+msgstr "Lecteur GMAIL"
