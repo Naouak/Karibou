@@ -1,6 +1,5 @@
 <h3 class="handle">##PREFERENCES##</h3>
 <div class="preferences">
-
 	<form action="{kurl action=post}" method="post" name="french">
 		<input type="hidden" name="lang" value="fr" />
 		<div class="french flag" title="Français"><a href="#" onClick="javascript:document.french.submit()"><span>Français</span></a></div>

@@ -2,11 +2,10 @@
 @import 'karibou.css';
 @import 'home.css';
 @import 'navigation.css';
-@import 'account.css';
 
 @import 'apponlineusers.css';
 @import 'appminichat.css';
-@import 'appflashmail.css';
+
 @import 'appnews.css';
 @import 'apppreferences.css';
 @import 'applogin.css';
@@ -26,3 +25,6 @@
 @import 'appcalendar_time_8_20.css';
 @import 'appcalendar_duration.css';
 @import 'appcalendar_month.css';
+
+@import 'account.css';
+@import 'appflashmail.css';

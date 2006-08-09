@@ -258,3 +258,6 @@ msgstr "MiniChat"
 
 msgid "APP_GMAILREADER"
 msgstr "GMAIL Reader"
+
+msgid "LANGUAGE"
+msgstr "Language"

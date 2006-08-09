@@ -51,6 +51,10 @@
 	background-repeat: no-repeat;
 	line-height: 17px;
 }
+#container #account li.profile a {
+	background-image: url(images/account/profile.png);
+	background-position: left 1px;
+}
 #container #account li.preferences a {
 	background-image: url(images/account/preferences.png);
 	background-position: left 1px;
@@ -66,6 +70,12 @@
 #container #account li.logout a {
 	background-image: url(images/account/logout.png);
 	background-position: left 3px;
+}
+#container #account li.flashmail a {
+	background-image: url(images/flashmail/whiteenveloppe.png);
+	background-repeat: no-repeat;
+	background-position: left 3px;
+	padding-left: 35px;
 }
 
 

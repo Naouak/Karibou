@@ -31,12 +31,9 @@
 			</span>
 			<ul>
 				{hook name="footer_account_start"}
-				<li class="preferences"><a href="{kurl app="annuaire" username=$username act='edit'}">##EDITPROFILE##</a></li>
-				{*
-				<li class="confidentiality"><a href="#">Confidentialit&eacute;</a></li>
-				<li class="security"><a href="#">Securit&eacute;</a></li>
-				*}
-				<li class="logout"><a href="{kurl app="login" page="logout"}">D&eacute;connexion   </a></li>
+				<li class="profile"><a href="{kurl app="annuaire" username=$currentUser->getLogin() act='edit'}">##EDITPROFILE##</a></li>
+				<li class="preferences"><a href="{kurl app="preferences" page=""}">##PREFERENCES##</a></li>
+				<li class="logout"><a href="{kurl app="login" page="logout"}">##LOGOUT##</a></li>
 			</ul>
 			{else}
 			<form class="login" action="{kurl app="login"}" method="post">
@@ -57,6 +54,8 @@
 			{/if}
 		</div>
 		{* FIN : Barre utilisateur *}
+
+
 		{* DEBUT : Navigation : Barre avec onglets *}
 		<div id="siteNavigation">
 			<div id="siteNavigationCategories">

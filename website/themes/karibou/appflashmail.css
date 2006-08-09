@@ -135,13 +135,6 @@
 	background-position: right 0px;
 }
 
-li#account_flashmail_headerbox_sentence a {
-	background-image: url(images/flashmail/whiteenveloppe.png);
-	background-repeat: no-repeat;
-	background-position: left 0px;
-}
-
-
 #flashmail_headerbox_answer {
 	position: absolute;
 	top: 50px;

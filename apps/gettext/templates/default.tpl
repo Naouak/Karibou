@@ -3,7 +3,7 @@
 Une fois le fichier PO cr&eacute;&eacute;, il faut le compiler pour qu'il soit exploitable par gettext.<br />
 <a href="{kurl action="compile"}">Compiler le fichier PO (pour prise en compte des traduction)</a>
 {khint langmessage='Il faut pour cela que vos r&eacute;pertoires de cache (smarty) et locale soient accessibles en &eacute;criture.'}
-</div>
+
 {*
 <br />
 <hr />

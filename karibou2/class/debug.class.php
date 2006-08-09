@@ -31,6 +31,21 @@ class Debug
 			self::$display = $GLOBALS['config']['debug_display'];
 	}
 	
+	function setDisplay($bool) {
+		error_reporting(E_ALL);
+		if ($bool == TRUE) 
+		{
+			self::$display = TRUE;
+			ini_set("display_error",1);
+			//var_dump("HERE");
+		}
+		else
+		{
+			self::$display = FALSE;
+			ini_set("display_error",0);
+		}
+	}
+	
 	function kill($txt)
 	{
 		if( self::$display )
