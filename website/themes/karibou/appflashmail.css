@@ -123,8 +123,8 @@
 }
 #flashmail_headerbox_sentence.show {
 	visibility: visible;
-}
-*/
+}*/
+
 #flashmail_headerbox_sentence div {
 	height: 24px;
 	padding: 3px;
@@ -155,7 +155,6 @@
 }
 
 #flashmail_headerbox a {
-
 	text-decoration: none;
 }
 
