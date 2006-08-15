@@ -192,11 +192,20 @@ class Karibou
 		//Definition du langage de l'utilisateur
 		//TODO -> A deplacer
 		$lang = $this->currentUser->getPref("lang");
-		if (isset($lang) && $lang != '') {
-			$this->currentLanguage = $lang;
-		} else {
-			$this->currentLanguage = 'fr';
-		}
+
+        if (isset($lang) && $lang != '')
+        {
+            if (substr($lang,0,2) == 'en')
+            {
+                $this->currentLanguage = 'en_US.UTF-8';
+            }
+            else
+            {
+                $this->currentLanguage = 'fr_FR.UTF-8';
+            }
+        } else {
+            $this->currentLanguage = 'fr_FR.UTF-8';
+        }
 		putenv("LANG=".$this->currentLanguage); 
 		setlocale(LC_ALL, $this->currentLanguage);
 		$domain = 'messages';
