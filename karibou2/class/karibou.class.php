@@ -210,7 +210,7 @@ class Karibou
 		setlocale(LC_ALL, $this->currentLanguage);
 		$domain = 'messages';
 		bindtextdomain($domain, KARIBOU_LOCALE_DIR); 
-		bind_textdomain_codeset('messages', 'UTF-8');
+		bind_textdomain_codeset($domain, 'UTF-8');
 		textdomain($domain);
 
 		$modelbuilder = new ModelBuilder();

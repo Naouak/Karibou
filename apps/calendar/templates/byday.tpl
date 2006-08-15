@@ -16,6 +16,23 @@ var stop_date = {ldelim}
 	month: '{$today->getMonth()}',
 	day: '{$today->getDay()}'
 {rdelim}
+
+function ctrl_dates_start()
+{ldelim}
+	var f = document.forms[0];
+	f.enddateDay.value 		= f.startdateDay.value;
+	f.enddateMinute.value 	= f.startdateMinute.value;
+	f.enddateHour.value 	= f.startdateHour.value;
+	f.enddateYear.value 	= f.startdateYear.value;
+	f.enddateMonth.value 	= f.startdateMonth.value;
+{rdelim}
+
+function close_editinline_popup()
+{ldelim}
+	document.getElementById("divEditEvent").innerHTML = "";
+	return false;
+{rdelim}
+
 </script>
 <script type="text/javascript" src="/themes/js/calendar.js"></script>
 
@@ -50,7 +67,7 @@ var stop_date = {ldelim}
 
 <script>
 	KCalendar.createHours("calendar-hours");
-	KCalendar.createSelect("calendar-select", "{kurl page='inlineAddEvent'}");
+	KCalendar.createSelect("calendar-select", "{kurl page='addEventInline'}");
 </script>
 
 <div class="events">
@@ -82,7 +99,7 @@ var stop_date = {ldelim}
 				<form action="{kurl page='deleteEvent'}" method="POST" name="deleteEvent{$event->uid}">
                     <input type="hidden" name="calendarid" value="{$event->calendarid}" />
                     <input type="hidden" name="eventid" value="{$event->uid}" />
-                    <a href="#" onClick="javascript:document.deleteEvent{$event->uid}.submit()">##DELETEEVENT##</a>
+                    <a href="#" onClick="document.deleteEvent{$event->uid}.submit(); return false;">##DELETEEVENT##</a>
 				</form>
 {/if}
 			</p>

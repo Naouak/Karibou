@@ -82,7 +82,7 @@
 			<div class="siteNavigationApps" id="menuOrganize">
 				<h3>S'organiser</h3>
 				<ul>
-						<li><h4><a href="{kurl app="fileshare"}">##APP_CALENDAR##</a></h4></li>
+						<li><h4><a href="{kurl app="calendar"}">##APP_CALENDAR##</a></h4></li>
 				</ul>
 			</div>
 			<div class="siteNavigationApps" id="menuShare">

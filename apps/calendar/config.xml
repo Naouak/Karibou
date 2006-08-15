@@ -53,6 +53,8 @@
 	<view name="editCalendar" class="CalendarEdit" template="editcalendar.tpl" />
 	<view name="manage" class="CalendarManage" template="manage.tpl" />
 
+	<view name="addEventInline" class="CalendarEditEvent" template="editevent_inline.tpl" />
+
 	<view name="mini" class="CalendarMini" template="small.tpl" />
 	<view name="miniconfig" class="CalendarMiniConfig" template="smallconfig.tpl" />
 
@@ -100,7 +102,7 @@
 	</page>
 	<page name="manage" view="manage" />
 
-	<page name="inlineAddEvent" view="addEvent">
+	<page name="addEventInline" view="addEventInline">
 		<header app="empty" view="default" />
 		<footer app="empty" view="default" />
 		<option name="startyear" class="NumberArgument"/>

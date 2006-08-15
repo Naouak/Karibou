@@ -188,11 +188,16 @@ abstract class Model
 		$this->smarty->setApp($this->appname);
 		ExecutionTimer::getRef()->stop("Config Smarty");
 
+		
+		ExecutionTimer::getRef()->start("Assign Values");
 		foreach($this->vars as $key => $value)
 		{
 			$this->smarty->assign($key, $value);
 		}
+		ExecutionTimer::getRef()->stop("Assign Values");
+		ExecutionTimer::getRef()->start("Display Model ".$this->appname."(".get_class($this).")");
 		$this->smarty->display($template);
+		ExecutionTimer::getRef()->stop("Display Model ".$this->appname."(".get_class($this).")");
 	}
 }
 
