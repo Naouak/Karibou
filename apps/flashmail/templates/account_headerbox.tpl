@@ -14,12 +14,6 @@ special classname... (sucks)*}
 		{
 		        f.className = "flashmail showed";
 		}
-		
-		if (div_id = 'flashmail_headerbox_answer') {
-			document.forms['flashmail_live_form'].elements['message'].focus(); 
-		}
-		
-		
 		return false;
 	}
 
@@ -41,22 +35,13 @@ special classname... (sucks)*}
 		}
 	}
 
-function var_dump(obj) {
-   if(typeof obj == "object") {
-      return "Type: "+typeof(obj)+((obj.constructor) ? "\nConstructor: "+obj.constructor : "")+"\nValue: " + obj;
-   } else {
-      return "Type: "+typeof(obj)+"\nValue: "+obj;
-   }
-}//end function var_dump
-
-
 {/literal}
 	// ]]>
 	</script>
 
 	<script type="text/javascript" language="javascript">
-		setInterval("flashmail_headerbox_update()", 40000);
 	// <![CDATA[
+		setInterval("flashmail_headerbox_update()", 40000);
 	// ]]>
 	</script>
 	
