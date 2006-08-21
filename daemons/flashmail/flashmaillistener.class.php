@@ -31,7 +31,6 @@ class FlashMailListener extends Listener
 			}
 			$flashmail->addView("account_headerbox",	"footer_account_start");
 			$flashmail->addView("unreadlist",			"flashmail_unreadlist");
-			$flashmail->addView("writebox",				"footer_account_start");
 		}
 	}
 }

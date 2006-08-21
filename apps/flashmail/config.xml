@@ -22,6 +22,7 @@
 	<view name="account_headerbox" class="FlashMailHeaderBox" template="account_headerbox.tpl" />
 	<view name="headerbox" class="FlashMailHeaderBox" template="headerbox.tpl" />
 	<view name="headerbox_content" class="UnReadFlashMailList" template="headerbox_content.tpl" />
+	<view name="account_headerbox_content" class="UnReadFlashMailList" template="account_headerbox_content.tpl" />
 	<view name="popupscript" class="FlashMailScript" template="flashmailscript.tpl" />
 	<view name="write" class="FlashMailWrite" template="write.tpl" />
 	<view name="setasread" class="FlashMailSetAsRead" template="empty.tpl" />
@@ -62,6 +63,11 @@
 	</page>
 
 	<page name="headerbox_content" view="headerbox_content">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+	
+	<page name="account_headerbox_content" view="account_headerbox_content">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>

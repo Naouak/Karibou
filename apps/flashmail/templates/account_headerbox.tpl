@@ -14,22 +14,49 @@ special classname... (sucks)*}
 		{
 		        f.className = "flashmail showed";
 		}
-
+		
+		if (div_id = 'flashmail_headerbox_answer') {
+			document.forms['flashmail_live_form'].elements['message'].focus(); 
+		}
+		
+		
 		return false;
 	}
 
 	function flashmail_headerbox_update()
 	{
-		new Ajax.Updater('flashmail_headerbox_full', '{/literal} {kurl app="flashmail" page="headerbox_content"}{literal} ', {asynchronous:true, evalScripts:true});
+		new Ajax.Updater('account_flashmail_headerbox_full', '{/literal} {kurl app="flashmail" page="account_headerbox_content"}{literal} ', {asynchronous:true, evalScripts:false, onComplete:flashmail_duplicate_unreadlist});
 		return false;
 	}
+	
+	function flashmail_duplicate_unreadlist()
+	{
+		//Utilisation d'une recopie du innerHTML en javascript pour éviter d'exécuter 2 fois le même code pour 
+		//l'affichage du nombre de flashmails et de la liste des flashmails (depuis que les 2 éléments ne sont
+		//plus au même endroit.
+		document.getElementById('flashmail_headerbox_unreadlist').innerHTML = document.getElementById('flashmail_headerbox_unreadlist_TMP').innerHTML;
+
+		if (document.getElementById('flashmail_headerbox_unreadlist_TMP').innerHTML.length < 10) {
+			document.getElementById('flashmail_headerbox_unreadlist').className = "flashmail dontshow";
+		}
+	}
+
+function var_dump(obj) {
+   if(typeof obj == "object") {
+      return "Type: "+typeof(obj)+((obj.constructor) ? "\nConstructor: "+obj.constructor : "")+"\nValue: " + obj;
+   } else {
+      return "Type: "+typeof(obj)+"\nValue: "+obj;
+   }
+}//end function var_dump
+
+
 {/literal}
 	// ]]>
 	</script>
 
 	<script type="text/javascript" language="javascript">
-	// <![CDATA[
 		setInterval("flashmail_headerbox_update()", 40000);
+	// <![CDATA[
 	// ]]>
 	</script>
 	
@@ -79,10 +106,16 @@ special classname... (sucks)*}
 				postBody:post_vars
 			});
 
+		document.getElementById('flashmail_headerbox_answer').innerHTML= '##LOADING##';
+
+		flashmail_headerbox_update()
+	
 		return false;
 	}
 {/literal}
 	// ]]>
 	</script>
-	
+
+<div id="account_flashmail_headerbox_full">
 {include file="account_headerbox_content.tpl"}
+</div>

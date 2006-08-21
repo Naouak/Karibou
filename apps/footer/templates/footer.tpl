@@ -17,13 +17,6 @@
 			</li>
 		</ul>
 		
-		<div id="flashmail_headerbox_unreadlist" class="flashmail dontshow">
-		{hook name="flashmail_unreadlist"}
-		{*if $flashmails|@count > 0}
-			{include file="list.tpl"}
-		{/if*}
-		</div>
-
 		<div id="account">
 			{if ($currentUser->isLogged())}
 			<span class="user">
@@ -110,5 +103,11 @@
 		</div>
 		{* FIN : Navigation : Barre avec onglets *}
 	</div>
+
+
+	<div id="flashmail_headerbox_unreadlist" class="flashmail dontshow">{hook name="flashmail_unreadlist"}</div>
+	<div id="flashmail_headerbox_answer" class="dontshow">##LOADING##</div>
+	<div id="blackhole" class="blackhole"></div>
+	
 	</body>
 </html>

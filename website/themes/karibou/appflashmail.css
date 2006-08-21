@@ -156,6 +156,7 @@
 
 #flashmail_headerbox a {
 	text-decoration: none;
+	
 }
 
 #flashmail_headerbox_unreadlist {
@@ -167,6 +168,7 @@
 	background: #ffffff;
 	font-weight: bold;
 	padding: 2px;
+	text-align: left;
 }
 #flashmail_headerbox_unreadlist.dontshow {
 	visibility: hidden;
@@ -195,6 +197,9 @@ visibility: hidden;
 /* Header Box : Write */
 #flashmail_headerbox_answer {
 z-index: 2;
+top: 20px;
+left: 200px;
+text-align: left;
 }
 
 #flashmail_headerbox_answer .write {

@@ -6,7 +6,7 @@
 		<input type="hidden" name="omsgid" value="{$flashmail->getId()}" />
 		<input type="hidden" name="to_user_id" value="{$flashmail->getAuthorId()}" />
 		<div class="to">
-			##TO## : <a href="{kurl app="annuaire" username=$flashmail->getAuthorLogin()}" class="user">{$flashmail->getAuthorSurname()}</a>
+			##TO## : <a href="{kurl app="annuaire" username=$flashmail->getAuthorLogin()}" class="user">{$flashmail->getAuthorDisplayName()}</a>
 		</div>
 		<div class="omessage">##ORIGINAL_MESSAGE## :
 			<span class="text">{$flashmail->getMessage()}</span>
@@ -27,5 +27,12 @@
 			<label for="message">##MESSAGE## :</label><textarea rows="4" cols="20" name="message"></textarea>
 		</div>
 		<input type="submit" value="##SEND##" class="button" />
+		
+		<script type="text/javascript" language="javascript">
+		// <![CDATA[
+			document.forms['flashmail_live_form'].elements['message'].focus();
+		// ]]>
+		</script>
+		
 	</form>
 </div>
