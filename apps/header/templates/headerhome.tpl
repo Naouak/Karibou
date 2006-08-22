@@ -16,22 +16,32 @@
 	<script type="text/javascript" src="{$karibou.base_url}/themes/js/karibou.js"></script>
 	<script type="text/javascript">
 {literal}
+
+		/**
+		 * Ouverture d'un popup
+		 *
+		 * La méthode popup permet d'ouvrir une fenêtre aux dimensions et positions voulues
+		 */
 		function popup(adresse, nom, hauteur, largeur, haut, gauche){
 			window.open(adresse, nom,'menubar=false, status=false, location=false, scrollbar=false, resizable=false, height='+hauteur+', width='+largeur+', top='+haut+', left='+gauche);
 		}
 		
-		//Barre de navigation du site 
+		/**
+		 * Barre de navigation de Karibou
+		 *
+		 * La nouvelle barre de navigation de Karibou sépare les applications par catégories :
+		 * Communiquer, Organiser, Partager, Jobs et Administration
+		 * Elle va permettre le développement de nouvelles applications et leur intégration
+		 * plus simple dans l'intranet.
+		 */
 		var navCategories = new Array("Communicate","Organize","Share","Jobs","Admin");
-
 		function LoadSiteNavigation() {
 			HideAppsLinks();
 		}
-
 		function ShowAppsLinks(strMenu) {
 		  HideAppsLinks();
 		  document.getElementById(strMenu).style.visibility="visible";
 		}
-
 		function HideAppsLinks() {
 			for(i in navCategories) {
 				if (document.getElementById("menu"+navCategories[i])) {
@@ -41,11 +51,48 @@
 				}
 			}
 		}
+		
+		/**
+		 * Gestion des raccourcis clavier
+		 *
+		 * keyCheck va nous permettre d'ajouter des raccourcis clavier à Karibou. Je l'ai pour l'instant testé
+		 * sous Firefox 1.5 (Win) et Internet Explorer 6.0 (Win), à voir s'il fonctionne sous Opera, Konqueror
+		 * et les autres OS...
+		 */
+		function keyCheck(e)
+		{
+			var key, inputType;
+			
+			//Récupération des touches pressées
+			if(window.event)
+			{
+				//Pour Internet Explorer
+				key = window.event.keyCode;
+				inputType = window.event.srcElement.tagName.toLowerCase();
+			}
+			else
+			{
+				//Pour FireFox & autres
+				key = e.which;
+				inputType = e.target.nodeName.toLowerCase()
+			}
+			
+			//Désactive les raccourcis lorsque le focus est dans les champs de saisie
+			if (inputType != 'input' && inputType != 'textarea' && inputType != 'select') {
+				//Espace : affichage des flashmails
+				if (key == 97)
+					flashmail_blinddown('flashmail_headerbox_unreadlist');
+				//Espace : raffraichir les flashmails
+				if (key == 114)
+					flashmail_headerbox_update();
+			}
+		}
+		
 {/literal}
 	</script>
 {hook name="html_head"}
 </head>
-<body onload="LoadSiteNavigation();">
+<body onload="LoadSiteNavigation();" onKeypress="keyCheck(event);">
 
 {* HintBox support *}
 <div id="hintbox">&nbsp;</div>
