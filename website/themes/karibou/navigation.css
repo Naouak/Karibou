@@ -6,9 +6,9 @@
 	position: absolute;
 	/* top: 1.45em; */
 	top: 30px;
-	left: 8px;
+	left: 134px;
 	right: 4px;
-	width: 99%;
+	width: 85%;
 	height: 41px;
 	overflow: hidden;
 }
@@ -32,8 +32,7 @@
 #siteNavigationCategories li a{
 	display: block;
 	float: left;
-	height: 1.2em;
-	/* background-image: url(images/directory/directory.png);*/
+	height: 18px;
 	background-repeat: no-repeat;
 	text-align: center;
 }
@@ -102,7 +101,7 @@
 /* Menu 2 (sous-menu) */
 .siteNavigationApps{
 	position: absolute;
-	top: 1.45em;
+	top: 18px;
 }
 .siteNavigationApps h3{
 	display: none;
@@ -116,7 +115,7 @@
 	margin-right: -1px;
 }
 /* Ne fonctionne pas sous IE... */
-.siteNavigationApps li:first-child{
+.siteNavigationApps li:first-child, .siteNavigationApps li.first-child{
 	border-left: 0px;
 }
 .siteNavigationApps li a {
@@ -124,7 +123,6 @@
 	float: left;
 	margin-top: 0.3em;
 	padding-left: 28px;
-	/* background-image: url(images/mail/unread.png); */
 	background-repeat: no-repeat;
 	background-position: 0px 1px;
 }
@@ -138,6 +136,6 @@
 	font-size: 1.2em;
 }
 #siteNavigation h4 {
-	font-size: 0.8em;
+	font-size: 0.85em;
 
 }

@@ -200,7 +200,10 @@ msgid "AGO1"
 msgstr "Il y a"
 
 msgid "AGO2"
-msgstr ""
+msgstr "&nbsp;"
+
+msgid "HOWLONGAGO"
+msgstr "Il y a {$smarty.capture.howlong}"
 
 msgid "SECOND"
 msgstr "seconde"

@@ -6,7 +6,7 @@
 	<view name="mini" class="LoginForm" template="loginform.tpl" />
 	
 	<form class="Login">
-		<redirect app="" view="" />
+		<referer />
 	</form>
 	
 	<form action="logout" class="Logout">

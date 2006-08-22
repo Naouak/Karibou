@@ -85,6 +85,18 @@ class URLParser
 	}
 	
 	/**
+	 * Méthodes permettant de récupérer le nom de l'appli demandée et de la page
+	 */
+	function getAppName()
+	{
+		return $this->appname;
+	}
+	function getPageName()
+	{
+		return $this->pagename;
+	}
+	
+	/**
 	 * Permet d'ajouter un nouveau masque
 	 */
 	function newPage($name, $viewname)

@@ -44,8 +44,8 @@ class AccueilModel extends Model
 			$c2_apps = array();
 			if( $this->currentUser->isLogged() )
 			{
-			 	$c2_apps[] = $miniapps->getNewApp('mail');
-			   $c2_apps[] = $miniapps->getNewApp('news');
+				$c2_apps[] = $miniapps->getNewApp('mail');
+				$c2_apps[] = $miniapps->getNewApp('news');
 			}
 			$containers->setApps( $c2, $c2_apps ) ;
 
@@ -98,7 +98,6 @@ class AccueilModel extends Model
 			}
 		}
 		$this->assign("containers", $cont);
-		//Debug::display($this);
 
 		$this->assign("messages", $this->messageManager->getMessages("default"));
 		if (isset($this->currentUser))

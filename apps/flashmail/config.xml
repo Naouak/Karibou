@@ -90,10 +90,7 @@
 		<option name="flashmailid" class="NumberArgument" />
 	</page>
 
-	<page name="popup" view="unreadlist">
-		<header app="header" view="popup" />
-		<header app="footer" view="popup" />
-	</page>
+	<page name="unreadlist" view="unreadlist" />
 	
 	<form action="send" class="FlashMailSend">
 		<redirect />

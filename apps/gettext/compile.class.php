@@ -33,10 +33,20 @@ class GetTextCompile extends Model
 		echo "<ul>";
 		//Concaténation de fichiers de langue
 		foreach($files as $lang => $f) {
-			$mergedfile = KARIBOU_CACHE_DIR.'/full.'.$lang.'.po';
+		
+			if ($lang == 'en')
+			{
+				$lang = 'en_US';
+			}
+			elseif ($lang == 'fr')
+			{
+				$lang = 'fr_FR';
+			}
+		
+			$mergedfile = '"'.KARIBOU_CACHE_DIR.'/full.'.$lang.'.po"';
 			$cmd_msgcat = $cmd_msgcat_fr = 'msgcat ';
 			foreach ($f as $file) {
-				$cmd_msgcat .= $file." ";
+				$cmd_msgcat .= '"'.$file.'" ';
 			}
 			$cmd_msgcat .= ' -o '.$mergedfile;
 			echo "<li style=\"list-style: none; margin: 5px; border: 1px solid #999999; background-color: #efefef;\"><strong>Fusion</strong> des fichiers de langue (".$cmd_msgcat.")\n";
@@ -56,7 +66,7 @@ class GetTextCompile extends Model
 			if (!is_dir(KARIBOU_LOCALE_DIR.'/'.$lang.'/LC_MESSAGES')) {
 				mkdir(KARIBOU_LOCALE_DIR.'/'.$lang.'/LC_MESSAGES');
 			}
-			$cmd_msgfmt = 'msgfmt '.$mergedfile.' -o '.KARIBOU_LOCALE_DIR.'/'.$lang.'/LC_MESSAGES/messages.mo';
+			$cmd_msgfmt = 'msgfmt '.$mergedfile.' -o "'.KARIBOU_LOCALE_DIR.'/'.$lang.'/LC_MESSAGES/messages.mo"';
 			echo "<li style=\"list-style: none; margin-bottom: 20px; border: 2px solid #999999; background-color: #efefef;\"><strong>Compilation</strong>	(".$cmd_msgfmt.")\n";
 			passthru($cmd_msgfmt, $return);
 			if ($return > 0)
@@ -69,7 +79,7 @@ class GetTextCompile extends Model
 			}
 			
 			//Suppression du fichier temporaire des langues fusionnées
-			unlink($mergedfile);
+			unlink(str_replace('"', '', $mergedfile));
 
 		}
 

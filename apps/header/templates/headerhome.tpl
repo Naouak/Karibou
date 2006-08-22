@@ -41,6 +41,7 @@
 		function ShowAppsLinks(strMenu) {
 		  HideAppsLinks();
 		  document.getElementById(strMenu).style.visibility="visible";
+		  return false;
 		}
 		function HideAppsLinks() {
 			for(i in navCategories) {
@@ -92,44 +93,17 @@
 	</script>
 {hook name="html_head"}
 </head>
+
 <body onload="LoadSiteNavigation();" onKeypress="keyCheck(event);">
+	{* HintBox support *}
+	<div id="hintbox">&nbsp;</div>
+	<script type="text/javascript" src="/themes/js/hintbox.js"></script>
 
-{* HintBox support *}
-<div id="hintbox">&nbsp;</div>
-<script type="text/javascript" src="/themes/js/hintbox.js"></script>
-
-<div id="container">
-{*
-	<div id="top">
-		<div class="leftdeco">
-			<div class="rightdeco">
-				<span id="surnom">
-				{if $currentUserName}
-					{$currentUserName}
-					( <a href="{kurl app="login" action="logout"}">##LOGOUT##</a> )
-				{else}
-				&nbsp;
-				{/if}
-				</span>
-				<ul class="menu">
-					<li><a href="{kurl app=""}">##APP_HOME##</a></li>
-					{hook name="header_menu"}
-				</ul>
-			</div>
-		</div>
-	</div>
+	<div id="container">
+		<a href="#" id="logo"><span><h1>Karibou</h1></span></a>
 	
-	<div id="banner">
-		<div class="leftdeco">
-			<div class="rightdeco"></div>
-		</div>
-	</div>
-*}
-	<div id="main">
-	<div class="leftdeco">
-	<div class="rightdeco">
-		
-	<div id="content1">
-	<div id="content">
+		<div id="main">
+			<div id="content1">
+				<div id="content">
 	
 {hook name="page_content_start"}

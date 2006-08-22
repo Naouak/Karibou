@@ -36,118 +36,42 @@ a:hover {
 
 #container {
 	text-align: left;
-	/* width: 900px; */
-	/* margin: 0px auto 0px auto; */
-}
-/*
-#top {
-	background: url("images/top-back.png") repeat-x;
-	height: 80px;
-	width: 900px;
-	margin: 10px auto 0px auto;
-}
-#top .leftdeco {
-	background: url("images/top-left.png") no-repeat left;
-	height: 80px;
 }
 
-#top .rightdeco {
-	background: url("images/top-right.png") no-repeat right;
-	height: 80px;
-}
-#top .activate {
-	color: #4F8B1D;
-}
-
-#top .menu {
-	position: relative;
-	top: 35px;
-	left: 0px;
-	text-align: left;
-	padding: 0px;
-	margin: 0px;
-	font-size: 0.9em;
-}
-
-#top .menu li a.highlight {
-	color: #ff5555;
-}
-
-#top li {
-	display: inline;
-	margin: 0px 0px 0px 10px;
-	font: 0.9em bold;
-}
-
-/* Top links *
-
-#top a {
-	color: #4e80c9;
-	text-decoration: none;
-}
-
-#top a:hover {
-	color: #3e70b9;
-}
-
-#banner {
-	background: url("images/banner-back.png") repeat-x;
-	height: 115px;
-	width: 900px;
-	margin: 0px auto 0px auto;
-}
-
-#banner .leftdeco {
-	background: url("images/banner-left.png") no-repeat left;
-	height: 115px;
-}
-
-#banner .rightdeco {
-	background: url("images/banner-right.png") no-repeat right;
-	height: 115px;
-}
-*/
 #main {
 	background: #fff;
-	margin-top: 5em;
-
-	/* width: 900px; */
-}
-/*
-#main .leftdeco {
-	background: url("images/content-left.png") repeat-y left;
+	margin-top: 5.5em;
+	/* IE Bug Fix : rÃ©solution d'un problème de marge inférieure sous IE */
+	border: 1px solid #fff;
 }
 
-#main .rightdeco {
-	background: url("images/content-right.png") repeat-y right;
-}
-*/
+/* Logo */
+#container a#logo {
+	position: absolute;
+	 display: block; 
+	top: 30px;
+	left: 8px;
 
-/*
-#boxbar {
-	width: 255px;
-	float: right;
-	margin: 0px;
+	height: 38px;
+	width: 116px;
+	background-image: url(images/k2.png);
+	background-repeat: no-repeat;
 }
-
-#boxbar h3,p {
-	margin: 5px 10px 0px 10px;
+#container a#logo span {
+	visibility: hidden;
+	display: none;
 }
-#boxbar h3 {
-	font-size: 1.2em;
-	color: #237DA1;
-}
-
-*/
-
 
 #content1 {
 	margin: 0px 10px 0px 10px;
 }
 #content {
 	float: left;
-	width: 880px;
-	margin-bottom: 2em;
+	margin-bottom: 1em;
+	width: 97%;
+}
+html>body #content {
+	width: 100%;
 }
 
 #content p,h1 {
@@ -202,6 +126,9 @@ ul#footer {
 	overflow: hidden;
 	margin: 0px;
 }
+html>body ul#footer {
+	height: 18px;
+}
 ul#footer a {
 	color: #fff;
 	font-weight: bold;
@@ -222,53 +149,6 @@ ul#footer li {
 ul#footer li.first {
 	border-left: 0px;
 }
-/*
-#footer {
-	clear: both;
-	background-image: url("images/footer-back.png");
-	background-repeat: repeat-x;
-	background-position: top;
-	height: 20px;
-}
-
-#footer .leftdeco {
-	background-image: url("images/footer-left.png");
-	background-repeat: no-repeat;
-	background-position: top left;
-	height: 20px;
-}
-
-#footer .rightdeco {
-	background-image: url("images/footer-right.png");
-	background-repeat: no-repeat;
-	background-position: top right;
-	height: 20px;
-}
-
-#footerauthor {
-	text-align: center;
-}
-#footerauthor a {
-	color: #4e80c9;
-	text-decoration: none;
-}
-
-#footerlogo {
-	text-align: center;
-}
-
-#footerlogo .title {
-	color: #4e80c9;
-	font-size: 0.8em;
-}
-
-#footerlogo .mask {
-	visibility: hidden;
-}
-#footerlogo:hover .mask {
-	visibility: visible;
-}
-*/
 
 /* * * * * * * * * * * * */
 /*      Form Message     */
@@ -369,7 +249,6 @@ div.hint {
 	padding: 15px 10px 15px 55px;
 	background-position : 5px 50%;
 	background-repeat : no-repeat;
-	/* width: 400px; */
 	color: #000000;
 }
 
@@ -438,10 +317,6 @@ div.overzone {
 }
 
 div.overzone span {
-	/*
-	display: none;
-	visibility: hidden;
-	*/
 	font-size: 0.1em;
 }
 

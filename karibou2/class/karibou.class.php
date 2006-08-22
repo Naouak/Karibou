@@ -170,10 +170,8 @@ class Karibou
 	{
 		ExecutionTimer::getRef()->start("building Karibou");
 
-		// va créer la page en fonction des paramètres dans l'url,
-		// et crée l'objet BaseUrl
+		// Création de la page en fonction des paramètres dans l'url, et création de l'objet BaseUrl
 		$this->baseUrl = BaseURL :: getRef();
-		//$this->baseUrl->parseURL($_SERVER['REQUEST_URI']);substr($_SERVER['REQUEST_URI'], strrpos($_SERVER['SCRIPT_NAME'], '/'))
 		$this->baseUrl->parseURL($_SERVER['REQUEST_URI']);
 
 		$this->connectDB();
@@ -192,7 +190,6 @@ class Karibou
 		//Definition du langage de l'utilisateur
 		//TODO -> A deplacer
 		$lang = $this->currentUser->getPref("lang");
-
         if (isset($lang) && $lang != '')
         {
             if (substr($lang,0,2) == 'en')
@@ -225,6 +222,9 @@ class Karibou
 
 		$urlParser = $this->baseUrl->getParser();
 		
+		$this->requestedAppName = $urlParser->getAppName();
+		$this->requestedPageName = $urlParser->getPageName();
+
 		// traitement des fonctions formulaire des applis
 		if( $model = $this->app->doForm($urlParser) )
 		{
@@ -241,7 +241,7 @@ class Karibou
 		else
 		{
 			$daemonLoader = new DaemonLoader($this->db, $this->userFactory, $this->appList,
-				$this->hookManager, $this->eventManager, $this->messageManager );
+			$this->hookManager, $this->eventManager, $this->messageManager );
 			$daemonLoader->loadDaemonDir(KARIBOU_DAEMON_DIR);
 			$this->eventManager->sendEvent("load");
 			$this->eventManager->performActions();
@@ -271,10 +271,6 @@ class Karibou
 	{
 		$this->userFactory->saveCurrentUser();
 	}
-	
-	function translate () {
-
-    }
 
 	public function loadApp($name, $file)
 	{
@@ -311,12 +307,6 @@ class Karibou
 		}
 	}
 
-	public function fetch()
-	{
-		$html = "";
-		$html .= $this->app->fetch(_BIG_);
-		return $html;
-	}
 	public function display()
 	{
 		ExecutionTimer::getRef()->start("display Karibou");
@@ -324,33 +314,6 @@ class Karibou
 		ExecutionTimer::getRef()->stop("display Karibou");
 	}
 
-	protected function check_popups()
-	{
-		$flag = FALSE;
-		foreach ($this->currentUser->popupApplis as $popupAppli)
-		{
-			if ($popupAppli)
-			{
-				$flag = $this->appList->getApp($popupAppli)->need_popup();
-				if ($flag)
-				{
-					break;
-				}
-			}
-		}
-		return $flag;
-	}
-
-	protected function add_appli_popup()
-	{
-		foreach ($this->currentUser->popupApplis as $popupAppli)
-		{
-			if ($popupAppli)
-			{
-				$this->appList->add($popupAppli, _POPUP_);
-			}
-		}
-	}
 }
 
 ?>

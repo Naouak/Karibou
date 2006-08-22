@@ -15,16 +15,17 @@
 			{include file="newsview.tpl"}
 		{/section}
 		
+			{if ($pages|@count)>1}
 			<p>
-			{section name=p loop=$pages}
-			 {if not $smarty.section.p.first}
-			  |
-			 {else}
-				##PAGES## :
-			 {/if}
-			 <a href="{kurl pagenum="$pages[p]"}">{$pages[p]}</a>
-			{/section}
+				{section name=p loop=$pages}
+				 {if not $smarty.section.p.first}
+				  |
+				 {else}
+					##PAGES## :
+				 {/if}
+				 <a href="{kurl pagenum="$pages[p]"}">{$pages[p]}</a>
+				{/section}
 			</p>
-	
+			{/if}
 	{/if}
 </div>
