@@ -14,14 +14,14 @@ require_once dirname(__FILE__)."/newscomment.class.php";
 class News
 {
 	protected $time;		//Date de la news
-	protected $id;		//ID de la news dans la base de donnees
-	protected $author;	//Objet utilisateur
+	protected $id;			//ID de la news dans la base de donnees
+	protected $author;		//Objet utilisateur
 	protected $title;		//Titre de la news
-	protected $content;	//Contenu (texte) de la news
-	protected $group;	//ID du groupe de destination
+	protected $content;		//Contenu (texte) de la news
+	protected $group;		//ID du groupe de destination
 	
 	protected $comments;	//Tableau contenant les commentaires
-	protected $nbComments; //Tableau contenant le nombre de commentaires
+	protected $nbComments;	//Tableau contenant le nombre de commentaires
 
 	protected $db;
 
@@ -45,8 +45,7 @@ class News
 			FROM news LEFT OUTER JOIN news_comments ON news.id = news_comments.id_news
 			WHERE (news.id = ".$id." AND news.last = 1 AND news.deleted = 0)
 			GROUP BY news.id
-			";		
-	
+			";
 
 		$resArticle = $this->db->prepare($reqArticle);
 		$resArticle->execute();

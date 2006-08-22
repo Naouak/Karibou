@@ -41,7 +41,7 @@ a:hover {
 #main {
 	background: #fff;
 	margin-top: 5.5em;
-	/* IE Bug Fix : résolution d'un probl�me de marge inf�rieure sous IE */
+	/* IE Bug Fix : résolution d'un problème de marge inférieure sous IE */
 	border: 1px solid #fff;
 }
 
@@ -60,6 +60,32 @@ a:hover {
 #container a#logo span {
 	visibility: hidden;
 	display: none;
+}
+
+/* Search */
+#container form#search {
+	position: absolute;
+	border-left: 4px solid #abf;
+	border-bottom: 4px solid #abf;
+	padding: 5px;
+	top: 0px;
+	right: 0px;
+	z-index: 2;
+	background-color: #fff;
+	text-align: center;
+	font-size: 0.8em;
+}
+#container form#search input {
+	display: block;
+}
+#container form#search input.keyword {
+	border: 1px solid #000;
+}
+#container form#search input.button {
+	font-weight: bold;
+	color: #248;
+	padding: 1px;
+	margin: 2px;
 }
 
 #content1 {

@@ -1,0 +1,21 @@
+<app>	
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+
+	<load class="AnyCharArgument" file="../arguments/anycharargument.class.php" />
+
+	<load class="News"			file="../news/class/news.class.php" />
+	<load class="DAOFactory"	file="class/daofactory.class.php" />
+	<load class="DAOElement"	file="class/daoelement.class.php" />
+	<load class="DAONews"		file="class/daonews.class.php" />
+	<load class="DAOFileShare"	file="class/daofileshare.class.php" />
+
+	<load class="SearchDefault" file="default.class.php" />
+
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<view name="results" class="SearchDefault" template="results.tpl" />
+
+	<page view="results" />
+
+</app>

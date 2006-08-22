@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <app>
-	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+	<permissions default="_NO_ACCESS_" logged="_NO_ACCESS_" />
 
 	<load class="UserName" file="../arguments/username.class.php" />
 	<load class="NumberArgument" file="../arguments/numberargument.class.php" />

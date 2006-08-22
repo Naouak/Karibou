@@ -46,6 +46,19 @@
 		</div>
 		{* FIN : Barre utilisateur *}
 
+		{* DEBUT : Module de recherche *}
+		<form action="{kurl app="search"}" method="post" id="search">
+			<input type="text" class="keywords" name="keywords">
+			<input type="submit" class="button" name="go" value="##SEARCH##">
+			{*
+			<select>
+				<option>##SEARCH_EVERYWHERE##</option>
+				<option>##SEARCH_MAINAPPS##</option>
+			</select>
+			*}
+		</form>
+		{* FIN : Module de recherche *}
+
 
 		{* DEBUT : Navigation : Barre avec onglets *}
 		<div id="siteNavigation">
