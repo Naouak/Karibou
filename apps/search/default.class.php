@@ -17,7 +17,7 @@ class SearchDefault extends Model
 	public function build()
 	{
 		$keywords = $_POST['keywords'];
-	
+	    $this->assign('keywords', $keywords);
 		DAOFactory::init($this->db, $this->userFactory);
 		
 		$daoNews = DAOFactory::create('News');

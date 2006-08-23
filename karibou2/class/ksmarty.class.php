@@ -16,6 +16,8 @@ require_once dirname(__FILE__).'/smarty/insertheader.function.php';
 require_once dirname(__FILE__).'/smarty/userlink.function.php';
 require_once dirname(__FILE__).'/smarty/khint.function.php';
 require_once dirname(__FILE__).'/smarty/t.block.php';
+require_once dirname(__FILE__).'/smarty/find.modifier.php';
+require_once dirname(__FILE__).'/smarty/highlight.modifier.php';
 
 require_once dirname(__FILE__).'/smarty/SmartyValidate/SmartyValidate.class.php';
 
@@ -46,6 +48,8 @@ class KSmarty extends Smarty
 		$this->register_function('userlink', 	'smarty_function_userlink');
 		$this->register_function('khint', 		'smarty_function_khint');
 		$this->register_block	('t', 			'smarty_block_t');
+        $this->register_modifier('find', 		'smarty_modifier_find');
+        $this->register_modifier('highlight',	'smarty_modifier_highlight');
 		
 		array_push ($this->plugins_dir, dirname(__FILE__).'/smarty/SmartyValidate/plugins');
 		
