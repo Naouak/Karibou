@@ -8,9 +8,10 @@
 	top: 30px;
 	left: 134px;
 	right: 4px;
-	width: 85%;
+	width: 82.5%;
 	height: 41px;
 	overflow: hidden;
+	z-index: 3;
 }
 #siteNavigation ul {
 	list-style: none;
@@ -40,7 +41,7 @@
 /* Menu1 : Images et Largeurs */
 #siteNavigationCategories li#linkCommunicate a {
 	background-image: url(images/navigation/tabs/blue.png);
-	width: 171px;
+	width: 157px;
 }
 #siteNavigationCategories li#linkOrganize a {
 	background-image: url(images/navigation/tabs/orange.png);
@@ -85,16 +86,17 @@
 	margin-left: 0px;
 }
 #menuOrganize ul{
-	margin-left: 173px;
+	margin-left: 159px;
 }
 #menuShare ul{
-	margin-left: 258px;
+	margin-left: 244px;
 }
 #menuJobs ul{
-	margin-left: 369px;
+	margin-left: 355px;
 }
 #menuAdmin ul{
-	margin-left: 428px;
+	/* margin-left: 414px; */
+	margin-left: 50%;/* 330px; */
 }
 
 

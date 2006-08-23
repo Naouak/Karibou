@@ -94,37 +94,6 @@
 }
 
 /* FlashMail header box */
-/*
-#flashmail_headerbox_sentence {
-	position: absolute;
-
-
-	top: 40px;
-	height: 24px;
-	margin-left: 10px;
-	padding-left: 50px;
-	padding-right: 0px;
-	width: 310px;
-	text-align: center;
-
-	font-weight: bold;
-	color: #ffffff;
-	background-color: #ed6c6c;
-	background-image: url(images/flashmail/arrow.enveloppe.png);
-	background-repeat: no-repeat;
-	background-position: 0px 0px;
-
-	cursor: pointer;
-	
-}
-
-#flashmail_headerbox_sentence.dontshow {
-	visibility: hidden;
-}
-#flashmail_headerbox_sentence.show {
-	visibility: visible;
-}*/
-
 #flashmail_headerbox_sentence div {
 	height: 24px;
 	padding: 3px;
@@ -145,6 +114,7 @@
 	background: #ffffff;
 	color: #000000;
     cursor: pointer;
+	z-index: 5;
 }
 
 #flashmail_headerbox_answer.dontshow {
@@ -169,6 +139,7 @@
 	font-weight: bold;
 	padding: 2px;
 	text-align: left;
+	z-index: 5;
 }
 #flashmail_headerbox_unreadlist.dontshow {
 	visibility: hidden;
@@ -178,9 +149,9 @@
 }
 
 .flashmail li .answerlink a {
-font-size: 0.8em;
-font-weight: normal;
-text-decoration: none;
+	font-size: 0.8em;
+	font-weight: normal;
+	text-decoration: none;
 }
 
 a.sendflashmaillink {
@@ -196,18 +167,19 @@ visibility: hidden;
 
 /* Header Box : Write */
 #flashmail_headerbox_answer {
-z-index: 2;
-top: 20px;
-left: 200px;
-text-align: left;
+	z-index: 2;
+	top: 20px;
+	left: 200px;
+	text-align: left;
+	z-index: 5;
 }
 
 #flashmail_headerbox_answer .write {
-font-size: 0.9em;
-font-weight: normal;
-text-decoration: none;
-width: 300px;
-cursor: auto;
+	font-size: 0.9em;
+	font-weight: normal;
+	text-decoration: none;
+	width: 300px;
+	cursor: auto;
 }
 
 #flashmail_headerbox_answer .write a.user {

@@ -63,7 +63,7 @@
 		function keyCheck(e)
 		{
 			var key, inputType;
-			
+            
 			//Récupération des touches pressées
 			if(window.event)
 			{
@@ -77,15 +77,23 @@
 				key = e.which;
 				inputType = e.target.nodeName.toLowerCase()
 			}
-			
+
 			//Désactive les raccourcis lorsque le focus est dans les champs de saisie
 			if (inputType != 'input' && inputType != 'textarea' && inputType != 'select') {
-				//Espace : affichage des flashmails
+				//Efface la touche tapée sous ie pour éviter qu'elle soit transmise et affichée dans le champ 
+				//cible dans le cas d'un focus
+				if (window.event)
+					window.event.keyCode = "";
+
+				//a : affichage des flashmails
 				if (key == 97)
 					flashmail_blinddown('flashmail_headerbox_unreadlist');
-				//Espace : raffraichir les flashmails
+				//r : raffraichir les flashmails
 				if (key == 114)
 					flashmail_headerbox_update();
+				//f : focus sur la boite rechercher
+				if (key == 102)
+					document.forms['search'].elements['keywords'].focus();
 			}
 		}
 		

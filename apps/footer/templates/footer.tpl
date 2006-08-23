@@ -48,7 +48,7 @@
 
 		{* DEBUT : Module de recherche *}
 		<form action="{kurl app="search"}" method="post" id="search">
-			<input type="text" class="keywords" name="keywords">
+        	<input type="text" class="keywords" name="keywords">
 			<input type="submit" class="button" name="go" value="##SEARCH##">
 			{*
 			<select>

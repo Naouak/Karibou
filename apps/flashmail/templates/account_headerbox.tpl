@@ -12,7 +12,10 @@ special classname... (sucks)*}
 		}
 		else
 		{
-		        f.className = "flashmail showed";
+			if (document.getElementById(div_id).innerHTML.length > 10)
+			{
+				f.className = "flashmail showed";
+			}
 		}
 		return false;
 	}
