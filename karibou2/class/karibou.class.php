@@ -111,16 +111,6 @@ class Karibou
 	protected $daemonsList;
 
 	/**
-	 * @var String
-	 */
-	protected $txt_title;
-
-	/**
-	 * @var String
-	 */
-	protected $session_name;
-
-	/**
 	 * @var Page
 	 */
 	protected $page;
@@ -159,8 +149,6 @@ class Karibou
 
 	function __construct()
 	{
-		$this->session_name = $GLOBALS["config"]["session_name"];
-		$this->txt_title = $GLOBALS["config"]["txt_title"];
 	}
 
 	/**

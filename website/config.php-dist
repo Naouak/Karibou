@@ -1,38 +1,37 @@
 <?php
 
-// en prod on supprime le reporting d'erreurs
-//
-//error_reporting(E_STRICT);
 error_reporting(E_ALL);
 
-$config['txt_title']    = 'Da K4ar1b0u !';
-$config['session_name'] = '_KARIBOU_';
+$config['bdd']['frameworkdb']		= "##DBDEFAULT##";
+$config['bdd']['annuairedb']		= "##DBANNUAIRE##";
+$config['bdd']['dsn']				= 'mysql:dbname='.$config['bdd']['frameworkdb'].';host=localhost';
+$config['bdd']['username']			= '##DBUSER##';
+$config['bdd']['password']			= '##DBPASS##';
 
-$config['base_url'] = substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['SCRIPT_NAME'], '/'));
-$config['site']['base_url'] = 'http://'.$_SERVER["SERVER_NAME"].$config['base_url'];
+$config['login']['backend']			= "mysql";
+$config['login']['server']			= "localhost";
+$config['login']['server_username']	= "";
+$config['login']['server_password']	= "";
+$config['login']['server_schema']	= "annuaire";
 
-$config['bdd']['frameworkdb'] = "##DBDEFAULT##";
-$config['bdd']['annuairedb'] = "##DBANNUAIRE##";
-// for mysql dsn is like : mysql:dbname=karibou;host=localhost
-$config['bdd']['dsn']    = 'mysql:dbname='.$config['bdd']['frameworkdb'].';host=localhost';
-$config['bdd']['username']    = '##DBUSER##';
-$config['bdd']['password']    = '##DBPASS##';
-
-$config['login']['backend'] = "mysql";
-$config['login']['server'] = "localhost";
-$config['login']['server_username'] = "root";
-$config['login']['server_password'] = "";
-$config['login']['server_schema'] = "annuaire";
-$config['login']['allowaccountcreation'] = FALSE;
 /*
 $config['login']['backend'] = "imap";
-$config['login']['server'] = "mail.telecomlille.net";
+$config['login']['server'] = "mail.karibou.org";
 $config['login']['server_schema'] = "INBOX";
 $config['login']['server_options'] = "/imap/tls/novalidate-cert";
-$config['login']['post_username'] = "@telecomlille.net";
+$config['login']['post_username'] = "@karibou.org";
 */
+
+//Autoriser la création d'utilisateur ?
+$config['login']['allowaccountcreation'] = FALSE;
+
+//Création de l'utilisateur dans Karibou lors de la première connexion ?
 $config['login']['createuser'] = TRUE;
+
+//Enregistrement du mot de passe dans la base de données ?
 $config['login']['savepassword'] = TRUE;
+
+//Demande de changement de mot de passe lors de la première connexion ?
 $config['login']['firsttimechangepassword'] = FALSE;
 
 $config['mail']['domain'] = 'domain.com';
@@ -45,6 +44,9 @@ $config['ldap']['jvd'] = '##LDAPJVD##';
 $config['ldap']['pwd'] = '##LDAPPWD##';
 
 /* VAR DEFINITION */
+
+$config['base_url'] = substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['SCRIPT_NAME'], '/'));
+$config['site']['base_url'] = 'http://'.$_SERVER["SERVER_NAME"].$config['base_url'];
 
 define("KARIBOU_DIR", dirname(__FILE__).'/../karibou2');
 define("KARIBOU_COMPILE_DIR", dirname(__FILE__).'/../compile');
