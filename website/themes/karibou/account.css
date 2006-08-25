@@ -24,7 +24,7 @@ html>body #container #account {
 	background-image: url(images/account/userlinker.png);
 	background-repeat: no-repeat;
 	background-position: right 0px;
-	width: 15%;
+	width: 220PX;
 	height: 22px;
 	text-align: center;
 	overflow: hidden;
@@ -32,6 +32,9 @@ html>body #container #account {
 	min-width: 300px;
 	width:expression(document.body.clientWidth < 300? "300px": "auto" ); 
 	*/
+}
+html>body #container #account .user {
+	width: 200px;
 }
 #container #account .user strong {
 	display: block;
@@ -105,12 +108,12 @@ div#account form.login input {
 	text-align: center;
 	vertical-align: top;
 	background-color: #fff;
-}
-html>body div#account form.login input {
-	height: 17px;
+	width: 140px;
 }
 /* Ignoré par IE */
 html>body div#account form.login input {
+	width: 116px;
+	height: 17px;
 	margin-top: 1px;
 	margin-bottom: 1px;
 }
