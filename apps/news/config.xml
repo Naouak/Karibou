@@ -30,7 +30,8 @@
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 
-	<view name="default" class="NewsGrand" template="newsgrand.tpl" />
+	<view name="default" class="NewsGrand" template="newsgrand.php" />
+	<view name="defaulttpl" class="NewsGrand" template="newsgrand.tpl" />
 	<view name="rss" class="NewsGrand" template="newsgrandrss.tpl" />
 	<view name="add" class="NewsAdd" template="newsmodify.tpl" />
 	<view name="modify" class="NewsModify" template="newsmodify.tpl" />
@@ -47,7 +48,9 @@
 	<page name="" view="default" >
 		<argument name="pagenum" class="PageArgument" />
 	</page>
-	
+
+	<page name="defaulttpl" view="defaulttpl" />
+
 	<page name="rss" view="rss">
 		<header app="empty" view="default" />
 		<footer app="empty" view="default" /> 

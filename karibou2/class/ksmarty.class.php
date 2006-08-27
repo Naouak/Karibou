@@ -66,10 +66,6 @@ class KSmarty extends Smarty
 		$prefilterTranslation = array (&$this,'prefilterTranslation');
 		$this->register_prefilter($prefilterTranslation);
 		
-		$this->assign("karibou", array(
-			"base_url" => $GLOBALS["config"]["base_url"],
-			)
-		);
 	}
 	
 	function fetch($_smarty_tpl_file, $_smarty_cache_id = null, $_smarty_compile_id = null, $_smarty_display = false) {

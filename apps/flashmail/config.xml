@@ -19,7 +19,7 @@
 	<view name="default" class="FlashMailList" template="default.tpl" />
 	<view name="list" class="FlashMailList" template="list.tpl" />
 	<view name="unreadlist" class="UnReadFlashMailList" template="list.tpl" />
-	<view name="account_headerbox" class="FlashMailHeaderBox" template="account_headerbox.tpl" />
+	<view name="account_headerbox" class="FlashMailHeaderBox" template="account_headerbox.php" />
 	<view name="headerbox" class="FlashMailHeaderBox" template="headerbox.tpl" />
 	<view name="headerbox_content" class="UnReadFlashMailList" template="headerbox_content.tpl" />
 	<view name="account_headerbox_content" class="UnReadFlashMailList" template="account_headerbox_content.tpl" />

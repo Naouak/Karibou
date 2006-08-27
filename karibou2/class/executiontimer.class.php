@@ -109,7 +109,7 @@ class ExecutionTimer
 		$html = "";
 		if( $this->display == false ) return $html;
 		
-		$html .= "<div style=\"text-align: left; border: 2px solid #000000; position: absolute; top:0px; right:0px; background: #ffffff; height: 400px; overflow: scroll; padding-right: 20px;\"><pre>";
+		$html .= "<div style=\"text-align: left; border: 2px solid #000000; position: absolute; top:0px; right:0px; z-index: 100; background: #ffffff; height: 400px; overflow: scroll; padding-right: 20px;\"><pre>";
 
 		reset($this->timeArray);
 		arsort($this->timeArray);

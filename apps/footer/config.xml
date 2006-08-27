@@ -4,7 +4,7 @@
 
 	<load class="FooterModel" file="footermodel.class.php" />
 
-	<view name="default" class="FooterModel" template="footer.tpl" />
+	<view name="default" class="FooterModel" template="footer.php" />
 	<view name="simple" class="FooterModel" template="footersimple.tpl" />
 	<view name="popup" class="FooterModel" template="footerpopup.tpl" />
 

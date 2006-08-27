@@ -15,8 +15,33 @@ function smarty_function_kurl($params, &$smarty)
 	return kurl( $array , $smarty->getAppList() );
 }
 
-function kurl($params , $appList)
+
+/**
+ * Fonction de gestion des URLS dans les templates
+ */
+function kurl($params , $appList = FALSE)
 {
+
+	//Gestion des templates PHP
+	if ($appList === FALSE)
+	{
+		//Cas du template PHP
+		if (isset($GLOBALS['phpTemplateCurrentAppList'], $GLOBALS['phpTemplateCurrentAppName']))
+		{
+			$appList = $GLOBALS['phpTemplateCurrentAppList'];
+			$params = array_merge( array("app" => $GLOBALS['phpTemplateCurrentAppName']), $params);
+		}
+		else
+		{
+			Debug::kill('Erreur : appList n\'est pas initialisé (cas du template PHP).');
+		}
+	}
+	else
+	{
+		//Cas d'un template TPL (Smarty) où le $appList est déjà chargé
+	}
+	
+
 	$app = "";
 	$page = "";
 	$url = "";
@@ -48,7 +73,7 @@ function kurl($params , $appList)
     				break 2;
     			default:
                     //Creation d'un nouvel argument, instanciation de la classe a partir du nom du parametre
-                    $myApp = $appList->getApp($app);
+					$myApp = $appList->getApp($app);
                     $class = $myApp->getArgClass($page, $key) ;
 					if (class_exists($class))
 					{
@@ -73,7 +98,7 @@ function kurl($params , $appList)
     {
         Debug::kill("Array needed in kURL");
     }
-    
+
     if( !empty($app) ) $app = $app.'/';
     if( !empty($page) ) $page = $page.'/';
     

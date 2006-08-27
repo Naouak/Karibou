@@ -147,4 +147,15 @@ class Hook
 	}
 }
 
+/**
+ * Ajout de la fonction hook pour gérer les accroches dans les templates PHP
+ */
+function hook($param)
+{
+	if (isset($param["name"]))
+	{
+		$GLOBALS['phpTemplateHookManager']->display($param["name"]);
+	}
+}
+
 ?>

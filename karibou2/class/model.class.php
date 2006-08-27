@@ -174,30 +174,54 @@ abstract class Model
 	}
 	function display($template)
 	{
-		ExecutionTimer::getRef()->start("Config Smarty");
-		// problème avec les hook, smarty appelé recursivement efface des valeurs
-		// ça fonction mieux en commentant cette ligne mais faut trouvé un contournement
-		//$this->smarty->clear_all_assign();
-		$this->smarty->quick_hack_clear_values();
-		$this->smarty->template_dir = $this->templatedir.'/';
-		$this->smarty->compile_dir = KARIBOU_COMPILE_DIR.'/'.get_class($this).'/';
-		if(!is_dir($this->smarty->compile_dir)) mkdir($this->smarty->compile_dir);
-		$this->smarty->config_dir = KARIBOU_CONFIG_DIR.'/';
-		$this->smarty->cache_dir = KARIBOU_CACHE_DIR.'/'.get_class($this).'/';
-		if(!is_dir($this->smarty->cache_dir)) mkdir($this->smarty->cache_dir);
-		$this->smarty->setApp($this->appname);
-		ExecutionTimer::getRef()->stop("Config Smarty");
-
+		ExecutionTimer::getRef()->start("Display Model (".$template.") ".$this->appname."(".get_class($this).")");
 		
-		ExecutionTimer::getRef()->start("Assign Values");
-		foreach($this->vars as $key => $value)
+		$this->assign("karibou", array(
+			"base_url" => $GLOBALS["config"]["base_url"],
+			)
+		);
+		
+		if (preg_match('/\.php$/i', $template))
 		{
-			$this->smarty->assign($key, $value);
+			//Initialisation des variables qui vont être utilisées pour le template PHP
+			$GLOBALS['phpTemplateCurrentAppList'] = $this->appList;
+			$GLOBALS['phpTemplateCurrentAppName'] = $this->appname;
+			if (!isset($GLOBALS['phpTemplateHookManager']))
+				$GLOBALS['phpTemplateHookManager'] = $this->hookManager;
+			
+			include($this->templatedir.'/'.$template);
+			
+			//Désaffectation des variables qui ont été utilisées pour le template PHP
+			unset($GLOBALS['phpTemplateCurrentAppList']);
+			unset($GLOBALS['phpTemplateCurrentAppName']);
 		}
-		ExecutionTimer::getRef()->stop("Assign Values");
-		ExecutionTimer::getRef()->start("Display Model ".$this->appname."(".get_class($this).")");
-		$this->smarty->display($template);
-		ExecutionTimer::getRef()->stop("Display Model ".$this->appname."(".get_class($this).")");
+		elseif (preg_match('/\.tpl$/i',$template))
+		{
+			ExecutionTimer::getRef()->start("Config Smarty");
+			// problème avec les hook, smarty appelé recursivement efface des valeurs
+			// ça fonction mieux en commentant cette ligne mais faut trouvé un contournement
+			//$this->smarty->clear_all_assign();
+			$this->smarty->quick_hack_clear_values();
+			$this->smarty->template_dir = $this->templatedir.'/';
+			$this->smarty->compile_dir = KARIBOU_COMPILE_DIR.'/'.get_class($this).'/';
+			if(!is_dir($this->smarty->compile_dir)) mkdir($this->smarty->compile_dir);
+			$this->smarty->config_dir = KARIBOU_CONFIG_DIR.'/';
+			$this->smarty->cache_dir = KARIBOU_CACHE_DIR.'/'.get_class($this).'/';
+			if(!is_dir($this->smarty->cache_dir)) mkdir($this->smarty->cache_dir);
+			$this->smarty->setApp($this->appname);
+			ExecutionTimer::getRef()->stop("Config Smarty");
+
+			
+			ExecutionTimer::getRef()->start("Assign Values");
+			foreach($this->vars as $key => $value)
+			{
+				$this->smarty->assign($key, $value);
+			}
+			ExecutionTimer::getRef()->stop("Assign Values");
+
+			$this->smarty->display($template);
+		}
+		ExecutionTimer::getRef()->stop("Display Model (".$template.") ".$this->appname."(".get_class($this).")");
 	}
 }
 

@@ -12,11 +12,32 @@
 function smarty_function_userlink($params, &$smarty)
 {
 	$array = array_merge($params);
-	return userlink( $array , $smarty->getAppList(), $smarty );
+	return userlink( $array , $smarty->getAppList());
 }
 
-function userlink($params , $appList, &$smarty)
+function userlink($params , $appList = FALSE)
 {
+
+	//Gestion des templates PHP
+	if ($appList === FALSE)
+	{
+		//Cas du template PHP
+		if (isset($GLOBALS['phpTemplateCurrentAppList'], $GLOBALS['phpTemplateCurrentAppName']))
+		{
+			$appList = $GLOBALS['phpTemplateCurrentAppList'];
+			$params = array_merge( array("app" => $GLOBALS['phpTemplateCurrentAppName']), $params);
+		}
+		else
+		{
+			Debug::kill('Erreur : appList n\'est pas initialisé (cas du template PHP).');
+		}
+	}
+	else
+	{
+		//Cas d'un template TPL (Smarty) où le $appList est déjà chargé
+	}
+
+
 	$userlink = "";
 
 	//Ajout pour eviter les eventuels problemes de notice
@@ -40,7 +61,7 @@ function userlink($params , $appList, &$smarty)
 					$fullName = "<em>".$user->getLogin()."</em>";
 				}
 
-				$userlink = "<a href=\"".smarty_function_kurl(array("app" => annuaire, "username" => $user->getLogin()), $smarty)."\" class=\"userlink\"";
+				$userlink = "<a href=\"".kurl(array("app" => 'annuaire', "username" => $user->getLogin()), $appList)."\" class=\"userlink\"";
 				if (isset($params["showpicture"]) && ($params["showpicture"] === TRUE) )
 				{
 					$userlink .= " onMouseover=\"showhint('<img src=\'".$user->getPicturePath()."\' /><span>".$fullName."</span>','hint_profile');\" onMouseout=\"hidehint()\"";
