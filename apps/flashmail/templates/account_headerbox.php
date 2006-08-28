@@ -1,7 +1,7 @@
 	<script type="text/javascript" language="javascript">
 	// <![CDATA[
-{*Cant use class name hide or hidden (using dontshow)... IE seems to react to
-special classname... (sucks)*}
+<? /*Cant use class name hide or hidden (using dontshow)... IE seems to react to
+special classname... (sucks)*/ ?>
 	function flashmail_blinddown(div_id)
 	{
 		var f = document.getElementById(div_id);
@@ -21,10 +21,10 @@ special classname... (sucks)*}
 
 	function flashmail_headerbox_update()
 	{
-		new Ajax.Updater('account_flashmail_headerbox_full', '{/literal} {kurl app="flashmail" page="account_headerbox_content"}{literal} ', {asynchronous:true, evalScripts:false, onComplete:flashmail_duplicate_unreadlist});
+		new Ajax.Updater('account_flashmail_headerbox_full', '<?=kurl(array('app'=>"flashmail", 'page'=>"account_headerbox_content"));?>', {asynchronous:true, evalScripts:false, onComplete:flashmail_duplicate_unreadlist});
 		return false;
 	}
-	
+
 	function flashmail_duplicate_unreadlist()
 	{
 		//Utilisation d'une recopie du innerHTML en javascript pour éviter d'exécuter 2 fois le même code pour 
@@ -84,14 +84,14 @@ special classname... (sucks)*}
 
 		var post_vars = queryComponents.join("&");
 
-		new Ajax.Updater(content_id, '{/literal}{kurl app="flashmail" page="send"}{literal}', {
+		new Ajax.Updater(content_id, '<?=kurl(array('app'=>"flashmail", 'page'=>"send"));?>', {
 				asynchronous:true,
 				evalScripts:true,
 				method:'post',
 				postBody:post_vars
 			});
 
-		document.getElementById('flashmail_headerbox_answer').innerHTML= '##LOADING##';
+		document.getElementById('flashmail_headerbox_answer').innerHTML= '<?=_('LOADING');?>';
 
 		flashmail_headerbox_update()
 	
