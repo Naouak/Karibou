@@ -25,7 +25,7 @@
 			</span>
 			<ul>
 				<? hook(array('name'=>"footer_account_start")); ?>
-				<li class="profile"><a href="<?=kurl(array('app'=>"annuaire", 'username'=>$this->vars['currentUser']->getLogin(), 'act'=>'edit'));?>"><?=_('EDITPROFILE');?></a></li>
+				<? /*<li class="profile"><a href="<?=kurl(array('app'=>"annuaire", 'username'=>$this->vars['currentUser']->getLogin(), 'act'=>'edit'));?>"><?=_('EDITPROFILE');?></a></li>*/?>
 				<li class="preferences"><a href="<?=kurl(array('app'=>"preferences", 'page'=>"")); ?>"><?=_('PREFERENCES');?></a></li>
 				<li class="logout"><a href="<?=kurl(array('app'=>"login",'page'=>"logout"));?>"><?=_('LOGOUT');?></a></li>
 			</ul>
