@@ -183,17 +183,37 @@ abstract class Model
 		
 		if (preg_match('/\.php$/i', $template))
 		{
+			/**
+			 * Mise en place des templates PHP (amélioration des performances)
+			 * Le passage en variable globale est une solution temporaire... il faudrait trouver une autre solution
+			 */
+		
+			//Le HookManager doit être en variable globale
+			if (!isset($GLOBALS['phpTemplateHookManager']))
+				$GLOBALS['phpTemplateHookManager'] = $this->hookManager;
+				
+			//Sauvegarde des valeurs initiales pour recopie après exécution
+			if (isset($GLOBALS['phpTemplateCurrentAppList']))
+				$previousAppList = $GLOBALS['phpTemplateCurrentAppList'];
+			if (isset($GLOBALS['phpTemplateCurrentAppName']))
+				$previousAppName = $GLOBALS['phpTemplateCurrentAppName'];
+			
 			//Initialisation des variables qui vont être utilisées pour le template PHP
 			$GLOBALS['phpTemplateCurrentAppList'] = $this->appList;
 			$GLOBALS['phpTemplateCurrentAppName'] = $this->appname;
-			if (!isset($GLOBALS['phpTemplateHookManager']))
-				$GLOBALS['phpTemplateHookManager'] = $this->hookManager;
 			
+			//Inclusion du template (pour display)
 			include($this->templatedir.'/'.$template);
 			
 			//Désaffectation des variables qui ont été utilisées pour le template PHP
 			unset($GLOBALS['phpTemplateCurrentAppList']);
 			unset($GLOBALS['phpTemplateCurrentAppName']);
+			
+			//Recopie si nécessaire
+			if (isset($previousAppList))
+				$GLOBALS['phpTemplateCurrentAppList'] = $previousAppList;
+			if (isset($previousAppName))
+				$GLOBALS['phpTemplateCurrentAppName'] = $previousAppName;
 		}
 		elseif (preg_match('/\.tpl$/i',$template))
 		{
