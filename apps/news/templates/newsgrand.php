@@ -1,4 +1,3 @@
-<h1>PHP</h1>
 <div class="news">
 	<h1><?=_('NEWS')?></h1>
 

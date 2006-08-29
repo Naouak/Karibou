@@ -24,7 +24,7 @@
 				</form>
 			</div>
 		{/if}
-			<div class="groupsdestination">##NEWS_GROUPS_DESTINATION## {$theArticle->getGroupName()}</div>
+			<div class="groupsdestination">{*##NEWS_GROUPS_DESTINATION## {$theArticle->getGroupName()}*}&nbsp;</div>
 			<div class="content">{$theArticle->getContentXHTML()}</div>
 			{if $permission > _READ_ONLY_}
 			{/if}

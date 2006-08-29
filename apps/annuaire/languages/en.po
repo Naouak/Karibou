@@ -78,3 +78,5 @@ msgstr "People in group"
 msgid "BELONGS_TO_GROUPS"
 msgstr "This user is member of the following group(s)"
 
+msgid "BIRTHDATE"
+msgstr "Birth date (AAAA-MM-JJ)"

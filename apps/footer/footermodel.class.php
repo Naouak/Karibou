@@ -17,7 +17,12 @@ class FooterModel extends Model
 	{
 		//Assignation de la variable hookManager dans Smarty pour affichage
 		$this->assign("hookManager", $this->hookManager);
-		$this->assign("currentUser", $this->userFactory->getCurrentUser());
+		$currentUser = $this->userFactory->getCurrentUser();
+		$this->assign("currentUser", $currentUser);
+		
+		$permissionsFactory = new PermissionsFactory($this->db);
+		$this->assign('permission', $permissionsFactory->getPermissions($this->currentUser));
+		unset ($permissionsFactory);
 	}
 }
 

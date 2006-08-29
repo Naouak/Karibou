@@ -17,12 +17,15 @@
 					<div class="field description">
 						<label for="description">##NEWS_DESCRIPTION## : </label><textarea name="content" id="description" rows="10" cols="60" />{if isset($theNewsToModify)}{$theNewsToModify->getContent()|escape:"html"}{/if}</textarea>
 					</div>
+					<input type="hidden" name="group" value="">
+					{*
 					<div class="field group">
 						<label for="group">##NEWS_GROUPS_DESTINATION## :</label>
 						<select name="group" id="group">
 						{include file="optiongrouptree.tpl"}
 						</select>
 					</div>
+					*}
 					<div class="button">
 						<input type="submit" value="{if isset($theNewsToModify)}##POST_MODIFIED_ARTICLE##{else}##POST_NEW_ARTICLE##{/if}" />
 					</div>

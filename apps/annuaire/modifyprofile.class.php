@@ -147,6 +147,12 @@ class ModifyProfile extends FormModel
 				imagedestroy($new_im);
 			}
 		}
+		
+		//Affichage du champ surnom en fonction de la variable de configuration
+		if (isset($GLOBALS['config']['nonickname']))
+			$this->assign('nonickname', $GLOBALS['config']['nonickname']);
+		else
+			$this->assign('nonickname', FALSE);
 
 	}
 }

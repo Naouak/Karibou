@@ -41,6 +41,12 @@ class OnlineUsersList extends Model
 		$this->assign("onlineusers", $onlineusers);
 		
 		$this->assign("islogged", $this->currentUser->isLogged());
+		
+		//Définition de l'utilisation des flashmails
+		if (isset($GLOBALS['config']['noflashmail']))
+			$this->assign("noflashmail", $GLOBALS['config']['noflashmail']);
+		else
+			$this->assign("noflashmail", FALSE);
 	}
 
 }

@@ -125,9 +125,13 @@ function add_email()
 				<input id="firstname" type="text" name="firstname" value="{$profile.firstname}" /><br class="spacer" />
 			<label for="lastname">##LASTNAME##</label>
 				<input id="lastname" type="text" name="lastname" value="{$profile.lastname}" /><br class="spacer" />
+			{if (isset($nonickname) && ($nonickname === TRUE))}
 			<label for="surname">##SURNAME##</label>
 				<input id="surname" type="text" name="surname" value="{$profile.surname}" /><br class="spacer" />
-			<label for="birthday">##BIRTHDAY##</label>
+			{else}
+				<input type="hidden" name="surname" value="" />
+			{/if}
+			<label for="birthday">##BIRTHDATE##</label>
 				<input id="birthday" type="text" name="birthday" value="{$profile.birthday}" /><br class="spacer" />
 			<label for="url">##URL##</label>
 				<input id="url" type="text" name="url" value="{$profile.url}" /><br class="spacer" />

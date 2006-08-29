@@ -218,7 +218,7 @@ class User
      */
     function getDisplayName()
     {
-		if ($this->surname == '')
+		if ( ($this->surname == '') || (isset($GLOBALS['config']['nonickname']) && ($GLOBALS['config']['nonickname'] === TRUE)) )
 		{
 			if ($this->firstname != '' || $this->lastname != '')
 			{
@@ -233,7 +233,7 @@ class User
 		{
 			$displayname = $this->surname;
 		}
-		
+
 		$displayname = htmlspecialchars($displayname);
 		
 		return $displayname;

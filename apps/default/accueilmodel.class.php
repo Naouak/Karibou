@@ -38,8 +38,15 @@ class AccueilModel extends Model
 			$miniapps = new HomeMiniApps();
 
 			$login = $miniapps->getNewApp('login');
-			$minichat = $miniapps->getNewApp('minichat', array('maxlines'=>5));
-			$containers->setApps( $c1, array($login, $minichat) ) ;
+			if (isset($GLOBALS['config']['nominichat']) && $GLOBALS['config']['nonickname'] === TRUE)
+			{
+				$containers->setApps( $c1, array($login) ) ;
+			}
+			else
+			{
+				$minichat = $miniapps->getNewApp('minichat', array('maxlines'=>5));
+				$containers->setApps( $c1, array($login, $minichat) ) ;
+			}
             
 			$c2_apps = array();
 			if( $this->currentUser->isLogged() )

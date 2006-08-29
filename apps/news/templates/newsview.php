@@ -34,7 +34,7 @@ if ($this->vars['permission'] > _DEFAULT_)
 				echo '</form>';
 			echo '</div>';
 		}
-			echo '<div class="groupsdestination">'._('NEWS_GROUPS_DESTINATION').' '.$theArticle->getGroupName().'</div>';
+			echo '<div class="groupsdestination">&nbsp;</div>';//'._('NEWS_GROUPS_DESTINATION').' '.$theArticle->getGroupName().'</div>';
 			echo '<div class="content">'.$theArticle->getContentXHTML().'</div>';
 			if ($this->vars['permission'] > _READ_ONLY_)
 			{

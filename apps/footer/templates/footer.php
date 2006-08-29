@@ -1,3 +1,4 @@
+					<? $user = $this->vars['currentUser']; ?>
 					<? hook(array('name'=>"page_contenu_end")); ?>
 				</div>
 			</div>
@@ -17,15 +18,15 @@
 
 		<div id="account">
 			<?
-			if ($this->vars['currentUser']->isLogged())
+			if ($user->isLogged())
 			{
 			?>
 			<span class="user">
-				<strong><?=$this->vars['currentUser']->getDisplayName();?></strong>
+				<strong><?=$user->getDisplayName();?></strong>
 			</span>
 			<ul>
 				<? hook(array('name'=>"footer_account_start")); ?>
-				<li class="profile"><a href="<?=kurl(array('app'=>"annuaire", 'username'=>$this->vars['currentUser']->getLogin(), 'act'=>'edit'));?>"><?=_('EDITPROFILE');?></a></li>
+				<li class="profile"><a href="<?=kurl(array('app'=>"annuaire", 'username'=>$user->getLogin(), 'act'=>'edit'));?>"><?=_('EDITPROFILE');?></a></li>
 				<li class="preferences"><a href="<?=kurl(array('app'=>"preferences", 'page'=>"")); ?>"><?=_('PREFERENCES');?></a></li>
 				<li class="logout"><a href="<?=kurl(array('app'=>"login",'page'=>"logout"));?>"><?=_('LOGOUT');?></a></li>
 			</ul>
@@ -78,7 +79,14 @@
 							<li id="linkOrganize"><h3><a href="#" onclick="ShowAppsLinks('menuOrganize'); return false;"><span>S'organiser</span></a></h3></li>
 							<li id="linkShare"><h3><a href="#" onclick="ShowAppsLinks('menuShare'); return false;"><span>Partager</span></a></h3></li>
 							<li id="linkJobs"><h3><a href="#" onclick="ShowAppsLinks('menuJobs'); return false;"><span>Emploi</span></a></h3></li>
+							<?
+								if ($this->vars['permission']->get('gettext') > _NO_ACCESS_)
+								{
+							?>
 							<li id="linkAdmin"><h3><a href="#" onclick="ShowAppsLinks('menuAdmin'); return false;"><span>Administrer</span></a></h3></li>
+							<?
+								}
+							?>
 					</ul>
 			</div>
 

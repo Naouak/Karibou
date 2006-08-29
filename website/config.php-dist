@@ -34,6 +34,12 @@ $config['login']['savepassword'] = TRUE;
 //Demande de changement de mot de passe lors de la première connexion ?
 $config['login']['firsttimechangepassword'] = FALSE;
 
+//Définit la possibilité ou non d'utiliser des surnoms
+$config['login']['nonickname'] = FALSE;
+
+//Définit la possibilité ou non d'utiliser les flashmails
+$config['noflashmail'] = FALSE;
+
 $config['mail']['domain'] = 'domain.com';
 
 $config['keychain']['storage'] = 'session';
