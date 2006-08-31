@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+	<load class="StaticHomeDefault" file="default.class.php" />
+
+	<load class="News" file="../news/class/news.class.php" />
+
+	<load class="AnyCharArgument" file="../arguments/anycharargument.class.php" />
+	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+	
+	<load class="KDirectory" file="../fileshare/class/kdirectory.class.php" />
+	<load class="KFile" file="../fileshare/class/kfile.class.php" />
+	<load class="KDBFSElement" file="../fileshare/class/kdbfselement.class.php" />
+	<load class="KDBFSElementVersion" file="../fileshare/class/kdbfselementversion.class.php" />
+	<load class="KDBFSElementWriter" file="../fileshare/class/kdbfselementwriter.class.php" />
+	<load class="KDBFSElementFactory" file="../fileshare/class/kdbfselementfactory.class.php" />
+	
+	<load class="StaticHomeMenu" file="menu.class.php" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<view name="default" class="StaticHomeDefault" template="default.php" />
+
+	<page name="" view="default" />
+</app>

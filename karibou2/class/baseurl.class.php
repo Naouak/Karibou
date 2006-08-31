@@ -62,7 +62,7 @@ class BaseUrl
 
 		if ( ereg("^".$this->base_url."$", $p_url) )
 		{
-			$this->app = "default";
+			$this->app = $GLOBALS['config']['defaultapp'];
 		}
 		// Apps asked, then actions of an apps
 		else if(preg_match('#^'.$this->base_url.'([0-9A-Za-z_]+)(\S*|\z)#',$p_url,$match))
@@ -80,7 +80,7 @@ class BaseUrl
 		//Il y a peut-être une méthode plus sympa de gérer le logout non ?
 		else if (isset($_GET["reason"]) && $_GET["reason"] == "logout")
 		{
-			$this->app = "default";
+			$this->app = $GLOBALS['config']['defaultapp'];
 		}
 		else
 		{

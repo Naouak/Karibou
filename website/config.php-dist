@@ -40,6 +40,9 @@ $config['login']['nonickname'] = FALSE;
 //Définit la possibilité ou non d'utiliser les flashmails
 $config['noflashmail'] = FALSE;
 
+//Définit l'application d'accueil à utiliser (application par défaut)
+$config['defaultapp'] = "default";
+
 $config['mail']['domain'] = 'domain.com';
 
 $config['keychain']['storage'] = 'session';

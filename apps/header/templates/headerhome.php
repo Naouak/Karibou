@@ -113,6 +113,9 @@
 		<a href="#" id="logo"><span><h1>Karibou</h1></span></a>
 	
 		<div id="main">
+			<div id="navigation">
+				<? hook(array('name'=>"header_menu")); ?>
+			</div>
 			<div id="content1">
 				<div id="content">
 <? hook(array('name'=>"page_content_start")); ?>
