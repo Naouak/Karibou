@@ -17,7 +17,6 @@
 	{/if}
 	<div class="thumbnail">
 			<a href="{kurl page="" username=$user.login}"><img src="{$user.picture}" border="0" /></a>
-			<br />
 			<div class="thumbtitle">
 				<a href="{kurl page="" username=$user.login}">
 				{if $user.firstname}
