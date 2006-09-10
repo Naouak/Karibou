@@ -27,6 +27,7 @@ class Group
 		{
 			$tab = $args[0] ;
 			$this->id = $tab['id'] ;
+			$this->description = $tab['description'] ;
 			$this->name = $tab['name'] ;
 			$this->left = $tab['left'] ;
 			$this->right = $tab['right'] ;
@@ -51,6 +52,17 @@ class Group
 	public function getName()
 	{
 		return $this->name;
+	}
+	public function getDescription()
+	{
+		if (isset($this->description))
+		{
+			return $this->description;
+		}
+		else
+		{
+			return FALSE;
+		}
 	}
 	public function getLeft()
 	{

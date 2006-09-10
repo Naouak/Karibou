@@ -1,5 +1,8 @@
 <h1>##TITLE##</h1>
 <h3>##VIEWING_GROUP## {$thegroup.name}</h3>
+{if isset($thegroup.description) && $thegroup.description != ""}
+<h5>{$thegroup.description}</h5>
+{/if}
 <div class="directory">
 {assign var="lastgroupname" value=""}
 {foreach item=user from=$userlist}
@@ -13,15 +16,16 @@
 	<br />
 	{/if}
 	<div class="thumbnail">
-			<a href="{kurl page="" username=$user.login}"><img src="{$user.picture}" /></a><br />
-			<div class="thumbtitle"
-		<a href="{kurl page="" username=$user.login}">
-		{if $user.firstname}
-				{$user.firstname} {$user.lastname}
-		{else}
-				{$user.login}
-		{/if}
-		</a>
+			<a href="{kurl page="" username=$user.login}"><img src="{$user.picture}" border="0" /></a>
+			<br />
+			<div class="thumbtitle">
+				<a href="{kurl page="" username=$user.login}">
+				{if $user.firstname}
+						{$user.firstname} {$user.lastname}
+				{else}
+						{$user.login}
+				{/if}
+				</a>
 			</div>
 	</div>
 {/foreach}

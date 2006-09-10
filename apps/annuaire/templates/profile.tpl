@@ -8,7 +8,10 @@
 	{/if}
 </h2>
 <div class="directory profile">
+	{if ($picture != '')}
 	<img src="{$picture}" />
+	{else}
+	{/if}
 	<div class="infos">
 		##FIRSTNAME## : <strong>{$profile.firstname}</strong><br />
 		##LASTNAME## : <strong>{$profile.lastname}</strong><br />

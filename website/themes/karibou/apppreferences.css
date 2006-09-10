@@ -23,6 +23,7 @@
 	margin: 5px;
 }
 */
+
 .preferences .flag a span {
 	visibility: hidden;
 	font-size: 1px;
@@ -37,7 +38,7 @@
 .preferences .flag  {
 	width: 40px;
 	height: 25px;
-	border: 1px solid #acacac;
+	/* border: 1px solid #acacac; */
 	background-repeat: no-repeat;
 	background-position: 0 0;
 }

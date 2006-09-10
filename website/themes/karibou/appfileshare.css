@@ -101,7 +101,7 @@ font-size: 0.8em;
 	border: 0px solid #efefef;
 	text-align: left;
 	overflow: hidden;
-	cursor: move ;
+	cursor: pointer;
 	font-size: 0.85em;
 }
 
@@ -238,7 +238,7 @@ font-size: 0.8em;
 }
 
 .fileshare ul.detailed li a span {
-	cursor: move;
+	cursor: pointer;
 }
 
 .fileshare ul.detailed li a {
@@ -557,7 +557,7 @@ clear: both;
 	color: #000000;
 	z-index: 1;
 	
-	cursor: move;
+	cursor: pointer;
 	
 	background-image: url(images/fileshare/detailed/download.png);
 	background-repeat: no-repeat;

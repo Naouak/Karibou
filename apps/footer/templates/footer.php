@@ -99,8 +99,8 @@
 						<li><h4><a href="<?=kurl(array('app'=>"annuaire"));?>"><?=_('APP_DIRECTORY');?></a></h4></li>
 						<li><h4><a href="<?=kurl(array('app'=>"mail"));?>"><?=_('APP_EMAIL');?></a></h4></li>
 						<? /* <li><h4><a href="<?=kurl(array('app'=>"flashmail"));?>"><?=_('APP_FLASHMAILS');?></a></h4></li> */?>
-						<li><h4><a href="<?=kurl(array('app'=>"gmailreader"));?>"><?=_('APP_GMAILREADER');?></a></h4></li>
-						<li><h4><a href="<?=kurl(array('app'=>"minichat"));?>"><?=_('APP_MINICHAT');?></a></h4></li>
+						<? /* <li><h4><a href="<?=kurl(array('app'=>"gmailreader"));?>"><?=_('APP_GMAILREADER');?></a></h4></li> */ ?>
+						<? /* <li><h4><a href="<?=kurl(array('app'=>"minichat"));?>"><?=_('APP_MINICHAT');?></a></h4></li> */ ?>
 				</ul>
 			</div>
 			<div class="siteNavigationApps" id="menuOrganize">
@@ -113,7 +113,7 @@
 				<h3>Partager</h3>
 				<ul>
 						<li class="first-child"><h4><a href="<?=kurl(array('app'=>"fileshare"));?>"><?=_('APP_FILESHARE');?></a></h4></li>
-						<li><h4><a href="<?=kurl(array('app'=>"wiki"));?>">Wiki</a></h4></li>
+						<? /* <li><h4><a href="<?=kurl(array('app'=>"wiki"));?>">Wiki</a></h4></li> */?>
 				</ul>
 			</div>
 			<div class="siteNavigationApps" id="menuJobs">
