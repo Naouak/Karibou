@@ -18,7 +18,7 @@ if ($this->vars['permission'] > _DEFAULT_)
 				echo $theArticle->getTitle();
 			echo '</h1>';
 			echo '<div class="author">';
-				echo _('BY');
+				echo _('BY').' ';
 				echo userlink(array('user'=>$theArticle->getAuthorObject(), 'showpicture'=>true));
 			echo '</div>';
 		if ($theArticle->getAuthorId() == $this->vars['currentUserId'])
@@ -92,7 +92,7 @@ if ($this->vars['permission'] > _DEFAULT_)
 				{
 					echo '<div class="aComment">';
 						echo '<div class="author">';
-							echo _('BY');
+							echo _('BY').' ';
 							echo userlink(array('user'=>$articleComment->getAuthorObject(), 'showpicture'=>true));
 						echo '</div>';
 						echo '<div class="time">'.$articleComment->getDate().'</div>';

@@ -43,6 +43,9 @@ $config['noflashmail'] = FALSE;
 //Définit l'application d'accueil à utiliser (application par défaut)
 $config['defaultapp'] = "default";
 
+//Définit l'email de contact des administrateurs
+$config['contactemail'] = "noreply@karibou.org";
+
 $config['mail']['domain'] = 'domain.com';
 
 $config['keychain']['storage'] = 'session';

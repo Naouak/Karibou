@@ -82,12 +82,14 @@
 							<li id="linkShare"><h3><a href="#" onclick="ShowAppsLinks('menuShare'); return false;"><span>Partager</span></a></h3></li>
 							<li id="linkJobs"><h3><a href="#" onclick="ShowAppsLinks('menuJobs'); return false;"><span>Emploi</span></a></h3></li>
 							<?
+							/*
 								if ($this->vars['permission']->get('gettext') > _NO_ACCESS_)
 								{
 							?>
 							<li id="linkAdmin"><h3><a href="#" onclick="ShowAppsLinks('menuAdmin'); return false;"><span>Administrer</span></a></h3></li>
 							<?
 								}
+							*/
 							?>
 					</ul>
 			</div>
@@ -124,12 +126,16 @@
 				</ul>
 			</div>
 			<div class="siteNavigationApps" id="menuAdmin">
+			<? 
+			/*
 				<h3>Admin</h3>
 				<ul>
 						<li class="first-child"><h4><a href="<?=kurl(array('app'=>"permissions"));?>">Permissions</a></h4></li>
 						<li><h4><a href="<?=kurl(array('app'=>"admin"));?>">Admin</a></h4></li>
 						<li><h4><a href="<?=kurl(array('app'=>"gettext"));?>">GetText</a></h4></li>
 				</ul>
+			*/
+			?>
 			</div>
 		</div>
 		<? /* FIN : Navigation : Barre avec onglets */ ?>

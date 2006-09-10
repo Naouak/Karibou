@@ -24,8 +24,8 @@ class Send extends FormModel
 			$mail->CharSet = "UTF-8";
 			$mail->From = $_POST['from'];
             $mail->FromName = $_POST['from'];
-			//$mail->to = array($config["email"]);
-			$mail->addAddress($config["email"]);
+			//$mail->addAddress($config["email"]);
+			$mail->addAddress($GLOBALS['config']['contactemail']);
 			$mail->Subject = stripslashes($_POST['subject']);
 			$mail->Body = stripslashes($_POST['message']);
 			
