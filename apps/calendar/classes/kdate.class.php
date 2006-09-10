@@ -63,6 +63,11 @@ class KDate extends Date
 					6 => array('name' => strftime("%A", $day6), 'abbr' => strftime('%a', $day6)),
 					);
 	}
+	
+	function getTimestamp()
+	{
+		return $this->data[0];
+	}
 }
 
 ?>

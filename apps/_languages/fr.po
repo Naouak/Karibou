@@ -264,3 +264,9 @@ msgstr "Lecteur GMAIL"
 
 msgid "LANGUAGE"
 msgstr "Langue"
+
+msgid "TODAY"
+msgstr "Aujourd'hui"
+
+msgid "TOMORROW"
+msgstr "Demain"

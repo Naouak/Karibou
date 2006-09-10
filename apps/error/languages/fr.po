@@ -16,5 +16,5 @@ msgid "NOACCESS"
 msgstr "Erreur : Accès interdit"
 
 msgid "NOACCESS_DESCRIPTION"
-msgstr "Vous n'êtes pas autorisé à accéder à cette page. Une des raisons peut être que vous n'êtes pas encore connecté. Pour vous connecter, rendez-vous sur l'accueil de l'Intranet."
+msgstr "Vous n'êtes pas autorisé à accéder à cette page. Une des raisons peut être que vous n'êtes pas encore connecté. Pour vous connecter, entrez vos informations de connexion (nom d'utilisateur et mot de passe) dans les champs de la barre utilisateur ci-dessus."
 

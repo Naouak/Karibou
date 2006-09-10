@@ -30,13 +30,13 @@ class NetJobs
 		$this->locationInfosSQLSelect = "
 							netjobs_locations.type				AS locationinfos_type,
 							netjobs_locations.country_id		AS locationinfos_country_id,
-							netjobs_locations.county_id		AS locationinfos_county_id,
-							netjobs_locations.department_id	AS locationinfos_department_id,
+							netjobs_locations.county_id			AS locationinfos_county_id,
+							netjobs_locations.department_id		AS locationinfos_department_id,
 							netjobs_locations.city_id			AS locationinfos_city_id,
-							netjobs_locations.country_name	AS locationinfos_country_name,
+							netjobs_locations.country_name		AS locationinfos_country_name,
 							netjobs_locations.county_name		AS locationinfos_county_name,
 							netjobs_locations.department_name	AS locationinfos_department_name,
-							netjobs_locations.city_name		AS locationinfos_city_name
+							netjobs_locations.city_name			AS locationinfos_city_name
 							";
 	}
 	

@@ -13,3 +13,5 @@ msgstr ""
 msgid "LASTEVENTS"
 msgstr "Last Events"
 
+msgid "STATICHOME_WELCOME_MSG"
+msgstr "<h1>Welcome on the Intranet.</h1><p>You are not yet connected to the Intranet.<br /><br />You have to enter your login and password in each field of the user bar located at the top of this page.<br /><br /><em>The Intranet team</em></p>"

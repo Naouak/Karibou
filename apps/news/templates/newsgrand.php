@@ -1,9 +1,13 @@
 <div class="news">
 	<h1><?=_('NEWS')?></h1>
 
-	<? if ($this->vars['permission'] > _READ_ONLY_) { ?>
+	<?
+	/*
+	if ($this->vars['permission'] > _READ_ONLY_) { ?>
 		<strong><a href="<?=kurl(array('page' => "add"))?>"><?=_('ADD_ARTICLE')?></a></strong>
-	<? } ?>
+	<? } 
+	*/
+	?>
 	
 	<? include("newsmessage.php") ?>
 	

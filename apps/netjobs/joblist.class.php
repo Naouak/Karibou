@@ -43,7 +43,7 @@ class NJJobList extends Model
 		if (isset($this->args["search"]) && $this->args["search"] != "")
 		{
 			$search = urldecode($this->args["search"]);
-		$this->assign ("search", $search);
+			$this->assign ("search", $search);
 		}
 		else
 		{

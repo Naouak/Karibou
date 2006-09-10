@@ -57,17 +57,19 @@
 		<? /*FIN : Barre utilisateur */ ?>
 
 		<? /* DEBUT : Module de recherche */ ?>
+		<?
+			//Problème avec les permissions ? On va juste vérifier que l'utilisateur est connecté
+			//if ($this->vars['permission']->get('search') > _NO_ACCESS_)
+			if ($user->isLogged())
+			{
+		?>
 		<form action="<?=kurl(array('app'=>"search"));?>" method="post" id="search">
         	<input type="text" class="keywords" name="keywords">
 			<input type="submit" class="button" name="go" value="<?=_('SEARCH');?>">
-			<? /*
-			<select>
-				<option><?=_('SEARCH_EVERYWHERE');?></option>
-				<option><?=_('SEARCH_MAINAPPS');?></option>
-			</select>
-			*/
-			?>
 		</form>
+		<?
+			}
+		?>
 		<? /* FIN : Module de recherche */ ?>
 
 

@@ -10,7 +10,7 @@
 		</param>
 	</config>
 	
-	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
 	
 	<load class="MinichatMessageList"	file="./class/minichatmessagelist.class.php" />
 	<load class="MinichatMessage"			file="./class/minichatmessage.class.php" />

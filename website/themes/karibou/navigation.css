@@ -36,6 +36,7 @@
 	height: 18px;
 	background-repeat: no-repeat;
 	text-align: center;
+	font-weight: bold;
 }
 
 /* Menu1 : Images et Largeurs */
@@ -127,6 +128,7 @@
 	padding-left: 28px;
 	background-repeat: no-repeat;
 	background-position: 0px 1px;
+	font-weight: bold;
 }
 
 /* Taille et décoration des polices */

@@ -16,9 +16,14 @@ class StaticHomeDefault extends Model
 {
 	public function build()
 	{
-		/* * * * * * * * * * * */
-		/* Sélection des News  */
-		/* * * * * * * * * * * */
+		/**
+		 * Assignation des variables diverses
+		 */
+		$this->assign('permission', $this->permission);
+		
+		/**
+		 * Sélection des News
+		*/
 		//Recherche de toutes les derniers articles non supprimés et de leurs originaux
 		$reqSqlAllArticles = "
 			SELECT news.id, news.id_author, news.id_groups, news.title, news.content, UNIX_TIMESTAMP(news.time) as timestamp, count(news_comments.id) as nb_comments
@@ -27,7 +32,7 @@ class StaticHomeDefault extends Model
 			"GROUP BY news.id
 			ORDER BY timestamp
 			DESC
-			LIMIT 0,8;
+			LIMIT 0,10;
 			";
 
 		$articles = array ();
@@ -55,17 +60,18 @@ class StaticHomeDefault extends Model
 		
 		$this->assign('articles', $articles);
 		
-		/* * * * * * * * * * * * * */
-		/* Sélection des Fichiers  */
-		/* * * * * * * * * * * * * */
+		/**
+		 * Sélection des Fichiers
+		 */
 		$myKDBFSElementFactory = new KDBFSElementFactory($this->db, $this->userFactory, $this->permission);
 		$this->assign("lastAddedFiles", $myKDBFSElementFactory->getLastAddedFiles());
 		$this->assign("mostDownloadedFiles", $myKDBFSElementFactory->getMostDownloadedFiles());
 		
 		
-		/* * * * * * * * * * * * * */
-		/* Sélection des évènements du jour et du lendemain */
-		/* * * * * * * * * * * * * */
+		/**
+		 * Sélection des évènements du jour et du lendemain
+		 */
+
 		$currentDate = new KDate();
 		if(isset($this->args['year']) && $this->args['year'] != '')
 		{
@@ -98,6 +104,46 @@ class StaticHomeDefault extends Model
 		$stop->setMinute(59);
 		$stop->setSecond(59);
 		
+		/* Aujourd'hui */
+		$today = $currentDate;
+		$today_start = new Date($today);
+		$today_start->setHour(0);
+		$today_start->setMinute(0);
+		$today_start->setSecond(0);
+		$today_stop = new Date($today);
+		$today_stop->setHour(23);
+		$today_stop->setMinute(59);
+		$today_stop->setSecond(59);
+		
+		$this->columns = array();
+		$this->columns[0] = new CalendarEventList();
+		$today_evts = array();
+		if (count($cals) > 0)
+		{
+			foreach($cals as $cal)
+			{
+				$evts_ol = $cal->getReader()->getEventsByDay( $currentDate );
+				$evts = $evts_ol->getAllEvents( $start, $stop );
+				foreach($evts as &$e)
+				{
+					foreach($adminCalendars as $adm)
+					{
+						if( ($e->calendarid == $adm->getId()) )
+						{
+							$e->admin = true;
+							Debug::display("TRUE");
+							break;
+						}
+					}
+				}
+				//$this->insertIntoColumns($evts);
+	
+				$today_evts_ol = $cal->getReader()->getEventsByDay( $today );
+				$today_evts = array_merge($today_evts, $today_evts_ol->getAllEvents($today_start, $today_stop) );
+			}
+		}
+		
+		/* Demain */
 		$nextDay = $currentDate->getNextDay();
 		$nextDay_start = new Date($nextDay);
 		$nextDay_start->setHour(0);
@@ -129,7 +175,7 @@ class StaticHomeDefault extends Model
 						}
 					}
 				}
-				$this->insertIntoColumns($evts);
+				//$this->insertIntoColumns($evts);
 	
 				$nextDay_evts_ol = $cal->getReader()->getEventsByDay( $nextDay );
 				$nextDay_evts = array_merge($nextDay_evts, $nextDay_evts_ol->getAllEvents($nextDay_start, $nextDay_stop) );
@@ -137,7 +183,94 @@ class StaticHomeDefault extends Model
 		}
 		//Debug::display($this->columns);
 		$this->assign("cals", $cals);
+		$this->assign("today_events", $today_evts);
 		$this->assign("nextday_events", $nextDay_evts);
+		
+		
+		/**
+		 * Récupération des dernières offres d'emploi et de stage
+		 */
+		$netJobs = new NetJobs ($this->db, $this->userFactory);
+		$myJobs = $netJobs->getJobList(5);
+		$this->assign("jobs", $myJobs);
+		
+		/**
+		 * Derniers évènements sur l'intranet
+		 */
+		foreach($this->vars['articles'] as $article)
+		{
+			$iEvents[] = array('secondsago' => $article->getSecondsSinceLastUpdate(), 'type' => 'article', 'object' => $article);
+		}
+		foreach($this->vars['lastAddedFiles'] as $file)
+		{
+			$iEvents[] = array('secondsago' => $file->getSecondsSinceLastUpdate(), 'type' => 'file', 'object' => $file);
+		}
+		foreach($this->vars['jobs'] as $job)
+		{
+			$iEvents[] = array('secondsago' => $job->getSecondsSinceLastUpdate(), 'type' => 'job', 'object' => $job);
+		}
+		sort($iEvents);
+		$this->assign('iEvents', $iEvents);
+		
+		
+	}
+	
+	protected function buildCalendar(KDate $currentDate)
+	{
+		$firstDayOfTheMonth = new Date($currentDate);
+		$firstDayOfTheMonth->setDay(1);
+		
+		$myCalendars = new CalendarListDB($this->db, $this->currentUser);
+		$cals = $myCalendars->getSubscribedCalendars();
+		$month_evts_ol = array();
+		if (count($cals) > 0)
+		{
+			foreach($cals as $cal)
+			{
+				$month_evts_ol[] = $cal->getReader()->getEventsByMonth( $currentDate );
+			}
+		}
+		$days = array();
+		$i=0;
+		
+		$previousDay = $firstDayOfTheMonth;
+		while($previousDay->getDayOfWeek() != 1)
+		{
+			$previousDay = $previousDay->getPrevDay();
+			$days[$i] = array('date' => $previousDay);
+			$i++;
+		}
+		$days = array_reverse($days);
+		$nextDay = $firstDayOfTheMonth;
+		while( ($currentDate->getMonth() == $nextDay->getMonth()) || 
+			((sizeof($days) % 7 ) != 0) )
+		{
+			$nextDay_start = new Date($nextDay);
+			$nextDay_start->setHour(0);
+			$nextDay_start->setMinute(0);
+			$nextDay_start->setSecond(0);
+			$nextDay_stop = new Date($nextDay->getNextDay());
+			$nextDay_stop->setHour(0);
+			$nextDay_stop->setMinute(0);
+			$nextDay_stop->setSecond(0);			
+			
+			$nextDay_evts = array();
+			foreach($month_evts_ol as $month_evts)
+			{
+				$nextDay_evts = array_merge($nextDay_evts, $month_evts->getAllEvents($nextDay_start, $nextDay_stop) );
+			}
+			//Debug::display($nextDay_evts);
+			$days[$i] = array('date' => $nextDay, 'events' => $nextDay_evts);
+			$nextDay = $nextDay->getNextDay();
+			$i++;
+		}
+		
+		$title = $currentDate->getMonthName() . ' ' . $currentDate->getYear();
+		$this->assign('days', $days);
+		$this->assign('weekDayName', KDate::getWeekNameArray());
+		$this->assign('currentDate', $currentDate);
+		$this->assign('previousMonth', $currentDate->getPrevMonth());
+		$this->assign('nextMonth', $currentDate->getNextMonth());
 	}
 }
 

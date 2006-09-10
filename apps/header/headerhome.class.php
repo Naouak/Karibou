@@ -35,9 +35,6 @@ class HeaderHome extends Model
 		{
 			$this-> assign("currentUserName", $this->currentUser->afficheUser() );
 		}
-		
-		//$header = $this->appList->getApp("flashmail");
-		//$header->addView("headerbox", "page_content_start");
 	}
 	
 

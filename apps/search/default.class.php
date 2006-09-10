@@ -16,14 +16,28 @@ class SearchDefault extends Model
 {
 	public function build()
 	{
-		$keywords = $_POST['keywords'];
+		$keywords = trim($_POST['keywords']);
 	    $this->assign('keywords', $keywords);
-		DAOFactory::init($this->db, $this->userFactory);
 		
-		$daoNews = DAOFactory::create('News');
-		$articles = $daoNews->find($keywords);
+		$errors = array();
+		if (strlen($keywords) <= 3)
+		{
+			$errors['SEARCH_NOTENOUGHCHARS'] = _('SEARCH_NOTENOUGHCHARS');
+		}
 		
-		$this->assign("articles", $articles);
+		if (count($errors)>0)
+		{
+			$this->assign('errors', $errors);
+		}
+		else
+		{
+			DAOFactory::init($this->db, $this->userFactory);
+			
+			$daoNews = DAOFactory::create('News');
+			$articles = $daoNews->find($keywords);
+			
+			$this->assign("articles", $articles);
+		}
 	}
 }
 

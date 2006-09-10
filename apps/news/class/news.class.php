@@ -164,6 +164,12 @@ class News
 	{
 		return date('d/m/Y H:i', $this->time);
 	}
+	
+	public function getSecondsSinceLastUpdate ()
+	{
+		$nowdate	= mktime();
+		return ($nowdate-$this->time);
+	}
 
 	function getTitle()
 	{

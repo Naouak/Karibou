@@ -8,9 +8,13 @@
  * @package applications
  **/
 
-define ("READ", 4);
-define ("UPDATE", 2);
-define ("WRITE", 1);
+
+if (!defined('READ'))
+	define ("READ", 4);
+if (!defined('UPDATE'))
+	define ("UPDATE", 2);
+if (!defined('WRITE'))
+	define ("WRITE", 1);
 
 /**
  *

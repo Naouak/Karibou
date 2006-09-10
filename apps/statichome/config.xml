@@ -4,10 +4,10 @@
 
 	<load class="StaticHomeDefault" file="default.class.php" />
 
-	<load class="News" file="../news/class/news.class.php" />
-
 	<load class="AnyCharArgument" file="../arguments/anycharargument.class.php" />
 	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+
+	<load class="News" file="../news/class/news.class.php" />
 	
 	<load class="KDirectory" file="../fileshare/class/kdirectory.class.php" />
 	<load class="KFile" file="../fileshare/class/kfile.class.php" />
@@ -16,6 +16,25 @@
 	<load class="KDBFSElementWriter" file="../fileshare/class/kdbfselementwriter.class.php" />
 	<load class="KDBFSElementFactory" file="../fileshare/class/kdbfselementfactory.class.php" />
 	
+	<load class="KDate" file="../calendar/classes/kdate.class.php" />
+	<load class="CalendarReader" file="../calendar/classes/calendarreader.class.php" />
+	<load class="CalendarReaderDB" file="../calendar/classes/calendarreaderdb.class.php" />
+	<load class="CalendarWriter" file="../calendar/classes/calendarwriter.class.php" />
+	<load class="CalendarWriterDB" file="../calendar/classes/calendarwriterdb.class.php" />
+	<load class="CalendarEvent" file="../calendar/classes/calendarevent.class.php" />
+	<load class="CalendarEventList" file="../calendar/classes/calendareventlist.class.php" />
+	<load class="CalendarEventDB" file="../calendar/classes/calendareventdb.class.php" />
+	<load class="CalendarList" file="../calendar/classes/calendarlist.class.php" />
+	<load class="CalendarListDB" file="../calendar/classes/calendarlistdb.class.php" />
+	<load class="Calendar" file="../calendar/classes/calendar.class.php" />
+	<load class="wiki2xhtmlBasic" file="../wiki/wiki2xhtml.basic.class.php" />
+	
+	<load class="NetJobs"			file="../netjobs/class/NetJobs.class.php" />
+	<load class="NJElement"			file="../netjobs/class/NJElement.class.php" />
+	<load class="NJJob"				file="../netjobs/class/NJJob.class.php" />
+	<load class="NJCompany"			file="../netjobs/class/NJCompany.class.php" />
+	<load class="NJContact"			file="../netjobs/class/NJContact.class.php" />
+
 	<load class="StaticHomeMenu" file="menu.class.php" />
 	
 	<header app="header" view="default" />

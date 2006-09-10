@@ -12,7 +12,7 @@
 	<load class="ProfileFactory"	file="../annuaire/classes/profilefactory.class.php" />
 	<load class="Profile"			file="../annuaire/classes/profile.class.php" />
 
-	<load class="NJMenu"				file="netjobsmenu.class.php" />
+	<load class="NJMenu"			file="netjobsmenu.class.php" />
 	<load class="NJDefault"			file="default.class.php" />
 	<load class="NJJobDetails"		file="jobdetails.class.php" />
 	<load class="NJJobEdit"			file="jobedit.class.php" />
@@ -21,27 +21,27 @@
 	<load class="NJCompanyDetails"	file="companydetails.class.php" />
 	<load class="NJCompanyEdit"		file="companyedit.class.php" />
 	<load class="NJCompanySave"		file="companysave.class.php" />
-	<load class="NJContactDetails"		file="contactdetails.class.php" />
-	<load class="NJContactChoose"		file="contactchoose.class.php" />
-	<load class="NJContactChoiceSave"		file="contactchoicesave.class.php" />
-	<load class="NJLocationDetails"	file="locationdetails.class.php" />
+	<load class="NJContactDetails"	file="contactdetails.class.php" />
+	<load class="NJContactChoose"	file="contactchoose.class.php" />
+	<load class="NJContactChoiceSave"	file="contactchoicesave.class.php" />
+	<load class="NJLocationDetails"		file="locationdetails.class.php" />
 	<load class="NJLocationEdit"		file="locationedit.class.php" />
 	<load class="NJLocationSave"		file="locationsave.class.php" />
-	<load class="NJJobSearchRedirect"		file="jobsearchredirect.class.php" />
-	<load class="NJJobListFromSearch"		file="joblist.class.php" />
+	<load class="NJJobSearchRedirect"	file="jobsearchredirect.class.php" />
+	<load class="NJJobListFromSearch"	file="joblist.class.php" />
 
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 
 	<view name="menu"				class="NJMenu"				template="menu.tpl" />
 	<view name="default"			class="NJDefault"			template="default.tpl" />
-	<view name="jobdetails"		class="NJJobDetails"		template="jobdetails.tpl" />
+	<view name="jobdetails"			class="NJJobDetails"		template="jobdetails.tpl" />
 	<view name="jobedit"			class="NJJobEdit"			template="jobedit.tpl" />
 	<view name="joblist"			class="NJJobList"			template="joblist.tpl" />
 	<view name="jobsearch"			class="NJJobListFromSearch"	template="joblist.tpl" />
-	<view name="companydetails"	class="NJCompanyDetails"	template="companydetails.tpl" />
+	<view name="companydetails"		class="NJCompanyDetails"	template="companydetails.tpl" />
 	<view name="companyedit"		class="NJCompanyEdit"		template="companyedit.tpl" />
-	<view name="contactdetails"	class="NJContactDetails"	template="contactdetails.tpl" />
+	<view name="contactdetails"		class="NJContactDetails"	template="contactdetails.tpl" />
 	<view name="contactchoose"		class="NJContactChoose"		template="contactchoose.tpl" />
 	<view name="locationdetails"	class="NJLocationDetails"	template="locationdetails.tpl" />
 	<view name="locationedit"		class="NJLocationEdit"		template="locationedit.tpl" />

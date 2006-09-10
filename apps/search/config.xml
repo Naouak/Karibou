@@ -1,5 +1,6 @@
-<app>	
-	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_NO_ACCESS_" logged="_READ_ONLY_" />
 
 	<load class="AnyCharArgument" file="../arguments/anycharargument.class.php" />
 

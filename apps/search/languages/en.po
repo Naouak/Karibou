@@ -9,12 +9,17 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
-msgid "NOTFOUND"
-msgstr "Error : Page does not exist"
+msgid "SEARCH_NOTENOUGHCHARS"
+msgstr "Your search did not contain enough characters (4 minimum)."
 
-msgid "NOACCESS"
-msgstr "Error : Access unauthorized"
+msgid "SEARCH_NORESULT"
+msgstr "No result"
 
-msgid "NOACCESS_DESCRIPTION"
-msgstr "You are not authorized to access this page. One of the reason can be that you are not authenticated yet. In order to connect to the Intranet please login using the user bar at the top of this page."
+msgid "SEARCH_SEARCHRESULTS"
+msgstr "Search results"
 
+msgid "SEARCH_RESULTSS"
+msgstr "result(s)"
+
+msgid "SEARCH_IN"
+msgstr "in"

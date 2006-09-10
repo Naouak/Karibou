@@ -29,9 +29,15 @@ fieldset {
 
 a {
 	color: #4e80c9;
+	font-weight: bold;
+	text-decoration: none;
 }
 a:hover {
 	text-decoration: underline;
+}
+a:visited {
+	font-weight: normal;
+	color: #b940b9;
 }
 
 #container {
@@ -44,6 +50,49 @@ a:hover {
 	/* IE Bug Fix : résolution d'un problème de marge inférieure sous IE */
 	border: 1px solid #fff;
 }
+
+/* App menu */
+#container #main.nav #navigation {
+	margin-left: 0;
+	width: 13%;
+	float: left;
+	margin-top: 20px;
+}
+#container #main.nav #navigation ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	padding-left: 5px;
+}
+#container #main.nav #navigation ul li {
+	margin-bottom: 6px;
+}
+#container #main #content1 {
+	border: 0px solid #aaa;
+	overflow: hidden;
+}
+#container #main.nav #content1 {
+	float: right;
+	width: 86%;
+	margin-right: 0.5%;
+}
+#container #main.nonav #content1 {
+	padding-left: 1%;
+	width: 100%;
+}
+
+#content1 {
+	margin: 0px 0px 0px 0px;
+}
+#content {
+	float: left;
+	margin-bottom: 1em;
+	/* width: 97%; */
+}
+html>body #content {
+	width: 100%;
+}
+
 
 /* Logo */
 #container a#logo {
@@ -113,17 +162,6 @@ html>body #container form#search input.keywords {
 	cursor: pointer;
 }
 
-#content1 {
-	margin: 0px 10px 0px 10px;
-}
-#content {
-	float: left;
-	margin-bottom: 1em;
-	width: 97%;
-}
-html>body #content {
-	width: 100%;
-}
 
 #content p,h1 {
 	padding: 3px 2px 2px 2px;

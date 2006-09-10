@@ -150,3 +150,5 @@ msgstr "The event has been deleted"
 msgid "EVENTNOTDELETED"
 msgstr "The event has not been deleted"
 
+msgid "CALENDAR_NOEVENT"
+msgstr "No event"
