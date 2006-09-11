@@ -130,7 +130,7 @@ class wiki2xhtmlBasic
 		$this->setOpt('active_hr',1);			# Activation des <hr />
 		$this->setOpt('active_lists',1);		# Activation des listes
 		$this->setOpt('active_quote',1);		# Activation du <blockquote>
-		$this->setOpt('active_pre',1);		# Activation du <pre>
+		$this->setOpt('active_pre',0);		# Activation du <pre>
 		$this->setOpt('active_empty',1);		# Activation du bloc vide øøø
 		$this->setOpt('active_auto_urls',0);	# Activation de la reconnaissance d'url (inactif)
 		$this->setOpt('active_autoemails',0);	# Activation de la reconnaissance des emails (inactif)
