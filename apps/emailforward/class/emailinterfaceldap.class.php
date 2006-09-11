@@ -45,7 +45,10 @@ class EmailInterfaceLDAP extends EmailInterface
 		$sr = ldap_search($this->ldapconn, $this->jvd, "mail=".$email ); 
 		$info_maildrop = ldap_get_entries($this->ldapconn, $sr);
 
-		return $info_maildrop[0]["maildrop"][0];
+		if (isset($info_maildrop[0]["maildrop"]))
+			return $info_maildrop[0]["maildrop"][0];
+		else
+			return FALSE;
 	}
 
 	function changeMailDrop ($email, $newemail)
