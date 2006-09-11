@@ -20,7 +20,8 @@ class NetCVGroupModify extends Model
 
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
-		$this->assign("config", $config);
+		//$this->assign("config", $config);
+		$this->assign("config", $GLOBALS['config']['netcv']);
 	
 		$myNetCVUser = new NetCVUser($this->db, $this->currentUser, TRUE);
 		$myNetCVUser->getCVGroupList();

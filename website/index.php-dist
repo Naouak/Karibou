@@ -6,19 +6,26 @@ require_once dirname(__FILE__).'/config.php';
 require_once KARIBOU_DIR.'/class/karibou.class.php';
 $timer = ExecutionTimer::getRef();
 
-// en prod on supprime le reporting d'erreurs
 Debug::$display = true;
-//error_reporting(E_STRICT);
 error_reporting(E_ALL);
 ini_set("display_error",1);
 
 $timer->start("Full Load");
+
 $karibou = new Karibou();
-
 $karibou->loadAppDir(KARIBOU_APP_DIR, "config.xml");
-
+//Vérification de la requête pour déterminer s'il s'agit de l'affichage d'un CV ou de l'Intranet
+if (preg_match($GLOBALS['config']['netcv']['hostregexp'], $_SERVER["HTTP_HOST"], $regs))
+{
+	//Chargement de l'application d'affichage de CV
+	$config['defaultapp'] = "netcvdisplay";
+	$karibou->loadApp('netcvdisplay', KARIBOU_APP_DIR.'/netcv/cvconfig.xml');
+}
+else
+{
+	//Chargement normal de la page d'accueil par défaut
+}
 $karibou->build();
-
 $karibou->display();
 
 $timer->stop("Full Load");

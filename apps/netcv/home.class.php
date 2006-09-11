@@ -10,14 +10,7 @@
  * @package applications
  **/
  
-//require_once dirname(__FILE__)."/inc/classes.php";
-require_once dirname(__FILE__)."/class/netcvuser.class.php";
-
-//include_once("applis/$appliDir/lang/lang.php");
-//include_once("applis/$appliDir/inc/auth.php");
-
-//define ('MIN_INFOS',6);
-//define ('MIN_SECTIONS',4);
+//require_once dirname(__FILE__)."/class/netcvuser.class.php";
 
 class NetCVHome extends Model
 {

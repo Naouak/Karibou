@@ -35,7 +35,7 @@
 			<br />			
 			<strong>##CV_ADDRESS##</strong>
 			<br />
-			http://<input type="text" name="netcvGroupHostName" size="20" value="{if (isset($myNetCVGroup) && ($myNetCVGroup != FALSE))}{$myNetCVGroup->getInfo("hostname")}{else}{$currentGroupInfo.hostname}{/if}">.{$config.intranet.host}
+			http://<input type="text" name="netcvGroupHostName" size="20" value="{if (isset($myNetCVGroup) && ($myNetCVGroup != FALSE))}{$myNetCVGroup->getInfo("hostname")}{else}{$currentGroupInfo.hostname}{/if}">.{$config.host}
 			<br /><br />
 			<strong>##CV_DIFFUSION##</strong>
 			<br />

@@ -34,52 +34,79 @@ class URLParser
 	 */
 	function __construct($appname, $url = "")
 	{
-		$this->appname = $appname;
 		$this->url = $url;
 		$this->pages = array();
 		$this->forms = array();
 		
-		// facile y a rien => on quitte
-		if ( empty($this->url) || ereg("^/$", $this->url) || ereg("^/\?", $this->url) )
+		//Gestion des CV (pour les liens dans les CV
+		if (preg_match($GLOBALS['config']['netcv']['hostregexp'], $_SERVER["HTTP_HOST"]))
 		{
+			//Cas d'une requête vers un CV
+
+			$this->appname = "";
 			$this->pagename = "";
 			$this->args = array();
+
+			//Récupération de la langue, du fichier CSS, ou autre
+			if (preg_match('#^([0-9A-Za-z_\.]+)#',$this->url,$match))
+			{
+				$this->args = array($match[1]);
+				
+				//Si l'argument est un fichier CSS, on charge le module d'affichage de CSS
+				if (preg_match('/\.css$/i', $match[1]))
+				{
+					$this->pagename = "cvskindisplay";
+				}
+			}
 		}
 		else
 		{
-			$url_tab = explode('/', $this->url);
-			// 0 => vide 1 => nom 2 => args
-			// 0 => vide 1 => args
-			if( count($url_tab) > 2 )
-			{
-				$this->pagename = $url_tab[1];
-				$url_args = $url_tab[2];
-			}
-			else if( count($url_tab) > 1 )// pas de nom de page
+			//Cas d'une requête Intranet
+
+			$this->appname = $appname;
+
+			//Requête vers la page par défaut
+			if ( empty($this->url) || ereg("^/$", $this->url) || ereg("^/\?", $this->url) )
 			{
 				$this->pagename = "";
-				$url_args = $url_tab[1];
+				$this->args = array();
 			}
 			else
 			{
-				$this->pagename = "";
-				$url_args = "";
-			}
-			if( $url_args !== "" )
-			{
-				$split_array = explode('?', $url_args) ;
-				if( $split_array[0] !== "" )
+				$url_tab = explode('/', $this->url);
+				// 0 => vide 1 => nom 2 => args
+				// 0 => vide 1 => args
+				if( count($url_tab) > 2 )
 				{
-					$this->args = explode(',', $split_array[0]) ;
+					$this->pagename = $url_tab[1];
+					$url_args = $url_tab[2];
+				}
+				else if( count($url_tab) > 1 )// pas de nom de page
+				{
+					$this->pagename = "";
+					$url_args = $url_tab[1];
+				}
+				else
+				{
+					$this->pagename = "";
+					$url_args = "";
+				}
+				if( $url_args !== "" )
+				{
+					$split_array = explode('?', $url_args) ;
+					if( $split_array[0] !== "" )
+					{
+						$this->args = explode(',', $split_array[0]) ;
+					}
+					else
+					{
+						$this->args = array();
+					}
 				}
 				else
 				{
 					$this->args = array();
 				}
-			}
-			else
-			{
-				$this->args = array();
 			}
 		}
 	}

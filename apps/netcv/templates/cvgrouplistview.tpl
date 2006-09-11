@@ -18,7 +18,7 @@
 				<a href="{kurl page="cvgroupmodify" gid=$aGroupId}">##EDIT##</a> - <a href="{kurl page="cvgroupdelete" gid=$aGroupId}" onclick="return confirm('##ARE_YOU_SURE##');">##DELETE##</a>
 			</div>
 			<div class="infos">
-				<h3>{$aGroup->getInfo("name")} @ <a href="http://{$aGroup->getInfo("hostname")}.{$config.intranet.host}">http://{$aGroup->getInfo("hostname")}.{$config.intranet.host}</a></h3>
+				<h3>{$aGroup->getInfo("name")} @ <a href="http://{$aGroup->getInfo("hostname")}.{$config.host}">http://{$aGroup->getInfo("hostname")}.{$config.host}</a></h3>
 				{assign var="aCVList" value=$aGroup->returnCVList()}
 				<ul>
 				{section name=j loop=$aCVList step=1}

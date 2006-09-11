@@ -1,7 +1,7 @@
 {if (
-($myNetCVSingleCV->countSections() < $config.minimum.sections) || 
-($myNetCVSingleCV->countElements() < $config.minimum.elements) ||
-(($myNetCVUser->countPersonalInfo() - $config.personalinfos.system) < $config.minimum.personalinfos)
+($myNetCVSingleCV->countSections() < $appconfig.minimum.sections) || 
+($myNetCVSingleCV->countElements() < $appconfig.minimum.elements) ||
+(($myNetCVUser->countPersonalInfo() - $appconfig.personalinfos.system) < $appconfig.minimum.personalinfos)
 )}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -12,14 +12,14 @@
 		<meta name="robots" content="noindex, nofollow" />
 	</head>
 	<body>
-{if ($myNetCVSingleCV->countSections() < $config.minimum.sections) || 
-($myNetCVSingleCV->countElements() < $config.minimum.elements)}
+{if ($myNetCVSingleCV->countSections() < $appconfig.minimum.sections) || 
+($myNetCVSingleCV->countElements() < $appconfig.minimum.elements)}
 		##NOT_ENOUGH_CONTENT_PRIVATE##<br /><br />
 		<a href="{kurl page="cvsectionlist" cvid=$myNetCVSingleCV->getInfo("id") gid=$myNetCVGroup->getInfo("id")}">##BACK_TO_EDITING##</a>
 		<br />
 		<br />
 {/if}
-{if (($myNetCVUser->countPersonalInfo() - $config.personalinfos.system) < $config.minimum.personalinfos)}
+{if (($myNetCVUser->countPersonalInfo() - $appconfig.personalinfos.system) < $appconfig.minimum.personalinfos)}
 		##NOT_ENOUGH_PERSONALINFO##<br /><br />
 		<a href="{kurl page="personalinfo"}">##CLICK_HERE_TO_MODIFY_YOUR_PERSOINFO##</a>	
 {/if}
@@ -43,14 +43,14 @@
 	{assign var="mySections" value=$myNetCV->child}
 	<div id="container">
 		<div class="lang">
-			{*section name=l loop=$myNetCVSingleCVList}
+			{section name=l loop=$myNetCVSingleCVList}
     			{assign var="singleCV" value=$myNetCVSingleCVList[l]}
 {if isset($myNetCVSingleCVList[l])}
-    {if (isset($singleCV->getInfo("lang")))}
-				<a href="{kurl page="cv" hostname=$myNetCVGroup->getInfo("hostname") lang=$singleCV->getInfo("lang")}">{$myNetCVLanguage->getNameByCode($singleCV->getInfo("lang"))}</a>
+    {if ($myNetCVSingleCV->getInfo('lang') != "")}
+		<a href="{kurl page="" request=$singleCV->getInfo('lang')}">{$myNetCVLanguage->getNameByCode($singleCV->getInfo("lang"))}</a>
     {/if}
 {/if}
-			{/section*}
+			{/section}
 		</div>
 	{*Affichage des informations de l utilisateur*}
 		 <div id="boxTop">

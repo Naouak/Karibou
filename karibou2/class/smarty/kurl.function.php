@@ -104,7 +104,16 @@ function kurl($params , $appList = FALSE)
     
 	//$url = '/'.$app.$page.$url;
 
-    $url = $GLOBALS['config']['base_url'].'/'.$app.$page.$url;
+	//Gestion des liens dans les CV
+	if (preg_match($GLOBALS['config']['netcv']['hostregexp'], $_SERVER["HTTP_HOST"]))
+	{
+		$url = $GLOBALS['config']['base_url'].'/'.$url;
+	}
+	else
+	{
+		$url = $GLOBALS['config']['base_url'].'/'.$app.$page.$url;
+	}
+	
 	if(isset($server))
 	{
 		$url = $proto."://".$server.$url;

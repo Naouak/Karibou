@@ -11,10 +11,6 @@
 			<value name="system">4</value>
 			<value name="user">12</value>
 		</param>
-		<param name="intranet">
-			<value name="host">karibou.org</value>
-			<value name="full">intranet.karibou.org</value>
-		</param>
 	</config>
 
 	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />

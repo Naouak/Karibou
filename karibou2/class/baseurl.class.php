@@ -25,7 +25,7 @@ class BaseUrl
 
 	private function __construct()
 	{
-		$this->app = "accueil";
+		//$this->app = "accueil";
 		if( isset($GLOBALS['config']["base_url"]) )
 		{
 			$this->base_url = $GLOBALS['config']["base_url"].'/';
@@ -57,25 +57,39 @@ class BaseUrl
 		{
 			$p_url = $_SERVER['REQUEST_URI'];
 		}
-		
-		// facile y a rien => on quitte
 
-		if ( ereg("^".$this->base_url."$", $p_url) )
+		if (preg_match($GLOBALS['config']['netcv']['hostregexp'], $_SERVER["HTTP_HOST"]))
 		{
+			//Chargement d'un CV
+			
 			$this->app = $GLOBALS['config']['defaultapp'];
+			if (preg_match('#^'.$this->base_url.'([0-9A-Za-z_\.]+)[/]*#',$p_url,$match))
+			{
+				$this->arguments = $match[1];
+			}
 		}
-		// Apps asked, then actions of an apps
-		else if(preg_match('#^'.$this->base_url.'([0-9A-Za-z_]+)(\S*|\z)#',$p_url,$match))
+		else
 		{
-			//if( Config::isAppLoaded($match[1]) )
+			//Chargement d'une page de l'Intranet
+			
+			//Requête de la page d'accueil
+			if ( ereg("^".$this->base_url."[/]*$", $p_url) )
+			{
+				$this->app = $GLOBALS['config']['defaultapp'];
+			}
+			//Requête vers une application
+			elseif(preg_match('#^'.$this->base_url.'([0-9A-Za-z_]+)(\S*|\z)#',$p_url,$match))
 			{
 				$this->app = $match[1];
 			}
-			//else
+			
+			if(isset($match[2]))
 			{
-			//	$this->app = '404';
+				$this->arguments = $match[2];
 			}
 		}
+
+		/*
 		//Logout rajouté par DaT (2005.07.13 @ 11h37)
 		//Il y a peut-être une méthode plus sympa de gérer le logout non ?
 		else if (isset($_GET["reason"]) && $_GET["reason"] == "logout")
@@ -86,11 +100,7 @@ class BaseUrl
 		{
 			die("Erreur de parse URL");
 		}
-		
-		if(isset($match[2]))
-		{
-			$this->arguments = $match[2];
-		}
+		*/
 	}
 
 	function getApp()

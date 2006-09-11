@@ -2,58 +2,68 @@
 
 error_reporting(E_ALL);
 
+//Informations relatives à la base de données
 $config['bdd']['frameworkdb']		= "##DBDEFAULT##";
 $config['bdd']['annuairedb']		= "##DBANNUAIRE##";
 $config['bdd']['dsn']				= 'mysql:dbname='.$config['bdd']['frameworkdb'].';host=localhost';
 $config['bdd']['username']			= '##DBUSER##';
 $config['bdd']['password']			= '##DBPASS##';
 
+//Informations relatives au LDAP
+$config['ldap']['rdn'] = '##LDAPRDN##';
+$config['ldap']['jvd'] = '##LDAPJVD##';
+$config['ldap']['pwd'] = '##LDAPPWD##';
+
+//Définit la possibilité ou non d'utiliser des surnoms
+$config['nonickname'] = FALSE;
+
+//Définit la possibilité ou non d'utiliser les flashmails
+$config['noflashmail'] = FALSE;
+
+//Définit la possibilité ou non d'utiliser le minichat
+$config['nominichat'] = FALSE;
+
+//Définit l'application d'accueil à utiliser (application par défaut)
+$config['defaultapp'] = "default";
+
+//Définit l'email de contact des administrateurs
+$config['contactemail'] = "noreply@karibou.org";
+
+//Définit le hôte de l'adresse des CVs (par exemple le karibou.org de http://john.karibou.org)
+$config['netcv']['host'] = "karibou.org";
+//Définit le nom d'hôte complet de l'Intranet (pour faire la différence avec les CVs)
+$config['netcv']['intranethost'] = "intranet.karibou.org";
+//Définit l'expression régulière permettant de récupérer le nom du CV
+$config['netcv']['hostregexp'] = "/(.*)\.karibou\.org/";
+
+//Informations sur le mode d'authentification
 $config['login']['backend']			= "mysql";
 $config['login']['server']			= "localhost";
 $config['login']['server_username']	= "";
 $config['login']['server_password']	= "";
 $config['login']['server_schema']	= "annuaire";
-
 /*
+//Si utilisation du LDAP pour l'authentification
 $config['login']['backend'] = "imap";
 $config['login']['server'] = "mail.karibou.org";
 $config['login']['server_schema'] = "INBOX";
 $config['login']['server_options'] = "/imap/tls/novalidate-cert";
 $config['login']['post_username'] = "@karibou.org";
 */
-
-//Autoriser la cr�ation d'utilisateur ?
+//Autoriser la création d'utilisateur ?
 $config['login']['allowaccountcreation'] = FALSE;
-
-//Cr�ation de l'utilisateur dans Karibou lors de la premi�re connexion ?
+//Création de l'utilisateur dans Karibou lors de la première connexion ?
 $config['login']['createuser'] = TRUE;
-
-//Enregistrement du mot de passe dans la base de donn�es ?
+//Enregistrement du mot de passe dans la base de données ?
 $config['login']['savepassword'] = TRUE;
-
-//Demande de changement de mot de passe lors de la premi�re connexion ?
+//Demande de changement de mot de passe lors de la première connexion ?
 $config['login']['firsttimechangepassword'] = FALSE;
 
-//D�finit la possibilit� ou non d'utiliser des surnoms
-$config['login']['nonickname'] = FALSE;
+//Définit le domaine utilisé pour l'activation des emails (john@karibou.org)
+$config['mail']['domain'] = 'karibou.org';
 
-//D�finit la possibilit� ou non d'utiliser les flashmails
-$config['noflashmail'] = FALSE;
-
-//D�finit l'application d'accueil � utiliser (application par d�faut)
-$config['defaultapp'] = "default";
-
-//D�finit l'email de contact des administrateurs
-$config['contactemail'] = "noreply@karibou.org";
-
-$config['mail']['domain'] = 'domain.com';
-
+//Définit le mode de stockage du keychain
 $config['keychain']['storage'] = 'session';
-
-
-$config['ldap']['rdn'] = '##LDAPRDN##';
-$config['ldap']['jvd'] = '##LDAPJVD##';
-$config['ldap']['pwd'] = '##LDAPPWD##';
 
 /* VAR DEFINITION */
 
@@ -69,7 +79,6 @@ define("KARIBOU_PUB_DIR", dirname(__FILE__).'/pub');
 define("KARIBOU_THEMES_URL", "/themes");
 define("KARIBOU_SMARTY_DIR", "smarty");
 define("KARIBOU_LOCALE_DIR", dirname(__FILE__).'/../locale');
-
 
 define("KARIBOU_DEBUG", true); // stdout // file
 define("KARIBOU_DEBUG_METHOD", "stdout"); // stdout // file

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+
+	<config>
+		<param name="minimum">
+			<value name="sections">3</value>
+			<value name="elements">6</value>
+			<value name="personalinfos">6</value>
+		</param>
+		<param name="personalinfos">
+			<value name="system">4</value>
+			<value name="user">12</value>
+		</param>
+	</config>
+
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+	<header app="header" view="empty"/>
+	<footer app="footer" view="empty" />
+
+	<load class="GroupId"				file="../arguments/groupid.class.php" />
+	<load class="CVId"					file="../arguments/cvid.class.php" />
+	<load class="Direction"				file="../arguments/direction.class.php" />
+	<load class="AlphaNum"				file="../arguments/alphanum.class.php" />
+	<load class="DisplayComments"		file="../arguments/displaycomments.class.php" />
+	<load class="UserName"				file="../arguments/username.class.php" />
+	<load class="NumberArgument"		file="../arguments/numberargument.class.php" />
+	<load class="AnyCharArgument"		file="../arguments/anycharargument.class.php" />
+
+	<load class="NetCVLanguage"			file="class/netcvlanguage.class.php" />
+	<load class="NetCVSkin"				file="class/netcvskin.class.php" />
+	<load class="NetCVSkinList"			file="class/netcvskinlist.class.php" />
+	<load class="NetCVContent"			file="class/netcvcontent.class.php" />
+	<load class="NetCVGroupList"		file="class/netcvgrouplist.class.php" />
+	<load class="NetCVGroup"			file="class/netcvgroup.class.php" />
+	<load class="NetCVSingleCV"			file="class/netcvsinglecv.class.php" />
+	<load class="NetCVSingleCVList"		file="class/netcvsinglecvlist.class.php" />
+	<load class="NetCVTempTranslation"	file="class/netcvtrans.temp.class.php" />
+	<load class="NetCVUser"				file="class/netcvuser.class.php" />
+	<load class="wiki2xhtmlBasic"		file="../wiki/wiki2xhtml.basic.class.php" />
+	
+	<load class="NetCVSkinDisplay"		file="cvskindisplay.class.php" />
+	<load class="NetCVDisplay"			file="cvdisplay.class.php" />
+	<load class="NetCVContactForm"		file="cvcontactform.class.php" />
+	<load class="NetCVContactFormSend"	file="cvcontactformsend.class.php" />
+
+	<view name="home"					class="NetCVHome"			template="home.tpl" />
+	<view name="cvdisplay"				class="NetCVDisplay"		template="cvdisplay.tpl" />
+	<view name="cvskindisplay"			class="NetCVSkinDisplay"	template="cvskindisplay.tpl" />
+	<view name="cvcontactform"			class="NetCVContactForm"	template="cvcontactform.tpl" />
+
+
+	<page name="" view="cvdisplay">
+		<option name="request" class="AnyCharArgument" />
+	</page>
+	<page name="cv" view="cvdisplay">
+		<header app="header"	view="empty"/>
+		<footer app="footer"	view="empty" />
+		<option name="lang"	class="AlphaNum" />
+	</page>
+	<page name="cvskindisplay" view="cvskindisplay">
+		<header app="header"		view="empty"/>
+		<footer app="footer"		view="empty" />
+		<option name="filename"	class="AlphaNum" />
+	</page>
+	<page name="cvcontactform" view="cvcontactform">
+		<header	app="header"			view="empty"/>
+		<footer	app="footer"			view="empty" />
+		<option name="lang"			class="AlphaNum" />
+	</page>
+	
+	<form action="cvcontactformsend" class="NetCVContactFormSend">
+		<redirect />
+	</form>
+
+</app>

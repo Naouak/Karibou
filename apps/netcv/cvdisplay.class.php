@@ -18,6 +18,8 @@ class NetCVDisplay extends Model
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
 
+		$this->args['lang'] = $this->args['request'];
+		
 		if ( (isset($this->args['hostname']) && ($this->args['hostname'] != "")) || (preg_match($GLOBALS['config']['netcv']['hostregexp'], $_SERVER["HTTP_HOST"], $regs))) {
 
 			if (isset($regs))
@@ -82,7 +84,7 @@ class NetCVDisplay extends Model
 		$this->assign("myNetCVUser", $myNetCVUser);
 		$this->assign("myNetCVSingleCV", $myNetCVSingleCV);
 		$this->assign("myNetCVSingleCVList", $myNetCVSingleCVList->returnCVList());
-		$this->assign("config", $config);
+		$this->assign("appconfig", $config);
 		
 		$myNetCVLanguage = new NetCVLanguage();
 		$this->assign("myNetCVLanguage", $myNetCVLanguage);
