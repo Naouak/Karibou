@@ -97,7 +97,7 @@ else
 
 				echo "</li>";
 				$nb++;
-			} while ( ($iEvent = next($this->vars['iEvents'])) && ($nb < 25) );
+			} while ( ($iEvent = next($this->vars['iEvents'])) && ($nb < 20) );
 			?>
 			</ul>
 		</div>
