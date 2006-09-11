@@ -28,8 +28,13 @@ class KDBFSElementFactory
 		$this->permission = $permission;
 	}
 
-	public function getLastAddedFiles()
+	public function getLastAddedFiles($nb = FALSE)
 	{
+		if ($nb === FALSE)
+		{
+			$nb = 3;
+		}
+		
 		$sql = "
 			SELECT	fileshare_sysinfos.id, fileshare_sysinfos.parent, fileshare_sysinfos.name, fileshare_sysinfos.creator, fileshare_versions.user,
 					fileshare_versions.description, fileshare_versions.versionid, fileshare_versions.datetime, UNIX_TIMESTAMP(fileshare_versions.datetime) AS timestamp, fs_stats.hits
@@ -40,7 +45,7 @@ class KDBFSElementFactory
 			WHERE 	fileshare_sysinfos.deleted = 0 
 				AND fileshare_sysinfos.type = 'file'
 			ORDER BY fileshare_versions.datetime DESC 
-			LIMIT 0 , 3
+			LIMIT 0 , $nb
 			";
 			
 		try
@@ -62,8 +67,14 @@ class KDBFSElementFactory
 		}
 	}
 	
-	public function getMostDownloadedFiles()
+	public function getMostDownloadedFiles($nb = FALSE)
 	{
+	
+		if ($nb === FALSE)
+		{
+			$nb = 3;
+		}
+		
 		$sql = "
 			SELECT	fileshare_sysinfos.id, fileshare_sysinfos.parent, fileshare_sysinfos.name, fileshare_sysinfos.creator, fileshare_versions.user,
 					fileshare_versions.description, fileshare_versions.versionid, fileshare_versions.datetime, UNIX_TIMESTAMP(fileshare_versions.datetime) AS timestamp, fs_stats.hits
@@ -75,7 +86,7 @@ class KDBFSElementFactory
 				AND fileshare_sysinfos.type = 'file'
 				AND fs_stats.hits IS NOT NULL
 			ORDER BY fs_stats.hits DESC 
-			LIMIT 0 , 3
+			LIMIT 0 , $nb
 			";
 			
 		try

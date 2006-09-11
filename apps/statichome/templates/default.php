@@ -14,7 +14,11 @@ else
 			<h2><?=_('LASTEVENTS');?></h2>
 			<ul>
 			<?
-			foreach ($this->vars['iEvents'] as $iEvent)
+			//foreach ($this->vars['iEvents'] as $iEvent)
+			reset($this->vars['iEvents']);
+			$iEvent = current($this->vars['iEvents'] );
+			$nb = 0;
+			do
 			{
 					if ( ($linecolor == 'one') )
 					{
@@ -92,7 +96,8 @@ else
 				//echo '['.$iEvent['type'].'] ';
 
 				echo "</li>";
-			}
+				$nb++;
+			} while ( ($iEvent = next($this->vars['iEvents'])) && ($nb < 25) );
 			?>
 			</ul>
 		</div>

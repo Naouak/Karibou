@@ -32,7 +32,7 @@ class StaticHomeDefault extends Model
 			"GROUP BY news.id
 			ORDER BY timestamp
 			DESC
-			LIMIT 0,10;
+			LIMIT 0,20;
 			";
 
 		$articles = array ();
@@ -64,8 +64,8 @@ class StaticHomeDefault extends Model
 		 * Sélection des Fichiers
 		 */
 		$myKDBFSElementFactory = new KDBFSElementFactory($this->db, $this->userFactory, $this->permission);
-		$this->assign("lastAddedFiles", $myKDBFSElementFactory->getLastAddedFiles());
-		$this->assign("mostDownloadedFiles", $myKDBFSElementFactory->getMostDownloadedFiles());
+		$this->assign("lastAddedFiles", $myKDBFSElementFactory->getLastAddedFiles(20));
+		$this->assign("mostDownloadedFiles", $myKDBFSElementFactory->getMostDownloadedFiles(5));
 		
 		
 		/**
@@ -191,7 +191,7 @@ class StaticHomeDefault extends Model
 		 * Récupération des dernières offres d'emploi et de stage
 		 */
 		$netJobs = new NetJobs ($this->db, $this->userFactory);
-		$myJobs = $netJobs->getJobList(5);
+		$myJobs = $netJobs->getJobList(20);
 		$this->assign("jobs", $myJobs);
 		
 		/**
