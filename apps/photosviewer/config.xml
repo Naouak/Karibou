@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+	<load class="StaticHomeDefault" file="default.class.php" />
+
+	<load class="AnyCharArgument" file="../arguments/anycharargument.class.php" />
+	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+
+	<load class="PhotosViewerDefault" file="default.class.php" />
+
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<view name="default" class="PhotosViewerDefault" template="default.php" />
+
+	<page name="view" view="default">
+		<option name="path" class="AnyCharArgument" />
+	</page>
+</app>
