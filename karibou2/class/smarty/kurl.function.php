@@ -82,6 +82,11 @@ function kurl($params , $appList = FALSE)
 					else
 					{
 						Debug::kill("[Unknown] Class : ".$class." / Key : ".$key." / Page  :".$page);
+						var_dump($app, $page, $key, $arg);
+						$ar = debug_backtrace();
+						foreach($ar as $a)
+							echo $a['file'].$a['line'].'<br />'."\n";
+						die;
 					}
 
     				//S'il y a plusieurs arguments, on les separe par des virgules
@@ -107,7 +112,14 @@ function kurl($params , $appList = FALSE)
 	//Gestion des liens dans les CV
 	if (preg_match($GLOBALS['config']['netcv']['hostregexp'], $_SERVER["HTTP_HOST"]))
 	{
-		$url = $GLOBALS['config']['base_url'].'/'.$url;
+		if (preg_match('/\.css$/i', $url))
+		{
+			$url = $GLOBALS['config']['base_url'].'/pub/netcv/skins/'.$url;
+		}
+		else
+		{
+			$url = $GLOBALS['config']['base_url'].'/'.$url;
+		}
 	}
 	else
 	{

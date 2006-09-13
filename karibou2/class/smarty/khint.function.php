@@ -43,7 +43,7 @@ function smarty_function_khint($params, &$smarty)
 			if (!isset($params["insidetag"]) || $params["insidetag"] === FALSE)
 			{
 				//return full hint zone
-				$hint = "<div class=\"overzone overzone_".$type."\" ".$hint."\"><span><img src=\"/themes/karibou/images/hintbox/small/blank.png\" title=\"$hint\"></span></div>";
+				$hint = "<div class=\"overzone overzone_".$type."\" ".$hint."\"><span><img src=\"/themes/karibou/images/hintbox/small/blank.png\"></span></div>";
 			}
     	}
 	}
