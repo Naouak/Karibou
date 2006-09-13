@@ -45,6 +45,9 @@ msgstr "Calendrier du Jour"
 msgid "NOCALENDAR"
 msgstr "Vous ne disposez d'aucun calendrier à afficher, essayez de cliquer sur le lien \"Gérer les Calendriers\" pour soit créer un calendrier, soit vous abonner à un calendrier existant."
 
+msgid "NOCALENDAR_SHORT"
+msgstr "Vous ne disposez d'aucun calendrier à afficher."
+
 msgid "ADDCALENDAR"
 msgstr "Créer un calendrier"
 

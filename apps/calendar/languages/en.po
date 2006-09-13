@@ -45,6 +45,9 @@ msgstr "Day View Calendar"
 msgid "NOCALENDAR"
 msgstr "You don't have any calendar to display, try to go to the page \"Manage Calendars\" to create a new calendar or tu subscribe to an existing one."
 
+msgid "NOCALENDAR_SHORT"
+msgstr "You don't have any calendar to display."
+
 msgid "ADDCALENDAR"
 msgstr "Create a calendar"
 
