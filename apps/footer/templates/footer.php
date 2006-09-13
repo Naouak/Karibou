@@ -77,10 +77,10 @@
 		<div id="siteNavigation">
 			<div id="siteNavigationCategories">
 					<ul>
-							<li id="linkCommunicate"><h3><a href="#" onclick="ShowAppsLinks('menuCommunicate'); return false;"><span>Communiquer</span></a></h3></li>
-							<li id="linkOrganize"><h3><a href="#" onclick="ShowAppsLinks('menuOrganize'); return false;"><span>S'organiser</span></a></h3></li>
-							<li id="linkShare"><h3><a href="#" onclick="ShowAppsLinks('menuShare'); return false;"><span>Partager</span></a></h3></li>
-							<li id="linkJobs"><h3><a href="#" onclick="ShowAppsLinks('menuJobs'); return false;"><span>Emploi</span></a></h3></li>
+							<li id="linkCommunicate"><h3><a href="#menuCommunicate" onclick="ShowAppsLinks('menuCommunicate'); return false;"><span>Communiquer</span></a></h3></li>
+							<li id="linkOrganize"><h3><a href="#menuOrganize" onclick="ShowAppsLinks('menuOrganize'); return false;"><span>S'organiser</span></a></h3></li>
+							<li id="linkShare"><h3><a href="#menuShare" onclick="ShowAppsLinks('menuShare'); return false;"><span>Partager</span></a></h3></li>
+							<li id="linkJobs"><h3><a href="#menuJobs" onclick="ShowAppsLinks('menuJobs'); return false;"><span>Emploi</span></a></h3></li>
 							<?
 							/*
 								if ($this->vars['permission']->get('gettext') > _NO_ACCESS_)
