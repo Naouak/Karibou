@@ -61,8 +61,10 @@ $config['login']['savepassword'] = TRUE;
 //Demande de changement de mot de passe lors de la première connexion ?
 $config['login']['firsttimechangepassword'] = FALSE;
 
-//Définit le domaine utilisé pour l'activation des emails (john@karibou.org)
+//Définit le domaine utilisé pour l'activation des emails, l'application email...
 $config['mail']['domain'] = 'karibou.org';
+//Definit un webmail alternatif
+$config['mail']['alternative_webmail'] = 'http://webmail.karibou.org';
 
 //Définit le mode de stockage du keychain
 $config['keychain']['storage'] = 'session';
