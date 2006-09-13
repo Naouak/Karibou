@@ -226,15 +226,19 @@ protected $text;
 			$mail->Mailer   = "smtp";
 			$mail->CharSet = "UTF-8";
 			$mail->WordWrap = 80;
-			$mail->From = "contact";
-			$mail->FromName = "Activation";
+			$mail->From = $GLOBALS['config']['contactemail'];
+			$mail->FromName = $GLOBALS['config']['contactname'];
 			$mail->AddAddress($row["email"], $row["firstname"]." ".$row["lastname"]);
 			$mail->AddCC($row["login"].$GLOBALS['config']['login']['post_username'], $row["firstname"]." ".$row["lastname"]);
-			$mail->Subject = "Login activation";
-			$mail->Body = "
- - Login : ".$row['login']."
- - Mot de passe : ".$row['password']."
-			";
+
+		$bodyTMP = $GLOBALS['config']['admin']['email_accountcreation']['message'];
+		$keys         = array('##INTRANET_URL##', 				'##LOGIN##', 	'##PASSWORD##');
+		$replacements = array($GLOBALS['config']['site']['base_url'], 	$row['login'].$GLOBALS['config']['login']['post_username'], 	$row['password']);
+		$mail->Subject = str_replace($keys, $replacements, $GLOBALS['config']['admin']['email_accountcreation']['subject']);
+		$bodyTMP = str_replace($keys, $replacements, $bodyTMP);
+
+		
+			$mail->Body = $bodyTMP;
 		
 			if( $row['login'] != "" && $row['password'] != "" && !$mail->Send() )
 			{
