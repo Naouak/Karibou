@@ -1,20 +1,21 @@
 {if $error}
 {$message}
 {else}
-<h1>master-comex.com</h1>
-<h2>Activation de ton email</h2>
+<h1>Intranet</h1>
+<h2>Activation de votre email</h2>
 <p>
-  En arrivant sur cette page, ton adresse email sur le serveur master-comex.com 
+  En arrivant sur cette page, votre adresse email
   a été automatiquement activée ({$email}).
-  Félicitations, tu peux désormais te connecter sur le 
-  <a href="https://webmail.inkateo.com/">WebMail sécurisé</a> afin de consulter
-   tes emails (utilise ton email complet comme nom d'utilisateur).
-  <br />Le mot de passe associé est : <strong>{$password}
-  (attention à ne pas l'égarer).</strong>. N'hésite pas à le changer sur l'Intranet
-  <a href="http://intranet.master-comex.com/">http://intranet.master-comex.com/</a>.
+  Félicitations, vous pouvez désormais vous connecter sur l'Intranet.
+  <br />
+  	Votre login est : {$email}
+  <br />
+  	Le mot de passe associé est : <strong>{$password}
+	<br />
+  (attention à ne pas l'égarer).</strong>. N'hésitez pas à le changer sur l'<a href="/">Intranet</a>.
 </p>
 <p>
-  Tu as à ta disposition un Intranet, un espace emploi où 
-  tu pourras mettre ton CV en ligne simplement, et bien d'autres surprises !
+  Vous avez à votre disposition un Intranet, un espace emploi où 
+  vous pourrez mettre votre CV en ligne simplement, consulter le calendrier, les actualites, les fichiers partages...
 </p>
 {/if}

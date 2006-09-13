@@ -28,7 +28,6 @@ class ActivationCreate extends Model
 		{
 			unset($stmt);
 			$this->createEmail($item);
-			$this->assign('password', $password);
 		}
 		else
 		{
@@ -85,6 +84,7 @@ class ActivationCreate extends Model
 		
 		// password setté
 		$add_password = $this->generate_password(8);
+        $add_ldap_password = "{MD5}" . base64_encode(pack("H*",md5($add_password)));
 		$add_quota = '15000000';
 
 		$info = array (
@@ -119,7 +119,7 @@ class ActivationCreate extends Model
 		  ),
 		  'userpassword' => 
 		  array (
-		    0 => $add_password,
+		    0 => $add_ldap_password,
 		  ),
 		  'disableimap' => 
 		  array (
@@ -166,7 +166,7 @@ class ActivationCreate extends Model
 			ldap_close($ldapconn);
 			
 			$this->assign("email", $add_email);
-			$this->assign("password", $add_password);
+			$this->assign("passwd", $add_password);
 			$this->send_email_create($email_alternatif, $email,  $add_password);
 	  }
 	  else 
@@ -185,65 +185,23 @@ class ActivationCreate extends Model
 	function send_email_create ($email_alternatif,$email_enic, $add_password) {
 	
 		global $add_email;
-	
-		$subject = "[".$GLOBALS['config']['mail']['domain']."] Bienvenue $add_email";
-	
-		$message = "
-<html>
- <head>
-  <title>".$subject."</title>
-  <style type=\"text/css\">
-   p {
-     font-family: Trebuchet MS, Verdana, Arial;
-     font-size: 11px;
-   }
-   a {
-     color: #225599;
-   }
-   a:hover {
-     color: #995566;
-   }
-   .link {
-     font-size: 13px;
-   }
-   #hint {
-     font-size: 12px;
-     background: #cfcfff;
-     border: 1px solid #adadee;
-     padding: 2px;
-   }
-   #hint p{
-     margin: 0px;
-     padding: 0px;
-   }
-  </style>
- </head>
- <body>
 
-Bonjour,<br />
-<br />
-Ton compte email $add_email est désormais actif.<br />
-<br />
-Ton mot de passe est: $add_password
-<br />
-<br />
-Tu peux le changer sur l'<a href=\"http://intranet.".$GLOBALS['config']['mail']['domain']."\">intranet</a>, dans la rubrique correspondante.
-<br />
-<br />
-A bientôt !<br />
-<br />
-L'équipe Inkateo.
-<a href=\"mailto:contact@inkateo.com\">contact@inkateo.com</a>
 
- </body>
-</html>";
+		$bodyTMP = $GLOBALS['config']['admin']['email_accountcreation']['message'];
+		$keys         = array('##INTRANET_URL', 				'##LOGIN##', 	'##PASSWORD##');
+		$replacements = array($GLOBALS['config']['site']['base_url'], 	$add_email, 	$add_password);
+		$subject = str_replace($keys, $replacements, $GLOBALS['config']['admin']['email_accountcreation']['subject']);
+		$bodyTMP = str_replace($keys, $replacements, $bodyTMP);
+
+$message = $bodyTMP;
 
 	/* Pour envoyer du mail au format HTML, vous pouvez configurer le type Content-type. */
 	$headers  = "MIME-Version: 1.0\r\n";
-	$headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
+	$headers .= "Content-type: text/plain; charset=UTF-8\r\n";
 	
 	/* D'autres en-têtes : errors, From cc's, bcc's, etc */
-	$headers .= "From: Inkateo <contact@inkateo.com>\r\n";
+	$headers .= "From: ".$GLOBALS['config']['contactname']." <".$GLOBALS['config']['contactemail'].">\n";
+    $headers .= 'Bcc: '.$GLOBALS['config']['contactname']."\n";
 	
 	/* Send it ! 
 			Envoi également à l'adresse fournie par l'ancien si elle existe
