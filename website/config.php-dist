@@ -28,6 +28,8 @@ $config['defaultapp'] = "default";
 
 //DÃ©finit l'email de contact des administrateurs
 $config['contactemail'] = "noreply@karibou.org";
+//Definit le nom du contact administrateur
+$config['contactname'] = "Karibou";
 
 //DÃ©finit le hÃ´te de l'adresse des CVs (par exemple le karibou.org de http://john.karibou.org)
 $config['netcv']['host'] = "karibou.org";
@@ -65,8 +67,6 @@ $config['mail']['domain'] = 'karibou.org';
 //DÃ©finit le mode de stockage du keychain
 $config['keychain']['storage'] = 'session';
 
-/* VAR DEFINITION */
-
 $config['base_url'] = substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['SCRIPT_NAME'], '/'));
 $config['site']['base_url'] = 'http://'.$_SERVER["SERVER_NAME"].$config['base_url'];
 
@@ -95,5 +95,25 @@ $config['style'][1]['titre']        = "default";
 $config['style'][1]['fichier_css']    = KARIBOU_THEMES_URL."/default/greu.css";
 $config['style'][1]['home_css']    = KARIBOU_THEMES_URL."/default/home.css";
 $config['style'][1]['fichier_js']    = KARIBOU_THEMES_URL."/menu_mcben.js";
+
+/* Emails */
+//START Email dans config
+$config['admin']['email_accountcreation']['subject'] = "Bienvenue sur l'Intranet ##INTRANET_URL##";
+$config['admin']['email_accountcreation']['message'] = "
+Bonjour,
+
+Votre compte vient d'être créé sur l'Intranet ##INTRANET_URL##
+
+Votre nom d'utilisateur pour acc&eacute;der &agrave; l'Intranet est : ##LOGIN##
+
+Votre mot de passe est : ##PASSWORD##
+
+Pour toute difficult&eacute; ou question, vous pouvez r&eacute;pondre &agrave; cet email.
+
+Bonne continuation
+
+L'equipe d'Administration de l'Intranet
+";
+//END
 
 ?>
