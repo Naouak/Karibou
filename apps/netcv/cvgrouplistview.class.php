@@ -19,11 +19,14 @@ class NetCVGroupListView extends Model
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
 		//$this->assign("config", $config);
+		$this->assign("appconfig", $config);
 		$this->assign("config", $GLOBALS['config']['netcv']);
 		
 		$myNetCVUser = new NetCVUser($this->db, $this->currentUser, FALSE);
 		//$myNetCVUser->getCVGroupList();
 		$myNetCVGroupList = $myNetCVUser->returnCVGroupList();
+
+		$this->assign('myNetCVUser', $myNetCVUser);
 
 		//Verification de la presence d'erreur et affection du message d'erreur a afficher
 		$this->assign("netcvMessages", $this->formMessage->getSession());

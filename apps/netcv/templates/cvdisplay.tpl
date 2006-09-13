@@ -1,4 +1,20 @@
-{if (
+{if ($myNetCVGroup->getInfo('diffusion') == 'private')}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>##NOT_ENOUGH_CONTENT_PRIVATE##</title>
+		<meta name="robots" content="noindex, nofollow" />
+	</head>
+	<body>
+	<h1>##PRIVATE_DIFFUSION##</h1>
+	<p>
+		##NETCV_PRIVATE_DIFFUSION_PAGEDESCRIPTION##
+	</p>
+	</body>
+</html>
+{elseif (
 ($myNetCVSingleCV->countSections() < $appconfig.minimum.sections) || 
 ($myNetCVSingleCV->countElements() < $appconfig.minimum.elements) ||
 (($myNetCVUser->countPersonalInfo() - $appconfig.personalinfos.system) < $appconfig.minimum.personalinfos)
@@ -8,7 +24,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<title>Your CV doesn't have enough content to be displayed</title>
+		<title>##NOT_ENOUGH_CONTENT_PRIVATE##</title>
 		<meta name="robots" content="noindex, nofollow" />
 	</head>
 	<body>
@@ -47,7 +63,11 @@
     			{assign var="singleCV" value=$myNetCVSingleCVList[l]}
 {if isset($myNetCVSingleCVList[l])}
     {if ($myNetCVSingleCV->getInfo('lang') != "")}
+		{if $hostnameAccess}
 		<a href="{kurl page="" request=$singleCV->getInfo('lang')}">{$myNetCVLanguage->getNameByCode($singleCV->getInfo("lang"))}</a>
+		{else}
+		<a href="{kurl page="cv" hostname=$myNetCVGroup->getInfo('hostname') lang=$singleCV->getInfo('lang') preview=1}">{$myNetCVLanguage->getNameByCode($singleCV->getInfo("lang"))}</a>
+		{/if}
     {/if}
 {/if}
 			{/section}

@@ -8,6 +8,20 @@ class NetCVSingleCVList {
 		$this->db = $db;
 
 		//Ajouter les infos du groupe dans $infos
+		
+		/*
+		Il faudrait permettre de récupérer le nombre de sections et d'élément pour valider la quantité d'informations du CV
+		La requête suivante renvoie le nombre de sections + 1
+		
+		SELECT * , count( netcv_resumes.id )-1 AS countSections
+		FROM netcv_resumes_by_lang
+		LEFT JOIN netcv_resumes ON netcv_resumes.resume_id = netcv_resumes_by_lang.id
+		WHERE netcv_resumes_by_lang.group_id = '1'
+		AND netcv_resumes.resume_id = '1'
+		AND netcv_resumes.parent_id = '0'
+		GROUP BY netcv_resumes.resume_id
+		*/
+		
 		$cvSelectReq = "SELECT * FROM netcv_resumes_by_lang WHERE group_id = '".$group_id."'";
 		$cvSelectRes = $this->db->prepare($cvSelectReq);
 		$cvSelectRes->execute();

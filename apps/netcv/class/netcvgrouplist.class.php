@@ -5,10 +5,11 @@ class NetCVGroupList {
 	public $cvGroupsObjects;
 	public $infos;
 	public $user_id;
+	public $db;
 
 	function __construct ($db, $user_id) {
 		$this->db = $db;
-		$this->cvgroup = array();
+		//$this->cvgroup = array();
 		$this->user_id = $user_id;
 
 		//Ajouter les infos du groupe dans $infos

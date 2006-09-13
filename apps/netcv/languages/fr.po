@@ -117,11 +117,26 @@ msgstr "Diffusion du CV"
 msgid "PUBLIC_DIFFUSION"
 msgstr "Diffusion publique"
 
+msgid "NETCV_PUBLIC_DIFFUSION_DESCRIPTION"
+msgstr "Votre CV est en <strong>diffusion publique</strong>, cela signifie qu'il est ou sera référencé sur les moteurs de recherches prochainement."
+
 msgid "NO_SEARCH_ENGINE"
 msgstr "Pas de référencement"
 
+msgid "NETCV_NO_SEARCH_ENGINE_DESCRIPTION"
+msgstr "La diffusion de votre CV est configurée sur \"<strong>pas de référencement</strong>\", il ne sera pas indexé par les moteurs de recherches (Google, Yahoo...). Cela signifie que l'accès à votre CV ne pourra pas se faire via un moteur de recherches (il ne sera pas référencé)."
+
+msgid "NETCV_ClickHereToChangeThisOption"
+msgstr "Cliquez ici pour changer cette option"
+
 msgid "PRIVATE_DIFFUSION"
 msgstr "Diffusion privée"
+
+msgid "NETCV_PRIVATE_DIFFUSION_PAGEDESCRIPTION"
+msgstr "Cette page contient un Curriculum Vitae configuré pour la diffusion privée. Seul les utilisateurs autorisés peuvent le consulter."
+
+msgid "NETCV_PRIVATE_DIFFUSION_DESCRIPTION"
+msgstr "La diffusion de votre CV est <strong>privée</strong>, c'est à dire que celui-ci ne peut être visualisé que par les utilisateurs de l'Intranet. L'adresse : http://{$aGroup->getInfo('hostname')}.{$config.host} n'est donc pas utilisable."
 
 msgid "EMAIL_DISPLAY"
 msgstr "Affichage de l'adresse email"

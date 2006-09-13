@@ -22,6 +22,7 @@
 	<load class="CVId"				file="../arguments/cvid.class.php" />
 	<load class="Direction"				file="../arguments/direction.class.php" />
 	<load class="AlphaNum"				file="../arguments/alphanum.class.php" />
+	<load class="AnyCharArgument"				file="../arguments/anycharargument.class.php" />
 	<load class="DisplayComments"		file="../arguments/displaycomments.class.php" />
 	<load class="UserName"				file="../arguments/username.class.php" />
 	<load class="NumberArgument"		file="../arguments/numberargument.class.php" />
@@ -66,6 +67,7 @@
 	<load class="NetCVContactForm"	file="cvcontactform.class.php" />
 	<load class="NetCVContactFormSend"	file="cvcontactformsend.class.php" />
 	<load class="NetCVMenu" file="cvmenu.class.php" />
+	<load class="NetCVModulePublicCVList" file="module.publiccvlist.class.php" />
 	<load class="NetCVAllCV"	file="allcv.class.php" />
 
 	<view name="home"					class="NetCVHome"			template="home.tpl" />
@@ -87,6 +89,7 @@
 	<view name="cvcontactform"		class="NetCVContactForm"	template="cvcontactform.tpl" />
 	<view name="menu" class="NetCVMenu" template="menu.tpl" />
 	<view name="allcv"		class="NetCVAllCV"	template="allcv.tpl" />
+	<view name="modulepubliccvlist"		class="NetCVModulePublicCVList"	template="module.publiccvlist.php" />
 
 	<page name="" view="home" />
 	<page name="cv" view="cvdisplay">
@@ -95,6 +98,7 @@
 		<argument name="hostname"	class="UserName" />
 		<option name="lang"	class="AlphaNum" />
 		<option name="preview"	class="DisplayComments" />
+		<option name="request" class="AnyCharArgument" />
 	</page>
 	<page name="cvskindisplay" view="cvskindisplay">
 		<header app="header"		view="empty"/>
@@ -172,6 +176,11 @@
 		<option name="lang"			class="AlphaNum" />
 	</page>
 	<page name="allcv" view="allcv" />
+	<page name="modulepubliccvlist" view="modulepubliccvlist">
+		<header	app="header"			view="empty"/>
+		<footer	app="footer"			view="empty" />
+		<option name="userid"	class="AnyCharArgument" />
+	</page>
 
 	<form action="cvsinglecvsave" class="NetCVSingleCVSave">
 		<redirect />

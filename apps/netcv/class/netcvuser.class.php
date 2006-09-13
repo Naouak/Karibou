@@ -207,7 +207,7 @@ class NetCVUser {
 				if (is_object($this->user)) {
 					//Selection de l'utilisateur NetCV via le login Karibou
 					$userSelectReq = "SELECT * FROM netcv_users WHERE username = '".$this->user->getLogin()."'";
-				} elseif (is_string($this->user) || is_int($this->user) ) {
+				} elseif (is_string($this->user) || is_int($this->user) ) {
 					$userSelectReq = "SELECT * FROM netcv_users WHERE id = '".$this->user."'";
 				}
 				$userSelectRes = $this->db->prepare($userSelectReq);
