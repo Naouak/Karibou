@@ -218,7 +218,7 @@ class User
      */
     function getDisplayName()
     {
-		if ( ($this->surname == '') || (isset($GLOBALS['config']['nonickname']) && ($GLOBALS['config']['nonickname'] === TRUE)) )
+		if ( ($this->surname == '') || (isset($GLOBALS['config']['login']['nonickname']) && ($GLOBALS['config']['login']['nonickname'] === TRUE)) )
 		{
 			if ($this->firstname != '' || $this->lastname != '')
 			{
