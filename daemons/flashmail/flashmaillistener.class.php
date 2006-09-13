@@ -21,16 +21,19 @@ class FlashMailListener extends Listener
 		$user = $this->userFactory->getCurrentUser();
 		if( $user->isLogged() )
 		{
-			$flashmailFactory = new FlashMailFactory($this->db, $user, $this->userFactory, FALSE);
-
-			$flashmail = $this->appList->getApp('flashmail');
-			if ($flashmailFactory->checkNew())
+			if ( !isset($GLOBALS['config']['noflashmail']) || (isset($GLOBALS['config']['noflashmail']) && $GLOBALS['config']['noflashmail'] !== TRUE))
 			{
-				//$flashmail->addView("popupscript", "html_head");
-				//$flashmail->addView("headerbox", "page_content_start");
+				$flashmailFactory = new FlashMailFactory($this->db, $user, $this->userFactory, FALSE);
+
+				$flashmail = $this->appList->getApp('flashmail');
+				if ($flashmailFactory->checkNew())
+				{
+					//$flashmail->addView("popupscript", "html_head");
+					//$flashmail->addView("headerbox", "page_content_start");
+				}
+				$flashmail->addView("account_headerbox",	"footer_account_start");
+				$flashmail->addView("unreadlist",			"flashmail_unreadlist");
 			}
-			$flashmail->addView("account_headerbox",	"footer_account_start");
-			$flashmail->addView("unreadlist",			"flashmail_unreadlist");
 		}
 	}
 }
