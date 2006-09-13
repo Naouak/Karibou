@@ -30,6 +30,8 @@
 		<a href="{kurl app="flashmail" page="writeto" userid=$user->getId()}" onclick="new Ajax.Updater('flashmail_headerbox_answer', '{kurl app="flashmail" page="headerbox_writeto" userid=$user->getId()}',{literal} {asynchronous:true, evalScripts:true}{/literal}); document.getElementById('flashmail_headerbox_answer').className='show'; return false;">##SEND_FLASHMAIL##</a>
 	</div>
 
+	{hook name="directory_profile_cvlistmodule"}
+
 	<div class="groups">	
 		<h3>##BELONGS_TO_GROUPS##</h3>
 		<ul>
