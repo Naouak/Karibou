@@ -141,6 +141,15 @@ else
 
 		<div class="box organize calendar">
 			<h2><a href="<?=kurl(array('app'=>'calendar'));?>"><?=_('CALENDAR');?></a></h2>
+		<?
+		if (count($this->vars['cals']) == 0)
+		{
+			echo _('NOCALENDAR_SHORT');
+			echo "<br /><a href=\"".kurl(array('app' => 'calendar',  'page'=>'manage'))."\">"._('MANAGE')."</a>";
+		}
+		else
+		{
+		?>
 			<h3><?=_('TODAY');?></h3>
 			<ul>
 			<?
@@ -211,6 +220,9 @@ else
 			}
 			?>
 			</ul>
+		<?
+		}
+		?>
 		</div>
 
 		<div class="box share fileshare">
