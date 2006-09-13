@@ -243,46 +243,53 @@ ul#footer li.first {
 /*      Form Message     */
 /* * * * * * * * * * * * */
 .error {
-	margin: 5px;
-	padding: 4px;
-	
-	border: 1px solid #990000;
-	background: #ffeeee;
-
-	color: #990000;
-	font-style: italic;
+	background-image : url(images/hintbox/error.png);
+	background-color: #ffdddd;
+	background-position: 5px center;
+	background-repeat: no-repeat;
+	border: 1px solid #dd6666;
+	padding: 16px 5px 16px 50px;
+	color: #770000;
 	text-align: center;
+	font-weight: bold;
+	margin: 5px;
 }
 
 .success {
-	margin: 5px;
-	padding: 4px;
-	
-	border: 1px solid #009900;
-	background: #eeffee;
-
-	color: #009900;
-	font-style: italic;
+	background-image : url(images/hintbox/success.png);
+	background-color: #ddffdd;
+	background-position: 5px center;
+	background-repeat: no-repeat;
+	border: 1px solid #66dd66;
+	padding: 16px 5px 16px 50px;
+	color: #007700;
 	text-align: center;
+	font-weight: bold;
+	margin: 5px;
 }
 
 .warning {
-	margin: 5px;
-	padding: 4px;
-	
-	border: 1px solid #8a5b00;
-	background: #ffefbc;
-
-	color: #8a5b00;
-	font-style: italic;
+	background-image : url(images/hintbox/warning.png);
+	background-color: #ffdddd;
+	background-position: 5px center;
+	background-repeat: no-repeat;
+	border: 1px solid #dd6666;
+	padding: 16px 5px 16px 50px;
+	color: #770000;
 	text-align: center;
+	margin: 5px;
 }
 
 .helper {
-	border: 1px solid #acacef;
-	background: #fafaff;
-	padding: 5px;
-	margin: 0px 0px 10px 0px;
+	background-image : url(images/hintbox/info.png);
+	background-color: #ddddff;
+	background-position: 5px center;
+	background-repeat: no-repeat;
+	border: 1px solid #7777dd;
+	padding: 16px 5px 16px 50px;
+	color: #000044;
+	text-align: center;
+	margin: 5px;
 }
 
 .left {
