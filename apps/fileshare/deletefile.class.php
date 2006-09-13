@@ -87,7 +87,7 @@ class FileShareDeleteFile extends FormModel
 					$this->setRedirectArg('page', 'directory');
 					$this->setRedirectArg('directoryname', $myElement->getParentPathBase64());
 				}
-	   }
+		}
 		else
 		{
 			$this->setRedirectArg('app', 'fileshare');

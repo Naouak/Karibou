@@ -131,7 +131,7 @@
 			{if $myElement->isFile() || ($myElement->isDirectory() && $myElement->isEmpty())}
 			<form method="post" action="{kurl page="deletefile"}" id="deletefile" name="deletefile">
 				<input type="hidden" name="fileid" value="{$myElement->getElementId()}">
-				<a href="#" onclick="if(confirm('##DELETE_ASKIFSURE## {$myElement->getName()} ?')){ldelim}document.deletefile.submit(){rdelim}else{ldelim}return false;{rdelim};">##DELETE## {if $myElement->isFile()}##THIS_FILE##{else}##THIS_DIRECTORY##{/if}</a>
+				<a href="#" onclick="if(confirm('##DELETE_ASKIFSURE## {$myElement->getName()} ?')){ldelim}document.deletefile.submit();return false;{rdelim}else{ldelim}return false;{rdelim};">##DELETE## {if $myElement->isFile()}##THIS_FILE##{else}##THIS_DIRECTORY##{/if}</a>
 			</form>
 			{/if}
 		</div>
