@@ -191,6 +191,7 @@ var KCalendar = {
 			div.appendChild(text);
 			div.setAttribute("id", "calhour-"+id);
 			div.setAttribute("class", timespanclass+"hour size_1_00");
+			div.setAttribute("className", timespanclass+"hour size_1_00");
 			calendar.appendChild(div);
 			
 		}
@@ -211,11 +212,13 @@ var KCalendar = {
 			div = document.createElement("div");
 			div.setAttribute("id", "cal-"+id+"-0");
 			div.setAttribute("class", "size_0_30");
+			div.setAttribute("className", "size_0_30");
 			this.calendar.appendChild(div);
 			
 			div = document.createElement("div");
 			div.setAttribute("id", "cal-"+id+"-1");
 			div.setAttribute("class", "size_0_30");
+			div.setAttribute("className", "size_0_30");
 			this.calendar.appendChild(div);
 
 		}
