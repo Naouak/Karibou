@@ -83,6 +83,8 @@ class AnnuaireProfile extends Model
 		$user->getGroups($this->db);
 		$userallgroups = $user->getAllGroups($this->db);
 		$this->assign("usergroups", $userallgroups /*->getTree()*/);
+		
+		$this->assign('noflashmail', $GLOBALS['config']['noflashmail']);
 
 	}
 }
