@@ -19,7 +19,7 @@ if (isset($_POST["new_email"])) {
 
       $new["maildrop"] = $_POST["new_email"];
       
-      $mydn = dnFromEmail ($ldapconn, $_SESSION["email"], "jvd=mastergeb.net, dc=inkateo, dc=com");
+      $mydn = dnFromEmail ($ldapconn, $_SESSION["email"], "jvd=users, dc=karibou, dc=org");
       
       ldap_modify($ldapconn, $mydn, $new);
       echo "<span class=\"success\">Ton email de transfert (forward) a été correctement configuré.</span><br />Tous les emails envoyés à <strong>".$_SESSION["email"]."</strong> seront transférés sur <strong>".$_POST["new_email"]."</strong><br/>Les messages ne seront plus stockés sur ton compte MasterGEB.Net.<br /><br /><a href=\"config.php\">Retour au Menu</a>";
@@ -28,7 +28,7 @@ if (isset($_POST["new_email"])) {
 
       $del_maildrop["maildrop"] = array();
       
-      $mydn = dnFromEmail ($ldapconn, $_SESSION["email"], "jvd=mastergeb.net, dc=inkateo, dc=com");
+      $mydn = dnFromEmail ($ldapconn, $_SESSION["email"], "jvd=users, dc=karibou, dc=org");
       
       @ldap_mod_del($ldapconn,$mydn,$del_maildrop);
       echo "<span class=\"success\">Ton email de transfert (forward) a été supprimé.</span><br />Les emails envoyés à <strong>".$_SESSION["email"]."</strong> ne seront plus transférés.<br /><br /><a href=\"config.php\">Retour au Menu</a></span>";
@@ -49,7 +49,7 @@ if(count($errors) > 0) {
 
 /* */
    include("./inc0/ldapconnect.php");
-   $sr = ldap_search($ldapconn,"jvd=mastergeb.net, dc=inkateo, dc=com", "mail=".$_SESSION["email"] ); 
+   $sr = ldap_search($ldapconn,"jvd=users, dc=karibou, dc=org", "mail=".$_SESSION["email"] ); 
    $info_maildrop = ldap_get_entries($ldapconn, $sr);
 /* */
 
