@@ -102,17 +102,17 @@ $config['admin']['email_accountcreation']['subject'] = "Bienvenue sur l'Intranet
 $config['admin']['email_accountcreation']['message'] = "
 Bonjour,
 
-Votre compte vient d'�tre cr�� sur l'Intranet ##INTRANET_URL##
+Votre compte vient d'être créé sur l'Intranet ##INTRANET_URL##
 
-Votre nom d'utilisateur pour acc&eacute;der &agrave; l'Intranet est : ##LOGIN##
+Votre nom d'utilisateur pour accéder à l'Intranet est : ##LOGIN##
 
 Votre mot de passe est : ##PASSWORD##
 
-Pour toute difficult&eacute; ou question, vous pouvez r&eacute;pondre &agrave; cet email.
+Pour toute difficulté ou question, vous pouvez répondre à cet email.
 
 Bonne continuation
 
-L'equipe d'Administration de l'Intranet
+L'équipe d'Administration de l'Intranet
 ";
 //END
 
