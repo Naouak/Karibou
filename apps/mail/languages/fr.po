@@ -63,3 +63,5 @@ msgstr "Montrer les Messages supprimés"
 msgid "expunge"
 msgstr "Vider les Messages supprimés"
 
+msgid "MAIL_WEBMAILADVICE"
+msgstr "L'application email proposée sur l'Intranet étant en développement, il vous est vivement conseillé d'utiliser le WebMail mis à disposition (lien webmail du menu) pour assurer l'envoi et la réception d'email."
