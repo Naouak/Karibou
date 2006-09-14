@@ -14,10 +14,11 @@ $timer->start("Full Load");
 
 $karibou = new Karibou();
 $karibou->loadAppDir(KARIBOU_APP_DIR, "config.xml");
+
 //Vérification de la requête pour déterminer s'il s'agit de l'affichage d'un CV ou de l'Intranet
-if (preg_match($GLOBALS['config']['netcv']['hostregexp'], $_SERVER["HTTP_HOST"], $regs))
+if (preg_match($GLOBALS['config']['netcv']['hostregexp'], $_SERVER["HTTP_HOST"]))
 {
-	//Chargement de l'application d'affichage de CV
+	//Chargement d'un CV
 	$config['defaultapp'] = "netcvdisplay";
 	$karibou->loadApp('netcvdisplay', KARIBOU_APP_DIR.'/netcv/cvconfig.xml');
 }
@@ -25,6 +26,7 @@ else
 {
 	//Chargement normal de la page d'accueil par défaut
 }
+
 $karibou->build();
 $karibou->display();
 
