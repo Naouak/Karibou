@@ -23,10 +23,10 @@ class NetCVDisplay extends Model
 		
 
 		//CV accédé par l'url définie par l'utilisateur
-		if (preg_match($GLOBALS['config']['netcv']['hostregexp'], $_SERVER["HTTP_HOST"]))
+		if ($GLOBALS['config']['netcv']['cvdisplay'])
 			$this->assign('hostnameAccess', TRUE);
 		
-		if ( (isset($this->args['hostname']) && ($this->args['hostname'] != "")) || (preg_match($GLOBALS['config']['netcv']['hostregexp'], $_SERVER["HTTP_HOST"], $regs))) {
+		if ( (isset($this->args['hostname']) && ($this->args['hostname'] != "")) || ($GLOBALS['config']['netcv']['cvdisplay'] && preg_match($GLOBALS['config']['netcv']['hostregexp'], $_SERVER["HTTP_HOST"], $regs))) {
 
 			if (isset($regs))
 			{

@@ -58,7 +58,7 @@ class BaseUrl
 			$p_url = $_SERVER['REQUEST_URI'];
 		}
 
-		if (preg_match($GLOBALS['config']['netcv']['hostregexp'], $_SERVER["HTTP_HOST"]))
+		if ($GLOBALS['config']['netcv']['cvdisplay'])
 		{
 			//Chargement d'un CV
 			

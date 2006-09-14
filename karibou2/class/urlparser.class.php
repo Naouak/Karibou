@@ -39,7 +39,7 @@ class URLParser
 		$this->forms = array();
 		
 		//Gestion des CV (pour les liens dans les CV
-		if (preg_match($GLOBALS['config']['netcv']['hostregexp'], $_SERVER["HTTP_HOST"]))
+		if ($GLOBALS['config']['netcv']['cvdisplay'])
 		{
 			//Cas d'une requête vers un CV
 
