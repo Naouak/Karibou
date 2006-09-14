@@ -182,20 +182,20 @@ class Karibou
         {
             if (substr($lang,0,2) == 'en')
             {
-                $this->currentLanguage = 'en_US.UTF-8';
+                $this->currentLanguage = 'en_US.utf-8';
             }
             else
             {
-                $this->currentLanguage = 'fr_FR.UTF-8';
+                $this->currentLanguage = 'fr_FR.utf-8';
             }
         } else {
-            $this->currentLanguage = 'fr_FR.UTF-8';
+            $this->currentLanguage = 'fr_FR.utf-8';
         }
 		putenv("LANG=".$this->currentLanguage); 
 		setlocale(LC_ALL, $this->currentLanguage);
 		$domain = 'messages';
 		bindtextdomain($domain, KARIBOU_LOCALE_DIR); 
-		bind_textdomain_codeset($domain, 'UTF-8');
+		bind_textdomain_codeset($domain, 'utf-8');
 		textdomain($domain);
 
 		$modelbuilder = new ModelBuilder();

@@ -176,10 +176,7 @@ abstract class Model
 	{
 		ExecutionTimer::getRef()->start("Display Model (".$template.") ".$this->appname."(".get_class($this).")");
 		
-		$this->assign("karibou", array(
-			"base_url" => $GLOBALS["config"]["base_url"],
-			)
-		);
+		$this->assign("karibou", $GLOBALS["config"]);
 		
 		if (preg_match('/\.php$/i', $template))
 		{
