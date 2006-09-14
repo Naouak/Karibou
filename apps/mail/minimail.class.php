@@ -22,8 +22,8 @@ class MiniMail extends Model
 			return;
 		}
 		$pass = $keychain->get('session_password');
-		$username = $user->getLogin().$config['username_append'];
-		$server = $config['server'];
+		$username = $user->getLogin().$GLOBALS['config']['login']['post_username'];
+		$server = $GLOBALS['config']['login']['server'];
 
 		$mailbox = new Mailbox($server, $username, $pass );
 		$mailbox->setPerPage(10);

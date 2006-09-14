@@ -11,12 +11,13 @@
 {else}
 		<input type="text" id="from" name="from"/><br class="spacer"/>
 {/if}
-	<label for="to">To :</label>
-		<textarea autocomplete="off" type="text" id="to" name="to">{$to}</textarea>
+	<label for="mail_to">To :</label>
+		<textarea autocomplete="off" type="text" id="mail_to" name="to">{$to}</textarea>
 		<div class="autocompleter" id="to_choices"></div>
 		<br class="spacer"/>
-	<label autocomplete="off" for="cc">CC :</label>
-		<textarea type="text" id="cc" name="cc">{$cc}</textarea>
+	<label for="mail_cc">CC :</label>
+		<textarea id="mail_cc" name="cc">{$cc}</textarea>
+		{*<input autocomplete="off" type="text" id="mail_cc" name="cc" value="{$cc}" />*}
 		<div class="autocompleter" id="cc_choices"></div>
 		<br class="spacer"/>
 	<label for="subject">Subject :</label>
@@ -24,13 +25,13 @@
 </div>
 
 <script>
-new Ajax.Autocompleter("to", "to_choices",
+new Ajax.Autocompleter("mail_to", "to_choices",
 	"{kurl app='addressbook' page='auto' postname='to' }", 
 	{ldelim}
 		tokens:','
 	{rdelim}
 );
-new Ajax.Autocompleter("cc", "cc_choices",
+new Ajax.Autocompleter("mail_cc", "cc_choices",
 	"{kurl app='addressbook' page='auto' postname='cc' }", 
 	{ldelim}
 		tokens:','

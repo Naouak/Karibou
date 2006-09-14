@@ -33,7 +33,7 @@ class Mailer extends PHPMailer
 	
 	function parseTo($to)
 	{
-		$addr_list = imap_rfc822_parse_adrlist($to, "master-comex.com");
+		$addr_list = imap_rfc822_parse_adrlist($to, $GLOBALS['mail']['domain']);
 		foreach($addr_list as $addr)
 		{
 			if(!isset( $addr->personal) )
@@ -45,7 +45,7 @@ class Mailer extends PHPMailer
 	}
 	function parseCC($cc)
 	{
-		$addr_list = imap_rfc822_parse_adrlist($cc, "master-comex.com");
+		$addr_list = imap_rfc822_parse_adrlist($cc, $GLOBALS['mail']['domain']);
 		foreach($addr_list as $addr)
 		{
 			if(!isset( $addr->personal) )

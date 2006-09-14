@@ -28,8 +28,9 @@ class MailRemove extends FormModel
 			$config = $this->getConfig();
 			
 			$pass = $keychain->get('session_password');
-			$username = $user->getLogin().$config['username_append'];
-			$server = $config['server'];
+			$username = $user->getLogin().$GLOBALS['config']['login']['post_username'];
+			$server = $GLOBALS['config']['login']['server'];
+			
 			
 			if( !empty($_GET['mailbox']) )
 			{
