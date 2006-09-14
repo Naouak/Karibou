@@ -81,3 +81,8 @@ msgstr "Survey details"
 msgid "KS_QUESTIONDELETE"
 msgstr "Delete question"
 
+msgid "KS_CREATESURVEY"
+msgstr "Survey creation"
+
+msgid "KS_NOSURVEY"
+msgstr "No survey available"

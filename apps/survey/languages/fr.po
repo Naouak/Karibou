@@ -81,3 +81,8 @@ msgstr "Détails du sondage"
 msgid "KS_QUESTIONDELETE"
 msgstr "Supprimer la question"
 
+msgid "KS_CREATESURVEY"
+msgstr "Création de sondage"
+
+msgid "KS_NOSURVEY"
+msgstr "Aucun sondage n'est disponible"

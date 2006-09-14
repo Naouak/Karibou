@@ -1,5 +1,4 @@
 <h1>##SURVEY##</h1>
-<div class="helper">##SURVEY_DEFAULT##</div>
 <div class="survey">
 	{if ($surveys|@count > 0)}
 	<ul class="surveys">
@@ -19,6 +18,6 @@
 		{/foreach}
 	</ul>
 	{else}
-	##KS_NOSURVEY##
+	<div class="helper">##KS_NOSURVEY##</div>
 	{/if}
 </div>
