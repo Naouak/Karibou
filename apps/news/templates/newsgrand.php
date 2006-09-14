@@ -12,7 +12,7 @@
 	<? include("newsmessage.php") ?>
 	
 	<?
-	if ($this->vars['permission'] > _DEFAULT_)
+	if ($this->vars['permission'] >= _READ_ONLY_)
 	{
 		//{section name=i loop=$theNews step=1}
 		foreach ($this->vars['theNews'] as $key => $theArticle)

@@ -13,6 +13,11 @@ class NewsMenu extends Model
 			$this->assign("page", "");
 		}
 		
+		if ($this->permission > _READ_ONLY_)
+			$this->assign('writeperm', true);
+		else
+			$this->assign('writeperm', false);
+		
 		if (isset($this->args["viewcomments"]))
 		{
 			$this->assign("article_id", $this->args["article_id"]);

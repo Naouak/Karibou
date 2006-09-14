@@ -6,7 +6,7 @@
 
 {if $page == "add"}
 	<li><strong>##ADD_ARTICLE##</strong></li>
-{else}
+{elseif ($writeperm)}
 	<li><a href="{kurl page='add'}">##ADD_ARTICLE##</a></li>
 {/if}
 

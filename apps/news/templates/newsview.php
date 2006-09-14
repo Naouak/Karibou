@@ -1,11 +1,16 @@
 <?
-if ($this->vars['permission'] > _DEFAULT_)
+if ($this->vars['permission'] >= _READ_ONLY_)
 {
-	if (!isset($this->vars['newsgrand']))
+	if (isset($this->vars['theArticle']))
 	{
-		include("newsmessage.tpl");
+		$theArticle = $this->vars['theArticle'];
 	}
 
+	if (!isset($this->vars['newsgrand']))
+	{
+		include("newsmessage.php");
+	}
+	
 	if (isset($theArticle))
 	{
 		$idNews = $theArticle->getID();
@@ -36,14 +41,12 @@ if ($this->vars['permission'] > _DEFAULT_)
 		}
 			echo '<div class="groupsdestination">&nbsp;</div>';//'._('NEWS_GROUPS_DESTINATION').' '.$theArticle->getGroupName().'</div>';
 			echo '<div class="content">'.$theArticle->getContentXHTML().'</div>';
-			if ($this->vars['permission'] > _READ_ONLY_)
-			{
-			}
+
 			echo '<div class="commentsHidden">';
-				echo $theArticle->getNbComments().' '._('COMMENT').' '.(($theArticle->getNbComments()>1)?'s':''); 
+				echo $theArticle->getNbComments().' '._('COMMENT').(($theArticle->getNbComments()>1)?'s':''); 
 				if ($theArticle->getNbComments()>0)
 				{
-					echo '(';
+					echo ' (';
 					if (isset($this->vars['displayComments']) && ($this->vars['displayComments'] == 0) || !isset($this->vars['displayComments']))
 					{
 						echo '<a href="'.kurl(array('page'=>"view", 'id'=>$theArticle->getID(), 'displayComments'=>"1")).'">'._('DISPLAY_COMMENTS').'</a>';
@@ -54,7 +57,10 @@ if ($this->vars['permission'] > _DEFAULT_)
 					}
 					echo ')';
 				}
+			if ($this->vars['permission'] > _READ_ONLY_)
+			{
 				echo '<a href="'.kurl(array('page'=>"addcomment", 'id'=>$idNews)).'">'._('ADD_COMMENT').'</a>';
+			}
 			echo '</div>';
 			if (isset($addComment))
 			{

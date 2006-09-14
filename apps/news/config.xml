@@ -36,7 +36,7 @@
 	<view name="add" class="NewsAdd" template="newsmodify.tpl" />
 	<view name="modify" class="NewsModify" template="newsmodify.tpl" />
 	<view name="addcomment" class="NewsAddComment" template="newsaddcomment.tpl" />
-	<view name="view" class="NewsView" template="newsview.tpl" />
+	<view name="view" class="NewsView" template="newsview.php" />
 
 	<view name="mini" class="NewsMini" template="small.tpl" />
 	<view name="miniconfig" class="NewsMiniConfig" template="smallconfig.tpl" />
