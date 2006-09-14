@@ -114,7 +114,7 @@ function kurl($params , $appList = FALSE)
 	{
 		if (preg_match('/\.css$/i', $url))
 		{
-			$url = $GLOBALS['config']['base_url'].'/pub/netcv/skins/'.$url;
+			$url = $GLOBALS['config']['base_url'].'/themes/netcv/skins/'.$url;
 		}
 		else
 		{

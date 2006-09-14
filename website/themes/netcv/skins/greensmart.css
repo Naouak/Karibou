@@ -1,0 +1,247 @@
+
+@import url("backToNetCV.css");
+
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: "georgia", serif;
+	color: #ffffff;
+	background-image:url(image/vert.jpg);
+
+}
+
+/* Layout */
+#container {
+	position: relative;
+	width: 702px;
+	padding: 0px;
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;	
+	border: 0px solid #ececec;
+	border-top: 0px solid #ececec;
+	border-bottom: 0px solid #ececec;
+	text-align: left;
+}
+
+#boxTop {
+	position: relative;
+	width:700px;
+	padding: 0px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	border: 1px solid #5A795A;
+	text-align: left;
+	height: 130px;
+	left: 0px;
+	top: 0px;
+}
+/*nom prénom*/
+/* formatage des données*/
+#name h1 {
+	position: relative;
+	font-family: "Trebuchet MS", serif;
+	top: 0px;
+	width: 50%;
+	left: 15px;
+	text-align: left;
+	font-size: 24px;
+	font-weight: bold;
+	border-bottom: 2px solid #5A795A;
+	background-color:transparent;
+}
+
+
+#photo {
+	position: relative;
+	top: -3em;
+	left : 0%;
+	text-align: right;
+	padding: 0px;
+}
+
+#photo img {
+	border: 2px solid #5A795A;
+}
+/* positionnement du bloc de titre*/	
+.boxTitle {
+	position: relative;
+    left: 0%;
+	width: 25%;
+	padding: 0px;
+	margin-top: 50px;
+	text-align: left;
+	background-color: #5A795A;
+	border: 2px solid #B8B8B8;
+	padding: 0px 0px 0px 0px;
+}
+/* positionnement du bloc de contenu*/	
+.boxContent {
+	position: relative;
+	width: 100%;
+	left: 0%;
+	padding: 0px;
+	margin-left: 0px;
+	margin-right: 10px;
+	}
+/* formatage du pavé de texte */
+.boxContentLevel1 {
+	position: relative;
+	margin-top: -20px;
+	margin-left: 240px;
+	padding: 0px 0px 0px 20px;
+	border-left: 2px solid #5A795A;
+	}
+
+.boxContentLevel2 {
+	position: relative;
+	padding: 0px 0px 0px 40px;
+}
+	
+	
+/* Additional Styles */
+/* formatage et postion du job*/
+#jobTitle h1 {
+	position: absolute;
+	font-family: "Trebuchet MS", serif;
+    font-style: italic;
+	font-size: 18px;
+	top:3em ;
+	padding: 0px;
+	margin-left: 10%;
+	text-align: center;
+	width: 80%;
+}
+/*formatage des gros titres */
+.boxTitle h1 {
+    position: relative;
+    font-family: "Trebuchet MS", serif;
+	font-size: 18px;
+	font-weight: normal;
+	padding: 2px;
+	color: #ffffff;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	text-align: center;
+}
+	
+/* formatage des années et dates*/
+.boxContentLevel1 h2 {
+	position: relative;
+    font-family: "Trebuchet MS", serif;
+	font-size: 16px;
+    font-weight: bold;
+	line-height: 12px;
+	margin-left: -250px;
+	margin-top: 20px;
+	padding: 5px 5px 0px 0px;
+	text-align: left;
+	color:#ffffcc;
+}
+/*formattage sous lieux*/
+.boxContentLevel1 h3 {
+	position: relative;
+	font-size: 16px;
+	top: 0px;
+	right: 10px;
+	margin: 0px;
+	margin-top: -30px;
+	padding: 0px;
+	color:#ffffcc;
+	text-align: center;
+}
+
+.boxContentLevel2 h3 {
+	position: relative;
+	font-size: 10px;
+	color: #333333;
+	line-height: 12px;
+	margin: 0;
+	padding: 5px 5px 0px 0px;
+	text-align: left;
+}
+/*formatage du texte descriptif*/
+.boxContentLevel1 p, .boxContentLevel1 ul {
+	position: relative;
+	font-family: Verdana;
+	font-size: 14px;
+	color: #ffffff;
+	line-height: 16px;
+	margin: 0;
+	padding: 5px 5px 5px 5px;
+	text-align: justify;
+}
+
+.boxContentLevel1 ul {
+	padding: 0px 0px 0px 40px;
+}
+
+ul {
+	margin: 0;
+	padding: 0px 0px 0px 20px;
+}
+
+li {
+    list-style-type: none;
+    background-image: url(image/puce1.jpg);
+    background-repeat: no-repeat;
+    background-position:  65%;
+    margin: 0;
+	padding-left: 15px;
+	padding: 2px 0px 2px 0px;
+}
+
+#boxTop #infos {
+	position: absolute;
+	top: 3em;
+	font-family: "Trebuchet MS", serif;
+	left: 3px;
+	padding: 0px;
+	text-align: left;
+	font-size: 16px;
+	line-height: 20px;
+	color: #CCCCCC;
+	width: 100%;
+}
+
+#boxTop #infos #address {
+  position: relative;
+  left: 15px;
+
+}
+
+#boxTop #infos #phone {
+	position: relative;
+	left: 15px;
+	top: 0px;
+
+
+}
+
+ a { color: #ffffcc;
+font-family: "georgia", serif;
+ }
+a:visited { color: #B8B8B8;
+font-family: "georgia", serif;
+ }
+a:hover { color: #B8B8B8;
+font-family: "georgia", serif;
+}
+
+#boxTop #infos #email {
+	position: relative;
+	text-align: center;
+	left: 0px;
+	top: 0px;
+
+
+}
+
+#boxTop #infos #other_infos {
+	position: relative;
+	left: 15px;
+	top: -20px;
+
+
+}

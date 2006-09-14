@@ -1,0 +1,247 @@
+
+@import url("backToNetCV.css");
+
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #000000;
+	background: #ffffff;
+
+}
+
+/* Layout */
+#container {
+	position: relative;
+	padding: 0px;
+        margin: auto;
+	width: 800px;
+}
+
+#boxTop {
+	position: relative;
+	width:100%;
+	padding: 0px;
+	margin: 0px;
+	text-align: left;
+	height: 220px;
+}
+
+#name h1 {
+	position: absolute;
+	font-family: "Arial Black";
+        top: 150px;
+	width: 800px;
+	margin: 0px;
+	text-align: left;
+	font-size: 26px;
+	font-weight: normal;
+	border-bottom: 1px solid #000000;
+}
+
+#infos {
+	position: relative;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top: 10px;
+	padding: 0px;
+	text-align: center;
+	font-size: 10px;
+	line-height: 14px;
+	color: #000000;
+}
+
+#photo {
+	position: absolute;
+        top: 20px;
+	right: 50px;
+	padding: 0px;
+}
+
+#photo img {
+	border: 1px solid #000000;
+}
+	
+.boxTitle {
+	position: relative;
+	left: 0%;
+	width: 25%;
+	
+	padding: 0px;
+	margin: 0px;
+	
+	border: 0px solid #cccccc;
+	text-align: center;
+}
+	
+.boxContent {
+	position: relative;
+	width: 600px;
+	left: 200px;
+	
+	padding: 0px;
+	margin: 0px;
+	margin-bottom: 20px;
+
+	border-left: 1px solid #000000;
+
+}
+
+.boxContentLevel1 {
+	padding: 0px 0px 0px 20px;
+}
+
+.boxContentLevel2 {
+	padding: 0px 0px 0px 40px;
+}
+	
+	
+/* Additional Styles */
+
+#jobTitle h1 {
+	position: absolute;
+	
+	font-family: Helvetica, sans-serif;
+	font-style: italic;
+	top: 190px;
+	right: 0%;
+	
+	padding: 0px;
+	margin: 0px;
+	font-size: 14px;
+	
+	text-align: right;
+	width: 600px;
+}
+
+.boxTitle h1 {
+	position: relative;
+	font-family: "Arial Black";
+	font-size: 14px;
+	font-weight: normal;
+	padding: 2px;
+	color: #000000;
+	margin-top: 20px;
+	margin-bottom: -20px;
+	text-align: left;
+}
+
+.boxContentLevel1 h2 {
+	position: relative;
+	font-family: "Arial Black";
+	font-size: 12px;
+  font-weight: normal;
+
+	line-height: 12px;
+	margin: 0;
+	padding: 5px 5px 0px 0px;
+	text-align: left;
+}
+
+.boxContentLevel1 h3 {
+	position: relative;
+	font-size: 12px;
+	top: 0px;
+	right: 0px;
+	margin: 0px;
+	margin-top: -14px;
+	padding: 0px;
+	text-align: right;
+}
+
+.boxContentLevel2 h3 {
+	position: relative;
+	font-size: 10px;
+	color: #333333;
+	line-height: 12px;
+	margin: 0;
+	padding: 5px 5px 0px 0px;
+	text-align: left;
+}
+
+.boxContentLevel1 p, .boxContentLevel1 ul {
+	font-family: Verdana;
+	font-size: 11px;
+	color: #333333;
+	line-height: 14px;
+	margin: 0;
+	padding: 5px 5px 15px 30px;
+	text-align: justify;
+}
+
+.boxContentLevel1 ul {
+	padding: 0px 0px 0px 40px;
+}
+
+/*
+ul {
+	margin: 0;
+	margin: 0;
+	padding: 0px 0px 0px 20px;
+}
+
+li {
+	margin: 0;
+	padding: 2px 0px 2px 0px;
+}
+*/
+
+#boxTop #infos {
+        position: absolute;
+	top: 40px;
+	left: 35%;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+#boxTop #infos #address {
+        position: relative;
+}
+
+#boxTop #infos #phone {
+        position: relative;
+}
+
+#boxTop #infos #email {
+        position: relative;
+}
+
+#boxTop #infos #other_infos {
+  position: relative;
+}
+
+/* List Height Fix */
+/*
+li {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+ul {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+ol {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+*/
+
+ul {
+	margin: 0;
+	margin-left: 20px;
+	padding: 0px 0px 0px 20px;
+}
+
+li {
+	margin: 0;
+	margin-left: 20px;
+	padding: 2px 0px 2px 0px;
+}
+
+
+

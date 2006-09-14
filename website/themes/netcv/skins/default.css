@@ -1,0 +1,283 @@
+
+@import url("backToNetCV.css");
+
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #000000;
+	background: #ffffff;
+	height: 100%;
+	text-align: center;
+	}
+
+/* Layout */
+#container {
+	position: relative;
+	width: 702px; 
+	padding: 0px;
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;	
+	border: 0px solid #ececec;
+	border-top: 0px solid #ececec;
+	border-bottom: 0px solid #ececec;
+	text-align: left; 
+	background: #ffffff;
+	}
+
+#boxTop {
+	position: relative;
+	width:700px;
+	padding: 0px;
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;	
+	border: 0px solid #ececec;
+	border-top: 0px solid #ececec;
+	border-bottom: 0px solid #ececec;
+	text-align: left; 
+	background: #ffffff;
+	height: 180px;
+	}
+
+#name h1 {
+	position: relative;
+	margin-top: 20px;
+	padding: 0px;
+	width: 480px;
+	text-align: center;
+	font-size: 24px;
+	font-weight: normal;
+	background: #ffffff;
+	}
+
+#infos {
+	position: relative;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin-top: 10px;
+	padding: 0px;
+	width: 450px;
+	text-align: center;
+	font-size: 10px;
+	line-height: 14px;
+	color: #333333
+	}
+
+#photo {
+	position: relative;
+	margin-top: -100px;
+	/* margin-bottom: 200px; */
+	margin-left: 510px;
+	padding: 0px;
+	width: 100px;
+	height: 130px;
+	}
+
+#photo img {
+	border: 1px solid #000000;
+	}
+	
+#flags {
+	position: relative;
+	margin-top: 20px;
+	margin-left: 50px;
+	width: 400px;
+	text-align: center;
+	line-height: 20px;
+	}
+
+/*
+#flags a:link, #flags a:visited  {
+	padding: 0px;
+	margin-right: 40px;
+	}
+
+#flag_en {
+	border: 0px;
+	}
+	
+#flag_fr {
+	border: 0px;
+	}
+*/
+	
+.boxTitle {
+	position: relative;
+	width: 250px;
+	padding: 0px;
+	margin-top: 20px;
+	margin-bottom: -1px;
+	margin-left: 40px;
+	margin-right: auto;
+	border: 1px solid #cccccc;
+	border-top: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	text-align: center;
+	background: #eeeeee;
+	}
+	
+.boxContent {
+	position: relative;
+	width: auto;
+	padding: 0px;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border: 1px solid #cccccc;
+	border-top: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	background: #eeeeee;
+	}
+
+.boxContentLevel1 {
+	position: relative;
+	padding: 0px 0px 0px 20px;
+	}
+
+.boxContentLevel2 {
+	position: relative;
+	padding: 0px 0px 0px 40px;
+	}
+	
+	
+/* Additional Styles */
+
+#jobTitle h1{ /* MODIFIED !!! 2003.11.05 */
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	position: relative;
+	margin-top: 20px;
+	padding: 0px;
+	width: 700px;
+	text-align: center;
+	font-size: 14px;
+	line-height: 20px;
+	color: #333333
+	}
+
+.boxContentLevel1 p, .boxContentLevel1 ul {
+	font-size: 10px;
+	color: #005588;
+	line-height: 14px;
+	margin: 0;
+	padding: 5px 5px 5px 30px;
+	text-align: justify;
+	}
+
+	
+.boxContentLevel1 ul {
+	padding: 0px 0px 0px 40px;
+	}
+
+.boxContentLevel1 h2 {
+	position: relative;
+	font-size: 10px;
+	font-weight: bold;
+	color: #880000;
+	line-height: 12px;
+	margin: 0;
+	padding: 5px 5px 0px 0px;
+	text-align: left;
+	width: 80%;
+	}
+
+.boxContentLevel1 h3 {
+	position: relative;
+	font-size: 10px;
+	font-weight: bold;
+	color: #116611;
+	line-height: 12px;
+	margin: 0;
+	padding: 5px 5px 0px 20px;
+	text-align: left;
+	width: 80%;
+	}
+
+.boxContentLevel2 h3 {
+	position: relative;
+	font-size: 10px;
+	color: #008800;
+	line-height: 12px;
+	margin: 0;
+	padding: 5px 5px 0px 0px;
+	text-align: left;
+	}
+
+ul {
+	margin: 0;
+	padding: 0px 0px 0px 20px;
+	}
+
+li {
+	margin: 0;
+	padding: 2px 0px 2px 0px;
+	}
+
+.boxTitle h1 {
+	font-size: 12px;
+	font-weight: bold;
+	padding: 2px;
+	color: #000099;
+	margin: 0px;
+	text-align: center;
+	}
+
+/* Modify Layout */
+
+input {
+	padding: 0px;
+	border: 1px solid #cccccc;
+	/*text-align: center;*/
+	background: transparent;
+	}
+	
+/* Modify Menu */
+.menu input, .menu form {
+	text-decoration: none;
+	font-size: 9px;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+
+.menu {
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	width: 160px;
+	background: #cccccc;
+	text-align: center;
+	padding: 0px;
+	border: 1px solid #444444
+}
+
+.userRelated {
+	width: 400px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 10px;
+	line-height: 30px;
+	border: 0px solid #cccccc;
+	text-align: center;
+	
+}
+
+#userRelatedLogin {
+	position: relative;
+	width: 250px;
+	margin-right: 0px;
+	margin-left: auto;
+	margin-top: auto;
+	margin-bottom: 0px;
+	padding: 10px;
+	line-height: 30px;
+	border: 1px solid #cccccc;
+	text-align: center;
+	
+}
+

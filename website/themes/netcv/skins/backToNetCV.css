@@ -1,0 +1,26 @@
+
+@import url("messages.css");
+@import url("common.css");
+/* DO NOT DELETE : USED WHEN USERS USE NETCV TO DISPLAY THEIR CV */
+#backToNetCV {
+	position: relative;
+	border: 1px solid #000000;
+	background: #000000;
+	cursor: pointer;
+}
+
+#backToNetCV p {
+       margin-top: 5px;
+       margin-bottom: 5px;
+       text-align: center;
+       font-style: normal;
+       font-size: 20px;
+       color: #000000;
+}		
+#backToNetCV a {
+	text-decoration: none;
+	color: #ffffff;
+	font-weight: bold;
+	border: 0px;
+}               
+
