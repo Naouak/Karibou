@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<title>##NOT_ENOUGH_CONTENT_PRIVATE##</title>
+		<title>##PRIVATE_DIFFUSION##</title>
 		<meta name="robots" content="noindex, nofollow" />
 	</head>
 	<body>
@@ -31,13 +31,13 @@
 {if ($myNetCVSingleCV->countSections() < $appconfig.minimum.sections) || 
 ($myNetCVSingleCV->countElements() < $appconfig.minimum.elements)}
 		##NOT_ENOUGH_CONTENT_PRIVATE##<br /><br />
-		<a href="{kurl app="netcv" page="cvsectionlist" cvid=$myNetCVSingleCV->getInfo("id") gid=$myNetCVGroup->getInfo("id")}">##BACK_TO_EDITING##</a>
+		{*<a href="{kurl app="netcv" page="cvsectionlist" cvid=$myNetCVSingleCV->getInfo("id") gid=$myNetCVGroup->getInfo("id")}">##BACK_TO_EDITING##</a>*}
 		<br />
 		<br />
 {/if}
 {if (($myNetCVUser->countPersonalInfo() - $appconfig.personalinfos.system) < $appconfig.minimum.personalinfos)}
 		##NOT_ENOUGH_PERSONALINFO##<br /><br />
-		<a href="{kurl app="netcv" page="personalinfo"}">##CLICK_HERE_TO_MODIFY_YOUR_PERSOINFO##</a>	
+		{*<a href="{kurl app="netcv" page="personalinfo"}">##CLICK_HERE_TO_MODIFY_YOUR_PERSOINFO##</a>	*}
 {/if}
 	</body>
 </html>
