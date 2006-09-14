@@ -424,7 +424,7 @@ else
 					else
 					{
 						echo _('JOB_IN').' ';
-						echo '<em>'._('COMPANYUNKNOWN');'</em>';
+						echo '<em>'._('COMPANYUNKNOWN').'</em>';
 					}
 					?>
 					</span>
