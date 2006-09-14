@@ -1,5 +1,6 @@
 <h1>##PREFERENCES##</h1>
 <div class="preferences">
+{*
 	<fieldset>
 		<legend>##LANGUAGE##</legend>
 		<div class="flags" style="width: 200px;">
@@ -14,7 +15,7 @@
 		</div>
 		<br />
 	</fieldset>
-
+*}
 	<fieldset>
 		<legend>##CONFIGURE_EMAILFW##</legend>
 		<div class="emailforward"><a href="{kurl app="emailforward"}">##CONFIGURE_EMAILFW##</a></div>
