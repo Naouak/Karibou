@@ -18,9 +18,10 @@ class NetCVDisplay extends Model
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
 
-		if (isset($this->request['request']) && $this->request != '')
+		if (isset($this->args['request']) && $this->args['request'] != '')
 			$this->args['lang'] = $this->args['request'];
-			
+		
+
 		//CV accédé par l'url définie par l'utilisateur
 		if (preg_match($GLOBALS['config']['netcv']['hostregexp'], $_SERVER["HTTP_HOST"]))
 			$this->assign('hostnameAccess', TRUE);

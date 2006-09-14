@@ -31,13 +31,13 @@
 {if ($myNetCVSingleCV->countSections() < $appconfig.minimum.sections) || 
 ($myNetCVSingleCV->countElements() < $appconfig.minimum.elements)}
 		##NOT_ENOUGH_CONTENT_PRIVATE##<br /><br />
-		<a href="{kurl page="cvsectionlist" cvid=$myNetCVSingleCV->getInfo("id") gid=$myNetCVGroup->getInfo("id")}">##BACK_TO_EDITING##</a>
+		<a href="{kurl app="netcv" page="cvsectionlist" cvid=$myNetCVSingleCV->getInfo("id") gid=$myNetCVGroup->getInfo("id")}">##BACK_TO_EDITING##</a>
 		<br />
 		<br />
 {/if}
 {if (($myNetCVUser->countPersonalInfo() - $appconfig.personalinfos.system) < $appconfig.minimum.personalinfos)}
 		##NOT_ENOUGH_PERSONALINFO##<br /><br />
-		<a href="{kurl page="personalinfo"}">##CLICK_HERE_TO_MODIFY_YOUR_PERSOINFO##</a>	
+		<a href="{kurl app="netcv" page="personalinfo"}">##CLICK_HERE_TO_MODIFY_YOUR_PERSOINFO##</a>	
 {/if}
 	</body>
 </html>
