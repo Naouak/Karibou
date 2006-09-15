@@ -108,11 +108,25 @@ class KSSaveSurvey extends FormModel
 		else
 		{
 			//Add survey
+			$mySurvey = $mySF->createSurvey(
+				array(
+					'name' => $_POST['ks_surveyname'],
+					'description' => $_POST['ks_surveydescription']
+				));
+				
+			var_dump($mySurvey);
 		}
 		
 		
-		$this->setRedirectArg('page', 'displayquestions');
-		$this->setRedirectArg('surveyid', $_POST["surveyid"]);
+		if (isset($_POST["surveyid"]))
+		{
+			$this->setRedirectArg('page', 'displayquestions');
+			$this->setRedirectArg('surveyid', $_POST["surveyid"]);
+		}
+		else
+		{
+			$this->setRedirectArg('page', 'editsurvey');
+		}
 	}
 }
 

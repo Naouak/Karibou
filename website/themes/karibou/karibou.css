@@ -122,7 +122,7 @@ html>body #content {
 	position: absolute;
 	top: 0px;
 	right: 0px;
-	z-index: 2;
+	z-index: 4;
 	font-size: 0.8em;
 	background-image: url(images/search/searchmodule.png);
 }

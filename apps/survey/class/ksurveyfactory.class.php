@@ -70,7 +70,7 @@ class KSurveyFactory
 	}
 	
 	/**
-	 * Method that returns the survey list
+	 * Récupère un sondage par rapport à son identifiant
 	 */
 	function getSurveyById ($surveyid)
 	{
@@ -114,6 +114,49 @@ class KSurveyFactory
 		return $survey;
 	}
 
+	/**
+	 * Créé le sondage à partir des variables présentes dans un tableau
+	 */
+	function createSurvey ($vars)
+	{
+
+		if (isset($vars['name'], $vars['description']))
+		{
+			$sql = "
+					INSERT INTO survey_surveys
+							('name',
+							'description',
+							'userid',
+							'datetime')
+					VALUES	('".$vars['name']."',
+							 '".$vars['description']."',
+							'".$this->userFactory->getCurrentUser()->getId()."',
+							NOW())
+				";			
+			
+			try
+			{
+				$stmt = $this->db->exec($sql);
+				var_dump($stmt);
+				unset($stmt);
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage());
+			}
+		}
+		
+		if (isset($insertid))
+		{
+			$infos = array_merge($vars, array('id' => $insertid));
+			$survey = new KSSurvey($infos, $this->userFactory);
+			return $survey;
+		}
+		else
+		{
+			return false;
+		}
+	}
 
 
 	/**
