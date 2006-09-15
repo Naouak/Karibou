@@ -80,6 +80,9 @@ a:visited {
 	padding-left: 1%;
 	width: 100%;
 }
+html>body #container #main.nonav #content1 {
+	width: 99%;
+}
 
 #content1 {
 	margin: 0px 0px 0px 0px;
@@ -123,7 +126,9 @@ html>body #content {
 	font-size: 0.8em;
 	background-image: url(images/search/searchmodule.png);
 }
-
+html>body #container form#search {
+	position: fixed;
+}
 #container form#search input {
 	position: absolute;
 	display: block;

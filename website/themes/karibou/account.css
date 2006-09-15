@@ -14,6 +14,7 @@
 	height: 24px;
 }
 html>body #container #account {
+	position: fixed;
 	height: 23px;
 }
 
