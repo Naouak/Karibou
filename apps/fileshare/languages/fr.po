@@ -97,7 +97,7 @@ msgid "GROUPS"
 msgstr "Groupes"
 
 msgid "FILEUPLOAD_ADDVERSION_DESCRIPTION"
-msgstr "L'ajout d'une nouvelle version de fichier permet de mettre à jour les documents facilement. Le fichier original sera sauvegardé ainsi que toutes les verions antérieures à celle que vous êtes sur le point de mettre en ligne. Votre fichier sera considéré comme la dernière référence. Attention le fichier que vous êtes sur le point de mettre en ligne conservera le nom initial du premier fichier qui a été mis en ligne."
+msgstr "L'ajout d'une nouvelle version de fichier permet de mettre à jour les documents facilement. Le fichier original sera sauvegardé ainsi que toutes les versions antérieures à celle que vous êtes sur le point de mettre en ligne. Votre fichier sera considéré comme la dernière référence. Attention le fichier que vous êtes sur le point de mettre en ligne conservera le nom initial du premier fichier qui a été mis en ligne."
 
 msgid "ADDING_A_NEW_VERSION"
 msgstr "Ajouter une nouvelle version au fichier"
