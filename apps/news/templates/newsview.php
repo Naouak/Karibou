@@ -34,7 +34,7 @@ if ($this->vars['permission'] >= _READ_ONLY_)
 				echo '</form>';
 				echo '<form action="'.kurl(array('action'=>"post")).'" method="post">';
 					echo '<input type="hidden" name="postType" value="delNews">';
-					echo '<input type="hidden" name="id" value="{$idNews}">';
+					echo '<input type="hidden" name="id" value="'.$idNews.'">';
 					echo '<input type="submit" value="'._('DELETE').'" onclick="return confirm(\''._('SURE_TO_DELETE_ARTICLE').'\');"/>';
 				echo '</form>';
 			echo '</div>';
@@ -62,8 +62,10 @@ if ($this->vars['permission'] >= _READ_ONLY_)
 				echo '<a href="'.kurl(array('page'=>"addcomment", 'id'=>$idNews)).'">'._('ADD_COMMENT').'</a>';
 			}
 			echo '</div>';
-			if (isset($addComment))
+			if (isset($this->vars['addComment']))
 			{
+				$theNewsCurrentComment = $this->vars['theNewsCurrentComment'];
+			
 				echo '<div class="newNewsCommentForm">';
 					echo '<h3>'._('ADD_A_COMMENT_TO_ARTICLE').' "';
 						if ($theArticle->getTitle()=="")
@@ -80,7 +82,10 @@ if ($this->vars['permission'] >= _READ_ONLY_)
 							if ($theArticle->getID()==$theNewsCurrentComment['newsId'])
 								echo $theNewsCurrentComment['title'];
 						echo '"/>
-							<label for="description">'._('COMMENT_DESCRIPTION').' :</label><textarea name="content" id="description" rows="5" cols="80">{if ($theArticle->getId()==$theNewsCurrentComment.newsId)}{$theNewsCurrentComment.content}{/if}</textarea>
+							<label for="description">'._('COMMENT_DESCRIPTION').' :</label><textarea name="content" id="description" rows="5" cols="80">';
+							if ($theArticle->getId() == $theNewsCurrentComment['newsId'])
+								echo $theNewsCurrentComment['content'];
+							echo '</textarea>
 							<input type="submit" value="'._('POST_COMMENT_ON_ARTICLE').'" class="button" />
 							';
 					echo '</form>';
