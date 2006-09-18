@@ -4,16 +4,15 @@
 			</div>
 		</div>
 		<?/* DEBUT : Barre utilisateur */?>
-		<ul id="footer">
+		<ul id="footer"><?if (isset($GLOBALS['config']['footer']['message']) && $GLOBALS['config']['footer']['message'] !== '')
+				{?>
 			<li class="first">
-				Intranet <?=_('BY')?> <a href="http://www.karibou.org" title="Karibou">Karibou</a>
-			</li>
-			<li>
-				<a href="<?=kurl(array('app'=>"contact"));?>">Contact</a>
-			</li>
-			<li>
-				<a href="<?=kurl(array('app'=>"credits"));?>"><?=_('APP_CREDITS');?></a>
-			</li>
+				<?=_('INTRANET_PROVIDED_BY')?> <?=$GLOBALS['config']['footer']['message'];?>
+			</li><?}?>
+			<li<? if (!(isset($GLOBALS['config']['footer']['message']) && $GLOBALS['config']['footer']['message'] !== '')) {?> class="first"<?}?>>
+				Intranet <?=_('BY')?> <a href="http://www.karibou.org" title="Karibou">Karibou</a></li>
+			<li><a href="<?=kurl(array('app'=>"contact"));?>">Contact</a></li>
+			<li><a href="<?=kurl(array('app'=>"credits"));?>"><?=_('APP_CREDITS');?></a></li>
 		</ul>
 
 		<div id="account">

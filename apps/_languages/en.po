@@ -270,3 +270,6 @@ msgstr "Today"
 
 msgid "TOMORROW"
 msgstr "Tomorrow"
+
+msgid "INTRANET_PROVIDED_BY"
+msgstr "Service provided"
