@@ -70,7 +70,7 @@ $config['mail']['alternative_webmail'] = 'http://webmail.karibou.org';
 $config['keychain']['storage'] = 'session';
 
 //Définit le message à afficher dans le footer (en première position)
-$config['footer']['message'] = '<a href="http://www.inkateo.com" title="Inkateo : Les services pour votre communaut&eacute;">Inkateo</a>';
+//$config['footer']['message'] = '<a href="http://www.karibou.org" title="Karibou : L\'Intranet">Karibou</a>';
 
 $config['base_url'] = substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['SCRIPT_NAME'], '/'));
 $config['site']['base_url'] = 'http://'.$_SERVER["SERVER_NAME"].$config['base_url'];
