@@ -548,6 +548,28 @@ CREATE TABLE `calendar_user` (
 
 INSERT INTO `calendar_user` VALUES (1, 1);
 
+--
+
+CREATE TABLE `calendar_colors` (
+  `calendarid` int(11) NOT NULL default '0',
+  `color1` varchar(6) NOT NULL default '',
+  `color2` varchar(6) NOT NULL default '',
+  PRIMARY KEY  (`calendarid`),
+  UNIQUE KEY `calendarid` (`calendarid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- 
+-- Contenu de la table `calendar_colors`
+-- 
+
+INSERT INTO `calendar_colors` (`calendarid`, `color1`, `color2`) VALUES (1, '59ffe1', '98fdeb'),
+(2, 'ffee53', 'fff494'),
+(3, '786cff', 'b1a9ff'),
+(4, '64ef69', '98fd9b'),
+(5, 'ff4d59', 'ff858d');
+
+
+
 -- --------------------------------------------------------
 
 
