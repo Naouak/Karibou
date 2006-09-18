@@ -170,10 +170,12 @@ class CurrentUser extends User
 				$first = false;
 			}
 		}
+
 		try
 		{
 			$db->exec($qry_delete);
-			$db->exec($qry_insert);
+			if (isset($qry_insert))
+				$db->exec($qry_insert);
 		}
 		catch(PDOException $e)
 		{
