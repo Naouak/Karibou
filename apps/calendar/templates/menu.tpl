@@ -5,7 +5,7 @@
 {/if}
 {if $page == "addEvent"}
 	<li><strong>##ADDEVENT##</strong></li>
-{else}
+{elseif ($permission > _READ_ONLY_)}
 	<li><a href="{kurl page='addEvent'}">##ADDEVENT##</a></li>
 {/if}
 {if $page == "manage"}

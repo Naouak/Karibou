@@ -40,6 +40,8 @@ class CalendarManage extends Model
 		$this->assign("public_cals", $cals_pub);
 		$this->assign("subscribed_cals", $cals_subs);
 		$this->assign("admin_cals", $cals_admin);
+		
+		$this->assign("permission", $this->permission);
 	}
 
 }

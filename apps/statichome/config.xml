@@ -27,6 +27,7 @@
 	<load class="CalendarList" file="../calendar/classes/calendarlist.class.php" />
 	<load class="CalendarListDB" file="../calendar/classes/calendarlistdb.class.php" />
 	<load class="Calendar" file="../calendar/classes/calendar.class.php" />
+	<load class="CalendarColors" file="../calendar/classes/calendarcolors.class.php" />
 	<load class="wiki2xhtmlBasic" file="../wiki/wiki2xhtml.basic.class.php" />
 	
 	<load class="NetJobs"			file="../netjobs/class/NetJobs.class.php" />

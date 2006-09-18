@@ -12,6 +12,8 @@ class CalendarMenu extends Model
 		{
 			$this->assign("page", "");
 		}
+		
+		$this->assign("permission", $this->permission);
 	}
 }
 

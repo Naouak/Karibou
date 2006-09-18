@@ -156,9 +156,9 @@ else
 			if (count($this->vars['today_events']) != 0)
 			foreach($this->vars['today_events'] as $event)
 			{
-
 			?>
-				<li>
+				<li style="margin: 7px;">
+				<div class="colorsquare" style="margin: 2px;background-color: #<?=$event->getCalendarColor();?>;"></div>
 				<? 
 				if ($event->parent)
 				{
@@ -175,7 +175,7 @@ else
 				<?
 				}
 				?>
-				: <a href="<?=kurl(array('app' => 'calendar', 'page' => 'view', 'cal_id' => $event->calendarid, 'year' => $event->o_start->getYear(), 'month' => $event->o_start->getMonth(), 'day' => $event->o_start->getDay()));?>"><?=$event->summary;?></a>
+				: <a href="<?=kurl(array('app' => 'calendar', 'page' => 'view', 'cal_id' => $event->calendarid, 'year' => $event->o_start->getYear(), 'month' => $event->o_start->getMonth(), 'day' => $event->o_start->getDay()));?>" title="<?=$event->description;?>"><?=$event->summary;?></a>
 				</li>
 			<?
 			}
@@ -193,7 +193,8 @@ else
 			{
 
 			?>
-				<li>
+				<li style="margin: 7px;">
+				<div class="colorsquare" style="margin: 2px;background-color: #<?=$event->getCalendarColor();?>;"></div>
 				<? 
 				if ($event->parent)
 				{
@@ -210,7 +211,7 @@ else
 				<?
 				}
 				?>
-				: <a href="<?=kurl(array('app' => 'calendar', 'page' => 'view', 'cal_id' => $event->calendarid, 'year' => $event->o_start->getYear(), 'month' => $event->o_start->getMonth(), 'day' => $event->o_start->getDay()));?>"><?=$event->summary;?></a>
+				: <a href="<?=kurl(array('app' => 'calendar', 'page' => 'view', 'cal_id' => $event->calendarid, 'year' => $event->o_start->getYear(), 'month' => $event->o_start->getMonth(), 'day' => $event->o_start->getDay()));?>" title="<?=$event->description;?>"><?=$event->summary;?></a>
 				</li>
 			<?
 			}

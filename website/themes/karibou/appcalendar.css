@@ -163,3 +163,18 @@ html>body #calendar {
 #content .date option {
 	padding-right: 5px;
 }
+
+
+.colorsquare {
+	height: 15px;
+	width: 15px;
+	float: left;
+	margin-top: 6px;
+	margin-right: 5px;
+	border: 1px solid #acacac;
+	font-size: 1px; 
+}
+html>body .colorsquare {
+	height: 13px;
+	width: 13px;
+}

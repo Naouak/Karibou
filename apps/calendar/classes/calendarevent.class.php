@@ -223,6 +223,11 @@ class CalendarEvent
         $content = $wiki->transform($this->description);
         return $content;
 	}
+	
+	function getCalendarColor($n = FALSE)
+	{
+		return CalendarColors::getColor($this->calendarid, $n);
+	}
 }
 
 ?>

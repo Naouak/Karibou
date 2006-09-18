@@ -38,10 +38,11 @@ function close_editinline_popup()
 
 
 <div id="calendar_sidebar">
+{*
 <a href="{kurl page='manage'}">##MANAGE##</a><br />
 <br />
 <a href="{kurl page='addEvent'}">##ADDEVENT##</a><br />
-
+*}
 {include file="small.tpl"}
 <h3>##NEXTDAYEVENTS##</h3>
 <ul>
@@ -58,6 +59,22 @@ function close_editinline_popup()
 	</li>
 {/foreach}
 </ul>
+
+{if $cals|@count > 0}
+<fieldset>
+	<legend>##CALENDAR_COLORS##</legend>
+	<ul style="list-style: none; padding: 0px; margin: 2px; padding-bottom: 10px; font-size: 0.8em;">
+	{foreach from=$cals item="cal"}
+		<li style="clear: both;">
+			<div class="colorsquare" style="background-color: #{$cal->getColor()};"></div>
+			<div style="float: left;">{$cal->getName()}</div>
+			<br style="clear: both;" />
+		</li>
+	{/foreach}
+	</ul>
+</fieldset>
+{/if}
+
 </div>
 
 <div id="calendar">
@@ -76,8 +93,8 @@ function close_editinline_popup()
 <div class="newcolumn_{$colnum}">
 {/if}
 {foreach item=event from=$events}
-	<div class="event event_size_{$colnum} start_{$event->start_class} size_{$event->size_class} blue" >
-	<div class="event_box event_size_{$colnum} start_{$event->start_class} size_{$event->size_class} lightblue" >
+	<div class="event event_size_{$colnum} start_{$event->start_class} size_{$event->size_class} blue" style="background-color: #{$event->getCalendarColor()}">
+	<div class="event_box event_size_{$colnum} start_{$event->start_class} size_{$event->size_class} lightblue" style="background-color: #{$event->getCalendarColor(2)}">
 		<div class="event_content light_blue" >
 			<h3>{$event->summary}</h3>
 			<p>{$event->getDescriptionXHTML()}</p>
@@ -112,7 +129,6 @@ function close_editinline_popup()
 </div>
 {/section}
 </div>
-
 
 </div>
 

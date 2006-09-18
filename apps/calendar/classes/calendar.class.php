@@ -41,6 +41,11 @@ class Calendar
 		return $this->id;
 	}
 
+	function getColor()
+	{
+		return CalendarColors::getColor($this->id);
+	}
+
 	function getName()
 	{
 		return $this->name;

@@ -20,6 +20,8 @@ class CalendarListDB extends CalendarList
 	{
 		parent::__construct($user);
 		$this->db = $db;
+		
+		CalendarColors::init($this->db);
 	}
 	
 	function getDefaultCalendars()
