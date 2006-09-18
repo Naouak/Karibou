@@ -86,3 +86,9 @@ msgstr "Survey creation"
 
 msgid "KS_NOSURVEY"
 msgstr "No survey available"
+
+msgid "KS_EDITSURVEYINFOS"
+msgstr "Edit survey infos"
+
+msgid "KS_EDITQUESTIONS"
+msgstr "Edit questions"

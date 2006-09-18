@@ -86,3 +86,9 @@ msgstr "Création de sondage"
 
 msgid "KS_NOSURVEY"
 msgstr "Aucun sondage n'est disponible"
+
+msgid "KS_EDITSURVEYINFOS"
+msgstr "Editer les informations de ce sondage"
+
+msgid "KS_VIEWMODIFYQUESTIONS"
+msgstr "Editer les questions de ce sondage"

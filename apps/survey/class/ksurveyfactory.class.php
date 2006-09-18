@@ -122,12 +122,12 @@ class KSurveyFactory
 
 		if (isset($vars['name'], $vars['description']))
 		{
-			$sql = "
+			echo $sql = "
 					INSERT INTO survey_surveys
-							('name',
-							'description',
-							'userid',
-							'datetime')
+							(name,
+							description,
+							userid,
+							datetime)
 					VALUES	('".$vars['name']."',
 							 '".$vars['description']."',
 							'".$this->userFactory->getCurrentUser()->getId()."',
@@ -137,7 +137,7 @@ class KSurveyFactory
 			try
 			{
 				$stmt = $this->db->exec($sql);
-				var_dump($stmt);
+				$insertid = $this->db->lastInsertId();
 				unset($stmt);
 			}
 			catch(PDOException $e)

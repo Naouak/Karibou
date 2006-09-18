@@ -114,7 +114,6 @@ class KSSaveSurvey extends FormModel
 					'description' => $_POST['ks_surveydescription']
 				));
 				
-			var_dump($mySurvey);
 		}
 		
 		
