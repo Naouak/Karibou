@@ -18,7 +18,7 @@ class ObjectList implements ArrayAccess, Iterator
 	/**
 	 * @var Array
 	 */
-	public $data;
+	protected $data;
 	
 	/**
 	 * A switch to keep track of the end of the array
@@ -170,7 +170,7 @@ class ObjectList implements ArrayAccess, Iterator
 	 */
 	function merge($objectlist)
 	{
-		$this->data = array_merge($this->data, $objectlist->data);
+		$this->data = array_merge($this->data, $objectlist->getData());
 	}
 	
 	function compare_date($a, $b) 
@@ -188,6 +188,14 @@ class ObjectList implements ArrayAccess, Iterator
 		{
 			return 1;
 		}
+	}
+	
+	/**
+	 * Retour de la variable protégée data (pour permettre le merge)
+	 */
+	public function getData()
+	{
+		return $this->data;
 	}
 }
 
