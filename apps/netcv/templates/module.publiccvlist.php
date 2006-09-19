@@ -28,7 +28,7 @@
 		}		
 	}
 	
-	if (isset($r) && count($r)>0)
+	if (isset($r) && count($r)>1)
 	{
 		echo "<h3>NetCV : ".count($this->vars['groups']).' Curriculum Vitae</h3>';
 		echo '<ul>';

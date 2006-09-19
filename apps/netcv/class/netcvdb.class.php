@@ -10,12 +10,17 @@ class NetCVDB {
 		$this->db = $db;
 	}
 	
-	function getAllCV ()
+	function getAllCV ($diffusion = FALSE)
 	{
-				echo $allcvReq = "
+				if ($diffusion === FALSE)
+					$diffusion = '';
+				else
+					$diffusion = 'AND netcv_resumes_group.diffusion = \''.$diffusion.'\'';
+				
+				$allcvReq = "
 				SELECT
 					netcv_resumes_group.id, netcv_resumes_group.user_id, netcv_resumes_group.hostname, netcv_resumes_group.diffusion,
-					netcv_resumes_by_lang.id, netcv_resumes_by_lang.group_id, netcv_resumes_by_lang.jobtitle as langjobtitle,
+					netcv_resumes_by_lang.id, netcv_resumes_by_lang.lang, netcv_resumes_by_lang.group_id, netcv_resumes_by_lang.jobtitle as langjobtitle,
 					netcv_users.username, netcv_users.firstname, netcv_users.lastname, netcv_users.jobtitle,
 					TIMESTAMP(MAX(netcv_resumes.date_modification)) as last_modification
 				FROM
@@ -26,6 +31,7 @@ class NetCVDB {
 						netcv_users.id = netcv_resumes_group.user_id
 					AND
 						netcv_resumes.resume_id = netcv_resumes_by_lang.id
+					$diffusion
 				GROUP BY
 					netcv_resumes.resume_id
 				ORDER BY

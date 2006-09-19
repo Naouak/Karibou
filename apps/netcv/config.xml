@@ -88,7 +88,7 @@
 	<view name="cvcontentcheck"	class="NetCVContentCheck"	template="cvcontentcheck.tpl" />
 	<view name="cvcontactform"		class="NetCVContactForm"	template="cvcontactform.tpl" />
 	<view name="menu" class="NetCVMenu" template="menu.tpl" />
-	<view name="allcv"		class="NetCVAllCV"	template="allcv.tpl" />
+	<view name="allcv"		class="NetCVAllCV"	template="allcv.php" />
 	<view name="modulepubliccvlist"		class="NetCVModulePublicCVList"	template="module.publiccvlist.php" />
 
 	<page name="" view="home" />
@@ -175,7 +175,10 @@
 		<argument name="hostname"	class="UserName" />
 		<option name="lang"			class="AlphaNum" />
 	</page>
-	<page name="allcv" view="allcv" />
+	<page name="allcv" view="allcv">
+		<header	app="header"			view="empty"/>
+		<footer	app="footer"			view="empty" />
+	</page>
 	<page name="modulepubliccvlist" view="modulepubliccvlist">
 		<header	app="header"			view="empty"/>
 		<footer	app="footer"			view="empty" />

@@ -15,7 +15,7 @@ class NetCVAllCV extends Model
 	public function build()
 	{
 		$CVDB = new NetCVDB($this->db);
-		$allcv = $CVDB->getAllCV();
+		$allcv = $CVDB->getAllCV('public');
 		
 		$this->assign("allcv", $allcv);
 	}
