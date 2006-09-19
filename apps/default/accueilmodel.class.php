@@ -86,11 +86,6 @@ class AccueilModel extends Model
 		}
 
 		$cont = array();
-/*
-		echo "<pre>";
-		var_dump($containers);
-		die;
-	*/
 		foreach( $containers as $key => $c )
 		{
 			$cont[$key] = $c['size'];

@@ -116,6 +116,9 @@
     cursor: pointer;
 	z-index: 5;
 }
+html>body #flashmail_headerbox_answer  {
+	position: fixed;
+}
 
 #flashmail_headerbox_answer.dontshow {
 	visibility: hidden;
@@ -141,6 +144,10 @@
 	text-align: left;
 	z-index: 5;
 }
+html>body #flashmail_headerbox_unreadlist {
+	position: fixed;
+}
+
 #flashmail_headerbox_unreadlist.dontshow {
 	visibility: hidden;
 }

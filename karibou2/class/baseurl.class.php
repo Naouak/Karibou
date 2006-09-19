@@ -78,7 +78,7 @@ class BaseUrl
 				$this->app = $GLOBALS['config']['defaultapp'];
 			}
 			//Requête vers une application
-			elseif(preg_match('#^'.$this->base_url.'([0-9A-Za-z_]+)(\S*|\z)#',$p_url,$match))
+			elseif(preg_match('#^'.$this->base_url.'([0-9A-Za-z_.]+)(\S*|\z)#',$p_url,$match))
 			{
 				$this->app = $match[1];
 			}

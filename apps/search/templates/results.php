@@ -24,7 +24,7 @@ else
 <?
 if ( (isset($this->vars['articles']) && count($this->vars['articles']) > 0) ||
 	  (isset($this->vars['files']) && count($this->vars['files']) > 0) ||
-	  (isset($this->vars['events']) && count($this->vars['events']) > 0))
+	  (isset($this->vars['events']) && $this->vars['events']->count() > 0))
 {
 
 	echo '<div class="goto">';
@@ -40,7 +40,7 @@ if ( (isset($this->vars['articles']) && count($this->vars['articles']) > 0) ||
 		echo '<a href="'.kurl(array('app'=>'search')).'#search_fileshare">'.count($this->vars['files']).' '._('SEARCH_RESULTSS').' '._('SEARCH_IN').' '._('APP_FILESHARE').'</a>';
 	}
 	
-	if (isset($this->vars['events']) && count($this->vars['events']) > 0)
+	if (isset($this->vars['events']) && $this->vars['events']->count() > 0)
 	{
 		echo '<a href="'.kurl(array('app'=>'search')).'#search_calendar">'.$this->vars['events']->count().' '._('SEARCH_RESULTSS').' '._('SEARCH_IN').' '._('APP_CALENDAR').'</a>';
 	}
@@ -69,7 +69,7 @@ else
 	}
 	elseif (count($this->vars['articles'])== 0)
 	{
-		echo "<div>";
+		echo '<div id="search_news" class="resultset">';
 		echo _('SEARCH_NORESULT').' '._('SEARCH_IN').' <strong>'._('NEWS').'</strong>';
 		echo "</div>";
 	}
@@ -96,7 +96,7 @@ else
 	}
 	elseif (count($this->vars['files'])== 0)
 	{
-		echo "<div>";
+		echo '<div id="search_fileshare" class="resultset">';
 		echo _('SEARCH_NORESULT').' '._('SEARCH_IN').' <strong>'._('FILESHARE').'</strong>';
 		echo "</div>";
 	}
@@ -123,7 +123,7 @@ else
 	}
 	elseif ($this->vars['events']->count()== 0)
 	{
-		echo "<div>";
+		echo '<div id="search_calendar" class="resultset">';
 		echo _('SEARCH_NORESULT').' '._('SEARCH_IN').' <strong>'._('CALENDAR').'</strong>';
 		echo "</div>";
 	}

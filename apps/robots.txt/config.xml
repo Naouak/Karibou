@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_READ_ONLY_" logged="_READ_ONLY_" />
+
+	<load class="RobotsTxtDefault" file="default.class.php" />
+
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<view name="default" class="RobotsTxtDefault" template="default.php" />
+
+	<page view="default">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+
+</app>

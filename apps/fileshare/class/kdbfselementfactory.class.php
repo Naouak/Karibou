@@ -75,7 +75,7 @@ LIMIT 0 , 30
 					fileshare_versions.description as description, fileshare_versions.versionid, fileshare_versions.datetime, UNIX_TIMESTAMP(fileshare_versions.datetime) AS timestamp, fs_stats.hits,
 					MATCH(name) AGAINST ('".$keywords."') AS score1,
 					MATCH(description) AGAINST ('".$keywords."') AS score2,
-					(MATCH(name) AGAINST ('".$keywords."') +MATCH(description) AGAINST ('".$keywords."')) AS score
+					(MATCH(name) AGAINST ('".$keywords."') + MATCH(description) AGAINST ('".$keywords."')) AS score
 			FROM fileshare_versions
 				LEFT JOIN fileshare_sysinfos ON fileshare_sysinfos.id = fileshare_versions.id
 				LEFT JOIN (SELECT elementid, versionid, count( id ) AS hits FROM fileshare_stats GROUP BY elementid, versionid) AS fs_stats
@@ -86,6 +86,7 @@ LIMIT 0 , 30
 					(MATCH(name) AGAINST ('".$keywords."')) > 0
 					OR (MATCH(description) AGAINST ('".$keywords."')) > 0
 					)
+			GROUP BY fileshare_versions.id
 			ORDER BY score DESC 
 			LIMIT ".($page*$num)." , ".(($page+1)*$num)."
 			";
