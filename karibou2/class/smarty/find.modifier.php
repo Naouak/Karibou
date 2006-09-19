@@ -30,5 +30,16 @@ function smarty_modifier_find($string, $keywords)
     }
 
     return $string;
-} 
+}
+
+function find($string, $keywords)
+{
+    return smarty_modifier_find($string, $keywords);
+}
+
+function find_and_highlight($string, $keywords)
+{
+    return smarty_modifier_highlight(smarty_modifier_find($string, $keywords), $keywords);
+}
+
 ?>

@@ -8,15 +8,40 @@
 	<load class="DAOFactory"	file="class/daofactory.class.php" />
 	<load class="DAOElement"	file="class/daoelement.class.php" />
 	<load class="DAONews"		file="class/daonews.class.php" />
-	<load class="DAOFileShare"	file="class/daofileshare.class.php" />
+	<load class="DAOFiles"		file="class/daofiles.class.php" />
+	<load class="DAOEvents"		file="class/daoevents.class.php" />
+
+	<load class="KDirectory" file="../fileshare/class/kdirectory.class.php" />
+	<load class="KFile" file="../fileshare/class/kfile.class.php" />
+	<load class="KDBFSElement" file="../fileshare/class/kdbfselement.class.php" />
+	<load class="KDBFSElementVersion" file="../fileshare/class/kdbfselementversion.class.php" />
+	<load class="KDBFSElementWriter" file="../fileshare/class/kdbfselementwriter.class.php" />
+	<load class="KDBFSElementFactory" file="../fileshare/class/kdbfselementfactory.class.php" />
+
+	<load class="KDate" file="../calendar/classes/kdate.class.php" />
+	<load class="CalendarReader" file="../calendar/classes/calendarreader.class.php" />
+	<load class="CalendarReaderDB" file="../calendar/classes/calendarreaderdb.class.php" />
+	<load class="CalendarWriter" file="../calendar/classes/calendarwriter.class.php" />
+	<load class="CalendarWriterDB" file="../calendar/classes/calendarwriterdb.class.php" />
+	<load class="CalendarEvent" file="../calendar/classes/calendarevent.class.php" />
+	<load class="CalendarEventList" file="../calendar/classes/calendareventlist.class.php" />
+	<load class="CalendarEventDB" file="../calendar/classes/calendareventdb.class.php" />
+	<load class="CalendarList" file="../calendar/classes/calendarlist.class.php" />
+	<load class="CalendarListDB" file="../calendar/classes/calendarlistdb.class.php" />
+	<load class="Calendar" file="../calendar/classes/calendar.class.php" />
+	<load class="CalendarColors" file="../calendar/classes/calendarcolors.class.php" />
+	<load class="wiki2xhtmlBasic" file="../wiki/wiki2xhtml.basic.class.php" />
 
 	<load class="SearchDefault" file="default.class.php" />
 
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 
-	<view name="results" class="SearchDefault" template="results.tpl" />
+	<view name="results" class="SearchDefault" template="results.php" />
 
-	<page view="results" />
+	<page view="results">
+		<header app="header" view="default" />
+		<footer app="footer" view="default" />
+	</page>
 
 </app>

@@ -13,7 +13,7 @@ class NewsMenu extends Model
 			$this->assign("page", "");
 		}
 		
-		if ($this->permission > _READ_ONLY_)
+		if ($this->permission > _SELF_WRITE_)
 			$this->assign('writeperm', true);
 		else
 			$this->assign('writeperm', false);

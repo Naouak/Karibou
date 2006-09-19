@@ -273,3 +273,6 @@ msgstr "Demain"
 
 msgid "INTRANET_PROVIDED_BY"
 msgstr "Service fourni par"
+
+msgid "EVERYWHERE"
+msgstr "Partout"

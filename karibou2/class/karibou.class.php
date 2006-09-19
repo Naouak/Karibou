@@ -192,7 +192,7 @@ class Karibou
             $this->currentLanguage = 'fr_FR.utf-8';
         }
 		putenv("LANG=".$this->currentLanguage); 
-		setlocale(LC_ALL, $this->currentLanguage);
+		setlocale(LC_ALL, $this->currentLanguage, substr($this->currentLanguage, 0, 2));
 		$domain = 'messages';
 		bindtextdomain($domain, KARIBOU_LOCALE_DIR); 
 		bind_textdomain_codeset($domain, 'utf-8');

@@ -109,6 +109,48 @@ class CalendarReaderDB extends CalendarReader
 		return $out;
 	}
 	
+	function getEventsBySearch($keywords, Date $start = NULL, Date $end = NULL)
+	{
+		if (is_null($start))
+		{
+			$start = new Date(new KDate());
+		}
+		
+		if (is_null($end))
+		{
+			$end = new Date(new KDate());
+		}
+	
+		$qry = "SELECT ce.* FROM calendar c, calendar_event ce WHERE c.id=ce.calendar_id AND c.id='".$this->id."'";
+		$qry .= " AND (";
+		$qry .= " ce.startdate >= '".$start->getDate()."') ";
+		$qry .= " AND (";
+		$qry .= " ce.summary LIKE '%".addslashes($keywords)."%'
+					OR ce.description LIKE '%".addslashes($keywords)."%' ";
+		$qry .= ") ";
+		$qry .= "ORDER BY ce.startdate ASC ";
+		$qry .= "LIMIT 0, 50";
+		//echo $qry.'<br /><br />';
+		//echo $qry.';';
+		try
+		{
+			$stmt = $this->db->query($qry);
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill( $qry." : ".$e->getMessage() );
+		}
+		$out = new CalendarEventList();
+		while( $tab = $stmt->fetch(PDO::FETCH_ASSOC) )
+		{
+			$out[] = new CalendarEventDB($tab);
+		}
+
+		unset($stmt);
+		return $out;
+		
+	}
+	
 	function getId()
 	{
 		return $this->id;

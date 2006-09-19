@@ -57,9 +57,9 @@ if ($this->vars['permission'] >= _READ_ONLY_)
 					}
 					echo ')';
 				}
-			if ($this->vars['permission'] > _READ_ONLY_)
+			if ($this->vars['permission'] >= _SELF_WRITE_)
 			{
-				echo '<a href="'.kurl(array('page'=>"addcomment", 'id'=>$idNews)).'">'._('ADD_COMMENT').'</a>';
+				echo ' <a href="'.kurl(array('page'=>"addcomment", 'id'=>$idNews)).'">'._('ADD_COMMENT').'</a>';
 			}
 			echo '</div>';
 			if (isset($this->vars['addComment']))

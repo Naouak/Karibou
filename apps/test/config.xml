@@ -8,10 +8,16 @@
 
 	<view name="default" class="Test" template="test.tpl" />
 	<view name="view" class="TestView" template="testview.tpl" />
+	<view name="viewphp" class="TestView" template="view.php" />
 	
 	<page view="view" />
 
 	<page name="view" view="view">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" />
+	</page>
+	
+	<page name="viewphp" view="viewphp">
 		<header app="empty" view="default" />
 		<footer app="empty" view="default" />
 	</page>

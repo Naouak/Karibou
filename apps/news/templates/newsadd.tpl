@@ -1,4 +1,4 @@
-{if $permission > _READ_ONLY_}
+{if $permission > _SELF_WRITE_}
 	<h1>##NEWS##</h1>
 	<a href="{kurl app="wiki" page="help"}" >##TITLE_WIKI_SYNTAX##</a>
 	<div class="newNewsForm">

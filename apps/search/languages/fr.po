@@ -19,7 +19,13 @@ msgid "SEARCH_SEARCHRESULTS"
 msgstr "Résultats de la recherche"
 
 msgid "SEARCH_RESULTSS"
-msgstr "resultat(s)"
+msgstr "résultat(s)"
 
 msgid "SEARCH_IN"
 msgstr "dans"
+
+msgid "SEARCH_GOTO"
+msgstr "Accès rapide aux résultats"
+
+msgid "INTRANET"
+msgstr "Intranet"

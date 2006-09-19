@@ -23,3 +23,9 @@ msgstr "result(s)"
 
 msgid "SEARCH_IN"
 msgstr "in"
+
+msgid "SEARCH_GOTO"
+msgstr "Quick links to results"
+
+msgid "INTRANET"
+msgstr "Intranet"

@@ -18,7 +18,7 @@ class ObjectList implements ArrayAccess, Iterator
 	/**
 	 * @var Array
 	 */
-	protected $data;
+	public $data;
 	
 	/**
 	 * A switch to keep track of the end of the array
@@ -131,6 +131,14 @@ class ObjectList implements ArrayAccess, Iterator
 		return usort($this->data, $function);
 	}
 	
+	function sortby($by)
+	{
+		$this->rewind();
+		var_dump($this->data);
+		die;
+		return sort($this->data, $function);
+	}
+	
 	/**
 	 * Filtre la liste avec une fonction personnalisée
 	 *
@@ -143,6 +151,43 @@ class ObjectList implements ArrayAccess, Iterator
 	{
 		$filtered_tab = array_filter($this->data, $function);
 		return new ObjectList($filtered_tab);
+	}
+	
+	/**
+	 * Compte le nombre d'enregistrements
+	 *
+	* @return int
+	 */
+	function count()
+	{
+		return count($this->data);
+	}
+	
+	/**
+	 * Fusionne 2 objectlists
+	 *
+	* @return int
+	 */
+	function merge($objectlist)
+	{
+		$this->data = array_merge($this->data, $objectlist->data);
+	}
+	
+	function compare_date($a, $b) 
+	{
+		if ($a == $b) {
+		  return 0;
+		}
+		$datea = $a->o_start->getDate();
+		$dateb = $b->o_start->getDate();
+		if ($datea < $dateb)
+		{
+			return -1;
+		}
+		else
+		{
+			return 1;
+		}
 	}
 }
 

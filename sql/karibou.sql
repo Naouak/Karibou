@@ -634,6 +634,12 @@ CREATE TABLE `fileshare_sysinfos` (
   `datetime` datetime NOT NULL default '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+ALTER TABLE `fileshare_sysinfos`  ENGINE = MYISAM ;
+
+ALTER TABLE `fileshare_sysinfos` ADD FULLTEXT (
+`name`
+);
+
 -- --------------------------------------------------------
 
 -- 
@@ -650,7 +656,11 @@ CREATE TABLE `fileshare_versions` (
   `datetime` datetime NOT NULL default '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+ALTER TABLE `fileshare_versions`  ENGINE = MYISAM ;
 
+ALTER TABLE `fileshare_versions` ADD FULLTEXT (
+`description`
+);
 
 DROP TABLE IF EXISTS `netjobs_companies`;
 CREATE TABLE `netjobs_companies` (

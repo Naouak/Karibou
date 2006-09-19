@@ -16,27 +16,56 @@ class SearchDefault extends Model
 {
 	public function build()
 	{
-		$keywords = trim($_POST['keywords']);
-	    $this->assign('keywords', $keywords);
-		
-		$errors = array();
-		if (strlen($keywords) <= 3)
+		if (isset($_POST['keywords']))
 		{
-			$errors['SEARCH_NOTENOUGHCHARS'] = _('SEARCH_NOTENOUGHCHARS');
-		}
-		
-		if (count($errors)>0)
-		{
-			$this->assign('errors', $errors);
-		}
-		else
-		{
-			DAOFactory::init($this->db, $this->userFactory);
+			if (isset($_POST['app']) && $_POST['app'] !== '')
+			{
+				$app = $_POST['app'];
+				$this->assign('app', $_POST['app']);
+			}
+			else
+			{
+				$app = 'everywhere';
+			}
 			
-			$daoNews = DAOFactory::create('News');
-			$articles = $daoNews->find($keywords);
+			$keywords = trim($_POST['keywords']);
+			$this->assign('keywords', $keywords);
 			
-			$this->assign("articles", $articles);
+			$errors = array();
+			if (strlen($keywords) <= 3)
+			{
+				$errors['SEARCH_NOTENOUGHCHARS'] = _('SEARCH_NOTENOUGHCHARS');
+			}
+			
+			if (count($errors)>0)
+			{
+				$this->assign('errors', $errors);
+			}
+			else
+			{
+				DAOFactory::init($this->db, $this->userFactory);
+				
+				if ( (isset($app) && $app == 'news') || $app == 'everywhere' )
+				{
+					$daoNews = DAOFactory::create('News');
+					$articles = $daoNews->find($keywords);
+					$this->assign("articles", $articles);
+				}
+
+				if ( (isset($app) && $app == 'fileshare') || $app == 'everywhere' )
+				{
+					$daoFiles = DAOFactory::create('Files');
+					$files = $daoFiles->find($keywords);
+					$this->assign("files", $files);
+				}
+				
+				if ( (isset($app) && $app == 'calendar') || $app == 'everywhere' )
+				{
+					$daoEvents = DAOFactory::create('Events');
+					$events = $daoEvents->find($keywords);
+					$this->assign("events", $events);
+				}
+			}
 		}
 	}
 }
