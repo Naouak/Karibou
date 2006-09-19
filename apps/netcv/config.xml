@@ -13,7 +13,7 @@
 		</param>
 	</config>
 
-	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 
 	<header app="header" view="default"/>
 	<footer app="footer" view="default" />
@@ -176,8 +176,8 @@
 		<option name="lang"			class="AlphaNum" />
 	</page>
 	<page name="allcv" view="allcv">
-		<header	app="header"			view="empty"/>
-		<footer	app="footer"			view="empty" />
+		<header	app="header"			view="default"/>
+		<footer	app="footer"			view="default" />
 	</page>
 	<page name="modulepubliccvlist" view="modulepubliccvlist">
 		<header	app="header"			view="empty"/>
