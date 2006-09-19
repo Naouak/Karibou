@@ -9,7 +9,11 @@
 		<link rel="alternate stylesheet" type="text/css" href="{kurl page="cvskindisplay" filename=$myNetCVGroup->getInfo("skin_filename")}" media="screen" title="default" />
 
 
+		{if ($myNetCVGroup->getInfo('diffusion') == 'nocrawl')}
+		<meta name="robots" content="noindex, nofollow" />
+		{else}
 		<meta name="robots" content="index, follow" />
+		{/if}
 		<meta name="rating" content="General" />
 		<meta name="distribution" content="Global" />
 		<meta name="author" content="{$myNetCVPersonalInfo.firstname} {$myNetCVPersonalInfo.lastname}" />
