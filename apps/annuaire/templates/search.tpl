@@ -2,7 +2,8 @@
 <div class="directory search">
 
 	<form>
-		<label for="search">##SEARCH_TITLE##</label> <input type="text" name="search" id="search" />
+		<label for="search">##SEARCH##</label> <input type="text" name="search" id="search" />
+		<input type="submit" value="##SEARCH_TITLE##">
 	</form>
 
 	<p>
