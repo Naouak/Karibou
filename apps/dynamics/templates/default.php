@@ -13,7 +13,7 @@
 	//var_dump($this->vars['onlineusers']);
 	foreach($this->vars['onlineusers'] as $user)
 	{
-		$tab['onlineusers'][] = array('id' => $user['user_id'], 'displayname' => $user['object']->getDisplayName(), 'username' => $user['object']->getLogin());
+		$tab['onlineusers'][] = array('id' => $user['user_id'], 'displayname' => $user['object']->getDisplayName().rand(0,9000), 'username' => $user['object']->getLogin());
 	}
 	
 	echo htmlspecialchars(serialize(removeQuotesInArray($tab)));

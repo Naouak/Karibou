@@ -44,7 +44,7 @@ html>body #container #account .user {
 }
 #container #account ul {
 	float: left;
-	margin-left: 50px; 
+	margin-left: 0px; 
 	padding-top: 2px;
 }
 #container #account li {

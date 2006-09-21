@@ -16,26 +16,19 @@ function PhpArray2Js(tabphp_serialise) {
    var dim = this.extraireDimTab();
    
    if (dim == 1)
+   {
 		this.tabjs = this.transformer(dim);
+		this.ok = true;
+	}
 	else
-		return false;
+	{
+		this.ok = false;
+	}
 }
 
 PhpArray2Js.prototype.retour = function() {
         // retourne le tableau JS
         return this.tabjs;
-}
-
-PhpArray2Js.prototype.ok = function() {
-        // retourne le tableau JS
-		if (this.tabjs.length > 0)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
 }
 
 PhpArray2Js.prototype.transformer = function(dim) {
@@ -281,7 +274,7 @@ function kurl(params)
 	function update_dynamics()
 	{
 	//, onComplete:continue
-		new Ajax.Updater(dynamics_divid, '<?=kurl(array('app'=>"dynamics", 'page'=>""));?>', {asynchronous:true, evalScripts:false});
+		new Ajax.Updater(dynamics_divid, '<?=kurl(array('app'=>"dynamics", 'page'=>""));?>', {asynchronous:true, evalScripts:false, onComplete:process_dynamics});
 		return false;
 	}
 	
@@ -298,14 +291,27 @@ function kurl(params)
 		//Pour récupérer simplement le tableau Javascript
 		var dynamics_serialized = get_dynamics();
 		var tableau = new PhpArray2Js(dynamics_serialized);
-
-		if (tableau.ok() == true)
+		var dynamics = tableau.retour();
+		var f = document.getElementById(dynamics_divid);
+		
+		if (dynamics)
 		{
-			var dynamics = tableau.retour();
-			
-			var f = document.getElementById(dynamics_divid);
+			/**
+			 * Gestion de l'affichage des utilisateurs en ligne
+			 */
 			if (dynamics['onlineusers'].length > 0)
 			{
+				document.getElementById('dynamic').innerHTML += 
+					'<div id="onlineusers_nb"><a href="#" onClick="return false;">' +
+					dynamics['onlineusers'].length +
+					'</a></div>';
+					
+					/*
+				document.getElementById('dynamic').innerHTML += 
+					'<div id="onlineusers"><a href="#" onClick="return false;">' +
+					dynamics['onlineusers'].length +
+					'</a></div>';
+			*/
 				f.innerHTML = dynamics['onlineusers'].length + " utilisateur(s) :<br />";
 				for(i = 0; i < dynamics['onlineusers'].length; i++)
 				{
@@ -315,13 +321,18 @@ function kurl(params)
 					f.innerHTML += '<a href="' + kurl(urlparams) + '">' + dynamics['onlineusers'][i]['displayname'] + '</a><br />';
 				}
 			}
+			else if (dynamics['onlineusers'].length == 0)
+			{
+				document.getElementById('onlineusers_nb').innerHTML = dynamics['onlineusers'].length;
+			}
+			else
+			{
+				document.getElementById('onlineusers_nb').innerHTML = '';
+			}
 			
-			return dynamics;
 		}
-		else
-		{
-			return false;
-		}
+		
+		return dynamics;
 	}
 	
 	//Réalise l'affichage des informations du dynamics
@@ -336,18 +347,12 @@ function kurl(params)
 	}
 // ]]>
 
-</script>
-
-
-<a href="#" onMouseOver="process_dynamics(); return false;">PROCESS DYNAMICS</a>
-
-
-<script>
 	//1. Récupération via Ajax.Updater (update)
-	update_dynamics();
+	setInterval("update_dynamics()", 2000);
 	//2. Get (retour de valeur) + Unserialize (get & unserialize)
 	//3. Interprétation (process)
 	//var tab = process_dynamics();
 	//4. Affichage
-	//alert(tab[0]['nom']);
 </script>
+
+<a href="#" onMouseOver="process_dynamics(); return false;">PROCESS DYNAMICS</a>
