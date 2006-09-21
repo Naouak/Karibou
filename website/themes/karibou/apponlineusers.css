@@ -11,7 +11,7 @@
 	line-height: 26px;
 }
 
-.onlineusers li a.userlink {
+li a.userlink {
 	padding-left: 14px;
 	
 	background-image: url(images/onlineusers/buddyicon.png);
@@ -23,4 +23,8 @@
 	
 	font-weight: bold;
 	text-decoration: none;
+}
+
+#onlineusers_list li a.userlink {
+	background-image: url(images/account/profile.png);
 }

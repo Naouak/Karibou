@@ -44,6 +44,8 @@
 	</page>
 	
 	<page name="writeto" view="write">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
 		<option name="userid" class="NumberArgument" />
 	</page>
 

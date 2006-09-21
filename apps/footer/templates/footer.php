@@ -140,7 +140,7 @@
 		<? /* FIN : Navigation : Barre avec onglets */ ?>
 	</div>
 
-	<div id="dynamic"></div>
+	<div id="dynamics"></div>
 
 	<div id="flashmail_headerbox_unreadlist" class="flashmail dontshow">
 		<? hook(array('name'=>"flashmail_unreadlist")); ?>

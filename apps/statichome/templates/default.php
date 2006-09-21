@@ -450,7 +450,7 @@ else
 <style type="text/css">
 #statichome .maxi {
 	float: left;
-	width: 49%;
+	width: 39%;
 	overflow: hidden;
 }
 html>body #statichome .maxi {
@@ -458,7 +458,7 @@ html>body #statichome .maxi {
 }
 #statichome .mini {
 	float: right;
-	width: 50%;
+	width: 60%;
 	overflow: hidden;
 }
 #statichome .mini div.box {

@@ -156,6 +156,22 @@ function var_dump(tab) {
 }
 
 /**
+ * userlink en javascript
+ */
+function userlink(params)
+{
+	urlparams = new Array();
+	urlparams['app'] = 'annuaire';
+	urlparams['username'] = params['username'];
+	
+	userlink = "<a href=\"" + kurl(urlparams) + "\" class=\"userlink\"";
+	userlink += " onMouseover=\"showhint('<img src=\'" + params['picturepath'] + "\' /><span>" + params['displayname'] + "</span>','hint_profile');\" onMouseout=\"hidehint()\"";
+	userlink += ">" + params['displayname'] + "</a>";
+	return userlink;
+	//alert(userlink);
+}
+
+/**
  * kurl en javascript
  */
 function kurl(params)
@@ -185,11 +201,6 @@ function kurl(params)
 						page = params[param];
 					break;
 					//Interprétation
-					case 'username':
-						if (!first) url += ',';
-						url += '~' + params[param];
-						first = false;
-					break;
 					default:
 						if (!first) url += ',';
 						url += params[param];
@@ -292,7 +303,7 @@ function kurl(params)
 		var dynamics_serialized = get_dynamics();
 		var tableau = new PhpArray2Js(dynamics_serialized);
 		var dynamics = tableau.retour();
-		var f = document.getElementById(dynamics_divid);
+		var f = document.getElementById('dynamics');
 		
 		if (dynamics)
 		{
@@ -301,25 +312,36 @@ function kurl(params)
 			 */
 			if (dynamics['onlineusers'].length > 0)
 			{
-				document.getElementById('dynamic').innerHTML += 
-					'<div id="onlineusers_nb"><a href="#" onClick="return false;">' +
+				f.innerHTML += 
+					'<div id="onlineusers_nb"><a href="#" onClick="toggle(\'onlineusers_list\'); return false;">' +
 					dynamics['onlineusers'].length +
 					'</a></div>';
 					
-					/*
-				document.getElementById('dynamic').innerHTML += 
-					'<div id="onlineusers"><a href="#" onClick="return false;">' +
-					dynamics['onlineusers'].length +
-					'</a></div>';
-			*/
-				f.innerHTML = dynamics['onlineusers'].length + " utilisateur(s) :<br />";
+				var list = "";
+				//list += '<div id="onlineusers_list">' +	dynamics['onlineusers'].length + ' utilisateur(s) :';
+
+				list += '<div id="onlineusers_list" class="dontshow"><ul>';
+				
 				for(i = 0; i < dynamics['onlineusers'].length; i++)
 				{
+					userlinkparams = dynamics['onlineusers'][i];
+					
+					list += '<li>';
+					//list += '<a href="' + kurl(urlparams) + '" class="userlink">' + dynamics['onlineusers'][i]['displayname'] + '</a>';
+					list += userlink(userlinkparams);
 					urlparams = Array();
-					urlparams['app'] = 'annuaire';
-					urlparams['username'] = dynamics['onlineusers'][i]['username'];
-					f.innerHTML += '<a href="' + kurl(urlparams) + '">' + dynamics['onlineusers'][i]['displayname'] + '</a><br />';
+					
+					urlparams['app'] = "flashmail";
+					urlparams['page'] = "writeto";
+					urlparams['userid'] = dynamics['onlineusers'][i]['id'];
+					list += '&nbsp;&nbsp;<a href="' + kurl(urlparams) + '" class="sendflashmaillink" onclick="new Ajax.Updater(\'flashmail_headerbox_answer\', \'' + kurl(urlparams) + '\', {asynchronous:true, evalScripts:true}); document.getElementById(\'flashmail_headerbox_answer\').className=\'show\'; return false;"><span>FlashMail</span></a>';
+					list += '</li>';
+					
 				}
+				list += '</ul></div>';
+				
+				f.innerHTML += list;
+		
 			}
 			else if (dynamics['onlineusers'].length == 0)
 			{
@@ -335,6 +357,23 @@ function kurl(params)
 		return dynamics;
 	}
 	
+	function toggle(div_id)
+	{
+		
+		var f = document.getElementById(div_id);
+		if (f.className == "showed")
+		{
+		        f.className = "dontshow";
+		}
+		else
+		{
+			if (f.innerHTML.length > 10)
+			{
+				f.className = "showed";
+			}
+		}
+	}
+	
 	//Réalise l'affichage des informations du dynamics
 	function show_dynamics()
 	{
@@ -348,11 +387,12 @@ function kurl(params)
 // ]]>
 
 	//1. Récupération via Ajax.Updater (update)
-	setInterval("update_dynamics()", 2000);
+	update_dynamics();
+	//setInterval("update_dynamics()", 5000);
 	//2. Get (retour de valeur) + Unserialize (get & unserialize)
 	//3. Interprétation (process)
 	//var tab = process_dynamics();
 	//4. Affichage
 </script>
-
-<a href="#" onMouseOver="process_dynamics(); return false;">PROCESS DYNAMICS</a>
+<a href="#" onMouseOver="update_dynamics(); return false;">PROCESS DYNAMICS</a>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
