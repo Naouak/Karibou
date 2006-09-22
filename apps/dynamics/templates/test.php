@@ -163,14 +163,13 @@ function userlink(params)
 	urlparams = new Array();
 	urlparams['app'] = 'annuaire';
 	urlparams['username'] = params['username'];
-	
-	userlink = "<a href=\"" + kurl(urlparams) + "\" class=\"userlink\"";
-	userlink += " onMouseover=\"showhint('<img src=\'" + params['picturepath'] + "\' /><span>" + params['displayname'] + "</span>','hint_profile');\" onMouseout=\"hidehint()\"";
-	userlink += ">" + params['displayname'] + "</a>";
-	return userlink;
-	//alert(userlink);
-}
 
+	userlink_txt = "<a href=\"" + kurl(urlparams) + "\" class=\"userlink\"";
+	userlink_txt += " onMouseover=\"showhint('<img src=" + params['picturepath'] + " /><span>" + params['displayname'] + "</span>','hint_profile');\" onMouseout=\"hidehint()\"";
+	userlink_txt += ">" + params['displayname'] + "</a>";
+
+	return userlink_txt;
+}
 /**
  * kurl en javascript
  */
@@ -302,59 +301,74 @@ function kurl(params)
 		//Pour récupérer simplement le tableau Javascript
 		var dynamics_serialized = get_dynamics();
 		var tableau = new PhpArray2Js(dynamics_serialized);
-		var dynamics = tableau.retour();
+		var dynamics_var = tableau.retour();
 		var f = document.getElementById('dynamics');
 		
-		if (dynamics)
+		if (dynamics_var)
 		{
-			/**
-			 * Gestion de l'affichage des utilisateurs en ligne
-			 */
-			if (dynamics['onlineusers'].length > 0)
+			if (f.innerHTML.length == 0)
 			{
-				f.innerHTML += 
-					'<div id="onlineusers_nb"><a href="#" onClick="toggle(\'onlineusers_list\'); return false;">' +
-					dynamics['onlineusers'].length +
-					'</a></div>';
-					
-				var list = "";
-				//list += '<div id="onlineusers_list">' +	dynamics['onlineusers'].length + ' utilisateur(s) :';
-
-				list += '<div id="onlineusers_list" class="dontshow"><ul>';
-				
-				for(i = 0; i < dynamics['onlineusers'].length; i++)
+				//La div dynamics ne contient pas de contenu : on initialise la structure (sans les valeurs)
+			
+				/**
+				 * Gestion de l'affichage des utilisateurs en ligne
+				 */
+				if (dynamics_var['onlineusers'].length > 0)
 				{
-					userlinkparams = dynamics['onlineusers'][i];
+					//Création de la div du nombre d'utilisateurs (clickable)
+					f.innerHTML += 
+						'<div id="onlineusers_nb"><a href="#" onClick="toggle(\'onlineusers_list\'); return false;">&nbsp;</a></div>';
+						
+					var list = "";
+					//list += '<div id="onlineusers_list">' +	dynamics_var['onlineusers'].length + ' utilisateur(s) :';
+
+					//Création de la div de liste du nombre d'utilisateurs
+					list += '<div id="onlineusers_list" class="dontshow"><ul></ul></div>';
 					
-					list += '<li>';
-					//list += '<a href="' + kurl(urlparams) + '" class="userlink">' + dynamics['onlineusers'][i]['displayname'] + '</a>';
-					list += userlink(userlinkparams);
-					urlparams = Array();
-					
-					urlparams['app'] = "flashmail";
-					urlparams['page'] = "writeto";
-					urlparams['userid'] = dynamics['onlineusers'][i]['id'];
-					list += '&nbsp;&nbsp;<a href="' + kurl(urlparams) + '" class="sendflashmaillink" onclick="new Ajax.Updater(\'flashmail_headerbox_answer\', \'' + kurl(urlparams) + '\', {asynchronous:true, evalScripts:true}); document.getElementById(\'flashmail_headerbox_answer\').className=\'show\'; return false;"><span>FlashMail</span></a>';
-					list += '</li>';
-					
+					f.innerHTML += list;
+			
 				}
-				list += '</ul></div>';
-				
-				f.innerHTML += list;
-		
-			}
-			else if (dynamics['onlineusers'].length == 0)
-			{
-				document.getElementById('onlineusers_nb').innerHTML = dynamics['onlineusers'].length;
-			}
-			else
-			{
-				document.getElementById('onlineusers_nb').innerHTML = '';
+				else if (dynamics_var['onlineusers'].length == 0)
+				{
+					document.getElementById('onlineusers_nb').innerHTML = dynamics_var['onlineusers'].length;
+				}
+				else
+				{
+					document.getElementById('onlineusers_nb').innerHTML = '';
+				}
 			}
 			
+			/**
+			 * Mise à jour des valeurs
+			 */
+			//Nombre d'utilisateurs
+			var f1 = document.getElementById('onlineusers_nb');
+			var a1 = f1.getElementsByTagName("A");
+			if (a1)
+				a1[0].innerHTML = dynamics_var['onlineusers'].length;
+			
+			//Liste des utilisateurs
+			var f2 = document.getElementById('onlineusers_list');
+			var u2 = f2.getElementsByTagName("UL");
+			for(i = 0; i < dynamics_var['onlineusers'].length; i++)
+			{
+				userlinkparams = dynamics_var['onlineusers'][i];
+				
+				list += '<li>';
+				//list += '<a href="' + kurl(urlparams) + '" class="userlink">' + dynamics_var['onlineusers'][i]['displayname'] + '</a>';
+				list += userlink(userlinkparams);
+				urlparams = Array();
+				
+				urlparams['app'] = "flashmail";
+				urlparams['page'] = "writeto";
+				urlparams['userid'] = dynamics_var['onlineusers'][i]['id'];
+				list += '&nbsp;&nbsp;<a href="' + kurl(urlparams) + '" class="sendflashmaillink" onclick="new Ajax.Updater(\'flashmail_headerbox_answer\', \'' + kurl(urlparams) + '\', {asynchronous:true, evalScripts:true}); document.getElementById(\'flashmail_headerbox_answer\').className=\'show\'; return false;"><span>FlashMail</span></a>';
+				list += '</li>';
+			}
+			u2[0].innerHTML = list;
 		}
 		
-		return dynamics;
+		//return dynamics_var;
 	}
 	
 	function toggle(div_id)
@@ -387,8 +401,8 @@ function kurl(params)
 // ]]>
 
 	//1. Récupération via Ajax.Updater (update)
-	update_dynamics();
-	//setInterval("update_dynamics()", 5000);
+	//update_dynamics();
+	setInterval("update_dynamics()", 2000);
 	//2. Get (retour de valeur) + Unserialize (get & unserialize)
 	//3. Interprétation (process)
 	//var tab = process_dynamics();

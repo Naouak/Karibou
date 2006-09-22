@@ -467,13 +467,13 @@ html>body #statichome .maxi {
 }
 #statichome .mini .leftbar {
 	width: 48%;
-	margin-right: 2%;
+	margin-right: 1%;
 	float: left;
 }
 
 #statichome .mini .rightbar {
 	width: 48%;
-	margin-right: 2%;
+	margin-right: 1%;
 	float: right;
 }
 #statichome .mini .rightbar div.box {
