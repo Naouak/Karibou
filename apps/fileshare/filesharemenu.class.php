@@ -16,6 +16,11 @@ class FileShareMenu extends Model
 		if( isset($this->args["folderExistsInDB"]) && ($this->args["folderExistsInDB"] == TRUE) )
 			$this->assign("folderExistsInDB", TRUE);			
 		
+		if( isset($this->args["canUpdate"]) && ($this->args["canUpdate"] == TRUE) )
+			$this->assign("canUpdate", TRUE);
+			
+		if( isset($this->args["elementid"]) )
+			$this->assign("elementid", $this->args["elementid"]);
 	}
 }
 

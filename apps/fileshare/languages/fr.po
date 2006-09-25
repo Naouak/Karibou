@@ -171,11 +171,17 @@ msgstr "Groupe propriétaire"
 msgid "FS_RENAME_DIRECTORY"
 msgstr "Renommer ce répertoire (ou changer sa description)"
 
+msgid "FS_RENAME_DIRECTORY_SHORT"
+msgstr "Renommer ce répertoire"
+
 msgid "FS_RENAME_FILE"
 msgstr "Renommer ce fichier (ou changer sa description)"
 
 msgid "FS_RENAME_DESCRIPTION"
 msgstr "Vous pouvez changer le nom et la description de l'élément en utilisant le formulaire ci-dessous"
+
+msgid "FS_RENAME"
+msgstr "Renommer"
 
 msgid "FS_RENAME_NEW_NAME"
 msgstr "Nouveau nom"
