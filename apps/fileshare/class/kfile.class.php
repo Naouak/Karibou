@@ -55,7 +55,7 @@ class KFile extends KDBFSElement
 		$this->fullpath = $this->rootdir.$this->path;
 	}
 	
-	
+	/*
 	function getPathBase64()
 	{
 		return base64_encode($this->getPath());
@@ -65,7 +65,7 @@ class KFile extends KDBFSElement
 	{
 		return $this->path;
 	}
-	
+	*/
 	function getSize()
 	{
 		return filesize($this->fullpath);
@@ -75,7 +75,7 @@ class KFile extends KDBFSElement
 	{
 		return filemtime($this->fullpath);
 	}
-	
+	/*
 	//Returns full file name (with extension)
 	function getName()
 	{
@@ -89,7 +89,7 @@ class KFile extends KDBFSElement
 		{
 			return '';
 		}
-	}
+	}*/
 
 	//Method getting the fileid
 	public function getFileId()
@@ -131,10 +131,7 @@ class KFile extends KDBFSElement
 		return $this->name;
 	}
 	
-	function getFullPath()
-	{
-		return $this->fullpath;
-	}
+
 }
 
 ?>

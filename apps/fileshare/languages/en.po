@@ -168,3 +168,23 @@ msgstr "of"
 msgid "FILEDETAILS_GROUPOWNER"
 msgstr "Group owner"
 
+msgid "FS_RENAME_DIRECTORY"
+msgstr "Rename this directory"
+
+msgid "FS_RENAME_FILE"
+msgstr "Rename this file"
+
+msgid "FS_RENAME_DESCRIPTION"
+msgstr "You can change the file name and description by using the form below"
+
+msgid "FS_RENAME_NEW_NAME"
+msgstr "New name"
+
+msgid "FS_RENAME_NEW_DESCRIPTION"
+msgstr "New description"
+
+msgid "FS_RENAME_BUTTON"
+msgstr "Update"
+
+msgid "FS_RENAME_ELEMENT"
+msgstr "Rename"

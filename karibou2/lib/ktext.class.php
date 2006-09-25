@@ -21,7 +21,7 @@ class KText
 
 	}
 
-	function checkEmail ($email)
+	static function checkEmail ($email)
 	{
 		$regex =
 		  '^'.
@@ -41,7 +41,7 @@ class KText
 		}
 	}
 
-	function epureString ($string)
+	static function epureString ($string)
 	{
 		$string = KText::removeAccents($string);
 		$string = preg_replace("/[^.A-Za-z0-9 _-]/", '',$string);
@@ -49,7 +49,7 @@ class KText
 	}
 
 	//Thanks SSI for the following methods
-	function removeAccents ($string)
+	static function removeAccents ($string)
 	{
 		if (KText::seemsUTF8($string)) {
 				$chars = array(

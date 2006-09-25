@@ -37,7 +37,7 @@ class KDBFSElement
 	public $creator;
 	public $userrights;
 
-	function __construct (PDO $db, UserFactory $userFactory, $permission, $type = FALSE, $path = FALSE, $id = FALSE, $data = FALSE)
+	function __construct (PDO $db, UserFactory $userFactory, $permission, $type = FALSE, $path = FALSE, $id = FALSE, $data = FALSE, $rootdir = FALSE)
 	{
 		$this->db			= $db;
 		$this->userFactory	= $userFactory;
@@ -78,6 +78,16 @@ class KDBFSElement
 				Debug::kill("No decent way...");
 			}
 		}
+		
+		if ($rootdir == FALSE)
+		{
+			$this->rootdir = KARIBOU_PUB_DIR.'/fileshare/share/';
+		}
+		else
+		{
+			$this->rootdir = $rootdir;
+		}
+		$this->fullpath = $this->rootdir.$this->path;
 		
 		$this->getUserRights();
 	}
@@ -255,6 +265,40 @@ class KDBFSElement
 		return $path;
 	}
 	
+	public function getFullPath()
+	{
+		if ($this->getSysInfos('type') == 'file')
+		{
+			return $this->fullpath;
+		}
+		elseif ($this->getSysInfos('type') == 'folder')
+		{
+			preg_match("/(.*)[\/]{0,1}$/", $this->fullpath, $matches);
+			return $matches[0];
+		}
+	}
+
+	//Returns full file name (with extension)
+	function getName()
+	{
+		preg_match("/([^\/])+$/", $this->fullpath, $matches);
+		
+		if (isset ($matches[0]))
+		{
+			return $matches[0];
+		}
+		else
+		{
+			return '';
+		}
+		
+	}
+
+	function getPathBase64()
+	{
+		return base64_encode($this->getPath());
+	}
+
 	public function getPathArray()
 	{
 		$path = $this->getPath();

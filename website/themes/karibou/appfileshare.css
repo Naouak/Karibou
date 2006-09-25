@@ -412,6 +412,16 @@ font-size: 0.8em;
 	padding-bottom: 2px;
 }
 
+/* Rename Link */
+.fileshare div.details .renamelink a {
+	background-image: url(images/fileshare/detailed/rename.png);
+	background-repeat: no-repeat;
+	background-position: top left;
+	padding-left: 22px;
+	padding-top: 0px;
+	padding-bottom: 2px;
+}
+
 /* Add new version link */
 .fileshare div.details .versions a.add {
 	background-image: url(images/fileshare/detailed/add.png);

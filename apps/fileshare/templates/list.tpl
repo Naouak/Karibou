@@ -32,7 +32,7 @@
 	{if $files|@count>0}
 	<ul class="largeicons file">
 		{foreach item=file from=$files}
-		<li class="{if ($file->getExtension() != "")}{$file->getExtension()}{/if}">
+		<li class="{if ($file->getExtension() != "")}{$file->getExtension()|lower}{/if}">
 			<a href="{kurl page="download" filename=$file->getPathBase64()}" title="{$file->getName()}">
 				<span class="name">{$file->getShortName()|truncate:18:"[...]":true}{if ($file->getExtension() != "")}.{$file->getExtension()|truncate:7:"":true}{/if}</span>
 				<span class="size">
@@ -94,7 +94,7 @@
 	{if $files|@count>0}
 	<ul class="detailed file">
 		{foreach item=file from=$files}
-		<li class="{if ($file->getExtension() != "")}{$file->getExtension()}{/if}">
+		<li class="{if ($file->getExtension() != "")}{$file->getExtension()|lower}{/if}">
 			{if !$file->existsInDb()}<span class="unknown" title="##UNKNOWNINDB##"><span>&nbsp;</span></span>{/if}
 			<a href="{kurl page="details" elementpath=$file->getPathBase64()}" title="{$file->getName()}">
 				<span class="name" title="{$file->getName()}">{$file->getShortName()}{if ($file->getExtension() != "")}.{$file->getExtension()|truncate:7:"":true}{/if}</span>

@@ -137,6 +137,7 @@ class KDirectory extends KDBFSElement
 	}
 	
 	//Return directory name
+	/*
 	public function getName ()
 	{
 	/*
@@ -148,7 +149,7 @@ class KDirectory extends KDBFSElement
 		{
 			$path = $this->getPath();
 		}
-		*/
+		/
 		
 		preg_match("/([^\/])+$/", $this->getPath(), $matches);
 			
@@ -160,7 +161,7 @@ class KDirectory extends KDBFSElement
 			{
 				return '';
 			}
-	}
+	}*/
 
 	//Return full path from rootdir without trailing slash
 	public function getFullPath()

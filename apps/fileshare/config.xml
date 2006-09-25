@@ -26,6 +26,8 @@
 	<load class="FileShareMini" file="mini.class.php" />
 	<load class="FileShareMoveChooseWhere" file="movewhere.class.php" />
 	<load class="FileShareMove" file="move.class.php" />
+	<load class="FileShareFormRename" file="form.rename.class.php" />
+	<load class="FileShareRename" file="rename.class.php" />
 
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
@@ -41,6 +43,7 @@
 	
 	<view name="mini" class="FileShareMini" template="mini.tpl" />
 	<view name="movewhere" class="FileShareMoveChooseWhere" template="movewhere.tpl" />
+	<view name="renameform" class="FileShareFormRename" template="form.rename.tpl" />
 
 	<view name="directory" class="FileShareDirectory" template="directory.tpl" />
 
@@ -78,12 +81,20 @@
 		<argument name="elementid" class="NumberArgument" />
 		<option name="destinationid" class="NumberArgument" />
 	</page>
+	
+	<page name="renameform" view="renameform">
+		<argument name="elementid" class="NumberArgument" />
+	</page>
 
 	<form action="savefile" class="FileShareSaveFile">
 		<redirect />
 	</form>
 	
 	<form action="move" class="FileShareMove">
+		<redirect />
+	</form>
+	
+	<form action="rename" class="FileShareRename">
 		<redirect />
 	</form>
 	

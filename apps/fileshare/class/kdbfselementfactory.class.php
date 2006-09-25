@@ -192,6 +192,65 @@ LIMIT 0 , 30
 		}
 	}
 
+	public function rename ($elementid, $name, $description, $versionid = FALSE) {
+		//Get elementid
+		$element = new KDBFSElement ($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $elementid);
+		$name = KText::epureString($name);
+		if ($versionid == FALSE)
+		{
+			$versionid = $element->getLastVersionInfo('versionid');
+		}
+		
+		$elementpath = KARIBOU_PUB_DIR.'/fileshare/share'.$element->getParentPath().'/'.$name;
+		
+		if ($name != "" && $description != "" && $element->canWrite() )
+		{
+			$sql = "
+				UPDATE fileshare_versions
+				SET description = '".$description."'
+				WHERE id = '".$element->getElementId()."'
+				AND
+				versionid = '$versionid'
+				";
+			
+			try
+			{
+				$stmt = $this->db->exec($sql);
+				unset($stmt);
+				//return new KDBFSElement ($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $elementid);
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage());
+			}
+			
+			if (!is_file($elementpath) && !is_dir($elementpath))
+			{
+				if (rename($element->getFullPath(), $elementpath))
+				{
+					$sql = "
+						UPDATE fileshare_sysinfos
+						SET name = '".$name."'
+						WHERE id = '".$element->getElementId()."'
+						";
+					try
+					{
+						$stmt = $this->db->exec($sql);
+						unset($stmt);
+					}
+					catch(PDOException $e)
+					{
+						Debug::kill($e->getMessage());
+					}
+				}
+			}
+			
+			return new KDBFSElement ($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $elementid);
+		}
+		
+		return FALSE;
+	}
+
 	public function move ($elementid, $destinationid)
 	{
 		//Get elementid

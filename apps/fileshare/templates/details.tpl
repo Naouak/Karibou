@@ -23,7 +23,7 @@
 		<div class="helper">##DIRECTORYDETAILS_DESCRIPTION##</div>
 	{/if}
 	
-	<div class="details{if ($myElement->isFile() && ($myElement->getExtension() != ""))} {$myElement->getExtension()}{elseif $myElement->isDirectory()} directory{/if}">
+	<div class="details{if ($myElement->isFile() && ($myElement->getExtension() != ""))} {$myElement->getExtension()|lower}{elseif $myElement->isDirectory()} directory{/if}">
 		<div class="detail name">
 			<label for="name">##NAME## :</label> 
 			<span id="name">
@@ -133,6 +133,15 @@
 				<input type="hidden" name="fileid" value="{$myElement->getElementId()}">
 				<a href="#" onclick="if(confirm('##DELETE_ASKIFSURE## {$myElement->getName()} ?')){ldelim}document.deletefile.submit();return false;{rdelim}else{ldelim}return false;{rdelim};">##DELETE## {if $myElement->isFile()}##THIS_FILE##{else}##THIS_DIRECTORY##{/if}</a>
 			</form>
+			{/if}
+			{if $myElement->isFile()}
+			<div class="renamelink">
+				<a href="{kurl page="renameform" elementid=$myElement->getElementId()}">##FS_RENAME_FILE##</a>
+			</div>
+			{else if ($myElement->isDirectory())}
+			<div class="renamelink">
+				<a href="{kurl page="renameform" elementid=$myElement->getElementId()}">##FS_RENAME_DIRECTORY##</a>
+			</div>
 			{/if}
 		</div>
 		{/if}
