@@ -116,7 +116,7 @@ function close_editinline_popup()
 				<form action="{kurl page='deleteEvent'}" method="POST" name="deleteEvent{$event->uid}">
                     <input type="hidden" name="calendarid" value="{$event->calendarid}" />
                     <input type="hidden" name="eventid" value="{$event->uid}" />
-                    <a href="#" onClick="document.deleteEvent{$event->uid}.submit(); return false;">##DELETEEVENT##</a>
+                    <a href="#" onClick="confirm('##DELETEEVENT_JS##')&&document.deleteEvent{$event->uid}.submit()&&false; return false;">##DELETEEVENT##</a>
 				</form>
 {/if}
 			</p>

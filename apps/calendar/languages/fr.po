@@ -147,6 +147,9 @@ msgstr "Éditeurs du calendrier"
 msgid "DELETEEVENT"
 msgstr "Supprimer l'évènement"
 
+msgid "DELETEEVENT_JS"
+msgstr "Supprimer l\\'évènement"
+
 msgid "EVENTDELETED"
 msgstr "L'évènement a ete supprime"
 
