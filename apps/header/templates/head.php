@@ -100,6 +100,25 @@
 					document.forms['search'].elements['keywords'].focus();
 			}
 		}
+
+		/**
+		 * Afficher ou chacher? 
+		 */
+		function toggle_display(div_id)
+		{
+			var f = document.getElementById(div_id);
+			if (f.className == "showed")
+			{
+					f.className = "dontshow";
+			}
+			else
+			{
+				if (f.innerHTML.length > 10)
+				{
+					f.className = "showed";
+				}
+			}
+		}
 	</script>
 <? hook(array('name'=>"html_head")); ?>
 </head>

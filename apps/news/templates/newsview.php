@@ -35,7 +35,7 @@ if ($this->vars['permission'] >= _READ_ONLY_)
 				echo '<form action="'.kurl(array('action'=>"post")).'" method="post">';
 					echo '<input type="hidden" name="postType" value="delNews">';
 					echo '<input type="hidden" name="id" value="'.$idNews.'">';
-					echo '<input type="submit" value="'._('DELETE').'" onclick="return confirm(\''._('SURE_TO_DELETE_ARTICLE').'\');"/>';
+					echo '<input type="submit" value="'._('DELETE').'" onclick="return confirm(\''.str_replace("'", "\\'", _('SURE_TO_DELETE_ARTICLE')).'\');"/>';
 				echo '</form>';
 			echo '</div>';
 		}

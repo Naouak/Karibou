@@ -492,7 +492,9 @@ html>body #onlineusers_nb {
 
 .dontshow {
 	visibility: hidden;
+	display: none;
 }
 .show {
 	visibility: visible;
+	display: normal;
 }

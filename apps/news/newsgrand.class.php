@@ -22,51 +22,56 @@ class NewsGrand extends Model
 
 	
 		//Comptage des news (prise en compte des dernieres uniquement)
-		//$max = 2;
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
 		$max = $config["displaynb"]["newsgrand"];
-        $this->currentUser->getGroups($this->db);
-		//$req_sql = 'SELECT COUNT(*) as nb FROM news WHERE last = 1 AND deleted = 0';
-		$req_sql = "
-			SELECT count(news.id) as nb
-			FROM news
-			WHERE (news.last = 1 AND news.deleted = 0) ";
-//			AND ((news.id_groups IN (".$this->currentUser->getGroupTreeQuery().")) OR (news.id_author = '".$this->currentUser->getId()."'))
-//		";
-		$stmt = $this->db->prepare($req_sql);
-		$stmt->execute();
-		$row = $stmt->fetch(PDO::FETCH_ASSOC);
-		$count = $row["nb"];
-		unset($stmt);
-		unset($row);
 		
-		//Gestion des pages
-		if(isset($this->args['pagenum']))
-			$page = $this->args['pagenum'];
-		else
-			$page = 1;
-		
-		//Comptage du nombre de pages
-		$page_count = ceil($count / $max);
-		if($page_count > 1)
+		//Gestion des mois / années
+		if (isset($this->args['month'],$this->args['year']) && $this->args['month'] != "" && $this->args['year'] != "")
 		{
-			$pages = range(1, $page_count);
-			$this->assign('pages', $pages);
-			$this->assign('page', $page);
+			$month = $this->args['month'];
+			$year = $this->args['year'];
 		}
-		
+
+		$sql = "
+			SELECT 
+				date_format( time, '%Y' ) AS year,
+				date_format( time, '%m' ) AS month ,
+				count( id ) AS count,
+				UNIX_TIMESTAMP(time) as timestamp
+			FROM `news`
+			WHERE last =1
+			AND deleted =0
+			GROUP BY date_format( time, '%Y' ) , date_format( time, '%m' )
+			ORDER BY time ASC; ";
+		$stmt = $this->db->prepare($sql);
+		$stmt->execute();
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		$this->assign("newsbymonth", $rows);
+
+		if (isset($month, $year))
+		{
+			$and 	= '	AND date_format( news.time, \'%Y\' ) = '.$year.'
+						AND date_format( news.time, \'%m\' ) = '.$month;
+			$limit	= '';
+		}
+		else
+		{
+			$and = '';
+			$limit = "LIMIT $max OFFSET 0";
+		}
+
 		//Recherche de toutes les derniers articles non supprimés et de leurs originaux
 		$reqSqlAllArticles = "
 			SELECT news.id, news.id_author, news.id_groups, news.title, news.content, UNIX_TIMESTAMP(news.time) as timestamp, count(news_comments.id) as nb_comments
 			FROM news LEFT OUTER JOIN news_comments ON news.id = news_comments.id_news
 			WHERE (news.last = 1 AND news.deleted = 0) ".
+			$and .
 			//AND ((news.id_groups IN (".$this->currentUser->getGroupTreeQuery().")) OR (news.id_author = '".$this->currentUser->getId()."'))
-			"GROUP BY news.id
-			ORDER BY timestamp
-			DESC
-			LIMIT $max OFFSET ".(($page-1)*$max).";
-			";
+			" GROUP BY news.id
+			ORDER BY timestamp DESC ".$limit;
+			//";//".(($page-1)*$max).
 
 		$theNews = array ();
 		$resSqlAllArticles = $this->db->prepare($reqSqlAllArticles);

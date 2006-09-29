@@ -46,7 +46,8 @@
 	<page name="" view="default" />
 	
 	<page name="" view="default" >
-		<argument name="pagenum" class="PageArgument" />
+		<option name="year" class="NumberArgument" />
+		<option name="month" class="NumberArgument" />
 	</page>
 
 	<page name="defaulttpl" view="defaulttpl" />

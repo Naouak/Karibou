@@ -106,7 +106,7 @@ msgid "ARTICLE_NOT_FOUND"
 msgstr "L'article que vous recherchez n'a pas été trouvé."
 
 msgid "SURE_TO_DELETE_ARTICLE"
-msgstr "Cela va supprimer l'article !nÊtes-vous sûr de vouloir continuer ?"
+msgstr "Cela va supprimer l'article ! Êtes-vous sûr de vouloir continuer ?"
 
 msgid "MODIFY"
 msgstr "Modifier"

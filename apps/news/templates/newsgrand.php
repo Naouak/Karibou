@@ -1,45 +1,35 @@
 <div class="news">
 	<h1><?=_('NEWS')?></h1>
+<?
+	include("newsmessage.php");
+?>
 
-	<?
-	/*
-	if ($this->vars['permission'] > _READ_ONLY_) { ?>
-		<strong><a href="<?=kurl(array('page' => "add"))?>"><?=_('ADD_ARTICLE')?></a></strong>
-	<? } 
-	*/
-	?>
+	<a href="<?=kurl(array('app'=>"news", 'page'=>"archives"));?>" onclick="toggle_display('news_archives'); return false;"><?=_('NEWS_VIEW_ARCHIVES');?></a>
+<?
+	echo '<div id="news_archives" style="margin-left: 20px; margin-bottom: 10px; padding: 5px; padding-left: 20px; border: 1px solid #acacac; background-color: #fafafa;" class="dontshow">';
+	$year = "";
+	foreach($this->vars['newsbymonth'] as $month)
+	{
+		if ($year != $month['year'])
+		{
+			echo "<div style=\"margin-left: -10px;\"><strong>".$month['year']."</strong></div>";
+			$year = $month['year'];
+		}
+		else
+		{
+			echo ', &nbsp;';
+		}
+		echo '<a href="'.kurl(array("app"=>"news", "year"=>$month['year'], "month"=>$month['month'])).'">'.ucfirst(utf8_encode(strftime ('%B', $month['timestamp']))).'</a> <span style="color: #acacac;">('.$month['count'].')</span>';
+	}
 	
-	<? include("newsmessage.php") ?>
-	
-	<?
+	echo "</div>";
+
 	if ($this->vars['permission'] >= _READ_ONLY_)
 	{
-		//{section name=i loop=$theNews step=1}
 		foreach ($this->vars['theNews'] as $key => $theArticle)
 		{
-			//{assign var="theArticle" value=$theNews[i]}
-			//{assign var="idNews" value=$theNews[i]->getID()}
-			//{assign var="theArticleComments" value=$theNewsComments[$idNews]}
 			include("newsview.php");
 		}
-		//{/section}
-		/*
-		if (count($this->vars['pages'])>1)
-		{
-			echo '<p>';
-				//{section name=p loop=$pages}
-				foreach($this->vars['pages'] as $key => $page)
-				{
-					if($key > 1)
-						echo '|';
-					else
-						echo _('PAGES').' :';
-					echo '<a href="'.kurl(array('pagenum'=>$page)).'">'.$page.'</a>';
-				}
-				//{/section}
-			echo '</p>';
-		}
-		*/
 	}
 	?>
 </div>

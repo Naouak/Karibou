@@ -317,7 +317,7 @@ function kurl(params)
 				{
 					//Création de la div du nombre d'utilisateurs (clickable)
 					f.innerHTML += 
-						'<div id="onlineusers_nb"><a href="#" onClick="toggle(\'onlineusers_list\'); return false;">&nbsp;</a></div>';
+						'<div id="onlineusers_nb"><a href="#" onClick="toggle_display(\'onlineusers_list\'); return false;">&nbsp;</a></div>';
 						
 					var list = "";
 					//list += '<div id="onlineusers_list">' +	dynamics_var['onlineusers'].length + ' utilisateur(s) :';
@@ -371,23 +371,7 @@ function kurl(params)
 		//return dynamics_var;
 	}
 	
-	function toggle(div_id)
-	{
-		
-		var f = document.getElementById(div_id);
-		if (f.className == "showed")
-		{
-		        f.className = "dontshow";
-		}
-		else
-		{
-			if (f.innerHTML.length > 10)
-			{
-				f.className = "showed";
-			}
-		}
-	}
-	
+
 	//Réalise l'affichage des informations du dynamics
 	function show_dynamics()
 	{
