@@ -121,10 +121,22 @@ function add_email()
 		<input type="hidden" name="username" value="{$username}" />
 		<fieldset class="largefieldset">
 			<legend>##PROFILE_INFO##</legend>
+			{if !isset($profile.firstname) || $profile.firstname == ""}
 			<label for="firstname">##FIRSTNAME##</label>
 				<input id="firstname" type="text" name="firstname" value="{$profile.firstname}" /><br class="spacer" />
+			{else}
+				<label for="firstname">##FIRSTNAME##</label>
+				<strong>{$profile.firstname}</strong><br />
+				<input type="hidden" name="firstname" value="{$profile.firstname}">
+			{/if}
+			{if !isset($profile.lastname) || $profile.lastname == ""}
 			<label for="lastname">##LASTNAME##</label>
 				<input id="lastname" type="text" name="lastname" value="{$profile.lastname}" /><br class="spacer" />
+			{else}
+				<label for="lastname">##LASTNAME##</label>
+				<strong>{$profile.lastname}</strong><br />
+				<input type="hidden" name="lastname" value="{$profile.lastname}">
+			{/if}
 			{if (isset($nonickname) && ($nonickname === TRUE))}
 			<label for="surname">##SURNAME##</label>
 				<input id="surname" type="text" name="surname" value="{$profile.surname}" /><br class="spacer" />
