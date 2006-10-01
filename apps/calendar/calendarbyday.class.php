@@ -17,23 +17,37 @@ class CalendarByDay extends CalendarModel
 	{
 		$menuApp = $this->appList->getApp($this->appname);
 		$menuApp->addView("menu", "header_menu", array("page" => "home") );
-		
-		setlocale(LC_ALL, "EN_en");
-//		setlocale(LC_ALL, "FR_fr");
-	
+
+		/**
+		 * Initialisation de KDate en une fois pour éviter les problèmes du 31/0X lorsque X+1 n'a que 30 jours...
+		 */
 		$currentDate = new KDate();
-		if(isset($this->args['year']) && $this->args['year'] != '')
+		if(isset($this->args['day']) && $this->args['day'] != '')
 		{
-			$currentDate->setYear($this->args['year']);
+			$cDay = $this->args['day'];
+		}
+		else
+		{
+			$cDay = $currentDate->getDay();
 		}
 		if(isset($this->args['month']) && $this->args['month'] != '')
 		{
-			$currentDate->setMonth($this->args['month']);
+			$cMonth = $this->args['month'];
 		}
-		if(isset($this->args['day']) && $this->args['day'] != '')
+		else
 		{
-			$currentDate->setDay($this->args['day']);
+			$cMonth = $currentDate->getMonth();
 		}
+		if(isset($this->args['year']) && $this->args['year'] != '')
+		{
+			$cYear = $this->args['year'];
+		}
+		else
+		{
+			$cYear = $currentDate->getYear();
+		}
+		$reqDate = mktime($currentDate->getHour(), $currentDate->getMinute(), $currentDate->getSecond(), $cMonth, $cDay, $cYear);
+		$currentDate->timecopy($reqDate);
 
 		$this->buildCalendar($currentDate);
 
