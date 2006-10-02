@@ -80,7 +80,7 @@ protected $text;
 					foreach ($rows as $row)
 					{
 						$pqry = "	UPDATE admin_import 
-										SET login = '".strtolower($this->text->epureString($row["firstname"])).".".strtolower($this->text->epureString($row["lastname"]))."'
+										SET login = '".str_replace(' ', '', strtolower($this->text->epureString($row["firstname"]))).".".str_replace(' ', '', strtolower($this->text->epureString($row["lastname"])))."'
 										WHERE id = '".$row["id"]."';";
 						try
 						{
