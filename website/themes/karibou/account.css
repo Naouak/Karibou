@@ -26,14 +26,10 @@ html>body #container #account {
 	background-image: url(images/account/userlinker.png);
 	background-repeat: no-repeat;
 	background-position: right 0px;
-	width: 220PX;
+	width: 220px;
 	height: 22px;
 	text-align: center;
 	overflow: hidden;
-	/*
-	min-width: 300px;
-	width:expression(document.body.clientWidth < 300? "300px": "auto" ); 
-	*/
 }
 html>body #container #account .user {
 	width: 200px;
@@ -97,26 +93,35 @@ div#account form.login {
 }
 
 div#account form.login label {
+	float: left;
+	display: block;
 	margin-left: 10px;
+	margin-right: 10px;
 	font-size: 1em;
 	font-weight: bold;
 	vertical-align: middle;
+	margin-top: -3px;
 }
-
+html>body div#account form.login label {
+	margin-top: -2px;
+}
 div#account form.login input {
+	float: left;
+	display: block;
 	border: 1px solid #b0b0b0;
-	height: 19px;
+	height: 20px;
 	color: #a0a0a0;
 	text-align: center;
 	vertical-align: top;
 	background-color: #fff;
 	width: 140px;
+	margin-top: 1px;
 }
 /* Ignoré par IE */
 html>body div#account form.login input {
 	width: 116px;
 	height: 17px;
-	margin-top: 1px;
+	margin-top: 2px;
 	margin-bottom: 1px;
 }
 

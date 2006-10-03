@@ -14,7 +14,7 @@
 				</a></li>
 				{if ($admin)}<li><a href="{kurl page="displayanswers" surveyid=$survey->getInfo("id")}">##KS_SEEALLANSWERS##</a></li>{/if}
 				{if ($admin)}<li><a href="{kurl page="editsurvey" surveyid=$survey->getInfo("id")}">##KS_EDITSURVEYINFOS##</a></li>{/if}
-				{if ($admin)}<li><a href="{kurl page="editquestions" surveyid=$survey->getInfo("id")}">##KS_EDITQUESTIONS##</a></li>{/if}
+				{*if ($admin)}<li><a href="{kurl page="editquestions" surveyid=$survey->getInfo("id")}">##KS_EDITQUESTIONS##</a></li>{/if*}
 			</ul>
 		</li>
 		{/foreach}

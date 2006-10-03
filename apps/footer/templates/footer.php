@@ -4,17 +4,6 @@
 			</div>
 		</div>
 		<?/* DEBUT : Barre utilisateur */?>
-		<ul id="footer"><?if (isset($GLOBALS['config']['footer']['message']) && $GLOBALS['config']['footer']['message'] !== '')
-				{?>
-			<li class="first">
-				<?=_('INTRANET_PROVIDED_BY')?> <?=$GLOBALS['config']['footer']['message'];?>
-			</li><?}?>
-			<li<? if (!(isset($GLOBALS['config']['footer']['message']) && $GLOBALS['config']['footer']['message'] !== '')) {?> class="first"<?}?>>
-				Intranet <?=_('BY')?> <a href="http://www.karibou.org" title="Karibou">Karibou</a></li>
-			<li><a href="<?=kurl(array('app'=>"contact"));?>">Contact</a></li>
-			<li><a href="<?=kurl(array('app'=>"credits"));?>"><?=_('APP_CREDITS');?></a></li>
-		</ul>
-
 		<div id="account">
 			<?
 			if ($user->isLogged())
@@ -76,10 +65,10 @@
 		<div id="siteNavigation">
 			<div id="siteNavigationCategories">
 					<ul>
-							<li id="linkCommunicate"><h3><a href="#menuCommunicate" onclick="ShowAppsLinks('menuCommunicate'); return false;"><span>Communiquer</span></a></h3></li>
-							<li id="linkOrganize"><h3><a href="#menuOrganize" onclick="ShowAppsLinks('menuOrganize'); return false;"><span>S'organiser</span></a></h3></li>
-							<li id="linkShare"><h3><a href="#menuShare" onclick="ShowAppsLinks('menuShare'); return false;"><span>Partager</span></a></h3></li>
-							<li id="linkJobs"><h3><a href="#menuJobs" onclick="ShowAppsLinks('menuJobs'); return false;"><span>Emploi</span></a></h3></li>
+							<li id="linkCommunicate"><h3><a href="#menuCommunicate" onclick="ShowAppsLinks('menuCommunicate'); return false;"><span><?=_('NAV_COMMUNICATE');?></span></a></h3></li>
+							<li id="linkOrganize"><h3><a href="#menuOrganize" onclick="ShowAppsLinks('menuOrganize'); return false;"><span><?=_('NAV_ORGANISE');?></span></a></h3></li>
+							<li id="linkShare"><h3><a href="#menuShare" onclick="ShowAppsLinks('menuShare'); return false;"><span><?=_('NAV_SHARE');?></span></a></h3></li>
+							<li id="linkJobs"><h3><a href="#menuJobs" onclick="ShowAppsLinks('menuJobs'); return false;"><span><?=_('NAV_JOB');?></span></a></h3></li>
 							<?
 							/*
 								if ($this->vars['permission']->get('gettext') > _NO_ACCESS_)
@@ -139,6 +128,18 @@
 		</div>
 		<? /* FIN : Navigation : Barre avec onglets */ ?>
 	</div>
+	<div id="footer">
+		<ul><?if (isset($GLOBALS['config']['footer']['message']) && $GLOBALS['config']['footer']['message'] !== '')
+				{?>
+			<li class="first">
+				<?=_('INTRANET_PROVIDED_BY')?> <?=$GLOBALS['config']['footer']['message'];?>
+			</li><?}?>
+			<li<? if (!(isset($GLOBALS['config']['footer']['message']) && $GLOBALS['config']['footer']['message'] !== '')) {?> class="first"<?}?>>
+				Intranet <?=_('BY')?> <a href="http://www.karibou.org" title="Karibou">Karibou</a></li>
+			<li><a href="<?=kurl(array('app'=>"contact"));?>">Contact</a></li>
+			<li><a href="<?=kurl(array('app'=>"credits"));?>"><?=_('APP_CREDITS');?></a></li>
+		</ul>
+	</div>
 
 	<div id="dynamics"></div>
 
@@ -148,5 +149,7 @@
 	<div id="flashmail_headerbox_answer" class="dontshow"><?=_('LOADING');?></div>
 	<div id="blackhole" class="blackhole"></div>
 	
+	
+
 	</body>
 </html>

@@ -9,3 +9,16 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
+
+msgid "NAV_SHARE"
+msgstr "Partager"
+
+msgid "NAV_COMMUNICATE"
+msgstr "Communiquer"
+
+msgid "NAV_JOB"
+msgstr "Partager"
+
+msgid "NAV_ORGANISE"
+msgstr "S'organiser"
+

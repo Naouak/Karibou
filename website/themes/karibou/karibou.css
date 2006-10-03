@@ -116,18 +116,20 @@ html>body #content {
 
 /* Search */
 #container form#search {
+	position: absolute;
 	display: block;
 	width: 200px;
 	height: 43px;
-	position: absolute;
 	top: 0px;
 	right: 0px;
 	z-index: 4;
 	font-size: 0.8em;
 	background-image: url(images/search/searchmodule.png);
+	margin-right: -1px;
 }
 html>body #container form#search {
 	position: fixed;
+	margin-right: 0px;
 }
 #container form#search input {
 	position: absolute;
@@ -207,32 +209,34 @@ html>body #container form#search input.keywords {
 /* * * * * */
 /*  Footer */
 /* * * * * */
-ul#footer {
+#footer {
 	clear: both;
+	padding-left: 30%;
 	background-color: #000;
-	height: 20px;
-	text-align: center;
-	color: #fff;
-	padding-left: 35%;
-	padding-right: 0px;
+	border-bottom: 1px solid #999999;
+	border-top: 1px solid #999999;
+	height: 22px;
 	padding-top: 1px;
 	padding-bottom: 1px;
+}
+#footer ul {
+	text-align: center;
+	color: #fff;
+	padding-right: 0px;
 	overflow: hidden;
 	margin: 0px;
+	list-style: none;
 }
-html>body ul#footer {
+html>body #footer {
 	height: 18px;
 }
-ul#footer a {
+#footer ul a {
 	color: #fff;
 	font-weight: bold;
 	text-decoration: none;
 }
 
-ul#footer  {
-	list-style: none;
-}
-ul#footer li {
+#footer ul li {
 	float: left;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -240,7 +244,7 @@ ul#footer li {
 	height: 18px;
 	overflow: hidden;
 }
-ul#footer li.first {
+#footer ul li.first {
 	border-left: 0px;
 }
 
