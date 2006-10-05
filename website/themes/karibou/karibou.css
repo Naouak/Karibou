@@ -125,7 +125,7 @@ html>body #content {
 	z-index: 4;
 	font-size: 0.8em;
 	background-image: url(images/search/searchmodule.png);
-	margin-right: -1px;
+	/* margin-right: -1px; */
 }
 html>body #container form#search {
 	position: fixed;
