@@ -17,7 +17,7 @@ msgid "NAV_COMMUNICATE"
 msgstr "Communiquer"
 
 msgid "NAV_JOB"
-msgstr "Partager"
+msgstr "Emploi"
 
 msgid "NAV_ORGANISE"
 msgstr "S'organiser"
