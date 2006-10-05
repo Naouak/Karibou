@@ -20,8 +20,8 @@ Class Database extends PDO
 
 	public function __construct($dsn, $username, $password)
 	{
-			parent::__construct($dsn, $username, $password);
-			parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+		parent::__construct($dsn, $username, $password);
+		parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
 	}
 	
 	function query($qry)

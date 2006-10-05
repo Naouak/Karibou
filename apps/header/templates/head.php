@@ -4,6 +4,10 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<base href="http://<?=$_SERVER['HTTP_HOST'].str_replace("index.php","",$_SERVER['SCRIPT_NAME']);?>" />
+
+	<meta name="robots" content="noindex, follow">
+	<meta name="googlebot" content="noindex, follow">
+	
 	<title>
 		<?=_('HEADER_PAGE_TITLE');?> :: <?=_('KPOWERED');?>
 	</title>

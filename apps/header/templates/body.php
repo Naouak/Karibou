@@ -5,7 +5,7 @@
 	<script type="text/javascript" src="/themes/js/hintbox.js"></script>
 
 	<div id="container">
-		<a href="#" id="logo"><span><h1>Karibou</h1></span></a>
+		<a href="<?=kurl(array('app'=>'', 'page'=>''));?>#" id="logo"><span><h1>Karibou</h1></span></a>
 	
 			<?
 				if (isset($this->hookManager->hooks['header_menu']))

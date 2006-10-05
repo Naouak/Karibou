@@ -169,8 +169,6 @@ class Karibou
 		$this->userFactory = new UserFactory($this->db);
 		$this->currentUser = $this->userFactory->getCurrentUser();
 
-		//Instanciation du gestionnaire de langages
-		
 		$this->hookManager		= new HookManager();
 		$this->eventManager		= new EventManager();
 		$this->messageManager	= new MessageManager();
@@ -202,7 +200,7 @@ class Karibou
 		
 
 		$this->appList = new AppList($modelbuilder, $this->db, $this->userFactory, 
-			$this->hookManager, $this->eventManager, $this->messageManager );
+		$this->hookManager, $this->eventManager, $this->messageManager );
 		
 		// on créé la page
 		$this->appName = $this->baseUrl->getApp();
@@ -212,6 +210,11 @@ class Karibou
 		
 		$this->requestedAppName = $urlParser->getAppName();
 		$this->requestedPageName = $urlParser->getPageName();
+
+		//Chargement du daemonloader et du hookmanager ici pour permettre le logout
+		$daemonLoader = new DaemonLoader($this->db, $this->userFactory, $this->appList,
+		$this->hookManager, $this->eventManager, $this->messageManager );
+		$daemonLoader->loadDaemonDir(KARIBOU_DAEMON_DIR);
 
 		// traitement des fonctions formulaire des applis
 		if( $model = $this->app->doForm($urlParser) )
@@ -228,12 +231,9 @@ class Karibou
 		}
 		else
 		{
-			$daemonLoader = new DaemonLoader($this->db, $this->userFactory, $this->appList,
-			$this->hookManager, $this->eventManager, $this->messageManager );
-			$daemonLoader->loadDaemonDir(KARIBOU_DAEMON_DIR);
 			$this->eventManager->sendEvent("load");
 			$this->eventManager->performActions();
-
+			
 			// construction de l'appli principale
 			if( ! $this->app->buildPage($urlParser) )
 			{
@@ -282,10 +282,20 @@ class Karibou
 	 */
 	protected function connectDB()
 	{
+		//Prise en compte des espaces (si la variable de base de données est initialisée)
+		if (isset($GLOBALS['config']['current_space']['bdd']['appsdb']))
+		{
+			$dsn = 'mysql:dbname='.$GLOBALS['config']['current_space']['bdd']['appsdb'].';host=localhost';
+		}
+		else
+		{
+			$dsn = $GLOBALS['config']['bdd']['dsn'];
+		}
+
 		try
 		{
 			$this->db = new Database(
-				$GLOBALS['config']['bdd']["dsn"], 
+				$dsn, 
 				$GLOBALS['config']['bdd']["username"], 
 				$GLOBALS['config']['bdd']["password"]);
 		}

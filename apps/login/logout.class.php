@@ -19,6 +19,7 @@ class Logout extends FormModel
 	function build()
 	{
 		$this->eventManager->sendEvent("logout");
+		$this->eventManager->performActions();
 	}
 }
 

@@ -5,11 +5,11 @@
 		<div class="flags" style="width: 200px;">
 			<form action="{kurl app="preferences" action=post}" method="post" name="french">
 				<input type="hidden" name="lang" value="fr" />
-				<div class="french flag" title="Français"><a href="#" onClick="javascript:document.french.submit()"><span>Français</span></a></div>
+				<div class="french flag" title="Français"><a href="#" onClick="javascript:document.french.submit(); return false;"><span>Français</span></a></div>
 			</form>
 			<form action="{kurl app="preferences" action=post}" method="post" name="toEnglish">
 				<input type="hidden" name="lang" value="en" />
-				<div class="english flag" title="English"><a href="#" onClick="javascript:document.toEnglish.submit()"><span>English</span></a></div>
+				<div class="english flag" title="English"><a href="#" onClick="javascript:document.toEnglish.submit(); return false;"><span>English</span></a></div>
 			</form>
 		</div>
 		<br />

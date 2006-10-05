@@ -70,22 +70,48 @@ class BaseUrl
 		}
 		else
 		{
+		
+		
 			//Chargement d'une page de l'Intranet
-			
 			//Requête de la page d'accueil
 			if ( ereg("^".$this->base_url."[/]*$", $p_url) )
 			{
 				$this->app = $GLOBALS['config']['defaultapp'];
 			}
-			//Requête vers une application
-			elseif(preg_match('#^'.$this->base_url.'([0-9A-Za-z_.]+)(\S*|\z)#',$p_url,$match))
+			//Recherche pour déterminer si nous sommes dans un espace
+			elseif (preg_match('#^'.$this->base_url.'([0-9A-Za-z_.]+)(\S*|\z)#',$p_url,$match))
 			{
-				$this->app = $match[1];
-			}
-			
-			if(isset($match[2]))
-			{
-				$this->arguments = $match[2];
+				if (isset($GLOBALS['config']['spaces']) && array_key_exists($match[1], $GLOBALS['config']['spaces']))
+				{
+					//Nous sommes dans l'espace $match[1]
+					$GLOBALS['config']['current_space']			= $GLOBALS['config']['spaces'][$match[1]];
+					$GLOBALS['config']['current_space']['id']	= $match[1];
+					
+					//Vérification que nous avons une application demandée
+					if (preg_match('#^[/]{0,1}([0-9A-Za-z_.]+)(\S*|\z)#',$match[2],$match2))
+					{
+						//Une application est demandée ($match2[1])
+						$this->app = $match2[1];
+					}
+					else
+					{
+						//Aucune application demandée : chargement de la page d'accueil
+						$this->app = $GLOBALS['config']['current_space']['defaultapp'];
+					}
+					if(isset($match2[2]))
+					{
+						$this->arguments = $match2[2];
+					}
+				}
+				else
+				{
+					//Nous sommes dans l'espace par défaut
+					$this->app = $match[1];
+					if(isset($match[2]))
+					{
+						$this->arguments = $match[2];
+					}
+				}
 			}
 		}
 
