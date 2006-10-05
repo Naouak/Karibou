@@ -36,7 +36,14 @@ class PermAppli extends Model
 		
 		while($row = $stmt->fetch(PDO::FETCH_ASSOC))
 		{
-			$groupList[$row['group_id']]->perm = $row['permission'];
+			if (isset($groupList[$row['group_id']]))
+			{
+				$groupList[$row['group_id']]->perm = $row['permission'];
+			}
+			else
+			{
+				Debug::kill('Pas de groupe '.$row['group_id']);
+			}
 		}
 		$groups = array();
 		foreach($groupList as $group)
