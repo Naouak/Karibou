@@ -19,7 +19,7 @@
 		{
 			echo ', &nbsp;';
 		}
-		echo '<a href="'.kurl(array("app"=>"news", "year"=>$month['year'], "month"=>$month['month'])).'">'.ucfirst(utf8_encode(strftime ('%B', $month['timestamp']))).'</a> <span style="color: #acacac;">('.$month['count'].')</span>';
+		echo '<a href="'.kurl(array("app"=>"news", "year"=>$month['year'], "month"=>$month['month'])).'">'.ucfirst(strftime ('%B', $month['timestamp'])).'</a> <span style="color: #acacac;">('.$month['count'].')</span>';
 	}
 	
 	echo "</div>";
