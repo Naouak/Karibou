@@ -13,7 +13,7 @@
 {/if}
 
 {if ($page == "directory") && $elementid > 0}
-	{if $canUpdate}
+	{if $canWrite}
 	<li><a href="{kurl page="renameform" elementid=$elementid}">##FS_RENAME_DIRECTORY_SHORT##</a></li>
 	{/if}
 {/if}

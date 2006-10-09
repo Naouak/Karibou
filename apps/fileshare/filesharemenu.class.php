@@ -18,7 +18,10 @@ class FileShareMenu extends Model
 		
 		if( isset($this->args["canUpdate"]) && ($this->args["canUpdate"] == TRUE) )
 			$this->assign("canUpdate", TRUE);
-			
+
+		if( isset($this->args["canWrite"]) && ($this->args["canWrite"] == TRUE) )
+			$this->assign("canWrite", TRUE);
+
 		if( isset($this->args["elementid"]) )
 			$this->assign("elementid", $this->args["elementid"]);
 	}

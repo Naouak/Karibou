@@ -13,4 +13,5 @@
 		<input type="submit" value="##FS_RENAME_BUTTON##" class="button" />
 	</form>
 </div>
+{else}
 {/if}
