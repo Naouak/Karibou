@@ -227,8 +227,76 @@ else
 				</ul>
 			</div>
 		</div>
+<?
+/*
+?>
+			<div class="box communicate mail">
+				<h3 class="handle"><?=_('APP_MAIL');?></h3>
+				<div class="mail">
+					<?
+						if (isset($this->vars['messagecount']))
+						{
+					?>
+						<div class="messagesnb">
+							<?=$this->vars['messagecount'];?> messages in INBOX<br />
+						</div>
 
+						<?
+							if ($this->vars['quota'])
+							{
+						?>
+							<div class="quota">
+								<div class="bar" style="width: {$quota.usage/$quota.limit*100|@round}%">
+									Quota : <strong><?=round($this->vars['quota']['usage']/1000,2);?>MB</strong> / <?=round($this->vars['quota']['limit']/1000,2);?>MB
+								</div>
+							</div>
+						<?
+							}
+						?>
+					
+						<table>
+							<thead>
+								<tr>
+									<th><?=_('FROM');?> - <?=_('SUBJECT');?></th>
+									<th class="date"><?=_('Date');?></th>
+								</tr>
+							</thead>
+							<tbody>
+						<?
+						foreach ($this->vars['messageheaders'] as $header)
+						{
+						?>
+							<? if ($header->deleted) {?>
+									<tr class="deleted">
+							<?} elseif (!$header->seen) {?>
+									<tr class="unread">
+							<?} elseif ($header->answered) {?>
+									<tr class="replied">
+							<?} else {?>
+									<tr class="read">
+							<?} ?>
+										<td class="message">
+											<a href="<?=kurl(array('page'=>'msg', 'mailbox'=>"INBOX", 'uid'=>$header->uid));?>"><?=$header->from;?></a> - 
+											<a href="<?=kurl(array('page'=>'msg', 'mailbox'=>"INBOX", 'uid'=>$header->uid));?>"><?=substr($header->subject, 0, 20);?></a>
+										</td>
+										<td class="date">
+											{$header->date|date_format:"%d-%b"}
+										</td>
+									</tr>
+						<?
+						}
+						?>
+							</tbody>
+						</table>
+					<?
+					}
+					?>
+				</div>
+			</div>
 
+<?
+*/
+?>
 		<div class="rightbar">
 			<div class="box share fileshare">
 				<h2><a href="<?=kurl(array('app'=>'fileshare'));?>"><?=_('FILESHARE');?> : <?=_('LASTADDEDFILES');?></a></h2>

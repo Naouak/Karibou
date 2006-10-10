@@ -21,197 +21,229 @@ class StaticHomeDefault extends Model
 		 */
 		$this->assign('permission', $this->permission);
 		
-		/**
-		 * Sélection des News
-		*/
-		//Recherche de toutes les derniers articles non supprimés et de leurs originaux
-		$reqSqlAllArticles = "
-			SELECT news.id, news.id_author, news.id_groups, news.title, news.content, UNIX_TIMESTAMP(news.time) as timestamp, count(news_comments.id) as nb_comments
-			FROM news LEFT OUTER JOIN news_comments ON news.id = news_comments.id_news
-			WHERE (news.last = 1 AND news.deleted = 0) ".
-			"GROUP BY news.id
-			ORDER BY timestamp
-			DESC
-			LIMIT 0,20;
-			";
-
-		$articles = array ();
-		$resSqlAllArticles = $this->db->prepare($reqSqlAllArticles);
-		$resSqlAllArticles->execute();
-		
-		//Pour eviter les problemes de "Err 2014 : Command out of sync. You can't run this query now..."
-		//il faut faire un fetchall, afin de vider la pile des enregistrements pour les traiter par la suite
-		while ( $row = $resSqlAllArticles->fetch(PDO::FETCH_ASSOC) )
+		if ($this->permission > _READ_ONLY_)
 		{
-			//Creation de l'objet d'une news
-			$aNews = new News($this->userFactory);
-			$aNews->load(
-				$row['id'],
-				$row['timestamp'], 
-				$this->userFactory->prepareUserFromId($row['id_author']), 
-				$row['id_groups'],
-				$row['title'],
-				$row['content'],
-				$row['nb_comments']
-				);
+			/**
+			 * Sélection des News
+			*/
+			//Recherche de toutes les derniers articles non supprimés et de leurs originaux
+			$reqSqlAllArticles = "
+				SELECT news.id, news.id_author, news.id_groups, news.title, news.content, UNIX_TIMESTAMP(news.time) as timestamp, count(news_comments.id) as nb_comments
+				FROM news LEFT OUTER JOIN news_comments ON news.id = news_comments.id_news
+				WHERE (news.last = 1 AND news.deleted = 0) ".
+				"GROUP BY news.id
+				ORDER BY timestamp
+				DESC
+				LIMIT 0,20;
+				";
 
-			$articles[] = $aNews;
-		}
-		
-		$this->assign('articles', $articles);
-		
-		/**
-		 * Sélection des Fichiers
-		 */
-		$myKDBFSElementFactory = new KDBFSElementFactory($this->db, $this->userFactory, $this->permission);
-		$this->assign("lastAddedFiles", $myKDBFSElementFactory->getLastAddedFiles(20));
-		$this->assign("mostDownloadedFiles", $myKDBFSElementFactory->getMostDownloadedFiles(5));
-		
-		
-		/**
-		 * Sélection des évènements du jour et du lendemain
-		 */
-
-		$currentDate = new KDate();
-		if(isset($this->args['year']) && $this->args['year'] != '')
-		{
-			$currentDate->setYear($this->args['year']);
-		}
-		if(isset($this->args['month']) && $this->args['month'] != '')
-		{
-			$currentDate->setMonth($this->args['month']);
-		}
-		if(isset($this->args['day']) && $this->args['day'] != '')
-		{
-			$currentDate->setDay($this->args['day']);
-		}
-
-		$this->buildCalendar($currentDate);
-
-		$this->assign('today', $currentDate);
-
-		$myCalendars = new CalendarListDB($this->db, $this->currentUser);
-		$cals = $myCalendars->getSubscribedCalendars();
-		
-		$adminCalendars = $myCalendars->getAdminCalendars();
-		
-		$start = new Date($currentDate);
-		$start->setHour(0);
-		$start->setMinute(0);
-		$start->setSecond(0);
-		$stop = new Date($currentDate);
-		$stop->setHour(23);
-		$stop->setMinute(59);
-		$stop->setSecond(59);
-		
-		/* Aujourd'hui */
-		$today = $currentDate;
-		$today_start = new Date($today);
-		$today_start->setHour(0);
-		$today_start->setMinute(0);
-		$today_start->setSecond(0);
-		$today_stop = new Date($today);
-		$today_stop->setHour(23);
-		$today_stop->setMinute(59);
-		$today_stop->setSecond(59);
-		
-		$this->columns = array();
-		$this->columns[0] = new CalendarEventList();
-		$today_evts = array();
-		if (count($cals) > 0)
-		{
-			foreach($cals as $cal)
+			$articles = array ();
+			$resSqlAllArticles = $this->db->prepare($reqSqlAllArticles);
+			$resSqlAllArticles->execute();
+			
+			//Pour eviter les problemes de "Err 2014 : Command out of sync. You can't run this query now..."
+			//il faut faire un fetchall, afin de vider la pile des enregistrements pour les traiter par la suite
+			while ( $row = $resSqlAllArticles->fetch(PDO::FETCH_ASSOC) )
 			{
-				$evts_ol = $cal->getReader()->getEventsByDay( $currentDate );
-				$evts = $evts_ol->getAllEvents( $start, $stop );
-				foreach($evts as &$e)
+				//Creation de l'objet d'une news
+				$aNews = new News($this->userFactory);
+				$aNews->load(
+					$row['id'],
+					$row['timestamp'], 
+					$this->userFactory->prepareUserFromId($row['id_author']), 
+					$row['id_groups'],
+					$row['title'],
+					$row['content'],
+					$row['nb_comments']
+					);
+
+				$articles[] = $aNews;
+			}
+			
+			$this->assign('articles', $articles);
+			
+			/**
+			 * Sélection des Fichiers
+			 */
+			$myKDBFSElementFactory = new KDBFSElementFactory($this->db, $this->userFactory, $this->permission);
+			$this->assign("lastAddedFiles", $myKDBFSElementFactory->getLastAddedFiles(20));
+			$this->assign("mostDownloadedFiles", $myKDBFSElementFactory->getMostDownloadedFiles(5));
+			
+			
+			/**
+			 * Sélection des évènements du jour et du lendemain
+			 */
+
+			$currentDate = new KDate();
+			if(isset($this->args['year']) && $this->args['year'] != '')
+			{
+				$currentDate->setYear($this->args['year']);
+			}
+			if(isset($this->args['month']) && $this->args['month'] != '')
+			{
+				$currentDate->setMonth($this->args['month']);
+			}
+			if(isset($this->args['day']) && $this->args['day'] != '')
+			{
+				$currentDate->setDay($this->args['day']);
+			}
+
+			$this->buildCalendar($currentDate);
+
+			$this->assign('today', $currentDate);
+
+			$myCalendars = new CalendarListDB($this->db, $this->currentUser);
+			$cals = $myCalendars->getSubscribedCalendars();
+			
+			$adminCalendars = $myCalendars->getAdminCalendars();
+			
+			$start = new Date($currentDate);
+			$start->setHour(0);
+			$start->setMinute(0);
+			$start->setSecond(0);
+			$stop = new Date($currentDate);
+			$stop->setHour(23);
+			$stop->setMinute(59);
+			$stop->setSecond(59);
+			
+			/* Aujourd'hui */
+			$today = $currentDate;
+			$today_start = new Date($today);
+			$today_start->setHour(0);
+			$today_start->setMinute(0);
+			$today_start->setSecond(0);
+			$today_stop = new Date($today);
+			$today_stop->setHour(23);
+			$today_stop->setMinute(59);
+			$today_stop->setSecond(59);
+			
+			$this->columns = array();
+			$this->columns[0] = new CalendarEventList();
+			$today_evts = array();
+			if (count($cals) > 0)
+			{
+				foreach($cals as $cal)
 				{
-					foreach($adminCalendars as $adm)
+					$evts_ol = $cal->getReader()->getEventsByDay( $currentDate );
+					$evts = $evts_ol->getAllEvents( $start, $stop );
+					foreach($evts as &$e)
 					{
-						if( ($e->calendarid == $adm->getId()) )
+						foreach($adminCalendars as $adm)
 						{
-							$e->admin = true;
-							Debug::display("TRUE");
-							break;
+							if( ($e->calendarid == $adm->getId()) )
+							{
+								$e->admin = true;
+								Debug::display("TRUE");
+								break;
+							}
 						}
 					}
+					//$this->insertIntoColumns($evts);
+		
+					$today_evts_ol = $cal->getReader()->getEventsByDay( $today );
+					$today_evts = array_merge($today_evts, $today_evts_ol->getAllEvents($today_start, $today_stop) );
 				}
-				//$this->insertIntoColumns($evts);
-	
-				$today_evts_ol = $cal->getReader()->getEventsByDay( $today );
-				$today_evts = array_merge($today_evts, $today_evts_ol->getAllEvents($today_start, $today_stop) );
 			}
-		}
-		
-		/* Demain */
-		$nextDay = $currentDate->getNextDay();
-		$nextDay_start = new Date($nextDay);
-		$nextDay_start->setHour(0);
-		$nextDay_start->setMinute(0);
-		$nextDay_start->setSecond(0);
-		$nextDay_stop = new Date($nextDay);
-		$nextDay_stop->setHour(23);
-		$nextDay_stop->setMinute(59);
-		$nextDay_stop->setSecond(59);
-		
-		$this->columns = array();
-		$this->columns[0] = new CalendarEventList();
-		$nextDay_evts = array();
-		if (count($cals) > 0)
-		{
-			foreach($cals as $cal)
+			
+			/* Demain */
+			$nextDay = $currentDate->getNextDay();
+			$nextDay_start = new Date($nextDay);
+			$nextDay_start->setHour(0);
+			$nextDay_start->setMinute(0);
+			$nextDay_start->setSecond(0);
+			$nextDay_stop = new Date($nextDay);
+			$nextDay_stop->setHour(23);
+			$nextDay_stop->setMinute(59);
+			$nextDay_stop->setSecond(59);
+			
+			$this->columns = array();
+			$this->columns[0] = new CalendarEventList();
+			$nextDay_evts = array();
+			if (count($cals) > 0)
 			{
-				$evts_ol = $cal->getReader()->getEventsByDay( $currentDate );
-				$evts = $evts_ol->getAllEvents( $start, $stop );
-				foreach($evts as &$e)
+				foreach($cals as $cal)
 				{
-					foreach($adminCalendars as $adm)
+					$evts_ol = $cal->getReader()->getEventsByDay( $currentDate );
+					$evts = $evts_ol->getAllEvents( $start, $stop );
+					foreach($evts as &$e)
 					{
-						if( ($e->calendarid == $adm->getId()) )
+						foreach($adminCalendars as $adm)
 						{
-							$e->admin = true;
-							Debug::display("TRUE");
-							break;
+							if( ($e->calendarid == $adm->getId()) )
+							{
+								$e->admin = true;
+								Debug::display("TRUE");
+								break;
+							}
 						}
 					}
+					//$this->insertIntoColumns($evts);
+		
+					$nextDay_evts_ol = $cal->getReader()->getEventsByDay( $nextDay );
+					$nextDay_evts = array_merge($nextDay_evts, $nextDay_evts_ol->getAllEvents($nextDay_start, $nextDay_stop) );
 				}
-				//$this->insertIntoColumns($evts);
-	
-				$nextDay_evts_ol = $cal->getReader()->getEventsByDay( $nextDay );
-				$nextDay_evts = array_merge($nextDay_evts, $nextDay_evts_ol->getAllEvents($nextDay_start, $nextDay_stop) );
 			}
+			//Debug::display($this->columns);
+			$this->assign("cals", $cals);
+			$this->assign("today_events", $today_evts);
+			$this->assign("nextday_events", $nextDay_evts);
+			
+			
+			/**
+			 * Récupération des dernières offres d'emploi et de stage
+			 */
+			$netJobs = new NetJobs ($this->db, $this->userFactory);
+			$myJobs = $netJobs->getJobList(20);
+			$this->assign("jobs", $myJobs);
+			
+			
+			/**
+			 * Récupération des derniers emails
+			 */
+			/*
+			$user = $this->userFactory->getCurrentUser();
+			$config = $this->getConfig();
+
+			$keychain = KeyChainFactory::getKeyChain($this->currentUser);
+			if( !$keychain->unlock() )
+			{
+				$this->assign("message", 'cannot unlock the KeyChain');
+				return;
+			}
+			$pass = $keychain->get('session_password');
+			$username = $user->getLogin().$GLOBALS['config']['login']['post_username'];
+			$server = $GLOBALS['config']['login']['server'];
+
+			$mailbox = new Mailbox($server, $username, $pass );
+			$mailbox->setPerPage(10);
+			if( $mailbox->connected() )
+			{
+				$this->assign('quota', $mailbox->getQuota() );
+				$this->assign('messagecount', $mailbox->getMessageCount());
+				$h = $mailbox->getHeaders(1);
+				$h = array_reverse($h);
+				$this->assign('messageheaders', $h);
+			}
+			*/
+			
+			/**
+			 * Derniers évènements sur l'intranet
+			 */
+			foreach($this->vars['articles'] as $article)
+			{
+				$iEvents[] = array('secondsago' => $article->getSecondsSinceLastUpdate(), 'type' => 'article', 'object' => $article);
+			}
+			foreach($this->vars['lastAddedFiles'] as $file)
+			{
+				$iEvents[] = array('secondsago' => $file->getSecondsSinceLastUpdate(), 'type' => 'file', 'object' => $file);
+			}
+			foreach($this->vars['jobs'] as $job)
+			{
+				$iEvents[] = array('secondsago' => $job->getSecondsSinceLastUpdate(), 'type' => 'job', 'object' => $job);
+			}
+			sort($iEvents);
+			$this->assign('iEvents', $iEvents);
 		}
-		//Debug::display($this->columns);
-		$this->assign("cals", $cals);
-		$this->assign("today_events", $today_evts);
-		$this->assign("nextday_events", $nextDay_evts);
-		
-		
-		/**
-		 * Récupération des dernières offres d'emploi et de stage
-		 */
-		$netJobs = new NetJobs ($this->db, $this->userFactory);
-		$myJobs = $netJobs->getJobList(20);
-		$this->assign("jobs", $myJobs);
-		
-		/**
-		 * Derniers évènements sur l'intranet
-		 */
-		foreach($this->vars['articles'] as $article)
-		{
-			$iEvents[] = array('secondsago' => $article->getSecondsSinceLastUpdate(), 'type' => 'article', 'object' => $article);
-		}
-		foreach($this->vars['lastAddedFiles'] as $file)
-		{
-			$iEvents[] = array('secondsago' => $file->getSecondsSinceLastUpdate(), 'type' => 'file', 'object' => $file);
-		}
-		foreach($this->vars['jobs'] as $job)
-		{
-			$iEvents[] = array('secondsago' => $job->getSecondsSinceLastUpdate(), 'type' => 'job', 'object' => $job);
-		}
-		sort($iEvents);
-		$this->assign('iEvents', $iEvents);
-		
 		
 	}
 	

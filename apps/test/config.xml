@@ -2,6 +2,8 @@
 	<load class="Test" file="Test.class.php" />
 	<load class="TestView" file="testview.class.php" />
 	<load class="TestPost" file="post.class.php" />
+	<load class="FormTest" file="formtest.class.php" />
+	<load class="FormTestPost" file="formtestpost.class.php" />
 	
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
@@ -9,8 +11,14 @@
 	<view name="default" class="Test" template="test.tpl" />
 	<view name="view" class="TestView" template="testview.tpl" />
 	<view name="viewphp" class="TestView" template="view.php" />
+	<view name="formtest" class="FormTest" template="formtest.php" />
 	
 	<page view="view" />
+
+	<page name="formtest" view="formtest">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" />
+	</page>
 
 	<page name="view" view="view">
 		<header app="empty" view="default" />
@@ -24,6 +32,10 @@
 	
 	<form action="post" class="TestPost">
 		<redirect />
+	</form>
+	
+	<form action="formtestpost" class="FormTestPost">
+		<referer />
 	</form>
 	
 </app>

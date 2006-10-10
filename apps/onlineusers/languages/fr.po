@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
 msgid "ONLINEUSERS"
-msgstr "Utilisateurs en ligne"
+msgstr "Utilisateur(s) en ligne"
 
 msgid "ALIAS"
 msgstr "alias"

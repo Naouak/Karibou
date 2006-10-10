@@ -9,21 +9,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
-msgid "ONLINEUSERS"
-msgstr "User(s) online"
 
-msgid "ALIAS"
-msgstr "alias"
+msgid "FORM_ERROR_EqualTo"
+msgstr "Fields contents must be exactly the same"
 
-msgid "SINCE"
-msgstr "since"
+msgid "FORM_ERROR_NotEmpty"
+msgstr "This field cannot be empty"
 
-msgid "LASTACTION"
-msgstr "Last action"
-
-msgid "AGO"
-msgstr "ago"
-
-msgid "NOUSERCONNECTED"
-msgstr "No user online"
-
+msgid "FORM_ERROR_SELECT_NotEmpty"
+msgstr "You must select an option"

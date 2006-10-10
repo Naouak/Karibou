@@ -316,14 +316,13 @@ function kurl(params)
 				if (dynamics_var['onlineusers'].length > 0)
 				{
 					//Création de la div du nombre d'utilisateurs (clickable)
-					f.innerHTML += 
-						'<div id="onlineusers_nb"><a href="#" onClick="toggle_display(\'onlineusers_list\'); return false;">&nbsp;</a></div>';
+					//f.innerHTML += 	'<div id="onlineusers_nb"><a href="#" onClick="toggle_display(\'onlineusers_list\'); return false;">&nbsp;</a></div>';
 						
 					var list = "";
 					//list += '<div id="onlineusers_list">' +	dynamics_var['onlineusers'].length + ' utilisateur(s) :';
 
 					//Création de la div de liste du nombre d'utilisateurs
-					list += '<div id="onlineusers_list" class="dontshow"><ul></ul></div>';
+					list += '<div id="onlineusers_list" class="showed"></div>';
 					
 					f.innerHTML += list;
 			
@@ -342,13 +341,17 @@ function kurl(params)
 			 * Mise à jour des valeurs
 			 */
 			//Nombre d'utilisateurs
+			/*
 			var f1 = document.getElementById('onlineusers_nb');
 			var a1 = f1.getElementsByTagName("A");
 			if (a1)
 				a1[0].innerHTML = dynamics_var['onlineusers'].length;
+			*/
 			
 			//Liste des utilisateurs
 			var f2 = document.getElementById('onlineusers_list');
+			f2.innerHTML = '<h2>' + dynamics_var['onlineusers'].length + ' <?=strtolower(_('ONLINEUSERS'));?></h2><ul></ul>';
+			
 			var u2 = f2.getElementsByTagName("UL");
 			for(i = 0; i < dynamics_var['onlineusers'].length; i++)
 			{
@@ -386,7 +389,8 @@ function kurl(params)
 
 	//1. Récupération via Ajax.Updater (update)
 	//update_dynamics();
-	setInterval("update_dynamics()", 2000);
+	update_dynamics();
+	setInterval("update_dynamics()", 20000);
 	//2. Get (retour de valeur) + Unserialize (get & unserialize)
 	//3. Interprétation (process)
 	//var tab = process_dynamics();

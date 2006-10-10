@@ -9,21 +9,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
-msgid "ONLINEUSERS"
-msgstr "User(s) online"
 
-msgid "ALIAS"
-msgstr "alias"
+msgid "FORM_ERROR_EqualTo"
+msgstr "Les champs doivent &ecirc;tre &eacute;gaux"
 
-msgid "SINCE"
-msgstr "since"
+msgid "FORM_ERROR_NotEmpty"
+msgstr "Ce champ ne peut &ecirc;tre vide"
 
-msgid "LASTACTION"
-msgstr "Last action"
-
-msgid "AGO"
-msgstr "ago"
-
-msgid "NOUSERCONNECTED"
-msgstr "No user online"
-
+msgid "FORM_ERROR_SELECT_NotEmpty"
+msgstr "Vous devez s&eacute;lectionner une option"

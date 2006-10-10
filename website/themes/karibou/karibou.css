@@ -3,11 +3,16 @@
 	padding: 0px;
 }
 
+html {
+	height: 100%;
+}
+
 body {
 	font: 0.8em sans-serif;
 	text-align: center;
 	margin: 0px;
 	padding: 0px;
+	height: 100%;
 }
 
 table {
@@ -445,12 +450,38 @@ div.overzone.overzone_error {
 }
 
 /* Nouveau style */
+/*
+#dynamics {
+	position: absolute;
+	background-color: #fafafa;
+	border-left: 1px solid #999;
+	visibility: visible;
+	text-align: left;
+
+	padding-top: 80px;
+
+	width: 250px;
+	height: 100%;
+	
+	top: 0px;
+	right: 0px;
+	
+	z-index: 1;
+}
 #dynamics ul {
 	list-style: none;
 	margin: 0px;
 	padding: 0px;
 	text-align: left;
 }
+#dynamics h2 {
+	margin: 0px;
+	padding: 3px;
+	font-size: 0.9em;
+	background: #999;
+	color: #fff;
+}
+/*
 #onlineusers_nb {
 	position: absolute;
 	right: 0px;
@@ -477,21 +508,27 @@ html>body #onlineusers_nb {
 	background-position: right 2px;
 	background-color: #000;
 }
-
+*/
 #onlineusers_list {
-	position: absolute;
-	right: 40px;
-	top: 60px;
-	color: #fff;
-	padding: 4px;
-	background-color: #000;
+	/* position: absolute; */
+	/* right: 40px; */
+	/* top: 60px; */
+	/* color: #fff; */
+	/* padding: 4px; */
+	/* background-color: #000; */
+}
+#onlineusers_list ul {
+	height: 100px;
+	overflow-y: scroll;
+	border-bottom: 1px solid #999;
+	
 }
 #onlineusers_list ul li {
 	margin-top: 3px;
 	margin-bottom: 3px;
 }
 #onlineusers_list a {
-	color: #fff;
+	/* color: #fff; */
 }
 
 .dontshow {

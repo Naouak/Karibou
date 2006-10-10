@@ -36,6 +36,10 @@
 	<load class="NJCompany"			file="../netjobs/class/NJCompany.class.php" />
 	<load class="NJContact"			file="../netjobs/class/NJContact.class.php" />
 
+	<load class="Mailbox" file="../mail/classes/mailbox.class.php" />
+	<load class="Message" file="../mail/classes/message.class.php" />
+	<load class="Part" file="../mail/classes/part.class.php" />
+
 	<load class="StaticHomeMenu" file="menu.class.php" />
 	
 	<header app="header" view="default" />
