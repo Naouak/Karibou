@@ -19,16 +19,26 @@ class FileShareMove extends FormModel
 		
 		if (isset($_POST["elementid"], $_POST["destinationid"]) && $_POST["elementid"] != "")
 		{
-			$myFile = $myKDBFSElementFactory->move($_POST["elementid"], $_POST["destinationid"]);
-			$this->setRedirectArg('app', 'fileshare');
-			$this->setRedirectArg('page', 'details');
-			$this->setRedirectArg('elementpath', $myFile->getPathBase64());
+			$myElement = new KDBFSElement($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $_POST['elementid']);
+			
+			if ($myElement->canWrite())
+			{
+				$myFile = $myKDBFSElementFactory->move($_POST["elementid"], $_POST["destinationid"]);
+				$this->setRedirectArg('app', 'fileshare');
+				$this->setRedirectArg('page', 'details');
+				$this->setRedirectArg('elementpath', $myFile->getPathBase64());
+			}
 		}
-		else
+		elseif (isset($_POST["elementid"]))
 		{
 			$this->setRedirectArg('app', 'fileshare');
 			$this->setRedirectArg('page', 'movewhere');
 			$this->setRedirectArg('elementpath', $_POST["elementid"]);
+		}
+		else
+		{
+			$this->setRedirectArg('app', 'fileshare');
+			$this->setRedirectArg('page', '');
 		}
 	}
 	

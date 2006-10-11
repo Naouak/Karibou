@@ -1,6 +1,7 @@
 <h1>##FILESHARE_TITLE##</h1>
 {if isset($myElement)}
 <div class="fileshare">
+{if $allowed}
 	<div class="helper">##FS_RENAME_DESCRIPTION##</div>
 	<form action="{kurl action="rename"}" method="post" class="move">
 		<div class="from">			##FS_RENAME_ELEMENT## <strong>{$myElement->getSysInfos('name')}</strong>
@@ -12,6 +13,9 @@
 		<br />
 		<input type="submit" value="##FS_RENAME_BUTTON##" class="button" />
 	</form>
+{else}
+	<div class="hint hint_notallowed">##NOACCESS##</div>
+{/if}
 </div>
 {else}
 {/if}

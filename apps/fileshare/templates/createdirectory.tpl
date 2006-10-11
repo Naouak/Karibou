@@ -1,5 +1,6 @@
 <h1>##FILESHARE_TITLE##</h1>
 <div class="fileshare">
+{if $allowed}
 	<div class="helper">##CREATEDIRECTORY_DESCRIPTION##</div>
 	<form action="{kurl action="savedirectory"}" method="post">
 		##CREATINGIN## : <strong>/{$directoryname}</strong>
@@ -18,4 +19,7 @@
 		</div>
 		<input type="submit" value="##CREATEDIRECTORY##" class="button" />
 	</form>
+{else}
+	<div class="hint hint_notallowed">##NOACCESS##</div>
+{/if}
 </div>

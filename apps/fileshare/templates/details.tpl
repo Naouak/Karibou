@@ -235,7 +235,7 @@
 				{/if}
 			{/foreach}			
 			</ul>
-			{if $myElement->canUpdate()}
+			{if $myElement->canWrite()}
 			<a href="{kurl page="addversion" fileid=$myElement->getFileId()}" class="add">##ADD_NEW_VERSION##</a>
 			{/if}
 		</div>

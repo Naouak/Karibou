@@ -1,5 +1,6 @@
 <h1>##FILESHARE_TITLE##</h1>
 <div class="fileshare">
+{if $allowed}
 	<div class="helper">{if isset($myFile)}##FILEUPLOAD_ADDVERSION_DESCRIPTION##{else}##FILEUPLOAD_DESCRIPTION##{/if}</div>
 	<form action="{kurl action="savefile"}" method="post" enctype="multipart/form-data">
 	{if isset($myFile)}
@@ -27,4 +28,7 @@
 	{/if}
 		<input type="submit" value="##UPLOAD_FILE##" class="button" />
 	</form>
+{else}
+	<div class="hint hint_notallowed">##NOACCESS##</div>
+{/if}
 </div>

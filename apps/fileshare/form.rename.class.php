@@ -25,7 +25,10 @@ class FileShareFormRename extends Model
 		{
 			$myElement = new KDBFSElement($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $this->args["elementid"]);
 			if ($myElement->canWrite())
+			{
 				$this->assign("myElement", $myElement);
+				$this->assign('allowed', TRUE);
+			}
 			//$myDirectory = new KDirectory($this->db, $this->userFactory, $this->permission, "", FALSE, FALSE, FALSE);
 			//$this->assign("myDirectoryTree", $myDirectory->returnTree());
 		}

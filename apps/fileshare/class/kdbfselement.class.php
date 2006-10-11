@@ -523,9 +523,10 @@ class KDBFSElement
 		$groupownerid = $this->getSysInfos("groupowner");
 		
 		if (
-				$currentUser->getId() == $this->getSysInfos("creator") 
+				($currentUser->getId() == $this->getSysInfos("creator") 
 			||	$currentUser->getId() == $this->getLastVersionInfo("uploader")
-			|| 	(isset($groupownerid) && $groupownerid != NULL && $currentUser->isInGroup($this->db, $groupownerid)) )
+			|| 	(isset($groupownerid) && $groupownerid != NULL && $currentUser->isInGroup($this->db, $groupownerid))
+				) && $this->permission > _READ_ONLY_ )
 		{
 			$this->rights = READ|UPDATE|WRITE; //Full rights
 		}

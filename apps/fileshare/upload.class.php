@@ -18,24 +18,34 @@ class FileShareUpload extends Model
 	{
 		$app = $this->appList->getApp($this->appname);
 		$app->addView("menu", "header_menu", array("page"=>"uploadfile"));
-		//var_dump( $this->permission >= _FULL_WRITE_ );
-		//Uploading a new file version
-		if (isset($this->args['fileid']))
-		{
-			//$dbfsFile = new KDBFSElement($this->db, FALSE, FALSE, $this->args['fileid']);
-			//$this->assign('dbfsFile', $dbfsFile);
-			$file = new KFile($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $this->args['fileid']);
-			$this->assign('myFile', $file);
-			
-		}
-		elseif (isset($this->args['directoryname']))
-		{
-			$this->assign('directorynamebase64', $this->args['directoryname']);
-			$this->assign('directoryname', base64_decode($this->args['directoryname']));
-		}
 
-		$groups = $this->userFactory->getGroups();
-		$this->assign('grouptree', $groups->getTree() );
+		//Uploading a new file version
+		if ( ($this->permission > _READ_ONLY_) )
+		{
+				if (isset($this->args['fileid']))
+				{
+					$file = new KFile($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $this->args['fileid']);
+					if ($file->canWrite())
+					{
+						$this->assign('myFile', $file);
+						$this->assign('allowed', TRUE);
+					}
+					
+				}
+				elseif (isset($this->args['directoryname']))
+				{
+					$myDir = new KDirectory($this->db, $this->userFactory, $this->permission, base64_decode($this->args['directoryname']));
+					if ($myDir->canWrite())
+					{
+						$this->assign('directorynamebase64', $this->args['directoryname']);
+						$this->assign('directoryname', base64_decode($this->args['directoryname']));
+						$this->assign('allowed', TRUE);
+					}
+				}
+				
+				$groups = $this->userFactory->getGroups();
+				$this->assign('grouptree', $groups->getTree() );
+		}
 	}
 }
 
