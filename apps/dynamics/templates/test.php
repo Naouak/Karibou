@@ -302,8 +302,10 @@ function kurl(params)
 		var dynamics_serialized = get_dynamics();
 		var tableau = new PhpArray2Js(dynamics_serialized);
 		var dynamics_var = tableau.retour();
+		//Nécessaire pour le fonctionnement de dynamics
+		dynamics_var = dynamics_var['dynamics'];
 		var f = document.getElementById('dynamics');
-		
+		var list = '';
 		if (dynamics_var)
 		{
 			if (f.innerHTML.length == 0)
@@ -313,20 +315,21 @@ function kurl(params)
 				/**
 				 * Gestion de l'affichage des utilisateurs en ligne
 				 */
+				 /*
 				if (dynamics_var['onlineusers'].length > 0)
 				{
+				*/
 					//Création de la div du nombre d'utilisateurs (clickable)
 					//f.innerHTML += 	'<div id="onlineusers_nb"><a href="#" onClick="toggle_display(\'onlineusers_list\'); return false;">&nbsp;</a></div>';
 						
-					var list = "";
 					//list += '<div id="onlineusers_list">' +	dynamics_var['onlineusers'].length + ' utilisateur(s) :';
 
 					//Création de la div de liste du nombre d'utilisateurs
-					list += '<div id="onlineusers_list" class="showed"></div>';
-					
+					list = '<div id="onlineusers" class="showed"></div>';
 					f.innerHTML += list;
-			
+				/*
 				}
+				/*
 				else if (dynamics_var['onlineusers'].length == 0)
 				{
 					document.getElementById('onlineusers_nb').innerHTML = dynamics_var['onlineusers'].length;
@@ -335,6 +338,13 @@ function kurl(params)
 				{
 					document.getElementById('onlineusers_nb').innerHTML = '';
 				}
+				*/
+				
+				/**
+				 * Création de la zone minichat
+				 */
+				list = '<div id="minichat" class="showed"></div>';
+				f.innerHTML += list;
 			}
 			
 			/**
@@ -348,11 +358,15 @@ function kurl(params)
 				a1[0].innerHTML = dynamics_var['onlineusers'].length;
 			*/
 			
-			//Liste des utilisateurs
-			var f2 = document.getElementById('onlineusers_list');
+			/**
+			 * Liste des utilisateurs
+			 */
+			var f2 = document.getElementById('onlineusers');
+			f2.innerHTML = '';
 			f2.innerHTML = '<h2>' + dynamics_var['onlineusers'].length + ' <?=strtolower(_('ONLINEUSERS'));?></h2><ul></ul>';
-			
+
 			var u2 = f2.getElementsByTagName("UL");
+			list = '';
 			for(i = 0; i < dynamics_var['onlineusers'].length; i++)
 			{
 				userlinkparams = dynamics_var['onlineusers'][i];
@@ -369,6 +383,44 @@ function kurl(params)
 				list += '</li>';
 			}
 			u2[0].innerHTML = list;
+			
+			/**
+			 * Affichage du MiniChat
+			 */
+			var f3 = document.getElementById('minichat');
+			f3.innerHTML = '';
+			f3.innerHTML = '<h2><?=_('APP_MINICHAT');?></h2><ul></ul>';
+
+			var u3 = f3.getElementsByTagName("UL");
+			list = '';
+			for(i = 0; i < dynamics_var['minichat'].length; i++)
+			{
+				userlinkparams = dynamics_var['minichat'][i];
+				//alert(userlinkparams['displayname']);
+				list += '<li>';
+				list += userlink(userlinkparams);
+				urlparams = Array();
+				//alert('a');
+				urlparams['app'] = "flashmail";
+				urlparams['page'] = "writeto";
+				urlparams['userid'] = dynamics_var['minichat'][i]['id'];
+				list += '';
+				list += ' : ' + userlinkparams['message'];
+				list += '</li>';
+			}
+			u3[0].innerHTML = list;
+			
+			urlparams = Array();
+			urlparams['app'] = "minichat";
+			urlparams['page'] = "";
+			urlparams['action'] = "post";
+			
+			
+			f3.innerHTML += 
+			'<form action="' + kurl(urlparams) + '" method="post" id="minichat_live_form" onsubmit="return submit_mc_form(\'minichat_live_form\', \'minichat_live\');">' +
+						'<input type="text" name="post" size="14" id="message" />' +
+						'<input type="submit" value="<?=_('MINICHAT_SEND');?>" class="button" />' +
+						'</form>';
 		}
 		
 		//return dynamics_var;
@@ -390,11 +442,9 @@ function kurl(params)
 	//1. Récupération via Ajax.Updater (update)
 	//update_dynamics();
 	update_dynamics();
-	setInterval("update_dynamics()", 20000);
+	setInterval("update_dynamics()", 10000);
 	//2. Get (retour de valeur) + Unserialize (get & unserialize)
 	//3. Interprétation (process)
 	//var tab = process_dynamics();
 	//4. Affichage
 </script>
-<a href="#" onMouseOver="update_dynamics(); return false;">PROCESS DYNAMICS</a>
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

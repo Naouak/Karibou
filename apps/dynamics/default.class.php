@@ -17,9 +17,10 @@ class DynamicsDefault extends Model
 	public function build()
 	{
 		$tab = array();
+		$tab['dynamics'] = array();
 	
 		/**
-		 * Utilisateurs en ligne
+		 * Utilisateurs en ligne : Accès à la base de données pour récupération des utilisateurs en ligne
 		 */
 		$app = $this->appList->getApp('onlineusers');
 		$config = $app->getConfig();
@@ -37,22 +38,39 @@ class DynamicsDefault extends Model
 		}
         $onlineusers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		
-        foreach($onlineusers as &$user)
+        foreach($onlineusers as &$myuser)
         {
-            $user["object"] = $this->userFactory->prepareUserFromId($user["user_id"]);
+            $myuser["object"] = $this->userFactory->prepareUserFromId($myuser['user_id']);
         }
-        $this->userFactory->setUserList();
-		$this->assign("onlineusers", $onlineusers);
-		
-		$tab['onlineusers'] = array();
-		foreach($this->vars['onlineusers'] as $user)
-		{
-			$tab['onlineusers'][] = array('id' => $user['user_id'], 'displayname' => $user['object']->getDisplayName(), 'username' => $user['object']->getLogin(), 'picturepath' => $user['object']->getPicturePath());
-		}
 		
 		/**
-		 * Mini-Chat
+		 * Mini-Chat : Accès à la base de données pour récupération des messages
 		 */
+		$minichatMessageList = new MinichatMessageList($this->db, $this->userFactory);		
+		$minichatmessages = $minichatMessageList->getMessages(8,1);
+		
+		/**
+		 * UserFactory : Récupération des utilisateurs
+		 */
+        $this->userFactory->setUserList();
+		
+		/**
+		 * Assignation des variables
+		 */
+		//Utilisateurs en ligne
+		$tab['dynamics']['onlineusers'] = array();
+		foreach($onlineusers as $user)
+		{
+			$tab['dynamics']['onlineusers'][] = array('id' => $user['user_id'], 'displayname' => $user['object']->getDisplayName(), 'username' => $user['object']->getLogin(), 'picturepath' => $user['object']->getPicturePath());
+		}
+		
+		//MiniChat
+		$tab['dynamics']['minichat'] = array();
+		foreach($minichatmessages as $message)
+		{
+			$tab['dynamics']['minichat'][] = array('id' => $message->getAuthorObject()->getId(), 'displayname' => $message->getAuthorObject()->getDisplayName(), 'username' => $message->getAuthorObject()->getLogin(), 'picturepath' => $user['object']->getPicturePath(), 'message' => $message->getPost());
+		}
+
 		/*
 		if ($this->currentUser->isLogged())
 		{
@@ -77,17 +95,7 @@ class DynamicsDefault extends Model
 			}
 		}
 		*/
-		$minichatMessageList = new MinichatMessageList($this->db, $this->userFactory);		
-		$minichatmessages = $minichatMessageList->getMessages(8,1);
-		//$this->assign("post", $minichatMessageList->getMessages($max, $page));
-		foreach($minichatmessages as $message)
-		{
-			//$tab['minichat'][] = array('userid' => $message->getAuthorObject()->getId(), 'username' => $message->getAuthorObject()->getLogin(), 'displayname' => $message->getAuthorObject()->getDisplayName(), 'message' => $message->getPostXHTML());
-		}
-		$tab['minichat'] = array("etest");
-		//echo '<pre>';
-		//var_dump($tab);
-	
+
 		/**
 		 * Variables courantes
 		 */

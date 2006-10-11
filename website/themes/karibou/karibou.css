@@ -449,8 +449,18 @@ div.overzone.overzone_error {
 	background-image : url(images/hintbox/small/error.png);
 }
 
+/* DontShow or Show */
+.dontshow {
+	visibility: hidden;
+	display: none;
+}
+.show {
+	visibility: visible;
+	display: compact;
+}
+
 /* Nouveau style */
-/*
+
 #dynamics {
 	position: absolute;
 	background-color: #fafafa;
@@ -480,6 +490,13 @@ div.overzone.overzone_error {
 	font-size: 0.9em;
 	background: #999;
 	color: #fff;
+	margin-top: 10px;
+}
+#dynamics #minichat ul {
+	font-size: 0.8em;
+}
+#dynamics #minichat ul li {
+	margin-top: 3px;
 }
 /*
 #onlineusers_nb {
@@ -529,13 +546,4 @@ html>body #onlineusers_nb {
 }
 #onlineusers_list a {
 	/* color: #fff; */
-}
-
-.dontshow {
-	visibility: hidden;
-	display: none;
-}
-.show {
-	visibility: visible;
-	display: normal;
 }

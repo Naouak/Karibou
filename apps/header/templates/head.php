@@ -24,6 +24,7 @@
 	<script type="text/javascript" src="<?=$this->vars['karibou']['base_url']?>/themes/js/prototype.js"></script>
 	<script type="text/javascript" src="<?=$this->vars['karibou']['base_url']?>/themes/js/scriptaculous.js"></script>
 	<script type="text/javascript" src="<?=$this->vars['karibou']['base_url']?>/themes/js/karibou.js"></script>
+	<script type="text/javascript" src="<?=$this->vars['karibou']['base_url']?>/themes/js/dynamics.js"></script>
 	<script type="text/javascript">
 		/**
 		 * Ouverture d'un popup
@@ -122,6 +123,41 @@
 					f.className = "showed";
 				}
 			}
+		}
+		
+		/**
+		 * Envoi des données du minichat
+		 */
+		function submit_mc_form(form_id, content_id)
+		{
+			var f = document.getElementById(form_id);
+			inputList = f.getElementsByTagName('input');
+			var queryComponents = new Array();
+			for( i=0 ; i < inputList.length ; i++ )
+			{
+				myInput = inputList.item(i);
+				if( myInput.type == 'file' ) return true;
+				if( myInput.name )
+				{
+					queryComponents.push(
+					  encodeURIComponent(myInput.name) + "=" +
+					  encodeURIComponent(myInput.value) );
+					 
+					myInput.value = "";
+				}
+			}
+
+			var post_vars = queryComponents.join("&");
+
+			new Ajax.Updater(content_id, '<?=kurl(array('app'=>"minichat", 'page'=>"content"));?>', {
+					asynchronous:true,
+					evalScripts:true,
+					method:'post',
+					postBody:post_vars,
+					onComplete:process_dynamics
+				});
+
+			return false;
 		}
 	</script>
 <? hook(array('name'=>"html_head")); ?>
