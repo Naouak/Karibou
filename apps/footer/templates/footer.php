@@ -144,7 +144,7 @@
 			</ul>
 		</div>
 
-		<div id="dynamics" class="show"></div>
+		<div id="dynamics" class="dontshow"></div>
 
 		<div id="flashmail_headerbox_unreadlist" class="flashmail dontshow">
 			<? hook(array('name'=>"flashmail_unreadlist")); ?>
