@@ -194,3 +194,6 @@ msgstr "Mettre à jour"
 
 msgid "FS_RENAME_ELEMENT"
 msgstr "Renommage de"
+
+msgid "FS_FILEDOESNOTEXIST"
+msgstr "Ce fichier ou répertoire n'existe pas. Peut-être a-t-il été renommé ou supprimé."

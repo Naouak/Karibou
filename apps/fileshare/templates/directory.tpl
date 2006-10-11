@@ -2,9 +2,9 @@
 <h3>##BROWSINGDIRECTORY## : /{$myDir->getPath()}</h3>
 <div class="fileshare">
 
-	{if ($uploadallowed)}
+	{*if ($uploadallowed)}
 	<div class="helper">##FILESHARE_DESCRIPTION##</div>
-	{/if}
+	{/if*}
 
 	{if ($myDir->exists())}
 		{include file="list.tpl"}

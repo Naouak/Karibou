@@ -150,9 +150,9 @@ class KDBFSElement
 	protected function retrieveSysInfos ()
 	{
 		$sql = "
-				SELECT *
-				FROM fileshare_sysinfos
-				WHERE	id = ".$this->getElementId()."
+SELECT fileshare_sysinfos.*, ".$GLOBALS['config']['bdd']['annuairedb'].".groups.name as groupowner_name FROM fileshare_sysinfos
+LEFT JOIN ".$GLOBALS['config']['bdd']['annuairedb'].".groups ON ".$GLOBALS['config']['bdd']['annuairedb'].".groups.id = fileshare_sysinfos.groupowner
+WHERE fileshare_sysinfos.id = ".$this->getElementId()."
 			";			
 			
 		try
@@ -671,7 +671,7 @@ class KDBFSElement
 	
 	public function isFile ()
 	{
-		if ($this->getType() == "file")
+		if ($this->getType() == "file" || is_file($this->getFullPath()) )
 		{
 			return TRUE;
 		}
@@ -683,7 +683,7 @@ class KDBFSElement
 	
 	public function isDirectory ()
 	{
-		if ($this->getType() == "folder")
+		if ($this->getType() == "folder" || is_dir($this->getFullPath()) )
 		{
 			return TRUE;
 		}
@@ -691,6 +691,18 @@ class KDBFSElement
 		{
 			return FALSE;
 		}
+	}
+	
+	/**
+	 * Vérifie si l'élément existe physiquement
+	 */
+	public function existsOnDisk ()
+	{
+		if (is_file($this->getFullPath()) || is_dir($this->getFullPath()))
+		{
+			return TRUE;
+		}
+		return FALSE;
 	}
 }
 

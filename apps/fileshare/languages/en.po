@@ -194,3 +194,6 @@ msgstr "Update"
 
 msgid "FS_RENAME_ELEMENT"
 msgstr "Rename"
+
+msgid "FS_FILEDOESNOTEXIST"
+msgstr "This file does not exist. It might have been renamed or deleted."

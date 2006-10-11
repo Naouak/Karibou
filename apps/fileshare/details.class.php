@@ -23,14 +23,17 @@ class FileShareDetails extends Model
 		{
 			$element = new KDBFSElement($this->db, $this->userFactory, $this->permission, FALSE, base64_decode($this->args["elementpath"]));
 			
-			if ($element->getSysInfos("type") == "folder")
+			if ($element->isDirectory())
 			{
 				$element = new KDirectory ($this->db, $this->userFactory, $this->permission, base64_decode($this->args["elementpath"]));
 			}
+			elseif ($element->isFile())
+			{
+				$element = new KFile ($this->db, $this->userFactory, $this->permission, base64_decode($this->args["elementpath"]));			
+			}
 			else
 			{
-				//Case for files in DB... or not also
-				$element = new KFile ($this->db, $this->userFactory, $this->permission, base64_decode($this->args["elementpath"]));			
+				$element = NULL;
 			}
 			
 			$this->assign("myElement", $element);
