@@ -1178,17 +1178,6 @@
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient6712"
-       id="radialGradient3329"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.171091,-2.686160e-2,1.303325e-2,0.184889,530.6822,-106.5041)"
-       cx="401.78812"
-       cy="1756.7540"
-       fx="401.78812"
-       fy="1756.7540"
-       r="541.11150" />
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient6712"
        id="radialGradient4813"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(6.347575e-2,-9.965827e-3,4.835430e-3,6.859481e-2,-16.10082,104.3986)"
@@ -3111,6 +3100,67 @@
        y1="289.86465"
        x2="834.69318"
        y2="260.21423" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7433"
+       id="radialGradient2736"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.33116,-0.101977,6.972464e-2,0.910154,-311.0862,-58.64925)"
+       cx="406.41943"
+       cy="490.97717"
+       fx="406.41943"
+       fy="490.97717"
+       r="49.089848" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6693"
+       id="linearGradient2738"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.649544,5.750113e-8,-5.750113e-8,0.649544,0.168852,27.85861)"
+       x1="355.32959"
+       y1="488.97717"
+       x2="453.50928"
+       y2="488.97717" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6693"
+       id="linearGradient2740"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.627411,-0.168114,0.168114,0.627411,7.373436,26.86565)"
+       x1="355.17706"
+       y1="488.91394"
+       x2="403.79578"
+       y2="488.91394" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6693"
+       id="linearGradient2742"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.627411,-0.168114,0.168114,0.627411,7.373436,26.86565)"
+       x1="347.32599"
+       y1="487.12823"
+       x2="449.80585"
+       y2="487.12823" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6693"
+       id="linearGradient2744"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.627411,-0.168114,0.168114,0.627411,7.373436,26.86565)"
+       x1="355.77261"
+       y1="497.22308"
+       x2="433.78052"
+       y2="497.22308" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6693"
+       id="linearGradient2800"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(8.924426e-2,-2.391292e-2,2.391292e-2,8.924426e-2,406.6644,79.28509)"
+       x1="-1527.3729"
+       y1="1675.0000"
+       x2="-843.72058"
+       y2="1675.0000" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -3120,14 +3170,14 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="719.75501"
-     inkscape:cy="244.60447"
+     inkscape:cx="314.77152"
+     inkscape:cy="495.17877"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     inkscape:window-width="790"
-     inkscape:window-height="543"
-     inkscape:window-x="1"
-     inkscape:window-y="37"
+     inkscape:window-width="1400"
+     inkscape:window-height="1003"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
      showguides="true"
      inkscape:guide-bbox="true">
     <sodipodi:guide
@@ -4127,13 +4177,6 @@
        inkscape:export-filename="C:\Applis\ssa\karibou2\website\themes\karibou\blackenveloppe.png"
        inkscape:export-xdpi="48.000000"
        inkscape:export-ydpi="48.000000" />
-    <rect
-       y="179.93811"
-       x="509.09042"
-       height="101.89970"
-       width="160.11411"
-       id="rect3327"
-       style="opacity:1.0000000;fill:url(#radialGradient3329);fill-opacity:1.0000000;fill-rule:nonzero;stroke:#515151;stroke-width:0.37181938;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000" />
     <rect
        y="210.67024"
        x="-24.111059"
@@ -6176,5 +6219,68 @@
        inkscape:export-xdpi="70.85083"
        inkscape:export-ydpi="70.85083"
        inkscape:export-filename="E:\web\karibou2\website\themes\karibou\images\onlineusers\usertoggle.png" />
+    <g
+       id="g2728"
+       transform="translate(-124.0784,8.5)"
+       inkscape:export-filename="E:\web\karibou2\website\themes\karibou\images\login\small\email.png"
+       inkscape:export-xdpi="24.395958"
+       inkscape:export-ydpi="24.395958">
+      <rect
+         transform="matrix(0.965926,-0.258819,0.258819,0.965926,0,0)"
+         style="opacity:1;fill:url(#radialGradient2736);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.46272314;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect2699"
+         width="63.471466"
+         height="38.03112"
+         x="232.42035"
+         y="327.7543" />
+      <rect
+         transform="matrix(0.965926,-0.258819,0.258819,0.965926,0,0)"
+         y="326.45523"
+         x="231.12128"
+         height="38.03112"
+         width="63.471466"
+         id="rect2701"
+         style="opacity:1;fill:url(#linearGradient2738);fill-opacity:1;fill-rule:nonzero;stroke:#663b09;stroke-width:1.38125002;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccccscc"
+         id="path2703"
+         d="M 307.64597,255.67999 L 312.52139,273.87531 L 317.39681,292.07063 L 341.82419,267.92022 C 341.82419,267.92022 343.08031,266.6558 342.79968,265.76226 C 342.51905,264.8687 340.70164,264.34605 340.70164,264.34605 L 307.64597,255.67999 z "
+         style="fill:url(#linearGradient2740);fill-opacity:1;fill-rule:nonzero;stroke:#582f01;stroke-width:1.89374995;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         style="fill:url(#linearGradient2742);fill-opacity:1;fill-rule:nonzero;stroke:#582f01;stroke-width:1.89374995;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="M 369.03298,239.23139 L 373.9084,257.42671 L 378.78383,275.62203 L 345.55389,266.92085 C 345.55389,266.92085 343.83384,266.45389 343.63011,265.53975 C 343.42637,264.62558 344.73897,263.26425 344.73897,263.26425 L 369.03298,239.23139 z "
+         id="path2706"
+         sodipodi:nodetypes="ccccscc" />
+      <path
+         style="fill:url(#linearGradient2744);fill-opacity:1;fill-rule:nonzero;stroke:#582f01;stroke-width:1.89374995;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="M 317.84491,292.1689 L 378.6234,275.88335 L 341.16792,257.65455 L 317.84491,292.1689 z "
+         id="path2708"
+         sodipodi:nodetypes="cccc" />
+      <path
+         sodipodi:nodetypes="ccccscc"
+         id="path2710"
+         d="M 307.90715,255.48869 L 338.2964,247.34592 L 368.68565,239.20314 L 346.23832,265.16392 C 346.23832,265.16392 345.04989,266.51193 343.53366,266.8916 C 342.01742,267.27126 340.17339,266.68257 340.17339,266.68257 L 307.90715,255.48869 z "
+         style="fill:url(#linearGradient2800);fill-opacity:1;fill-rule:nonzero;stroke:#582f01;stroke-width:1.89374995;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <rect
+       y="231.5569"
+       x="149.88019"
+       height="101.8997"
+       width="160.11411"
+       id="rect3327"
+       style="opacity:0.41319444;fill:white;fill-opacity:1;fill-rule:nonzero;stroke:#515151;stroke-width:0.37181938;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-size:58.70077896px;font-style:normal;font-weight:normal;fill:#582f01;fill-opacity:1;stroke:#582f01;stroke-width:0.794;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;font-family:Bitstream Vera Sans;opacity:1;color:black;fill-rule:nonzero;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;visibility:visible;display:inline;overflow:visible"
+       x="189.88966"
+       y="289.6427"
+       id="text2724"
+       inkscape:export-filename="E:\web\karibou2\website\themes\karibou\images\login\small\email.png"
+       inkscape:export-xdpi="24.395958"
+       inkscape:export-ydpi="24.395958"><tspan
+         sodipodi:role="line"
+         id="tspan2726"
+         x="189.88966"
+         y="289.6427">@</tspan></text>
   </g>
 </svg>

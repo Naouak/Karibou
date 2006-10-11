@@ -142,12 +142,12 @@ div#account form.login input.password {
 div#account form.login input.button {
 	background-image: url(images/login/small/login.png);
 	background-repeat: no-repeat;
-	height: 16px;
+	height: 22px;
 	width: 69px;
 	border: 0px;
 	text-align: left;
 	padding-left: 69px;
-	margin-top: 3px;
+	margin-top: 1px;
 	margin-right: 5px;
 	margin-left: 5px;
 }
