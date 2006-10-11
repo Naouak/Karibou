@@ -523,22 +523,29 @@ class KDBFSElement
 		$groupownerid = $this->getSysInfos("groupowner");
 		
 		if (
-				($currentUser->getId() == $this->getSysInfos("creator") 
-			||	$currentUser->getId() == $this->getLastVersionInfo("uploader")
-			|| 	(isset($groupownerid) && $groupownerid != NULL && $currentUser->isInGroup($this->db, $groupownerid))
-				) && $this->permission > _READ_ONLY_ )
+					(
+						(
+						$currentUser->getId() == $this->getSysInfos("creator") 
+					||	$currentUser->getId() == $this->getLastVersionInfo("uploader")
+					|| 	(isset($groupownerid) && $groupownerid != NULL && $currentUser->isInGroup($this->db, $groupownerid))
+						) 
+					&&
+					$this->permission > _READ_ONLY_
+					)
+				||	$this->permission >= _FULL_WRITE_
+			)
 		{
 			$this->rights = READ|UPDATE|WRITE; //Full rights
 		}
 		else
 		{
-			$this->rights = READ|UPDATE; //Read & update rights
+			$this->rights = READ; //Read & update rights
 		}
 	}
 	
 	public function canRead()
 	{
-		if ( (($this->rights & READ) == READ) || ($this->permission >= _FULL_WRITE_))
+		if ( (($this->rights & READ) == READ) )
 			return TRUE;
 		else
 			return FALSE;
@@ -546,7 +553,7 @@ class KDBFSElement
 	
 	public function canUpdate()
 	{
-		if ( (($this->rights & UPDATE) == UPDATE) || ($this->permission >= _FULL_WRITE_))
+		if ( (($this->rights & UPDATE) == UPDATE) )
 			return TRUE;
 		else
 			return FALSE;
@@ -554,7 +561,7 @@ class KDBFSElement
 	
 	public function canWrite()
 	{
-		if ( (($this->rights & WRITE) == WRITE) || ($this->permission >= _FULL_WRITE_))
+		if ( (($this->rights & WRITE) == WRITE) )
 			return TRUE;
 		else
 			return FALSE;

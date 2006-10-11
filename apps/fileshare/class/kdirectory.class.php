@@ -96,7 +96,15 @@ class KDirectory extends KDBFSElement
 			{
 				if ($d = dir($this->getFullPath()))
 				{
+					$elements = array();
 					while (false !== ($entry = $d->read())) {
+						$elements[] = $entry;
+					}
+					
+					natcasesort ($elements);
+
+					foreach($elements as $entry)
+					{
 					   if ($entry != '.' && $entry != '..' && $entry != '.htaccess')
 					   {
 							if (is_file($this->getFullPath().'/'.$entry))

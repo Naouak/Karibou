@@ -21,18 +21,24 @@ class FileShareCreateDirectory extends Model
 
 		if (isset($this->args['directoryname']) && $this->args['directoryname'] != '')
 		{
-			$myDir = new KDirectory($this->db, $this->userFactory, $this->permission, base64_decode($this->args['directoryname']));
-			if ($myDir->canWrite())
+			$dirname = base64_decode($this->args['directoryname']);
+		}
+		else
+		{
+			$dirname = '';
+		}
+		
+		$myDir = new KDirectory($this->db, $this->userFactory, $this->permission, $dirname);
+		if ($myDir->canWrite())
+		{
+			$this->assign('allowed', TRUE);
+			if ( isset($this->args['directoryname']) )
 			{
-				$this->assign('allowed', TRUE);
-				if ( isset($this->args['directoryname']) )
-				{
-					$this->assign('directorynamebase64', $this->args['directoryname']);
-					$this->assign('directoryname', base64_decode($this->args['directoryname']));
-				}
-				$groups = $this->userFactory->getGroups();
-				$this->assign('grouptree', $groups->getTree() );
+				$this->assign('directorynamebase64', $this->args['directoryname']);
+				$this->assign('directoryname', base64_decode($this->args['directoryname']));
 			}
+			$groups = $this->userFactory->getGroups();
+			$this->assign('grouptree', $groups->getTree() );
 		}
 	}
 }
