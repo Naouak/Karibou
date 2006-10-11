@@ -10,10 +10,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
 msgid "SURVEY"
-msgstr "Sondage"
+msgstr "Questionnaire"
 
 msgid "SURVEY_DEFAULT"
-msgstr "Application de gestion des sondages"
+msgstr "Application de gestion des questionnaires"
 
 msgid "KS_QUESTION"
 msgstr "question"
@@ -31,10 +31,10 @@ msgid "KS_SEEALLANSWERS"
 msgstr "Voir toutes les réponses (administrateur)"
 
 msgid "KS_ANSWERSURVEY"
-msgstr "Répondre à ce sondage"
+msgstr "Répondre à ce questionnaire"
 
 msgid "KS_ANSWERSURVEYAGAIN"
-msgstr "Voir et modifier mes réponses à ce sondage"
+msgstr "Voir et modifier mes réponses à ce questionnaire"
 
 msgid "KS_DETAILS"
 msgstr "Détails"
@@ -67,28 +67,28 @@ msgid "KS_QUESTIONTYPE"
 msgstr "Type de question"
 
 msgid "KS_SURVEYNAME"
-msgstr "Nom du sondage"
+msgstr "Nom du questionnaire"
 
 msgid "KS_SURVEYDESCRIPTION"
-msgstr "Description du sondage"
+msgstr "Description du questionnaire"
 
 msgid "KS_QUESTIONS"
 msgstr "Questions"
 
 msgid "KS_SURVEYDETAILS"
-msgstr "Détails du sondage"
+msgstr "Détails du questionnaire"
 
 msgid "KS_QUESTIONDELETE"
 msgstr "Supprimer la question"
 
 msgid "KS_CREATESURVEY"
-msgstr "Création de sondage"
+msgstr "Création de questionnaire"
 
 msgid "KS_NOSURVEY"
-msgstr "Aucun sondage n'est disponible"
+msgstr "Aucun questionnaire n'est disponible"
 
 msgid "KS_EDITSURVEYINFOS"
-msgstr "Editer les informations de ce sondage"
+msgstr "Editer les informations de ce questionnaire"
 
 msgid "KS_VIEWMODIFYQUESTIONS"
-msgstr "Editer les questions de ce sondage"
+msgstr "Editer les questions de ce questionnaire"
