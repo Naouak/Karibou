@@ -141,6 +141,11 @@
 					Intranet <?=_('BY')?> <a href="http://www.karibou.org" title="Karibou">Karibou</a></li>
 				<li><a href="<?=kurl(array('app'=>"contact"));?>">Contact</a></li>
 				<li><a href="<?=kurl(array('app'=>"credits"));?>"><?=_('APP_CREDITS');?></a></li>
+				<?if (isset($GLOBALS['config']['footer']['cvdb']) && $GLOBALS['config']['footer']['cvdb'] !== '')
+					{?>
+				<li>
+					<a href="<?=kurl(array('app'=>'netcv', 'page'=>'allcv'));?>">CV</a>
+				</li><?}?>
 			</ul>
 		</div>
 
