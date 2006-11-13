@@ -39,6 +39,7 @@
 		);
 	
 	$error = 0;
+  $errormessages = "";
 	
 	//var_dump(get_loaded_extensions());
 	
@@ -61,7 +62,7 @@
 				
 				$start = ($check['type']=='function')?'La fonction':'L\'extension';
 				
-				$errormessages = "
+				$errormessages .= "
 					<h2>".$check['errortitle']."</h2>
 					".$check['errordescription']."
 					<h3>Comment faire ?</h3>
@@ -80,7 +81,7 @@
 	}
 
 	if ($error>0) {
-		echo "<h1>$error rencontr&eacute;e".($error>1)?'s':''."</h1>";
+		echo "<h1>$error erreurs".(($error>1)?'s':'')." rencontr&eacute;e".(($error>1)?'s':'')."</h1>";
 		echo $errormessages;
 		die();
 	}
