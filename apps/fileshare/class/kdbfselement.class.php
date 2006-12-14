@@ -267,11 +267,11 @@ WHERE fileshare_sysinfos.id = ".$this->getElementId()."
 	
 	public function getFullPath()
 	{
-		if ($this->getSysInfos('type') == 'file')
+		if ($this->isFile())
 		{
 			return $this->fullpath;
 		}
-		elseif ($this->getSysInfos('type') == 'folder')
+		elseif ($this->isDirectory())
 		{
 			preg_match("/(.*)[\/]{0,1}$/", $this->fullpath, $matches);
 			return $matches[0];
@@ -650,11 +650,11 @@ WHERE fileshare_sysinfos.id = ".$this->getElementId()."
 	{
 		if ($this->getSysInfos("type") === FALSE)
 		{
-				if (is_file($this->getFullPath()))
+				if (is_file($this->fullpath))
 				{
 					return "file";
 				}
-				elseif (is_dir($this->getFullPath()))
+				elseif (is_dir($this->fullpath))
 				{
 					return "folder";
 				}
