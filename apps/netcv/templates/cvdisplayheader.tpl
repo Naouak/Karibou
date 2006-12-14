@@ -6,6 +6,7 @@
 		<title>{$myNetCVPersonalInfo.firstname} {$myNetCVPersonalInfo.lastname} - {$myNetCVPersonalInfo.jobtitle}</title>
 
 		<link rel="stylesheet" type="text/css" href="{kurl page="cvskindisplay" filename=$myNetCVGroup->getInfo("skin_filename")}" media="screen" title="Normal" />
+		<link rel="stylesheet" type="text/css" href="{kurl page="cvskindisplay" filename=$myNetCVGroup->getInfo("skin_filename")}" media="print" title="Normal" />
 		<link rel="alternate stylesheet" type="text/css" href="{kurl page="cvskindisplay" filename=$myNetCVGroup->getInfo("skin_filename")}" media="screen" title="default" />
 
 
