@@ -371,7 +371,7 @@ protected $text;
 	function importRecordInKaribou ($row)
 	{			
 			//Import dans users
-			$qry = "INSERT INTO ".$GLOBALS['config']['bdd']['annuairedb'].".profile 
+			$qry = "INSERT INTO ".$GLOBALS['config']['bdd']['frameworkdb'].".profile 
 			(firstname, lastname, surname) 
 			VALUES ('".$row["firstname"]."','".$row["lastname"]."','".$row["firstname"]."')";
 			try
@@ -386,7 +386,7 @@ protected $text;
 			$maxProfileId = $this->db->lastInsertId();
 
 			//Import dans users
-			$qry = "INSERT INTO ".$GLOBALS['config']['bdd']['annuairedb'].".users 
+			$qry = "INSERT INTO ".$GLOBALS['config']['bdd']['frameworkdb'].".users 
 			(login, profile_id) 
 			VALUES ('".$row["login"]."','".$maxProfileId."')";
 			try
@@ -402,15 +402,15 @@ protected $text;
 			
 			//Import du profile
 			$qry1 = "
-			INSERT INTO ".$GLOBALS['config']['bdd']['annuairedb'].".profile_email
+			INSERT INTO ".$GLOBALS['config']['bdd']['frameworkdb'].".profile_email
 			(profile_id, type, email)
 			VALUES ('".$maxProfileId."', 'INTERNET', '".$row["email"]."');";
 			$qry2 = "
-			INSERT INTO ".$GLOBALS['config']['bdd']['annuairedb'].".profile_email
+			INSERT INTO ".$GLOBALS['config']['bdd']['frameworkdb'].".profile_email
 			(profile_id, type, email)
 			VALUES (".$maxProfileId.", 'INTERNET', '".$row["login"].$GLOBALS['config']['login']['post_username']."');";
 			$qry3 = "
-			INSERT INTO ".$GLOBALS['config']['bdd']['annuairedb'].".profile_phone
+			INSERT INTO ".$GLOBALS['config']['bdd']['frameworkdb'].".profile_phone
 			(profile_id, type, number)
 			VALUES (".$maxProfileId.", 'CELL', '".$row["phone"]."');";
 			try
@@ -426,7 +426,7 @@ protected $text;
 			}
 			
 			//Assignation au groupe
-			$qry = "INSERT INTO ".$GLOBALS['config']['bdd']['annuairedb'].".group_user 
+			$qry = "INSERT INTO ".$GLOBALS['config']['bdd']['frameworkdb'].".group_user 
 			(user_id, group_id, role, visibility) 
 			VALUES ('".$userid."','".$row["group"]."', 'member', 'visible')";
 			try
@@ -460,7 +460,7 @@ protected $text;
 		
 		$qry = "
 					SELECT count(*) as nb
-					FROM ".$GLOBALS['config']['bdd']['annuairedb'].".users
+					FROM ".$GLOBALS['config']['bdd']['frameworkdb'].".users
 					WHERE `login` = '".$login."'";
 
 		try

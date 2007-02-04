@@ -3,9 +3,9 @@
 error_reporting(E_ALL);
 
 //Informations relatives à la base de données
-$config['bdd']['frameworkdb']		= "##DBDEFAULT##";
-$config['bdd']['annuairedb']		= "##DBANNUAIRE##";
-$config['bdd']['dsn']				= 'mysql:dbname='.$config['bdd']['frameworkdb'].';host=localhost';
+$config['bdd']['appsdb']		= "##DBAPPS##";
+$config['bdd']['frameworkdb']		= "##DBFRAMEWORK##";
+$config['bdd']['dsn']				= 'mysql:dbname='.$config['bdd']['appsdb'].';host=localhost';
 $config['bdd']['username']			= '##DBUSER##';
 $config['bdd']['password']			= '##DBPASS##';
 

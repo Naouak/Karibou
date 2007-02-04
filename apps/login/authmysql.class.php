@@ -30,7 +30,7 @@ class AuthMysql extends Auth
 	 */
 	function login($user, $pass)
 	{
-		$qry = "SELECT * FROM ".$GLOBALS['config']['bdd']["annuairedb"].".users
+		$qry = "SELECT * FROM ".$GLOBALS['config']['bdd']["frameworkdb"].".users
 			WHERE `login`='".$user."' AND `password`=PASSWORD('".$pass."')";
 		try
 		{

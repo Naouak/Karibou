@@ -19,7 +19,7 @@ class AddGroup extends FormModel
 	{
 		$parent_id = $_POST['parent'];
 		$name = $_POST['name'];
-		$annudb = $GLOBALS['config']['bdd']["annuairedb"];
+		$annudb = $GLOBALS['config']['bdd']["frameworkdb"];
 		if( $parent_id > 0 )
 		{
 			$qry = "SELECT * FROM ".$annudb.".groups WHERE id='".$parent_id."'";

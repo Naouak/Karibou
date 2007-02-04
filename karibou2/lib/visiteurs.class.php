@@ -32,7 +32,7 @@ Class Visiteurs
 	{
 		if($this->connectedArray == false)
 		{
-			$sql = "SELECT idUtilisateur, timestamp FROM ".$GLOBALS['config']['bdd']["frameworkdb"].".connectes";
+			$sql = "SELECT idUtilisateur, timestamp FROM ".$GLOBALS['config']['bdd']["appsdb"].".connectes";
 			$sql .= " GROUP BY idUtilisateur";
 
 			$this->connectedArray = array();

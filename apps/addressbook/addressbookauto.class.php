@@ -28,8 +28,8 @@ class AddressBookAuto extends Model
 				au.user_id='".$this->currentUser->getID()."'
 		UNION
 			SELECT a.* , ae.* FROM
-				".$GLOBALS['config']['bdd']["annuairedb"].".profile a,
-				".$GLOBALS['config']['bdd']["annuairedb"].".profile_email ae
+				".$GLOBALS['config']['bdd']["frameworkdb"].".profile a,
+				".$GLOBALS['config']['bdd']["frameworkdb"].".profile_email ae
 			WHERE 
 				a.id=ae.profile_id AND ae.type='INTERNET' AND
 				(a.firstname LIKE '".$post."%' OR a.lastname LIKE '".$post."%' OR a.surname LIKE '".$post."%' OR ae.email LIKE '".$post."%')

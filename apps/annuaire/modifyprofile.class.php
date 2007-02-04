@@ -78,7 +78,7 @@ class ModifyProfile extends FormModel
 			if( !isset($a['delete']) ) $emails_tab[] = $a;
 		}
 		
-		$factory = new ProfileFactory($this->db, $GLOBALS['config']['bdd']["annuairedb"].'.profile');
+		$factory = new ProfileFactory($this->db, $GLOBALS['config']['bdd']["frameworkdb"].'.profile');
 		if( $p = $factory->fetchFromUsername($_POST['username']) )
 		{
 			$factory->updateAll($p, $profile, $addresses_tab, $phones_tab, $emails_tab);
@@ -88,7 +88,7 @@ class ModifyProfile extends FormModel
 			$p = $factory->insertProfile($profile);
 			try
 			{
-				$this->db->exec("UPDATE ".$GLOBALS['config']['bdd']["annuairedb"].".users SET profile_id=".$p->getId()." WHERE login='".$_POST['username']."'");
+				$this->db->exec("UPDATE ".$GLOBALS['config']['bdd']["frameworkdb"].".users SET profile_id=".$p->getId()." WHERE login='".$_POST['username']."'");
 			}
 			catch(PDOException $e)
 			{

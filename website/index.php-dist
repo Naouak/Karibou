@@ -6,7 +6,15 @@ require_once dirname(__FILE__).'/config.php';
 require_once KARIBOU_DIR.'/class/karibou.class.php';
 $timer = ExecutionTimer::getRef();
 
-Debug::$display = true;
+/**
+ * Affichage du mode debug : cela ajoute le dÃ©tail du chargement en bas de chaque page (alourdit le chargement) 
+ * lorsque la variable est passÃ©e Ã  true
+ */
+Debug::$display = false;
+
+/**
+ * Affichage des erreurs PHP
+ */
 error_reporting(E_ALL);
 ini_set("display_error",1);
 
@@ -15,7 +23,7 @@ $timer->start("Full Load");
 $karibou = new Karibou();
 $karibou->loadAppDir(KARIBOU_APP_DIR, "config.xml");
 
-//Vérification de la requête pour déterminer s'il s'agit de l'affichage d'un CV ou de l'Intranet
+//VÃ©rification de la requÃªte pour dÃ©terminer s'il s'agit de l'affichage d'un CV ou de l'Intranet
 if ($_SERVER['HTTP_HOST'] != $GLOBALS['config']['netcv']['intranethost'] && preg_match($GLOBALS['config']['netcv']['hostregexp'], $_SERVER["HTTP_HOST"]))
 {
 	//Chargement d'un CV
@@ -26,7 +34,7 @@ if ($_SERVER['HTTP_HOST'] != $GLOBALS['config']['netcv']['intranethost'] && preg
 else
 {
 	$GLOBALS['config']['netcv']['cvdisplay'] = FALSE;
-	//Chargement normal de la page d'accueil par défaut
+	//Chargement normal de la page d'accueil par dÃ©faut
 }
 
 $karibou->build();

@@ -16,7 +16,7 @@ class CreateAccountSave extends FormModel
 	{
 		if( isset($_POST["username"], $_POST["password1"], $_POST["password2"]) && ($_POST["password1"]==$_POST["password2"]) )
 		{
-			$annudb = $GLOBALS['config']['bdd']["annuairedb"];
+			$annudb = $GLOBALS['config']['bdd']["frameworkdb"];
 			$qry = "INSERT INTO ".$annudb.".users (`login`, `password`) VALUES ('".$_POST["username"]."', PASSWORD('".$_POST["password1"]."') ) ";
 			try
 			{

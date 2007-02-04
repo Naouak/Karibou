@@ -16,7 +16,7 @@ class ActivationCreate extends Model
 		$this->ldapjvd = $GLOBALS['config']['ldap']['jvd'];
 		$this->domain = $GLOBALS['config']['mail']['domain'];
 		
-		$table = $GLOBALS['config']['bdd']['annuairedb'].".import_alumni";
+		$table = $GLOBALS['config']['bdd']['frameworkdb'].".import_alumni";
 		$this->table = $table;
 
 		$key = $this->args['key'];

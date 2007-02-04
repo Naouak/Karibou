@@ -17,7 +17,7 @@ class ModifyUser extends FormModel
 {
 	function build()
 	{
-		$annudb = $GLOBALS['config']['bdd']['annuairedb'];
+		$annudb = $GLOBALS['config']['bdd']['frameworkdb'];
 		
 		$set = "login='".$_POST['login']."', ";
 		if( !empty($_POST['pass']) )

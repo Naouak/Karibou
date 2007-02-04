@@ -4,7 +4,7 @@ class Activation extends Model
 {
 	function build()
 	{
-		$table = $GLOBALS['config']['bdd']['annuairedb'].".import_alumni";
+		$table = $GLOBALS['config']['bdd']['frameworkdb'].".import_alumni";
 		
 		
 		if( isset($_POST['key']) )

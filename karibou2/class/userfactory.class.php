@@ -160,7 +160,7 @@ class UserFactory
 		{
 			return $this->groupList;
 		}
-		$qry = "SELECT * FROM ".$GLOBALS['config']['bdd']["annuairedb"].".groups ORDER BY `left` ASC";
+		$qry = "SELECT * FROM ".$GLOBALS['config']['bdd']["frameworkdb"].".groups ORDER BY `left` ASC";
 		try
 		{
 			$stmt = $this->db->prepare($qry);
@@ -193,7 +193,7 @@ class UserFactory
 	function getUsersFromSearch($queryString)
 	{
 		$q = addslashes($queryString);
-		$a = $GLOBALS['config']['bdd']["annuairedb"];
+		$a = $GLOBALS['config']['bdd']["frameworkdb"];
 		$qry = "SELECT * FROM
 					".$a.".users u LEFT OUTER JOIN ".$a.".profile p
 				ON u.profile_id=p.id
@@ -262,7 +262,7 @@ class UserFactory
 			and (count($this->whereUserIdArray) == 0)
 			and (count($this->whereUserNameArray) == 0)
 			) return;
-		$a = $GLOBALS['config']['bdd']["annuairedb"];
+		$a = $GLOBALS['config']['bdd']["frameworkdb"];
 		$qry = "SELECT
 					u.id,
 					LOWER(u.login) login,

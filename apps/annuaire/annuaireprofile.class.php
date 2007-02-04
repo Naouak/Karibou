@@ -33,7 +33,7 @@ class AnnuaireProfile extends Model
 		$menuApp = $this->appList->getApp($this->appname);
 		$menuApp->addView("menu", "header_menu", array("page" => "profile") );
 		
-		$factory = new ProfileFactory($this->db, $GLOBALS['config']['bdd']["annuairedb"].".profile");
+		$factory = new ProfileFactory($this->db, $GLOBALS['config']['bdd']["frameworkdb"].".profile");
 		if( $profile = $factory->fetchFromUsername($username) )
 		{
 			$factory->fetchAddresses($profile);

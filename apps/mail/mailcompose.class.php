@@ -22,7 +22,7 @@ class MailCompose extends Model
 	
 		$user = $this->userFactory->getCurrentUser();
 		$username = $user->getLogin();
-		$factory = new ProfileFactory($this->db, $GLOBALS['config']['bdd']["annuairedb"].".profile");
+		$factory = new ProfileFactory($this->db, $GLOBALS['config']['bdd']["frameworkdb"].".profile");
 		if( $p = $factory->fetchFromUsername($username) )
 		{
 			$factory->fetchEmails($p);

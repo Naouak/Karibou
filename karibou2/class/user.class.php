@@ -278,7 +278,7 @@ class User
 			return $this->groups;
 		}
 		
-		$annudb = $GLOBALS['config']['bdd']['annuairedb'];
+		$annudb = $GLOBALS['config']['bdd']['frameworkdb'];
 		if( empty($this->id) )
 		{
 			$qry = "SELECT 
@@ -339,7 +339,7 @@ class User
 	
 	function getGroupTreeQuery($cols = "id")
 	{
-		$annudb = $GLOBALS['config']['bdd']['annuairedb'];
+		$annudb = $GLOBALS['config']['bdd']['frameworkdb'];
 
 		$where = $this->getGroupTreeWhereArray();
 
@@ -424,7 +424,7 @@ class User
 	}
 	function getGroupTreeAdminQuery($cols = "id")
 	{
-		$annudb = $GLOBALS['config']['bdd']['annuairedb'];
+		$annudb = $GLOBALS['config']['bdd']['frameworkdb'];
 
 		$where = $this->getGroupTreeWhereAdminArray();
 

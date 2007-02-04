@@ -26,7 +26,7 @@ class ProfileFactory
 	function __construct(PDO $db, $profile_table = 'profile')
 	{
 		$this->profile_table = $profile_table ;
-		$this->annudb = $GLOBALS['config']['bdd']["annuairedb"];
+		$this->annudb = $GLOBALS['config']['bdd']["frameworkdb"];
 		$this->db = $db;
 	}
 	

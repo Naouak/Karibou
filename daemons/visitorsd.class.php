@@ -29,7 +29,7 @@ class Visitorsd extends Daemon
 	
 	function onLogout()
 	{
-		$sql = "DELETE FROM ".$GLOBALS['config']['bdd']['frameworkdb'].".connectes";
+		$sql = "DELETE FROM ".$GLOBALS['config']['bdd']['appsdb'].".connectes";
 		$sql .= " WHERE idUtilisateur='".$this->currentUser->getID()."'";
 		
 		$res = $this->db->exec($sql);
@@ -57,7 +57,7 @@ class Visitorsd extends Daemon
 		$sql = "SELECT
 				*
 			FROM
-				".$GLOBALS['config']['bdd']['frameworkdb'].".connectes
+				".$GLOBALS['config']['bdd']['appsdb'].".connectes
 			WHERE
 				idUtilisateur='".$this->currentUser->getID()."'";
 		$res = $this->db->query($sql);
@@ -68,12 +68,12 @@ class Visitorsd extends Daemon
 		if($res->fetchRow())
 		{
 			$t = time();
-			$sql = "UPDATE ".$GLOBALS['config']['bdd']['frameworkdb'].".connectes SET timestamp=".$t."";
+			$sql = "UPDATE ".$GLOBALS['config']['bdd']['appsdb'].".connectes SET timestamp=".$t."";
 			$sql .= " WHERE idUtilisateur=".$this->currentUser->getID()."";
 		}
 		else
 		{
-			$sql = "INSERT INTO ".$GLOBALS['config']['bdd']['frameworkdb'].".connectes";
+			$sql = "INSERT INTO ".$GLOBALS['config']['bdd']['appsdb'].".connectes";
 			$sql .= " (idUtilisateur, timestamp)";
 			$sql .= " VALUES (".$this->currentUser->getID().", ".time().")";
 		}
@@ -88,7 +88,7 @@ class Visitorsd extends Daemon
 	
 	protected function cleanBase()
 	{
-		$sql = "DELETE FROM ".$GLOBALS['config']['bdd']['frameworkdb'].".connectes";
+		$sql = "DELETE FROM ".$GLOBALS['config']['bdd']['appsdb'].".connectes";
 		$sql .= " WHERE timestamp < ".(time()-$this->maxAge)."";
 		
 		$res = $this->db->exec($sql);

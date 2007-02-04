@@ -92,8 +92,8 @@ class CurrentUser extends User
 				p.firstname,
 				p.surname
 		FROM
-			".$GLOBALS['config']['bdd']['annuairedb'].".users u LEFT OUTER JOIN
-			".$GLOBALS['config']['bdd']['annuairedb'].".profile p ON u.profile_id=p.id
+			".$GLOBALS['config']['bdd']['frameworkdb'].".users u LEFT OUTER JOIN
+			".$GLOBALS['config']['bdd']['frameworkdb'].".profile p ON u.profile_id=p.id
 		WHERE
 			u.login='" . $login . "';";
 
@@ -114,7 +114,7 @@ class CurrentUser extends User
 		else if( $create )
 		{
 			unset($stmt);
-			$qry = "INSERT INTO ".$GLOBALS['config']['bdd']['annuairedb'].".users (login) VALUES ('".$login."')";
+			$qry = "INSERT INTO ".$GLOBALS['config']['bdd']['frameworkdb'].".users (login) VALUES ('".$login."')";
 			try
 			{
 				$db->exec($qry);

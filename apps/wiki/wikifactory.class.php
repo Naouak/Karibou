@@ -61,7 +61,7 @@ class WikiFactory{
     } 
     
     static public function selectHistory($title) {
-        $u = $GLOBALS['config']['bdd']["annuairedb"];
+        $u = $GLOBALS['config']['bdd']["frameworkdb"];
         $sql  = "SELECT w.page_name, w.content, w.date, w.user_id, u.login ";
         $sql .= " FROM wiki w, ".$u.".users u"; 
         $sql .= " WHERE page_name = '".$title."'";

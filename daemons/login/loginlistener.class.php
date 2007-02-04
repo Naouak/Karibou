@@ -21,7 +21,7 @@ class LoginListener extends Listener
 	{
 		$currentUser = $this->userFactory->getCurrentUser();
 
-		$factory = new ProfileFactory($this->db, $GLOBALS['config']['bdd']["annuairedb"].".profile");
+		$factory = new ProfileFactory($this->db, $GLOBALS['config']['bdd']["frameworkdb"].".profile");
 		if( $profile = $factory->fetchFromUsername($currentUser->getLogin()) )
 		{
 			$factory->fetchEmails($profile);

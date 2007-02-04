@@ -39,7 +39,7 @@ class GroupDisplay extends Model
 		$qry = "SELECT
 				g.*
 			FROM 
-				".$GLOBALS['config']['bdd']["annuairedb"].".groups g
+				".$GLOBALS['config']['bdd']["frameworkdb"].".groups g
 			WHERE 
 				".$select;
 		try
@@ -61,10 +61,10 @@ class GroupDisplay extends Model
 				g.id as groupid,
 				p.*
 			FROM 
-				".$GLOBALS['config']['bdd']["annuairedb"].".groups g ,
-				".$GLOBALS['config']['bdd']["annuairedb"].".group_user gu ,
-				".$GLOBALS['config']['bdd']["annuairedb"].".users u LEFT OUTER JOIN
-				".$GLOBALS['config']['bdd']["annuairedb"].".profile p
+				".$GLOBALS['config']['bdd']["frameworkdb"].".groups g ,
+				".$GLOBALS['config']['bdd']["frameworkdb"].".group_user gu ,
+				".$GLOBALS['config']['bdd']["frameworkdb"].".users u LEFT OUTER JOIN
+				".$GLOBALS['config']['bdd']["frameworkdb"].".profile p
 			ON u.profile_id=p.id
 			WHERE
 				g.id=gu.group_id AND

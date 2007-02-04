@@ -42,7 +42,7 @@ class PermissionsFactory
 		}
 		else
 		{
-			$annudb = $GLOBALS['config']['bdd']['annuairedb'];
+			$annudb = $GLOBALS['config']['bdd']['frameworkdb'];
 
 			$qry_groups = $user->getGroupTreeQuery();
 			// On récupère les droits des groupes, tries allant du pere au fils
