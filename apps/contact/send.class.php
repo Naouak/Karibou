@@ -23,7 +23,7 @@ class Send extends FormModel
 			$mail = new PHPMailer();
 			$mail->CharSet = "UTF-8";
 			$mail->From = $_POST['from'];
-            $mail->FromName = $_POST['from'];
+      $mail->FromName = $_POST['from'];
 			//$mail->addAddress($config["email"]);
 			$mail->addAddress($GLOBALS['config']['contactemail']);
 			$mail->Subject = stripslashes($_POST['subject']);

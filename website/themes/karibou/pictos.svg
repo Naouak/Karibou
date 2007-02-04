@@ -22,6 +22,28 @@
   <defs
      id="defs4">
     <linearGradient
+       id="linearGradient4757">
+      <stop
+         style="stop-color:#fefdfc;stop-opacity:1;"
+         offset="0"
+         id="stop4759" />
+      <stop
+         style="stop-color:#c98f6a;stop-opacity:1;"
+         offset="1"
+         id="stop4761" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4757"
+       id="radialGradient2768"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.976921,0,0,1.39647,-491.259,-194.2176)"
+       cx="506.08643"
+       cy="484.68381"
+       fx="506.08643"
+       fy="484.68381"
+       r="86.368469" />
+    <linearGradient
        id="linearGradient13942">
       <stop
          style="stop-color:#000000;stop-opacity:1.0000000;"
@@ -6282,5 +6304,24 @@
          id="tspan2726"
          x="189.88966"
          y="289.6427">@</tspan></text>
+    <g
+       id="g2764"
+       transform="matrix(0.494789,0,0,0.462374,279.0993,-101.4971)"
+       inkscape:export-filename="E:\web\karibou2\website\themes\default\images\0.png"
+       inkscape:export-xdpi="83.349998"
+       inkscape:export-ydpi="83.349998">
+      <rect
+         y="423.01309"
+         x="481.76794"
+         height="207.19064"
+         width="161.009"
+         id="rect3870"
+         style="opacity:1;color:black;fill:url(#radialGradient2768);fill-opacity:1;fill-rule:nonzero;stroke:#a95107;stroke-width:0.96290171;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" />
+      <path
+         sodipodi:nodetypes="cccsssssssssssssssssssssssssscsssccccccc"
+         style="opacity:1;color:black;fill:#a5613b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+         d="M 482.27374,602.60535 L 482.27374,575.2946 L 488.02374,573.60024 C 491.18624,572.66833 496.23264,571.45153 499.23796,570.89624 C 512.98352,568.35647 532.40347,562.98188 534.28093,555.97509 C 535.32362,552.08372 537.03124,552.25639 534.6954,546.79322 C 533.66608,544.3858 532.60255,543.05099 528.34621,535.67879 C 526.12182,531.82602 523.70084,524.52933 523.18724,522.22328 C 522.67365,519.91723 522.78914,516.45902 522.07486,514.53838 C 521.40537,512.73819 521.62727,509.86904 521.08021,508.43016 C 520.53315,506.99129 519.24169,503.94097 519.31371,501.61506 C 519.38522,499.30563 519.73625,498.16344 520.13602,494.02611 C 520.5953,489.27293 519.83235,482.00546 522.31652,477.20674 C 523.39299,475.1273 524.27374,472.4029 524.27374,471.15252 C 524.27374,468.64072 529.68234,459.48753 531.16655,459.48753 C 531.68182,459.48753 533.72678,457.27605 535.71091,454.57313 C 541.01764,447.34391 544.66008,445.55685 554.55504,445.3278 C 559.07532,445.22316 563.84568,444.75483 565.15582,444.28707 C 568.43548,443.11614 571.21334,444.19847 572.30627,447.0731 C 572.93647,448.73063 574.00236,449.48753 575.70636,449.48753 C 577.34687,449.48753 579.13537,450.67711 580.98111,452.99592 C 582.51706,454.92553 585.68624,457.71527 588.02374,459.19533 C 590.36124,460.6754 592.27374,462.37713 592.27374,462.97697 C 592.27374,463.57681 594.04524,466.02507 596.21041,468.41755 C 600.29332,472.92911 600.95933,474.28742 603.59961,483.48753 C 605.64992,490.63186 607.05943,502.86077 604.71347,508.13398 C 603.80376,510.17882 603.05945,512.70769 603.05945,513.75371 C 603.05945,514.79973 602.22477,518.30168 601.20461,521.53583 C 600.18445,524.76998 592.15292,541.95707 588.91105,544.98869 C 586.84429,546.92141 585.13068,549.54089 586.13992,552.66701 C 586.13992,559.82218 589.88264,558.76673 596.53491,565.7878 C 598.53404,567.90557 604.69987,571.12493 619.51284,577.78527 C 622.11935,578.95722 624.59435,579.91244 625.01284,579.90797 C 625.43134,579.9035 629.48624,581.54968 634.02374,583.56615 L 642.27374,587.23247 L 642.27374,608.57429 L 642.27374,629.9161 L 612.79279,629.9161 L 482.27374,629.9161 L 482.27374,602.60535 z "
+         id="path2067" />
+    </g>
   </g>
 </svg>
