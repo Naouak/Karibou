@@ -2,9 +2,14 @@
 
 error_reporting(E_ALL);
 
-//Informations relatives à la base de données
+/**
+ * Informations relatives à la base de données
+ */
+//appsdb : contient les données relatives aux applications de Karibou 2 (news, netcv, partage de fichiers...)
 $config['bdd']['appsdb']		= "##DBAPPS##";
+//frameworkdb : contient les données relatives au framework de Karibou 2 (utilisateurs, groupes, ...)
 $config['bdd']['frameworkdb']		= "##DBFRAMEWORK##";
+
 $config['bdd']['dsn']				= 'mysql:dbname='.$config['bdd']['appsdb'].';host=localhost';
 $config['bdd']['username']			= '##DBUSER##';
 $config['bdd']['password']			= '##DBPASS##';
