@@ -71,7 +71,9 @@ session_start();
 
 function __autoload($className)
 {
-	//ExecutionTimer::getRef()->stop("building Karibou");	ExecutionTimer::getRef()->start("ALL __autoload");	ExecutionTimer::getRef()->start("Include __autoload (".$className.")");
+	//ExecutionTimer::getRef()->stop("building Karibou");
+	ExecutionTimer::getRef()->start("ALL __autoload");
+	ExecutionTimer::getRef()->start("Include __autoload (".$className.")");
 	$file = ClassLoader::getFilename($className);
 	
 	if (!is_file($file))
@@ -80,7 +82,8 @@ function __autoload($className)
 		require_once $file;
 	
 	ExecutionTimer::getRef()->stop("Include __autoload (".$className.")");
-	ExecutionTimer::getRef()->stop("ALL __autoload");	//ExecutionTimer::getRef()->start("building Karibou");
+	ExecutionTimer::getRef()->stop("ALL __autoload");
+	//ExecutionTimer::getRef()->start("building Karibou");
 }
 
 /**
@@ -166,8 +169,16 @@ class Karibou
 		$this->baseUrl = BaseURL :: getRef();
 		$this->baseUrl->parseURL($_SERVER['REQUEST_URI']);
 
-		$this->connectDB();
-		KeyChainFactory::$db = $this->db;
+        try {
+            $this->connectDB();
+	   	    KeyChainFactory::$db = $this->db;
+        }
+        catch (PDOException $e)
+        {
+            Debug::kill($e->getMessage());
+            die("Could not connect to database." . "\n". 
+                "Please check the database name, host, login and password.");
+        }
 		
 		// Récupération de l'utilisateur courant
 		$this->userFactory = new UserFactory($this->db);
@@ -261,7 +272,8 @@ class Karibou
 
 	function __destruct()
 	{
-		$this->userFactory->saveCurrentUser();
+        if($this->userFactory)
+    		$this->userFactory->saveCurrentUser();
 	}
 
 	public function loadApp($name, $file)
@@ -296,17 +308,11 @@ class Karibou
 			$dsn = $GLOBALS['config']['bdd']['dsn'];
 		}
 
-		try
-		{
-			$this->db = new Database(
+		$this->db = new Database(
 				$dsn, 
 				$GLOBALS['config']['bdd']["username"], 
 				$GLOBALS['config']['bdd']["password"]);
-		}
-		catch (PDOException $e)
-		{
-			Debug::kill($e->getMessage());
-		}
+		
 	}
 
 	public function display()

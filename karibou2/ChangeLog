@@ -1,5 +1,10 @@
+ChangeLog framework
+
 2007-02-16 Mathieu Blondel (matt) <mblondel@elv.telecom-lille1.eu>
 
-    * ChangeLog: Ajout. Même s'il est toujours possible de voir les commits
-    effectués via l'historique svn, il est plus clair de maintenair un fichier
-    ChangeLog.
+    * karibou2/ChangeLog: Ajout. Même s'il est toujours possible de voir les
+    commits effectués via l'historique svn, il est plus clair de maintenair
+    un fichier ChangeLog.
+
+    * karibou2/class/karibou.class.php: Message plus explicite en cas d'échec
+    de la connexion à la bdd.
