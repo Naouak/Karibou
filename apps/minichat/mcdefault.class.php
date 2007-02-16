@@ -17,62 +17,24 @@ class MCDefault extends Model
 	
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
-		$this->assign("config", $config);
 		
 		if ($this->currentUser->isLogged())
 		{
-			/* POST */
-			if (isset($_POST['post']))
-			{
-			$message = $_POST['post'];
+			$appsdb = $GLOBALS['config']['bdd']['frameworkdb'];
+			$i=0;
+			$addr_table = Array();
+			$string ="";
+			$query='SELECT street,extaddress,city,postcode,country from '.$appsdb.'.profile_address';
+			foreach($this->db->query($query) as $row){
+				$addr_table[] = $row['street']." ".$row['extaddress']." ".$row['city']." ".$row['postcode']." ".$row['country'];
 			}
-			if (isset($message))
-			{
-				$req_sql = "INSERT INTO minichat 
-					(time, id_auteur, post) VALUES
-					(NOW(), " .	$this->currentUser->getID() . ", '" .$message . "')";
-				try
-				{
-					$this->db->exec($req_sql);
-				}
-				catch(PDOException $e)
-				{
-					Debug::kill($e->getMessage());
-				}
-			}
+			$jscript_table = "var adresses = new Array(\"";
+			$jscript_table .= implode("\",\"",$addr_table);
+			$jscript_table .= "\");";
+			$this->assign('jscript_table', $jscript_table);
+
 		}
 	
-		if( isset($this->args['maxlines']) && $this->args['maxlines'] != "" )
-		{
-			$max = $this->args['maxlines'] ;
-		}
-		else
-		{
-			$max = $config["max"]["small"] ;
-		}
-		$this->assign("maxlines", $max);
-		
-		
-		if(isset($this->args['pagenum']) && $this->args['pagenum'] != "")
-			$page = $this->args['pagenum'];
-		else
-			$page = 1;
-			
-		$this->assign("pagenum", $page);
-
-		$minichatMessageList = new MinichatMessageList($this->db, $this->userFactory);		
-		$page_count = ceil($minichatMessageList->count() / $max);
-		
-		if($page_count > 1)
-		{
-			$pages = range(1, $page_count);
-			$this->assign('pages', $pages);
-			$this->assign('page', $page);
-		}
-		
-		$this->assign("post", $minichatMessageList->getMessages($max, $page));
-
-		$this->assign('permission', $this->permission);
 	}
 }
 
