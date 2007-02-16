@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<config>
+		<param name="max">
+			<value name="small">7</value>
+			<value name="normal">20</value>
+		</param>
+		<param name="refresh">
+			<value name="small">20000</value>
+		</param>
+	</config>
+	
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+	
+	<load class="MinichatMessageList"	file="./class/minichatmessagelist.class.php" />
+	<load class="MinichatMessage"			file="./class/minichatmessage.class.php" />
+	<load class="PageArgument"				file="../arguments/pageargument.class.php" />
+	<load class="NumberArgument"			file="../arguments/numberargument.class.php" />
+	<load class="wiki2xhtmlBasic"			file="../wiki/wiki2xhtml.basic.class.php" />
+
+	<load class="MCDefault"		file="mcdefault.class.php" />
+	<load class="MCConfig"		file="mcconfig.class.php" />
+	<load class="MCPost"			file="mcpost.class.php" />	
+
+	<view name="mini" class="MCDefault" template="small.tpl" />
+	<view name="smallconfig" class="MCConfig" template="smallconfig.tpl" />
+	<view name="big" class="MCDefault" template="minichat.tpl" />
+
+	<view name="content" class="MCDefault" template="geoloc.tpl" />
+	<view name="geoloc" class="MCDefault" template="geoloc.tpl" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<page view="geoloc" />
+	
+	<page name="content" view="content">
+		<option name="pagenum" class="PageArgument" />
+		<option name="maxlines" class="NumberArgument" />
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+	
+	<form action="post" class="MCPost">
+		<referer />
+	</form>
+	
+</app>
