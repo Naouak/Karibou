@@ -35,8 +35,12 @@
 
 	{hook name="directory_profile_cvlistmodule"}
 
-	<div class="groups">	
+	<div class="groups">
+        {if $usergroups->count() gt 1 }
 		<h3>##BELONGS_TO_GROUPS##</h3>
+        {elseif $usergroups->count() eq 1 }
+        <h3>##BELONGS_TO_GROUP##</h3>
+        {/if}
 		<ul>
 			{include file="grouplist.tpl"}
 		</ul>

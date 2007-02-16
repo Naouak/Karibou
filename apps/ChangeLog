@@ -5,3 +5,10 @@ ChangeLog apps
     * ChangeLog: Ajout. Même s'il est toujours possible de voir les commits
     effectués via l'historique svn, il est plus clair de maintenair un fichier
     ChangeLog.
+
+    * locale/fr_FR/LC_MESSAGES/messages.mo:
+    * apps/annuaire/languages/fr.po:
+    * apps/annuaire/templates/profile.tpl:
+
+    Gestion du pluriel pour afficher "Cet utilisateur appartient aux groupes
+    suivants".
