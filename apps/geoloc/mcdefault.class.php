@@ -21,6 +21,7 @@ class MCDefault extends Model
 		if ($this->currentUser->isLogged())
 		{
 			$appsdb = $GLOBALS['config']['bdd']['frameworkdb'];
+			$gkey = $GLOBALS['config']['geoloc']['gkey'];
 			$i=0;
 			$addr_table = Array();
 			$string ="";
@@ -32,6 +33,7 @@ class MCDefault extends Model
 			$jscript_table .= implode("\",\"",$addr_table);
 			$jscript_table .= "\");";
 			$this->assign('jscript_table', $jscript_table);
+			$this->assign('gkey', $gkey);
 
 		}
 	

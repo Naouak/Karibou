@@ -1,4 +1,4 @@
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAA6Hj8UyWfS2vgHLH5xUnjcRS2pPd6e2CR9F2af-lw7lyMsqFWZhTe7LS1-y8ObG7SDSoGt4cdhXq2Gg"
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key={$gkey}"
             type="text/javascript"></script>
 <script type="text/javascript">
 {$jscript_table}
@@ -27,9 +27,9 @@ function showAddress(address) {
         map.addOverlay(marker);
         //marker.openInfoWindowHtml(address);
 		GEvent.addListener(marker, "click", function(marker, point) {
+			 this.openInfoWindowHtml("<h1>Test</h1>");
 			if(marker){
 			 alert("Got click");
-			 this.openInfoWindowHtml("<h1>Test</h1>");
 			}
 			});
       }

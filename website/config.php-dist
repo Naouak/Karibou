@@ -74,6 +74,9 @@ $config['mail']['alternative_webmail'] = 'http://webmail.karibou.org';
 //Définit le mode de stockage du keychain
 $config['keychain']['storage'] = 'session';
 
+//Cle google maps pour le module geoloc
+$config['geoloc']['gkey'] = 'cle-google-maps';
+
 //Définit le message à afficher dans le footer (en première position)
 //$config['footer']['message'] = '<a href="http://www.karibou.org" title="Karibou : L\'Intranet">Karibou</a>';
 //Définit si le lien vers la base des CV doit être affiché dans le footer
