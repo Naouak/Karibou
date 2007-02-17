@@ -10,7 +10,7 @@
  * @package applications
  **/
 
-class MCDefault extends Model
+class Geoloc extends Model
 {
 	public function build()
 	{
