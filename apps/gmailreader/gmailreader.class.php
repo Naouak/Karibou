@@ -66,7 +66,7 @@ class gmailReader extends Model
 				if ($title != NULL)
 				{
 					$this->assign("title", $title);
-					$this->assign("nbMessages", $nbMessages);
+					$this->assign("nbMessages", $nbMessages->__toInt());
 					$this->assign("items", $items);
 				}
 				else

@@ -39,17 +39,42 @@ class XMLElement implements ArrayAccess
 	{
 		return $this->text;
 	}
+
+    public function __toInt()
+    {
+        return intval($this->text);
+    }
 	
 	function offsetExists($offset)
-	{		if(isset($this->attributes[$offset]))
-		{			return TRUE;		}		else
-		{			return FALSE;		}	}	function offsetGet($offset)
-	{		return $this->attributes[$offset];	}	function offsetSet($offset, $value)
-	{		if($offset)
-		{			$this->attributes[$offset] = $value;		}		else
-		{			$this->attributes[] = $value;		}	}	function offsetUnset($offset)
 	{
-		unset($this->attributes[$offset]);	}
+		if(isset($this->attributes[$offset]))
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+	function offsetGet($offset)
+	{
+		return $this->attributes[$offset];
+	}
+	function offsetSet($offset, $value)
+	{
+		if($offset)
+		{
+			$this->attributes[$offset] = $value;
+		}
+		else
+		{
+			$this->attributes[] = $value;
+		}
+	}
+	function offsetUnset($offset)
+	{
+		unset($this->attributes[$offset]);
+	}
 }
 
 ?>
