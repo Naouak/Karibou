@@ -26,13 +26,15 @@
 	<view name="smallconfig" class="MCConfig" template="smallconfig.tpl" />
 	<view name="big" class="MCDefault" template="minichat.tpl" />
 
-	<view name="content" class="MCDefault" template="geoloc.tpl" />
-	<view name="geoloc" class="MCDefault" template="geoloc.tpl" />
+	<view name="content" class="MCDefault" template="content.tpl" />
 	
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 	
-	<page view="geoloc" />
+	<page view="big" />
+	<page view="big">
+		<option name="pagenum" class="PageArgument" />
+	</page>
 	
 	<page name="content" view="content">
 		<option name="pagenum" class="PageArgument" />
