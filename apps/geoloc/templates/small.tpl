@@ -5,6 +5,7 @@ function getHtml(i){
 	return smallHtml(i);
 }
 {/literal}
+
 </script>
 <h3 class="handle">##GEOLOC_TITLE##</h3>
 <div id="map" style="height : 200px; width: 100%;">

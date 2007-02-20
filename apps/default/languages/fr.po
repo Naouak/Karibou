@@ -81,3 +81,5 @@ msgstr "Pour garantir la sécurité de votre compte, vous devez changer de mot d
 msgid "CHANGEPASSWORD_LINK"
 msgstr "Vers la page de changement de mot de passe."
 
+msgid "GEOLOC_MENU_TITLE"
+msgstr "Geolocateur"

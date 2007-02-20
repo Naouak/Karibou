@@ -49,7 +49,7 @@ function normalHtml(i){
 	ret += "<span>"+users[i]['postcode']+"</span>";
 	ret += "<span>"+users[i]['country']+"</span>";
 	if(found && found.length > 1 && j != found.length - 1)
-		ret += "<span><a onclick=\"showNext()\">Next address</a></span></div>";
+		ret += "<span><a onclick=\"showNext()\">##NEXT_ADDR##</a></span></div>";
 	return ret;
 }
 

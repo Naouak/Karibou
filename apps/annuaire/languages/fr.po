@@ -83,3 +83,6 @@ msgstr "Cet utilisateur appartient au groupe suivant"
 
 msgid "BIRTHDATE"
 msgstr "Date de naissance (AAAA-MM-JJ)"
+
+msgid "PROFILE_GEOLOC"
+msgstr "Voir l'emplacement de cette personne"

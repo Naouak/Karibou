@@ -6,6 +6,6 @@
 			<li><a href="{kurl app="fileshare"}">##APP_FILESHARE##</a></li>
 			<li><a href="{kurl app="calendar"}">##APP_CALENDAR##</a></li>
 			<li><a href="{kurl app="netcv"}">##APP_NETCV##</a></li>
-			<li><a href="{kurl app="geoloc"}">Geolocator</a></li>
+			<li><a href="{kurl app="geoloc"}">##GEOLOC_MENU_TITLE##</a></li>
 			<li><a href="{kurl app="wiki"}">Wiki</a></li>
 			<li><a href="{kurl app="contact"}">Contact</a></li>

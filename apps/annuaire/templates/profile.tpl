@@ -34,7 +34,7 @@
 	{/if}
 	{if ($addresses|@count>0)}	
 	<div class="sendflashmaillink">
-		<a href="{kurl app="geoloc" page="search" login=$username}">show geoloc</a>
+		<a href="{kurl app="geoloc" page="search" login=$username}">##PROFILE_GEOLOC##</a>
 	</div>
 	{/if}
 
