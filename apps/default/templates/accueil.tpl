@@ -1,5 +1,7 @@
 <div class="home">
+
 	<script type="text/javascript" language="javascript">
+
 	// <![CDATA[
 	
 	var save_url = '{kurl action="saveapps"}';

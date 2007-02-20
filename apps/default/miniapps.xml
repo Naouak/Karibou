@@ -10,8 +10,9 @@
 	<small id ="mynotes" app="mynotes" view="mini" configview="miniconfig" />
 	<small id ="onlineusers" app="onlineusers" view="mini" />
 	<small id ="gmailreader" app="gmailreader" view="mini" configview="miniconfig" />
-	<small id ="geoloc" app="geoloc" view="mini" />
 
+	<medium id ="bday" app="birthday" view="mini" />
+	<medium id ="geoloc" app="geoloc" view="mini" />
 	<medium id ="news" app="news" view="mini" />
 	<medium id ="mail" app="mail" view="mini" />
 	<medium id ="fileshare" app="fileshare" view="mini" />

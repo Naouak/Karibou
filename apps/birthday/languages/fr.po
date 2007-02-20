@@ -1,0 +1,23 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2007-02-20 16:54+0200\n"
+"PO-Revision-Date: 2007-02-20 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+
+msgid "BDAY_TITLE"
+msgstr "Anniversaires & fetes"
+
+msgid "TODAY_BDAY"
+msgstr "Aujourd'hui, souhaitons un bon anniversaire a : "
+
+msgid "YEARS_OLD"
+msgstr "ans"
+
+msgid "TODAY_NOBDAY"
+msgstr "Pas d'anniversaire aujourd'hui"
