@@ -21,3 +21,6 @@ msgstr "ans"
 
 msgid "TODAY_NOBDAY"
 msgstr "Pas d'anniversaire aujourd'hui"
+
+msgid "bday"
+msgstr "Anniversaires"

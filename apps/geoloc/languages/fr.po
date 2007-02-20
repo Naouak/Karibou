@@ -20,3 +20,6 @@ msgstr "Trouver"
 
 msgid "NEXT_ADDR"
 msgstr "Adresse suivante de cette personne"
+
+msgid "geoloc"
+msgstr "Geolocalisateur"
