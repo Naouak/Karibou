@@ -15,7 +15,7 @@ function load(mymode){
 		if(mode == "normal"){
 			map.setCenter(new GLatLng(50.636615,3.065357), 4);
 		}else{
-			map.setCenter(new GLatLng(25.641526,-14.589844), 0);
+			map.setCenter(new GLatLng(25.641526,-14.589844), 1);
 		}
 	}
 	for(var i=0; i < users.length; i++){
