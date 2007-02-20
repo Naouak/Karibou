@@ -17,4 +17,7 @@ msgid "FIND_SMBDY"
 msgstr "Find somebody"
 
 msgid "FIND"
-msgstr "Find"
+msgstr "Find
+
+msgid "NEXT_ADDR"
+msgstr "Next address for this person"

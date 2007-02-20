@@ -78,3 +78,5 @@ msgstr "In order to ensure your account security, you must change your password.
 msgid "CHANGEPASSWORD_LINK"
 msgstr "To the \"change password\" page."
 
+msgid "GEOLOC_MENU_TITLE"
+msgstr "Geolocator"
