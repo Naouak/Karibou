@@ -9,15 +9,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
-msgid "MINICHAT_SEND"
-msgstr "Send"
 
-msgid "CURRENTCHAT"
-msgstr "Current chat"
+msgid "GEOLOC_TITLE"
+msgstr  "Student geolocator"
 
-msgid "LASTCHAT"
-msgstr "Last chats"
+msgid "FIND_SMBDY"
+msgstr "Find somebody"
 
-msgid "VIEWCHATHISTORY"
-msgstr "View chat history"
-
+msgid "FIND"
+msgstr "Find"

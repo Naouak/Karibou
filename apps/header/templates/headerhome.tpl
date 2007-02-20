@@ -13,7 +13,7 @@
 {/foreach}
 	<script type="text/javascript" src="{$karibou.base_url}/themes/js/prototype.js"></script>
 	<script type="text/javascript" src="{$karibou.base_url}/themes/js/scriptaculous.js"></script>
-	<script type="text/javascript" src="{$karibou.base_url}/themes/js/karibou.js"></script>
+	<!--<script type="text/javascript" src="{$karibou.base_url}/themes/js/karibou.js"></script>-->
 	<script type="text/javascript">
 {literal}
 

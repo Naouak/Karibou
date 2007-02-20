@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <app>
 	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+	<load class="UserName"	file="../arguments/username.class.php" />
 	<load class="Geoloc"		file="geoloc.class.php" />
 
 	<view name="geoloc" class="Geoloc" template="geoloc.tpl" />
+	<view name="mini" class="Geoloc" template="small.tpl" />
 	
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 	
 	<page view="geoloc" />
+	<page name="search" view="geoloc" >
+		<option name="login" class="UserName" />
+	</page>
 	
 	<form action="post" class="MCPost">
 		<referer />

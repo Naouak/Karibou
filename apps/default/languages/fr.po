@@ -51,6 +51,9 @@ msgstr "Actualités"
 msgid "minichat"
 msgstr "Mini-Chat"
 
+msgid "geolocator"
+msgstr "Geolocateur d'étudiants"
+
 msgid "prefs"
 msgstr "Sélécteur de langue"
 
