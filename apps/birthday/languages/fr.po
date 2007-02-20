@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: UTF-8\n"
 
 msgid "BDAY_TITLE"
-msgstr "Anniversaires & fetes"
+msgstr "Anniversaires"
 
 msgid "TODAY_BDAY"
 msgstr "Aujourd'hui, souhaitons un bon anniversaire a : "
