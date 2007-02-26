@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+	<!-- mapping Classe/fichier -->
+	<load class="Squelette"		file="squelette.class.php" />
+
+	<!-- Mapping classe/template  -->
+	<view name="mini" class="Squelette" template="small.tpl" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<!-- Page sans nom donc par défaut, mapping page/vue -->
+	<page view="mini" />
+</app>

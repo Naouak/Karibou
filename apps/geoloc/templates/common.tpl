@@ -1,5 +1,6 @@
 <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key={$gkey}"
             type="text/javascript"></script>
+<script src="{kurl app="geoloc" page="data"}" type="text/javascript"></script>
 <script type="text/javascript">
 {$data}
 {$search}
