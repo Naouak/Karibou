@@ -14,7 +14,6 @@ class Squelette extends Model
 {
 	public function build()
 	{
-	
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
 
