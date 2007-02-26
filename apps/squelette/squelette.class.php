@@ -17,6 +17,7 @@ class Squelette extends Model
 	
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
+
 		/*
 		Traitement et export des variables vers le template
 		*/
