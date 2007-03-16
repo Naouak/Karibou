@@ -139,34 +139,7 @@ CREATE TABLE `minichat` (
 -- Contenu de la table `minichat`
 -- 
 
-INSERT INTO `minichat` (`time`, `id_auteur`, `post`) VALUES ('2005-05-22 18:19:08', 1, 'hi'),
-('2005-06-02 00:44:38', 1, 'ploup'),
-('2005-06-02 00:45:05', 1, 'ploup'),
-('2005-06-02 19:27:28', 1, 'ploup ploup'),
-('2005-07-16 08:56:33', 1, 'ploup'),
-('2005-07-16 10:33:14', 1, 'jon'),
-('2005-07-16 15:03:52', 1, 'fdgdf'),
-('2005-07-16 15:03:55', 1, 'fd'),
-('2005-07-16 15:04:00', 1, 'dfgdf'),
-('2005-07-16 15:04:06', 1, 'dfgdf'),
-('2005-07-16 15:04:10', 1, 'reter'),
-('2005-07-16 15:04:14', 1, 'gdfhdfgh'),
-('2005-07-16 15:04:18', 1, 'sgh'),
-('2005-07-16 15:04:21', 1, 'zare'),
-('2005-07-16 15:04:25', 1, 'wxcv'),
-('2005-07-16 15:04:31', 1, 'fdg'),
-('2005-07-16 15:04:35', 1, 'zer'),
-('2005-07-17 11:16:34', 1, 'bb'),
-('2005-08-09 21:16:08', 1, 'ber'),
-('2005-08-09 21:16:13', 1, 'bou'),
-('2005-08-09 21:16:16', 1, 'bou'),
-('2005-08-09 21:16:25', 1, 'bou'),
-('2005-08-14 18:43:53', 1, 'bah .'),
-('2005-08-21 13:10:14', 1, 'jon'),
-('2005-08-21 13:10:53', 1, 'jon'),
-('2005-08-21 13:11:02', 1, 'jon'),
-('2005-08-21 13:11:35', 1, 'jon'),
-('2005-08-21 13:20:11', 1, 'rr');
+INSERT INTO `minichat` (`time`, `id_auteur`, `post`) VALUES ('2005-05-22 18:19:08', 1, 'Bienvenue sur Karibou');
 
 -- --------------------------------------------------------
 
@@ -192,10 +165,9 @@ CREATE TABLE `news` (
 -- Contenu de la table `news`
 -- 
 
-INSERT INTO `news` (`i`, `id`, `id_author`, `id_groups`, `title`, `content`, `last`, `deleted`, `time`) VALUES (1, 1, 1, '', 'jon', 'jon', 1, 0, '2005-07-16 09:18:17'),
-(2, 2, 1, '', 'jon2', 'jon', 1, 0, '2005-07-16 09:18:45'),
-(3, 3, 1, '', 'jonjon', 'jonjonjon', 1, 0, '2005-08-20 13:36:48'),
-(4, 4, 1, '', 'jonjon', 'jonjonjon', 1, 0, '2005-08-20 13:39:49');
+
+INSERT INTO `news` (`i`, `id`, `id_author`, `id_groups`, `title`, `content`, `last`, `deleted`, `time`) VALUES 
+(1, 1, 1, '', 'Félicitations : l''Intranet est installé !', 'Félicitations !\r\n\r\nL''Intranet a été installé avec succès !\r\n\r\nTu peux accéder aux permissions des applications sur : [http://127.0.0.1/permissions/]\r\n\r\nL''application d''administration est disponible sur [http://127.0.0.1/admin/] (�  finaliser)\r\n\r\nPHPMyAdmin est disponible sur [http://127.0.0.1/phpmyadmin/] (disponible en fonction de l''installation)\r\n\r\nBon courage pour le développement !\r\n\r\nL''ékip', 1, 0, '2007-03-16 02:26:17');
 
 -- --------------------------------------------------------
 
@@ -218,7 +190,9 @@ CREATE TABLE `news_comments` (
 -- 
 -- Contenu de la table `news_comments`
 -- 
-
+INSERT INTO `news_comments` (`id`, `id_news`, `id_parent`, `id_author`, `title`, `content`, `time`) VALUES 
+(1, 1, 0, 1, 'Un conseil pour les utilisateurs de subversion sous Windows', 'TortoiseSVN est un des meilleurs clients subversion qui tourne sous Windows ([http://tortoisesvn.tigris.org/]).', '2007-03-16 02:24:46'),
+(2, 1, 0, 1, 'Un autre conseil pour ceux sous linux', 'RapidSVN est pas mal non plus ! ([http://rapidsvn.tigris.org/])', '2007-03-16 02:25:57');
 
 -- --------------------------------------------------------
 
@@ -238,6 +212,9 @@ CREATE TABLE `permissions_group` (
 -- Contenu de la table `permissions_group`
 -- 
 
+INSERT INTO `permissions_group` (`group_id`, `appli`, `permission`) VALUES 
+(1, 'permissions', '_ADMIN_'),
+(1, 'admin', '_ADMIN_');
 
 -- --------------------------------------------------------
 
@@ -486,8 +463,6 @@ CREATE TABLE `calendar` (
 -- Contenu de la table `calendar`
 -- 
 
-INSERT INTO `calendar` VALUES (1, 'jonjoncal', 'public');
-
 -- --------------------------------------------------------
 
 -- 
@@ -549,7 +524,7 @@ CREATE TABLE `calendar_user` (
 INSERT INTO `calendar_user` VALUES (1, 1);
 
 --
-
+DROP TABLE IF EXISTS `calendar_colors`;
 CREATE TABLE `calendar_colors` (
   `calendarid` int(11) NOT NULL default '0',
   `color1` varchar(6) NOT NULL default '',
@@ -572,7 +547,7 @@ INSERT INTO `calendar_colors` (`calendarid`, `color1`, `color2`) VALUES (1, '59f
 
 -- --------------------------------------------------------
 
-
+DROP TABLE IF EXISTS `admin_import`;
 CREATE TABLE `admin_import` (
   `id` int(11) NOT NULL auto_increment,
   `firstname` text NOT NULL,

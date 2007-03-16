@@ -28,14 +28,7 @@ CREATE TABLE `group_user` (
 -- Contenu de la table `group_user`
 -- 
 
-INSERT INTO `group_user` (`user_id`, `group_id`) VALUES (1, 3),
-(1, 5),
-(1, 7),
-(2, 5),
-(3, 2),
-(3, 5),
-(4, 2),
-(4, 7);
+INSERT INTO `group_user` (`user_id`, `group_id`) VALUES (1, 1);
 
 -- --------------------------------------------------------
 
@@ -59,17 +52,8 @@ CREATE TABLE `groups` (
 -- Contenu de la table `groups`
 -- 
 
-INSERT INTO `groups` (`id`, `name`, `url`, `ml`, `description`, `left`, `right`) VALUES (1, 'Promotions', NULL, NULL, NULL, 1, 10),
-(2, 'Fi04', NULL, NULL, NULL, 2, 3),
-(3, 'Fi05', NULL, NULL, NULL, 4, 5),
-(4, 'Clubs', NULL, NULL, NULL, 11, 20),
-(5, 'Intranet', NULL, NULL, NULL, 12, 17),
-(6, 'Webenic', NULL, NULL, NULL, 18, 19),
-(7, 'Moderators', NULL, NULL, NULL, 13, 14),
-(8, 'test', NULL, NULL, NULL, 15, 16),
-(9, 'Fi03', NULL, NULL, NULL, 6, 7),
-(10, 'Fi06', NULL, NULL, NULL, 8, 9),
-(11, 'New', NULL, NULL, NULL, 21, 22);
+INSERT INTO `groups` (`id`, `name`, `url`, `ml`, `description`, `left`, `right`) VALUES 
+(1, 'Admins', NULL, NULL, NULL, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -97,7 +81,8 @@ CREATE TABLE `profile` (
 -- Contenu de la table `profile`
 -- 
 
-INSERT INTO `profile` (`id`, `firstname`, `lastname`, `surname`, `birthday`, `url`, `note`, `title`, `role`, `org_name`, `org_unit`) VALUES (1, 'Jonathan', 'SEMCZYK', 'JoN', '0000-00-00', '', 'partagez !', '', '', '', '');
+INSERT INTO `profile` (`id`, `firstname`, `lastname`, `surname`, `birthday`, `url`, `note`, `title`, `role`, `org_name`, `org_unit`) 
+VALUES (1, 'Admin', '', 'Admin', '0000-00-00', '', 'Get root!', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -120,12 +105,6 @@ CREATE TABLE `profile_address` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 
--- Contenu de la table `profile_address`
--- 
-
-INSERT INTO `profile_address` (`id`, `profile_id`, `type`, `poaddress`, `extaddress`, `street`, `city`, `region`, `postcode`, `country`) VALUES (13, 1, 'HOME', 'Jonathan SEMCZYK', '', '57 rue Jeanne d''Arc', 'Villeneuve d''Ascq', 'Nord', '59650', 'France'),
-(2, 0, 'DOM', 'ee', 'ee', 'ee', 'ee', 'ee', 'ee', 'ee');
 
 -- --------------------------------------------------------
 
@@ -142,12 +121,6 @@ CREATE TABLE `profile_email` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 
--- Contenu de la table `profile_email`
--- 
-
-INSERT INTO `profile_email` (`id`, `profile_id`, `type`, `email`) VALUES (4, 1, 'INTERNET', 'jonathan.semczyk@telecomlille.net');
-
 -- --------------------------------------------------------
 
 -- 
@@ -162,12 +135,6 @@ CREATE TABLE `profile_phone` (
   `number` text collate utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- 
--- Contenu de la table `profile_phone`
--- 
-
-INSERT INTO `profile_phone` (`id`, `profile_id`, `type`, `number`) VALUES (1, 1, 'WORK', '+1 781 238 1767');
 
 -- --------------------------------------------------------
 
@@ -189,8 +156,4 @@ CREATE TABLE `users` (
 -- Contenu de la table `users`
 -- 
 
-INSERT INTO `users` (`id`, `login`, `password`, `profile_id`) VALUES (1, 'jon', PASSWORD('jon') , 1),
-(2, 'datoine', PASSWORD('datoine') , 0),
-(3, 'test', PASSWORD('test') , 0),
-(4, 'demo', PASSWORD('demo') , 0),
-(5, 'mcben', PASSWORD('pouet') , 0);
+INSERT INTO `users` (`id`, `login`, `password`, `profile_id`) VALUES (1, 'admin', PASSWORD('admin') , 1);
