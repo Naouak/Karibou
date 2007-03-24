@@ -2,11 +2,12 @@
 <app>
 	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
 	<load class="UserName"	file="../arguments/username.class.php" />
-	<load class="Geoloc"		file="geoloc.class.php" />
+	<load class="Geoloc"	file="geoloc.class.php" />
+	<load class="Data"		file="data.class.php" />
 
 	<view name="geoloc" class="Geoloc" template="geoloc.tpl" />
 	<view name="mini" class="Geoloc" template="small.tpl" />
-	<view name="data" class="Geoloc" template="data.tpl" />
+	<view name="data" class="Data" template="data.tpl" />
 	
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
@@ -14,6 +15,11 @@
 	<page view="geoloc" />
 	<page name="search" view="geoloc" >
 		<option name="login" class="UserName" />
+	</page>
+
+	<page name="data" view="data" >
+        <header app="empty" view="default" />
+        <footer app="empty" view="default" />
 	</page>
 	
 	<form action="post" class="MCPost">

@@ -1,14 +1,31 @@
 <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key={$gkey}"
             type="text/javascript"></script>
 <script type="text/javascript">
-{$data}
 {$search}
 {literal}
 var map;   
 var geocoder = new GClientGeocoder();
 var mode;
+var users = new Array();
+
+function getUsers(){
+	GDownloadUrl("{/literal}{kurl app="geoloc" page="data"}{literal}", function(data, responseCode) {
+			var xml = GXml.parse(data);
+			var usrs = xml.documentElement.getElementsByTagName("user");
+			for (var i = 0; i < usrs.length; i++) {
+				var children = usrs[i].childNodes;
+				users[i] = new Array();
+				for(var j=0;j < children.length; j++){
+					var name = children[j].nodeName;
+					users[i][name] = children[j].textContent;	
+				}
+				addMarkers();
+			}
+	});
+}
 
 function load(mymode){
+	getUsers();
 	mode = mymode;
 	if (GBrowserIsCompatible()) {
 		map = new GMap2(document.getElementById("map"));
@@ -18,9 +35,6 @@ function load(mymode){
 			map.setCenter(new GLatLng(25.641526,-14.589844), 1);
 		}
 	}
-	for(var i=0; i < users.length; i++){
-		addMarker(i);
-	}
 	map.addControl(new GSmallMapControl());
 	if(mode == "normal"){
 		map.addControl(new GMapTypeControl());
@@ -28,6 +42,12 @@ function load(mymode){
 	body = document.getElementsByTagName("body");
 	body[0].onunload = function (){ GUnload();};
 
+}
+
+function addMarkers(){
+	for(var i=0; i < users.length; i++){
+		addMarker(i);
+	}
 }
 
 function markerLoaded(i){
