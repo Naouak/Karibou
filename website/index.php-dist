@@ -1,8 +1,10 @@
 <?php
 
-include('check.php');
-
+/**
+ * Premières inclusions (configuration, vérification, librairies)
+ */
 require_once dirname(__FILE__).'/config.php';
+include('check.php');
 require_once KARIBOU_DIR.'/class/karibou.class.php';
 $timer = ExecutionTimer::getRef();
 
