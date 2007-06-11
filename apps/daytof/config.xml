@@ -1,0 +1,14 @@
+<app>	
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+	<load class="DayTof" file="daytof.class.php" />
+	<load class="DayTofConfig" file="daytofconfig.class.php" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<view name="mini" class="DayTof" template="daytof.tpl" />
+	<view name="miniconfig" class="DayTofConfig" template="daytofconfig.tpl" />
+
+	<page name="upload" view="mini" />
+</app>

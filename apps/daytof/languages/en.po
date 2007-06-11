@@ -10,14 +10,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
 
-msgid "GEOLOC_TITLE"
-msgstr  "Student geolocator"
+msgid "DAYTOF_TITLE"
 
-msgid "FIND_SMBDY"
-msgstr "Find somebody"
+msgstr "The Picture"
 
-msgid "FIND"
-msgstr "Find"
 
-msgid "NEXT_ADDR"
-msgstr "Next address for this person"
+
+
+msgid "DAYTOF_FILE"
+
+msgstr "Picture file"
+
+
+msgid "DAYTOF_COMMENT"
+
+msgstr "Comment"

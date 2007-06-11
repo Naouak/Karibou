@@ -1,0 +1,18 @@
+<app>
+<config>
+	<param name="max">
+	<value name="time2live">21600</value>
+	</param>
+</config>
+   
+    <permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+    <load class="Citation" file="citation.class.php" />
+    <load class="CitationConfig" file="citationconfig.class.php" />
+    
+    <header app="header" view="default" />
+    <footer app="footer" view="default" />
+    
+    <view name="mini" class="Citation" template="citation.tpl" />
+    <view name="miniconfig" class="CitationConfig" template="citationconfig.tpl" />
+</app>

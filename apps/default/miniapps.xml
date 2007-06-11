@@ -10,6 +10,10 @@
 	<small id ="mynotes" app="mynotes" view="mini" configview="miniconfig" />
 	<small id ="onlineusers" app="onlineusers" view="mini" />
 	<small id ="gmailreader" app="gmailreader" view="mini" configview="miniconfig" />
+	<small id ="citation" app="citation" view="mini" configview="miniconfig" />
+	<small id ="daytof" app="daytof" view="mini" configview="miniconfig" />
+
+
 
 	<medium id ="bday" app="birthday" view="mini" />
 	<medium id ="geoloc" app="geoloc" view="mini" />

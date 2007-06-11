@@ -20,7 +20,7 @@ class gmailReader extends Model
 	
 		if (
 			isset($this->args['gmaillogin'], $this->args['gmailpass'], $this->args['gmailmax'])
-			&& $this->args['gmaillogin'] != "" && $this->args['gmailpass'] != "" && $this->args['gmailmax']
+			&& $this->args['gmaillogin'] != "" && $this->args['gmailpass'] != "" && $this->args['gmailmax'] != ""
 			)
 		{
 			$currentUser = $this->userFactory->getCurrentUser();
@@ -29,21 +29,21 @@ class gmailReader extends Model
 			$prefName = 'gmailpass';
 			$currentUser->setPref($prefName, $this->args['gmailpass']);
 			$prefName = 'gmailmax';
-			$currentUser->setPref($prefName, $this->args['gmailmax']);
+			$currentUser->setPref($prefName, $this->args['gmailmax']);				
 		}
-		else
-		{
+//		else
+//		{
 			$gmaillogin = $this->userFactory->getCurrentUser()->getPref('gmaillogin');
 			$gmailpass = $this->userFactory->getCurrentUser()->getPref('gmailpass');
-			$gmailmax = $this->userFactory->getCurrentUser()->getPref('gmailmax');				
-		}
+			$gmailmax = $this->userFactory->getCurrentUser()->getPref('gmailmax');
+//		}
 
 		if( isset($gmaillogin, $gmailpass, $gmailmax) && $gmaillogin !== FALSE && $gmailpass !== FALSE && $gmailmax !== FALSE)
 		{
 			$this->assign("config", true);
 			$rss_file = "https://".$gmaillogin.":".$gmailpass."@mail.google.com/mail/feed/atom";
 			$rss_feed = new XMLCache(KARIBOU_CACHE_DIR.'/xml_rss');
-			if( $rss_feed->loadURL($rss_file) )
+			if( $rss_feed->loadURL($rss_file,25) )
 			{
 				$xml = $rss_feed->getXML();
 				$title = "No suitable Feed found";

@@ -72,6 +72,12 @@ msgstr "File Share"
 msgid "gmailreader"
 msgstr "GMail Reader"
 
+msgid "citation"
+msgstr "The citation"
+
+msgid "daytof"
+msgstr "The picture"
+
 msgid "DEFAULT_CHANGEPASSWORD_DESCRIPTION"
 msgstr "In order to ensure your account security, you must change your password. Click on the link below to go to the \"change password\" page."
 
