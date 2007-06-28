@@ -22,6 +22,7 @@ class AuthImap extends Auth
 	 */
 	function login($user, $pass)
 	{
+		$pass = stripslashes($pass);
 		if( isset($GLOBALS['config']['login']['server'], 
 			$GLOBALS['config']['login']['server_schema'], 
 			$GLOBALS['config']['login']['server_options']) )
