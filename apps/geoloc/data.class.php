@@ -18,7 +18,7 @@ class Data extends Model
 
 		$xw->startElement('users');
 		$i = 0;
-		$query='SELECT street,extaddress,city,postcode,country,profile_id from '.$appsdb.'.profile_address';
+		$query='SELECT street,extaddress,city,postcode,country,coords,profile_id from '.$appsdb.'.profile_address';
 		foreach($this->db->query($query) as $row){
 			$addr_table[] = $row['street']." ".$row['extaddress']." ".$row['city']." ".$row['postcode']." ".$row['country'];
 

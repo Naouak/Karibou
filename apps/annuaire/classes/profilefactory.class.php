@@ -274,11 +274,11 @@ class ProfileFactory
 				$values .= "(".$profile->getId().", '".($tab['type'])."', '".($tab['poaddress'])."',
 					 '".($tab['extaddress'])."', '".($tab['street'])."', 
 					 '".($tab['city'])."', '".($tab['region'])."', 
-					 '".($tab['postcode'])."', '".($tab['country'])."')";
+					 '".($tab['postcode'])."', '".($tab['country'])."', '".($tab['coords'])."')";
 			}
 			$qry .= "INSERT INTO ".$this->profile_table."_address
 				 (  `profile_id` ,  `type` ,  `poaddress` ,  `extaddress` ,  
-				 `street` ,  `city` ,  `region` ,  `postcode` ,  `country` ) 
+				 `street` ,  `city` ,  `region` ,  `postcode` ,  `country`, `coords`) 
 				  VALUES ".$values." ; ";
 		}
 		return $qry;

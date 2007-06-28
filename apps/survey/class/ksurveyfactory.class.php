@@ -122,7 +122,7 @@ class KSurveyFactory
 
 		if (isset($vars['name'], $vars['description']))
 		{
-			echo $sql = "
+			$sql = "
 					INSERT INTO survey_surveys
 							(name,
 							description,

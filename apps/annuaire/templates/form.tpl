@@ -9,10 +9,13 @@
 	{$username}
 	{/if}
 </h2>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key={$gkey}"
+            type="text/javascript"></script>
 <script>
 var address_next_id = 1;
 var phone_next_id = 1;
 var email_next_id = 1;
+var geocoder = new GClientGeocoder();
 
 function add_address()
 {literal}
@@ -52,6 +55,10 @@ function add_address()
 	html += '<label for="address'+ address_next_id +'_country">##COUNTRY##</label>';
 	html += '<input id="address'+ address_next_id +'_country" type="text" ';
 	html += ' name="address'+ address_next_id +'_country" /><br class="spacer" />';
+	html += '<label for="address'+ address_next_id +'_coords">##POSITION##</label>';
+	html += '<input id="address'+ address_next_id +'_coords" type="text"';
+	html += 'name="address'+ address_next_id +'_coords" disabled="disabled"/>';
+	html += '<input type="button" value="##GEOCALC##" onclick="geocalc(\'address'+address_next_id+'\');" /><br class="spacer" />';
 	fieldset.innerHTML += html;
 	address_next_id++;
 {literal}
@@ -112,6 +119,26 @@ function add_email()
 	email_next_id++;
 	
 {literal}
+}
+{/literal}
+
+function getaddress(name)
+{literal}
+{
+	var elts = new Array("street", "extaddress", "city", "postcode", "country");
+	var ret = "";
+	for(var i = 0; i < elts.length; i++){
+		elt = name+"_"+elts[i];
+		ret += document.getElementById(elt).value+" ";
+	}
+	return ret;
+}
+{/literal}
+
+function geocalc(name)
+{literal}
+{
+	geocoder.getLatLng(getaddress(name),function (point){coords = point.toString();document.getElementById(name+"_coords").value = coords.substring(1,coords.length-1);});
 }
 {/literal}
 </script>
@@ -187,6 +214,9 @@ function add_email()
 			<label for="address{$addr_it}_country">##COUNTRY##</label>
 				<input id="address{$addr_it}_country" type="text"
 					name="address{$addr_it}_country" value="{$address.country}" /><br class="spacer" />
+			<label for="address{$addr_it}_coords">##COORDS##</label>
+				<input id="address{$addr_it}_coords" type="text"
+					name="address{$addr_it}_coords" value="{$address.coords}" /><input type="button" value="##GEOCALC##" onclick="geocalc('address{$addr_it}');" /><br class="spacer" />
 			<label for="address{$addr_it}_delete">##DELETE##</label>
 				<input id="address{$addr_it}_delete" type="checkbox" class="checkbox"
 					name="address{$addr_it}_delete" value="delete" /><br class="spacer" />
@@ -228,6 +258,9 @@ function add_email()
 			<label for="address{$addr_it+1}_country">##COUNTRY##</label>
 				<input id="address{$addr_it+1}_country" type="text"
 					name="address{$addr_it+1}_country" /><br class="spacer" />
+			<label for="address{$addr_it+1}_location">##POSITION##</label>
+				<input id="address{$addr_it+1}_location" type="text"
+					name="address{$addr_it+1}_location" value="{$address.location}" disabled="disabled"/><input type="button" value="##GEOCALC##" onclick="geocalc('address{$addr_it+1}');" /><br class="spacer" />
 		</noscript>
 		<div id="addresses_div"></div>
 		</fieldset>

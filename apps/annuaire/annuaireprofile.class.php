@@ -82,6 +82,8 @@ class AnnuaireProfile extends Model
 		//$this->assign('usergroups', $groups->getTree() );
 		$user->getGroups($this->db);
 		$userallgroups = $user->getAllGroups($this->db);
+		$gkey = $GLOBALS['config']['geoloc']['gkey'];
+		$this->assign('gkey', $gkey);
 		$this->assign("usergroups", $userallgroups /*->getTree()*/);
 		
 		$this->assign('noflashmail', $GLOBALS['config']['noflashmail']);

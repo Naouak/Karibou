@@ -80,24 +80,19 @@ function smallHtml(i){
 }
 
 function addMarker(i) {
-	geocoder.getLatLng(
-			getAddress(i),
-			function(point) {
-				if (point) {
-					var marker = new GMarker(point);
-					users[i]['marker']=marker;
-					map.addOverlay(marker);
-					GEvent.addListener(marker, "click", function(marker, point) {
-						map.setCenter(this.getPoint());
-						if(mode == "normal"){
-							this.openInfoWindowHtml(getHtml(i));
-						}else{
-							document.getElementById("geoname").innerHTML=getHtml(i);
-						}
-					});
-				}
-				markerLoaded(i);
-			});
+	var point = new GLatLng(users[i]['coords'].split(",")[0],users[i]['coords'].split(",")[1]);
+	var marker = new GMarker(point);
+	users[i]['marker']=marker;
+	map.addOverlay(marker);
+	GEvent.addListener(marker, "click", function(marker, point) {
+			map.setCenter(this.getPoint());
+			if(mode == "normal"){
+			this.openInfoWindowHtml(getHtml(i));
+			}else{
+			document.getElementById("geoname").innerHTML=getHtml(i);
+			}
+		});
+	markerLoaded(i);
 }
 {/literal}
 </script>

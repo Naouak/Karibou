@@ -2,6 +2,11 @@
 	// <![CDATA[
 <? /*Cant use class name hide or hidden (using dontshow)... IE seems to react to
 special classname... (sucks)*/ ?>
+var inittitle = document.title;
+var fmtoggle=0;
+var intv;
+
+
 	function flashmail_blinddown(div_id)
 	{
 		var f = document.getElementById(div_id);
@@ -19,6 +24,17 @@ special classname... (sucks)*/ ?>
 		return false;
 	}
 
+
+function blinktitle(title){
+	if(fmtoggle == 0){
+		document.title = title;
+		fmtoggle=1;
+	}else{
+		document.title = inittitle;
+		fmtoggle=0;
+	}	
+
+}
 	function flashmail_headerbox_update()
 	{
 		new Ajax.Updater('account_flashmail_headerbox_full', '<?=kurl(array('app'=>"flashmail", 'page'=>"account_headerbox_content"));?>', {asynchronous:true, evalScripts:false, onComplete:flashmail_duplicate_unreadlist});
@@ -27,6 +43,14 @@ special classname... (sucks)*/ ?>
 
 	function flashmail_duplicate_unreadlist()
 	{
+		var test = document.getElementById("account_flashmail_read_link");
+		if(test){
+			intv = setInterval('blinktitle("Nouveau flashmail")',1000);
+		}else{
+			document.title=inittitle;
+			clearInterval(intv);
+		}
+
 		//Utilisation d'une recopie du innerHTML en javascript pour éviter d'exécuter 2 fois le même code pour 
 		//l'affichage du nombre de flashmails et de la liste des flashmails (depuis que les 2 éléments ne sont
 		//plus au même endroit.

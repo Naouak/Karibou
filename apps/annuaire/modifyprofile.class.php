@@ -25,7 +25,7 @@ class ModifyProfile extends FormModel
 	
 		$profile = array();
 		$addresses = array();
-		$address_args = 'type|poaddress|extaddress|street|city|region|postcode|country|delete';
+		$address_args = 'type|poaddress|extaddress|street|city|region|postcode|country|coords|delete';
 		$phones = array();
 		$phones_args = 'type|number|delete';
 		$emails = array();
