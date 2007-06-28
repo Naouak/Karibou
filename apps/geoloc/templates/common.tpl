@@ -19,8 +19,8 @@ function getUsers(){
 					var name = children[j].nodeName;
 					users[i][name] = children[j].textContent;	
 				}
-				addMarkers();
 			}
+			addMarkers();
 	});
 }
 
