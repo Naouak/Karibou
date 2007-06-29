@@ -65,6 +65,9 @@ class KSmarty extends Smarty
 		//la version précédente du gestionnaire de traductions (possibilité d'intégration de variables smarty)
 		$prefilterTranslation = array (&$this,'prefilterTranslation');
 		$this->register_prefilter($prefilterTranslation);
+
+$this->force_compile=TRUE;//charles_modif
+
 		
 	}
 	

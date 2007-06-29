@@ -16,6 +16,7 @@
 	<load class="AddGroup" file="addgroup.class.php" />
 	<load class="Import" file="import.class.php" />
 	<load class="ImportSave" file="importsave.class.php" />
+	<load class="LinkUsers2Group" file="linkusers2group.class.php" />
 
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
@@ -25,10 +26,12 @@
 	<view name="useradmin" class="UserAdmin" template="useradmin.tpl" />
 	<view name="groups" class="GroupsAdmin" template="groupsadmin.tpl" />
 	<view name="import" class="Import" template="import.tpl" />
+	<view name="linkusers2group" class="LinkUsers2Group" template="linkusers2group.tpl" />
 
 	<page view="default" />
 	<page name="users" view="users" />
 	<page name="groups" view="groups" />
+	<page name="linkusers2group" view="linkusers2group" />
 	<page name="import" view="import">
 		<option name="editid" class="NumberArgument" />
 	</page>

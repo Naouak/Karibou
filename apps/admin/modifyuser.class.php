@@ -19,15 +19,20 @@ class ModifyUser extends FormModel
 	{
 		$annudb = $GLOBALS['config']['bdd']['frameworkdb'];
 		
+
+
 		$set = "login='".$_POST['login']."', ";
 		if( !empty($_POST['pass']) )
 		{
 			$set .= "pass=PASSWORD('".$_POST['pass']."'), ";
 		}
-		$set .= "email='".$_POST['email']."' ";
-		$qry = "UPDATE ".$annudb.".users SET ".$set." WHERE id='".$_POST['id']."' ; ";
+		//$set .= "email='".$_POST['email']."' ";
+		$qry_user = "UPDATE ".$annudb.".users SET ".$set." WHERE id='".$_POST['id']."' ; ";
 		
-		$qry .= "DELETE FROM ".$annudb.".group_user WHERE user_id='".$_POST['id']."' ; ";
+		
+		$qry_raz_user_group = "DELETE FROM ".$annudb.".group_user WHERE user_id='".$_POST['id']."' ; " ;
+
+
 		$groups = array();
 		foreach($_POST as $post => $value)
 		{
@@ -38,23 +43,41 @@ class ModifyUser extends FormModel
 		}
 		if( count($groups) > 0 )
 		{
-			$qry .= "INSERT INTO ".$annudb.".group_user (user_id, group_id) VALUES ";
+			$qry_group = "INSERT INTO ".$annudb.".group_user (user_id, group_id) VALUES ";
 			$first = true;
 			foreach($groups as $g)
 			{
-				if( !$first ) $qry .= ", ";
-				$qry .= "('".$_POST['id']."', '".$g."')";
+				if( !$first ) $qry_group .= ", ";
+				$qry_group .= "('".$_POST['id']."', '".$g."')";
 				$first = false;
 			}
-			$qry .= " ; ";
+			$qry_group .= " ; ";
 		}
 		try
 		{
-			$this->db->exec($qry);
+			$this->db->exec($qry_user);
 		}
 		catch( PDOException $e )
 		{
-			Debug::display($qry);
+			Debug::display($qry_user);
+			Debug::kill($e->getMessage());
+		}
+		try
+		{
+			$this->db->exec($qry_raz_user_group);
+		}
+		catch( PDOException $e )
+		{
+			Debug::display($qry_raz_user_group);
+			Debug::kill($e->getMessage());
+		}
+		try
+		{
+			$this->db->exec($qry_group);
+		}
+		catch( PDOException $e )
+		{
+			Debug::display($qry_group);
 			Debug::kill($e->getMessage());
 		}
 	}

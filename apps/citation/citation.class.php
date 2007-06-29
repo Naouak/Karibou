@@ -46,10 +46,13 @@ class Citation extends Model
         }
 		if ($citationonline = $stmt->fetch(PDO::FETCH_ASSOC)) {
 	        //je recupere l'user
-   		    if ($user =  $this->userFactory->prepareUserFromId($citationonline["user_id"])) {
+   		    if ($user["object"] =  $this->userFactory->prepareUserFromId($citationonline["user_id"])) {
 
 	        	$this->assign("citationnow",$citationonline["citation"]);
-		        $this->assign("citationauthor",$user);
+		       $this->assign("citationauthor",$user);
+			$this->assign("islogged", $this->currentUser->isLogged());
+
+
 			}
 		}
     }

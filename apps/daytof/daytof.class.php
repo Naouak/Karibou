@@ -34,7 +34,6 @@ class DayTof extends Model
 		if( is_uploaded_file($_FILES['daytof_file']['tmp_name']) && filesize($_FILES['daytof_file']['tmp_name'])<1512000)
 		{
 
-			echo "11111";
 			//Id nouvelle photo
 			$sql = "SELECT id FROM daytof WHERE 1 ORDER BY id DESC LIMIT 1 ";
         		try
@@ -131,7 +130,7 @@ class DayTof extends Model
 }
 
 		
-		//day tof, photo du jour
+		//===>AFFICHAGE day tof, photo du jour
 		$sql = "SELECT * FROM daytof WHERE 1 ORDER BY datetime DESC LIMIT 1 ";
         	try
         	{
@@ -144,12 +143,14 @@ class DayTof extends Model
 		
 		if ($daytofonline = $stmt->fetch(PDO::FETCH_ASSOC)) {
 	        //je recupere l'user
-   		    if ($user =  $this->userFactory->prepareUserFromId($daytofonline["user_id"])) {
+   		    if ($user["object"] =  $this->userFactory->prepareUserFromId($daytofonline["user_id"])) {
 
 	        	$this->assign("tof",('/pub/daytof/m'.$daytofonline["photo"].'.png'));
 	        	$this->assign("linktof",('/pub/daytof/'.$daytofonline["photo"].'.png'));
 		       $this->assign("daytofauthor",$user);
 			$this->assign("daytofcomment",$daytofonline["comment"]);
+			$this->assign("islogged", $this->currentUser->isLogged());
+
 			}
 		}
 

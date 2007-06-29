@@ -10,6 +10,9 @@ Search for username : <input type="text" name="search" />
 {/foreach}
 </ul>
 
+<br />
+<br />
+
 <h1>Add a user</h1>
 <form action="{kurl action='adduser' }" method="POST">
 	<label for="input_login">Login : </label>

@@ -43,7 +43,7 @@ class gmailReader extends Model
 			$this->assign("config", true);
 			$rss_file = "https://".$gmaillogin.":".$gmailpass."@mail.google.com/mail/feed/atom";
 			$rss_feed = new XMLCache(KARIBOU_CACHE_DIR.'/xml_rss');
-			if( $rss_feed->loadURL($rss_file,25) )
+			if( $rss_feed->loadURL($rss_file,5) )
 			{
 				$xml = $rss_feed->getXML();
 				$title = "No suitable Feed found";
@@ -62,6 +62,8 @@ class gmailReader extends Model
 				}
 				$title = $xml->title[0] ;
 				$nbMessages = $xml-> fullcount[0];
+				if($i==0) $this->assign("nomessage", "No message");
+
 
 				if ($title != NULL)
 				{

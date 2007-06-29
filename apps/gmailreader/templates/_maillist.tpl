@@ -18,3 +18,6 @@
 			<span class="gmailtitle"><a href="{$item.link}" title="{$item.summary}">{$item.title->text|truncate:$maxtitlelength:"...":true}</a></span>
 		</li>
 		{/foreach}
+		{if $nomessage} 
+		{$nomessage}
+		{/if}

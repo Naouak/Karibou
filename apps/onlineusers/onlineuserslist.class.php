@@ -35,6 +35,10 @@ class OnlineUsersList extends Model
         {
             $user["object"] = $this->userFactory->prepareUserFromId($user["user_id"]);
         }
+
+	$nbonlineusers= sizeof($onlineusers);
+	$this->assign("nbonlineusers", $nbonlineusers);
+
         
         $this->userFactory->setUserList();
 

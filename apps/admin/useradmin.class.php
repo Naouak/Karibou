@@ -21,6 +21,17 @@ class UserAdmin extends Model
 		$this->assign('user', $user);
 
 		$groups = $this->userFactory->getGroups();
+
+		//repere tous les groupes ou se trouve notre user
+		foreach($groups as $g) 
+		{
+			if($user->isInGroup($this->db,$g->getId())==TRUE)  {
+					$g->checked = TRUE;
+					//echo "<br>".$g->getId();
+			}
+		}
+
+		/*
 		$user->setGroups($this->db);
 		$usergroups = $user->getGroups();
 		foreach($usergroups as $ug)
@@ -34,6 +45,9 @@ class UserAdmin extends Model
 				}
 			}
 		}
+		*/
+
+
 		$this->assign('grouptree', $groups->getTree() );
 	}
 

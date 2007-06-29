@@ -221,7 +221,7 @@ class XMLCache
 			$xmlString = '';
 			while (!feof($fp)) 
 			{
-    		$xmlString .= fread($fp, 8192);
+    		$xmlString .= fread($fp,8192);
 			}
 			fclose($fp);
 		}			

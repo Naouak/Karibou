@@ -48,4 +48,11 @@
 			<li>Wiki</li>
 		</ul>
 	</li>
+	<li>
+		<strong>Charles Anssens</strong> : App Developer
+		<ul>
+			<li>Daytof</li>
+			<li>Citation</li>
+		</ul>
+	</li>
 </ul>
