@@ -66,7 +66,7 @@ class KSmarty extends Smarty
 		$prefilterTranslation = array (&$this,'prefilterTranslation');
 		$this->register_prefilter($prefilterTranslation);
 
-//$this->force_compile=TRUE;//charles_modif
+$this->force_compile=TRUE;//charles_modif
 
 		
 	}

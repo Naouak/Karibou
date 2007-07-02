@@ -11,6 +11,7 @@
 	<title>
 		<?=_('HEADER_PAGE_TITLE');?> :: <?=_('KPOWERED');?>
 	</title>
+	<link rel="shortcut icon" TYPE="image/x-icon" HREF="./themes/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="<?=$this->vars['karibou']['base_url'].$this->vars['cssFile'];?>" media="screen" title="Normal" />
 <?
 	foreach($this->vars['styles'] as $style)

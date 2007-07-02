@@ -28,23 +28,41 @@ class LinkUsers2Group extends Model
 
 			$annudb = $GLOBALS['config']['bdd']['frameworkdb'];
 		
-			$qry_group = "INSERT INTO ".$annudb.".group_user (user_id, group_id) VALUES ";
+			$qry_group_model = "INSERT INTO ".$annudb.".group_user (user_id, group_id) VALUES ";
+			$qry_group = "";
 			$first = true;
 			foreach($usertogroup as $u)
 			{
 				if ($user = $this->userFactory->prepareUserFromLogin($u)) {
-					echo $u.$user->getID();
-					if( !$first ) $qry_group .= ", ";
-					$qry_group .= "('".$user->getId()."', '".$_GET['group']."')";
-					$first = false;
-				}
+					$this->userFactory->setUserList();
+					if($user->getID()==0)
+					{
+						if(isset($_POST['create_allow']))//non connu => creation authorisee?
+						{
+							$qry_NewUser = "INSERT INTO ".$annudb.".users (login) VALUES ('".$u."')";
+							try
+							{
+								$this->db->exec($qry_NewUser);
+							}
+							catch( PDOException $e )
+							{
+								Debug::display($qry_NewUser);
+								Debug::kill($e->getMessage());
+							}
+							$user = $this->userFactory->prepareUserFromLogin($u);
+							$this->userFactory->setUserList();
+						}					
+					}
+					if($user->getID()!=0)
+					{
+						$qry_group .= $qry_group_model ."('".$user->getId()."', '".$_GET['group']."') ; ";
+					}
+				} 
 			}
-			$qry_group .= " ; ";
 
 		try
 		{
-			//$this->db->exec($qry_group);
-			echo $qry_group;
+			$this->db->exec($qry_group);
 		}
 		catch( PDOException $e )
 		{
@@ -55,9 +73,9 @@ class LinkUsers2Group extends Model
 
 		}
 
+
 		if( isset($_GET['group']) )
 		{
-			//$this->assign('userlist', $this->userFactory->getUsersFromSearch($_GET['search']) );
 			//affichage du groupe en selection
 			$okgrouping = $_GET['group'];
 			$this->assign('okgrouping', $okgrouping );
