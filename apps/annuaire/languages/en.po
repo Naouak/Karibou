@@ -81,5 +81,11 @@ msgstr "This user is member of the following group(s)"
 msgid "BIRTHDATE"
 msgstr "Birth date (AAAA-MM-JJ)"
 
+msgid "SHOWBIRTHDATE"
+msgstr "Birth date"
+
 msgid "PROFILE_GEOLOC"
 msgstr "See where this person is"
+
+msgid "COMPANY"
+msgstr "Company"

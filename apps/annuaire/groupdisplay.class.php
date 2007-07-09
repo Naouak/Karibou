@@ -72,7 +72,7 @@ class GroupDisplay extends Model
 				gu.visibility='visible' AND
 				g.left >= ".$thegroup[0]["left"]." AND
 				g.right <= ".$thegroup[0]["right"]."
-			ORDER BY g.name, p.lastname, p.firstname";
+			ORDER BY g.name, p.lastname, p.firstname, u.login";
 		try
 		{
 			$stmt = $this->db->prepare($qry);

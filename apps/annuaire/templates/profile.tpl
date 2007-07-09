@@ -19,6 +19,9 @@
 		<em>##LOGIN## : {$username}</em><br />
 		{if isset($profile.url) && ($profile.url != "")}##WEBSITE## : <strong><a href="{$profile.url}">{$profile.url}</a></strong><br />{/if}
 		{if isset($profile.note) && ($profile.note != "")}##NOTE## : <strong>{$profile.note|escape}</strong><br />{/if}
+		{if isset($profile.birthday) && ($profile.birthday != "")}##SHOWBIRTHDATE## : <strong>{$profile.birthday|escape}</strong><br />{/if}
+		{if isset($profile.company) && ($profile.company != "")}##COMPANY## : <strong>{$profile.company|escape}</strong><br />{/if}
+
 	</div>
 	<hr class="clear" />
 	{if $edit}

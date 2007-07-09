@@ -176,6 +176,8 @@ function geocalc(name)
 				<input id="url" type="text" name="url" value="{$profile.url}" /><br class="spacer" />
 			<label for="note">##NOTE##</label>
 				<textarea id="note" name="note">{$profile.note}</textarea><br class="spacer" />
+			<label for="company">##COMPANY##</label>
+				<input id="company" type="text" name="company" value="{$profile.company}" /><br class="spacer" />
 			<label for="picture">##PICTURE##</label>
 				<input id="picture" type="file" name="picture" /><br class="spacer" />
 				<span class="note">##PICTURE_NOTE##</span>

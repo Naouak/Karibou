@@ -72,9 +72,6 @@ msgstr "Connectés"
 msgid "fileshare"
 msgstr "Partage de Fichiers"
 
-msgid "gmailreader"
-msgstr "Lecteur GMail"
-
 msgid "citation"
 msgstr "Citation du jour"
 

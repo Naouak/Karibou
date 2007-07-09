@@ -1,0 +1,1 @@
+ALTER TABLE `profile` ADD `company` VARCHAR( 64 ) NOT NULL ;
