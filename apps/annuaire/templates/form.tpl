@@ -260,9 +260,9 @@ function geocalc(name)
 			<label for="address{$addr_it+1}_country">##COUNTRY##</label>
 				<input id="address{$addr_it+1}_country" type="text"
 					name="address{$addr_it+1}_country" /><br class="spacer" />
-			<label for="address{$addr_it+1}_location">##POSITION##</label>
-				<input id="address{$addr_it+1}_location" type="text"
-					name="address{$addr_it+1}_location" value="{$address.location}" disabled="disabled"/><input type="button" value="##GEOCALC##" onclick="geocalc('address{$addr_it+1}');" /><br class="spacer" />
+			<label for="address{$addr_it+1}_coords">##POSITION##</label>
+				<input id="address{$addr_it+1}_coords" type="text"
+					name="address{$addr_it+1}_coords" value="{$address.coords}" disabled="disabled"/><input type="button" value="##GEOCALC##" onclick="geocalc('address{$addr_it+1}');" /><br class="spacer" />
 		</noscript>
 		<div id="addresses_div"></div>
 		</fieldset>

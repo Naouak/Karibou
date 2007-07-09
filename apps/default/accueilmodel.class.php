@@ -62,7 +62,7 @@ class AccueilModel extends Model
 				$c3_apps[] = $miniapps->getNewApp('mail');
 			}
 			$c3_apps[] = $miniapps->getNewApp('news');
-			$c3_apps[] = $miniapps->getNewApp('birthday');
+			$c3_apps[] = $miniapps->getNewApp('bday');
 			$containers->setApps( $c3, $c3_apps ) ;
 
 			$currentUser->setPref('miniapps', $miniapps );
