@@ -55,9 +55,9 @@ function add_address()
 	html += '<label for="address'+ address_next_id +'_country">##COUNTRY##</label>';
 	html += '<input id="address'+ address_next_id +'_country" type="text" ';
 	html += ' name="address'+ address_next_id +'_country" /><br class="spacer" />';
-	html += '<label for="address'+ address_next_id +'_coords">##POSITION##</label>';
+	html += '<label for="address'+ address_next_id +'_coords">##COORDS##</label>';
 	html += '<input id="address'+ address_next_id +'_coords" type="text"';
-	html += 'name="address'+ address_next_id +'_coords" disabled="disabled"/>';
+	html += 'name="address'+ address_next_id +'_coords" />';
 	html += '<input type="button" value="##GEOCALC##" onclick="geocalc(\'address'+address_next_id+'\');" /><br class="spacer" />';
 	fieldset.innerHTML += html;
 	address_next_id++;
@@ -260,9 +260,9 @@ function geocalc(name)
 			<label for="address{$addr_it+1}_country">##COUNTRY##</label>
 				<input id="address{$addr_it+1}_country" type="text"
 					name="address{$addr_it+1}_country" /><br class="spacer" />
-			<label for="address{$addr_it+1}_coords">##POSITION##</label>
-				<input id="address{$addr_it+1}_coords" type="text"
-					name="address{$addr_it+1}_coords" value="{$address.coords}" disabled="disabled"/><input type="button" value="##GEOCALC##" onclick="geocalc('address{$addr_it+1}');" /><br class="spacer" />
+			<label for="address{$addr_it+1}_location">##COORDS##</label>
+				<input id="address{$addr_it+1}_location" type="text"
+					name="address{$addr_it+1}_location" value="{$address.location}" /><input type="button" value="##GEOCALC##" onclick="geocalc('address{$addr_it+1}');" /><br class="spacer" />
 		</noscript>
 		<div id="addresses_div"></div>
 		</fieldset>
