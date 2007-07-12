@@ -6,7 +6,7 @@ setInterval("new Ajax.Updater('onlineusers_live', '{kurl app="onlineusers" page=
 	// ]]>
 	</script>
 
-<h3 class="handle">{$nbonlineusers} ##ONLINEUSERS##</h3>
+<h3 class="handle">{$onlineusers|@count} ##ONLINEUSERS##</h3>
 <div class="onlineusers">
 <div id="onlineusers_live">
 {include file="list.tpl"}

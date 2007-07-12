@@ -32,38 +32,33 @@ class AccueilModel extends Model
 		{
 			$containers = new HomeContainers();
 			$c1 = $containers->add('s');
-			//$c2 = $containers->add('s');
-			$c3 = $containers->add('m');
+			$c2 = $containers->add('m');
+			$c3 = $containers->add('s');
 
 			$miniapps = new HomeMiniApps();
 			
 			$c1_apps = array();
 			$c1_apps[] = $miniapps->getNewApp('login');
 			$c1_apps[] = $miniapps->getNewApp('daytof');
-			//if (isset($GLOBALS['config']['nominichat']) && $GLOBALS['config']['nonickname'] === TRUE)
-			//{
-			//	$containers->setApps( $c1, $c1_apps ) ;
-			//}
-			//else
-			//{
-			//	$minichat = $miniapps->getNewApp('minichat', array('maxlines'=>5));
-			//	$containers->setApps( $c1, array($login, $minichat) ) ;
-			//}
-            
-
-			//$c2_apps = array();
-			$c1_apps[] = $miniapps->getNewApp('onlineusers');
-			//$c1_apps[] = $miniapps->getNewApp('prefs');
 			$containers->setApps( $c1, $c1_apps) ;
+
+			$c2_apps = array();
+			if( $this->currentUser->isLogged() )
+			{
+				$c2_apps[] = $miniapps->getNewApp('mail');
+			}
+			$c2_apps[] = $miniapps->getNewApp('news');
+			$c2_apps[] = $miniapps->getNewApp('bday');
+			$containers->setApps( $c2, $c2_apps ) ;
 
 			$c3_apps = array();
 			if( $this->currentUser->isLogged() )
 			{
-				$c3_apps[] = $miniapps->getNewApp('mail');
+				$c3_apps[] = $miniapps->getNewApp('minichat', array('maxlines'=>5));
 			}
-			$c3_apps[] = $miniapps->getNewApp('news');
-			$c3_apps[] = $miniapps->getNewApp('bday');
-			$containers->setApps( $c3, $c3_apps ) ;
+			$c3_apps[] = $miniapps->getNewApp('onlineusers');
+			$containers->setApps( $c3, $c3_apps) ;
+
 
 			$currentUser->setPref('miniapps', $miniapps );
 			$currentUser->setPref('containers', $containers );

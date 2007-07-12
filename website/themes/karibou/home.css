@@ -29,13 +29,13 @@
 .cont_scol {
 	padding: 0px;
 	margin: 0px;
-	width: 215px;
+	width: 25%;
 	min-height: 50px;
 }
 .cont_mcol {
 	padding: 0px;
 	margin: 0px;
-	width: 435px;
+	width: 45%;
 	min-height: 50px;
 }
 .cont_lcol {
@@ -62,7 +62,7 @@
 	padding: 1px;
 	border: 1px #eee solid;
 	background-color: #fafafa;
-	width: 206px;
+	width: 99%;<!-- 206 -->
 	min-height: 50px;
 	overflow: hidden;
 }
@@ -74,7 +74,7 @@
 	padding: 1px;
 	border: 1px #eee solid;
 	background-color: #fafafa;
-	width: 426px;
+	width: 99%;<!--416 -->
 	min-height: 80px;
 	overflow: hidden;
 }
@@ -109,13 +109,13 @@
 #content .sbox:hover .del {
 	position: absolute;
 	top: 1px;
-	left: 190px;
+	right: 5px;
 	visibility: visible;
 }
 #content .mbox:hover .del {
 	position: absolute;
 	top: 1px;
-	left: 410px;
+	right: 5px;
 	visibility: visible;
 }
 #content .lbox:hover .del {

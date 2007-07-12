@@ -92,3 +92,9 @@ msgstr "Coordonnées"
 
 msgid "GEOCALC"
 msgstr "Calculer les coordonées"
+
+msgid "SHOWBIRTHDATE" 
+msgstr "Date de naissance"
+
+msgid "COMPANY" 
+msgstr "Entreprise"
