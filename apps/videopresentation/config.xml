@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app class="VideoPresentation">
+	<load class="VideoPresentation" file="videopresentation.class.php" />
+  <header app="header" view="default" />
+    <footer app="footer" view="default" />
+
+
+
+	<view name="mini" class="VideoPresentation" template="video.tpl" />
+
+	<page view="mini" />
+</app>
