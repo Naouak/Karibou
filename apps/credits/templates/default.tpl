@@ -55,4 +55,10 @@
 			<li>Citation</li>
 		</ul>
 	</li>
+	<li>
+		<strong>Simon Lehembre</strong> : App Developer
+		<ul>
+			<li>Video Presentation</li>
+		</ul>
+	</li>
 </ul>
