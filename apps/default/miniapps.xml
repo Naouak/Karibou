@@ -12,7 +12,7 @@
 	<small id ="gmailreader" app="gmailreader" view="mini" configview="miniconfig" />
 	<small id ="citation" app="citation" view="mini" configview="miniconfig" />
 	<small id ="daytof" app="daytof" view="mini" configview="miniconfig" />
-
+	<medium id="videopresentation" app="videopresentation" view="mini" />
 
 
 	<medium id ="bday" app="birthday" view="mini" />
