@@ -52,7 +52,7 @@ class AccueilModel extends Model
 
 			$c2_apps[] = $miniapps->getNewApp('news');
 	
-			$c2_apps[] = $miniapps->getNewApp('bday');
+			
 			$containers->setApps( $c2, $c2_apps ) ;
 
 			$c3_apps = array();
@@ -61,6 +61,7 @@ class AccueilModel extends Model
 				$c3_apps[] = $miniapps->getNewApp('minichat', array('maxlines'=>5));
 			}
 			$c3_apps[] = $miniapps->getNewApp('onlineusers');
+			$c3_apps[] = $miniapps->getNewApp('bday');
 			$containers->setApps( $c3, $c3_apps) ;
 
 

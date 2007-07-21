@@ -22,8 +22,12 @@
 
 <div class="bodybox">
 <ul>
+<form method="POST"> <!-- formulaire pour suppression mail -->
 {foreach item=header from=$messageheaders}
 		<li id="mail_{$header->uid}" class="mail{if $header->deleted} deleted{elseif ! $header->seen} unread{/if}">
+			<span>
+				<input type="checkbox" name="msg_suppr_{$header->uid}" value="{$header->uid}" />
+			</span>
 			<span>
 {if $header->answered} R {/if}
 				<a href="{kurl page='msg' mailbox=$mailbox uid=$header->uid}">{$header->subject|truncate:80}</a>
@@ -37,6 +41,9 @@
 		</li>
 {/foreach}
 </ul>
+<br />
+<input type="submit" name="suppr_mail" value="##SUPPR_MAIL##" />
+</form>
 
 <script>
 {foreach item=header from=$messageheaders}

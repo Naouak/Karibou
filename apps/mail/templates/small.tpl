@@ -32,6 +32,8 @@
 					<tr class="read">
 			{/if}
 						<td class="message">
+							<!-- <input type="checkbox" name="delmsg{$header->uid}" value="{$header->uid}" /> -->
+						
 							<a href="{kurl page='msg' mailbox="INBOX" uid=$header->uid}">{$header->from}</a> - 
 							<a href="{kurl page='msg' mailbox="INBOX" uid=$header->uid}">{$header->subject|truncate:40}</a>
 						</td>

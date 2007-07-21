@@ -36,6 +36,7 @@ class MailboxView extends Model
 		{
 			$mailbox = new Mailbox($server, $username, $pass, $this->args['mailbox']) ;
 			$this->assign('mailbox', $this->args['mailbox']);
+
 		}
 		else
 		{
@@ -103,6 +104,20 @@ class MailboxView extends Model
 			}
 			else
 			{ // affichage de la liste des messages
+				if(isset($_POST["suppr_mail"])) //suppr msg selected
+				{
+					if( $mailbox->connected() )
+					{
+					foreach($_POST as $key=>$val) 
+					{
+						if(strncmp ( "msg_suppr_", $key, 9 )==0)
+						{
+							$mailbox->messageRemove($val);
+						}
+					}
+				}
+				}//end suppr msg selected	
+
 				if( isset($this->args['hide']) && ($this->args['hide']=='showall') )
 				{
 					$mailbox->displayDeleted();
