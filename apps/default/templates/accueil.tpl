@@ -199,7 +199,7 @@
 	<br class="spacer" />
 	
 	{foreach key=key item=c from=$containers}
-	<div id="{$key}" class="cont_{$c}col left view" >
+	<div id="{$key}" class="cont_{$c}col left view_{$c}" >
 	{hook name=$key}
 	</div>
 	{/foreach}

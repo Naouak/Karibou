@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
 msgid "HEADER_PAGE_TITLE"
-msgstr "L'Intranet en francais !"
+msgstr "Karibou!"
 
 msgid "HEADER_PAGE_DESCRIPTION"
 msgstr "Karibou V2 dispose maintenant du support multilingue pour pouvoir faire des applis internationales!"
