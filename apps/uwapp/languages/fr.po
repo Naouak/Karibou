@@ -1,0 +1,22 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2007-02-18 16:54+0200\n"
+"PO-Revision-Date: 2007-02-18 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+msgid "UWACONFIG"
+msgstr "Configuration du module UWA"
+
+msgid "UWATITLE"
+msgstr "Titre du module"
+
+msgid "UWAURL"
+msgstr "Url du module"
+
+msgid "UWAUNCONF"
+msgstr "Non configuré"

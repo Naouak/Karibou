@@ -35,6 +35,11 @@ function blinktitle(title){
 	}	
 
 }
+
+function stop_blink(){
+			document.title=inittitle;
+			clearInterval(intv);
+}
 	function flashmail_headerbox_update()
 	{
 		new Ajax.Updater('account_flashmail_headerbox_full', '<?=kurl(array('app'=>"flashmail", 'page'=>"account_headerbox_content"));?>', {asynchronous:true, evalScripts:false, onComplete:flashmail_duplicate_unreadlist});
@@ -47,8 +52,7 @@ function blinktitle(title){
 		if(test){
 			intv = setInterval('blinktitle("Nouveau flashmail")',1000);
 		}else{
-			document.title=inittitle;
-			clearInterval(intv);
+			stop_blink();
 		}
 
 		//Utilisation d'une recopie du innerHTML en javascript pour éviter d'exécuter 2 fois le même code pour 

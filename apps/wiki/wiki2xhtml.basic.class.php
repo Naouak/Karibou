@@ -132,7 +132,7 @@ class wiki2xhtmlBasic
 		$this->setOpt('active_quote',1);		# Activation du <blockquote>
 		$this->setOpt('active_pre',0);		# Activation du <pre>
 		$this->setOpt('active_empty',1);		# Activation du bloc vide øøø
-		$this->setOpt('active_auto_urls',0);	# Activation de la reconnaissance d'url (inactif)
+		$this->setOpt('active_auto_urls',1);	# Activation de la reconnaissance d'url (inactif)
 		$this->setOpt('active_autoemails',0);	# Activation de la reconnaissance des emails (inactif)
 		$this->setOpt('active_antispam',1);     # Activation de l'antispam pour les emails
 		$this->setOpt('active_urls',1);		# Activation des liens []
@@ -285,6 +285,7 @@ class wiki2xhtmlBasic
 		if ($this->getOpt('active_macros')) {
 			$res = preg_replace('/^##########MACRO#([0-9]+)#$/mse','\$this->__putMacro("$1")',$res);
 		}
+
 		
 		# On ajoute les notes
 		if (count($this->foot_notes) > 0)
@@ -296,6 +297,10 @@ class wiki2xhtmlBasic
 				$i++;
 			}
 			$res .= sprintf("\n".$this->getOpt('note_str')."\n",$res_notes);
+		}
+		if($this->getOpt('active_auto_urls')){
+			$res = preg_replace('((http://|https://){0,1}[A-Za-z0-9][A-Za-z0-9\-\.]+[A-Za-z0-9]\.[A-Za-z]{2,}[\43-\57\63\65-\176]*)','<a href="$0">$0</a>',$res);
+
 		}
 		
 		return $res;

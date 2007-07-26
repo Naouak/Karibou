@@ -141,7 +141,7 @@ class DayTof extends Model
             		Debug::kill($e->getMessage());
         	}
 		
-		if ($daytofonline = $stmt->fetch(PDO::FETCH_ASSOC)) {
+		if (isset($stmt) && $daytofonline = $stmt->fetch(PDO::FETCH_ASSOC)) {
 	        //je recupere l'user
    		    if ($user["object"] =  $this->userFactory->prepareUserFromId($daytofonline["user_id"])) {
 
