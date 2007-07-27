@@ -17,7 +17,7 @@ div.bday span {
 {if count($bdayers) > 0}
 <h5>##TODAY_BDAY##</h5>
 {foreach from=$bdayers item=bdayer}
-	<span>{$bdayer.firstname} {$bdayer.lastname}, {$bdayer.age} ##YEARS_OLD##</span>
+	<span><a href="{kurl app='annuaire' username=$bdayer.login}">{$bdayer.firstname} {$bdayer.lastname}{if $bdayer.nickname != ""} ({$bdayer.nickname}){/if}</a>, {$bdayer.age} ##YEARS_OLD##</span>
 {/foreach}
 {else}
 <h5>##TODAY_NOBDAY##</h5>

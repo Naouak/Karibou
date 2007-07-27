@@ -30,6 +30,7 @@ class Birthday extends Model
 			$user['login'] = $row['login'];
 			$user['firstname'] = $userobj->getFirstname();
 			$user['lastname'] = $userobj->getLastname();
+			$user['nickname'] = $userobj->getSurname();
 			$user['age'] = explode("-",$row['birthday']);
 			$user['age'] =  date("Y") - $user['age'][0];
 			$bdayers[] = $user;
