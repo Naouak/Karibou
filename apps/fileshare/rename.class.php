@@ -15,9 +15,10 @@
 class FileShareRename extends FormModel
 {
 	public function build()
-	{		$myKDBFSElementFactory = new KDBFSElementFactory($this->db, $this->userFactory, $this->permission);
+	{
+		$myKDBFSElementFactory = new KDBFSElementFactory($this->db, $this->userFactory, $this->permission);
 
-		if (isset($_POST["elementid"], $_POST["name"], $_POST["description"]) && $_POST["name"] != "" && $_POST["description"] != "")
+		if (isset($_POST["elementid"], $_POST["name"], $_POST["description"]) && $_POST["name"] != "")
 		{
 			$myElement = new KDBFSElement($this->db, $this->userFactory, $this->permission, FALSE, FALSE, $_POST['elementid']);
 			

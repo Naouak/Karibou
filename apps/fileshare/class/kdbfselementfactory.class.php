@@ -203,7 +203,7 @@ LIMIT 0 , 30
 		
 		$elementpath = KARIBOU_PUB_DIR.'/fileshare/share'.$element->getParentPath().'/'.$name;
 		
-		if ($name != "" && $description != "" && $element->canWrite() )
+		if ($name != ""  && $element->canWrite() )
 		{
 			$sql = "
 				UPDATE fileshare_versions

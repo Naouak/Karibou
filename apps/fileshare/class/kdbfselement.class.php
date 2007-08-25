@@ -150,8 +150,8 @@ class KDBFSElement
 	protected function retrieveSysInfos ()
 	{
 		$sql = "
-SELECT fileshare_sysinfos.*, ".$GLOBALS['config']['bdd']['frameworkdb'].".groups.name as groupowner_name FROM fileshare_sysinfos
-LEFT JOIN ".$GLOBALS['config']['bdd']['frameworkdb'].".groups ON ".$GLOBALS['config']['bdd']['frameworkdb'].".groups.id = fileshare_sysinfos.groupowner
+SELECT fileshare_sysinfos.*, ".$GLOBALS['config']['bdd']['annuairedb'].".groups.name as groupowner_name FROM fileshare_sysinfos
+LEFT JOIN ".$GLOBALS['config']['bdd']['annuairedb'].".groups ON ".$GLOBALS['config']['bdd']['annuairedb'].".groups.id = fileshare_sysinfos.groupowner
 WHERE fileshare_sysinfos.id = ".$this->getElementId()."
 			";			
 			
@@ -671,7 +671,7 @@ WHERE fileshare_sysinfos.id = ".$this->getElementId()."
 	
 	public function isFile ()
 	{
-		if ($this->getType() == "file" || is_file($this->getFullPath()) )
+		if ($this->getType() == "file" || is_file($this->fullpath) )
 		{
 			return TRUE;
 		}
@@ -683,7 +683,12 @@ WHERE fileshare_sysinfos.id = ".$this->getElementId()."
 	
 	public function isDirectory ()
 	{
-		if ($this->getType() == "folder" || is_dir($this->getFullPath()) )
+
+		//Ajout pour eviter la boucle avec this->getFullPath()
+		preg_match("/(.*)[\/]{0,1}$/", $this->fullpath, $matches);
+		$fullpath = $matches[0];
+
+		if ($this->getType() == "folder" || is_dir($fullpath) )
 		{
 			return TRUE;
 		}
