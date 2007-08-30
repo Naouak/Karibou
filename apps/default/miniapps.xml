@@ -12,9 +12,11 @@
 	<small id ="gmailreader" app="gmailreader" view="mini" configview="miniconfig" />
 	<small id ="citation" app="citation" view="mini" configview="miniconfig" />
 	<small id ="daytof" app="daytof" view="mini" configview="miniconfig" />
+	<small id ="deezerplayer" app="deezerplayer" view="mini" configview="miniconfig" />
+	<small id ="dday" app="dday" view="mini" configview="miniconfig" />
+
+	
 	<medium id="videopresentation" app="videopresentation" view="mini" />
-
-
 	<medium id ="bday" app="birthday" view="mini" />
 	<medium id ="geoloc" app="geoloc" view="mini" />
 	<medium id ="news" app="news" view="mini" />

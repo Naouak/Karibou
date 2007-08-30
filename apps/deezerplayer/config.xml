@@ -1,0 +1,19 @@
+<app>
+<config>
+	<param name="playlist">
+	<value name="path">635666</value>
+	<value name="id">324502</value>
+	</param>
+</config>
+   
+    <permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+    <load class="Deezer" file="deezer.class.php" />
+    <load class="DeezerConfig" file="deezerconfig.class.php" />
+    
+    <header app="header" view="default" />
+    <footer app="footer" view="default" />
+    
+    <view name="mini" class="Deezer" template="deezer.tpl" />
+    <view name="miniconfig" class="DeezerConfig" template="deezerconfig.tpl" />
+</app>

@@ -62,6 +62,7 @@ class AccueilModel extends Model
 			}
 			$c3_apps[] = $miniapps->getNewApp('onlineusers');
 			$c3_apps[] = $miniapps->getNewApp('bday');
+			$c3_apps[] = $miniapps->getNewApp('dday');
 			$containers->setApps( $c3, $c3_apps) ;
 
 

@@ -230,6 +230,8 @@ Control.Slider.prototype = {
           // find the handle (prevents issues with Safari)
           while((this.handles.indexOf(handle) == -1) && handle.parentNode) 
             handle = handle.parentNode;
+
+		if( this.handles.indexOf(handle) == -1 ) return; //charles ajout
         
           this.activeHandle    = handle;
           this.activeHandleIdx = this.handles.indexOf(this.activeHandle);

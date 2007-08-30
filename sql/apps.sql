@@ -763,3 +763,17 @@ CREATE TABLE `forum_messages` (
   `userid` int(11) NOT NULL default '0',
   `datetime` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+
+-- 
+-- Structure de la table `dday`
+-- 
+
+CREATE TABLE `dday` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) NOT NULL default '0',
+  `event` mediumtext collate utf8_unicode_ci NOT NULL,
+  `date` date NOT NULL default '0000-00-00',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;

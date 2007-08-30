@@ -78,6 +78,12 @@ msgstr "Citation du jour"
 msgid "daytof"
 msgstr "Photo du jour"
 
+msgid "deezer"
+msgstr "Deezer Music"
+
+msgid "dday"
+msgstr "Jour J"
+
 msgid "gmailreader"
 msgstr "Lecteur GMail"
 
