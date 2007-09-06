@@ -19,7 +19,9 @@ class Data extends Model
 		$xw->startElement('users');
 		$i = 0;
 		$query='SELECT street,extaddress,city,postcode,country,coords,profile_id from '.$appsdb.'.profile_address';
-		foreach($this->db->query($query) as $row){
+		$res = $this->db->query($query);
+		$arr = $res->fetchAll();
+		foreach($arr as $row){
 			$addr_table[] = $row['street']." ".$row['extaddress']." ".$row['city']." ".$row['postcode']." ".$row['country'];
 
 			$login_query = 'select login from '.$appsdb.'.users where profile_id='.$row['profile_id'];
