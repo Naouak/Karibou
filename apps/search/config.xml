@@ -10,6 +10,7 @@
 	<load class="DAONews"		file="class/daonews.class.php" />
 	<load class="DAOFiles"		file="class/daofiles.class.php" />
 	<load class="DAOEvents"		file="class/daoevents.class.php" />
+	<load class="DAOUsers"		file="class/daousers.class.php" />
 
 	<load class="KDirectory" file="../fileshare/class/kdirectory.class.php" />
 	<load class="KFile" file="../fileshare/class/kfile.class.php" />

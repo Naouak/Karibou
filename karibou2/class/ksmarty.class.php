@@ -66,9 +66,15 @@ class KSmarty extends Smarty
 		$prefilterTranslation = array (&$this,'prefilterTranslation');
 		$this->register_prefilter($prefilterTranslation);
 
-		$this->force_compile=TRUE; //charles_modif
+		if(isset($GLOBALS["config"]["nocaching"]))
+		{
+			if($GLOBALS["config"]["nocaching"]==TRUE)
+			{
+				$this->force_compile=TRUE; //charles_modif
+			}
+		}
 
-		
+
 	}
 	
 	function fetch($_smarty_tpl_file, $_smarty_cache_id = null, $_smarty_compile_id = null, $_smarty_display = false) {

@@ -36,6 +36,9 @@ $config['contactemail'] = "noreply@karibou.org";
 //Definit le nom du contact administrateur
 $config['contactname'] = "Karibou";
 
+//active ou desactive le caching, utile pour le developpement, par defaut false en production
+$config['nocaching'] = FALSE;
+
 //Définit le hôte de l'adresse des CVs (par exemple le karibou.org de http://john.karibou.org)
 $config['netcv']['host'] = "karibou.org";
 //Définit le nom d'hôte complet de l'Intranet (pour faire la différence avec les CVs)

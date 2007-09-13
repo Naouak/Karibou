@@ -29,3 +29,9 @@ msgstr "Accès rapide aux résultats"
 
 msgid "INTRANET"
 msgstr "Intranet"
+
+msgid "ANNUAIRE"
+msgstr "Annuaire"
+
+msgid "APP_ANNUAIRE"
+msgstr "Annuaire"

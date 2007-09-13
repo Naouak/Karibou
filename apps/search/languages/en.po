@@ -29,3 +29,9 @@ msgstr "Quick links to results"
 
 msgid "INTRANET"
 msgstr "Intranet"
+
+msgid "ANNUAIRE"
+msgstr "Directory"
+
+msgid "APP_ANNUAIRE"
+msgstr "Directory"

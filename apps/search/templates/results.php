@@ -17,6 +17,7 @@ else
 			<option value="news"<?if ($app == 'news') echo "SELECTED"?>><?=_('APP_NEWS');?></option>
 			<option value="fileshare"<?if ($app == 'fileshare') echo "SELECTED"?>><?=_('APP_FILESHARE');?></option>
 			<option value="calendar"<?if ($app == 'calendar') echo "SELECTED"?>><?=_('APP_CALENDAR');?></option>
+			<option value="annuaire"<?if ($app == 'annuaire') echo "SELECTED"?>><?=_('APP_ANNUAIRE');?></option>
 		</select>
 		<input type="submit" value="<?=_('SEARCH_TITLE');?>">
 	</form>
@@ -24,6 +25,7 @@ else
 <?
 if ( (isset($this->vars['articles']) && count($this->vars['articles']) > 0) ||
 	  (isset($this->vars['files']) && count($this->vars['files']) > 0) ||
+	(isset($this->vars['usersfound']) && count($this->vars['usersfound']) > 0) ||
 	  (isset($this->vars['events']) && $this->vars['events']->count() > 0))
 {
 
@@ -43,6 +45,11 @@ if ( (isset($this->vars['articles']) && count($this->vars['articles']) > 0) ||
 	if (isset($this->vars['events']) && $this->vars['events']->count() > 0)
 	{
 		echo '<a href="'.kurl(array('app'=>'search')).'#search_calendar">'.$this->vars['events']->count().' '._('SEARCH_RESULTSS').' '._('SEARCH_IN').' '._('APP_CALENDAR').'</a>';
+	}
+
+	if (isset($this->vars['annuaire']) && $this->vars['annuaire']->count() > 0)
+	{
+		echo '<a href="'.kurl(array('app'=>'search')).'#search_annuaire">'.$this->vars['usersfound']->count().' '._('SEARCH_RESULTSS').' '._('SEARCH_IN').' '._('APP_ANNUAIRE').'</a>';
 	}
 	
 	echo '</div>';
@@ -117,6 +124,11 @@ else
 		echo '</div>';
 		
 	}
+
+
+
+
+
 	
 	if (!isset($this->vars['events']))
 	{
@@ -169,6 +181,57 @@ echo '<li><div class="colorsquare" style="margin: 2px;background-color: #'.$even
 		echo '</div>';
 		
 	}
+
+
+if (!isset($this->vars['usersfound']))
+	{
+	}
+	elseif (count($this->vars['usersfound'])== 0)
+	{
+		echo '<div id="search_annuaire" class="resultset">';
+		echo _('SEARCH_NORESULT').' '._('SEARCH_IN').' <strong>'._('ANNUAIRE').'</strong>';
+		echo "</div>";
+	}
+	else
+	{
+		echo '<div id="search_annuaire" class="resultset">';
+		echo count($this->vars['usersfound']).' '._('SEARCH_RESULTSS').' '._('SEARCH_IN').' <strong>'._('ANNUAIRE').'</strong>';
+		echo '<div class="directory search">';//<ul class="usersfound">
+		foreach ($this->vars['usersfound'] as $user)
+		{
+			echo '
+			<div class="thumbnail">
+			<div class="image">
+				<a href="annuaire/'.$user->getLogin().'"  title="'.$user->getFirstName().$user->getSurname().'"><img src="'.$user->getPicturePath().'" /></a>
+			</div>
+			<div class="title">
+				<a href="annuaire/'.$user->getLogin().'" title="'.$user->getFirstName().$user->getSurname().'">';
+
+			//Nickname, Name, login
+			if($user->getSurname()) echo $user->getSurname();
+			elseif($user->getFirstName()) echo $user->getFirstname().' '.$user->getLastname();
+			else echo $user->getLogin();
+
+			echo '</a>
+			</div>
+			</div>
+			';
+
+
+		}
+
+
+		
+
+
+		echo '</div>';//</ul>
+		echo '</div>';
+		
+	}
+
+
+
+
 }
 ?>
 </div>
