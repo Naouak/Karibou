@@ -100,7 +100,26 @@ class LDAPInterface
 				0 => 'FALSE',
 			)
 		);
-	
+
+		/** 
+		 * Creation des OU si non existantes
+		 */
+		krsort($organisationalunits);
+		$ouString = '';
+		foreach($organisationalunits as $ou) {
+			$ouString = 'ou='.$ou.','.$ouString;
+			$testdn = strtolower(trim($ouString)).$GLOBALS["config"]["ldap"]["jvd"];
+			if (!@ldap_read($this->ldapconn, $testdn, 'objectClass=*')) {
+				$ouinfo = array ( 'ou' => array($ou), 'objectClass' => array ('organizationalUnit', 'top'));
+				@ldap_add($this->ldapconn,$testdn, $ouinfo);
+				//$ou creee
+			}
+			//ldap_delete($this->ldapconn,$testdn);
+		}
+		ksort($organisationalunits);
+
+		reset($organisationalunits);
+		unset($ou);
 		$ouString = "";
 		foreach ($organisationalunits as $ou)
 		{
@@ -108,9 +127,21 @@ class LDAPInterface
 		}
 				
 		
+		/**
+		 * Creation du compte
+		 */
 		$ldap_rdn = "mail=".$email.strtolower(trim($ouString)).",".$GLOBALS["config"]["ldap"]["jvd"];
 		
-		if ( $result = ldap_add($this->ldapconn,$ldap_rdn, $info) )
+		//Verification que l'entree n'existe pas avant l'ajout
+		$res = ldap_search($this->ldapconn, $GLOBALS["config"]["ldap"]["jvd"], 'mail='.$email);
+		$sresults = ldap_get_entries($this->ldapconn, $res);
+
+		if (isset($sresults, $sresults['count']) && $sresults['count'] > 0)
+		{
+			Debug::display($email.' existe deja dans le LDAP');
+			return $email.' exists';
+		}
+		elseif ( $result = ldap_add($this->ldapconn,$ldap_rdn, $info) )
 		{
 
 			Debug::display("1 record imported in LDAP");
