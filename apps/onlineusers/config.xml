@@ -16,6 +16,7 @@
 	<footer app="footer" view="default" />
 
 	<view name="list" class="OnlineUsersList" template="list.tpl" />
+        <view name="nbrusersconnected" class="OnlineUsersList" template="nbrusersconnected.tpl" />
 	<view name="default" class="OnlineUsersList" template="default.tpl" />
 	<view name="mini" class="OnlineUsersList" template="small.tpl" />
 	
@@ -25,5 +26,10 @@
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>
+        
+        <page name="nbrusersconnected" class="OnlineUsersList" view="nbrusersconnected">
+            <header app="header" view="empty" />
+            <footer app="footer" view="empty" />
+        </page>
 
 </app>

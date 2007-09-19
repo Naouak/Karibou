@@ -2,11 +2,12 @@
 	// <![CDATA[
 
 setInterval("new Ajax.Updater('onlineusers_live', '{kurl app="onlineusers" page="list"}', {literal}{asynchronous:true, evalScripts:true}{/literal});", 20000);
+setInterval("new Ajax.Updater('nbronlineusers_live', '{kurl app="onlineusers" page="nbrusersconnected"}', {literal}{asynchronous:true, evalScripts:true}{/literal});", 20000);
 
 	// ]]>
 	</script>
 
-<h3 class="handle">{$onlineusers|@count} ##ONLINEUSERS##</h3>
+<h3 class="handle"><span id="nbronlineusers_live">{include file="nbrusersconnected.tpl"}</span> ##ONLINEUSERS##</h3>
 <div class="onlineusers">
 <div id="onlineusers_live">
 {include file="list.tpl"}
