@@ -10,7 +10,7 @@
 
 ClassLoader::add('AuthMysql', dirname(__FILE__).'/authmysql.class.php');
 ClassLoader::add('AuthImap', dirname(__FILE__).'/authimap.class.php');
-ClassLoader::add('AuthENIC', dirname(__FILE__).'/authenic.class.php');
+ClassLoader::add('AuthAD2000', dirname(__FILE__).'/authad2000.class.php');
 
 
 /**
@@ -60,8 +60,8 @@ class Login extends FormModel
 				case 'imap':
 					$auth = new AuthImap();
 					break;
-				case 'enic':
-					$auth = new AuthENIC();
+				case 'AD2000':
+					$auth = new AuthAD2000();
 					break;
 				default:
 					Debug::kill("No Auth back-end selected");
