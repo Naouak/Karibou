@@ -5,7 +5,12 @@
 
 				<tr>
 				<td>{$dd.event}<br /><font size="1">{$dd.date}</font></td>
-				<td WIDTH="15%" VALIGN=TOP><b>##DORJ##-{$dd.JJ}</b></td>
+				<td WIDTH="15%" VALIGN=TOP><b>
+{if $dd.JJ>0} ##DORJ##-{$dd.JJ} 
+{else} <font color="red">##DORJ##</font>
+{/if}
+
+				</b></td>
 				</tr>
 
 	{/foreach}
