@@ -42,10 +42,23 @@
 {/foreach}
 </ul>
 <br />
+<a onclick="javascript:selectAllMails();">##SELECT_ALL##</a><br />
 <input type="submit" name="suppr_mail" value="##SUPPR_MAIL##" />
 </form>
 
 <script>
+
+function selectAllMails() {ldelim}
+    inputElements = document.getElementsByTagName("input");
+    for (i = 0 ; i < inputElements.length ; i++) {ldelim}
+        if (inputElements[i].getAttribute("type") == "checkbox") {ldelim}
+            if (inputElements[i].getAttribute("name").substr(0, 10) == "msg_suppr_") {ldelim}
+                inputElements[i].checked = true;
+            {rdelim}
+        {rdelim}
+    {rdelim}
+{rdelim}
+
 {foreach item=header from=$messageheaders}
 {if ! $header->deleted }
 	new Draggable('mail_{$header->uid}',
