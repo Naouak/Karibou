@@ -68,3 +68,6 @@ msgstr "L'application email proposée sur l'Intranet étant en développement, i
 
 msgid "SUPPR_MAIL"
 msgstr "Supprimer les Messages selectionés"
+
+msgid "SELECT_ALL"
+msgstr "Sélectionner tout"
