@@ -68,3 +68,6 @@ msgstr "The intranet email application is still in development. You are strongly
 
 msgid "SUPPR_MAIL"
 msgstr "Remove selected e-mails"
+
+msgid "SELECT_ALL"
+msgstr "Select all"
