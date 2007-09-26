@@ -1,0 +1,11 @@
+msgid ""
+msgstr ""
+
+msgid "VIDEOJOUR"
+msgstr "Video du jour"
+
+msgid "NEWVIDEO"
+msgstr "Ajout d'une vid&eacute;o" 
+
+msgid "SURNAME_AUTHOR"
+msgstr "Vid&eacute;o post&eacute;e par"

@@ -90,6 +90,9 @@ msgstr "Lecteur GMail"
 msgid "uwapp"
 msgstr "Module UWA (standard netvibes)"
 
+msgid "video"
+mgstr "Video du Jour"
+
 msgid "DEFAULT_CHANGEPASSWORD_DESCRIPTION"
 msgstr "Pour garantir la sécurité de votre compte, vous devez changer de mot de passe. Suivez le lien ci-dessous pour vous rendre sur la page de changement de mot de passe."
 

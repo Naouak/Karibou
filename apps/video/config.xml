@@ -1,0 +1,22 @@
+<app>
+<config>
+	<param name="max">
+	<value name="time2live">21600</value>
+	</param>
+</config>
+   
+    <permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+    <load class="Video" file="video.class.php" />
+    <load class="VideoConfig" file="videoconfig.class.php" />
+    
+    <header app="header" view="default" />
+    <footer app="footer" view="default" />
+    
+    <view name="mini" class="Video" template="video.tpl" />
+    <view name="miniconfig" class="VideoConfig" template="videoconfig.tpl" />
+	<view name="big" class="Video" template="big.tpl" />
+	
+	<page view="big" />
+</app>
+	
