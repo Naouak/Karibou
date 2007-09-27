@@ -22,7 +22,7 @@ class Video extends Model
 
 			// Enregistrement URL : Youtube ou Dailymotion
 			$site = $_POST['site'];
-			if ( strcmp($site, "youtube") == 0 )   {
+			if ( (strcmp($site, "youtube") == 0) && (strpos($video, "http://www.dailymotion.com/") == -1) )   {
 				$urlvid="http://youtube.com/v/";
 			} else {
 				$urlvid="http://www.dailymotion.com/swf/";
