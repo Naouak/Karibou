@@ -42,4 +42,3 @@ class AuthAD2000 extends Auth
 }
 
 ?>
-
