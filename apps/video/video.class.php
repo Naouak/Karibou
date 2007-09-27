@@ -18,16 +18,29 @@ class Video extends Model
     {
 		if (isset($_POST, $_POST['newvideo']) && ($this->currentUser->getID() > 0) ) 
 		{
-		//	$citation = strip_tags($_POST['newcitation']); //strip_tags = enleve code html
 			$video = $_POST['newvideo'];
 
 			// Enregistrement URL : Youtube ou Dailymotion
 			$site = $_POST['site'];
 			if ( strcmp($site, "youtube") == 0 )   {
-					$urlvid="http://youtube.com/v/";
-			}
-			else {
-					$urlvid="http://www.dailymotion.com/swf/";
+				$urlvid="http://youtube.com/v/";
+			} else {
+				$urlvid="http://www.dailymotion.com/swf/";
+				if (strpos($video, "http://www.dailymotion.com/") == 0) {
+					// The URL given seems to be a full URL...
+					// so open it and extract the right video ID...
+					$file = fopen ($video, "r");
+					if ($file) {
+						while (!feof($file)) {
+							$line = fgets($file, 1024);
+							if (eregi ("<link rel=\"video_src\" href=\"http://www.dailymotion.com/swf/(.*)\" />", $line, $out)) {
+								$video = $out[1];
+								break;
+							}
+						}
+						fclose($file);
+					}
+				}
 			}
 
 
