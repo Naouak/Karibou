@@ -82,8 +82,11 @@ class Video extends Model
 //				$this->assign("url","http://www.dailymotion.com/swf/");
 //			}
 
-			$this->assign("videosarray",$videoonline);	
-		   	$this->assign("videoauthor",$user);
+			foreach ($videoonline as $id => $items) {
+				$videoonline[$id]["user"] = $this->userFactory->prepareUserFromId($videoonline[$id]["user_id"]);
+			}
+		   	$this->assign("videosarray", $videoonline);
+			$this->assign("videoauthor",$user);
 			$this->assign("islogged", $this->currentUser->isLogged());
 			//$temps = time();
 			//$this->assign("letemps",$temps);
