@@ -168,6 +168,9 @@ echo '<li><div class="colorsquare" style="margin: 2px;background-color: #'.$even
 				
 				if ($event->description !== '')
 					echo '<span> ('.highlight($event->description, $keywords).')</span>';
+          
+        if ($event->location !== '')
+					echo '<span style="color: #555;"> @ '.highlight($event->location, $keywords).'</span>';
 				echo '</li>';
 				
 			/*

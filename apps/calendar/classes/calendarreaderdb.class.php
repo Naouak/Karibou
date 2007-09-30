@@ -126,6 +126,7 @@ class CalendarReaderDB extends CalendarReader
 		$qry .= " ce.startdate >= '".$start->getDate()."') ";
 		$qry .= " AND (";
 		$qry .= " ce.summary LIKE '%".addslashes($keywords)."%'
+          OR ce.location LIKE '%".addslashes($keywords)."%' 
 					OR ce.description LIKE '%".addslashes($keywords)."%' ";
 		$qry .= ") ";
 		$qry .= "ORDER BY ce.startdate ASC ";

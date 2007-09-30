@@ -32,7 +32,7 @@ class SearchDefault extends Model
 			$this->assign('keywords', $keywords);
 			
 			$errors = array();
-			if (strlen($keywords) <= 3)
+			if (strlen($keywords) <= 2)
 			{
 				$errors['SEARCH_NOTENOUGHCHARS'] = _('SEARCH_NOTENOUGHCHARS');
 			}
