@@ -7,7 +7,7 @@
 		{elseif $flashmail->isRead()}
 		<li class="read">
 		{/if}
-			<span class="answerlink"><a href="{kurl app="flashmail" page="write" flashmailid=$flashmail->getId()}" onclick="new Ajax.Updater('flashmail_headerbox_answer', '{kurl app="flashmail" page="headerbox_answer" flashmailid=$flashmail->getId()}',{literal} {asynchronous:true, evalScripts:true}{/literal}); document.getElementById('flashmail_headerbox_answer').className='show'; stop_blink();return false;">##REPLY##</a></span>
+			<span class="answerlink"><a href="{kurl app="flashmail" page="write" flashmailid=$flashmail->getId()}" onclick="new Ajax.Updater('blackhole', '{kurl app="flashmail" page="setasread" flashmailid=$flashmail->getId()}', {literal}{asynchronous:true, evalScripts:true}{/literal}); flashmail_headerbox_update(); new Ajax.Updater('flashmail_headerbox_answer', '{kurl app="flashmail" page="headerbox_answer" flashmailid=$flashmail->getId()}',{literal} {asynchronous:true, evalScripts:true}{/literal}); document.getElementById('flashmail_headerbox_answer').className='show'; stop_blink();return false;">##REPLY##</a></span>
 			<span class="answerlink"><a href="{kurl app="flashmail" page="setasread" flashmailid=$flashmail->getId()}" onclick="new Ajax.Updater('blackhole', '{kurl app="flashmail" page="setasread" flashmailid=$flashmail->getId()}', {literal}{asynchronous:true, evalScripts:true}{/literal}); flashmail_headerbox_update(); return false;">##SETASREAD##</a></span>
 			<span class="time"><acronym title="{$flashmail->getInfo("date")|date_format:"%A %d %B %Y @ %H:%M.%S"}">{$flashmail->getInfo("date")|date_format:"%H:%M"}</acronym></span>
 			<span class="author"><a href="{kurl app='annuaire' username=$flashmail->getAuthorLogin()}">{$flashmail->getAuthorDisplayName()}</a></span>
