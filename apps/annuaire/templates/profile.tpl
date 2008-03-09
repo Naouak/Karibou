@@ -18,7 +18,7 @@
 		{if isset($profile.surname) && ($profile.surname != "")}##SURNAME## : <strong>{$profile.surname}</strong><br />{/if}
 		<em>##LOGIN## : {$username}</em><br />
 		{if isset($profile.url) && ($profile.url != "")}##WEBSITE## : <strong><a href="{$profile.url}">{$profile.url}</a></strong><br />{/if}
-		{if isset($profile.note) && ($profile.note != "")}##NOTE## : <strong>{$profile.note|escape}</strong><br />{/if}
+		{if isset($profile.note) && ($profile.note != "")}##NOTE## : <em>{$profile.note|escape}</em><br />{/if}
 		{if isset($profile.birthday) && ($profile.birthday != "")}##SHOWBIRTHDATE## : <strong>{$profile.birthday|escape}</strong><br />{/if}
 		{if isset($profile.company) && ($profile.company != "")}##COMPANY## : <strong>{$profile.company|escape}</strong><br />{/if}
 
