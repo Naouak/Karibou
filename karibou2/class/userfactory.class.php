@@ -344,6 +344,15 @@ class UserFactory
 	{
 		return $this->userList;
 	}
+	
+	/**
+	 * Return the groups an user belongs to.
+	 *
+	 * @return array of Group objects
+	 */
+	function getGroupsFromUser ($user) {
+		return $user->getGroups($this->db);
+	}
 }
 
 ?>
