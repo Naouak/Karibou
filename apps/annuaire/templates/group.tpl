@@ -1,5 +1,14 @@
 <h1>##TITLE##</h1>
-<h3>##VIEWING_GROUP## {$thegroup.name}</h3>
+<h3>##VIEWING_GROUP## 
+{if isset($thegroup.url) && $thegroup.url != ""}
+<a href="{$thegroup.url}">{$thegroup.name}</a>
+{else}
+{$thegroup.name}
+{/if}
+{if isset($thegroup.ml) && $thegroup.ml != ""}
+- {$thegroup.ml}
+{/if}
+</h3>
 {if isset($thegroup.description) && $thegroup.description != ""}
 <h5>{$thegroup.description}</h5>
 {/if}
