@@ -321,6 +321,7 @@ class User
 			$this->groups[]	= $group;
 		}
 		unset($stmt);
+		return $this->groups;
 	}
 	
 	function getGroupTreeWhereArray()
