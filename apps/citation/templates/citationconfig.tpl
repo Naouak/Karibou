@@ -1,3 +1,4 @@
 <h3>##NEWCITATION##</h3>
-<input type="text" name="newcitation" value="" />
+<textarea name="newcitation" cols="30" rows="8">
+</textarea>
 <br />
