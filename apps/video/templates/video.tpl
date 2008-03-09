@@ -1,7 +1,7 @@
 <h3 class="handle">##VIDEOJOUR##</h3>
 <div align="center">
 <p>
-##SURNAME_AUTHOR## : {userlink user=$videoauthor.object showpicture=$islogged}
+##VIDEO_POSTED_BY## : {userlink user=$videoauthor.object showpicture=$islogged}
 <br />
 
 <object data="{$url}{$videonow}" type="application/x-shockwave-flash" width="200" height="184">
@@ -13,6 +13,6 @@
 {$commentaire}
 
 </p>
-<a href="{kurl app="video" page=""}">Voir l'historique des vid&eacute;os</a>
+<a href="{kurl app="video" page=""}">##VIDEO_HISTORY##</a>
 <br />
 </div>

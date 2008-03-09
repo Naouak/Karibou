@@ -16,5 +16,8 @@ msgstr "Video of the day"
 msgid "NEWVIDEO"
 msgstr "Add a video"
 
-msgid "SURNAME_AUTHOR"
+msgid "VIDEO_POSTED_BY"
 msgstr "Video posted by"
+
+msgid "VIDEO_HISTORY"
+msgstr "See the previous videos"
