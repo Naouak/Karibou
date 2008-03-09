@@ -47,7 +47,7 @@ class AccueilModel extends Model
 			{
 				$c2_apps[] = $miniapps->getNewApp('mail');
 			}
-			else $c2_apps[] = $miniapps->getNewApp('videopresentation');
+			else $c2_apps[] = $miniapps->getNewApp('video');
 		
 
 			$c2_apps[] = $miniapps->getNewApp('news');
