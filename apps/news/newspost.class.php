@@ -40,10 +40,14 @@ class NewsPost extends FormModel
 						//Insertion de la nouvelle news
 						$maxNewId = $this->getMaxNewsID()+1;
 						$req_sql = "INSERT INTO news
-										(`id`,`id_author`,`id_groups`,`title`,`content`, `last`,`time`)
-										VALUES ('" . $maxNewId . "', " . $this->currentUser->getID() . ", '".$_POST["group"]."', '" . $_POST['title'] . "', '" . $_POST['content'] . "', 1, NOW())";
-						
-                        $insertRes = $this->db->prepare($req_sql);
+							(`id`,`id_author`,`id_groups`,`title`,`content`, `last`,`time`)
+							VALUES (:maxId, :id_author, :id_groups, :title, :content, 1, NOW())";
+						$insertRes = $this->db->prepare($req_sql);
+						$insertRes->bindValue(":maxId", $maxNewId);
+						$insertRes->bindValue(":id_author", $this->currentUser->getID());
+						$insertRes->bindValue(":id_groups", $_POST["group"]);
+						$insertRes->bindValue(":title", stripslashes($_POST["title"]));
+						$insertRes->bindValue(":content", stripslashes($_POST["content"]));
 						if ($insertRes->execute()) {
 							$this->formMessage->add (FormMessage::SUCCESS, gettext("ADDED_ARTICLE"));
 							$this->setRedirectArg('page', '');
