@@ -95,13 +95,16 @@ class HookManager
 	/*
 	 * Methode affichant le texte present dans l'accroche
 	 */
-	function display ($hookname)
+	function display ($hookname, $htmlBR = false)
 	{
 		if (isset($this->hooks[$hookname]) )
 		{
 			foreach ($this->hooks[$hookname]->returnText() as $textLine )
 			{
-				echo $textLine . "\n";
+				if ($htmlBR)
+					echo $textLine . "<br />\n";
+				else
+					echo $textLine . "\n";
 			}
 			foreach ($this->hooks[$hookname]->returnViews() as $v )
 			{
@@ -154,7 +157,12 @@ function hook($param)
 {
 	if (isset($param["name"]))
 	{
-		$GLOBALS['phpTemplateHookManager']->display($param["name"]);
+		if (isset($param["htmlBR"]))
+		{
+			$GLOBALS['phpTemplateHookManager']->display($param["name"], $param["htmlBR"]);
+		} else {
+			$GLOBALS['phpTemplateHookManager']->display($param["name"]);
+		}
 	}
 }
 
