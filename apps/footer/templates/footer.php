@@ -17,6 +17,20 @@
 					<li class="profile"><a href="<?=kurl(array('app'=>"annuaire", 'username'=>$user->getLogin(), 'act'=>'edit'));?>"><?=_('EDITPROFILE');?></a></li>
 					<li class="preferences"><a href="<?=kurl(array('app'=>"preferences", 'page'=>"")); ?>"><?=_('PREFERENCES');?></a></li>
 					<li class="logout"><a href="<?=kurl(array('app'=>"login",'page'=>"logout"));?>"><?=_('LOGOUT');?></a></li>
+<?
+if (isset($this->hookManager->hooks['header_menu'])) {
+?>
+	<li>
+	<ins class="karibouMenu">
+		Menu Karibou
+		<ul>
+			<? hook(array('name'=>"header_menu")); ?>
+		</ul>
+	</ins>
+	</li>
+<?
+}
+?>
 				</ul>
 				<?
 				}
@@ -62,7 +76,7 @@
 
 
 			<? /* DEBUT : Navigation : Barre avec onglets */ ?>
-			<div id="siteNavigation">
+<!--			<div id="siteNavigation">
 				<div id="siteNavigationCategories">
 						<ul>
 								<li id="linkCommunicate"><h3><a href="#menuCommunicate" onclick="ShowAppsLinks('menuCommunicate'); return false;"><span><?=_('NAV_COMMUNICATE');?></span></a></h3></li>
@@ -106,13 +120,6 @@
 							<? /* <li><h4><a href="<?=kurl(array('app'=>"wiki"));?>">Wiki</a></h4></li> */?>
 					</ul>
 				</div>
-				<div class="siteNavigationApps" id="menuJobs">
-					<h3>Emploi</h3>
-					<ul>
-							<li class="first-child"><h4><a href="<?=kurl(array('app'=>"netcv"));?>"><?=_('APP_NETCV');?></a></h4></li>
-							<li><h4><a href="<?=kurl(array('app'=>"netjobs"));?>"><?=_('APP_NETJOBS');?></a></h4></li>
-					</ul>
-				</div>
 				<div class="siteNavigationApps" id="menuAdmin">
 				<? 
 				/*
@@ -126,6 +133,7 @@
 				?>
 				</div>
 			</div>
+-->
 			<? /* FIN : Navigation : Barre avec onglets */ ?>
 			
 			<div id="miniapps"></div>
@@ -141,11 +149,6 @@
 					Intranet <?=_('BY')?> <a href="http://www.karibou.org" title="Karibou">Karibou</a></li>
 				<li><a href="<?=kurl(array('app'=>"contact"));?>">Contact</a></li>
 				<li><a href="<?=kurl(array('app'=>"credits"));?>"><?=_('APP_CREDITS');?></a></li>
-				<?if (isset($GLOBALS['config']['footer']['cvdb']) && $GLOBALS['config']['footer']['cvdb'] !== '')
-					{?>
-				<li>
-					<a href="<?=kurl(array('app'=>'netcv', 'page'=>'allcv'));?>">CV</a>
-				</li><?}?>
 			</ul>
 		</div>
 
