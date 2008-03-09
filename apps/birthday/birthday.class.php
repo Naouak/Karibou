@@ -27,6 +27,7 @@ class Birthday extends Model
 		foreach($this->db->query($query) as $row){
 			$userobj = $this->userFactory->prepareUserFromLogin($row['login']);
 			$this->userFactory->setUserList();
+			$user['user'] = $userobj;
 			$user['login'] = $row['login'];
 			$user['firstname'] = $userobj->getFirstname();
 			$user['lastname'] = $userobj->getLastname();
@@ -35,7 +36,7 @@ class Birthday extends Model
 			$user['age'] =  date("Y") - $user['age'][0];
 			$bdayers[] = $user;
 		}	
-	
+		$this->assign("islogged", $this->currentUser->isLogged());	
 		$this->assign('bdayers', $bdayers);
 	}
 }
