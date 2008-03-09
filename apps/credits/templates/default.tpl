@@ -37,6 +37,16 @@
 		</ul>
 	</li>
 	<li>
+		<strong>Pierre Ducroquet</strong> : Core &amp; App Developer
+		<ul>
+			<li>Bug fixes</li>
+			<li>Hosting</li>
+			<li>Improved authentication system, with support for changing passwords</li>
+			<li>The "They said it" application</li>
+			<li>The "my files" application</li>
+			<li>Maintenance</li>
+		</ul>
+	<li>
 		<strong>Thomas Soete</strong> : App Developer
 		<ul>
 			<li>##rssreader##</li>
