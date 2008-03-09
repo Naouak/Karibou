@@ -38,6 +38,7 @@ ClassLoader::add('Listener', KARIBOU_CLASS_DIR."/listener.class.php");
 ClassLoader::add('Event', KARIBOU_CLASS_DIR."/event.class.php");
 ClassLoader::add('EventManager', KARIBOU_CLASS_DIR."/eventmanager.class.php");
 ClassLoader::add('MessageManager', KARIBOU_CLASS_DIR."/messagemanager.class.php");
+ClassLoader::add('AuthManager', KARIBOU_CLASS_DIR."/authManager.class.php");
 
 ClassLoader::add('ObjectList', KARIBOU_LIB_DIR.'/objectlist.class.php');
 ClassLoader::add('Visiteurs', KARIBOU_LIB_DIR."/visiteurs.class.php");
