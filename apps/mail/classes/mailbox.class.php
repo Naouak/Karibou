@@ -20,7 +20,7 @@ class Mailbox
 	
 	protected $cachedMailboxes = NULL;
 	
-	function __construct($host, $login, $pass, $folder='INBOX', $port='', $options='/imap/tls/novalidate-cert', $outencoding = "UTF-8")
+	function __construct($host, $login, $pass, $folder='INBOX', $port='', $options='/imap/notls/novalidate-cert', $outencoding = "UTF-8")
 	{
 		$this->outencoding = $outencoding;
 		$this->host = $host;
