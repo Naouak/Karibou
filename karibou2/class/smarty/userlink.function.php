@@ -64,9 +64,22 @@ function userlink($params , $appList = FALSE)
 				$userlink = "<a href=\"".kurl(array("app" => 'annuaire', "username" => $user->getLogin()), $appList)."\" class=\"userlink\"";
 				if (isset($params["showpicture"]) && ($params["showpicture"] === TRUE) )
 				{
-					$userlink .= " onMouseover=\"showhint('<img src=\'".$user->getPicturePath()."\' /><span>".$fullName."</span>','hint_profile');\" onMouseout=\"hidehint()\"";
+					$userlink .= " onMouseover=\"showhint('<img src=\'".$user->getPicturePath()."\' /><span>";
+					$userlink .= $fullName;
+					if ($appList) {
+						$userlink .= "<br />Groups :";
+						$groups = $appList->userFactory->getGroupsFromUser($user);
+						foreach ($groups as $group) {
+							if (abs($group->getLeft() - $group->getRight()) == 1)
+								$userlink .= " " . $group->getName();
+						}
+					}
+					$userlink .= "</span>','hint_profile');\" onMouseout=\"hidehint()\"";
 				}
-				$userlink .= ">".$user->getDisplayName()."</a>";
+				if (isset($params["showfullname"]) && ($params["showfullname"] === TRUE) )
+					$userlink .= ">" . $fullName . "</a>";
+				else
+					$userlink .= ">".$user->getDisplayName()."</a>";
 			}
 			else
 			{
