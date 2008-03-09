@@ -1,1 +1,1 @@
-number of lines : <input type="text" name="maxlines" value="{$maxlines}" />
+##NUMBEROFLINES## : <input type="text" name="maxlines" value="{$maxlines}" />

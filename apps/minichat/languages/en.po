@@ -21,3 +21,6 @@ msgstr "Last chats"
 msgid "VIEWCHATHISTORY"
 msgstr "View chat history"
 
+msgid "NUMBEROFLINES"
+msgstr "Number of lines"
+
