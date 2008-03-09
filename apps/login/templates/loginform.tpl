@@ -2,7 +2,7 @@
 <div class="login">
 	<div class="logout"><a href="{kurl page="logout"}">##LOGOUT##</a></div>
 	<div class="editprofile"><a href="{kurl app="annuaire" username=$username act='edit'}">##EDITPROFILE##</a></div>
-	<div class="configureemailfw"><a href="{kurl app="emailforward"}">##CONFIGURE_EMAILFW##</a></div>
+{*	<div class="configureemailfw"><a href="{kurl app="emailforward"}">##CONFIGURE_EMAILFW##</a></div>*}
 	<div class="changepassword"><a href="{kurl app="changepassword"}">##CHANGEPASSWORD##</a></div>
 </div>
 {*	

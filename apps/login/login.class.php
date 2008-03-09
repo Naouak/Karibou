@@ -8,9 +8,10 @@
  * @package applications
  **/
 
-ClassLoader::add('AuthMysql', dirname(__FILE__).'/authmysql.class.php');
+/*ClassLoader::add('AuthMysql', dirname(__FILE__).'/authmysql.class.php');
 ClassLoader::add('AuthImap', dirname(__FILE__).'/authimap.class.php');
 ClassLoader::add('AuthAD2000', dirname(__FILE__).'/authad2000.class.php');
+ClassLoader::add('AuthPAM', dirname(__FILE__).'/authPAM.class.php');*/
 
 
 /**
@@ -26,7 +27,7 @@ class Login extends FormModel
 		if (isset ($_POST['_user']) && isset ($_POST['_pass']))
 		{
 			$user = $_POST['_user'];
-			$pass = $_POST['_pass'];
+			$pass = stripslashes($_POST['_pass']);
 			
 			if( isset($_POST['_crypt']) )
 			{
@@ -34,40 +35,12 @@ class Login extends FormModel
 				$pass = $krypt->decrypt( $_POST['_crypt'] );
 			}
 			
-			if (!preg_match('/^([a-zA-Z0-9\.\-_]+)@([a-zA-Z0-9\.\-_]+)$/', $user, $match))
+			if (preg_match('/^([a-zA-Z0-9\.\-_]+)@([a-zA-Z0-9\.\-_]+)$/', $user, $match))
 			{
-				if( isset($GLOBALS['config']['login']['post_username']) )
-				{
-					$auth_user = $user . $GLOBALS['config']['login']['post_username'];
-				}
-				else
-				{
-					$auth_user = $user;
-				}
+				$user = $match[1];
 			}
-			else
-			{
-				$auth_user = $user;
-				$user = $match[1]; //offset 1 is username
-				
-			}
-			
-			switch($GLOBALS['config']['login']['backend'])
-			{
-				case 'mysql':
-					$auth = new AuthMysql($this->db);
-					break;
-				case 'imap':
-					$auth = new AuthImap();
-					break;
-				case 'AD2000':
-					$auth = new AuthAD2000();
-					break;
-				default:
-					Debug::kill("No Auth back-end selected");
-					break;
-			}
-			if( $auth->login($auth_user, $pass) )
+			$authManager = new AuthManager();
+			if ($authManager->checkPassword($user, $pass))
 			{
 				$created = FALSE;
 				if( isset($GLOBALS['config']['login']['createuser']) && $GLOBALS['config']['login']['createuser'] )
@@ -118,6 +91,8 @@ class Login extends FormModel
 			{
 				$this->formMessage->add (FormMessage::FATAL_ERROR, gettext("LOGINFAILED"));
 				$this->formMessage->setSession();
+				$this->eventManager->sendEvent("logout");
+				$this->eventManager->performActions();
 			}
 		}
 	}
