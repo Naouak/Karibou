@@ -15,6 +15,9 @@ msgstr "Back to home page"
 msgid "DEFAULT_EDIT"
 msgstr "Personnalise my home page"
 
+msgid "DEFAULT_END_EDIT"
+msgstr "Close the application list"
+
 msgid "CHOOSECONTAINER"
 msgstr "Choose a container model : "
 
@@ -85,7 +88,7 @@ msgid "dday"
 msgstr "D Day"
 
 msgid "video"
-mgstr "The video"
+msgstr "The video"
 
 msgid "DEFAULT_CHANGEPASSWORD_DESCRIPTION"
 msgstr "In order to ensure your account security, you must change your password. Click on the link below to go to the \"change password\" page."
@@ -95,3 +98,9 @@ msgstr "To the \"change password\" page."
 
 msgid "GEOLOC_MENU_TITLE"
 msgstr "Geolocator"
+
+msgid "my_files"
+msgstr "My files"
+
+msgid "ilsontdit"
+msgstr "They said it"

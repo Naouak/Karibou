@@ -15,6 +15,9 @@ msgstr "Retour à la page d'accueil"
 msgid "DEFAULT_EDIT"
 msgstr "Personnaliser ma page d'accueil"
 
+msgid "DEFAULT_END_EDIT"
+msgstr "Fermer la liste des applications"
+
 msgid "CHOOSECONTAINER"
 msgstr "Choisi un modèle de conteneur : "
 
@@ -91,10 +94,17 @@ msgid "uwapp"
 msgstr "Module UWA (standard netvibes)"
 
 msgid "video"
-mgstr "Video du Jour"
+msgstr "Video du Jour"
 
 msgid "DEFAULT_CHANGEPASSWORD_DESCRIPTION"
 msgstr "Pour garantir la sécurité de votre compte, vous devez changer de mot de passe. Suivez le lien ci-dessous pour vous rendre sur la page de changement de mot de passe."
 
 msgid "CHANGEPASSWORD_LINK"
 msgstr "Vers la page de changement de mot de passe."
+
+msgid "my_files"
+msgstr "Mes fichiers"
+
+msgid "ilsontdit"
+msgstr "Ils ont dit"
+
