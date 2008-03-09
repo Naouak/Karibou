@@ -43,7 +43,14 @@ html>body #container #account .user {
 	margin-left: 0px; 
 	padding-top: 2px;
 }
-#container #account li {
+#container #account > ul > li {
+	display: block;
+	margin-right: 0px;
+	margin-left: 20px;
+	float: left;
+	padding: 0px;
+}
+#account_flashmail_headerbox_full li {
 	display: block;
 	margin-right: 0px;
 	margin-left: 20px;
@@ -83,8 +90,6 @@ html>body #container #account .user {
 	padding-left: 30px;
 }
 
-
-
 /* Form : Login Line */
 div#account form.login {
 	display: block;
@@ -102,9 +107,11 @@ div#account form.login label {
 	vertical-align: middle;
 	margin-top: -3px;
 }
+
 html>body div#account form.login label {
 	margin-top: -2px;
 }
+
 div#account form.login input {
 	float: left;
 	display: block;
@@ -117,7 +124,7 @@ div#account form.login input {
 	width: 140px;
 	margin-top: 1px;
 }
-/* Ignoré par IE */
+
 html>body div#account form.login input {
 	width: 116px;
 	height: 17px;
@@ -171,4 +178,45 @@ div#account form.login a.inscription span {
 }
 div#account form.login a.inscription:hover {
 	text-decoration: none;
+}
+
+/**
+ Karibou menu embedded in the top bar...
+ */
+.karibouMenu, .karibouMenu ul {
+  min-width: 160px;
+  border: 1px solid #000;
+  cursor: default;
+  margin-left: 0px;
+  padding: 0px;
+}
+
+.karibouMenu ul {
+  background-color: black;
+  opacity: 0.8;
+  -moz-border-radius: 20px;
+}
+
+.karibouMenu li {
+  list-style-type: none;
+  margin: 0px;
+  position: relative;
+  color: #fff;
+  left: 0px;
+  padding: 0px;
+/*float: left;	/* Suggested by Janosch */
+}
+
+.karibouMenu > ul {
+  display: none;
+  position: fixed;
+  top: 12px;
+/*left: 50px;	/* Suggested by Janosch */
+padding-top: 10px;
+  /*padding: 0px;*/
+}
+
+.karibouMenu:hover > ul {
+  display: block;
+  padding: 0px;
 }

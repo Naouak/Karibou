@@ -3,6 +3,8 @@
 /* * * * * * * * * * * * * * * * */
 
 #siteNavigation {
+	display: none;
+	visibility: hidden;
 	position: absolute;
 	/* top: 1.45em; */
 	top: 30px;

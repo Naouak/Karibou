@@ -51,7 +51,7 @@ a:visited {
 
 #main {
 	background: #fff;
-	margin-top: 5.9em;
+	margin-top: 5.5em;
 	/* IE Bug Fix : résolution d'un problème de marge inférieure sous IE */
 	border: 1px solid #fff;
 }

@@ -29,19 +29,19 @@
 .cont_scol {
 	padding: 0px;
 	margin: 0px;
-	width: 23%;
+	width: 24%;
 	min-height: 50px;
 }
 .cont_mcol {
 	padding: 0px;
 	margin: 0px;
-	width: 45%;
+	width: 49%;
 	min-height: 50px;
 }
 .cont_lcol {
 	padding: 0px;
 	margin: 0px;
-	width: 70%;
+	width: 72%;
 	min-height: 50px;
 }
 .cont_xlcol {
@@ -82,7 +82,7 @@
 	padding: 1px;
 	border: 1px #eee solid;
 	background-color: #fafafa;
-	width: 99%;<!-- 206 -->
+	width: 99%;
 	min-height: 50px;
 	overflow: hidden;
 }
@@ -94,7 +94,7 @@
 	padding: 1px;
 	border: 1px #eee solid;
 	background-color: #fafafa;
-	width: 99%;<!--416 -->
+	width: 99%;
 	min-height: 80px;
 	overflow: hidden;
 }
@@ -212,6 +212,8 @@
 	background: #eee;
 	padding: 2px 5px 2px 5px;
 	margin: 5px;
+	margin-bottom: 0px;
+	margin-top: 0px;
 }
 #personalise_button:hover {
 	background: #bbffbb;
