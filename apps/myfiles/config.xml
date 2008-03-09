@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_NO_ACCESS_" logged="_READ_ONLY_" />
+	
+	<load class="MyFiles" file="myfiles.class.php" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<view name="mini" class="MyFiles" template="small.tpl" />
+	<view name="list" class="MyFiles" template="list.tpl" />
+	<view name="download" class="MyFiles" template="none.tpl" />
+	
+	<page view="default" />
+	<page name="list" class="MyFiles" view="list">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+	
+	<page name="download" class="MyFiles" view="download">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+
+</app>

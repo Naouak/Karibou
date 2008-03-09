@@ -1,0 +1,2 @@
+msgid "MYFILES"
+msgstr "My files"
