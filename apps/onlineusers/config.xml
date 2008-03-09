@@ -16,20 +16,25 @@
 	<footer app="footer" view="default" />
 
 	<view name="list" class="OnlineUsersList" template="list.tpl" />
-        <view name="nbrusersconnected" class="OnlineUsersList" template="nbrusersconnected.tpl" />
+	<view name="nbrusersconnected" class="OnlineUsersList" template="nbrusersconnected.tpl" />
 	<view name="default" class="OnlineUsersList" template="default.tpl" />
 	<view name="mini" class="OnlineUsersList" template="small.tpl" />
 	
 	<page view="default" />
-
+	
 	<page name="list" class="OnlineUsersList" view="list">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>
-        
-        <page name="nbrusersconnected" class="OnlineUsersList" view="nbrusersconnected">
-            <header app="header" view="empty" />
-            <footer app="footer" view="empty" />
-        </page>
+
+	<page name="nbrusersconnected" class="OnlineUsersList" view="nbrusersconnected">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+
+	<page name="setuserstate" class="OnlineUsersList" view="default">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
 
 </app>

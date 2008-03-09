@@ -9,8 +9,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
+
 msgid "ONLINEUSERS"
-msgstr "User(s) online"
+msgstr "users online"
+
+msgid "ONEONLINEUSER"
+msgstr "1 user online"
+
+msgid "NOBODYONLINE"
+msgstr "Nobody is online :/"
 
 msgid "ALIAS"
 msgstr "alias"
@@ -27,3 +34,56 @@ msgstr "ago"
 msgid "NOUSERCONNECTED"
 msgstr "No user online"
 
+msgid "CHANGESTATE"
+msgstr "Change state"
+
+msgid "MOOD_none"
+msgstr "None"
+
+msgid "MOOD_happy"
+msgstr "Happy"
+
+msgid "MOOD_sad"
+msgstr "Sad"
+
+msgid "MOOD_angry"
+msgstr "Angry"
+
+msgid "MOOD_bored"
+msgstr "Bored"
+
+msgid "MOOD_depressed"
+msgstr "Depressed"
+
+msgid "MOOD_disgusted"
+msgstr "Disgusted"
+
+msgid "MOOD_excited"
+msgstr "EXcited"
+
+msgid "MOOD_invincible"
+msgstr "Invincible"
+
+msgid "MOOD_proud"
+msgstr "Proud"
+
+msgid "MOOD_sick"
+msgstr "Sick"
+
+msgid "MOOD_in_love"
+msgstr "In love"
+
+msgid "MOOD_stressed"
+msgstr "Stressed"
+
+msgid "MOOD_surprised"
+msgstr "Surprised"
+
+msgid "MOOD_worried"
+msgstr "Worried"
+
+msgid "MOOD_serious"
+msgstr "Serious"
+
+msgid "MOOD_distracted"
+msgstr "Distracted"
