@@ -21,10 +21,9 @@
 		{/if}
 	{/if}
 	<form action="{kurl action="changepassword"}" method="post">
-{*		<label for="currentpassword">##CURRENTPASSWORD## :</label>
+		<label for="currentpassword">##CURRENTPASSWORD## :</label>
 		<input type="password" name="currentpassword" id="currentpassword" value="" />
 		<br />
-*}
 		<label for="newpassword1">##NEWPASSWORD1## :</label>
 		<input type="password" name="newpassword1" id="newpassword1" value="" />
 		<br />

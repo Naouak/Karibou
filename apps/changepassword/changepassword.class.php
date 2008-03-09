@@ -9,14 +9,12 @@
  * @package applications
  **/
 
-//ClassLoader::add('PasswordInterfaceLDAP', dirname(__FILE__).'/class/passwordinterfaceldap.class.php');
-
 class ChangePassword extends FormModel
 {
 
 	public function build()
 	{
-		if (isset(/*$_POST["currentpassword"],*/ $_POST["newpassword1"], $_POST["newpassword2"]))
+		if (isset($_POST["currentpassword"], $_POST["newpassword1"], $_POST["newpassword2"]))
 		{
 			if (strlen($_POST["newpassword1"]) < 3)
 			{
@@ -34,12 +32,11 @@ class ChangePassword extends FormModel
 					$app = $this->appList->getApp($this->appname);
 					$config = $app->getConfig();
 
-					$email = $this->currentUser->getLogin().$GLOBALS['config']['login']['post_username'];
-					$newpassword = $_POST["newpassword1"];
-
-					$pi = new PasswordInterfaceLDAP($GLOBALS["config"]["ldap"]["rdn"],$GLOBALS["config"]["ldap"]["pwd"],$GLOBALS["config"]["ldap"]["jvd"]);
-
-					if( !$pi->changePassword($email, $newpassword) )
+					$login = $this->currentUser->getLogin();
+					$oldpassword = stripslashes($_POST["currentpassword"]);
+					$newpassword = stripslashes($_POST["newpassword1"]);
+					$authManager = new AuthManager();
+					if( !$authManager->changePassword($login, $oldpassword, $newpassword) )
 					{
 						$_SESSION["changepasswordMessage"] = "UNKNOWNERROR";
 						Debug::kill($mail);
