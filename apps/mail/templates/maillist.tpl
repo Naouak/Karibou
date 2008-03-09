@@ -8,7 +8,9 @@
 </p>
 <div class="headbox">
 	##pages## :
-	<a href="{kurl mailbox=$mailbox pagenum=$page-1}">##previous page##</a>	 |
+	{if $page > 1}
+		<a href="{kurl mailbox=$mailbox pagenum=$page-1}">##previous page##</a>	 |
+	{/if}
 
 	{section name=pagecount loop=$pagecount start=0 step=1}
     {if $smarty.section.pagecount.iteration == $page}
@@ -17,7 +19,9 @@
 		<a href="{kurl mailbox=$mailbox pagenum=$smarty.section.pagecount.iteration}">{$smarty.section.pagecount.iteration}</a>&nbsp;
     {/if}
     {/section}
-	|	<a href="{kurl mailbox=$mailbox pagenum=$page+1}">##next page##</a>
+    	{if $page < $pagecount}
+		|	<a href="{kurl mailbox=$mailbox pagenum=$page+1}">##next page##</a>
+	{/if}
 </div>
 
 <div class="bodybox">
