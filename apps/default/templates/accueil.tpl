@@ -146,7 +146,7 @@
 	// ]]>
 	</script>
 	
-	<h1>##HEADER_PAGE_TITLE##</h1>
+	<!--<h1>##HEADER_PAGE_TITLE##</h1>-->
 	<a id="personalise_button" href="#" onclick="return editHomeApps();">##DEFAULT_EDIT##</a>
 	<br class="spacer" />
 	{hook name="html_head"}
@@ -158,6 +158,14 @@
 			var elts = document.getElementsByTagName("div");
 			var e;
 			gDisplayedHomeApps = !gDisplayedHomeApps;
+			if ( gDisplayedHomeApps )
+			{ldelim}
+			document.getElementById("personalise_button").innerHTML = "##DEFAULT_END_EDIT##";
+			{rdelim}
+			else
+			{ldelim}
+				document.getElementById("personalise_button").innerHTML = "##DEFAULT_EDIT##";
+			{rdelim}
 			for( e in elts )
 			{ldelim}
 				if( Element.hasClassName(elts[e], "configbar") )
