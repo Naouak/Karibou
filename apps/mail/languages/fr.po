@@ -71,3 +71,9 @@ msgstr "Supprimer les Messages selectionés"
 
 msgid "SELECT_ALL"
 msgstr "Sélectionner tout"
+
+msgid "previous page"
+msgstr "Page précédente"
+
+msgid "next page"
+msgstr "Page suivante"
