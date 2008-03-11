@@ -40,13 +40,9 @@ var Scriptaculous = {
        (typeof Element == 'undefined') || 
        (typeof Element.Methods=='undefined') ||
        (convertVersionString(Prototype.Version) < 
-        convertVersionString(Scriptaculous.REQUIRED_PROTOTYPE))) {
-		alert((typeof Prototype=='undefined'));
-		alert((typeof Element=='undefined'));
-		alert(convertVersionString(Prototype.Version));
+        convertVersionString(Scriptaculous.REQUIRED_PROTOTYPE)))
        throw("script.aculo.us requires the Prototype JavaScript framework >= " +
         Scriptaculous.REQUIRED_PROTOTYPE);
-		}
     
     $A(document.getElementsByTagName("script")).findAll( function(s) {
       return (s.src && s.src.match(/scriptaculous\.js(\?.*)?$/))
