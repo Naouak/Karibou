@@ -2,7 +2,6 @@
 <header>
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 	
-	<load class="HeaderModel" file="headermodel.class.php" />
 	<load class="HeaderHome" file="headerhome.class.php" />
 	
 	<view name="home" class="HeaderHome" template="headerhome.php" />

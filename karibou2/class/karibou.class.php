@@ -41,7 +41,6 @@ ClassLoader::add('MessageManager', KARIBOU_CLASS_DIR."/messagemanager.class.php"
 ClassLoader::add('AuthManager', KARIBOU_CLASS_DIR."/authManager.class.php");
 
 ClassLoader::add('ObjectList', KARIBOU_LIB_DIR.'/objectlist.class.php');
-ClassLoader::add('Visiteurs', KARIBOU_LIB_DIR."/visiteurs.class.php");
 ClassLoader::add('KText', KARIBOU_LIB_DIR."/ktext.class.php");
 ClassLoader::add('FormMessage', KARIBOU_LIB_DIR."/formmessage.class.php");
 ClassLoader::add('HookManager', KARIBOU_LIB_DIR."/hookmanager.class.php");
