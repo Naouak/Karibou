@@ -1,3 +1,7 @@
+/*
+This file is used by the wiki module.
+*/
+
 /* ***** BEGIN LICENSE BLOCK *****
  * This file is part of DotClear.
  * Copyright (c) 2004 Olivier Meunier and contributors. All rights
@@ -21,6 +25,7 @@
  
 function dcToolBar(textarea,format,img_path)
 {
+	alert("Calling the dcToolBar function");
 	this.addButton		= function() {}
 	this.addSpace		= function() {}
 	this.draw			= function() {}
