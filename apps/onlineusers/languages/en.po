@@ -87,3 +87,12 @@ msgstr "Serious"
 
 msgid "MOOD_distracted"
 msgstr "Distracted"
+
+msgid "MOOD_working"
+msgstr "Working"
+
+msgid "MOOD_desperate"
+msgstr "Desperate"
+
+msgid "MOOD_furious"
+msgstr "Furious"

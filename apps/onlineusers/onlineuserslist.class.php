@@ -14,7 +14,7 @@ class OnlineUsersList extends Model
 {
 	public function build()
 	{
-		$moods = array(-1 => "none", "happy", "sad", "angry", "bored", "depressed", "disgusted", "excited", "invincible", "proud", "sick", "in_love", "stressed", "surprised", "worried", "serious", "distracted");
+		$moods = array(-1 => "none", "happy", "sad", "angry", "bored", "depressed", "disgusted", "excited", "invincible", "proud", "sick", "in_love", "stressed", "surprised", "worried", "serious", "distracted", "working", "desperate", "furious");
 		$moodsDisplayList = array(-1 => "MOOD_none");
 		foreach ($moods as $moodValue => $moodText) {
 			$moodsDisplayList[$moodValue] = gettext("MOOD_$moodText");
