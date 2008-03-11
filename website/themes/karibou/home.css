@@ -80,6 +80,7 @@
 	float: left;
 	margin: 2px;
 	padding: 1px;
+	top: 1px;
 	border: 1px #eee solid;
 	background-color: #fafafa;
 	width: 99%;
@@ -92,6 +93,7 @@
 	float: left;
 	margin: 2px;
 	padding: 1px;
+	top: 1px;
 	border: 1px #eee solid;
 	background-color: #fafafa;
 	width: 99%;
@@ -104,6 +106,7 @@
 	float: left;
 	margin: 2px;
 	padding: 1px;
+	top: 1px;
 	border: 1px #eee solid;
 	background-color: #fafafa;
 	width: 99%;
@@ -117,8 +120,8 @@
 
 
 #content .sbox .del, #content .mbox .del, #content .lbox .del {
-	width: 16px;
-	height: 16px;
+	/*width: 16px;
+	height: 16px;*/
 	background-image: url("/themes/karibou/images/del.png");
 	visibility: hidden;
 }
@@ -146,8 +149,8 @@
 }
 
 #content .sbox .edit, #content .mbox .edit, #content .lbox .edit {
-	width: 16px;
-	height: 16px;
+/*	width: 16px;
+	height: 16px;*/
 	background-image: url("/themes/karibou/images/edit.png");
 	visibility: hidden;
 }
