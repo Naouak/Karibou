@@ -21,3 +21,10 @@ msgstr "Find"
 
 msgid "NEXT_ADDR"
 msgstr "Next address for this person"
+
+msgid "BDAY_TITLE"
+msgstr "Today's birthdays"
+
+msgid "TODAY_BDAY"
+msgstr "No birthdays today"
+
