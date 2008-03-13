@@ -4,66 +4,60 @@
 special classname... (sucks)*/ ?>
 var inittitle = document.title;
 var fmtoggle=0;
-var intv;
+var intv = null;
 
-
-	function flashmail_blinddown(div_id)
-	{
-		var f = document.getElementById(div_id);
-		if (f.className == "flashmail showed")
-		{
-		        f.className = "flashmail dontshow";
+function flashmail_blinddown(div_id) {
+	var f = document.getElementById(div_id);
+	if (f.className == "flashmail showed") 	{
+	        f.className = "flashmail dontshow";
+	} else {
+		if (document.getElementById(div_id).innerHTML.length > 10) {
+			f.className = "flashmail showed";
 		}
-		else
-		{
-			if (document.getElementById(div_id).innerHTML.length > 10)
-			{
-				f.className = "flashmail showed";
-			}
-		}
-		return false;
 	}
+	return false;
+}
 
 
-function blinktitle(title){
-	if(fmtoggle == 0){
+function blinktitle(title) {
+	if (fmtoggle == 0) {
 		document.title = title;
-		fmtoggle=1;
-	}else{
+		fmtoggle = 1;
+	} else {
 		document.title = inittitle;
-		fmtoggle=0;
+		fmtoggle = 0;
 	}	
 
 }
 
-function stop_blink(){
-			document.title=inittitle;
-			clearInterval(intv);
+function stop_blink() {
+	document.title=inittitle;
+	clearInterval(intv);
+	intv = null;
 }
-	function flashmail_headerbox_update()
-	{
-		new Ajax.Updater('account_flashmail_headerbox_full', '<?=kurl(array('app'=>"flashmail", 'page'=>"account_headerbox_content"));?>', {asynchronous:true, evalScripts:false, onComplete:flashmail_duplicate_unreadlist});
-		return false;
-	}
 
-	function flashmail_duplicate_unreadlist()
-	{
-		var test = document.getElementById("account_flashmail_read_link");
-		if(test){
+function flashmail_headerbox_update() {
+	new Ajax.Updater('account_flashmail_headerbox_full', '<?=kurl(array('app'=>"flashmail", 'page'=>"account_headerbox_content"));?>', {asynchronous:true, evalScripts:false, onComplete:flashmail_duplicate_unreadlist});
+	return false;
+}
+
+function flashmail_duplicate_unreadlist() {
+	var test = document.getElementById("account_flashmail_read_link");
+	if (test) {
+		if (intv == null)
 			intv = setInterval('blinktitle("Nouveau flashmail")',1000);
-		}else{
-			stop_blink();
-		}
-
-		//Utilisation d'une recopie du innerHTML en javascript pour éviter d'exécuter 2 fois le même code pour 
-		//l'affichage du nombre de flashmails et de la liste des flashmails (depuis que les 2 éléments ne sont
-		//plus au même endroit.
-		document.getElementById('flashmail_headerbox_unreadlist').innerHTML = document.getElementById('flashmail_headerbox_unreadlist_TMP').innerHTML;
-
-		if (document.getElementById('flashmail_headerbox_unreadlist_TMP').innerHTML.length < 10) {
-			document.getElementById('flashmail_headerbox_unreadlist').className = "flashmail dontshow";
-		}
+	} else {
+		stop_blink();
 	}
+
+	//Utilisation d'une recopie du innerHTML en javascript pour Ã©viter d'exÃ©cuter 2 fois le mÃªme code pour 
+	//l'affichage du nombre de flashmails et de la liste des flashmails (depuis que les 2 Ã©lÃ©ments ne sont
+	//plus au mÃªme endroit.
+	document.getElementById('flashmail_headerbox_unreadlist').innerHTML = document.getElementById('flashmail_headerbox_unreadlist_TMP').innerHTML;
+	if (document.getElementById('flashmail_headerbox_unreadlist_TMP').innerHTML.length < 10) {
+		document.getElementById('flashmail_headerbox_unreadlist').className = "flashmail dontshow";
+	}
+}
 
 	// ]]>
 	</script>
