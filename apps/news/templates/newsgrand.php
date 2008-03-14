@@ -4,7 +4,8 @@
 	include("newsmessage.php");
 ?>
 
-	<a href="<?=kurl(array('app'=>"news", 'page'=>"archives"));?>" onclick="toggle_display('news_archives'); return false;"><?=_('NEWS_VIEW_ARCHIVES');?></a>
+	<a href="<?=kurl(array('app'=>"news", 'page'=>"archives"));?>" onclick="new Effect.toggle(document.getElementById('news_archives')); return 
+false;"><?=_('NEWS_VIEW_ARCHIVES');?></a>
 <?
 	echo '<div id="news_archives" style="margin-left: 20px; margin-bottom: 10px; padding: 5px; padding-left: 20px; border: 1px solid #acacac; background-color: #fafafa;" class="dontshow">';
 	$year = "";
