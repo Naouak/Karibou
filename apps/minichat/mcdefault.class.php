@@ -76,8 +76,11 @@ class MCDefault extends Model
 			$this->assign('pages', $pages);
 			$this->assign('page', $page);
 		}
-		
-		$this->assign("post", $minichatMessageList->getMessages($max, $page));
+		if ((isset($this->args["day"])) && ($this->args["day"] != "")) {
+            $this->assign("post", $minichatMessageList->getMessagesFromDate($this->args["day"]));
+        } else {
+            $this->assign("post", $minichatMessageList->getMessages($max, $page));
+        }
 
 		$this->assign('permission', $this->permission);
 	}

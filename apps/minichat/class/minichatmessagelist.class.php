@@ -75,6 +75,29 @@ class MiniChatMessageList
 		return $post;
 	}
     
+    function getMessagesFromDate ($timestamp) {
+        $sql = "SELECT UNIX_TIMESTAMP(time) as timestamp, id_auteur, post FROM minichat WHERE DATE(time) = DATE(FROM_UNIXTIME(:timeStamp)) ORDER BY time DESC;";
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindValue(":timeStamp", $timestamp);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            Debug::kill($e->getMessage());
+        }
+        $post = array();
+        while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) )
+        {
+            $line = new MinichatMessage(
+                                        $row['timestamp'], 
+                                        $this->userFactory->prepareUserFromId($row['id_auteur']),
+                                        $row['post'],
+                                        $this->wiki);
+            $post[] = $line;
+        }
+        $post = array_reverse($post);
+        return $post;
+    }
+    
     function minDate () {
         $req = "SELECT UNIX_TIMESTAMP(DATE(MIN(time))) as mdate FROM minichat;";
         try {

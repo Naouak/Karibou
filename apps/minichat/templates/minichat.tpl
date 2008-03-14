@@ -66,7 +66,7 @@
         <div id="track1" style="width:90%;background-color:#aaa;height:5px;">
             <div id="handle1" style="width:5px;height:10px;background-color:#f00;cursor:move;"> </div>
         </div>
-        <span id="sliderDate" href="">Current page</span>
+        <a id="sliderDate" href="{kurl day="0"}">Current page</a>
 {literal}
 <script>
     var slider = new Control.Slider('handle1','track1', {minimum:{/literal}{$minDate}, maximum:{$maxDate}{literal}, increment:86400000, alignX: -5, alignY: -5});
@@ -79,7 +79,7 @@
         date = new Date(1000 * (value * delta + {/literal}{$minDate}{literal}));
         document.getElementById("sliderDate").innerHTML = date.toString();
         {/literal}
-        {*document.getElementById("sliderDate").href = "{kurl pagedate="0"}" + 1000 * (value * delta + {$minDate});*}
+        document.getElementById("sliderDate").href = "minichat/day-" + parseInt(value * delta + {$minDate});
         {literal}
     };
 </script>
