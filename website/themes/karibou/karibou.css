@@ -461,45 +461,6 @@ div.overzone.overzone_error {
 	display: compact;
 }
 
-/* Nouveau style */
-
-#dynamics {
-	position: absolute;
-	background-color: #fafafa;
-	border-left: 1px solid #999;
-	visibility: visible;
-	text-align: left;
-
-	padding-top: 80px;
-
-	width: 250px;
-	height: 100%;
-	
-	top: 0px;
-	right: 0px;
-	
-	z-index: 1;
-}
-#dynamics ul {
-	list-style: none;
-	margin: 0px;
-	padding: 0px;
-	text-align: left;
-}
-#dynamics h2 {
-	margin: 0px;
-	padding: 3px;
-	font-size: 0.9em;
-	background: #999;
-	color: #fff;
-	margin-top: 10px;
-}
-#dynamics #minichat ul {
-	font-size: 0.8em;
-}
-#dynamics #minichat ul li {
-	margin-top: 3px;
-}
 /*
 #onlineusers_nb {
 	position: absolute;

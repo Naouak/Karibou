@@ -152,8 +152,6 @@ if (isset($this->hookManager->hooks['header_menu'])) {
 			</ul>
 		</div>
 
-		<div id="dynamics" class="dontshow"></div>
-
 		<div id="flashmail_headerbox_unreadlist" class="flashmail dontshow">
 			<? hook(array('name'=>"flashmail_unreadlist")); ?>
 		</div>

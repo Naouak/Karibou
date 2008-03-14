@@ -30,10 +30,13 @@ class MCDefault extends Model
 			{
 				$req_sql = "INSERT INTO minichat 
 					(time, id_auteur, post) VALUES
-					(NOW(), " .	$this->currentUser->getID() . ", '" .$message . "')";
+					(NOW(), :userId, :message)";
 				try
 				{
-					$this->db->exec($req_sql);
+                    $stmt = $this->db->prepare($req_sql);
+                    $stmt->bindValue(":userId", $this->currentUser->getID());
+                    $stmt->bindValue(":message", stripslashes($message));
+					$stmt->execute();
 				}
 				catch(PDOException $e)
 				{
@@ -60,10 +63,14 @@ class MCDefault extends Model
 			
 		$this->assign("pagenum", $page);
 
-		$minichatMessageList = new MinichatMessageList($this->db, $this->userFactory);		
+		$minichatMessageList = new MinichatMessageList($this->db, $this->userFactory);
+        $min_date = $minichatMessageList->minDate();
+        $max_date = $minichatMessageList->maxDate();
+        $this->assign("minDate", $min_date);
+        $this->assign("maxDate", $max_date);
 		$page_count = ceil($minichatMessageList->count() / $max);
 		
-		if($page_count > 1)
+		if ($page_count > 1)
 		{
 			$pages = range(1, $page_count);
 			$this->assign('pages', $pages);
