@@ -143,6 +143,9 @@
 		return false;
 	{rdelim}
 	
+    Event.observe(window, "load", function() {ldelim}
+        createSortable();
+    {rdelim});
 	// ]]>
 	</script>
 	
@@ -212,9 +215,4 @@
 	</div>
 	{/foreach}
 	<br class="spacer" />
-	
-	<script>
-		createSortable();
-	</script>
-
 </div>
