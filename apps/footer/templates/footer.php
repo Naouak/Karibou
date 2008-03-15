@@ -156,9 +156,5 @@ if (isset($this->hookManager->hooks['header_menu'])) {
 			<? hook(array('name'=>"flashmail_unreadlist")); ?>
 		</div>
 		<div id="flashmail_headerbox_answer" class="dontshow"><?=_('LOADING');?></div>
-		<div id="blackhole" class="blackhole"></div>
-	
-	
-
 	</body>
 </html>
