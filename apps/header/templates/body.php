@@ -1,5 +1,5 @@
 
-<body onload="/*LoadSiteNavigation();*/" onKeypress="keyCheck(event);">
+<body>
 	<div id="container">
 		<a href="<?=kurl(array('app'=>'', 'page'=>''));?>#" id="logo"><span><h1>Karibou</h1></span></a>
 		<div id="main" class="nonav">

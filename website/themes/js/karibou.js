@@ -62,6 +62,7 @@ var KSortable = Object.extend(Sortable, {
         * Communiquer, Organiser, Partager, Jobs et Administration
         * Elle va permettre le développement de nouvelles applications et leur intégration
         * plus simple dans l'intranet.
+        *@TODO: Delete this ?
         */
         var navCategories = new Array("Communicate","Organize","Share","Jobs","Admin");
         function LoadSiteNavigation() {
@@ -81,47 +82,40 @@ var KSortable = Object.extend(Sortable, {
                 }
             }
         }
-		
-		/**
-        * Gestion des raccourcis clavier
-        *
-        * keyCheck va nous permettre d'ajouter des raccourcis clavier à Karibou. Je l'ai pour l'instant testé
-        * sous Firefox 1.5 (Win) et Internet Explorer 6.0 (Win), à voir s'il fonctionne sous Opera, Konqueror
-        * et les autres OS...
-        */
-        function keyCheck(e)
-        {
-            var key, inputType;
-            
-			//Récupération des touches pressées
-            if(window.event)
-            {
-				//Pour Internet Explorer
-                key = window.event.keyCode;
-                inputType = window.event.srcElement.tagName.toLowerCase();
-            }
-            else
-            {
-				//Pour FireFox & autres
-                key = e.which;
-                inputType = e.target.nodeName.toLowerCase()
-            }
+        Event.observe(window, "load", function() { LoadSiteNavigation(); });
+        
+/**
+* Gestion des raccourcis clavier
+*/
+Event.observe(document, "keypress", function(evt) {
+    var key, inputType;
+    
+    //Récupération des touches pressées
+    if (window.event) {
+        // Pour Internet Explorer
+        key = window.event.keyCode;
+        inputType = window.event.srcElement.tagName.toLowerCase();
+    } else {
+        // Pour FireFox & autres
+        key = evt.which;
+        inputType = evt.target.nodeName.toLowerCase()
+    }
 
-			//Désactive les raccourcis lorsque le focus est dans les champs de saisie
-            if (inputType != 'input' && inputType != 'textarea' && inputType != 'select') {
-				//Efface la touche tapée sous ie pour éviter qu'elle soit transmise et affichée dans le champ 
-				//cible dans le cas d'un focus
-                if (window.event)
-                window.event.keyCode = "";
+    // Désactive les raccourcis lorsque le focus est dans les champs de saisie
+    if (inputType != 'input' && inputType != 'textarea' && inputType != 'select') {
+        // Efface la touche tapée sous ie pour éviter qu'elle soit transmise et affichée dans le champ 
+        // cible dans le cas d'un focus
+        if (window.event)
+            window.event.keyCode = "";
 
-				//a : affichage des flashmails
-                if (key == 97)
-                flashmail_blinddown('flashmail_headerbox_unreadlist');
-				//r : raffraichir les flashmails
-                if (key == 114)
-                flashmail_headerbox_update();
-				//f : focus sur la boite rechercher
-                if (key == 102)
-                document.forms['search'].elements['keywords'].focus();
-            }
-        }
+        // a : affichage des flashmails
+        if (key == 97)
+            flashmail_blinddown('flashmail_headerbox_unreadlist');
+        // r : raffraichir les flashmails
+        if (key == 114)
+            flashmail_headerbox_update();
+        // f : focus sur la boite rechercher
+        if (key == 102)
+            document.forms['search'].elements['keywords'].focus();
+    }
+});
