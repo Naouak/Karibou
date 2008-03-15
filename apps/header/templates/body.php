@@ -1,7 +1,5 @@
 
-<body onload="LoadSiteNavigation();" onKeypress="keyCheck(event);">
-	<? /* HintBox support */ ?>
-	<div id="hintbox">&nbsp;</div>
+<body onload="/*LoadSiteNavigation();*/" onKeypress="keyCheck(event);">
 	<div id="container">
 		<a href="<?=kurl(array('app'=>'', 'page'=>''));?>#" id="logo"><span><h1>Karibou</h1></span></a>
 		<div id="main" class="nonav">
