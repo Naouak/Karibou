@@ -6,7 +6,7 @@
 			<value name="normal">20</value>
 		</param>
 		<param name="refresh">
-			<value name="small">20000</value>
+			<value name="small">10000</value>
 		</param>
 	</config>
 	
