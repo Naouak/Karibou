@@ -6,19 +6,6 @@ var inittitle = document.title;
 var fmtoggle=0;
 var intv = null;
 
-function flashmail_blinddown(div_id) {
-	var f = document.getElementById(div_id);
-	if (f.className == "flashmail showed") 	{
-	        f.className = "flashmail dontshow";
-	} else {
-		if (document.getElementById(div_id).innerHTML.length > 10) {
-			f.className = "flashmail showed";
-		}
-	}
-	return false;
-}
-
-
 function blinktitle(title) {
 	if (fmtoggle == 0) {
 		document.title = title;

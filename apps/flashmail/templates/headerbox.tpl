@@ -3,20 +3,6 @@
 {*Cant use class name hide or hidden (using dontshow)... IE seems to react to
 special classname... (sucks)*}
 {literal}
-	function flashmail_blinddown(div_id)
-	{
-		var f = document.getElementById(div_id);
-		if (f.className == "flashmail showed")
-		{
-		        f.className = "flashmail dontshow";
-		}
-		else
-		{
-		        f.className = "flashmail showed";
-		}
-
-		return false;
-	}
 
 	function flashmail_headerbox_update()
 	{

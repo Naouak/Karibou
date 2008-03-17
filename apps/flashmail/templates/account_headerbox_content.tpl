@@ -1,6 +1,6 @@
 	<li id="account_flashmail_headerbox_sentence" class="flashmail">
 	{if $flashmails|@count > 0}
-		<a id="account_flashmail_read_link" href="{kurl app="flashmail" page="unreadlist"}" onclick="flashmail_blinddown('flashmail_headerbox_unreadlist'); return false;">{$flashmails|@count} {if ($flashmails|@count) > 1}##NEW_FLASHMAILS##{else}##NEW_FLASHMAIL##{/if}</a>
+		<a id="account_flashmail_read_link" href="{kurl app="flashmail" page="unreadlist"}" onclick="new Effect.toggle('flashmail_headerbox_unreadlist'); return false;">{$flashmails|@count} {if ($flashmails|@count) > 1}##NEW_FLASHMAILS##{else}##NEW_FLASHMAIL##{/if}</a>
 	{/if}
 	</li>
 	

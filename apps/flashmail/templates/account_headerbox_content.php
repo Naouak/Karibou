@@ -3,7 +3,7 @@
 	if ( isset($this->vars['flashmails']) && ($this->vars['flashmails'] !== FALSE) && (count($this->vars['flashmails']) >= 1))
 	{
 	?>
-		<a id="account_flashmail_read_link" href="<?=kurl(array('app'=>"flashmail", 'page'=>"unreadlist"));?>" onclick="flashmail_blinddown('flashmail_headerbox_unreadlist'); return false;"><?=count($this->vars['flashmails']);?>
+		<a id="account_flashmail_read_link" href="<?=kurl(array('app'=>"flashmail", 'page'=>"unreadlist"));?>" onclick="Effect.toggle('flashmail_headerbox_unreadlist'); return false;"><?=count($this->vars['flashmails']);?>
 		<?
 		if (count($this->vars['flashmails']) > 1)
 		{
