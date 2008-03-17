@@ -42,7 +42,8 @@ function flashmail_duplicate_unreadlist() {
 	//plus au même endroit.
 	document.getElementById('flashmail_headerbox_unreadlist').innerHTML = document.getElementById('flashmail_headerbox_unreadlist_TMP').innerHTML;
 	if (document.getElementById('flashmail_headerbox_unreadlist_TMP').innerHTML.length < 10) {
-		document.getElementById('flashmail_headerbox_unreadlist').className = "flashmail dontshow";
+		document.getElementById('flashmail_headerbox_unreadlist').className = "flashmail";
+        document.getElementById('flashmail_headerbox_unreadlist').style.display = 'none';
 	}
 }
 
