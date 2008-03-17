@@ -1,6 +1,6 @@
 <div class="write">
-	<form action="{kurl app="flashmail" page="send"}" method="POST" id="flashmail_live_form" onsubmit="document.getElementById('flashmail_headerbox_answer').className='dontshow'; return submit_flashmail_form ('flashmail_live_form', 'flashmail_headerbox_full'); return true;">
-		<div class="close"><a href="{kurl page="flashmail"}" onclick="document.getElementById('flashmail_headerbox_answer').className='dontshow'; return false;">##CLOSE##</a></div>
+	<form action="{kurl app="flashmail" page="send"}" method="POST" id="flashmail_live_form" onsubmit="Effect.Fade('flashmail_headerbox_answer'); return submit_flashmail_form ('flashmail_live_form', 'flashmail_headerbox_full'); return true;">
+		<div class="close"><a href="{kurl page="flashmail"}" onclick="Effect.Fade('flashmail_headerbox_answer'); return false;">##CLOSE##</a></div>
 
 {if isset($flashmail)}
 		<input type="hidden" name="omsgid" value="{$flashmail->getId()}" />
@@ -14,7 +14,7 @@
 {elseif isset($user)}
 		<input type="hidden" name="omsgid" value="" />
 		<input type="hidden" name="to_user_id" value="{$user->getId()}" />
-<div class="close"><a href="{kurl page="flashmail"}" onclick="document.getElementById('flashmail_headerbox_answer').className='dontshow'; return false;">##CLOSE##</a></div>
+<div class="close"><a href="{kurl page="flashmail"}" onclick="Effect.Fade('flashmail_headerbox_answer'); return false;">##CLOSE##</a></div>
 		<div class="to">
 			##TO## :
 			<a href="{kurl app="annuaire" username=$user->getLogin()}" class="user">{if ($user->getSurname() != "")}{$user->getSurname()}{elseif ($user->getFirstname() != "")}{$user->getFirstname()}{else}{$user->getLogin()}{/if}</a>

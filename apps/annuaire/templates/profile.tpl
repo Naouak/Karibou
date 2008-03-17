@@ -32,7 +32,7 @@
 	
 	{if !$noflashmail}
 	<div class="sendflashmaillink">
-		<a href="{kurl app="flashmail" page="writeto" userid=$user->getId()}" onclick="new Ajax.Updater('flashmail_headerbox_answer', '{kurl app="flashmail" page="headerbox_writeto" userid=$user->getId()}',{literal} {asynchronous:true, evalScripts:true}{/literal}); document.getElementById('flashmail_headerbox_answer').className='show'; return false;">##SEND_FLASHMAIL##</a>
+		<a href="{kurl app="flashmail" page="writeto" userid=$user->getId()}" onclick="new Ajax.Updater('flashmail_headerbox_answer', '{kurl app="flashmail" page="headerbox_writeto" userid=$user->getId()}',{literal} {asynchronous:true, evalScripts:true}{/literal}); Effect.Appear('flashmail_headerbox_answer'); return false;">##SEND_FLASHMAIL##</a>
 	</div>
 	{/if}
 	{if ($addresses|@count>0)}	
