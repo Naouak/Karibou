@@ -46,19 +46,9 @@ function flashmail_duplicate_unreadlist() {
 	}
 }
 
-	// ]]>
-	</script>
-
-	<script type="text/javascript" language="javascript">
-	// <![CDATA[
-		setInterval("flashmail_headerbox_update()", 40000);
-	// ]]>
-	</script>
+	setInterval("flashmail_headerbox_update()", 40000);
 	
-	
-	<script type="text/javascript" language="javascript">
-	// <![CDATA[
-	function submit_flashmail_form(form_id, content_id)
+    function submit_flashmail_form(form_id, content_id)
 	{
 		var f = document.getElementById(form_id);
 

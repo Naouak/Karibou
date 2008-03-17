@@ -9,20 +9,9 @@ special classname... (sucks)*}
 		new Ajax.Updater('flashmail_headerbox_full', '{/literal} {kurl app="flashmail" page="headerbox_content"}{literal} ', {asynchronous:true, evalScripts:true});
 		return false;
 	}
-{/literal}
-	// ]]>
-	</script>
-
-	<script type="text/javascript" language="javascript">
-	// <![CDATA[
-		setInterval("flashmail_headerbox_update()", 40000);
-	// ]]>
-	</script>
+    
+    setInterval("flashmail_headerbox_update()", 40000);
 	
-	
-	<script type="text/javascript" language="javascript">
-	// <![CDATA[
-{literal}
 	function submit_flashmail_form(form_id, content_id)
 	{
 		var f = document.getElementById(form_id);
