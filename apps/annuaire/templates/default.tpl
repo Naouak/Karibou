@@ -14,4 +14,8 @@
 	<p>
 {include file="_searchresults.tpl"}
 	</p>
+	
+		<p>
+{include file="grouptree.tpl"}
+	</p>
 </div>

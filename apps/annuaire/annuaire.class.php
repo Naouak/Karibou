@@ -20,6 +20,9 @@ class Annuaire extends Model
 		$menuApp = $this->appList->getApp($this->appname);
 		$menuApp->addView("menu", "header_menu", array("page" => "home") );
 		
+		$groups = $this->userFactory->getGroups();
+		$this->assign('grouptree', $groups->getTree() );
+		
 		if( $this->currentUser->isLogged() )
 		{
 			$this->assign('currentuser_login', $this->currentUser->getLogin() );
