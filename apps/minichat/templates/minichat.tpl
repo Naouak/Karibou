@@ -51,35 +51,26 @@
         <input type="submit" value="##MINICHAT_SEND##" class="button" />
     </form>
     {/if}
-{*
-    <p>
-    <a href="{kurl page=""}" {*onclick="new Ajax.Updater('minichat_live', '{kurl app="minichat" page="content"}', {literal}{asynchronous:true, evalScripts:true}{/literal}); return false;"*}{*>##CURRENTCHAT##</a>
-     -  
-    ##LASTCHAT## :
-    {section name=p loop=$pages}
-        {if not $smarty.section.p.first}
-         |
-        {/if}
-        <a href="{kurl pagenum="$pages[p]"}"{* onclick="new Ajax.Updater('minichat_live', '{if isset($pages[p]) && $pages[p] != ""}{kurl app="minichat" page="content" pagenum=$pages[p]}{else}{kurl app="minichat" page="content"}{/if}', {literal}{asynchronous:true, evalScripts:true}{/literal}); return false;"*}{*>{$pages[p]}</a>
-    {/section}
-    </p>*}
+    <br /><br />
+    <h2>##CHOOSE_DATE##</h2>
+        <br />
         <div id="track1" style="width:90%;background-color:#aaa;height:5px;">
             <div id="handle1" style="width:5px;height:10px;background-color:#f00;cursor:move;"> </div>
         </div>
-        <a id="sliderDate" href="{kurl day="0"}">Current page</a>
+        <a id="sliderDate" href="minichat/day-{$maxDate}">##TODAY##</a>
 {literal}
 <script>
     var slider = new Control.Slider('handle1','track1', {minimum:{/literal}{$minDate}, maximum:{$maxDate}{literal}, increment:86400000, alignX: -5, alignY: -5});
-    var delta = {/literal}{$maxDate} - {$minDate}; {literal}
+    var delta = {/literal}{$minDate} - {$maxDate}; {literal}
     slider.options.onChange = function (value) {
-        date = new Date(1000 * (value * delta + {/literal}{$minDate}{literal}));
-        document.getElementById("sliderDate").innerHTML = date.toString();
+        date = new Date(1000 * (value * delta + {/literal}{$maxDate}{literal}));
+        document.getElementById("sliderDate").innerHTML = date.toLocaleDateString();
     };
     slider.options.onSlide = function (value) {
-        date = new Date(1000 * (value * delta + {/literal}{$minDate}{literal}));
-        document.getElementById("sliderDate").innerHTML = date.toString();
+        date = new Date(1000 * (value * delta + {/literal}{$maxDate}{literal}));
+        document.getElementById("sliderDate").innerHTML = date.toLocaleDateString();
         {/literal}
-        document.getElementById("sliderDate").href = "minichat/day-" + parseInt(value * delta + {$minDate});
+        document.getElementById("sliderDate").href = "minichat/day-" + parseInt(value * delta + {$maxDate});
         {literal}
     };
 </script>

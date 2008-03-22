@@ -23,3 +23,9 @@ msgstr "Voir l'historique"
 
 msgid "NUMBEROFLINES"
 msgstr "Nombre de lignes"
+
+msgid "CHOOSE_DATE"
+msgstr "Date à afficher"
+
+msgid "TODAY"
+msgstr "Aujourd'hui"
