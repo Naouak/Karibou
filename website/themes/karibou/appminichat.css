@@ -63,6 +63,10 @@
 	padding: 1px;
 }
 
+.minichat input.minichatMessage {
+	width: 90%;
+}
+
 .minichat input.button {
 	border: 2px solid #cfcfcf;
 	background-color: #efefef;
