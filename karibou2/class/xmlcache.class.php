@@ -201,7 +201,7 @@ class XMLCache
 		}
 		
 		if ($protocol == "https")
-			$fp = fsockopen("ssl://" . $serverName, 443, $errno, $errstr, 2);
+			$fp = fsockopen("tls://" . $serverName, 443, $errno, $errstr, 2);
 		else
 			$fp = fsockopen($serverName, 80, $errno, $errstr, 2);
 		if (!$fp)
