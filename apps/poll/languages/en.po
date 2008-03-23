@@ -12,3 +12,6 @@ msgstr ""
 
 msgid "POLL"
 msgstr "Poll"
+
+msgid "VOTES"
+msgstr "Votes"

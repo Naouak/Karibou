@@ -71,7 +71,7 @@ class Poll extends Model
             } else {
                 // Get the results
                 try {
-                    $results = $this->db->query("SELECT pa.answer AS answer, COUNT(pv.id) AS votes FROM poll_votes pv, poll_answers pa WHERE pa.id = pv.answer AND pa.poll=1 GROUP BY pv.answer");
+                    $results = $this->db->query("SELECT pa.answer AS answer, COUNT(pv.id) AS votes FROM poll_answers pa LEFT JOIN poll_votes pv ON pv.answer = pa.id WHERE pa.poll=$pollID GROUP BY pa.id");
                 } catch (PDOException $e) {
                     Debug::kill($e->getMessage());
                 }

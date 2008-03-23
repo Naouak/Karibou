@@ -6,5 +6,5 @@
 <span style="width: {math equation="x*100/y" x=$voteResult y=$countVotes format="%.0f"}%; background-color: #BAEDFE; position: absolute">{math equation="x*100/y" x=$voteResult y=$countVotes format="%.2f"}%</span><br />
 {/foreach}
 </ul>
-<i>{$countVotes} votes</i>
+<i>{$countVotes} ##VOTES##</i>
 </p>
