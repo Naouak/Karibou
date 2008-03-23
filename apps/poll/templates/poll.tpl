@@ -1,4 +1,9 @@
 <h3 class="handle">##POLL##</h3>
+{if $canVote==false}
+<script>
+new Ajax.PeriodicalUpdater('poll_votes', '{kurl app="poll" page="miniVote"}', {ldelim}frequency: 60, decay: 1.5{rdelim});
+</script>
+{/if}
 <span id="poll_votes">
 {if $canVote}
 <p>
