@@ -39,7 +39,7 @@
 	<script type="text/javascript" language="javascript">
 	// <![CDATA[
 
-setInterval("new Ajax.Updater('minichat_live', '{kurl app="minichat" page="content" pagenum=$pagenum maxlines=$maxlines}', {literal}{asynchronous:true, evalScripts:true}{/literal});", {$config.refresh.small});
+        new Ajax.PeriodicalUpdater('minichat_live', '{kurl app="minichat" page="content" pagenum=$pagenum maxlines=$maxlines}', {ldelim}asynchronous:true, evalScripts:true, frequency:{$config.refresh.small}{rdelim});
 
 	// ]]>
 	</script>
