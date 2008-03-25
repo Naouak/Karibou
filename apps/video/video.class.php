@@ -35,7 +35,7 @@ class Video extends Model
 			if ($file) {
 				while (!feof($file)) {
 					$line = fgets($file, 1024);
-					if (eregi ("<link rel=\"video_src\" href=\"http://www.dailymotion.com/swf/(.*)\" />", $line, $out)) {
+					if (preg_match ("<link rel=\"video_src\" href=\"http://www.dailymotion.com/swf/([^\?]*)(.*)?\" />", $line, $out) {
 						$video = $out[1];
 						break;
 					}
