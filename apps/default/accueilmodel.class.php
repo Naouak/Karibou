@@ -40,12 +40,18 @@ class AccueilModel extends Model
 			$c1_apps = array();
 			$c1_apps[] = $miniapps->getNewApp('login');
 			$c1_apps[] = $miniapps->getNewApp('daytof');
+			if( $this->currentUser->isLogged() )
+			{
+				$c1_apps[] = $miniapps->getNewApp('ilsontdit');
+				$c1_apps[] = $miniapps->getNewApp('myschoolnotes');
+			}
 			$containers->setApps( $c1, $c1_apps) ;
 
 			$c2_apps = array();
 			if( $this->currentUser->isLogged() )
 			{
 				$c2_apps[] = $miniapps->getNewApp('mail');
+				$c2_apps[] = $miniapps->getNewApp('pool');
 			}
 			else $c2_apps[] = $miniapps->getNewApp('video');
 		
@@ -63,6 +69,7 @@ class AccueilModel extends Model
 			$c3_apps[] = $miniapps->getNewApp('onlineusers');
 			$c3_apps[] = $miniapps->getNewApp('bday');
 			$c3_apps[] = $miniapps->getNewApp('dday');
+			$c3_apps[] = $miniapps->getNewApp('citation');
 			$containers->setApps( $c3, $c3_apps) ;
 
 
