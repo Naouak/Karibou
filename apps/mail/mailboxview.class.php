@@ -40,9 +40,10 @@ class MailboxView extends Model
 		if( !empty($this->args['mailbox']) )
 		{
             $selectedMailbox = $this->args['mailbox'];
-            $this->assign('mailbox', $selectedMailbox);
         }
-        $mailbox = new Mailbox($server, $username, $pass, $this->args['mailbox']) ;
+        $this->assign('mailbox', $selectedMailbox);
+        
+        $mailbox = new Mailbox($server, $username, $pass, $selectedMailbox) ;
         if (!$mailbox->connected()) {
             $username .= $GLOBALS['config']['mail']['post_username'];
             $mailbox = new Mailbox($server, $username, $pass );

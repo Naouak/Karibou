@@ -47,6 +47,7 @@ class Mailbox
 			{
 				$this->connected = true;
 			}
+            imap_errors();
 		}
 	}
 	
