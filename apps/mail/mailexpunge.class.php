@@ -27,8 +27,12 @@ class MailExpunge extends FormModel
 			
 			$config = $this->getConfig();
 			
-			$username = $user->getLogin().$GLOBALS['config']['login']['post_username'];
-			$server = $GLOBALS['config']['login']['server'];
+            if (isset($_SESSION['user_mail_login'])) {
+                $username = $_SESSION['user_mail_login'];
+            } else {
+                $username = $user->getLogin();
+            }
+			$server = $GLOBALS['config']['mail']['server'];
 			
 			$pass = $keychain->get('session_password');
 			

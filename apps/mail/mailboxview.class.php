@@ -29,22 +29,27 @@ class MailboxView extends Model
 		$config = $this->getConfig();
 		
 		$pass = $keychain->get('session_password');
-		$username = $user->getLogin().$GLOBALS['config']['login']['post_username'];
-		$server = $GLOBALS['config']['login']['server'];
+        if (isset($_SESSION['user_mail_login'])) {
+            $username = $_SESSION['user_mail_login'];
+        } else {
+            $username = $user->getLogin();
+        }
+		$server = $GLOBALS['config']['mail']['server'];
 		
+        $selectedMailbox = "INBOX";
 		if( !empty($this->args['mailbox']) )
 		{
-			$mailbox = new Mailbox($server, $username, $pass, $this->args['mailbox']) ;
-			$this->assign('mailbox', $this->args['mailbox']);
-
-		}
-		else
-		{
-			$this->assign('mailbox', 'INBOX');
-			$mailbox = new Mailbox($server, $username, $pass, "INBOX") ;
-		}
+            $selectedMailbox = $this->args['mailbox'];
+            $this->assign('mailbox', $selectedMailbox);
+        }
+        $mailbox = new Mailbox($server, $username, $pass, $this->args['mailbox']) ;
+        if (!$mailbox->connected()) {
+            $username .= $GLOBALS['config']['mail']['post_username'];
+            $mailbox = new Mailbox($server, $username, $pass );
+        }
 		if( $mailbox->connected() )
 		{
+            $_SESSION['user_mail_login'] = $username;
 			$this->assign('loggedin', true);
 			$this->assign('quota', $mailbox->getQuota() );
 			$this->assign('mailboxes', $mailbox->getMailboxes() );

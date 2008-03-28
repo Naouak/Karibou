@@ -22,13 +22,22 @@ class MiniMail extends Model
 			return;
 		}
 		$pass = $keychain->get('session_password');
-		$username = $user->getLogin().$GLOBALS['config']['login']['post_username'];
-		$server = $GLOBALS['config']['login']['server'];
+        if (isset($_SESSION['user_mail_login'])) {
+            $username = $_SESSION['user_mail_login'];
+        } else {
+		    $username = $user->getLogin();
+        }
+		$server = $GLOBALS['config']['mail']['server'];
 
 		$mailbox = new Mailbox($server, $username, $pass );
+        if (!$mailbox->connected()) {
+            $username .= $GLOBALS['config']['mail']['post_username'];
+            $mailbox = new Mailbox($server, $username, $pass );
+        }
 		$mailbox->setPerPage(10);
 		if( $mailbox->connected() )
 		{
+            $_SESSION['user_mail_login'] = $username;
 			$this->assign('quota', $mailbox->getQuota() );
 			$this->assign('messagecount', $mailbox->getMessageCount());
 			$h = $mailbox->getHeaders(1);
