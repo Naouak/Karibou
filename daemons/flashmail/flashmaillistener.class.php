@@ -23,14 +23,7 @@ class FlashMailListener extends Listener
 		{
 			if ( !isset($GLOBALS['config']['noflashmail']) || (isset($GLOBALS['config']['noflashmail']) && $GLOBALS['config']['noflashmail'] !== TRUE))
 			{
-				$flashmailFactory = new FlashMailFactory($this->db, $user, $this->userFactory, FALSE);
-
 				$flashmail = $this->appList->getApp('flashmail');
-				if ($flashmailFactory->checkNew())
-				{
-					//$flashmail->addView("popupscript", "html_head");
-					//$flashmail->addView("headerbox", "page_content_start");
-				}
 				$flashmail->addView("account_headerbox",	"footer_account_start");
 				$flashmail->addView("unreadlist",			"flashmail_unreadlist");
 			}
