@@ -3,7 +3,7 @@
 <ul>
 {foreach key=answerText item=voteResult from=$results}
 <li>{$answerText}</li>
-<span style="width: {math equation="x*100/y" x=$voteResult y=$countVotes format="%.0f"}%; background-color: #BAEDFE; position: absolute">{math equation="x*100/y" x=$voteResult y=$countVotes format="%.2f"}%</span><br />
+<span style="width: {$voteResult*100/$countVotes|@round}%; background-color: #BAEDFE; position: absolute">{$voteResult*100/$countVotes|@round}%</span><br />
 {/foreach}
 </ul>
 <i>{$countVotes} ##VOTES##</i>
