@@ -18,11 +18,9 @@ class Birthday extends Model
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
 	
-		$appsdb = $GLOBALS['config']['bdd']['frameworkdb'];
+		$frameworkdb = $GLOBALS['config']['bdd']['frameworkdb'];
 
-		$today = date("m-d");
-
-		$query = "SELECT u.login,p.birthday from ".$appsdb.".profile p, ".$appsdb.".users u where p.birthday like \"%".$today."\" and u.profile_id=p.id";	
+        $query = "SELECT u.login,p.birthday from ".$frameworkdb.".profile p, ".$frameworkdb.".users u where MONTH(p.birthday) = MONTH(CURRENT_DATE()) AND DAY(p.birthday) = DAY(CURRENT_DATE()) and u.profile_id=p.id";	
 		$bdayers = Array();
 		foreach($this->db->query($query) as $row){
 			$userobj = $this->userFactory->prepareUserFromLogin($row['login']);
