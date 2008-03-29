@@ -231,34 +231,7 @@ class KApp
 
 		$this->config = array();
 		if(isset($xml->config, $xml->config[0]->param))
-		{	
-		/*
-			foreach($xml->config[0]->param as $param)
-			{
-				if( isset($param['name'], $param['value']) )
-				{
-					$this->config[$param['name']] = $param['value'];
-				}
-				else if( isset($param['name']) )
-				{
-					$this->config[$param['name']] = array();
-					if( isset($param->value) )
-					{
-						foreach($param->value as $value)
-						{
-							if( isset($value['name']) )
-							{
-								$this->config[$param['name']][$value['name']] = $value->text;
-							}
-							else
-							{
-								$this->config[$param['name']][] = $value->text;
-							}
-						}
-					}
-				}
-			}
-		*/
+		{
 			$this->config = $this->readConfigTree($xml->config[0]);
 		}
 	}
