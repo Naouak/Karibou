@@ -16,8 +16,6 @@ class Dday extends Model
 {
     public function build()
     {
-	$today = date('Ymd');
-
 		if (isset($_POST, $_POST['ddayevent']) && ($this->currentUser->getID() > 0) ) 
 		{
 			$event = strip_tags($_POST['ddayevent']); //strip_tags = enleve code html
@@ -35,15 +33,7 @@ class Dday extends Model
 			
 		}
 
-
-        $app = $this->appList->getApp($this->appname);
-        $config = $app->getConfig();
-
-      
-        $sql = "SELECT *,ROUND((UNIX_TIMESTAMP(date)-UNIX_TIMESTAMP('".$today."'))/(60*60*24)) as JJ"
-	." FROM dday WHERE (date >= '".$today."')"
-	." ORDER BY date LIMIT 5";
- 
+        $sql = "SELECT *, (TO_DAYS(`date`) - TO_DAYS(CURRENT_DATE())) AS JJ FROM `dday` WHERE date >= CURRENT_DATE() ORDER BY date LIMIT 5";
         try
         {
             $stmt = $this->db->query($sql);
@@ -52,20 +42,15 @@ class Dday extends Model
         {
             Debug::kill($e->getMessage());
         }
-		
-
-	if($ddaylist = $stmt->fetchAll(PDO::FETCH_ASSOC))
-	{
-		$this->assign("ddaylist",$ddaylist);
-	}
-	else
-	{
-		$this->assign("DDempty","Err empty");
-	}
-
-
-
-		
+        
+        if($ddaylist = $stmt->fetchAll(PDO::FETCH_ASSOC))
+        {
+            $this->assign("ddaylist",$ddaylist);
+        }
+        else
+        {
+            $this->assign("DDempty","Err empty");
+        }
     }
 }
 
