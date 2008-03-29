@@ -1,0 +1,23 @@
+<app>
+<config>
+	<param name="max">
+	<value name="time2live">21600</value>
+	</param>
+</config>
+   
+    <permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+    <load class="vcalendar" file="iCalcreator.class.php" />
+    <load class="iCalExport" file="iCalExport.class.php" />
+    
+    
+    <footer app="footer" view="default" />
+	
+	<view name="big" class="iCalExport" template="big.tpl" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<page view="big" />
+</app>
+	
