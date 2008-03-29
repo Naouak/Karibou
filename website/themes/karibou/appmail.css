@@ -78,7 +78,8 @@ td.date {
 	padding: 10px;
 	background-color: #fafafa;
 	border: 1px solid #999;
-	width: 660px;
+	position: relative;
+	right: 10px;
 }
 
 .headbox label {
@@ -117,7 +118,8 @@ td.date {
 	padding: 10px;
 	background-color: #fefefe;
 	border: 1px solid #999;
-	width: 660px;
+	position: relative;
+	right: 10px;
 	overflow: auto;
 }
 .bodybox pre{
