@@ -64,10 +64,9 @@ class MCDefault extends Model
 		$this->assign("pagenum", $page);
 
 		$minichatMessageList = new MinichatMessageList($this->db, $this->userFactory);
-        $min_date = $minichatMessageList->minDate();
-        $max_date = $minichatMessageList->maxDate();
-        $this->assign("minDate", $min_date);
-        $this->assign("maxDate", $max_date);
+        $dateRange = $minichatMessageList->dateRange();
+        $this->assign("minDate", $dateRange[0]);
+        $this->assign("maxDate", $dateRange[1]);
 		$page_count = ceil($minichatMessageList->count() / $max);
 		
 		if ($page_count > 1)
@@ -79,7 +78,10 @@ class MCDefault extends Model
 		if ((isset($this->args["day"])) && ($this->args["day"] != "")) {
             $this->assign("post", $minichatMessageList->getMessagesFromDate($this->args["day"]));
         } else {
-            $this->assign("post", $minichatMessageList->getMessages($max, $page));
+            if (isset($max) && isset($page))
+                $this->assign("post", $minichatMessageList->getMessages($max, $page));
+            else
+                $this->assign("post", $minichatMessageList->getMessagesFromDate(time()));
         }
 
 		$this->assign('permission', $this->permission);

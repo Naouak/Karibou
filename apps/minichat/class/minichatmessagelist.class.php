@@ -98,30 +98,16 @@ class MiniChatMessageList
         return $post;
     }
     
-    function minDate () {
-        $req = "SELECT UNIX_TIMESTAMP(DATE(MIN(time))) as mdate FROM minichat;";
+    function dateRange () {
+        $req = "SELECT UNIX_TIMESTAMP(DATE(MIN(time))) as minDate, UNIX_TIMESTAMP(DATE(MAX(time))) as maxDate FROM minichat;";
         try {
             $stmt = $this->db->query($req);
         } catch (PDOException $e) {
             Debug::kill($e->getMessage());
         }
         $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $row[0]["mdate"];
+        return array($row[0]["minDate"], $row[0]["maxDate"]);
     }
-    
-    function maxDate () {
-        $req = "SELECT UNIX_TIMESTAMP(DATE(MAX(time))) as mdate FROM minichat;";
-        try {
-            $stmt = $this->db->query($req);
-        } catch (PDOException $e) {
-            Debug::kill($e->getMessage());
-        }
-        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $row[0]["mdate"];
-    }
-    
-    
-	
 }
 
 ?>
