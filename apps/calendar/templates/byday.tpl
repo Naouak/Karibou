@@ -68,6 +68,7 @@ function close_editinline_popup()
 		<li style="clear: both;">
 			<div class="colorsquare" style="background-color: #{$cal->getColor()};"></div>
 			<div style="float: left;">{$cal->getName()}</div>
+			<div style="float: right;">{if ($cal->getType() == "public")}<a href=icalexport/?id={$cal->getid()}>Export</a>{/if}</div>
 			<br style="clear: both;" />
 		</li>
 	{/foreach}
