@@ -85,10 +85,8 @@ class XMLCache
 		else
 		{
 			$xml0 = unserialize(file_get_contents($this->cachefile));
-			//include($this->cachefile);
 		}
 		$this->xml = $xml0;
-		//$this->xml = unserialize(file_get_contents($this->cachefile));
 		ExecutionTimer::getRef()->stop("XMLCache Load");
 		return TRUE;
 	}
@@ -124,28 +122,6 @@ class XMLCache
 		return $txt;
 	}
 	
-	/**
-	 * Old cache function
-	 */
-	function getPHPCodeText($simplexml, $level=0)
-	{
-		$code = $this->getIndent($level).'$xml'.$level.' = new XMLElement();'."\n";
-		$code .= $this->getIndent($level).'$xml'.$level.'->addText(\''.$this->cleantxt((string)$simplexml).'\');'."\n";
-		
-		foreach($simplexml->attributes() as $name => $value)
-		{
-			$code .= $this->getIndent($level).'$xml'.$level.'->addAttribute(\''.$name.'\', \''.$this->cleantxt((string)$value).'\');'."\n";
-		}
-		
-		foreach($simplexml->children() as $name => $node)
-		{
-			$code .= $this->getPHPCode($node, $level+1);
-			$code .= $this->getIndent($level).'$xml'.$level.'->addChild(\''.$name.'\', $xml'.($level+1).' );'."\n";
-		}
-		
-		return $code;
-	}
-
 	function getXMLElement($simplexml)
 	{
 		$xml = new XMLElement();
