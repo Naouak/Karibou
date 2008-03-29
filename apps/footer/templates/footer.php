@@ -60,8 +60,6 @@ if (isset($this->hookManager->hooks['header_menu'])) {
 
 			<? /* DEBUT : Module de recherche */ ?>
 			<?
-				//Problème avec les permissions ? On va juste vérifier que l'utilisateur est connecté
-				//if ($this->vars['permission']->get('search') > _NO_ACCESS_)
 				if ($user->isLogged())
 				{
 			?>
@@ -83,16 +81,6 @@ if (isset($this->hookManager->hooks['header_menu'])) {
 								<li id="linkOrganize"><h3><a href="#menuOrganize" onclick="ShowAppsLinks('menuOrganize'); return false;"><span><?=_('NAV_ORGANISE');?></span></a></h3></li>
 								<li id="linkShare"><h3><a href="#menuShare" onclick="ShowAppsLinks('menuShare'); return false;"><span><?=_('NAV_SHARE');?></span></a></h3></li>
 								<li id="linkJobs"><h3><a href="#menuJobs" onclick="ShowAppsLinks('menuJobs'); return false;"><span><?=_('NAV_JOB');?></span></a></h3></li>
-								<?
-								/*
-									if ($this->vars['permission']->get('gettext') > _NO_ACCESS_)
-									{
-								?>
-								<li id="linkAdmin"><h3><a href="#" onclick="ShowAppsLinks('menuAdmin'); return false;"><span>Administrer</span></a></h3></li>
-								<?
-									}
-								*/
-								?>
 						</ul>
 				</div>
 

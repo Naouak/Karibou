@@ -19,10 +19,6 @@ class FooterModel extends Model
 		$this->assign("hookManager", $this->hookManager);
 		$currentUser = $this->userFactory->getCurrentUser();
 		$this->assign("currentUser", $currentUser);
-		
-		$permissionsFactory = new PermissionsFactory($this->db);
-		$this->assign('permission', $permissionsFactory->getPermissions($this->currentUser));
-		unset ($permissionsFactory);
 	}
 }
 
