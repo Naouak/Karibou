@@ -15,7 +15,7 @@ class FlashMailHeaderBox extends Model
 {
 	function build()
 	{
-		$flashmailFactory = new FlashMailFactory($this->db, $this->currentUser, $this->userFactory);
+		$flashmailFactory = new FlashMailFactory($this->db, $this->currentUser, $this->userFactory, false);
 
 		$this->assign("flashmails", $flashmailFactory->returnUnread());
 
