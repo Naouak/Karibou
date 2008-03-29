@@ -61,7 +61,6 @@ class OnlineUsersList extends Model
 	
 			$nbonlineusers= sizeof($onlineusers);
 			$this->assign("nbonlineusers", $nbonlineusers);
-			$this->userFactory->setUserList();
 			$this->assign("onlineusers", $onlineusers);
 			
 			$this->assign("islogged", $this->currentUser->isLogged());
