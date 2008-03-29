@@ -1,9 +1,18 @@
 	<script type="text/javascript" language="javascript">
 	// <![CDATA[
 
-setInterval("new Ajax.Updater('onlineusers_live', '{kurl app="onlineusers" page="list"}', {literal}{asynchronous:true, evalScripts:true}{/literal});", 10000);
-setInterval("new Ajax.Updater('nbronlineusers_live', '{kurl app="onlineusers" page="nbrusersconnected"}', {literal}{asynchronous:true, evalScripts:true}{/literal});", 10000);
-{literal}
+new Ajax.PeriodicalUpdater('onlineusers_live', '{kurl app="onlineusers" page="list"}',  {literal}
+                            {evalScripts: true, frequency: 10, 
+                            onSuccess: function (transport) {
+                                var msg = "##NOBODYONLINE##";
+                                var numUsers = transport.responseText.split('class="userlink"').length - 1;
+                                if (numUsers > 1)
+                                    msg = numUsers + " ##ONLINEUSERS##";
+                                else if (numUsers == 1)
+                                    msg = "##ONEONLINEUSER##";
+                                $("nbronlineusers_live").innerHTML = msg;
+                            }});
+
 function setUserState() {
 {/literal}
 	var url = '{kurl app="onlineusers" page="setuserstate"}';
