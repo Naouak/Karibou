@@ -87,6 +87,7 @@ class User
 			if(isset($tab['email'])) $this->email     = $tab['email'];
 			//if(isset($tab['picture'])) $this->picture     = $tab['picture'];
 			if(isset($tab['profile_id'])) $this->profile_id     = $tab['profile_id'];
+            if(isset($tab['groups'])) $this->groups     = $tab['groups'];
 	    }
 	}
 	

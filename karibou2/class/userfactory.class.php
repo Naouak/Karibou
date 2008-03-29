@@ -286,14 +286,7 @@ class UserFactory
 		if(count($this->whereUserIdArray) > 0)
 		{
 			if(!$first) $where .= ' OR';
-			$where .= ' u.id IN (';		
-			$where .= '0';
-
-			foreach($this->whereUserIdArray as $userId)
-			{
-				$where .= ', '.$userId;
-			}
-			$where .= ")";
+			$where .= ' u.id IN (' . implode(", ", $this->whereUserIdArray) .')';		
 			$first = false;
 		}
 
@@ -311,8 +304,41 @@ class UserFactory
 			$first = false;
 		}
 		
+        // Pre-query the groups, it's a small optimization, but it can seriously reduce the number of queries if it's done once and for all
+        $groups = array();
+        if(count($this->whereUserIdArray) > 0)
+        {
+            $groupsQuery = "SELECT
+                    g.* ,
+                    gu.role,
+                    gu.user_id
+                    FROM
+                    ".$a.".group_user gu,
+                    ".$a.".groups g
+                    WHERE
+                    g.id=gu.group_id AND
+                    gu.user_id IN (" . implode(", ", $this->whereUserIdArray) . ")
+                    ORDER BY gu.user_id";
+            $currentUserId = 0;
+            $currentGroups = array();
+            foreach ($this->db->query($groupsQuery) as $groupTab)
+            {
+                if ($groupTab["user_id"] != $currentUserId) 
+                {
+                    if ($currentUserId > 0)
+                        $groups[$currentUserId] = $currentGroups;
+                    $currentGroups = array();
+                    $currentUserId = $groupTab["user_id"];
+                }
+                $group = new Group($groupTab);
+                $group->role = $groupTab["role"];
+                $currentGroups[] = $group;
+            }
+        }
 		foreach( $this->db->query($qry.$where) as $tab )
 		{
+            if (array_key_exists($tab["id"], $groups))
+                $tab["groups"] = $groups[$tab["id"]];
 			if( isset($this->usersArrayById[$tab["id"]]) )
 			{
 				$user = $this->usersArrayById[$tab["id"]];
