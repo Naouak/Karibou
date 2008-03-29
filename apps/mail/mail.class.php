@@ -20,7 +20,7 @@ class Mail extends Model
 		
 		$this->assign('connections', $mailconnections);
 			
-		$this->assign('host', $GLOBALS['config']['login']['server']);
+		$this->assign('host', $GLOBALS['config']['mail']['server']);
 		$this->assign('login', $user->getEmail());
 
 		$krypt = new Krypt();
