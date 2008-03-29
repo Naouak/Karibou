@@ -164,14 +164,7 @@ class FlashMailFactory
 	
 	public function checkNew()
 	{
-		if ($this->countNew() > 0)
-		{
-			return TRUE;
-		}
-		else
-		{
-			return FALSE;
-		}
+        return ($this->countNew() > 0);
 	}
 }
 
