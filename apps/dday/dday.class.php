@@ -23,7 +23,7 @@ class Dday extends Model
 			{
 				//control sur date:
 				$ddaydate = str_replace("-","",$_POST['ddaydate']);
-				if($ddaydate >= $today)
+                if($ddaydate >= date('Ymd'))
 				{
 					//Requete d'insertion
 					$sql = "INSERT INTO dday (user_id, event, date) VALUES ('".$this->currentUser->getID()."','".$event."', '".$ddaydate."');";
