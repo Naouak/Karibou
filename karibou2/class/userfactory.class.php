@@ -334,6 +334,7 @@ class UserFactory
                 $group->role = $groupTab["role"];
                 $currentGroups[] = $group;
             }
+            $groups[$currentUserId] = $currentGroups;
         }
 		foreach( $this->db->query($qry.$where) as $tab )
 		{
