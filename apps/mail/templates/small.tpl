@@ -1,6 +1,6 @@
 <h3 class="handle">Mail</h3>
 <div class="mail">
-	{if $messagecount}
+	{if $messagecount >= 0}
 		<div class="messagesnb">
 			<a href="/mail/">{$messagecount} messages in INBOX</a><br />
 		</div>
