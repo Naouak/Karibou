@@ -12,10 +12,10 @@
 	</form>
 	
 	<p>
-{include file="_searchresults.tpl"}
-	</p>
-	
-		<p>
-{include file="grouptree.tpl"}
-	</p>
+{if !isset($userlist)}
+    {include file="grouptree.tpl"}
+{else}
+    {include file="_searchresults.tpl"}
+{/if}
+    </p>
 </div>
