@@ -71,3 +71,6 @@ msgstr "Remove selected e-mails"
 
 msgid "SELECT_ALL"
 msgstr "Select all"
+
+msgid "NO_SUBJECT"
+msgstr "No subject"

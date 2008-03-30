@@ -77,3 +77,6 @@ msgstr "Page précédente"
 
 msgid "next page"
 msgstr "Page suivante"
+
+msgid "NO_SUBJECT"
+msgstr "Pas de titre"

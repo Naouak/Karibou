@@ -34,7 +34,7 @@
 			</span>
 			<span>
 {if $header->answered} R {/if}
-				<a href="{kurl page='msg' mailbox=$mailbox uid=$header->uid}">{$header->subject|truncate:80}</a>
+				<a href="{kurl page='msg' mailbox=$mailbox uid=$header->uid}">{if $header->subject}{$header->subject|truncate:80}{else}##NO_SUBJECT##{/if}</a>
 			</span>
 			<span>
 				{$header->from|truncate:35}
