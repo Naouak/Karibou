@@ -23,6 +23,7 @@ class Birthday extends Model
             $bdayers[] = $user;
         }
         $this->assign('bdayers', $bdayers);
+        $this->assign("islogged", $this->currentUser->isLogged());
     }
 }
 
