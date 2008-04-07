@@ -11,7 +11,7 @@
 ClassLoader::add('AuthMYSQL', dirname(__FILE__).'/authMYSQL.class.php');
 ClassLoader::add('AuthLDAP', dirname(__FILE__).'/authLDAP.class.php');
 ClassLoader::add('AuthPAM', dirname(__FILE__).'/authPAM.class.php');
-
+ClassLoader::add('AuthKRB5', dirname(__FILE__).'/authKRB5.class.php');
 
 /**
  * Used to control the login and password of users
