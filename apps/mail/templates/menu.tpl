@@ -7,8 +7,8 @@
 {if $page == "compose"}
 	<li><strong>##COMPOSELINK##</strong></li>
 {else}
-	{*<li><a href="{kurl page='compose'}">##COMPOSELINK##</a></li>*}
-	<li><a href="{$karibou.config.mail.alternative_webmail}" target="_new">##COMPOSELINK##</a></li>
+	<li><a href="{kurl page='compose'}">##COMPOSELINK##</a></li>
+{*	<li><a href="{$karibou.config.mail.alternative_webmail}" target="_new">##COMPOSELINK##</a></li>*}
 {/if}
 
 {if ($page == "view") && (isset($article_id))}
