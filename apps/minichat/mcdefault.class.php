@@ -26,7 +26,7 @@ class MCDefault extends Model
 			{
 			$message = $_POST['post'];
 			}
-			if (isset($message))
+			if ((isset($message)) && (strlen(trim($message)) > 0))
 			{
 				$req_sql = "INSERT INTO minichat 
 					(time, id_auteur, post) VALUES

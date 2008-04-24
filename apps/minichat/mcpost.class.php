@@ -23,16 +23,18 @@ class MCPost extends FormModel
 			{
 			$message = $_GET['post'];
 			}
+			if (isset($message) && strlen(trim($message) > 0)) {
 				$req_sql = "INSERT INTO minichat (time, id_auteur, post) VALUES (NOW(), " .
 					 $this->currentUser->getID() . ", '" .
 					 $message . "')";
-			try
-			{
-				$this->db->exec($req_sql);
-			}
-			catch(PDOException $e)
-			{
-				Debug::kill($e->getMessage());
+				try
+				{
+					$this->db->exec($req_sql);
+				}
+				catch(PDOException $e)
+				{
+					Debug::kill($e->getMessage());
+				}
 			}
 		}
 	}
