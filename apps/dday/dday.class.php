@@ -30,7 +30,7 @@ class Dday extends Model
                 $ddaydate = str_replace("-", "", $_POST['ddaydate']);
                 if ($ddaydate >= date('Ymd'))
                 {
-                    $stmt = $this->db->prepare('INSERT INTO dday (user_id, event, date, desc) VALUES (:user, :event, :date, :desc)');
+                    $stmt = $this->db->prepare('INSERT INTO dday (user_id, event, date, `desc`) VALUES (:user, :event, :date, :desc)');
                     $stmt->bindValue(':user', $this->currentUser->getID());
                     $stmt->bindValue(':event', $event);
                     $stmt->bindValue(':date', $ddaydate);
