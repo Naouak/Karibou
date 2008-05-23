@@ -21,7 +21,7 @@
 	<medium id="video" app="video" view="mini" configview="miniconfig" />
 	<medium id ="bday" app="birthday" view="mini" />
 	<medium id ="geoloc" app="geoloc" view="mini" />
-	<medium id ="news" app="news" view="mini" />
+	<medium id="news" app="news" view="mini" configview="miniconfig" />
 	<medium id ="mail" app="mail" view="mini" />
 	<medium id ="fileshare" app="fileshare" view="mini" />
 	<medium id ="uwapp" app="uwapp" view="mini" configview="miniconfig" />
