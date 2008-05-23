@@ -23,7 +23,7 @@ class DayTof extends Model
 		//controle + creation repertoire img
 		if( ! is_dir( $tofdir ) )
 		{
-			mkdir( $tofdir );
+			mkdir( $tofdir, 0744, true);
 		}
 
 
