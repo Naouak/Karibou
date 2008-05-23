@@ -47,11 +47,16 @@ $config['netcv']['intranethost'] = "intranet.karibou.org";
 $config['netcv']['hostregexp'] = "/(.*)\.karibou\.org/";
 
 //Informations sur le mode d'authentification
-$config['login']['backend']			= "mysql";
-$config['login']['server']			= "localhost";
-$config['login']['server_username']	= "";
-$config['login']['server_password']	= "";
-$config['login']['server_schema']	= "annuaire";
+$config["login"]["loginBackends"] = array (
+    array(
+        "module"    => "mysql",
+        "notify"    => true,
+        "username"  => "##DBUSER##",
+        "password"  => "##DBPASS##",
+        "dsn"       => 'mysql:dbname='.$config['bdd']['frameworkdb'].';host=localhost',
+    ),
+);
+
 /*
 //Si utilisation du LDAP pour l'authentification
 $config['login']['backend'] = "imap";
