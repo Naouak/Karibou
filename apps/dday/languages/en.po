@@ -24,3 +24,9 @@ msgstr "Date YYYY-MM-DD"
 
 msgid "DDAYPERM"
 msgstr "Ask the permission"
+
+msgid "DDAYDESC"
+msgstr "Description"
+
+msgid "NODESC"
+msgstr "No description"
