@@ -47,28 +47,27 @@ class HomeMiniApps extends ObjectList
 	
 	function getConfig()
 	{
-		$xml = new XMLCache(KARIBOU_CACHE_DIR.'/default');
-		$xml->loadFile(dirname(__FILE__).'/miniapps.xml');
-		$apps = $xml->getXML();
-		
 		$config_apps = array();
 		
-		if( isset($apps->small) )
-		{
-			foreach( $apps->small as $a )
-			{
-				$a['size'] = 's';
-				$config_apps[$a['id']] = $a;
+		if ($dh = opendir(KARIBOU_APP_DIR)) {
+			while (($file = readdir($dh)) !== false) {
+				if (($file != ".") && ($file != "..") && is_dir(KARIBOU_APP_DIR . "/$file") && is_file(KARIBOU_APP_DIR . "/$file/$file.app")) {
+					$appFile = KARIBOU_APP_DIR . "/$file/$file.app";
+					$attributes = parse_ini_file($appFile);
+					if (isset($attributes["size"]) && isset($attributes["id"]) && isset($attributes["view"])) {
+						// This file is valid...
+						if ($attributes["size"] == "medium")
+							$attributes["size"] = "m";
+						else if ($attributes["size"] == "small")
+							$attributes["size"] = "s";
+						$attributes["app"] = $file;
+						$config_apps[$attributes["id"]] = $attributes;
+					}
+				}
 			}
+			closedir($dh);
 		}
-		if( isset($apps->medium) )
-		{
-			foreach( $apps->medium as $a )
-			{
-				$a['size'] = 'm';
-				$config_apps[$a['id']] = $a ;
-			}
-		}
+		
 		return $config_apps;
 	}
 	
