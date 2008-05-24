@@ -1,3 +1,3 @@
 id = login
 size = small
-view = small
+view = mini
