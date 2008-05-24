@@ -16,7 +16,11 @@ class NewsMini extends Model
 		//Recherche de toutes les derniers articles non supprimés et de leurs originaux
 		if( isset($this->args['max']) )
 		{
-			$max = $this->args['max'];
+			$this->args['max'] = intval($this->args['max']);
+			if($this->args['max'] != 0)
+				$max = $this->args['max'];
+			else
+				$max = 5;
 		}
 		else
 		{
