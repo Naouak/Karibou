@@ -24,7 +24,6 @@
 	<view name="menu" class="DefaultMenu" template="menu.tpl" />
 
 	<view name="default" class="AccueilModel" template="accueil.tpl" />
-	<view name="edit" class="AccueilModel" template="edit.tpl" />
 	<view name="hookhead" class="AccueilHead" template="hookhead.tpl" />
 
 	<view name="miniappview" class="MiniAppView" template="miniappview.tpl" />
