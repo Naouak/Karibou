@@ -123,3 +123,5 @@ msgstr "Add a comment to article"
 msgid "NEWS_VIEW_ARCHIVES"
 msgstr "View archives"
 
+msgid "NUMBEROFNEWS"
+msgstr "Number of news on the page"
