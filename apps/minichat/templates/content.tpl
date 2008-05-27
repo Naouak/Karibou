@@ -11,7 +11,7 @@
         <li class="{cycle values="one,two"}">
             <span class="user">{userlink user=$m->getAuthorObject() showpicture=$showpicture}{*<a href="{kurl app='annuaire' username=$m->getAuthorLogin()}">{$m->getAuthor()}</a>*}</span>
             <span class="time"><acronym title="{$m->getDate()|date_format:"%A %d %B %Y @ %H:%M"}">{$m->getDate()|date_format:"%H:%M"}</acronym></span>
-            <span class="message">{$m->getPostXHTML()|wordwrap:34:" ":true}</span>
+            <span class="message">{$m->getPost()|wordwrap:34:" ":true}</span>
         </li>
         {/foreach}
 	</ul>

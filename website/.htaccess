@@ -1,6 +1,6 @@
 
 RewriteEngine On
-
+RewriteBase /~fenn-db/trunk/website
 RewriteRule ^themes/	-			[L]
 RewriteRule ^pub/	-				[L]
 RewriteRule ^.*$		index.php	[L]

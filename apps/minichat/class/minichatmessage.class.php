@@ -16,13 +16,15 @@ class MinichatMessage
 	protected $author;
 	protected $message;
 	protected $wiki;
+	protected $bbcode;
 
-	function __construct($time, $author, $message, $wiki)
+	function __construct($time, $author, $message, $wiki, $bbcode)
 	{
 		$this->time = $time;
 		$this->author = $author;
 		$this->message = $message;
 		$this->wiki = $wiki;
+		$this->bbcode = $bbcode;
 	}
 
 	function getAuthor()
@@ -46,7 +48,8 @@ class MinichatMessage
 
 	function getPost()
 	{
-		return $this->message;
+		$content = $this->bbcode->transform($this->message);
+		return $content;
 	}
 	
 	function getPostXHTML()

@@ -13,6 +13,7 @@ class MiniChatMessageList
 {
 	protected $db;
 	protected $wiki;
+	protected $bbcode;
 
 	function __construct(PDO $db, UserFactory $userFactory)
 	{
@@ -22,6 +23,10 @@ class MiniChatMessageList
 		/* Wiki Construct */
 		$this->wiki = new wiki2xhtmlBasic();
 		$this->wiki->wiki2xhtml();
+		
+		
+		/* BBCode Construct */
+		$this->bbcode = new MinichatBBCode();
 	
 	}
 	
@@ -43,23 +48,29 @@ class MiniChatMessageList
 	
 	function getMessages ($max, $page)
 	{
+		$max = (int) $max;
+		$page = (int) $page;
 
-		$req_sql = '
+		$req_sql = "
 			SELECT
 				UNIX_TIMESTAMP(time) as timestamp, id_auteur, post 
 			FROM
 				minichat
 			ORDER BY
-				time
-			DESC LIMIT '.$max.' OFFSET '.(($page-1)*$max);
+				time DESC
+			LIMIT :max OFFSET :offset";
 
 		$post = array ();
 		try
 		{
-			$stmt = $this->db->query($req_sql);
+			$stmt = $this->db->prepare($req_sql);
+			$stmt->bindValue(":max", $max, PDO::PARAM_INT);
+			$stmt->bindValue(":offset", (($page-1)*$max), PDO::PARAM_INT);
+			$stmt->execute();
 		}
 		catch( PDOException $e)
 		{
+			die($e->getMessage());
 			Debug::kill($e->getMessage());
 		}
 		while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) )
@@ -68,7 +79,8 @@ class MiniChatMessageList
 				$row['timestamp'], 
 				$this->userFactory->prepareUserFromId($row['id_auteur']), 
 				$row['post'],
-				$this->wiki);
+				$this->wiki,
+				$this->bbcode);
 			$post[] = $line;
 		}
 		$post = array_reverse($post);
