@@ -1,14 +1,19 @@
 <h3 class="handle">##DAYTOF_TITLE##</h3>
 
-{if $tof}
+<script language="javascript">
+var dayTofUrls = ['{kurl app="daytof" page="datof" tofnum="0"}', '{kurl app="daytof" page="datof" tofnum="1"}', '{kurl app="daytof" page="datof" tofnum="2"}'];
+var dayTofUrlIndex = 0;
+{literal}
+function updateDayTof () {
+	new Ajax.Updater('daTofContainer', dayTofUrls[dayTofUrlIndex]);
+	dayTofUrlIndex++;
+	if (dayTofUrlIndex >= dayTofUrls.length)
+	dayTofUrlIndex = 0;
+}
+new PeriodicalExecuter(function (pe) { updateDayTof(); }, 180);
+updateDayTof();
 
-<center>
-<a href="{$linktof}" target="_blank"><img src="{$tof}" alt=""></a>
-<br />
-{userlink user=$daytofauthor.object showpicture=$islogged} : {$daytofcomment|wordwrap:34:" ":true}  
-{/if}
-{if $erreur_daytof} 
-<br />	{$erreur_daytof}
-{/if}
-</center>
+{/literal}
+</script>
 
+<span id="daTofContainer"></span>
