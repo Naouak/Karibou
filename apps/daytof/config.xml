@@ -1,7 +1,10 @@
 <app>	
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 
+	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+	
 	<load class="DayTof" file="daytof.class.php" />
+	<load class="DaTof" file="datof.class.php" />
 	<load class="DayTofConfig" file="daytofconfig.class.php" />
 	
 	<header app="header" view="default" />
@@ -11,4 +14,16 @@
 	<view name="miniconfig" class="DayTofConfig" template="daytofconfig.tpl" />
 
 	<page name="upload" view="mini" />
+	
+	<view name="datof" class="DaTof" template="datof.tpl" />
+	
+	<page name="datof" view="datof">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+	<page name="datof" view="datof">
+		<option name="tofnum" class="NumberArgument" />
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
 </app>
