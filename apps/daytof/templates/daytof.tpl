@@ -10,7 +10,7 @@ function updateDayTof () {
 	if (dayTofUrlIndex >= dayTofUrls.length)
 	dayTofUrlIndex = 0;
 }
-new PeriodicalExecuter(function (pe) { updateDayTof(); }, 180);
+new PeriodicalExecuter(function (pe) { updateDayTof(); }, 30);
 updateDayTof();
 
 {/literal}
