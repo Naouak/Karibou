@@ -66,7 +66,6 @@ class Video extends Model
         }
         catch(PDOException $e)
         {
-        echo "aa";
             Debug::kill($e->getMessage());
         }
 
