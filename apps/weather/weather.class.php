@@ -17,10 +17,12 @@ class weather extends Model
 	public function build()
 	{
 		$picture_dir = KARIBOU_PUB_DIR.'/weather';
-		if (isset($this->args["city"])){
+		if (isset($this->args["city"]) && (strlen($this->args["city"]) > 0)){
 			$city_code = $this->args["city"];
-		}else{
-			$city_code = "FRXX00578";
+		} else {
+			$app = $this->appList->getApp($this->appname);
+			$config = $app->getConfig();
+			$city_code = $config["city"]["normal"];
 		}
 
 		$number_day = 3;

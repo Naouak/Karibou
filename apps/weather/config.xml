@@ -1,4 +1,10 @@
 <app>	
+        <config>
+                <param name="city">
+                        <value name="normal">FRXX0278</value>
+                </param>
+        </config>
+
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 
 	<load class="weather" file="weather.class.php" />
