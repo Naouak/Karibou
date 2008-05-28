@@ -103,7 +103,8 @@ class MiniChatMessageList
                                         $row['timestamp'], 
                                         $this->userFactory->prepareUserFromId($row['id_auteur']),
                                         $row['post'],
-                                        $this->wiki);
+                                        $this->wiki,
+					$this->bbcode);
             $post[] = $line;
         }
         $post = array_reverse($post);
