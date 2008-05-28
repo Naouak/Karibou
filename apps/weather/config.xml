@@ -3,6 +3,9 @@
                 <param name="city">
                         <value name="normal">FRXX0278</value>
                 </param>
+		<param name="number_day">
+			<value name="normal">3</value>
+                </param>
         </config>
 
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />

@@ -22,6 +22,6 @@
 		<option value = "FRXX0278">Villeneuve d'Ascq</option>
 </select><br />
 ##MSG_NEW_TOWN##<br />
-##CITY_CODE## : <input type="text" name="city" size="8" />
-<!--##NUMBEROFDAY## : <input type="text" name="number_day" /><br />-->
+##CITY_CODE## : <input type="text" name="city" size="8" /><br />
+##NUMBEROFDAY## : <input type="text" name="number_day" /><br />
 

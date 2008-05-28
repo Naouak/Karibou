@@ -25,7 +25,13 @@ class weather extends Model
 			$city_code = $config["city"]["normal"];
 		}
 
-		$number_day = 3;
+		if (isset($this->args["number_day"]) && (strlen($this->args["number_day"]) > 0)){
+			$number_day = $this->args["number_day"];
+		} else {
+			$app = $this->appList->getApp($this->appname);
+			$config = $app->getConfig();
+			$city_code = $config["number_day"]["normal"];
+		}
 
 		$url = "http://xoap.weather.com/weather/local/".$city_code."?cc=*&unit=s&dayf=".$number_day;
 		$xml_file=simplexml_load_file($url);

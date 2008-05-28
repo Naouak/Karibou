@@ -16,6 +16,9 @@ msgstr "Weather in"
 msgid "CITY_CODE"
 msgstr "City code"
 
+msgid "NUMBEROFDAY"
+msgstr "For how many days?"
+
 msgid "MSG_NEW_TOWN"
 msgstr "To find the code of a town, you can use the website <a href=\"http://www.patelins.info/meteo\">patelins.info</a>"
 

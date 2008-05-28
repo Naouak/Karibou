@@ -16,6 +16,10 @@ class weatherConfig extends Model
 		{
 			$this->assign('city', $this->args['city']);
 		}
+		if(isset($this->args['number_day']))
+		{
+			$this->assign('number_day', $this->args['number_day']);
+		}
 	}
 }
 

@@ -10,12 +10,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
 
-
 msgid "WEATHER"
 msgstr "Météo à"
 
 msgid "CITY_CODE"
 msgstr "Code de la ville"
+
+msgid "NUMBEROFDAY"
+msgstr "Nombre de jours de prévisions"
 
 msgid "MSG_NEW_TOWN"
 msgstr "Pour trouver le code d'une ville, vous pouvez utiliser le site <a href=\"http://www.patelins.info/meteo\">patelins.info</a>"
