@@ -16,7 +16,7 @@ class weather extends Model
 
 	public function build()
 	{
-		$picture_dir = KARIBOU_PUB_DIR.'/weather';
+		$picture_dir = KARIBOU_THEMES_URL . '/weather';
 		if (isset($this->args["city"]) && (strlen($this->args["city"]) > 0)){
 			$city_code = $this->args["city"];
 		} else {
