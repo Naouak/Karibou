@@ -19,6 +19,7 @@
 		<option value = "FRXX0085">Rouen</option>
 		<option value = "FRXX0095">Strasbourg</option>
 		<option value = "FRXX0099">Toulouse</option>
+		<option value = "FRXX0278">Villeneuve d'Ascq</option>
 </select><br />
 ##MSG_NEW_TOWN##<br />
 ##CITY_CODE## : <input type="text" name="city" size="8" />
