@@ -1,0 +1,12 @@
+<app>	
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+	<load class="weather" file="weather.class.php" />
+	<load class="weatherConfig" file="weatherconfig.class.php" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<view name="mini" class="weather" template="weather.tpl" />
+	<view name="miniconfig" class="weatherConfig" template="weatherconfig.tpl" />
+</app>
