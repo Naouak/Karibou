@@ -1,4 +1,3 @@
-
 #surnom {
 	margin: 5px 0px 0px 10px;
 	line-height: 25px;
@@ -119,7 +118,7 @@
 #content .sbox .del, #content .mbox .del, #content .lbox .del {
 	width: 16px;
 	height: 16px;
-	background-image: url("/themes/karibou/images/del.png");
+	background-image: url("images/del.png");
 	visibility: hidden;
 }
 #content .sbox .del .text, #content .mbox .del .text, #content .lbox .del .text {
@@ -148,7 +147,7 @@
 #content .sbox .edit, #content .mbox .edit, #content .lbox .edit {
 	width: 16px;
 	height: 16px;
-	background-image: url("/themes/karibou/images/edit.png");
+	background-image: url("images/edit.png");
 	visibility: hidden;
 }
 #content .sbox .edit .text, #content .mbox .edit .text, #content .lbox .edit .text {
@@ -235,3 +234,5 @@
 #content .sbox h3 {
 	cursor: move ;
 }
+
+
