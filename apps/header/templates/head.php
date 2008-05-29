@@ -28,6 +28,7 @@
 	<script type="text/javascript" src="<?=$this->vars['karibou']['base_url']?>/themes/js/prototype.js"></script>
 	<script type="text/javascript" src="<?=$this->vars['karibou']['base_url']?>/themes/js/scriptaculous.js"></script>
 	<script type="text/javascript" src="<?=$this->vars['karibou']['base_url']?>/themes/js/karibou.js"></script>
+        <script type="text/javascript" src="<?=$this->vars['karibou']['base_url']?>/themes/js/default.js"></script>
 	<script type="text/javascript" src="<?=$this->vars['karibou']['base_url']?>/themes/js/hintbox.js"></script>
 <? hook(array('name'=>"html_head")); ?>
 </head>

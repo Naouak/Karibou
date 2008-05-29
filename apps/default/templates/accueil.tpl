@@ -150,58 +150,28 @@
 	</script>
 	
 	<!--<h1>##HEADER_PAGE_TITLE##</h1>-->
-	<a id="personalise_button" href="#" onclick="return editHomeApps();">##DEFAULT_EDIT##</a>
+	<a id="personalise_button" href="#" onclick="return editHomeApps('{"##DEFAULT_END_EDIT##"|escape:'quotes'}', '{"##DEFAULT_EDIT##"|escape:'quotes'}');">##DEFAULT_EDIT##</a>
 	<br class="spacer" />
 	{hook name="html_head"}
+
+	<div id="default_page_configbar" style="display: none">
+		<div class="configbar" >
+			##CHOOSECONTAINER##
+			<a href="{kurl action='setcontainers'}?size=sms"><img src="/themes/default/images/home/sms.png" alt="Small Medium Small" /></a> 
+			<a href="{kurl action='setcontainers'}?size=ssm"><img src="/themes/default/images/home/ssm.png" alt="Small Small Medium" /></a> 
+			<a href="{kurl action='setcontainers'}?size=mss"><img src="/themes/default/images/home/mss.png" alt="Medium Small Small" /></a> 
+			<a href="{kurl action='setcontainers'}?size=mm"><img src="/themes/default/images/home/mm.png" alt="Medium Medium" /></a> 
+			<a href="{kurl action='setcontainers'}?size=ssss"><img src="/themes/default/images/home/ssss.png" alt="Small Small Small Small" /></a>
+			<a href="{kurl action='setcontainers'}?size=sl"><img src="/themes/default/images/home/sl.png" alt="Small Large" /></a> 
+			<a href="{kurl action='setcontainers'}?size=ls"><img src="/themes/default/images/home/ls.png" alt="Large Small" /></a>
+		</div>
 	
-	<script>
-		var gDisplayedHomeApps = false;
-		function editHomeApps()
-		{ldelim}
-			var elts = document.getElementsByTagName("div");
-			var e;
-			gDisplayedHomeApps = !gDisplayedHomeApps;
-			if ( gDisplayedHomeApps )
-			{ldelim}
-			document.getElementById("personalise_button").innerHTML = "##DEFAULT_END_EDIT##";
-			{rdelim}
-			else
-			{ldelim}
-				document.getElementById("personalise_button").innerHTML = "##DEFAULT_EDIT##";
-			{rdelim}
-			for( e in elts )
-			{ldelim}
-				if( Element.hasClassName(elts[e], "configbar") )
-				{ldelim}
-					if( gDisplayedHomeApps )
-					{ldelim}
-						Element.removeClassName(elts[e], "hidden");
-					{rdelim}
-					else
-					{ldelim}
-						Element.addClassName(elts[e], "hidden");
-					{rdelim}
-				{rdelim}
-			{rdelim}
-		{rdelim}
-	</script>
-	
-	<div class="configbar hidden" >
-	##CHOOSECONTAINER##
-	<a href="{kurl action='setcontainers'}?size=sms"><img src="/themes/default/images/home/sms.png" alt="Small Medium Small" /></a> 
-	<a href="{kurl action='setcontainers'}?size=ssm"><img src="/themes/default/images/home/ssm.png" alt="Small Small Medium" /></a> 
-	<a href="{kurl action='setcontainers'}?size=mss"><img src="/themes/default/images/home/mss.png" alt="Medium Small Small" /></a> 
-	<a href="{kurl action='setcontainers'}?size=mm"><img src="/themes/default/images/home/mm.png" alt="Medium Medium" /></a> 
-	<a href="{kurl action='setcontainers'}?size=ssss"><img src="/themes/default/images/home/ssss.png" alt="Small Small Small Small" /></a>
-	<a href="{kurl action='setcontainers'}?size=sl"><img src="/themes/default/images/home/sl.png" alt="Small Large" /></a> 
-	<a href="{kurl action='setcontainers'}?size=ls"><img src="/themes/default/images/home/ls.png" alt="Large Small" /></a>
-	</div>
-	
-	<div class="configbar hidden" >
-		##ADDMINIAPP##
-	{foreach item=app from=$miniapps}
-		<a href="{kurl action='addapp'}?app={$app.id}" onclick="new Ajax.Updater('default_container', '{kurl page='miniappaddajax' miniapp=$app.id}', {ldelim}asynchronous:true, evalScripts:true, onComplete:handlerFunc, insertion:insertFunc {rdelim}); return false;">{translate key=$app.id}</a> |
-	{/foreach}
+		<div class="configbar" >
+			##ADDMINIAPP##
+			{foreach item=app from=$miniapps}
+				<a href="{kurl action='addapp'}?app={$app.id}" onclick="add_application('{kurl page='miniappaddajax' miniapp=$app.id}'); return false;">{translate key=$app.id}</a> |
+			{/foreach}
+		</div>
 	</div>
 
 	<div id="default_container" class="default_container" >
