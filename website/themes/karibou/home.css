@@ -121,28 +121,50 @@
 	background-image: url("images/del.png");
 	visibility: hidden;
 }
+
+#content .sbox .shade, #content .mbox .shade, #content .lbox .shade {
+        width: 16px;
+        height: 16px;
+        background-image: url("images/shade.png");
+        visibility: hidden;
+}
+
 #content .sbox .del .text, #content .mbox .del .text, #content .lbox .del .text {
 	display: none;
 }
 
-#content .sbox:hover .del {
+#content .sbox .shade .text, #content .mbox .shade .text, #content .lbox .shade .text {
+        display: none;
+}
+
+#content .sbox:hover .del, #content .mbox:hover .del {
 	position: absolute;
 	top: 1px;
 	right: 5px;
 	visibility: visible;
 }
-#content .mbox:hover .del {
-	position: absolute;
-	top: 1px;
-	right: 5px;
-	visibility: visible;
-}
+
 #content .lbox:hover .del {
 	position: absolute;
 	top: 1px;
 	left: 630px;
 	visibility: visible;
 }
+
+#content .sbox:hover .shade, #content .mbox:hover .shade {
+        position: absolute;
+        top: 1px;
+        right: 25px;
+        visibility: visible;
+}
+
+#content .lbox:hover .shade {
+        position: absolute;
+        top: 1px;
+        left: 610px;
+        visibility: visible;
+}
+
 
 #content .sbox .edit, #content .mbox .edit, #content .lbox .edit {
 	width: 16px;

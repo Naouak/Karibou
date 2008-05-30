@@ -13,3 +13,13 @@ function editHomeApps (hiddenMessage, visibleMessage) {
 	new Effect.toggle(document.getElementById('default_page_configbar'), 'slide', { duration: 0.5 });
 }
 
+function shadeApp (appContentId) {
+	rootDiv = document.getElementById(appContentId);
+	if (rootDiv.style.height != "") {
+		rootDiv.style.height = "";
+		rootDiv.parentNode.style.minHeight = "50px";
+	} else {
+		rootDiv.style.height = "16px";
+		rootDiv.parentNode.style.minHeight = "0px";
+	}
+}
