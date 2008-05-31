@@ -129,11 +129,22 @@
         visibility: hidden;
 }
 
+#content .sbox .update, #content .mbox .update, #content .lbox .update {
+        width: 16px;
+        height: 16px;
+        background-image: url("images/update.png");
+        visibility: hidden;
+}
+
 #content .sbox .del .text, #content .mbox .del .text, #content .lbox .del .text {
 	display: none;
 }
 
 #content .sbox .shade .text, #content .mbox .shade .text, #content .lbox .shade .text {
+        display: none;
+}
+
+#content .sbox .update .text, #content .mbox .update .text, #content .lbox .update .text {
         display: none;
 }
 
@@ -165,6 +176,12 @@
         visibility: visible;
 }
 
+#content .sbox:hover .update, #content .mbox:hover .update, #content .lbox:hover .shade {
+        position: absolute;
+        top: 1px;
+        left: 25px;
+        visibility: visible;
+}
 
 #content .sbox .edit, #content .mbox .edit, #content .lbox .edit {
 	width: 16px;
