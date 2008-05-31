@@ -1,13 +1,14 @@
+<a href="" title="update"
+        onclick="document.getElementById('{$id}_content').innerHTML = ''; new Ajax.Updater('{$id}_content', '{kurl page="miniappeditview" miniapp=$id}', {ldelim}asynchronous:true, 
+evalScripts:true{rdelim}); return false;" >
+        <span class="update"><span class="text">update</span></span>
+</a>
 {if $config}
 <a href="" title="edit"
 	onclick="new Ajax.Updater('{$id}_content', '{kurl page="miniappeditconfig" miniapp=$id}', {ldelim}asynchronous:true, evalScripts:true{rdelim}); return false;" >
 	<span class="edit"><span class="text">edit</span></span>
 </a>
 {/if}
-<a href="" title="update"
-        onclick="new Ajax.Updater('{$id}_content', '{kurl page="miniappeditview" miniapp=$id}', {ldelim}asynchronous:true, evalScripts:true{rdelim}); return false;" >
-        <span class="update"><span class="text">update</span></span>
-</a>
 <a href="" title="shade"
         onclick="shadeApp('{$id}_content'); return false;" >
         <span class="shade"><span class="text">shade</span></span>

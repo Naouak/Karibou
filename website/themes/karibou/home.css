@@ -179,7 +179,7 @@
 #content .sbox:hover .update, #content .mbox:hover .update, #content .lbox:hover .shade {
         position: absolute;
         top: 1px;
-        left: 25px;
+        left: 1px;
         visibility: visible;
 }
 
@@ -196,19 +196,19 @@
 #content .sbox:hover .edit {
 	position: absolute;
 	top: 1px;
-	left: 1px;
+	left: 20px;
 	visibility: visible;
 }
 #content .mbox:hover .edit {
 	position: absolute;
 	top: 1px;
-	left: 1px;
+	left: 20px;
 	visibility: visible;
 }
 #content .lbox:hover .edit {
 	position: absolute;
 	top: 1px;
-	left: 1px;
+	left: 20px;
 	visibility: visible;
 }
 
