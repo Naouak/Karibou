@@ -16,7 +16,7 @@ require_once KARIBOU_CLASS_DIR.'/executiontimer.class.php';
 
 ClassLoader::add('Database', KARIBOU_CLASS_DIR.'/database.class.php');
 ClassLoader::add('Debug', KARIBOU_CLASS_DIR.'/debug.class.php');
-ClassLoader::add('ErrorHandler', KARIBOU_CLASS_DIR.'/error_handler.class.php');
+ClassLoader::add('ErrorHandler', KARIBOU_CLASS_DIR.'/errorhandler.class.php');
 ClassLoader::add('Config', KARIBOU_CLASS_DIR.'/config.class.php');
 ClassLoader::add('Auth', KARIBOU_CLASS_DIR.'/auth.class.php');
 ClassLoader::add('BaseURL', KARIBOU_CLASS_DIR."/baseurl.class.php");
