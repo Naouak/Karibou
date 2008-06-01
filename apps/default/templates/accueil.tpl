@@ -157,13 +157,13 @@
 	<div id="default_page_configbar" style="display: none">
 		<div class="configbar" >
 			##CHOOSECONTAINER##
-			<a href="{kurl action='setcontainers'}?size=sms"><img src="/themes/default/images/home/sms.png" alt="Small Medium Small" /></a> 
-			<a href="{kurl action='setcontainers'}?size=ssm"><img src="/themes/default/images/home/ssm.png" alt="Small Small Medium" /></a> 
-			<a href="{kurl action='setcontainers'}?size=mss"><img src="/themes/default/images/home/mss.png" alt="Medium Small Small" /></a> 
-			<a href="{kurl action='setcontainers'}?size=mm"><img src="/themes/default/images/home/mm.png" alt="Medium Medium" /></a> 
-			<a href="{kurl action='setcontainers'}?size=ssss"><img src="/themes/default/images/home/ssss.png" alt="Small Small Small Small" /></a>
-			<a href="{kurl action='setcontainers'}?size=sl"><img src="/themes/default/images/home/sl.png" alt="Small Large" /></a> 
-			<a href="{kurl action='setcontainers'}?size=ls"><img src="/themes/default/images/home/ls.png" alt="Large Small" /></a>
+			<a href="{kurl action='setcontainers'}?size=sms"><img src="themes/default/images/home/sms.png" alt="Small Medium Small" /></a> 
+			<a href="{kurl action='setcontainers'}?size=ssm"><img src="themes/default/images/home/ssm.png" alt="Small Small Medium" /></a> 
+			<a href="{kurl action='setcontainers'}?size=mss"><img src="themes/default/images/home/mss.png" alt="Medium Small Small" /></a> 
+			<a href="{kurl action='setcontainers'}?size=mm"><img src="themes/default/images/home/mm.png" alt="Medium Medium" /></a> 
+			<a href="{kurl action='setcontainers'}?size=ssss"><img src="themes/default/images/home/ssss.png" alt="Small Small Small Small" /></a>
+			<a href="{kurl action='setcontainers'}?size=sl"><img src="themes/default/images/home/sl.png" alt="Small Large" /></a> 
+			<a href="{kurl action='setcontainers'}?size=ls"><img src="themes/default/images/home/ls.png" alt="Large Small" /></a>
 		</div>
 	
 		<div class="configbar" >

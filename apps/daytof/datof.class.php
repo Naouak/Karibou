@@ -49,8 +49,8 @@ class DaTof extends Model
 		// $row now contains the tof infos...
 		
 		if ($user["object"] =  $this->userFactory->prepareUserFromId($row["user_id"])) {
-			$this->assign("tof",('/pub/daytof/m'.$row["photo"].'.png'));
-			$this->assign("linktof",('/pub/daytof/'.$row["photo"].'.png'));
+			$this->assign("tof",('pub/daytof/m'.$row["photo"].'.png'));
+			$this->assign("linktof",('pub/daytof/'.$row["photo"].'.png'));
 			$this->assign("datofauthor",$user);
 			$this->assign("datofcomment",$row["comment"]);
 			$this->assign("islogged", $this->currentUser->isLogged());
