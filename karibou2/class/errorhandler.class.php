@@ -9,7 +9,7 @@
  **/
 
 /**
- * Handles not expected errors
+ * Handles unexpected errors
  *
  * @package framework
  */
@@ -82,7 +82,13 @@ class ErrorHandler {
 		$fatal = E_ERROR | E_PARSE | E_CORE_ERROR | E_COMPILE_ERROR | E_USER_ERROR;
 		
 		if($errno & error_reporting()) {
-			$this->stack[] = $error_titles[$errno] . ": $errstr @$errfile:$errline";
+			$this->stack[] = array(
+				"title"     => $error_titles[$errno],
+				"message"   => $errstr,
+				"file"      => $errfile,
+				"line"      => $errline,
+				"backtrace" => Debug::backtraceText()
+			);
 		}
 		
 		if($errno & $fatal) {
@@ -96,16 +102,20 @@ class ErrorHandler {
 	 */
 	public function flush() {
 		if(count($this->stack) > 0) {
-			$query = $this->db->prepare("INSERT INTO ".$GLOBALS['config']['bdd']["frameworkdb"].".logs (date, messages, user, url) VALUES (NOW(), :messages, :userId, :url)");
+			$query = $this->db->prepare("INSERT INTO ".$GLOBALS['config']['bdd']["frameworkdb"].".logs (date, message, file, line, backtrace, user, url) VALUES (NOW(), :message, :file, :line, :backtrace, :userId, :url)");
 			try {
-				$query->execute(array(
-					"messages" => implode("\n", $this->stack),
-					"url" => $_SERVER["REQUEST_URI"],
-					"userId" => $this->user->getID()
-				));
+				foreach($this->stack as $error) {
+					$query->execute(array(
+						"message" => $error["title"].": ".$error["message"],
+						"url" => $_SERVER["REQUEST_URI"],
+						"userId" => $this->user->getID(),
+						"file" => $error["file"],
+						"line" => $error["line"],
+						"backtrace" => $error["backtrace"]
+					));
+				}
 				$this->stack = array();
 			} catch (Exception $ex) {
-				echo $ex;
 			}
 		}
 	}
