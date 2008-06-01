@@ -96,14 +96,16 @@ class ErrorHandler {
 	 */
 	public function flush() {
 		if(count($this->stack) > 0) {
-			$query = $this->db->prepare("INSERT INTO ".$GLOBALS['config']['bdd']["frameworkdb"].".logs (date, messages, user) VALUES (NOW(), :messages, :userId)");
+			$query = $this->db->prepare("INSERT INTO ".$GLOBALS['config']['bdd']["frameworkdb"].".logs (date, messages, user, url) VALUES (NOW(), :messages, :userId, :url)");
 			try {
-				$query->bindValue(":userId", $this->user->getID());
 				$query->execute(array(
-					"messages" => implode("\n", $this->stack)
+					"messages" => implode("\n", $this->stack),
+					"url" => $_SERVER["REQUEST_URI"],
+					"userId" => $this->user->getID()
 				));
 				$this->stack = array();
 			} catch (Exception $ex) {
+				echo $ex;
 			}
 		}
 	}
