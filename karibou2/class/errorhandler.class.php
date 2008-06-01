@@ -19,22 +19,30 @@ class ErrorHandler {
 	 *
 	 * @var array[string]
 	**/
-	var $stack = array();
+	private $stack = array();
 	
 	/**
 	 * Connection to the database
 	 *
 	 * @var PDO
 	**/
-	var $db;
+	private $db;
+	
+	/**
+	 * The current user
+	 *
+	 * @var CurrentUser
+	**/
+	private $user;
 	
 	/**
 	 * Constructor
 	 *
 	 * Sets this class as the error handler
 	 */
-	function __construct(PDO $db) {
+	public __construct(PDO $db, CurrentUser $user) {
 		$this->db = $db;
+		$this->user = $user;
 		
 		// We set this class as the new error handler
 		set_error_handler(array($this, "newError"));
@@ -45,7 +53,7 @@ class ErrorHandler {
 	 *
 	 * Trigger the flush() function
 	 */
-	function __destruct() {
+	public __destruct() {
 		$this->flush();
 	}
 	
@@ -54,7 +62,7 @@ class ErrorHandler {
 	 *
 	 * @see http://fr.php.net/set_error_handler
 	 */
-	function newError($errno, $errstr, $errfile, $errline) {
+	public function newError($errno, $errstr, $errfile, $errline) {
 		$error_titles = array(
 			E_ERROR             => "Error",
 			E_WARNING           => "Warning",
@@ -86,13 +94,15 @@ class ErrorHandler {
 	/**
 	 * Empty the stack to the database
 	 */
-	function flush() {
+	public function flush() {
 		if(count($this->stack) > 0) {
-			$query = $this->db->prepare("INSERT INTO ".$GLOBALS['config']['bdd']["frameworkdb"].".logs (date, messages) VALUES (NOW(), :messages)");
+			$query = $this->db->prepare("INSERT INTO ".$GLOBALS['config']['bdd']["frameworkdb"].".logs (date, messages, user) VALUES (NOW(), :messages, :userId)");
 			try {
+				$query->bindValue(":userId", $this->user->getID());
 				$query->execute(array(
 					"messages" => implode("\n", $this->stack)
 				));
+				$this->stack = array();
 			} catch (Exception $ex) {
 			}
 		}

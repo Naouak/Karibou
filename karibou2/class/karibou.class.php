@@ -211,7 +211,7 @@ class Karibou
             $this->currentLanguage = 'fr_FR.utf-8';
         }
         	// On commence la gestion des erreurs
-        	$this->errorHandler = new ErrorHandler($this->db);
+        	$this->errorHandler = new ErrorHandler($this->db, $this->currentUser);
         
 		putenv("LANG=".$this->currentLanguage); 
 		setlocale(LC_ALL, $this->currentLanguage, substr($this->currentLanguage, 0, 2));

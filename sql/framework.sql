@@ -167,5 +167,6 @@ CREATE TABLE `logs` (
   `id` int(11) unsigned NOT NULL auto_increment,
   `date` datetime NOT NULL,
   `messages` text collate utf8_unicode_ci NOT NULL,
+  `user` INT UNSIGNED NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
