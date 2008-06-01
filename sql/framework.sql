@@ -162,8 +162,9 @@ INSERT INTO `users` (`id`, `login`, `password`, `profile_id`) VALUES (1, 'admin'
 -- Structure de la table `logs`
 --
 
-DROP TABLE IF EXISTS `logs` (
-  `id` int(11) NOT NULL auto_increment,
+DROP TABLE IF EXISTS `logs`;
+CREATE TABLE `logs` (
+  `id` int(11) unsigned NOT NULL auto_increment,
   `date` datetime NOT NULL,
   `messages` text collate utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (`id`)
