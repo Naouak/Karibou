@@ -40,7 +40,7 @@ class ErrorHandler {
 	 *
 	 * Sets this class as the error handler
 	 */
-	public __construct(PDO $db, CurrentUser $user) {
+	public function  __construct(PDO $db, CurrentUser $user) {
 		$this->db = $db;
 		$this->user = $user;
 		
@@ -53,7 +53,7 @@ class ErrorHandler {
 	 *
 	 * Trigger the flush() function
 	 */
-	public __destruct() {
+	public function __destruct() {
 		$this->flush();
 	}
 	
