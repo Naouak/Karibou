@@ -16,6 +16,7 @@ require_once KARIBOU_CLASS_DIR.'/executiontimer.class.php';
 
 ClassLoader::add('Database', KARIBOU_CLASS_DIR.'/database.class.php');
 ClassLoader::add('Debug', KARIBOU_CLASS_DIR.'/debug.class.php');
+ClassLoader::add('ErrorHandler', KARIBOU_CLASS_DIR.'/error_handler.class.php');
 ClassLoader::add('Config', KARIBOU_CLASS_DIR.'/config.class.php');
 ClassLoader::add('Auth', KARIBOU_CLASS_DIR.'/auth.class.php');
 ClassLoader::add('BaseURL', KARIBOU_CLASS_DIR."/baseurl.class.php");
@@ -96,6 +97,11 @@ class Karibou
 	 * @var PDO
 	 */
 	protected $db;
+	
+	/**
+	 * @var ErrorHandler
+	 */
+	protected $errorHandler;
 
 	/**
 	 * @var UserFactory
@@ -204,6 +210,9 @@ class Karibou
         } else {
             $this->currentLanguage = 'fr_FR.utf-8';
         }
+        	// On commence la gestion des erreurs
+        	$this->errorHandler = new ErrorHandler($this->db);
+        
 		putenv("LANG=".$this->currentLanguage); 
 		setlocale(LC_ALL, $this->currentLanguage, substr($this->currentLanguage, 0, 2));
 		$domain = 'messages';
@@ -212,7 +221,6 @@ class Karibou
 		textdomain($domain);
 
 		$modelbuilder = new ModelBuilder();
-		
 
 		$this->appList = new AppList($modelbuilder, $this->db, $this->userFactory, 
 		$this->hookManager, $this->eventManager, $this->messageManager );
@@ -236,6 +244,8 @@ class Karibou
 		{
 			$modelbuilder->build();
 			
+			// Il faut détruire le gestionnaire d'erreurs
+			unset($this->errorHandler);
 			// On deconnecte de la base de données avant de commencer à afficher
 			unset($this->db);
 

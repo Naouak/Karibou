@@ -157,3 +157,14 @@ CREATE TABLE `users` (
 -- 
 
 INSERT INTO `users` (`id`, `login`, `password`, `profile_id`) VALUES (1, 'admin', PASSWORD('admin') , 1);
+
+--
+-- Structure de la table `logs`
+--
+
+DROP TABLE IF EXISTS `logs` (
+  `id` int(11) NOT NULL auto_increment,
+  `date` datetime NOT NULL,
+  `messages` text collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
