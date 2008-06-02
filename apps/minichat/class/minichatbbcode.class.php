@@ -18,11 +18,16 @@ class MinichatBBCode
 	
 	function transform($in)
 	{
-		$patterns = array("/\[url=(.*)\](.*)\[\/url\]/Ui",
-				  "/\[url\](.*)\[\/url\]/Ui",
-				  "/\[b\](.*)\[\/b\]/Ui",
-				  "/\[i\](.*)\[\/i\]/Ui",
-				  "/\[color=(#[1-9a-fA-F]{3,6}|[a-z]*)\](.*)\[\/color\]/Ui");
+		/*
+			PHP Regexp (preg_replace)
+			U : tente de repérer l'expression la plus petite possible
+			i : insensible à la casse
+		*/
+		$patterns = array("/\[url=(.*)\](.*)\[\/url\]/Ui", 	// [url=http://chezmoicamarche.org]test[/url]
+				  "/\[url\](.*)\[\/url\]/Ui",		// [url]http://chezmoicamarche.org[/url]
+				  "/\[b\](.*)\[\/b\]/Ui",		// [b]texte en gras[/b]
+				  "/\[i\](.*)\[\/i\]/Ui",		// [i]texte en italique[/i]
+				  "/\[color=(#[a-fA-F0-9]{3,6}|[a-z]*)\](.*)\[\/color\]/Ui");	// [color=blue]texte en bleu[/color] ou [color=#FFFFFF]texte blanc[/color] (ou #fff)
 		$replaces = array("<a href=\"\\1\" target=\"_blank\">\\2</a>",
 				  "<a href=\"\\1\" target=\"_blank\">\\1</a>",
 				  "<span style=\"font-weight:bold;\">\\1</span>",
