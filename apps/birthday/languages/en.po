@@ -28,3 +28,9 @@ msgstr "Today's birthdays"
 msgid "TODAY_NOBDAY"
 msgstr "No birthdays today"
 
+msgid "YEARS_OLD"
+msgstr "years old"
+
+msgid "TODAY_BDAY"
+msgstr "Today we're wishing them a happy birthday :"
+
