@@ -35,16 +35,6 @@ class UserFactory
 	 * @var UserList
 	 */
  	protected $userList;
-	
-	/**
-	 * @var ObjectList
-	 */
-	protected $promoList;
-
-	/**
-	 * @var ObjectList
-	 */
-	protected $clubList;
 
 	/**
 	 * @var array
@@ -77,8 +67,6 @@ class UserFactory
 	{
 		$this->db = $p_db;
 		$this->userList = new UserList();
-		$this->promoList = false;
-		$this->clubList = false;
 	
 		$this->usersArrayById = array();
 		$this->usersArrayByLogin = array();
