@@ -15,18 +15,19 @@ class MiniChatMessageList
 	protected $wiki;
 	protected $bbcode;
 
-	function __construct(PDO $db, UserFactory $userFactory)
+	function __construct(PDO $db, UserFactory $userFactory, $userichtext)
 	{
 		$this->db = $db;
 		$this->userFactory = $userFactory;
 	
 		/* Wiki Construct */
-		$this->wiki = new wiki2xhtmlBasic();
-		$this->wiki->wiki2xhtml();
+		//$this->wiki = new wiki2xhtmlBasic();
+		//$this->wiki->wiki2xhtml();
 		
 		
 		/* BBCode Construct */
-		$this->bbcode = new MinichatBBCode();
+		$this->bbcode = new MinichatBBCode($userichtext);
+
 	
 	}
 	

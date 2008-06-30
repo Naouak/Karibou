@@ -14,11 +14,9 @@ class MCDefault extends Model
 {
 	public function build()
 	{
-	
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
 		$this->assign("config", $config);
-		
 		if ($this->currentUser->isLogged())
 		{
 			/* POST */
@@ -33,9 +31,9 @@ class MCDefault extends Model
 					(NOW(), :userId, :message)";
 				try
 				{
-                    $stmt = $this->db->prepare($req_sql);
-                    $stmt->bindValue(":userId", $this->currentUser->getID());
-                    $stmt->bindValue(":message", stripslashes($message));
+					$stmt = $this->db->prepare($req_sql);
+					$stmt->bindValue(":userId", $this->currentUser->getID());
+					$stmt->bindValue(":message", stripslashes($message));
 					$stmt->execute();
 				}
 				catch(PDOException $e)
@@ -44,7 +42,6 @@ class MCDefault extends Model
 				}
 			}
 		}
-	
 		if( isset($this->args['maxlines']) && $this->args['maxlines'] != "" )
 		{
 			$max = $this->args['maxlines'] ;
@@ -53,8 +50,18 @@ class MCDefault extends Model
 		{
 			$max = $config["max"]["small"] ;
 		}
+
+		if( isset($this->args['userichtext']) && $this->args['userichtext'] != "" )
+		{
+			$userichtext = $this->args['userichtext'];
+		}
+		else
+		{
+			$userichtext = $config["userichtext"]["small"];
+		}
 		$this->assign("maxlines", $max);
-		
+		$this->assign("userichtext", $userichtext);
+		$userichtext = ($userichtext == 1);
 		
 		if(isset($this->args['pagenum']) && $this->args['pagenum'] != "")
 			$page = $this->args['pagenum'];
@@ -62,11 +69,10 @@ class MCDefault extends Model
 			$page = 1;
 			
 		$this->assign("pagenum", $page);
-
-		$minichatMessageList = new MinichatMessageList($this->db, $this->userFactory);
-        $dateRange = $minichatMessageList->dateRange();
-        $this->assign("minDate", $dateRange[0]);
-        $this->assign("maxDate", $dateRange[1]);
+		$minichatMessageList = new MinichatMessageList($this->db, $this->userFactory, $userichtext);
+		$dateRange = $minichatMessageList->dateRange();
+		$this->assign("minDate", $dateRange[0]);
+		$this->assign("maxDate", $dateRange[1]);
 		$page_count = ceil($minichatMessageList->count() / $max);
 		
 		if ($page_count > 1)

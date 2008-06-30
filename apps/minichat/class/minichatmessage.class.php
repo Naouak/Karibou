@@ -18,7 +18,7 @@ class MinichatMessage
 	protected $wiki;
 	protected $bbcode;
 
-	function __construct($time, $author, $message, $wiki, $bbcode)
+	function __construct($time, $author, $message, $wiki, $bbcode, $userichtext)
 	{
 		$this->time = $time;
 		$this->author = $author;

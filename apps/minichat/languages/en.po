@@ -24,6 +24,9 @@ msgstr "View chat history"
 msgid "NUMBEROFLINES"
 msgstr "Number of lines"
 
+msgid "USERICHTEXT"
+msgstr "Use rich text"
+
 msgid "CHOOSE_DATE"
 msgstr "Date to display"
 

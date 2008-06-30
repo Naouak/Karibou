@@ -24,6 +24,9 @@ msgstr "Voir l'historique"
 msgid "NUMBEROFLINES"
 msgstr "Nombre de lignes"
 
+msgid "USERICHTEXT"
+msgstr "Utiliser le texte enrichi"
+
 msgid "CHOOSE_DATE"
 msgstr "Date à afficher"
 

@@ -23,7 +23,7 @@
 
 		var post_vars = queryComponents.join("&");
 
-		new Ajax.Updater(content_id, '{/literal}{kurl app="minichat" page="content" pagenum=$pagenum maxlines=$maxlines}{literal}', {
+		new Ajax.Updater(content_id, '{/literal}{kurl app="minichat" page="content" pagenum=$pagenum maxlines=$maxlines userichtext=$userichtext}{literal}', {
 				asynchronous:true,
 				evalScripts:true,
 				method:'post',
@@ -41,7 +41,7 @@
 if (window.minichat_ajax_updater !== undefined) {ldelim}
 	window.minichat_ajax_updater.stop();
 {rdelim}
-window.minichat_ajax_updater = new Ajax.PeriodicalUpdater('minichat_live', '{kurl app="minichat" page="content" pagenum=$pagenum maxlines=$maxlines}', {ldelim}asynchronous:true, evalScripts:true, frequency:{$config.refresh.small}{rdelim});
+window.minichat_ajax_updater = new Ajax.PeriodicalUpdater('minichat_live', '{kurl app="minichat" page="content" pagenum=$pagenum maxlines=$maxlines userichtext=$userichtext}', {ldelim}asynchronous:true, evalScripts:true, frequency:{$config.refresh.small}{rdelim});
 	// ]]>
 	</script>
 

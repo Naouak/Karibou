@@ -26,6 +26,14 @@ class MCConfig extends Model
 		{
 			$this->assign('maxlines', $config["max"]["small"]);
 		}
+		if( isset($this->args['userichtext']) )
+		{
+			$this->assign('userichtext', $this->args['userichtext']);	
+		}
+		else
+		{
+			$this->assign('userichtext', $config["userichtext"]["small"]);
+		}
 	}
 }
 

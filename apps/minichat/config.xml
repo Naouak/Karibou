@@ -5,6 +5,10 @@
 			<value name="small">7</value>
 			<value name="normal">20</value>
 		</param>
+		<param name="userichtext">
+			<value name="small">1</value>
+			<value name="normal">1</value>
+		</param>
 		<param name="refresh">
 			<value name="small">10</value>
 		</param>
@@ -16,14 +20,13 @@
 	<load class="MinichatMessage"			file="./class/minichatmessage.class.php" />
 	<load class="MinichatBBCode"			file="./class/minichatbbcode.class.php" />
 	<load class="PageArgument"				file="../arguments/pageargument.class.php" />
-   	<load class="NumberArgument"	    		file="../arguments/numberargument.class.php" />
-	<load class="wiki2xhtmlBasic"			file="../wiki/wiki2xhtml.basic.class.php" />
+	<load class="NumberArgument"	    		file="../arguments/numberargument.class.php" />
 
 	<load class="MCDefault"		file="mcdefault.class.php" />
 	<load class="MCConfig"		file="mcconfig.class.php" />
-	<load class="MCPost"			file="mcpost.class.php" />	
+	<load class="MCPost"		file="mcpost.class.php" />
 
-	<view name="mini" class="MCDefault" template="small.tpl" />
+	<view name="small" class="MCDefault" template="small.tpl" />
 	<view name="smallconfig" class="MCConfig" template="smallconfig.tpl" />
 	<view name="big" class="MCDefault" template="minichat.tpl" />
 
@@ -34,13 +37,14 @@
 	
 	<page view="big" />
 	<page view="big">
-		<option name="pagenum" class="PageArgument" />
+	<option name="pagenum" class="PageArgument" />
         <option name="day" class="NumberArgument" />
 	</page>
 	
 	<page name="content" view="content">
 		<option name="pagenum" class="PageArgument" />
 		<option name="maxlines" class="NumberArgument" />
+		<option name="userichtext" class="NumberArgument" />
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>

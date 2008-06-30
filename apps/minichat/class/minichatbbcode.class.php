@@ -11,9 +11,11 @@
 
 class MinichatBBCode
 {	
-	function __construct()
+	protected $userichtext;
+
+	function __construct($userichtext)
 	{
-	
+		$this->userichtext = $userichtext;
 	}
 	
 	function transform($in)
@@ -28,11 +30,20 @@ class MinichatBBCode
 				  "/\[b\](.*)\[\/b\]/Ui",		// [b]texte en gras[/b]
 				  "/\[i\](.*)\[\/i\]/Ui",		// [i]texte en italique[/i]
 				  "/\[color=(#[a-fA-F0-9]{3,6}|[a-z]*)\](.*)\[\/color\]/Ui");	// [color=blue]texte en bleu[/color] ou [color=#FFFFFF]texte blanc[/color] (ou #fff)
-		$replaces = array("<a href=\"\\1\" target=\"_blank\">\\2</a>",
-				  "<a href=\"\\1\" target=\"_blank\">\\1</a>",
-				  "<span style=\"font-weight:bold;\">\\1</span>",
-				  "<span style=\"font-style:italic;\">\\1</span>",
-				  "<span style=\"color:\\1;\">\\2</span>");
+
+		if ($this->userichtext) {
+			$replaces = array("<a href=\"\\1\" target=\"_blank\">\\2</a>",
+					"<a href=\"\\1\" target=\"_blank\">\\1</a>",
+					"<span style=\"font-weight:bold;\">\\1</span>",
+					"<span style=\"font-style:italic;\">\\1</span>",
+					"<span style=\"color:\\1;\">\\2</span>");
+		} else {
+			$replaces = array("\\1",
+					"\\1",
+					"\\1",
+					"\\1",
+					"\\2");
+		}
 		$out = preg_replace($patterns, $replaces, $in);
 		return $out;
 	}
