@@ -350,16 +350,6 @@ class UserFactory
 	}
 	
 	/**
-	 * Renvoie la liste des étudiants récupérés en base de données
-	 *
-	 * @return UserList
-	 */
-	function getUserList()
-	{
-		return $this->userList;
-	}
-	
-	/**
 	 * Return the groups an user belongs to.
 	 *
 	 * @return array of Group objects
