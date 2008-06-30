@@ -1,4 +1,4 @@
 id = minichat
 size = small
-view = small
+view = mini
 configview = smallconfig

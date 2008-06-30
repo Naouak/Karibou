@@ -26,7 +26,7 @@
 	<load class="MCConfig"		file="mcconfig.class.php" />
 	<load class="MCPost"		file="mcpost.class.php" />
 
-	<view name="small" class="MCDefault" template="small.tpl" />
+	<view name="mini" class="MCDefault" template="small.tpl" />
 	<view name="smallconfig" class="MCConfig" template="smallconfig.tpl" />
 	<view name="big" class="MCDefault" template="minichat.tpl" />
 
