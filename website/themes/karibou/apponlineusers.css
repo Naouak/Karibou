@@ -21,3 +21,13 @@ li a.userlink {
 	font-weight: bold;
 	text-decoration: none;
 }
+
+li a.userlink_noicon {
+	padding-left: 2px;
+	
+	padding-top: 7px;
+	padding-bottom: 2px;
+	
+	font-weight: bold;
+	text-decoration: none;
+}

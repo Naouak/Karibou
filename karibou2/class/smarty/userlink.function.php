@@ -29,12 +29,12 @@ function userlink($params , $appList = FALSE)
 		}
 		else
 		{
-			Debug::kill('Erreur : appList n\'est pas initialisé (cas du template PHP).');
+			Debug::kill('Erreur : appList n\'est pas initialisï¿½ (cas du template PHP).');
 		}
 	}
 	else
 	{
-		//Cas d'un template TPL (Smarty) où le $appList est déjà chargé
+		//Cas d'un template TPL (Smarty) oï¿½ le $appList est dï¿½jï¿½ chargï¿½
 	}
 
 
@@ -61,7 +61,11 @@ function userlink($params , $appList = FALSE)
 					$fullName = "<em>".$user->getLogin()."</em>";
 				}
 
-				$userlink = "<a href=\"".kurl(array("app" => 'annuaire', "username" => $user->getLogin()), $appList)."\" class=\"userlink\"";
+				$userlink = "<a href=\"".kurl(array("app" => 'annuaire', "username" => $user->getLogin()), $appList)."\""; 
+				if (isset($params["noicon"]) && ($params["noicon"] === true))
+					$userlink .= " class=\"userlink_noicon\"";
+				else
+					$userlink .= " class=\"userlink\"";
 				if (isset($params["showpicture"]) && ($params["showpicture"] === TRUE) )
 				{
 					$userlink .= " onMouseover=\"showhint('<img src=\'".$user->getPicturePath()."\' /><span>";
