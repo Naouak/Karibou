@@ -15,8 +15,6 @@ msgid "DAYTOF_TITLE"
 msgstr "The Picture"
 
 
-
-
 msgid "DAYTOF_FILE"
 
 msgstr "Picture file"
@@ -25,3 +23,13 @@ msgstr "Picture file"
 msgid "DAYTOF_COMMENT"
 
 msgstr "Comment"
+
+
+msgid "DAYTOF_HISTORY"
+
+msgstr "See the previous pictures"
+
+
+msgid "DAYTOF_POSTED_BY"
+
+msgstr "Picture posted by"
