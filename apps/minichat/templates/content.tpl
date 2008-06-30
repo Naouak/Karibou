@@ -11,7 +11,7 @@
 				<span class="message">{$m->getPost()|substr:4|wordwrap:34:" ":true}</span></em>
 			</span>
 		{else}
-			<span class="user">{userlink user=$m->getAuthorObject() showpicture=$showpicture}</span>
+			<span class="user">{userlink user=$m->getAuthorObject() showpicture=true}</span>
 			<span class="time"><acronym title="{$m->getDate()|date_format:"%A %d %B %Y @ %H:%M"}">{$m->getDate()|date_format:"%H:%M"}</acronym></span>
 			<span class="message">{$m->getPost()|wordwrap:34:" ":true}</span>
 		{/if}
