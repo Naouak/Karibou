@@ -152,22 +152,7 @@ class User
 		}
 		return "/themes/default/images/0.jpg";
     }
-    
-    /**
-     * ...temp method replaced by getFullName()
-     * @return String
-     */
-    function afficheUser($debug = FALSE)
-    {
-    	/*
-        /*
-         * on renvoie le Prenom et Nom de l'utilisateur
-         *
-       	return $this->firstname . " ". $this->lastname;
-      */
-		return $this->getFullName();
-    }
-    
+      
     /**
      * @return String
      */

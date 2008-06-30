@@ -92,30 +92,8 @@ class UserList extends ObjectList
 	function getBirthdayUsers()
 	{
 	}
-	
-	function getUsersFromSearch($queryString)
-	{
-		$this->searchStringForFilter = $queryString;
-		return $this->filter(array($this, "searchFilter"));
-	}
-	
-	/*
-	 * Les fonctions des filtres
-	 */
-	
-	function searchFilter($user)
-	{
-		if( stristr($user->afficheUser()." ".$user->afficheSurnom() , $this->searchStringForFilter) )
-		{
-			return true;
-		}
-		else 
-		{
-			return false;
-		}
-	}
-	
-	/*
+
+	/*	
 	 * Les tris
 	 */
 	function sortByAges()
