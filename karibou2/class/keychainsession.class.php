@@ -27,10 +27,6 @@ class KeyChainSession extends KeyChain
 	
 	function __destruct()
 	{
-		if( !isset($_SESSION['keychain_saved_data']) )
-		{
-			session_register('keychain_saved_data');
-		}
 		$_SESSION['keychain_saved_data'] = $this->saved_data;
 		
 		parent::__destruct();

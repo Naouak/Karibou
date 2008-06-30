@@ -103,7 +103,6 @@ class UserFactory
 		}
 		else
 		{
-			session_register('currentUser');
 			$this->currentUser = new CurrentUser();
 			$_SESSION['currentUser'] = serialize($this->currentUser);
 		}

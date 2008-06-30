@@ -10,8 +10,6 @@ class Activation extends Model
 		if( isset($_POST['key']) )
 		{
 			$this->assign("key", $_POST['key']);
-			if(!isset($_SESSION['activation_email']))
-				session_register('activation_email');
 			$_SESSION['activation_email'] = $_POST['email'];
 
 			$qry = "SELECT * FROM $table WHERE uniqkey='".addslashes($_POST['key'])."'";

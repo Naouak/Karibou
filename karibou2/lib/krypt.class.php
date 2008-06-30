@@ -68,7 +68,6 @@ class Krypt
 			}
 			else
 			{
-				session_register('rsakeypair');
 				$_SESSION['rsakeypair'] = serialize($this->keypair);
 			}
 		}

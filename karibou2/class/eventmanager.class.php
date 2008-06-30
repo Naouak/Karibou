@@ -20,7 +20,6 @@ class EventManager
 	{
 		if( !isset($_SESSION['karibou_events']) )
 		{
-			session_register('karibou_events');
 			$_SESSION['karibou_events'] = new ObjectList();
 		}
 	}
