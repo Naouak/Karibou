@@ -36,9 +36,6 @@ msgstr "News"
 msgid "APP_DIRECTORY"
 msgstr "Directory"
 
-msgid "APP_NETCV"
-msgstr "NetCV"
-
 msgid "APP_ADDRESSBOOK"
 msgstr "Address Book"
 

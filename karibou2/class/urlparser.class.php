@@ -38,29 +38,6 @@ class URLParser
 		$this->pages = array();
 		$this->forms = array();
 		
-		//Gestion des CV (pour les liens dans les CV
-		if ($GLOBALS['config']['netcv']['cvdisplay'])
-		{
-			//Cas d'une requête vers un CV
-
-			$this->appname = "";
-			$this->pagename = "";
-			$this->args = array();
-
-			//Récupération de la langue, du fichier CSS, ou autre
-			if (preg_match('#^([0-9A-Za-z_\.]+)#',$this->url,$match))
-			{
-				$this->args = array($match[1]);
-				
-				//Si l'argument est un fichier CSS, on charge le module d'affichage de CSS
-				if (preg_match('/\.css$/i', $match[1]))
-				{
-					$this->pagename = "cvskindisplay";
-				}
-			}
-		}
-		else
-		{
 			//Cas d'une requête Intranet
 
 			$this->appname = $appname;
@@ -108,7 +85,6 @@ class URLParser
 					$this->args = array();
 				}
 			}
-		}
 	}
 	
 	/**
@@ -252,11 +228,26 @@ class URLParser
 	
 	function createPageParser($xml)
 	{
-        if( isset($xml->header) )        {            $default_header = array( 
+        if( isset($xml->header) )
+        {
+            $default_header = array( 
             	'app' => $xml->header[0]['app'], 
-            	'view' => $xml->header[0]['view']);        }        else        {            $default_header = false;        }        if( isset($xml->footer) )        {            $default_footer =  array( 
+            	'view' => $xml->header[0]['view']);
+        }
+        else
+        {
+            $default_header = false;
+        }
+        if( isset($xml->footer) )
+        {
+            $default_footer =  array( 
             	'app' => $xml->footer[0]['app'], 
-            	'view' => $xml->footer[0]['view']);        }        else        {            $default_footer = false;        }
+            	'view' => $xml->footer[0]['view']);
+        }
+        else
+        {
+            $default_footer = false;
+        }
         
 		if( !isset($xml->page) ) return ;
 		foreach($xml->page as $page)

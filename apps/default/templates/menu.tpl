@@ -6,7 +6,6 @@
 			<li><a href="{kurl app="netjobs"}" class="highlight">##APP_NETJOBS##</a></li>
 			<li><a href="{kurl app="fileshare"}">##APP_FILESHARE##</a></li>
 			<li><a href="{kurl app="calendar"}">##APP_CALENDAR##</a></li>
-			<li><a href="{kurl app="netcv"}">##APP_NETCV##</a></li>
 			<li><a href="{kurl app="geoloc"}">##geoloc##</a></li>
 			<li><a href="{kurl app="survey"}">##SURVEY##</a></li>
 			<li><a href="{kurl app="wiki"}">Wiki</a></li>

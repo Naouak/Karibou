@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 /**
  * Informations relatives à la base de données
  */
-//appsdb : contient les données relatives aux applications de Karibou 2 (news, netcv, partage de fichiers...)
+//appsdb : contient les données relatives aux applications de Karibou 2 (news, partage de fichiers...)
 $config['bdd']['appsdb']		= "##DBAPPS##";
 //frameworkdb : contient les données relatives au framework de Karibou 2 (utilisateurs, groupes, ...)
 $config['bdd']['frameworkdb']		= "##DBFRAMEWORK##";
@@ -38,13 +38,6 @@ $config['contactname'] = "Karibou";
 
 //active ou desactive le caching, utile pour le developpement, par defaut false en production
 $config['nocaching'] = FALSE;
-
-//Définit le hôte de l'adresse des CVs (par exemple le karibou.org de http://john.karibou.org)
-$config['netcv']['host'] = "karibou.org";
-//Définit le nom d'hôte complet de l'Intranet (pour faire la différence avec les CVs)
-$config['netcv']['intranethost'] = "intranet.karibou.org";
-//Définit l'expression régulière permettant de récupérer le nom du CV
-$config['netcv']['hostregexp'] = "/(.*)\.karibou\.org/";
 
 //Informations sur le mode d'authentification
 $config["login"]["loginBackends"] = array (

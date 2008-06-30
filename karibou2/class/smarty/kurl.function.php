@@ -110,20 +110,6 @@ function kurl($params , $appList = FALSE)
     if( !empty($app) ) $app = $app.'/';
     if( !empty($page) ) $page = $page.'/';
     
-	//Gestion des liens dans les CV
-	if ($GLOBALS['config']['netcv']['cvdisplay'])
-	{
-		if (preg_match('/\.css$/i', $url))
-		{
-			$url = $GLOBALS['config']['base_url'].'/themes/netcv/skins/'.$url;
-		}
-		else
-		{
-			$url = $GLOBALS['config']['base_url'].'/'.$url;
-		}
-	}
-	else
-	{
 		//Prise en compte des espaces
 		//Si un espace est précisé dans l'URL
 		if (isset($rspace))
@@ -141,7 +127,6 @@ function kurl($params , $appList = FALSE)
 			$spaceid = '';
 		}
 		$url = $GLOBALS['config']['base_url'].'/'.$spaceid.$app.$page.$url;
-	}
 	
 	if(isset($server))
 	{

@@ -36,9 +36,6 @@ msgstr "Actualités"
 msgid "APP_DIRECTORY"
 msgstr "Annuaire"
 
-msgid "APP_NETCV"
-msgstr "NetCV"
-
 msgid "APP_ADDRESSBOOK"
 msgstr "Carnet d'Adresses"
 

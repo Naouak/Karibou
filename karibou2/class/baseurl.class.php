@@ -58,19 +58,6 @@ class BaseUrl
 			$p_url = $_SERVER['REQUEST_URI'];
 		}
 
-		if ($GLOBALS['config']['netcv']['cvdisplay'])
-		{
-			//Chargement d'un CV
-			
-			$this->app = $GLOBALS['config']['defaultapp'];
-			if (preg_match('#^'.$this->base_url.'([0-9A-Za-z_\.]+)[/]*#',$p_url,$match))
-			{
-				$this->arguments = $match[1];
-			}
-		}
-		else
-		{
-		
 		
 			//Chargement d'une page de l'Intranet
 			//Requête de la page d'accueil
@@ -113,7 +100,6 @@ class BaseUrl
 					}
 				}
 			}
-		}
 
 		/*
 		//Logout rajouté par DaT (2005.07.13 @ 11h37)
