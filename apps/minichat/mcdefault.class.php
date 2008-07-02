@@ -59,9 +59,19 @@ class MCDefault extends Model
 		{
 			$userichtext = $config["userichtext"]["small"];
 		}
+		if( isset($this->args['inversepostorder']) && $this->args['inversepostorder'] != "" )
+		{
+			$inversepostorder = $this->args['inversepostorder'];
+		}
+		else
+		{
+			$inversepostorder = $config["inversepostorder"]["small"];
+		}
 		$this->assign("maxlines", $max);
 		$this->assign("userichtext", $userichtext);
+		$this->assign("inversepostorder", $inversepostorder);
 		$userichtext = ($userichtext == 1);
+		$inversepostorder = ($inversepostorder == 1);
 		
 		if(isset($this->args['pagenum']) && $this->args['pagenum'] != "")
 			$page = $this->args['pagenum'];
@@ -69,7 +79,7 @@ class MCDefault extends Model
 			$page = 1;
 			
 		$this->assign("pagenum", $page);
-		$minichatMessageList = new MinichatMessageList($this->db, $this->userFactory, $userichtext);
+		$minichatMessageList = new MinichatMessageList($this->db, $this->userFactory, $userichtext, $inversepostorder);
 		$dateRange = $minichatMessageList->dateRange();
 		$this->assign("minDate", $dateRange[0]);
 		$this->assign("maxDate", $dateRange[1]);

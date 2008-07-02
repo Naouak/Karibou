@@ -34,6 +34,15 @@ class MCConfig extends Model
 		{
 			$this->assign('userichtext', $config["userichtext"]["small"]);
 		}
+
+		if( isset($this->args['inversepostorder']) )
+		{
+			$this->assign('inversepostorder', $this->args['inversepostorder']);	
+		}
+		else
+		{
+			$this->assign('inversepostorder', $config["inversepostorder"]["small"]);
+		}
 	}
 }
 

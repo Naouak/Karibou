@@ -9,6 +9,10 @@
 			<value name="small">1</value>
 			<value name="normal">1</value>
 		</param>
+		<param name="inversepostorder">
+			<value name="small">0</value>
+			<value name="normal">0</value>
+		</param>
 		<param name="refresh">
 			<value name="small">10</value>
 		</param>
@@ -45,6 +49,7 @@
 		<option name="pagenum" class="PageArgument" />
 		<option name="maxlines" class="NumberArgument" />
 		<option name="userichtext" class="NumberArgument" />
+		<option name="inversepostorder" class="NumberArgument" />
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>

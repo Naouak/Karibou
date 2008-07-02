@@ -27,6 +27,9 @@ msgstr "Nombre de lignes"
 msgid "USERICHTEXT"
 msgstr "Utiliser le texte enrichi"
 
+msgid "INVERSEPOSTORDER"
+msgstr "Inverser l'ordre du minichat"
+
 msgid "CHOOSE_DATE"
 msgstr "Date à afficher"
 

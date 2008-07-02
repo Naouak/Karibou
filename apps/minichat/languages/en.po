@@ -27,6 +27,9 @@ msgstr "Number of lines"
 msgid "USERICHTEXT"
 msgstr "Use rich text"
 
+msgid "INVERSEPOSTORDER"
+msgstr "Inverse chat order"
+
 msgid "CHOOSE_DATE"
 msgstr "Date to display"
 

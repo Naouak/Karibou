@@ -14,11 +14,13 @@ class MiniChatMessageList
 	protected $db;
 	protected $wiki;
 	protected $bbcode;
+	protected $inversepostorder;
 
-	function __construct(PDO $db, UserFactory $userFactory, $userichtext)
+	function __construct(PDO $db, UserFactory $userFactory, $userichtext, $inversepostorder)
 	{
 		$this->db = $db;
 		$this->userFactory = $userFactory;
+		$this->inversepostorder = $inversepostorder;
 	
 		/* Wiki Construct */
 		//$this->wiki = new wiki2xhtmlBasic();
@@ -84,7 +86,9 @@ class MiniChatMessageList
 				$this->bbcode);
 			$post[] = $line;
 		}
-		$post = array_reverse($post);
+		if (!$this->inversepostorder)
+			$post = array_reverse($post);
+
 		return $post;
 	}
     
@@ -108,7 +112,8 @@ class MiniChatMessageList
 					$this->bbcode);
             $post[] = $line;
         }
-        $post = array_reverse($post);
+	if (!$this->inversepostorder)
+        	$post = array_reverse($post);
         return $post;
     }
     
