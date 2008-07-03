@@ -44,6 +44,7 @@ class MinichatBBCode
 					"\\1",
 					"\\2");
 		}
+		$out = strip_tags($out);
 		$out = preg_replace($patterns, $replaces, $in);
 		return $out;
 	}
