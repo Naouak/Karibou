@@ -51,12 +51,6 @@ class MinichatMessage
 		$content = $this->bbcode->transform($this->message);
 		return $content;
 	}
-	
-	function getPostXHTML()
-	{
-		$content = $this->wiki->transform($this->message);
-		return $content;
-	}
 }
 
 

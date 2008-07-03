@@ -81,7 +81,7 @@ class MiniChatMessageList
 			$line = new MinichatMessage(
 				$row['timestamp'], 
 				$this->userFactory->prepareUserFromId($row['id_auteur']), 
-				$row['post'],
+				strip_tags($row['post']),
 				$this->wiki,
 				$this->bbcode);
 			$post[] = $line;
