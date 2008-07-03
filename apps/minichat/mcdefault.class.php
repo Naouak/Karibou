@@ -22,7 +22,10 @@ class MCDefault extends Model
 			/* POST */
 			if (isset($_POST['post']))
 			{
-			$message = $_POST['post'];
+				$message = $_POST['post'];
+				if (get_magic_quotes_gpc()) {
+					$message = stripslashes($message);
+				}
 			}
 			if ((isset($message)) && (strlen(trim($message)) > 0))
 			{
@@ -33,7 +36,7 @@ class MCDefault extends Model
 				{
 					$stmt = $this->db->prepare($req_sql);
 					$stmt->bindValue(":userId", $this->currentUser->getID());
-					$stmt->bindValue(":message", strip_tags(stripslashes($message)));
+					$stmt->bindValue(":message", strip_tags($message));
 					$stmt->execute();
 				}
 				catch(PDOException $e)
