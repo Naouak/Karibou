@@ -33,7 +33,7 @@ class MCDefault extends Model
 				{
 					$stmt = $this->db->prepare($req_sql);
 					$stmt->bindValue(":userId", $this->currentUser->getID());
-					$stmt->bindValue(":message", strip_tags($message));
+					$stmt->bindValue(":message", strip_tags(stripslashes($message)));
 					$stmt->execute();
 				}
 				catch(PDOException $e)
