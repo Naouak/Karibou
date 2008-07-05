@@ -17,3 +17,6 @@ updateDayTof();
 </script>
 
 <span id="daTofContainer"></span>
+<div align="center">
+<a href="{kurl app="daytof" page="history"}">##DAYTOF_HISTORY##</a>
+<div>
