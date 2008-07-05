@@ -14,11 +14,11 @@
  **/
 class DayTof extends Model
 {
-	protected $max_width_daytof = 200;
-	protected $max_height_daytof = 200;
+	/*protected $max_width_daytof = 200;
+	protected $max_height_daytof = 200;*/
 
 	public function build()
-	{
+	{/*
 		$tofdir = KARIBOU_PUB_DIR.'/daytof';
 		//controle + creation repertoire img
 		if( ! is_dir( $tofdir ) )
@@ -154,7 +154,7 @@ class DayTof extends Model
 			}
 		}
 
-
+*/
 		
 	}
 }

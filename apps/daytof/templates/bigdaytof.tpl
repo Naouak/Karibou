@@ -7,6 +7,5 @@
 	<br />
 	</br>{$tof.comment}<br />##DAYTOF_POSTED_BY## : {userlink user=$tof.user showpicture=$islogged}
 	<p />
-
 {/foreach}
 </div>
