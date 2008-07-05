@@ -32,7 +32,6 @@ class DaTof extends Model
 		$tofnum++;
 		
 		//===>AFFICHAGE day tof, photo du jour
-		$sql = "SELECT * FROM daytof WHERE 1 ORDER BY datetime DESC LIMIT :";
 		try
 		{
 			$stmt = $this->db->prepare("SELECT * FROM daytof WHERE 1 ORDER BY datetime DESC LIMIT :tofnum");
@@ -49,8 +48,8 @@ class DaTof extends Model
 		// $row now contains the tof infos...
 		
 		if ($user["object"] =  $this->userFactory->prepareUserFromId($row["user_id"])) {
-			$this->assign("tof",('pub/daytof/m'.$row["photo"].'.png'));
-			$this->assign("linktof",('pub/daytof/'.$row["photo"].'.png'));
+			$this->assign("tof",('pub/daytof/mPIC' . str_pad($row["id"], 5, "0", STR_PAD_LEFT) . '.png'));
+			$this->assign("linktof",('pub/daytof/PIC' . str_pad($row["id"], 5, "0", STR_PAD_LEFT) . '.png'));
 			$this->assign("datofauthor",$user);
 			$this->assign("datofcomment",$row["comment"]);
 			$this->assign("islogged", $this->currentUser->isLogged());
