@@ -23,20 +23,11 @@ class BigDayTof extends Model
 		}
 
 		if ($photos = $stmt->fetchall(PDO::FETCH_ASSOC)) {
-			if ($user["object"] =  $this->userFactory->prepareUserFromId($photos['0']["user_id"])) {
-				$this->assign("tof", $photos['0']["photos"]);
-				$this->assign("commentaire", $photos['0']["comment"]);
-
-				foreach ($photos as $id => $items) {
-					$photos[$id]["user"] = $this->userFactory->prepareUserFromId($photos[$id]["user_id"]);
-				}
-			   	$this->assign("tofarray", $photos);
-				$this->assign("islogged", $this->currentUser->isLogged());
+			foreach ($photos as $id => $items) {
+				$photos[$id]["user"] = $this->userFactory->prepareUserFromId($photos[$id]["user_id"]);
+				$photos[$id]["photo"] = "PIC" . str_pad($photos[$id]["id"], 5, "0", STR_PAD_LEFT);
 			}
-			
-			else {
-				$this->assign("DDempty", "Err empty");
-			}
+			$this->assign("tofarray", $photos);
 		}
 	}
 }
