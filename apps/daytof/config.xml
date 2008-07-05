@@ -18,8 +18,8 @@
 	<view name="upload" class="Upload" template="upload.tpl" />
 	
 	<page name="upload" view="upload">
-		<header app="header" view="empty" />
-		<footer app="footer" view="empty" />
+		<header app="header" view="default" />
+		<footer app="footer" view="default" />
 	</page>
 	
 	<view name="datof" class="DaTof" template="datof.tpl" />

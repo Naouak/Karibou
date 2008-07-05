@@ -94,14 +94,14 @@ class Upload extends Model
 				}
 				else 
 				{
-					$this->assign("erreur_daytof", "File type error");
+					$this->assign("daytofError", "File type error");
 				}
 	
 				
 			}
 			else
 			{
-				$this->assign("erreur_daytof", "Sending error");
+				$this->assign("daytofError", "Sending error");
 			}
 		}
 	}
