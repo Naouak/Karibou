@@ -22,7 +22,7 @@
 	
 	<load class="MinichatMessageList"		file="./class/minichatmessagelist.class.php" />
 	<load class="MinichatMessage"			file="./class/minichatmessage.class.php" />
-	<load class="MinichatBBCode"			file="./class/minichatbbcode.class.php" />
+	<load class="MinichatRendering"			file="./class/minichatrendering.class.php" />
 	<load class="PageArgument"			file="../arguments/pageargument.class.php" />
 	<load class="NumberArgument"	    		file="../arguments/numberargument.class.php" />
 
