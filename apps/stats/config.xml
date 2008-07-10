@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <app class="Stats">
+	<config>
+		<param name="numberofchampions">
+			<value name="normal">100</value>
+		</param>
+	</config>
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 
 	<load class="Stats" file="stats.class.php" />

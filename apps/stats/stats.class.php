@@ -11,7 +11,10 @@ class Stats extends Model
 {
 	public function build()
 	{
-		$numberofchampion = 100;
+		$app = $this->appList->getApp($this->appname);
+		$config = $app->getConfig();
+		
+		$numberofchampion = $config["numberofchampions"]["normal"];
 		$preums=array("text"=>"preums","score"=>5);
 		$deuz =array("text"=>"deuz","score"=>2);
 		$dernz=array("text"=>"dernz","score"=>3);
