@@ -15,3 +15,6 @@ msgstr "Who's da first ?"
 
 msgid "CHAMPIONSOFPREUMS"
 msgstr "Champions of Preums"
+
+msgid "NOCHAMPIONS"
+msgstr "No champions yet"

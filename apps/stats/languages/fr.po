@@ -15,3 +15,6 @@ msgstr "Statistiques des preums"
 
 msgid "CHAMPIONSOFPREUMS"
 msgstr "Champions du Preums"
+
+msgid "NOCHAMPIONS"
+msgstr "Pas de champions pour l'instant"
