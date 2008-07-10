@@ -5,7 +5,7 @@
 
 {foreach name=outer item=contact from=$contacts}
 <li>
-{$smarty.foreach.outer.iteration} / {userlink user=$contact.champion showpicture=$islogged} : {$contact.score}
+{$smarty.foreach.outer.iteration} / {userlink user=$contact[0] showpicture=$islogged} : {$contact[1]}
 </li>
 {/foreach}
 

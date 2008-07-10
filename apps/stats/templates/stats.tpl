@@ -6,7 +6,7 @@
 {foreach name=outer item=contact from=$contacts}
 {if $smarty.foreach.outer.index<10}
 <li>
-{$smarty.foreach.outer.iteration} / {userlink user=$contact.champion showpicture=$islogged} : {$contact.score}
+{$smarty.foreach.outer.iteration} / {userlink user=$contact[0] showpicture=$islogged} : {$contact[1]}
 </li>
 {/if}
 {/foreach}
