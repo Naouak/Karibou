@@ -65,7 +65,7 @@ class Stats extends Model
 		}
 		
 		//récupération des dernz
-		$stmt = $this->db->prepare("SELECT m1.id_auteur AS champion, COUNT(m1.id)*:score AS score FROM minichat m1 WHERE m1.post LIKE :dernz AND m1.id=(SELECT id FROM minichat WHERE DATE(`time`)=DATE(m1.time) ORDER BY `time` DESC LIMIT 1) GROUP BY id_auteur;		
+		$stmt = $this->db->prepare("SELECT m1.id_auteur AS champion, COUNT(m1.id)*:score AS score FROM minichat m1 WHERE m1.post LIKE :dernz AND m1.id=(SELECT id FROM minichat WHERE DATE(`time`)=DATE(m1.time) ORDER BY `time` DESC LIMIT 1) GROUP BY id_auteur;");
 		$stmt->bindParam(':dernz', $dernz["text"]);
 		$stmt->bindValue(':score', $dernz["score"],PDO::PARAM_INT);
 		$stmt->execute();
