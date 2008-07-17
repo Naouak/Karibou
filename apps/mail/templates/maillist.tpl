@@ -25,8 +25,8 @@
 </div>
 
 <div class="bodybox">
-<ul>
 <form method="POST"> <!-- formulaire pour suppression mail -->
+<ul>
 {foreach item=header from=$messageheaders}
 		<li id="mail_{$header->uid}" class="mail{if $header->deleted} deleted{elseif ! $header->seen} unread{/if}">
 			<span>
