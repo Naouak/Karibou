@@ -25,7 +25,7 @@
 </div>
 
 <div class="bodybox">
-<form method="POST"> <!-- formulaire pour suppression mail -->
+<form method="POST" action="{kurl app="mail"}"> <!-- formulaire pour suppression mail -->
 <ul>
 {foreach item=header from=$messageheaders}
 		<li id="mail_{$header->uid}" class="mail{if $header->deleted} deleted{elseif ! $header->seen} unread{/if}">
