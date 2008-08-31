@@ -338,13 +338,6 @@ class UserFactory
 				$user = $this->usersArrayByLogin[$tab["login"]];
 				$user->setFromTab($tab);
 			}
-			
-			if( !isset($user) )
-			{
-				$user = new UserSimple();
-				$user->setFromTab($tab);
-			}
-
 			$this->userList[] = $user;
 		}
 	}
