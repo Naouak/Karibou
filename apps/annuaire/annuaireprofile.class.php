@@ -69,12 +69,6 @@ class AnnuaireProfile extends Model
 		}
 
 		$user = $this->userFactory->prepareUserFromLogin($username);		
-		
-		//Glut' pour afficher les CVs
-		$this->userFactory->setUserList();
-		$thisapp = $this->appList->getApp('netcv');	
-		$thisapp->addView("modulepubliccvlist", 'directory_profile_cvlistmodule', array('userid' => $user->getId()));
-		
 		$this->assign("user", $user);
 
 
