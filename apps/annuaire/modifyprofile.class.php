@@ -143,7 +143,7 @@ class ModifyProfile extends FormModel
 				imagedestroy($im);
 				$profile = $p->getProfile() ;
 				if( !is_dir(KARIBOU_PUB_DIR.'/profile_pictures') ) mkdir(KARIBOU_PUB_DIR.'/profile_pictures');
-				imagejpeg($new_im, KARIBOU_PUB_DIR.'/profile_pictures/'.$profile['id'].'.jpg', 85);
+				imagejpeg($new_im, KARIBOU_PUB_DIR.'/profile_pictures/'.$profile['id'].'.jpg', 95);
 				imagedestroy($new_im);
 			}
 		}
