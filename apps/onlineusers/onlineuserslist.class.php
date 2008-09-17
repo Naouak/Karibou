@@ -43,7 +43,7 @@ class OnlineUsersList extends Model
 			$maxage = $config["max"]["age"];
 	
 			//Lister tous les utilisateurs en ligne dans un tableau
-			$sql = "SELECT ou.*, um.message, um.mood FROM onlineusers ou LEFT JOIN usermood um ON um.user_id = ou.user_id WHERE ou.timestamp > '".(time()-$maxage)."' ";
+			$sql = "SELECT ou.*, um.message, um.mood FROM onlineusers ou LEFT JOIN usermood um ON um.user_id = ou.user_id WHERE ou.timestamp > '".(time()-$maxage)."' ORDER BY ou.user_id ";
 			try {
 				$stmt = $this->db->query($sql);
 			} catch(PDOException $e) {
