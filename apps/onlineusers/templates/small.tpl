@@ -33,7 +33,7 @@ function setUserState() {
 
 <h3 class="handle"><span id="nbronlineusers_live">{include file="nbrusersconnected.tpl"}</span></h3>
 <div class="onlineusers">
-<div id="onlineusers_live">
+<div id="onlineusers_live" style="overflow-y: scroll; max-height: 300px;">
 {include file="list.tpl"}
 </div>
 {if $islogged}
