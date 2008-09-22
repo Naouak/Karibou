@@ -39,7 +39,7 @@ class Login extends FormModel
 			{
 				$user = $match[1];
 			}
-			$authManager = new AuthManager();
+			$authManager = new AuthManager($this->db);
 			if ($authManager->checkPassword($user, $pass))
 			{
 				$created = FALSE;
