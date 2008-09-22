@@ -18,7 +18,9 @@ class DayTof extends Model
 	protected $max_height_daytof = 200;*/
 
 	public function build()
-	{/*
+	{
+		$this->assign("islogged", $this->currentUser->isLogged());
+/*
 		$tofdir = KARIBOU_PUB_DIR.'/daytof';
 		//controle + creation repertoire img
 		if( ! is_dir( $tofdir ) )

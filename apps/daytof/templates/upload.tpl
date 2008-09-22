@@ -1,6 +1,6 @@
-{if !isset(daytofError)}
+{if !isset($daytofError)}
 Image uploaded...<br />
 {else}
-{daytofError}<br />
+{$daytofError}<br />
 {/if}
 <a href="{kurl app="default"}">Go back to the home page</a>...
