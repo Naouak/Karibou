@@ -23,8 +23,10 @@ class AuthManager
 {
 	private $authModules;
 	private $notifiedModules;
+	private $db;
 	
-	public function __construct() {
+	public function __construct(PDO $d_db) {
+		$this->db = $d_db;
 		$this->authModules = array();
 		$this->notifiedModules = array();
 		
@@ -38,6 +40,16 @@ class AuthManager
 	}
 	
 	public function checkPassword ($login, $password) {
+		try {
+			$qry = $this->db->prepare("SELECT * FROM karibou_framework.users WHERE locked=1 AND login=:login");
+			$qry->bindValue(":login", $login);
+			if ($qry->execute()) {
+				if ($qry->fetch())
+					return false;
+			}
+		} catch (PDOException $e) {
+			// So far, pass....
+		}
 		foreach ($this->authModules as $module) {
 			if ($module->check($login, $password)) {
 				foreach ($this->notifiedModules as $notify) {
