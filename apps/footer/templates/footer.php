@@ -12,7 +12,7 @@
 				<span class="user">
 					<strong><?=$user->getDisplayName();?></strong>
 				</span>
-				<ul>
+				<ul style="width: 700px; padding-left: 0px;">
 					<? hook(array('name'=>"footer_account_start")); ?>
 					<li class="profile"><a href="<?=kurl(array('app'=>"annuaire", 'username'=>$user->getLogin(), 'act'=>'edit'));?>"><?=_('EDITPROFILE');?></a></li>
 					<li class="preferences"><a href="<?=kurl(array('app'=>"preferences", 'page'=>"")); ?>"><?=_('PREFERENCES');?></a></li>
