@@ -11,4 +11,7 @@
 	{else}
 		##DIRECTORYDOESNOTEXIST##
 	{/if}
+	<br />
+	<a href="{kurl page='createdirectory' directoryname=$myDir->getPathBase64()}">##CREATE_A_DIRECTORY##</a><br />
+	<a href="{kurl page='upload' directoryname=$myDir->getPathBase64()}">##UPLOAD_A_FILE##</a>
 </div>
