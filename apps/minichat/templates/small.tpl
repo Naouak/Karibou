@@ -54,7 +54,7 @@ window.minichat_ajax_updater = new Ajax.PeriodicalUpdater('minichat_live', '{kur
 	</div>
 {/if}
     {if $permission > _READ_ONLY_}
-    <form action="{kurl action="post"}" method="post" id="minichat_live_form" onsubmit="return submit_mc_form('minichat_live_form', 'minichat_live');">
+    <form autocomplete="off" action="{kurl action="post"}" method="post" id="minichat_live_form" onsubmit="return submit_mc_form('minichat_live_form', 'minichat_live');">
         <input type="text" name="post" id="message" 
 class="minichatMessage" />
         <input type="submit" value="##MINICHAT_SEND##" class="button" />
