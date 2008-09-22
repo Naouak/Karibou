@@ -37,7 +37,7 @@ msgid "PASSWORDCHANGED_ERROR_DONTMATCH"
 msgstr "Vos (nouveaux) mots de passe sont différents"
 
 msgid "PASSWORDCHANGED_ERROR_UNKNOWN"
-msgstr "Une erreur inconnue est survenue"
+msgstr "Une erreur inconnue est survenue. Votre mot de passe a-t-il déjà été utilisé précédemment ?"
 
 msgid "PASSWORDCHANGED_ERROR_WRONGPASSWORD"
 msgstr "Vous n'avez pas saisi votre mot de passe actuel correctement"

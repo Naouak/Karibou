@@ -35,7 +35,7 @@ class ChangePassword extends FormModel
 					$login = $this->currentUser->getLogin();
 					$oldpassword = stripslashes($_POST["currentpassword"]);
 					$newpassword = stripslashes($_POST["newpassword1"]);
-					$authManager = new AuthManager();
+					$authManager = new AuthManager($this->db);
 					if( !$authManager->changePassword($login, $oldpassword, $newpassword) )
 					{
 						$_SESSION["changepasswordMessage"] = "UNKNOWNERROR";
