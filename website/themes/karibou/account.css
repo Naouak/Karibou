@@ -32,7 +32,7 @@ html>body #container #account {
 	overflow: hidden;
 }
 html>body #container #account .user {
-	width: 200px;
+	width: 150px;
 }
 #container #account .user strong {
 	display: block;
@@ -42,6 +42,7 @@ html>body #container #account .user {
 	float: left;
 	margin-left: 0px; 
 	padding-top: 2px;
+	z-index: 10;
 }
 #container #account > ul > li {
 	display: block;
