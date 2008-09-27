@@ -12,7 +12,6 @@ require_once KARIBOU_SMARTY_DIR.'/Smarty.class.php';
 
 require_once dirname(__FILE__).'/smarty/kurl.function.php';
 require_once dirname(__FILE__).'/smarty/translate.function.php';
-require_once dirname(__FILE__).'/smarty/insertheader.function.php';
 require_once dirname(__FILE__).'/smarty/userlink.function.php';
 require_once dirname(__FILE__).'/smarty/khint.function.php';
 require_once dirname(__FILE__).'/smarty/t.block.php';
