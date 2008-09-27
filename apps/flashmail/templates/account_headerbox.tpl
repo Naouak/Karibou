@@ -1,7 +1,7 @@
-	<script type="text/javascript" language="javascript">
+{literal}
+<script type="text/javascript" language="javascript">
 	// <![CDATA[
-<? /*Cant use class name hide or hidden (using dontshow)... IE seems to react to
-special classname... (sucks)*/ ?>
+/* Cant use class name hide or hidden (using dontshow)... IE seems to react to special classname... (sucks) */
 var inittitle = document.title;
 var fmtoggle=0;
 var intv = null;
@@ -24,7 +24,7 @@ function stop_blink() {
 }
 
 function flashmail_headerbox_update() {
-	new Ajax.Updater('account_flashmail_headerbox_full', '<?=kurl(array('app'=>"flashmail", 'page'=>"account_headerbox_content"));?>', {asynchronous:true, evalScripts:false, onComplete:flashmail_duplicate_unreadlist});
+	new Ajax.Updater('account_flashmail_headerbox_full', '{/literal}{kurl app="flashmail" page="accout_headerbox_content"}{literal}', {asynchronous:true, evalScripts:false, onComplete:flashmail_duplicate_unreadlist});
 	return false;
 }
 
@@ -84,14 +84,14 @@ function flashmail_duplicate_unreadlist() {
 
 		var post_vars = queryComponents.join("&");
 
-		new Ajax.Updater(content_id, '<?=kurl(array('app'=>"flashmail", 'page'=>"send"));?>', {
+		new Ajax.Updater(content_id, '{/literal}{kurl app="flashmail" page="send"}{literal}', {
 				asynchronous:true,
 				evalScripts:true,
 				method:'post',
 				postBody:post_vars
 			});
 
-		document.getElementById('flashmail_headerbox_answer').innerHTML= '<?=_('LOADING');?>';
+		document.getElementById('flashmail_headerbox_answer').innerHTML= '{/literal}{translate key="LOADING"}{literal}';
 
 		flashmail_headerbox_update()
 	
@@ -99,7 +99,7 @@ function flashmail_duplicate_unreadlist() {
 	}
 	// ]]>
 	</script>
-
+{/literal}
 <div id="account_flashmail_headerbox_full">
-<? include("account_headerbox_content.php"); ?>
+{include file="account_headerbox_content.tpl"}
 </div>
