@@ -91,7 +91,7 @@ function flashmail_duplicate_unreadlist() {
 				postBody:post_vars
 			});
 
-		document.getElementById('flashmail_headerbox_answer').innerHTML= '{/literal}{translate key="LOADING"}{literal}';
+		document.getElementById('flashmail_headerbox_answer').innerHTML= '{/literal}##LOADING##{literal}';
 
 		flashmail_headerbox_update()
 	
