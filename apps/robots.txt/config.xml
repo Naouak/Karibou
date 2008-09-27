@@ -7,7 +7,7 @@
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 
-	<view name="default" class="RobotsTxtDefault" template="default.php" />
+	<view name="default" class="RobotsTxtDefault" template="default.tpl" />
 
 	<page view="default">
 		<header app="header" view="empty" />
