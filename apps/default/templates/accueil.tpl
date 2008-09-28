@@ -152,7 +152,6 @@
 	<!--<h1>##HEADER_PAGE_TITLE##</h1>-->
 	<a id="personalise_button" href="#" onclick="return editHomeApps('{"##DEFAULT_END_EDIT##"|escape:'quotes'}', '{"##DEFAULT_EDIT##"|escape:'quotes'}');">##DEFAULT_EDIT##</a>
 	<br class="spacer" />
-	{hook name="html_head"}
 
 	<div id="default_page_configbar" style="display: none">
 		<div class="configbar" >
