@@ -27,6 +27,10 @@ class Video extends Model
 			$video = $out[2];
 			$urlvid = "http://www.youtube.com/v/";
 			$site = "youtube";
+		} else if (eregi("http://(.*)vimeo.com/(.*)", stripslashes($video), $out)) {
+			$video = $out[2];
+			$urlvid = "http://vimeo.com/moogaloop.swf?clip_id=";
+			$site = "vimeo";	
 		} else if (eregi("http://(.*)dailymotion.com/(.*)", stripslashes($video), $out)) {
 			$urlvid = "http://www.dailymotion.com/swf/";
 			$site = "dailymotion";
