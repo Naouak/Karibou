@@ -35,7 +35,7 @@ msgid "VIMEO"
 msgstr "Example for Vimeo : http://www.vimeo.com/1715202"
 
 msgid "VIDEO_ATTN"
-msgstr "Careful, you must input the address of the page containing the video, including the http:// text."
+msgstr "Careful, you must input the whole address of the page containing the video, including the http:// text."
 
 msgid "VIDEO_ADDR"
 msgstr "Please input the page's address: "
