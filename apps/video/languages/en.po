@@ -21,3 +21,24 @@ msgstr "Video posted by"
 
 msgid "VIDEO_HISTORY"
 msgstr "See the previous videos"
+
+msgid "VIDEO_EXPL"
+msgstr "To add a video, just input the URL of the YouTube, Dailymotion or Vimeo page that contained it."
+
+msgid "YOUTUBE"
+msgstr "Example for YouTube : http://www.youtube.com/watch?v=rQgIOUwVZ1"
+
+msgid "DAILYMOTION"
+msgstr "Example for Dailymotion : http://www.dailymotion.com/swf/5Mpi5TJ9gfoeahP6G"
+
+msgid "VIMEO"
+msgstr "Example for Vimeo : http://www.vimeo.com/1715202"
+
+msgid "VIDEO_ATTN"
+msgstr "Careful, you must input the address of the page containing the video, including the http:// text."
+
+msgid "VIDEO_ADDR"
+msgstr "Please input the page's address: "
+
+msgid "VIDEO_COMMENT"
+msgstr "Add your comment here: "

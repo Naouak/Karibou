@@ -1,9 +1,10 @@
 <h3>##NEWVIDEO##</h3>
-Pour ajouter une vid&eacute;o, il suffit d'indiquer l'URL de la page Youtube ou Dailymotion la contenant.<br />
-Exemple pour Youtube : http://www.youtube.com/watch?v=rQgIOUwVZ1<br />
-Exemple pour DailyMotion : http://www.dailymotion.com/swf/5Mpi5TJ9gfoeahP6G<br />
-Attention, il faut bien indiquer l'adresse de la page contenant la vid&eacute;o avec le texte http://.<br />
+##VIDEO_EXPL##<br />
+##YOUTUBE##<br />
+##DAILYMOTION##<br />
+##VIMEO##<br />
+##VIDEO_ATTN##<br />
 <br />
-Ins&eacute;rez donc l'adresse de la page : <input type="text" name="newvideo" value="" length="40" /><br />
-Ajoutez ici votre commentaire :
+##VIDEO_ADDR##<input type="text" name="newvideo" value="" length="40" /><br />
+##VIDEO_COMMENT##
 <input type="text" name="comment" value="" length="40" /><br />

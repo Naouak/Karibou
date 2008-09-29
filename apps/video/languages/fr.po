@@ -21,3 +21,24 @@ msgstr "Vid&eacute;o post&eacute;e par"
 
 msgid "VIDEO_HISTORY"
 msgstr "Historique des vid&eacute;os"
+
+msgid "VIDEO_EXPL"
+msgstr "Pour ajouter une vid&eacute;o, il suffit d'indiquer l'URL de la page YouTube, Dailymotion ou Vimeo la contenant."
+
+msgid "YOUTUBE"
+msgstr "Exemple pour YouTube : http://www.youtube.com/watch?v=rQgIOUwVZ1"
+
+msgid "DAILYMOTION"
+msgstr "Exemple pour Dailymotion : http://www.dailymotion.com/swf/5Mpi5TJ9gfoeahP6G"
+
+msgid "VIMEO"
+msgstr "Exemple pour Vimeo : http://www.vimeo.com/1715202"
+
+msgid "VIDEO_ATTN"
+msgstr "Attention, il faut bien indiquer l'adresse de la page contenant la vid&eacute;o avec le texte http://."
+
+msgid "VIDEO_ADDR"
+msgstr "Ins&eacute;rez donc l'adresse de la page : "
+
+msgid "VIDEO_COMMENT"
+msgstr "Ajoutez ici votre commentaire : "
