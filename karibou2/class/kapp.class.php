@@ -234,6 +234,13 @@ class KApp
 		{
 			$this->config = $this->readConfigTree($xml->config[0]);
 		}
+        if (isset($xml->hook))
+        {
+            foreach ($xml->hook as $hookXML)
+            {
+                $this->addView($hookXML["view"], $hookXML["name"]);
+            }
+        }
 	}
 	
 	function readConfigTree ($tree)
@@ -353,7 +360,6 @@ class KApp
 				$this->templatedir,
 				$this->permission,
 				$args );
-	
 			$this->hookManager->addView($hook, $model, $configview["template"]);
 	
 			return $model;

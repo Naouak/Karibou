@@ -21,7 +21,6 @@ function smarty_function_kurl($params, &$smarty)
  */
 function kurl($params , $appList = FALSE)
 {
-
 	//Gestion des templates PHP
 	if ($appList === FALSE)
 	{
