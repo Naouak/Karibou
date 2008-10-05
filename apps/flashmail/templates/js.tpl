@@ -154,6 +154,7 @@ var FlashmailManager = Class.create({
                 flashNode = document.createElement("div");
                 flashNode.setAttribute("class", "flashmail");
                 flashNode.setAttribute("flashmailId", flashId);
+                flashNode.setAttribute("authorId", authorId);
                 
                 headNode = document.createElement("div");
                 headNode.setAttribute("class", "flashmailHeader");
@@ -170,6 +171,7 @@ var FlashmailManager = Class.create({
                     // to_user_id => original author id
                     divNode = this.parentNode.parentNode.parentNode;
                     flashId = divNode.attributes.getNamedItem("flashmailId").nodeValue;
+                    authorId = divNode.attributes.getNamedItem("authorId").nodeValue;
                     formNode = document.createElement("form");
                     msgNode = document.createElement("span");
                     msgNode.innerHTML = "Message :<br />";
