@@ -3,8 +3,7 @@ header("Content-Type: text/xml");
 {/php}
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<flashmails>
-{foreach item=flashmail from=$flashmails}
+<flashmails>{foreach item=flashmail from=$flashmails}
     {if $flashmail->isArchive()}
     <flashmail class="archive" id="{$flashmail->getId()}">
     {elseif !$flashmail->isRead()}
@@ -17,5 +16,4 @@ header("Content-Type: text/xml");
         <message><![CDATA[{$flashmail->getMessage()}]]></message>
         <oldmessage><![CDATA[{$flashmail->getOldMessage()}]]></oldmessage>
     </flashmail>
-{/foreach}
-</flashmails>
+{/foreach}</flashmails>
