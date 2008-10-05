@@ -13,7 +13,7 @@ var FlashmailManager = Class.create({
         this.currentFlashmails = [];
         document.body.appendChild(this.flashmailBox);
         this.refreshFlashmails();
-        setInterval('FlashmailManager.Instance.refreshFlashmails()', 10000);
+        setInterval('FlashmailManager.Instance.refreshFlashmails()', 30000);
     },
     blinker: function () {
         FlashmailManager.Instance.blinkerState = !FlashmailManager.Instance.blinkerState;
