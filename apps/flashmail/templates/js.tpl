@@ -113,11 +113,8 @@ var FlashmailManager = Class.create({
         txtNode.focus();
     },
     handleFlashmails: function (transport) {
-        //alert("Handling flashmails !");
         flashmailsNode = transport.responseXML.firstChild;
         newFlashmails = [];
-        /*alert(flashmailsNode);
-        alert(flashmailsNode.childNodes.length);*/
         if (flashmailsNode.childNodes.length > 0) {
             this.blinkedTitle = "Flashmails !";
             this.start_blinker();
@@ -133,21 +130,21 @@ var FlashmailManager = Class.create({
                 xmlNode = flashmailsNode.childNodes[i];
                 if (xmlNode.nodeName != "flashmail")
                     continue;
-                flashId = xmlNode.attributes["id"].nodeValue;
+                flashId = xmlNode.attributes.getNamedItem("id").nodeValue;
                 newFlashmails.push(flashId);
                 if (this.currentFlashmails.indexOf(flashId) != -1)
                     continue;
                 this.currentFlashmails.push(flashId);
-                flashClass = xmlNode.attributes["class"].nodeValue;
+                flashClass = xmlNode.attributes.getNamedItem("class").nodeValue;
                 for (var j = 0 ; j < xmlNode.childNodes.length ; j++) {
                     subNode = xmlNode.childNodes[j];
                     if (subNode.nodeName == "date") {
-                        fullDate = subNode.attributes["full"].nodeValue;
-                        shortDate = subNode.attributes["short"].nodeValue;
+                        fullDate = subNode.attributes.getNamedItem("full").nodeValue;
+                        shortDate = subNode.attributes.getNamedItem("short").nodeValue;
                     } else if (subNode.nodeName == "author") {
-                        authorName = subNode.attributes["name"].nodeValue;
-                        authorLink = subNode.attributes["link"].nodeValue;
-                        authorId = subNode.attributes["id"].nodeValue;
+                        authorName = subNode.attributes.getNamedItem("name").nodeValue;
+                        authorLink = subNode.attributes.getNamedItem("link").nodeValue;
+                        authorId = subNode.attributes.getNamedItem("id").nodeValue;
                     } else if (subNode.nodeName == "message") {
                         messageText = subNode.firstChild.textContent;
                     } else if (subNode.nodeName == "oldmessage") {
@@ -172,7 +169,7 @@ var FlashmailManager = Class.create({
                     // omsgid => original message id
                     // to_user_id => original author id
                     divNode = this.parentNode.parentNode.parentNode;
-                    flashId = divNode.attributes["flashmailId"].nodeValue;
+                    flashId = divNode.attributes.getNamedItem("flashmailId").nodeValue;
                     formNode = document.createElement("form");
                     msgNode = document.createElement("span");
                     msgNode.innerHTML = "Message :<br />";
@@ -270,7 +267,7 @@ var FlashmailManager = Class.create({
                 aNode = document.createElement("a");
                 aNode.innerHTML = "##SETASREAD##";
                 $(aNode).observe('click', function () { 
-                    FlashmailManager.Instance.markAsRead(this.parentNode.parentNode.parentNode.attributes["flashmailId"].nodeValue);
+                    FlashmailManager.Instance.markAsRead(this.parentNode.parentNode.parentNode.attributes.getNamedItem("flashmailId").nodeValue);
                 });
                 spanNode.appendChild(aNode);
                 headNode.appendChild(spanNode);
@@ -317,8 +314,8 @@ var FlashmailManager = Class.create({
         // => delete useless flashmails...
         flashNode = this.flashmailBox.firstChild;
         while (flashNode) {
-            if (flashNode.attributes["class"].nodeValue == "flashmail") {
-                if (newFlashmails.indexOf(flashNode.attributes["flashmailId"].nodeValue) == -1) {
+            if (flashNode.attributes.getNamedItem("class").nodeValue == "flashmail") {
+                if (newFlashmails.indexOf(flashNode.attributes.getNamedItem("flashmailId").nodeValue) == -1) {
                     $(flashNode).fade({duration: 1.0, afterFinish: function (div) {
                         if (div.element.parentNode)
                             div.element.parentNode.removeChild(div.element);
