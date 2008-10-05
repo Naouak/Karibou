@@ -80,7 +80,7 @@ var FlashmailManager = Class.create({
         inputNode.setAttribute("type", "button");
         inputNode.setAttribute("value", "##CLOSE##");
         $(inputNode).observe('click', function (evt) {
-            $(formNode.parentNode).fade({duration: 1.0, afterFinish: function (div) {
+            $(this.parentNode.parentNode).fade({duration: 1.0, afterFinish: function (div) {
                 if (div.element.parentNode)
                     div.element.parentNode.removeChild(div.element);
             }});
