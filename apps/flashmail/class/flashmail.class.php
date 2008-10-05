@@ -98,6 +98,11 @@ class FlashMail
 		return $this->getInfo("message");
 	}
 
+    public function getOldMessage()
+    {
+        return $this->getInfo("oldmessage");
+    }
+
 	public function isRead ()
 	{
 		if ($this->getInfo("read") == '0')

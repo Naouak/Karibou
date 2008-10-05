@@ -46,7 +46,7 @@ class FlashMailFactory
 	{
 		$flashmails = array();
 
-		$qry = "SELECT * FROM flashmail WHERE to_user_id=".$this->currentUser->getID();
+		$qry = "SELECT f.*, o.message AS oldmessage FROM flashmail f LEFT JOIN flashmail o ON o.id=f.omsgid WHERE f.to_user_id=".$this->currentUser->getID();
 		
 		try
 		{
@@ -72,7 +72,7 @@ class FlashMailFactory
 	{
 		$flashmails = array();
 
-		$qry = "SELECT * FROM flashmail WHERE to_user_id=".$this->currentUser->getID()." AND `read`=0";
+		$qry = "SELECT f.*, o.message AS oldmessage FROM flashmail f LEFT JOIN flashmail o ON o.id=f.omsgid WHERE f.to_user_id=".$this->currentUser->getID()." AND f.`read`=0";
 		
 		try
 		{

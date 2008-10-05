@@ -19,6 +19,11 @@
 	<view name="default" class="FlashMailList" template="default.tpl" />
 	<view name="list" class="FlashMailList" template="list.tpl" />
 	<view name="unreadlist" class="UnReadFlashMailList" template="list.tpl" />
+    
+    <view name="flashmailJS" class="FlashMailNothing" template="js.tpl" />
+    <view name="flashmail_head" class="FlashMailNothing" template="html_head.tpl" />
+    
+    <view name="unreadlistXML" class="UnReadFlashMailList" template="listXML.tpl" />
 	<view name="account_headerbox" class="FlashMailHeaderBox" template="account_headerbox.tpl" />
 	<view name="headerbox" class="FlashMailHeaderBox" template="headerbox.tpl" />
 	<view name="headerbox_content" class="UnReadFlashMailList" template="headerbox_content.tpl" />
@@ -29,11 +34,23 @@
 
 	<view name="writebox" class="FlashMailNothing" template="writebox.tpl" />
 
-	<header app="header" view="default" />
+    <hook name="html_head" view="flashmail_head" />
+    
+    <page name="flashmailJS" view="flashmailJS">
+        <header app="header" view="empty" />
+        <footer app="footer" view="empty" />
+    </page>
+	
+    <header app="header" view="default" />
 	<footer app="footer" view="default" />
 	
 	<page view="default" />
 
+    <page name="unreadlistXML" view="unreadlistXML">
+        <header app="header" view="empty" />
+        <footer app="footer" view="empty" />
+    </page>
+    
 	<page name="writebox" view="writebox">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />

@@ -29,8 +29,10 @@ function flashmail_headerbox_update() {
 }
 
 function flashmail_duplicate_unreadlist() {
+    //alert("Calling the update function");
 	var test = document.getElementById("account_flashmail_read_link");
 	if (test) {
+        //alert("test found, I don't understand this...");
 		if (intv == null)
 			intv = setInterval('blinktitle("Nouveau flashmail")',1000);
 	} else {
@@ -40,8 +42,8 @@ function flashmail_duplicate_unreadlist() {
 	//Utilisation d'une recopie du innerHTML en javascript pour éviter d'exécuter 2 fois le même code pour 
 	//l'affichage du nombre de flashmails et de la liste des flashmails (depuis que les 2 éléments ne sont
 	//plus au même endroit.
-	document.getElementById('flashmail_headerbox_unreadlist').innerHTML = document.getElementById('flashmail_headerbox_unreadlist_TMP').innerHTML;
-	if (document.getElementById('flashmail_headerbox_unreadlist_TMP').innerHTML.length < 10) {
+//	document.getElementById('flashmail_headerbox_unreadlist').innerHTML = document.getElementById('flashmail_headerbox_unreadlist_TMP').innerHTML;
+	if (document.getElementById('flashmail_headerbox_unreadlist').innerHTML.length < 10) {
 		document.getElementById('flashmail_headerbox_unreadlist').className = "flashmail";
         document.getElementById('flashmail_headerbox_unreadlist').style.display = 'none';
 	}

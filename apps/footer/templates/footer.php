@@ -139,10 +139,5 @@ if (isset($this->hookManager->hooks['header_menu'])) {
 				<li><a href="<?=kurl(array('app'=>"credits"));?>"><?=_('APP_CREDITS');?></a></li>
 			</ul>
 		</div>
-
-		<div id="flashmail_headerbox_unreadlist" class="flashmail" style="display: none; float: none;">
-			<? hook(array('name'=>"flashmail_unreadlist")); ?>
-		</div>
-		<div id="flashmail_headerbox_answer" style="display: none; float: none;"><?=_('LOADING');?></div>
 	</body>
 </html>
