@@ -110,6 +110,7 @@ var FlashmailManager = Class.create({
             return false;
         });
         this.flashmailBox.appendChild(divNode);
+        txtNode.focus();
     },
     handleFlashmails: function (transport) {
         //alert("Handling flashmails !");
@@ -259,7 +260,7 @@ var FlashmailManager = Class.create({
                         }
                     }
                     divNode.getElementsByClassName("message")[0].setAttribute("class", "oldmessage");
-                    
+                    txtNode.focus();
                 });
                 spanNode.appendChild(aNode);
                 headNode.appendChild(spanNode);
