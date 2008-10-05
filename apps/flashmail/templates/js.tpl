@@ -112,9 +112,12 @@ var FlashmailManager = Class.create({
         this.flashmailBox.appendChild(divNode);
     },
     handleFlashmails: function (transport) {
+        //alert("Handling flashmails !");
         flashmailsNode = transport.responseXML.firstChild;
         newFlashmails = [];
-        if (flashmailsNode.children.length > 0) {
+        /*alert(flashmailsNode);
+        alert(flashmailsNode.childNodes.length);*/
+        if (flashmailsNode.childNodes.length > 0) {
             this.blinkedTitle = "Flashmails !";
             this.start_blinker();
             fullDate = "";
@@ -125,8 +128,8 @@ var FlashmailManager = Class.create({
             oldMessageText = "";
             flashClass = "";
             flashId = "";
-            for (var i = 0 ; i < flashmailsNode.children.length ; i++) {
-                xmlNode = flashmailsNode.children[i];
+            for (var i = 0 ; i < flashmailsNode.childNodes.length ; i++) {
+                xmlNode = flashmailsNode.childNodes[i];
                 if (xmlNode.nodeName != "flashmail")
                     continue;
                 flashId = xmlNode.attributes["id"].nodeValue;
@@ -135,8 +138,8 @@ var FlashmailManager = Class.create({
                     continue;
                 this.currentFlashmails.push(flashId);
                 flashClass = xmlNode.attributes["class"].nodeValue;
-                for (var j = 0 ; j < xmlNode.children.length ; j++) {
-                    subNode = xmlNode.children[j];
+                for (var j = 0 ; j < xmlNode.childNodes.length ; j++) {
+                    subNode = xmlNode.childNodes[j];
                     if (subNode.nodeName == "date") {
                         fullDate = subNode.attributes["full"].nodeValue;
                         shortDate = subNode.attributes["short"].nodeValue;
@@ -240,7 +243,7 @@ var FlashmailManager = Class.create({
                             else
                                 oldMsg.style.display = "block";
                         }
-                        divNode.getElementsByClassName("answerlink")[0].children[0].style.display = "";
+                        divNode.getElementsByClassName("answerlink")[0].childNodes[0].style.display = "";
                         divNode.removeChild(formNode);
                     });
                     formNode.appendChild(inputNode);
