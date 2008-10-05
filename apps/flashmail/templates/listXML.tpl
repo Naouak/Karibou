@@ -13,7 +13,7 @@ header("Content-Type: text/xml");
     {/if}
         <date full="{$flashmail->getInfo("date")|date_format:"%A %d %B %Y @ %H:%M.%S"}" short="{$flashmail->getInfo("date")|date_format:"%H:%M"}" />
         <author id="{$flashmail->getAuthorId()}" link="{kurl app='annuaire' username=$flashmail->getAuthorLogin()}" name="{$flashmail->getAuthorDisplayName()}" />
-        <message><![CDATA[{$flashmail->getMessage()}]]></message>
-        <oldmessage><![CDATA[{$flashmail->getOldMessage()}]]></oldmessage>
+        <message><![CDATA[{$flashmail->getMessage()|escape:'html'}]]></message>
+        <oldmessage><![CDATA[{$flashmail->getOldMessage()|escape:'html'}]]></oldmessage>
     </flashmail>
 {/foreach}</flashmails>
