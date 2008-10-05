@@ -12,7 +12,7 @@
 		<i>(##{$user.mood}##)</i>
 	{/if}
 	{if $user.message}
-		<i>{$user.message|escape:'html'}</i>
+		<i>{$user.message|strip_tags:true}</i>
 	{/if}
 {/if}
 			</li>
