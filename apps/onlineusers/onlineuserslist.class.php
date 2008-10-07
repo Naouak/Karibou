@@ -89,11 +89,11 @@ class OnlineUsersList extends Model
 			}
             
             // Find the current user gender
-            $sql = "SELECT p.gender FROM " . $GLOBALS['config']['bdd']["frameworkdb"] . "users u LEFT JOIN " . $GLOBALS['config']['bdd']["frameworkdb"] . "profile p ON p.id=u.profile_id WHERE u.id=". $this->currentUser->getID();
+            $sql = "SELECT p.gender FROM " . $GLOBALS['config']['bdd']["frameworkdb"] . ".users u LEFT JOIN " . $GLOBALS['config']['bdd']["frameworkdb"] . ".profile p ON p.id=u.profile_id WHERE u.id=". $this->currentUser->getID();
             $isGirl = false;
             try {
                 $stmt = $this->db->query($sql);
-                $userGender = $stmt->fetchOne();
+                $userGender = $stmt->fetch();
                 $isGirl = ($userGender[0] == "woman");
             } catch (PDOException $e) {
                 Debug::kill($e->getMessage());
