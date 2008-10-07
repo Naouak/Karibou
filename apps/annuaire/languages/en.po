@@ -9,6 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
+
 msgid "DIRECTORY_HOME"
 msgstr "Directory Home"
 
@@ -22,13 +23,13 @@ msgid "USER_PROFILE"
 msgstr "User profile"
 
 msgid "NO_RESULT"
-msgstr "No result"
+msgstr "No results"
 
 msgid "USER_GROUPS_TREE"
 msgstr "User groups tree"
 
 msgid "USER_GROUPS_TREE_DESCRIPTION"
-msgstr "The user groups tree displayed below shows each group of the intranet. By clicking on a group, you'll display its users."
+msgstr "The user groups tree displayed below shows each group of the intranet. Clicking on a group will reveal its users."
 
 msgid "USER_GROUPS"
 msgstr "User groups"
@@ -79,7 +80,7 @@ msgid "BELONGS_TO_GROUPS"
 msgstr "This user is member of the following group(s)"
 
 msgid "BIRTHDATE"
-msgstr "Birth date (AAAA-MM-JJ)"
+msgstr "Birth date (YYYY-MM-DD)"
 
 msgid "SHOWBIRTHDATE"
 msgstr "Birth date"
@@ -103,4 +104,4 @@ msgid "UNKNOWN"
 msgstr "I don't know"
 
 msgid "NA"
-msgstr "I don't want to say it"
+msgstr "I don't want to say"
