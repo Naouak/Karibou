@@ -21,7 +21,9 @@
 		{if isset($profile.note) && ($profile.note != "")}##NOTE## : <em>{$profile.note|escape}</em><br />{/if}
 		{if isset($profile.birthday) && ($profile.birthday != "")}##SHOWBIRTHDATE## : <strong>{$profile.birthday|escape}</strong><br />{/if}
 		{if isset($profile.company) && ($profile.company != "")}##COMPANY## : <strong>{$profile.company|escape}</strong><br />{/if}
-
+        {if isset($profile.gender) && ($profile.gender != "na")}##GENDER## : <strong>{if ($profile.gender == "man")}##MAN##
+{elseif ($profile.gender == "woman")}##WOMAN## 
+{elseif ($profile.gender == "unknown")}##UNKNOWN##{/if}</strong><br />{/if}
 	</div>
 	<hr class="clear" />
 	{if $edit}

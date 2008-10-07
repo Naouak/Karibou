@@ -178,16 +178,16 @@ function geocalc(name)
 				<textarea id="note" name="note">{$profile.note}</textarea><br class="spacer" />
 			<label for="company">##COMPANY##</label>
 				<input id="company" type="text" name="company" value="{$profile.company}" /><br class="spacer" />
-			<label for="picture">##PICTURE##</label>
-				<input id="picture" type="file" name="picture" /><br class="spacer" />
-				<span class="note">##PICTURE_NOTE##</span>
             <label for="gender">##GENDER##</label>
-                <select id="gender">
+                <select id="gender" name="gender">
                     <option value="man" {if ($profile.gender=='man')} selected="true" {/if}>##MAN##</option>
                     <option value="woman" {if ($profile.gender=='woman')} selected="true" {/if}>##WOMAN##</option>
                     <option value="unknown" {if ($profile.gender=='unknown')} selected="true" {/if}>##UNKNOWN##</option>
                     <option value="na" {if ($profile.gender=='na')} selected="true" {/if}>##NA##</option>
-                </select>
+                </select><br class="spacer" />
+			<label for="picture">##PICTURE##</label>
+				<input id="picture" type="file" name="picture" /><br class="spacer" />
+				<span class="note">##PICTURE_NOTE##</span>
 		</fieldset>
 		
 		
