@@ -15,12 +15,6 @@ class OnlineUsersList extends Model
 	public function build()
 	{
 		$moods = array(-1 => "none", "happy", "sad", "angry", "bored", "depressed", "disgusted", "excited", "invincible", "proud", "sick", "in_love", "stressed", "surprised", "worried", "serious", "distracted", "working", "desperate", "furious");
-		$moodsDisplayList = array(-1 => "MOOD_none");
-		foreach ($moods as $moodValue => $moodText) {
-			$moodsDisplayList[$moodValue] = gettext("MOOD_$moodText");
-		}
-		$this->assign("moodList", $moodsDisplayList);
-		
 		if (isset($_POST["userState"])) {
 			try {
 				$this->db->query("INSERT INTO usermood(user_id, mood) VALUES(" . $this->currentUser->getID() . ", -1)");
@@ -38,6 +32,7 @@ class OnlineUsersList extends Model
 				Debug::kill($e->getMessage());
 			}
 		} else {
+            
 			$app = $this->appList->getApp($this->appname);
 			$config = $app->getConfig();
 			$maxage = $config["max"]["age"];
@@ -92,6 +87,27 @@ class OnlineUsersList extends Model
 				$this->assign("currentUserState", $mood["message"]);
 				$this->assign("currentUserMood", $mood["mood"]);
 			}
+            
+            // Find the current user gender
+            $sql = "SELECT p.gender FROM " . $GLOBALS['config']['bdd']["frameworkdb"] . "users u LEFT JOIN " . $GLOBALS['config']['bdd']["frameworkdb"] . "profile p ON p.id=u.profile_id WHERE u.id=". $this->currentUser->getID();
+            $isGirl = false;
+            try {
+                $stmt = $this->db->query($sql);
+                $userGender = $stmt->fetchOne();
+                $isGirl = ($userGender[0] == "woman");
+            } catch (PDOException $e) {
+                Debug::kill($e->getMessage());
+            }
+            $moodsDisplayList = array(-1 => "MOOD_none");
+            foreach ($moods as $moodValue => $moodText) {
+                $tmp = gettext("MOOD_$moodText");
+                if ($isGirl)
+                    if (gettext("MOODE_$moodText") != "")
+                        $tmp = gettext("MOODE_$moodText");
+                $moodsDisplayList[$moodValue] = $tmp;
+            }
+            $this->assign("moodList", $moodsDisplayList);
+            
 		}
 	}
 
