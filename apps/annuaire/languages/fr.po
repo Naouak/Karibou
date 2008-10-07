@@ -98,3 +98,18 @@ msgstr "Date de naissance"
 
 msgid "COMPANY" 
 msgstr "Entreprise"
+
+msgid "GENDER"
+msgstr "Genre"
+
+msgid "MAN"
+msgstr "Je suis un mec"
+
+msgid "WOMAN"
+msgstr "Je suis une fille"
+
+msgid "UNKNOWN"
+msgstr "Je ne sais pas"
+
+msgid "NA"
+msgstr "Je ne veux pas le dire"

@@ -222,7 +222,8 @@ class ProfileFactory
 					birthday,
 					url,
 					note,
-					company
+					company,
+                    gender
 				)
 				VALUES (
 					'".($tab_profile['firstname'])."',
@@ -231,7 +232,8 @@ class ProfileFactory
 					'".($tab_profile['birthday'])."', 
 					'".($tab_profile['url'])."',
 					'".($tab_profile['note'])."',
-					'".($tab_profile['company'])."' 
+					'".($tab_profile['company'])."',
+                    '".($tab_profile['gender'])."',
 				) ";
 			try
 			{
@@ -258,7 +260,8 @@ class ProfileFactory
 			$qry .= "UPDATE ".$this->profile_table." SET
 				firstname='".($tab_profile['firstname'])."', lastname='".($tab_profile['lastname'])."', 
 				surname='".($tab_profile['surname'])."', birthday='".($tab_profile['birthday'])."', 
-				url='".($tab_profile['url'])."', note='".($tab_profile['note'])."', company='".($tab_profile['company'])."' 
+				url='".($tab_profile['url'])."', note='".($tab_profile['note'])."', company='".($tab_profile['company'])."',
+                gender='".($tab_profile['gender'])."'
 				WHERE id=".$profile->getId()." ; ";
 		}
 		return $qry;

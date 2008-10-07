@@ -89,3 +89,18 @@ msgstr "See where this person is"
 
 msgid "COMPANY"
 msgstr "Company"
+
+msgid "GENDER"
+msgstr "Gender"
+
+msgid "MAN"
+msgstr "I'm a man"
+
+msgid "WOMAN"
+msgstr "I'm a woman"
+
+msgid "UNKNOWN"
+msgstr "I don't know"
+
+msgid "NA"
+msgstr "I don't want to say it"

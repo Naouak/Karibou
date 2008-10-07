@@ -62,7 +62,6 @@ class Profile
 	{
 		$this->emails = $emails;
 	}
-		
 	
 
 }
