@@ -59,7 +59,7 @@ msgid "MOOD_disgusted"
 msgstr "Disgusted"
 
 msgid "MOOD_excited"
-msgstr "EXcited"
+msgstr "Excited"
 
 msgid "MOOD_invincible"
 msgstr "Invincible"
