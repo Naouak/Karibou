@@ -57,7 +57,7 @@ class OnlineUsersList extends Model
                     if ($user["gender"] == "woman") {
                         $tmp = gettext("MOODE_" . $moods[$user["mood"]]);
                     }
-                    if ($tmp == "")
+                    if ($tmp == "MOODE_$moodText")
                         $tmp = gettext("MOOD_" . $moods[$user["mood"]]);
 					$user["mood"] = $tmp;
 				} else
@@ -102,7 +102,7 @@ class OnlineUsersList extends Model
             foreach ($moods as $moodValue => $moodText) {
                 $tmp = gettext("MOOD_$moodText");
                 if ($isGirl)
-                    if (gettext("MOODE_$moodText") != "")
+                    if (gettext("MOODE_$moodText") != "MOODE_$moodText")
                         $tmp = gettext("MOODE_$moodText");
                 $moodsDisplayList[$moodValue] = $tmp;
             }
