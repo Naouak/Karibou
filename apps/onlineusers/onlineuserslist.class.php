@@ -43,7 +43,11 @@ class OnlineUsersList extends Model
 			$maxage = $config["max"]["age"];
 	
 			//Lister tous les utilisateurs en ligne dans un tableau
-			$sql = "SELECT ou.*, um.message, um.mood FROM onlineusers ou LEFT JOIN usermood um ON um.user_id = ou.user_id WHERE ou.timestamp > '".(time()-$maxage)."' ORDER BY ou.user_id ";
+			$sql = "SELECT ou.*, um.message, um.mood, fp.gender FROM onlineusers ou 
+                        LEFT JOIN usermood um ON um.user_id = ou.user_id
+                        LEFT JOIN " . $GLOBALS['config']['bdd']["frameworkdb"] . ".users fu ON fu.id = ou.user_id
+                        LEFT JOIN " . $GLOBALS['config']['bdd']["frameworkdb"] . ".profile fp ON fp.id=fu.profile_id
+                    WHERE ou.timestamp > '".(time()-$maxage)."' ORDER BY ou.user_id ";
 			try {
 				$stmt = $this->db->query($sql);
 			} catch(PDOException $e) {
@@ -53,9 +57,15 @@ class OnlineUsersList extends Model
 			foreach($onlineusers as &$user) {
 				$user["object"] = $this->userFactory->prepareUserFromId($user["user_id"]);
 				$user["message"] = $user["message"];
-				if (isset($user["mood"]) && ($user["mood"] != -1))
-					$user["mood"] = gettext("MOOD_" . $moods[$user["mood"]]);
-				else
+				if (isset($user["mood"]) && ($user["mood"] != -1)) {
+                    $tmp = gettext("MOOD_" . $moods[$user["mood"]]);
+                    if ($user["gender"] == "woman") {
+                        $tmp = gettext("MOODE_" . $moods[$user["mood"]]);
+                    }
+                    if ($tmp == "")
+                        $tmp = gettext("MOOD_" . $moods[$user["mood"]]);
+					$user["mood"] = $tmp;
+				} else
 					$user["mood"] = "";
 			}
 	

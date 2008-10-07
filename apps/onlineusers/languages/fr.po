@@ -42,6 +42,8 @@ msgstr "Aucune"
 
 msgid "MOOD_happy"
 msgstr "Heureux"
+msgid "MOODE_happy"
+msgstr "Heureuse"
 
 msgid "MOOD_sad"
 msgstr "Triste"
@@ -61,17 +63,32 @@ msgstr "Dégoûté"
 msgid "MOOD_excited"
 msgstr "Excité"
 
+msgid "MOODE_depressed"
+msgstr "Déprimée"
+
+msgid "MOODE_disgusted"
+msgstr "Dégoûtée"
+
+msgid "MOODE_excited"
+msgstr "Excitée"
+
 msgid "MOOD_invincible"
 msgstr "Invincible"
 
 msgid "MOOD_proud"
 msgstr "Fier"
 
+msgid "MOODE_proud"
+msgstr "Fière"
+
 msgid "MOOD_sick"
 msgstr "Malade"
 
 msgid "MOOD_in_love"
 msgstr "Amoureux"
+
+msgid "MOODE_in_love"
+msgstr "Amoureuse"
 
 msgid "MOOD_stressed"
 msgstr "Stressé"
@@ -88,6 +105,21 @@ msgstr "Sérieux"
 msgid "MOOD_distracted"
 msgstr "Distrait"
 
+msgid "MOODE_stressed"
+msgstr "Stressée"
+
+msgid "MOODE_surprised"
+msgstr "Surprise"
+
+msgid "MOODE_worried"
+msgstr "Inquiète"
+
+msgid "MOODE_serious"
+msgstr "Sérieuse"
+
+msgid "MOODE_distracted"
+msgstr "Distraite"
+
 msgid "MOOD_working"
 msgstr "Bosse"
 
@@ -96,3 +128,9 @@ msgstr "Désespéré"
 
 msgid "MOOD_furious"
 msgstr "Furieux"
+
+msgid "MOODE_desperate"
+msgstr "Désespérée"
+
+msgid "MOODE_furious"
+msgstr "Furieuse"
