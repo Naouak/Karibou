@@ -73,6 +73,7 @@ class SearchDefault extends Model
 					$this->assign("usersfound", $usersfound);
 				}
 			}
+			$this->assign("base_url", $GLOBALS['config']['site']['base_url']);
 		}
 	}
 }

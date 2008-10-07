@@ -38,7 +38,7 @@
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 
-	<view name="results" class="SearchDefault" template="results.php" />
+	<view name="results" class="SearchDefault" template="results.tpl" />
 
 	<page view="results">
 		<header app="header" view="default" />
