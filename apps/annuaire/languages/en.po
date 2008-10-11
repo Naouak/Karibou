@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: team@karibou.org\n"
 "POT-Creation-Date: 2006-07-24 16:54+0200\n"
-"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2008-10-10 02:23+0200\n"
 "Last-Translator: Karibou Team <team@karibou.org>\n"
 "Language-Team: Karibou Team <team@karibou.org>\n"
 "MIME-Version: 1.0\n"
@@ -79,6 +79,9 @@ msgstr "People in group"
 msgid "BELONGS_TO_GROUPS"
 msgstr "This user is member of the following group(s)"
 
+msgid "BELONGS_TO_GROUP"
+msgstr "This user is member of the following group"
+
 msgid "BIRTHDATE"
 msgstr "Birth date (YYYY-MM-DD)"
 
@@ -87,6 +90,12 @@ msgstr "Birth date"
 
 msgid "PROFILE_GEOLOC"
 msgstr "See where this person is"
+
+msgid "COORDS"
+msgstr "Coordinates"
+
+msgid "GEOCALC"
+msgstr "Calculate the coordinates"
 
 msgid "COMPANY"
 msgstr "Company"

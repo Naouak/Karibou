@@ -3,12 +3,13 @@ msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: team@karibou.org\n"
 "POT-Creation-Date: 2006-07-24 16:54+0200\n"
-"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2008-10-10 02:23+0200\n"
 "Last-Translator: Karibou Team <team@karibou.org>\n"
 "Language-Team: Karibou Team <team@karibou.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
+
 msgid "DIRECTORY_HOME"
 msgstr "Accueil Annuaire"
 
@@ -84,6 +85,9 @@ msgstr "Cet utilisateur appartient au groupe suivant"
 msgid "BIRTHDATE"
 msgstr "Date de naissance (AAAA-MM-JJ)"
 
+msgid "SHOWBIRTHDATE" 
+msgstr "Date de naissance"
+
 msgid "PROFILE_GEOLOC"
 msgstr "Voir l'emplacement de cette personne"
 
@@ -92,9 +96,6 @@ msgstr "Coordonnées"
 
 msgid "GEOCALC"
 msgstr "Calculer les coordonées"
-
-msgid "SHOWBIRTHDATE" 
-msgstr "Date de naissance"
 
 msgid "COMPANY" 
 msgstr "Entreprise"
