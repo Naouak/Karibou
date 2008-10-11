@@ -36,3 +36,6 @@ msgstr "Les 100 premiers !"
 
 msgid "NOCHAMPIONS"
 msgstr "Pas de champions pour l'instant"
+
+msgid "CHAMPIONSOFFLOOD"
+msgstr "Champions du Flood du Minichat"
