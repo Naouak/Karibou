@@ -348,6 +348,7 @@ class KApp
 	 */
 	function addView($name, $hook="default", $args=array() )
 	{
+		//echo "KApp(" . $this->name . "::addView($name, $hook)\n";
 		if( $this->permission > _NO_ACCESS_ )
 		{
 			if( !isset($this->configViewList[$name]) ) return false;
@@ -360,15 +361,13 @@ class KApp
 				$this->templatedir,
 				$this->permission,
 				$args );
-			$this->hookManager->addView($hook, $model, $configview["template"]);
-	
-			return $model;
+			if ($model->getPermission() > _NO_ACCESS_) {
+				$this->hookManager->addView($hook, $model, $configview["template"]);
+				return $model;
+			}
 		}
-		else
-		{
-			$err = $this->appList->getApp('error');
-			return $err->addView('noaccess', $hook);
-		}
+		$err = $this->appList->getApp('error');
+		return $err->addView('noaccess', $hook);
 	}
 	
 	/**

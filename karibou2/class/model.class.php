@@ -240,6 +240,10 @@ abstract class Model
 		}
 		ExecutionTimer::getRef()->stop("Display Model (".$template.") ".$this->appname."(".get_class($this).")");
 	}
+
+	public function getPermission() {
+		return $this->permission;
+	}
 }
 
 ?>
