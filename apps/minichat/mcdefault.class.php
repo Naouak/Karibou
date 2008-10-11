@@ -104,6 +104,7 @@ class MCDefault extends Model
         }
 
 		$this->assign('permission', $this->permission);
+		$this->assign('time', time());
 	}
 }
 

@@ -65,5 +65,5 @@ class="minichatMessage" />
 		{include file="content.tpl"}
 	</div>
 {/if}
-    <div class="chathistorylink"><a href="{kurl app="minichat" page=""}">##VIEWCHATHISTORY##...</a></div>
+    <div class="chathistorylink"><a href="{kurl app="minichat" page="" day="$time"}">##VIEWCHATHISTORY##...</a></div>
 </div>

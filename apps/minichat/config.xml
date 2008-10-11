@@ -40,9 +40,10 @@
 	<footer app="footer" view="default" />
 	
 	<page view="big" />
+	
 	<page view="big">
-	<option name="pagenum" class="PageArgument" />
-        <option name="day" class="NumberArgument" />
+		<option name="pagenum" class="PageArgument" />
+		<option name="day" class="NumberArgument" />
 	</page>
 	
 	<page name="content" view="content">
