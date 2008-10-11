@@ -16,5 +16,23 @@ msgstr "Statistiques des preums"
 msgid "CHAMPIONSOFPREUMS"
 msgstr "Champions du Preums"
 
+msgid "PREUMSRULESTITLE"
+msgstr "Voici les règles du preums:"
+
+msgid "DERNZRULES"
+msgstr "Un dernz donne 3 points."
+
+msgid "PREUMSRULES"
+msgstr "Un preums donne 5 points."
+
+msgid "DEUZRULES"
+msgstr "Un deuz donne 2 points."
+
+msgid "TROIZRULES"
+msgstr "Un troiz donne 1 points."
+
+msgid "PREUMSBIGLINK"
+msgstr "Les 100 premiers !"
+
 msgid "NOCHAMPIONS"
 msgstr "Pas de champions pour l'instant"

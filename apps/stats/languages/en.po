@@ -18,3 +18,21 @@ msgstr "Champions of Preums"
 
 msgid "NOCHAMPIONS"
 msgstr "No champions yet"
+
+msgid "PREUMSRULESTITLE"
+msgstr "These are the rules of Karibou:"
+
+msgid "DERNZRULES"
+msgstr "One dernz gives 3 points."
+
+msgid "PREUMSRULES"
+msgstr "One preums gives 5 points."
+
+msgid "DEUZRULES"
+msgstr "One deuz gives 2 points."
+
+msgid "TROIZRULES"
+msgstr "One troiz gives 1 points."
+
+msgid "PREUMSBIGLINK"
+msgstr "the first 100 !"

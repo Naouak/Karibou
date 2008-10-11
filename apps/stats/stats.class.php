@@ -91,5 +91,6 @@ class Stats extends Model
 		$this->assign("islogged", $this->currentUser->isLogged());
 		$this->assign("contacts", $final);
 	}
+	
 }
 ?>
