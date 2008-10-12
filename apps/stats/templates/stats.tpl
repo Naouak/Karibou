@@ -2,8 +2,8 @@
 
 <span class="StatsContent">
 	
-	<h4>##CHAMPIONSOFPREUMS##:</h4>
-	<ol style="list-style-type:decimal">
+	<h4><a onclick="new Effect.toggle(document.getElementById('statsPreumsList')); return false;" >##CHAMPIONSOFPREUMS##</a></h4>
+	<ol style="list-style-type:decimal; display: none;" id="statsPreumsList">
 		{foreach name=outer item=contact from=$contacts}
 		{if $smarty.foreach.outer.index<10}
 		<li>
@@ -13,8 +13,8 @@
 		{/foreach}
 	</ol>
 	
-	<h4>##CHAMPIONSOFFLOOD##:</h4>
-	<ol style="list-style-type:decimal">
+	<h4><a onclick="new Effect.toggle(document.getElementById('statsFloodList')); return false;" >##CHAMPIONSOFFLOOD##</a></h4>
+	<ol style="list-style-type:decimal; display:none;" id="statsFloodList">
 {foreach name=outer item=contact from=$flooderlist}
 {if $smarty.foreach.outer.index<10}
 		<li>
@@ -23,9 +23,7 @@
 {/if}
 {/foreach}
 	</ol>
-	
 	<span>
-		<a href="{kurl app="stats" page=""}">##PREUMSBIGLINK##</a>
+		<a href="{kurl page=""}">##PREUMSBIGLINK##</a>
 	</span>
-
 </span>
