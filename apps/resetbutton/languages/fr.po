@@ -21,3 +21,6 @@ msgstr "jours"
 
 msgid "RESET"
 msgstr "Remettre à zéro"
+
+msgid "LASTRESETBY"
+msgstr "La dernière remise à zéro a été faite par"

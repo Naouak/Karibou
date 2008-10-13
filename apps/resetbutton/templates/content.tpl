@@ -1,3 +1,2 @@
-##NOTRESETEDFOR##<br />
-	{$resettime}<br />
-	<input type="button" name="reset" OnClick="reset()" value="##RESET##" />
+<span id="resetdays">{$resetdays}</span> ##DAYS## <span id="resethour">{$resethour}</hour><br />
+LASTRESETBY {userlink user=$lastresetby showpicture=$islogged}

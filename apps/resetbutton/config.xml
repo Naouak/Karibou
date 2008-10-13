@@ -3,16 +3,23 @@
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 
 	<load class="resetbutton" file="resetbutton.class.php" />
+	<load class="resetbuttonreset" file="resetbuttonreset.class.php" />
 	
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 	
 	<view name="mini" class="resetbutton" template="resetbutton.tpl" />
 	<view name="content" class="resetbutton" template="content.tpl" />
+	<view name="reset" class="resetbuttonreset" template="content.tpl" />
 	
 	<page view="default" />
 	
 	<page name="content" class="resetbutton" view="content">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+	
+	<page name="reset" class="resetbuttonreset" view="reset">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>

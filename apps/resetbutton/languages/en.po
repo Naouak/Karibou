@@ -21,3 +21,6 @@ msgstr "days"
 
 msgid "RESET"
 msgstr "Reset it !"
+
+msgid "LASTRESETBY"
+msgstr "The last reseter is"

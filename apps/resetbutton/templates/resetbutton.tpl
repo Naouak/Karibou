@@ -2,19 +2,19 @@
 	// <![CDATA[
 	
 new Ajax.PeriodicalUpdater('resetbuttoncontent', '{kurl app="resetbutton" page="content"}',  {literal}
-                            {evalScripts: true, frequency: 10, 
+                            {evalScripts: true, frequency: 5, 
                             onSuccess: function (transport) {
                                 getElementById("resetbuttoncontent").innerHTML = transport.responseText;
                             }});
 	
 	
-function reset() {
+function resetbuttonpushed() {
 {/literal}
-	var url = '{kurl app="resetbutton" page="content"}';
+	var url = '{kurl app="resetbutton" page="reset"}';
 {literal}
 	new Ajax.Request(url, {
 		method: 'post',
-		parameters: 'reset=resseting'
+		parameters: ''
 	});
 	{/literal}
 	// 1.5 seconds should be enough for the query
@@ -27,8 +27,14 @@ function reset() {
 </script>
 
 <h3 class="handle">##RESETBUTTONTITLE##</h3>
-
+<div>
+{if $islogged}
+<form onsubmit="return resetbuttonpushed()">
+	<input type="submit" value="##RESET##" />
+</form>
+{/if}
+##NOTRESETEDFOR##<br />
 <span id="resetbuttoncontent">
 	{include file="content.tpl"}
 </span>
-
+</div>
