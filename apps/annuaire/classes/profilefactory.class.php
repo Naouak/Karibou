@@ -167,7 +167,7 @@ class ProfileFactory
 		}
 		catch(PDOException $e)
 		{
-			Debug::kill($e->getMessagae());
+			Debug::kill($e->getMessage());
 		}
 		$addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		unset($stmt);
@@ -185,7 +185,7 @@ class ProfileFactory
 		}
 		catch(PDOException $e)
 		{
-			Debug::kill($e->getMessagae());
+			Debug::kill($e->getMessage());
 		}
 		$phones = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		unset($stmt);
@@ -203,7 +203,7 @@ class ProfileFactory
 		}
 		catch(PDOException $e)
 		{
-			Debug::kill($e->getMessagae());
+			Debug::kill($e->getMessage());
 		}
 		$emails = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		unset($stmt);
@@ -233,7 +233,7 @@ class ProfileFactory
 					'".($tab_profile['url'])."',
 					'".($tab_profile['note'])."',
 					'".($tab_profile['company'])."',
-                    '".($tab_profile['gender'])."',
+                    '".($tab_profile['gender'])."'
 				) ";
 			try
 			{
@@ -241,7 +241,7 @@ class ProfileFactory
 			}
 			catch(PDOException $e)
 			{
-				Debug::kill($e->getMessagae());
+				Debug::kill($e->getMessage());
 			}
 			
 			$tab_profile['id'] = $this->db->lastInsertId();;
