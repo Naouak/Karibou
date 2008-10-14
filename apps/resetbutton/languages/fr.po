@@ -24,3 +24,24 @@ msgstr "Remettre à zéro"
 
 msgid "LASTRESETBY"
 msgstr "La dernière remise à zéro a été faite par"
+
+msgid "STATS"
+msgstr "Statistiques du décompte"
+
+msgid "LONGESTTIME"
+msgstr "Temps le plus long"
+
+msgid "TIME"
+msgstr "Temps"
+
+msgid "CUTTER"
+msgstr "Celui qui a remis à zéro ce si long temps"
+
+msgid "THEYRESETEDIT"
+msgstr "Ils l'ont remis à zéro"
+
+msgid "HASRESETEDIT"
+msgstr "l'a remit à zéro"
+
+msgid "TIMES"
+msgstr "fois."

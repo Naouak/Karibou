@@ -29,6 +29,7 @@ function resetbuttonpushed() {
 </script>
 
 <h3 class="handle">##RESETBUTTONTITLE##</h3>
+{include file="navig.tpl"}
 <div>
 {if $islogged}
 <form onsubmit="return resetbuttonpushed()">
@@ -39,6 +40,7 @@ function resetbuttonpushed() {
 <span id="resetbuttoncontent">
 	{include file="content.tpl"}
 </span>
+
 </div>
 <script type="text/javascript" language="javascript">
 	// <![CDATA[

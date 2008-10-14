@@ -4,6 +4,7 @@
 
 	<load class="resetbutton" file="resetbutton.class.php" />
 	<load class="resetbuttonreset" file="resetbuttonreset.class.php" />
+	<load class="resetbuttonstats" file="resetbuttonstats.class.php" />
 	
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
@@ -11,8 +12,14 @@
 	<view name="mini" class="resetbutton" template="resetbutton.tpl" />
 	<view name="content" class="resetbutton" template="content.tpl" />
 	<view name="reset" class="resetbuttonreset" template="content.tpl" />
+	<view name="stats" class="resetbuttonstats" template="stats.tpl" />
 	
 	<page view="default" />
+	
+	<page name="stats" class="resetbuttonstats" view="stats">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
 	
 	<page name="content" class="resetbutton" view="content">
 		<header app="header" view="empty" />
