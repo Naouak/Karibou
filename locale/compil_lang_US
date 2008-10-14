@@ -1,0 +1,14 @@
+#! /bin/bash
+
+tmppo="/tmp/all_US.po"
+files=`find apps/ -name en.po`
+msgcat="msgcat"
+for i in $files
+do
+	msgcat="$msgcat $i"
+done
+msgcat="$msgcat -o $tmppo"
+$msgcat
+
+msgfmt $tmppo -o locale/en_US/LC_MESSAGES/messages.mo
+
