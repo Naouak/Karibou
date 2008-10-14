@@ -37,11 +37,57 @@ class resetbuttonstats extends Model
 		}
 		$this->assign("reseterlist", $final);
 	}
+	
+	private function timecount(){
+		 $stmt = $this->db->prepare(" SELECT timed.cutter AS user, CONCAT( FLOOR( SUM( TIME_TO_SEC( timed.hours ) ) /3600 ) , ':', FLOOR( MOD( SUM( TIME_TO_SEC( timed.hours ) ) , 3600 ) /60 ) , ':', MOD( SUM( TIME_TO_SEC( timed.hours ) ) , 60 ) ) AS compte
+FROM (
+
+SELECT TIMEDIFF( cut.date, frst.date ) AS HOURs, cut.user AS cutter
+FROM resetbutton AS frst, resetbutton AS cut
+WHERE cut.id = frst.id +1
+ORDER BY HOURs DESC
+) AS timed
+GROUP BY cutter
+HAVING cutter <>0
+ORDER BY compte DESC LIMIT 100");
+		$stmt->execute();
+		$i=0;
+		while($result = $stmt->fetch()){
+			$profil = $this->userFactory->prepareUserFromId($result['user']);
+			$final[$i] = array($profil,$result['compte']);
+			$i++;
+		}
+		$this->assign("timecountlist", $final);
+	}
+	
+	private function score(){
+		 $stmt = $this->db->prepare(" SELECT timed.cutter AS user, FLOOR(SUM( LN(TIME_TO_SEC( timed.hours )) )) AS compte
+FROM (
+
+SELECT TIMEDIFF( cut.date, frst.date ) AS HOURs, cut.user AS cutter
+FROM resetbutton AS frst, resetbutton AS cut
+WHERE cut.id = frst.id +1
+ORDER BY HOURs DESC
+) AS timed
+GROUP BY cutter
+HAVING cutter <>0
+ORDER BY compte DESC LIMIT 100");
+		$stmt->execute();
+		$i=0;
+		while($result = $stmt->fetch()){
+			$profil = $this->userFactory->prepareUserFromId($result['user']);
+			$final[$i] = array($profil,$result['compte']);
+			$i++;
+		}
+		$this->assign("scorelist", $final);
+	}
 
 	public function build()
 	{
 		$this->longtime();
 		$this->reseters();
+		$this->timecount();
+		$this->score();
 		$this->assign("islogged", $this->currentUser->isLogged());
 	}
 	

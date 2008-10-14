@@ -11,7 +11,7 @@ class resetbutton extends Model
 {	
 	public function build()
 	{
-			$stmt = $this->db->prepare(" SELECT DATEDIFF(NOW(), date) as days, TIMEDIFF( NOW() , date) as hour, user
+			$stmt = $this->db->prepare(" SELECT TIMEDIFF( NOW() , date) as hour, user
 					FROM resetbutton
 					ORDER BY date DESC
 					LIMIT 1 ");
@@ -20,7 +20,6 @@ class resetbutton extends Model
 			
 			$this->assign("islogged", $this->currentUser->isLogged());
 			$this->assign("lastresetby",$this->userFactory->prepareUserFromId($temp['user']));
-			$this->assign("resetdays",$temp['days']);
 			$this->assign("resethour",$temp['hour']);
 	}
 	

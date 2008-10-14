@@ -43,6 +43,15 @@ msgstr "Ils l'ont remis à zéro"
 msgid "HASRESETEDIT"
 msgstr "l'a remis à zéro"
 
+msgid "SCORETIME"
+msgstr "Scores"
+
+msgid "SCORED"
+msgstr "a"
+
+msgid "POINTS"
+msgstr "point(s)."
+
 msgid "TIMES"
 msgstr "fois."
 
@@ -57,3 +66,6 @@ msgstr "Combien de temps le bouton a-t-il tenu ?"
 
 msgid "STATSNAVIG"
 msgstr "Statistiques"
+
+msgid "NAVIGBAR"
+msgstr "Barre de navigation"

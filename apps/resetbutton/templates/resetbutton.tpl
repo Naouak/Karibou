@@ -34,7 +34,7 @@ function resetbuttonpushed() {
 <div>
 {if $islogged}
 <form onsubmit="return resetbuttonpushed()">
-	<input type="submit" value="##RESET##" />
+	<input  id="resetbuttonbutton" type="submit" value="##RESET##" />
 </form>
 {/if}
 ##NOTRESETEDFOR##<br />
@@ -55,10 +55,6 @@ function updatecounter(){
 			if(time[1]%60 != time[1]){
 				time[0] = parseInt(time[0]) + 1;
 				time[1] = time[1]%60;
-				if(time[0]%24 != time[0]){
-					document.getElementById("resetdays").innerHTML = document.parseInt(getElementById("resetdays").innerHTML) + 1;
-					time[0] = time[0]%24;
-				}
 				if(time[0]<10) time[0] = "0"+time[0];
 			}
 			if(time[1]<10) time[1] = "0"+time[1];
