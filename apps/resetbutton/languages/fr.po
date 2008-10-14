@@ -45,3 +45,15 @@ msgstr "l'a remit à zéro"
 
 msgid "TIMES"
 msgstr "fois."
+
+msgid "MINIBUBbLE"
+msgstr "Revenir au bouton"
+
+msgid "MININAVIG"
+msgstr "Le Bouton"
+
+msgid "STATSBUBBLE"
+msgstr "Combien de temps le bouton a-t-il tenu ?"
+
+msgid "STATSNAVIG"
+msgstr "Statistiques"
