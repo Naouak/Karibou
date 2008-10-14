@@ -1,7 +1,8 @@
 <script type="text/javascript" language="javascript">
 	// <![CDATA[
+var resettimeout;
 	
-new Ajax.PeriodicalUpdater('resetbuttoncontent', '{kurl app="resetbutton" page="content"}',  {literal}
+resetupdate = new Ajax.PeriodicalUpdater('resetbuttoncontent', '{kurl app="resetbutton" page="content"}',  {literal}
                             {evalScripts: true, frequency: 5, 
                             onSuccess: function (transport) {
                                 getElementById("resetbuttoncontent").innerHTML = transport.responseText;
@@ -18,7 +19,7 @@ function resetbuttonpushed() {
 	});
 	{/literal}
 	// 1.5 seconds should be enough for the query
-	setTimeout("new Ajax.Updater('resetbuttoncontent', '{kurl app="resetbutton" page="content"}', {literal}{asynchronous:true, evalScripts:true}{/literal});", 1000);
+	resettimeout = setTimeout("new Ajax.Updater('resetbuttoncontent', '{kurl app="resetbutton" page="content"}', {literal}{asynchronous:true, evalScripts:true}{/literal});", 1000);
 	{literal}
 	return false;
 }
