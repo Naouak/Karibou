@@ -1,5 +1,5 @@
 <?php
-/* BEWARE made by Naouak*/ 
+/* Made in Rémy Sanchez <remy.sanchez@hyperthese.net> */ 
  
 /**
  * Classe resetbutton
