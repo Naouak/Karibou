@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app class="klock">
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+	<load class="klock" file="klock.class.php" />
+	<load class="klockSvg" file="klockSvg.class.php" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<view name="mini" class="klock" template="klock.tpl" />
+	<view name="svg" class="klockSvg" template="picture.svg.tpl" />
+	
+	<page name="svg" class="klockSvg" view="svg">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+</app>
