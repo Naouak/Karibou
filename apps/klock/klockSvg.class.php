@@ -12,7 +12,8 @@ class klockSvg extends Model
 	public function build()
 	{
 		header("Content-type: image/svg+xml");
-		$this->assign("time", time() + rand(120, 3600) - 1800);
+		$this->assign("time", time() + rand(0, 1800) - 900);
+		$this->assign("tz", date("Z"));
 	}
 }
 ?>

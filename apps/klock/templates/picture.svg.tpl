@@ -68,7 +68,10 @@
 		var serverTimeAtLoad = {/literal}{$time}{literal};
 		var clientTimeAtLoad = (new Date()).getTime();
 		
-		var diff = serverTimeAtLoad * 1000 - clientTimeAtLoad;
+		var serverTz = {/literal}{$tz}{literal};
+		var clientTz = - (new Date()).getTimezoneOffset() * 60;
+		
+		var diff = serverTimeAtLoad * 1000 - clientTimeAtLoad + serverTz * 1000 - clientTz * 1000;
 		
 		function makeDate() {
 			var currentDate = new Date();
