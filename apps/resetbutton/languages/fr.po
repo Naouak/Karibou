@@ -41,7 +41,7 @@ msgid "THEYRESETEDIT"
 msgstr "Ils l'ont remis à zéro"
 
 msgid "HASRESETEDIT"
-msgstr "l'a remit à zéro"
+msgstr "l'a remis à zéro"
 
 msgid "TIMES"
 msgstr "fois."
