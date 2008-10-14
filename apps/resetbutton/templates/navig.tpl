@@ -1,12 +1,53 @@
-<h4>##NAVIGBAR##</h4>
-<a href="" title="##MINIBUBBLE##"
-	onclick="new Ajax.Updater('resetbutton_0_content', '/karibou/website/default/miniappeditview/resetbutton_0'
-, {literal}{asynchronous:true, evalScripts:true}{/literal}); return false;" >
-	<span class="resetbuttonmini"><span class="text">##MININAVIG##</span></span>
-</a>
+{literal}
+<style type="text/css">
+	#resetbuttonnavigbar{
+		list-style-type: none;
+		border-bottom: black solid 1px;
+		width: 100%;
+		margin:0px;
+	}
+	
+	#resetbuttonnavigbar > li{
+		float:left;
+		border: black solid 1px;
+		padding: 2px;
+		margin: 2px;
+		margin-top: 0px;
+		width: 100px;
+		text-align: center;
+	}
+	
+	#resetbuttonnavigbar > li:last-child{
+		color: blue;
+		float: none;
+		
+		margin-top: 0px;
+		margin-left: 110px;
+		width: 100px;
+	}
+	
+	#resetbuttonbutton{
+		margin: auto;
+		text-align: center;
+	}
+	
+	
+</style>
+{/literal}
 
-<a href="" title="##STATSBUBBLE##"
-	onclick="resetupdate.stop();clearTimeout(resettimeout); new Ajax.Updater('resetbutton_0_content', '{kurl app="resetbutton" page="stats"}', {literal}{asynchronous:true, evalScripts:true}{/literal}); return false;" >
-	<span id="resetbuttonstats"><span class="text">##STATSNAVIG##</span></span>
-</a>
-<hr />
+<h4>##NAVIGBAR##</h4>
+<ul id="resetbuttonnavigbar">
+	<li>
+		<a href="" title="##MINIBUBBLE##"
+			onclick="new Ajax.Updater('resetbutton_0_content', '{kurl app="default" page="miniappeditview" miniapp="resetbutton_0"}'
+		, {literal}{asynchronous:true, evalScripts:true}{/literal}); return false;" >
+			<span class="resetbuttonmini"><span class="text">##MININAVIG##</span></span>
+		</a>
+	</li>
+	<li>
+		<a href="" title="##STATSBUBBLE##"
+			onclick="resetupdate.stop();clearTimeout(resettimeout); new Ajax.Updater('resetbutton_0_content', '{kurl app="resetbutton" page="stats"}', {literal}{asynchronous:true, evalScripts:true}{/literal}); return false;" >
+			<span id="resetbuttonstats"><span class="text">##STATSNAVIG##</span></span>
+		</a>
+	</li>
+</ul>
