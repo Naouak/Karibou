@@ -108,3 +108,9 @@ msgstr "Mes fichiers"
 msgid "ilsontdit"
 msgstr "Ils ont dit"
 
+msgid "stats"
+msgstr "Les Statistiques de Karibou"
+
+msgid "resetbutton"
+msgstr "Le Bouton"
+
