@@ -114,3 +114,5 @@ msgstr "Les Statistiques de Karibou"
 msgid "resetbutton"
 msgstr "Le Bouton"
 
+msgid "klock"
+msgstr "Horloge à Imprécision Aléatoire"

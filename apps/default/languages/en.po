@@ -104,3 +104,6 @@ msgstr "My files"
 
 msgid "ilsontdit"
 msgstr "They said it"
+
+msgid "klock"
+msgstr "Random Imprecision Clock"
