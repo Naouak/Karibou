@@ -49,7 +49,7 @@ ORDER BY HOURs DESC
 ) AS timed
 GROUP BY cutter
 HAVING cutter <>0
-ORDER BY compte DESC LIMIT 100");
+ORDER BY FLOOR( SUM( TIME_TO_SEC( timed.hours ) ) /3600 ) DESC,  FLOOR( MOD( SUM( TIME_TO_SEC( timed.hours ) ) , 3600 ) /60 ) DESC, MOD( SUM( TIME_TO_SEC( timed.hours ) ) , 60 ) DESC LIMIT 100");
 		$stmt->execute();
 		$i=0;
 		while($result = $stmt->fetch()){
