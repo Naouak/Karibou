@@ -13,11 +13,8 @@ function resetbuttonpushed() {
 {/literal}
 	var url = '{kurl app="resetbutton" page="reset"}';
 {literal}
-	new Ajax.Request(url, {
-		method: 'post',
-		parameters: ''
-	});
-	{/literal}
+	new Ajax.Request(url, {method: 'post',parameters: ''});
+{/literal}
 	// 1.5 seconds should be enough for the query
 	resettimeout = setTimeout("new Ajax.Updater('resetbuttoncontent', '{kurl app="resetbutton" page="content"}', {literal}{asynchronous:true, evalScripts:true}{/literal});", 1000);
 	{literal}

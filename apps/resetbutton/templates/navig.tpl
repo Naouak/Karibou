@@ -22,7 +22,7 @@
 		float: none;
 		
 		margin-top: 0px;
-		margin-left: 110px;
+		margin-left: 222px;
 		width: 100px;
 	}
 	
@@ -46,6 +46,12 @@
 		<a href="" title="##STATSBUBBLE##"
 			onclick="resetupdate.stop();clearTimeout(resettimeout); new Ajax.Updater('resetbutton_0_content', '{kurl app="resetbutton" page="stats"}', {literal}{asynchronous:true, evalScripts:true}{/literal}); return false;" >
 			<span id="resetbuttonstats"><span class="text">##STATSNAVIG##</span></span>
+		</a>
+	</li>
+	<li>
+		<a href="" title="##MYSTATSBUBBLE##"
+			onclick="resetupdate.stop();clearTimeout(resettimeout); new Ajax.Updater('resetbutton_0_content', '{kurl app="resetbutton" page="mystats"}', {literal}{asynchronous:true, evalScripts:true}{/literal}); return false;" >
+			<span id="resetbuttonstats"><span class="text">##MYSTATSNAVIG##</span></span>
 		</a>
 	</li>
 </ul>

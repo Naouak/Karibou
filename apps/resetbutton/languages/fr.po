@@ -78,3 +78,27 @@ msgstr "Temps Total de conquête du compteur"
 
 msgid "GOTCOUNTER"
 msgstr "a conquis le compteur pendant :"
+
+msgid "MYSTATSBUBBLE"
+msgstr "Et moi, c'est quoi mes stats ?"
+
+msgid "MYSTATSNAVIG"
+msgstr "Mes Stats"
+
+msgid "MYSTATS"
+msgstr "Mes Stats"
+
+msgid "MYLONGESTTIME"
+msgstr "Mon plus long temps de conquête"
+
+msgid "YOURESETEDIT"
+msgstr "Mon Nombre de Clicks"
+
+msgid "MYSCOREHISTORY"
+msgstr "L'Historique de mon Score"
+
+msgid "IHAVESCORED"
+msgstr "J'ai fait"
+
+msgid "ONTHETIME"
+msgstr "à"
