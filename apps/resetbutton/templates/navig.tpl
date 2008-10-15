@@ -34,8 +34,6 @@
 	
 </style>
 {/literal}
-
-<h4>##NAVIGBAR##</h4>
 <ul id="resetbuttonnavigbar">
 	<li>
 		<a href="" title="##MINIBUBBLE##"

@@ -55,7 +55,7 @@ msgstr "point(s)."
 msgid "TIMES"
 msgstr "fois."
 
-msgid "MINIBUBbLE"
+msgid "MINIBUBBLE"
 msgstr "Revenir au bouton"
 
 msgid "MININAVIG"
