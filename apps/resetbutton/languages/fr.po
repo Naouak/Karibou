@@ -74,4 +74,4 @@ msgid "TOTALTIME"
 msgstr "Temps Total de conquête du compteur"
 
 msgid "GOTCOUNTER"
-msgstr "a conquis(e) le compteur pendant:"
+msgstr "a conquis le compteur pendant:"
