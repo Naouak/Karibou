@@ -13,8 +13,8 @@ msgstr ""
 msgid "RESETBUTTONTITLE"
 msgstr "Décompte"
 
-msgid "NOTRESETEDFOR"
-msgstr "Ce compteur n'a pas été remis à zéro depuis:"
+msgid "NOTRESETFOR"
+msgstr "Ce compteur n'a pas été remis à zéro depuis :"
 
 msgid "DAYS"
 msgstr "jours"
@@ -37,10 +37,10 @@ msgstr "Temps"
 msgid "CUTTER"
 msgstr "Celui qui a remis à zéro ce si long temps"
 
-msgid "THEYRESETEDIT"
+msgid "THEYRESETIT"
 msgstr "Ils l'ont remis à zéro"
 
-msgid "HASRESETEDIT"
+msgid "HASRESETIT"
 msgstr "l'a remis à zéro"
 
 msgid "SCORETIME"
@@ -50,7 +50,10 @@ msgid "SCORED"
 msgstr "a"
 
 msgid "POINTS"
-msgstr "point(s)."
+msgstr "points."
+
+msgid "POINT"
+msgstr "point."
 
 msgid "TIMES"
 msgstr "fois."
@@ -74,4 +77,4 @@ msgid "TOTALTIME"
 msgstr "Temps Total de conquête du compteur"
 
 msgid "GOTCOUNTER"
-msgstr "a conquis le compteur pendant:"
+msgstr "a conquis le compteur pendant :"

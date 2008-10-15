@@ -6,12 +6,12 @@
 	##TIME##: {$longestresethour}<br />
 	##CUTTER##: {userlink user=$longestcutter showpicture=$islogged}
 </div>
-<h4>##THEYRESETEDIT##</h4>
+<h4>##THEYRESETIT##</h4>
 <ol>
 	{foreach name=outer item=contact from=$reseterlist}
 		{if $smarty.foreach.outer.index<10}
 		<li>
-			{$smarty.foreach.outer.iteration} / {userlink user=$contact[0] showpicture=$islogged} ##HASRESETEDIT## {$contact[1]} ##TIMES##
+			{$smarty.foreach.outer.iteration} / {userlink user=$contact[0] showpicture=$islogged} ##HASRESETIT## {$contact[1]} ##TIMES##
 		</li>
 		{/if}
 	{/foreach}

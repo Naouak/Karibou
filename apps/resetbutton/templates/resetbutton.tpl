@@ -37,7 +37,7 @@ function resetbuttonpushed() {
 	<input  id="resetbuttonbutton" type="submit" value="##RESET##" />
 </form>
 {/if}
-##NOTRESETEDFOR##<br />
+##NOTRESETFOR##<br />
 <span id="resetbuttoncontent">
 	{include file="content.tpl"}
 </span>

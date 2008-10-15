@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: team@karibou.org\n"
 "POT-Creation-Date: 2008-07-10 17:00+0200\n"
-"PO-Revision-Date: 2008-07-10 17:00+0200\n"
+"PO-Revision-Date: 2008-16-10 00:09+0200\n"
 "Last-Translator: Karibou Team <team@karibou.org>\n"
 "Language-Team: Karibou Team <team@karibou.org>\n"
 "MIME-Version: 1.0\n"
@@ -13,8 +13,8 @@ msgstr ""
 msgid "RESETBUTTONTITLE"
 msgstr "Reset Button"
 
-msgid "NOTRESETEDFOR"
-msgstr "This counter hasn't been reseted in:"
+msgid "NOTRESETFOR"
+msgstr "This counter hasn't been reset in:"
 
 msgid "DAYS"
 msgstr "days"
@@ -23,4 +23,58 @@ msgid "RESET"
 msgstr "Reset it !"
 
 msgid "LASTRESETBY"
-msgstr "The last reseter is"
+msgstr "The last reseter was"
+
+msgid "STATS"
+msgstr "Countdown Statistics"
+
+msgid "LONGESTTIME"
+msgstr "Longest time"
+
+msgid "TIME"
+msgstr "time"
+
+msgid "CUTTER"
+msgstr "The who reset such a long time"
+
+msgid "THEYRESETIT"
+msgstr "They reset it"
+
+msgid "HASRESEDIT"
+msgstr "has reset it"
+
+msgid "SCORETIME"
+msgstr "Scores"
+
+msgid "SCORED"
+msgstr "scored"
+
+msgid "POINTS"
+msgstr "points."
+
+msgid "POINT"
+msgstr "point."
+
+msgid "TIMES"
+msgstr "times."
+
+msgid "MINIBUBBLE"
+msgstr "Go back to the button"
+
+msgid "MININAVIG"
+msgstr "The Button"
+
+msgid "STATSBUBBLE"
+msgstr "How long did the button hold ?"
+
+msgid "STATSNAVIG"
+msgstr "Statistics"
+
+msgid "NAVIGBAR"
+msgstr "Navigation bar"
+
+msgid "TOTALTIME"
+msgstr "Total time of counter capture"
+
+msgid "GOTCOUNTER"
+msgstr "captured the counter for:"
