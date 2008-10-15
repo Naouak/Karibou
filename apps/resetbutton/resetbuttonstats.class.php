@@ -81,13 +81,34 @@ ORDER BY compte DESC LIMIT 100");
 		}
 		$this->assign("scorelist", $final);
 	}
+	
+	private function stolenpoints(){
+				 $stmt = $this->db->prepare("SELECT cutter, SUM(COALESCE(hours,0)) as Score FROM
+(SELECT -SUM(TIME_TO_SEC(TIMEDIFF( cut.date, frst.date ))) AS HOURs, frst.user AS cutter
+		FROM resetbutton AS frst LEFT JOIN resetbutton AS cut ON frst.id = cut.id-1
+		GROUP BY cutter
+UNION
+SELECT -SUM(TIME_TO_SEC(TIMEDIFF( frst.date,COALESCE(cut.date,NOW()) ))) AS HOURs, COALESCE(cut.user,frst.user) AS cutter
+		FROM resetbutton AS frst LEFT JOIN resetbutton AS cut ON frst.id = cut.id-1
+		GROUP BY cutter) as t
+GROUP BY cutter
+ORDER BY Score DESC");
+		$stmt->execute();
+		$i=0;
+		while($result = $stmt->fetch()){
+			$profil = $this->userFactory->prepareUserFromId($result['cutter']);
+			$final[$i] = array($profil,$result['Score']);
+			$i++;
+		}
+		$this->assign("scorelist", $final);
+	}
 
 	public function build()
 	{
 		$this->longtime();
 		$this->reseters();
 		$this->timecount();
-		$this->score();
+		$this->stolenpoints();
 		$this->assign("islogged", $this->currentUser->isLogged());
 	}
 	
