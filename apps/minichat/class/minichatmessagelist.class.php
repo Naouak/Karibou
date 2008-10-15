@@ -20,9 +20,7 @@ class MiniChatMessageList
 		$this->db = $db;
 		$this->userFactory = $userFactory;
 		$this->inversepostorder = $inversepostorder;	
-		$this->rendering = new MinichatRendering($userichtext);
-
-	
+		$this->rendering = new MinichatRendering($userichtext, $userFactory->getCurrentUser());
 	}
 	
 	function count()

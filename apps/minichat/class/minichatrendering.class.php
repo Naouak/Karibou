@@ -12,10 +12,12 @@
 class MinichatRendering
 {	
 	protected $userichtext;
+	protected $current_user;
 
-	function __construct($userichtext)
+	function __construct($userichtext, $current_user)
 	{
 		$this->userichtext = $userichtext;
+		$this->current_user = $current_user;
 	}
 
 	protected function bbcode($in)
@@ -75,6 +77,9 @@ class MinichatRendering
 	{
 		$out = $this->wordwrap_if_needed($in);
 		$out = $this->bbcode($out);
+		
+		$out = str_ireplace($this->current_user->getSurname(), "<strong>".$this->current_user->getSurname()."</strong>", $out);
+		
 		return $out;
 	}
 	
