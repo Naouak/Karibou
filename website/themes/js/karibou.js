@@ -79,12 +79,9 @@ Event.observe(document, "keypress", function(evt) {
         if (window.event)
             window.event.keyCode = "";
 
-        // a : affichage des flashmails
-        if (key == 97)
-            flashmail_blinddown('flashmail_headerbox_unreadlist');
-        // r : raffraichir les flashmails
+		// r : refresh flashmails
         if (key == 114)
-            flashmail_headerbox_update();
+            FlashmailManager.Instance.refreshFlashmails();
         // f : focus sur la boite rechercher
         if (key == 102)
             document.forms['search'].elements['keywords'].focus();
