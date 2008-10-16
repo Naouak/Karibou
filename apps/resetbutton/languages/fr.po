@@ -102,3 +102,6 @@ msgstr "J'ai fait"
 
 msgid "ONTHETIME"
 msgstr "à"
+
+msgid "MYSCORE"
+msgstr "Mon Score"

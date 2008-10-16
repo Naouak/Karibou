@@ -1,6 +1,10 @@
 <h3>##MYSTATS##</h3>
 {include file="navig.tpl"}
 <div id="resetbuttonstatscontent">
+<h4>##MYSCORE##</h4>
+<div>
+	{$myscore} ##POINTS##
+</div>
 <h4>##MYLONGESTTIME##</h4>
 <div>
 	##TIME##: {$longestresethour}

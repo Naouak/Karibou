@@ -42,7 +42,7 @@ SELECT -TIME_TO_SEC(TIMEDIFF( frst.date,COALESCE(cut.date,NOW()) )) AS HOURs, CO
 		FROM resetbutton AS frst LEFT JOIN resetbutton AS cut ON frst.id = cut.id-1
 	) as t
 	WHERE cutter = :user
-ORDER BY date,id DESC
+ORDER BY date DESC,id DESC
 ");
 		$stmt->bindValue(':user',$this->currentUser->getID(),PDO::PARAM_INT);
 		$stmt->execute();
@@ -54,12 +54,31 @@ ORDER BY date,id DESC
 		}
 		$this->assign("scorelist", $final);
 	}
+	
+	private function myscore(){
+		$stmt = $this->db->prepare(" SELECT timed.cutter AS user, FLOOR(SUM( LN(TIME_TO_SEC( timed.hours )) )) AS compte
+FROM (
+
+SELECT TIMEDIFF( cut.date, frst.date ) AS HOURs, cut.user AS cutter
+FROM resetbutton AS frst, resetbutton AS cut
+WHERE cut.id = frst.id +1
+ORDER BY HOURs DESC
+) AS timed
+GROUP BY cutter
+HAVING cutter = :user
+ORDER BY compte DESC LIMIT 100");
+		$stmt->bindValue(':user',$this->currentUser->getID(),PDO::PARAM_INT);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		$this->assign("myscore", $result['compte']);
+	}
 
 	public function build()
 	{
 		$this->longtime();
 		$this->reseter();
 		$this->stolenpoints();
+		$this->myscore();
 		$this->assign("islogged", $this->currentUser->isLogged());
 	}
 	
