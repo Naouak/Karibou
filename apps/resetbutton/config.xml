@@ -37,4 +37,9 @@
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>
+
+	<page name="mini" class="resetbutton" view="mini">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
 </app>

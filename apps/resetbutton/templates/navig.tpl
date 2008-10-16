@@ -37,7 +37,7 @@
 <ul id="resetbuttonnavigbar">
 	<li>
 		<a href="" title="##MINIBUBBLE##"
-			onclick="new Ajax.Updater(this.parentNode.parentNode.parentNode, '{kurl app="default" page="miniappeditview" miniapp="resetbutton_0"}'
+			onclick="new Ajax.Updater(this.parentNode.parentNode.parentNode, '{kurl app="resetbutton" page="mini"}'
 		, {literal}{asynchronous:true, evalScripts:true}{/literal}); return false;" >
 			<span class="resetbuttonmini"><span class="text">##MININAVIG##</span></span>
 		</a>
