@@ -71,59 +71,6 @@ if (isset($this->hookManager->hooks['header_menu'])) {
 				}
 			?>
 			<? /* FIN : Module de recherche */ ?>
-
-
-			<? /* DEBUT : Navigation : Barre avec onglets */ ?>
-<!--			<div id="siteNavigation">
-				<div id="siteNavigationCategories">
-						<ul>
-								<li id="linkCommunicate"><h3><a href="#menuCommunicate" onclick="ShowAppsLinks('menuCommunicate'); return false;"><span><?=_('NAV_COMMUNICATE');?></span></a></h3></li>
-								<li id="linkOrganize"><h3><a href="#menuOrganize" onclick="ShowAppsLinks('menuOrganize'); return false;"><span><?=_('NAV_ORGANISE');?></span></a></h3></li>
-								<li id="linkShare"><h3><a href="#menuShare" onclick="ShowAppsLinks('menuShare'); return false;"><span><?=_('NAV_SHARE');?></span></a></h3></li>
-								<li id="linkJobs"><h3><a href="#menuJobs" onclick="ShowAppsLinks('menuJobs'); return false;"><span><?=_('NAV_JOB');?></span></a></h3></li>
-						</ul>
-				</div>
-
-				<div class="siteNavigationApps" id="menuCommunicate" >
-					<h3>Communiquer</h3>
-					<ul>
-							<li class="first-child"><h4><a href="<?=kurl(array('app'=>"news"));?>"><?=_('APP_NEWS');?></a></h4></li>
-							<li><h4><a href="<?=kurl(array('app'=>"annuaire"));?>"><?=_('APP_DIRECTORY');?></a></h4></li>
-							<li><h4><a href="<?=kurl(array('app'=>"mail"));?>"><?=_('APP_EMAIL');?></a></h4></li>
-							<? /* <li><h4><a href="<?=kurl(array('app'=>"flashmail"));?>"><?=_('APP_FLASHMAILS');?></a></h4></li> */?>
-							<? /* <li><h4><a href="<?=kurl(array('app'=>"gmailreader"));?>"><?=_('APP_GMAILREADER');?></a></h4></li> */ ?>
-							<? /* <li><h4><a href="<?=kurl(array('app'=>"minichat"));?>"><?=_('APP_MINICHAT');?></a></h4></li> */ ?>
-					</ul>
-				</div>
-				<div class="siteNavigationApps" id="menuOrganize">
-					<h3>S'organiser</h3>
-					<ul>
-							<li class="first-child"><h4><a href="<?=kurl(array('app'=>"calendar"));?>"><?=_('APP_CALENDAR');?></a></h4></li>
-					</ul>
-				</div>
-				<div class="siteNavigationApps" id="menuShare">
-					<h3>Partager</h3>
-					<ul>
-							<li class="first-child"><h4><a href="<?=kurl(array('app'=>"fileshare"));?>"><?=_('APP_FILESHARE');?></a></h4></li>
-							<? /* <li><h4><a href="<?=kurl(array('app'=>"wiki"));?>">Wiki</a></h4></li> */?>
-					</ul>
-				</div>
-				<div class="siteNavigationApps" id="menuAdmin">
-				<? 
-				/*
-					<h3>Admin</h3>
-					<ul>
-							<li class="first-child"><h4><a href="<?=kurl(array('app'=>"permissions"));?>">Permissions</a></h4></li>
-							<li><h4><a href="<?=kurl(array('app'=>"admin"));?>">Admin</a></h4></li>
-							<li><h4><a href="<?=kurl(array('app'=>"gettext"));?>">GetText</a></h4></li>
-					</ul>
-				*/
-				?>
-				</div>
-			</div>
--->
-			<? /* FIN : Navigation : Barre avec onglets */ ?>
-			
 			<div id="miniapps"></div>
 			
 		</div>
