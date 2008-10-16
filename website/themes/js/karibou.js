@@ -54,36 +54,7 @@ var KSortable = Object.extend(Sortable, {
 		function popup(adresse, nom, hauteur, largeur, haut, gauche){
             window.open(adresse, nom,'menubar=false, status=false, location=false, scrollbar=false, resizable=false, height='+hauteur+', width='+largeur+', top='+haut+', left='+gauche);
         }
-		
-		/**
-        * Barre de navigation de Karibou
-        *
-		 * La nouvelle barre de navigation de Karibou sépare les applications par catégories :
-        * Communiquer, Organiser, Partager, Jobs et Administration
-        * Elle va permettre le développement de nouvelles applications et leur intégration
-        * plus simple dans l'intranet.
-        *@TODO: Delete this ?
-        */
-        var navCategories = new Array("Communicate","Organize","Share","Jobs","Admin");
-        function LoadSiteNavigation() {
-            HideAppsLinks();
-        }
-        function ShowAppsLinks(strMenu) {
-            HideAppsLinks();
-            document.getElementById(strMenu).style.visibility="visible";
-            return false;
-        }
-        function HideAppsLinks() {
-            for(i in navCategories) {
-                if (document.getElementById("menu"+navCategories[i])) {
-                    with(document.getElementById("menu"+navCategories[i]).style) {
-                        visibility="hidden";
-                    }
-                }
-            }
-        }
-        Event.observe(window, "load", function() { LoadSiteNavigation(); });
-        
+
 /**
 * Gestion des raccourcis clavier
 */
