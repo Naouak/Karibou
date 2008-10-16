@@ -7,8 +7,8 @@
 	<load class="resetbuttonstats" file="resetbuttonstats.class.php" />
 	<load class="resetbuttonmystats" file="resetbuttonmystats.class.php" />
 	
-	<header app="header" view="default" />
-	<footer app="footer" view="default" />
+	<header app="header" view="empty" />
+	<footer app="footer" view="empty" />
 	
 	<view name="mini" class="resetbutton" template="resetbutton.tpl" />
 	<view name="content" class="resetbutton" template="content.tpl" />
@@ -16,30 +16,18 @@
 	<view name="stats" class="resetbuttonstats" template="stats.tpl" />
 	<view name="mystats" class="resetbuttonmystats" template="mystats.tpl" />
 	
-	<page view="default" />
-	
-	<page name="stats" class="resetbuttonstats" view="stats">
-		<header app="header" view="empty" />
-		<footer app="footer" view="empty" />
+	<page view="default">
+		<header app="header" view="default" />
+		<footer app="footer" view="default" />
 	</page>
 	
-	<page name="mystats" class="resetbuttonmystats" view="mystats">
-		<header app="header" view="empty" />
-		<footer app="footer" view="empty" />
-	</page>
+	<page name="stats" view="stats" />
 	
-	<page name="content" class="resetbutton" view="content">
-		<header app="header" view="empty" />
-		<footer app="footer" view="empty" />
-	</page>
+	<page name="mystats" view="mystats" />
 	
-	<page name="reset" class="resetbuttonreset" view="reset">
-		<header app="header" view="empty" />
-		<footer app="footer" view="empty" />
-	</page>
+	<page name="content" view="content" />
+	
+	<page name="reset" view="reset" />
 
-	<page name="mini" class="resetbutton" view="mini">
-		<header app="header" view="empty" />
-		<footer app="footer" view="empty" />
-	</page>
+	<page name="mini" view="mini" />
 </app>
