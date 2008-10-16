@@ -10,7 +10,6 @@
 	<load class="FlashMailList" file="list.class.php" />
 	<load class="UnReadFlashMailList" file="unreadlist.class.php" />
 	<load class="FlashMailSend" file="send.class.php" />
-	<load class="FlashMailScript" file="flashmailscript.class.php" />
 	<load class="FlashMailHeaderBox" file="headerbox.class.php" />
 	<load class="FlashMailWrite" file="write.class.php" />
 	<load class="FlashMailSetAsRead" file="setasread.class.php" />
@@ -28,7 +27,6 @@
 	<view name="headerbox" class="FlashMailHeaderBox" template="headerbox.tpl" />
 	<view name="headerbox_content" class="UnReadFlashMailList" template="headerbox_content.tpl" />
 	<view name="account_headerbox_content" class="UnReadFlashMailList" template="account_headerbox_content.tpl" />
-	<view name="popupscript" class="FlashMailScript" template="flashmailscript.tpl" />
 	<view name="write" class="FlashMailWrite" template="write.tpl" />
 	<view name="setasread" class="FlashMailSetAsRead" template="empty.tpl" />
 
