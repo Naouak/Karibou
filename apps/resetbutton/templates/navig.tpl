@@ -37,20 +37,20 @@
 <ul id="resetbuttonnavigbar">
 	<li>
 		<a href="" title="##MINIBUBBLE##"
-			onclick="new Ajax.Updater('resetbutton_0_content', '{kurl app="default" page="miniappeditview" miniapp="resetbutton_0"}'
+			onclick="new Ajax.Updater(this.parentNode.parentNode.parentNode, '{kurl app="default" page="miniappeditview" miniapp="resetbutton_0"}'
 		, {literal}{asynchronous:true, evalScripts:true}{/literal}); return false;" >
 			<span class="resetbuttonmini"><span class="text">##MININAVIG##</span></span>
 		</a>
 	</li>
 	<li>
 		<a href="" title="##STATSBUBBLE##"
-			onclick="resetupdate.stop();clearTimeout(resettimeout); new Ajax.Updater('resetbutton_0_content', '{kurl app="resetbutton" page="stats"}', {literal}{asynchronous:true, evalScripts:true}{/literal}); return false;" >
+			onclick="resetupdate.stop();clearTimeout(resettimeout); new Ajax.Updater(this.parentNode.parentNode.parentNode, '{kurl app="resetbutton" page="stats"}', {literal}{asynchronous:true, evalScripts:true}{/literal}); return false;" >
 			<span id="resetbuttonstats"><span class="text">##STATSNAVIG##</span></span>
 		</a>
 	</li>
 	<li>
 		<a href="" title="##MYSTATSBUBBLE##"
-			onclick="resetupdate.stop();clearTimeout(resettimeout); new Ajax.Updater('resetbutton_0_content', '{kurl app="resetbutton" page="mystats"}', {literal}{asynchronous:true, evalScripts:true}{/literal}); return false;" >
+			onclick="resetupdate.stop();clearTimeout(resettimeout); new Ajax.Updater(this.parentNode.parentNode.parentNode, '{kurl app="resetbutton" page="mystats"}', {literal}{asynchronous:true, evalScripts:true}{/literal}); return false;" >
 			<span id="resetbuttonstats"><span class="text">##MYSTATSNAVIG##</span></span>
 		</a>
 	</li>
