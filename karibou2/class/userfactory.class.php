@@ -350,6 +350,15 @@ class UserFactory
 	function getGroupsFromUser ($user) {
 		return $user->getGroups($this->db);
 	}
+	
+	/**
+	 * Returns the groups an user belongs to, and their parents
+	 *
+	 * @return GroupList
+	 */
+	function getAllGroupsFromUser ($user) {
+		return $user->getAllGroups($this->db);
+	}
 }
 
 ?>
