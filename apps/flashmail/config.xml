@@ -37,11 +37,7 @@
 		<footer app="footer" view="empty" />
 	</page>
 
-	<page name="setasread" view="setasread">
-		<header app="header" view="empty" />
-		<footer app="footer" view="empty" />
-		<option name="flashmailid" class="NumberArgument" />
-	</page>
+	<form action="setasread" class="FlashMailSetAsRead" />
 
 	<form action="send" class="FlashMailSend" />
 </app>

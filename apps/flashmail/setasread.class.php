@@ -11,11 +11,11 @@
 /**
  * @package apps
  */
-class FlashMailSetAsRead extends Model
+class FlashMailSetAsRead extends FormModel
 {
 	function build()
 	{
-		if (isset($this->args["flashmailid"]))
+		if (isset($_POST["flashmailid"]))
 		{
 					$uqry = "
 							UPDATE flashmail
@@ -23,7 +23,7 @@ class FlashMailSetAsRead extends Model
 							WHERE
                             to_user_id = ".$this->currentUser->getId()."
                             AND
-                            id = ".$this->args["flashmailid"];
+                            id = ".intval($_POST["flashmailid"]);
 					try
 					{
                    		$this->db->exec($uqry);

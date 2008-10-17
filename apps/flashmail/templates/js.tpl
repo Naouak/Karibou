@@ -41,10 +41,14 @@ var FlashmailManager = Class.create({
         }});
     },
     markAsRead: function (flashmailId) {
-        url = '{/literal}{kurl app="flashmail" page="setasread" flashmailid=""}{literal}' + flashmailId;
-        new Ajax.Request(url, {asynchronous: true, onSuccess: function (transport) {
-            FlashmailManager.Instance.refreshFlashmails();
-        }});
+        new Ajax.Request('{/literal}{kurl app="flashmail" page="setasread"}{literal}', {
+            asynchronous: true,
+            method: 'post',
+            postBody: 'flashmailid=' + flashmailId,
+            onSuccess: function (transport) {
+                FlashmailManager.Instance.refreshFlashmails();
+            }
+        });
     },
     newFlashmail: function (targetUserName, targetUserId) {
         divNode = document.createElement("div");
