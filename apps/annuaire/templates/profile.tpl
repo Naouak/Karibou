@@ -34,7 +34,7 @@
 	
 	{if !$noflashmail}
 	<div class="sendflashmaillink">
-		<a href="{kurl app="flashmail" page="writeto" userid=$user->getId()}" onclick="FlashmailManager.Instance.newFlashmail('{$user->getSurname()|escape:'javascript'}', {$user->getId()}); return false;">##SEND_FLASHMAIL##</a>
+		<a href="#" onclick="FlashmailManager.Instance.newFlashmail('{$user->getSurname()|escape:'javascript'}', {$user->getId()}); return false;">##SEND_FLASHMAIL##</a>
 	</div>
 	{/if}
 	{if ($addresses|@count>0)}	

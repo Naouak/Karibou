@@ -9,8 +9,7 @@
 
 {if ($islogged)}
 {if (!$noflashmail)}
-		<a href="{kurl app="flashmail" page="writeto" userid=$bdayer.user->getId()}" class="sendflashmaillink"
-            onclick="FlashmailManager.Instance.newFlashmail('{$bdayer.user->getSurname()|escape:'javascript'}', {$bdayer.user->getId()}); return false;"><span>Flash</span></a>
+		<a href="#" class="sendflashmaillink" onclick="FlashmailManager.Instance.newFlashmail('{$bdayer.user->getSurname()|escape:'javascript'}', {$bdayer.user->getId()}); return false;"><span>Flash</span></a>
 {/if}
 {/if}
 		<br />

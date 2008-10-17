@@ -5,8 +5,7 @@
 				{userlink user=$user.object showpicture=$islogged}
 {if ($islogged)}
 	{if (!$noflashmail)}
-		<a href="{kurl app="flashmail" page="writeto" userid=$user.object->getId()}" class="sendflashmaillink"
-            onclick="FlashmailManager.Instance.newFlashmail('{$user.object->getSurname()|escape:'javascript'}', {$user.object->getId()}); return false;"><span>Flash</span></a>
+		<a href="#" class="sendflashmaillink" onclick="FlashmailManager.Instance.newFlashmail('{$user.object->getSurname()|escape:'javascript'}', {$user.object->getId()}); return false;"><span>Flash</span></a>
 	{/if}
 	{if $user.mood}
 		<i>(##{$user.mood}##)</i>
