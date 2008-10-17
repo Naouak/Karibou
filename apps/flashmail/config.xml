@@ -14,7 +14,6 @@
 	<load class="FlashMailNothing" file="nothing.class.php" />
 
 	<view name="default" class="FlashMailList" template="default.tpl" />
-	<view name="list" class="FlashMailList" template="list.tpl" />
 
 	<view name="flashmailJS" class="FlashMailNothing" template="js.tpl" />
 	<view name="flashmail_head" class="FlashMailNothing" template="html_head.tpl" />
@@ -44,7 +43,5 @@
 		<option name="flashmailid" class="NumberArgument" />
 	</page>
 
-	<form action="send" class="FlashMailSend">
-		<redirect />
-	</form>
+	<form action="send" class="FlashMailSend" />
 </app>
