@@ -2,8 +2,7 @@
 <app>
 	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
 
-	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
-
+	<!-- Load the classes needed for the application -->
 	<load class="FlashMailFactory" file="class/flashmailfactory.class.php" />
 	<load class="FlashMail" file="class/flashmail.class.php" />
 
@@ -13,31 +12,37 @@
 	<load class="FlashMailSetAsRead" file="setasread.class.php" />
 	<load class="FlashMailNothing" file="nothing.class.php" />
 
+	<!-- Display the full flashmail list on one page -->
 	<view name="default" class="FlashMailList" template="default.tpl" />
-
+	<!-- Generate the JS code for flashmails -->
 	<view name="flashmailJS" class="FlashMailNothing" template="js.tpl" />
+	<!-- Contains the hook for the <head> tag -->
 	<view name="flashmail_head" class="FlashMailNothing" template="html_head.tpl" />
+	<!-- Lists the unread flashmails in XML -->
 	<view name="unreadlistXML" class="UnReadFlashMailList" template="listXML.tpl" />
-	<view name="setasread" class="FlashMailSetAsRead" template="empty.tpl" />
-
+	
+	<!-- Integrate the flashmail_head view in the html_head hook -->
 	<hook name="html_head" view="flashmail_head" />
     
+	
+	<!-- Default header/footer/page... -->
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	<page view="default" />
+
+	<!-- The page for the JS code -->
 	<page name="flashmailJS" view="flashmailJS">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>
 	
-	<header app="header" view="default" />
-	<footer app="footer" view="default" />
-
-	<page view="default" />
-
+	<!-- The page for the unread flashmails in XML -->
 	<page name="unreadlistXML" view="unreadlistXML">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>
 
+	<!-- The two actions : setasread and send flashmail -->
 	<form action="setasread" class="FlashMailSetAsRead" />
-
 	<form action="send" class="FlashMailSend" />
 </app>
