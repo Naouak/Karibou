@@ -114,6 +114,11 @@ class ErrorHandler {
 						"backtrace" => $error["backtrace"]
 					));
 				}
+
+				// we don't want more than 1000 log entries
+				if(!empty($this->stack)) $this->db->query("DELETE FROM ".$GLOBALS['config']['bdd']["frameworkdb"].".logs WHERE `id` < (SELECT LAST_INSERT_ID()) - 1000");
+
+				// Everything gets flushed now
 				$this->stack = array();
 			} catch (Exception $ex) {
 			}
