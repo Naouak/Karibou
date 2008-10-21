@@ -53,12 +53,12 @@ class OnlineUsersList extends Model
 				$user["object"] = $this->userFactory->prepareUserFromId($user["user_id"]);
 				$user["message"] = $user["message"];
 				if (isset($user["mood"]) && ($user["mood"] != -1)) {
-                    $tmp = gettext("MOOD_" . $moods[$user["mood"]]);
-                    if ($user["gender"] == "woman") {
-                        $tmp = gettext("MOODE_" . $moods[$user["mood"]]);
-                    }
-                    if ($tmp == "MOODE_$moodText")
-                        $tmp = gettext("MOOD_" . $moods[$user["mood"]]);
+					$tmp = gettext("MOOD_" . $moods[$user["mood"]]);
+					if ($user["gender"] == "woman") {
+						$tmp = gettext("MOODE_" . $moods[$user["mood"]]);
+						if ($tmp == "MOODE_" . $moods[$user["mood"]])
+							$tmp = gettext("MOOD_" . $moods[$user["mood"]]);
+					}
 					$user["mood"] = $tmp;
 				} else
 					$user["mood"] = "";
