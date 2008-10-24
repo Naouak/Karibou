@@ -81,13 +81,13 @@
 				<label for="uploader">##UPLOADER## :</label>
 				<span id="uploader">
 					{assign var="uploader" value=$myElement->getLastVersionInfo("user")}
-					<a href="{kurl app="annuaire" username=$uploader->getLogin()}">{$uploader->getUserLink()}</a>&nbsp;
+					<a href="{kurl app="annuaire" username=$uploader->getLogin()}">{userlink user=$uploader showpicture=true}</a>&nbsp;
 				</span>
 			</div>
 			<div class="detail creator">
 				<label for="creator">##CREATOR## :</label>
 				<span id="creator">
-					<a href="{kurl app="annuaire" username=$myElement->creator->getLogin()}">{$myElement->creator->getUserLink()}</a>&nbsp;
+					<a href="{kurl app="annuaire" username=$myElement->creator->getLogin()}">{userlink user=$myElement->creator showpicture=true}</a>&nbsp;
 				</span>
 			</div>
 				{if $myElement->getSysInfos("groupowner") != NULL}
