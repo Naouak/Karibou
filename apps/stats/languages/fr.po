@@ -38,4 +38,4 @@ msgid "NOCHAMPIONS"
 msgstr "Pas de champions pour l'instant"
 
 msgid "CHAMPIONSOFFLOOD"
-msgstr "Champions du Flood du Minichat"
+msgstr "Plus gros posteurs sur le minichat"
