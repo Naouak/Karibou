@@ -23,7 +23,7 @@ class Emoticons
 		if (is_dir($this->emoticon_dir)) {
 			if ($dir_handle = opendir($this->emoticon_dir)) {
 				while (($file = readdir($dir_handle)) !== false) {
-					if (($file != ".") && ($file != ".."))
+					if ($file[0] != ".")
 						$this->emoticon_themes[] = $file;
 				}
 				closedir($dir_handle);
