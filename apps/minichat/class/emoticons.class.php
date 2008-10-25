@@ -49,7 +49,9 @@ class Emoticons
 		$out = $in;
 		$user_emoticon_dir = $this->emoticon_dir . "/" . $this->get_user_emoticon_theme() . "/";
 		if (is_file($user_emoticon_dir . "/emoticons.xml")) {
-			$xml_emoticon_list = simplexml_load_file($user_emoticon_dir . "emoticons.xml");
+			$xmlCache = new XMLCache(KARIBOU_CACHE_DIR.'/emoticons');
+			$xmlCache->loadFile($user_emoticon_dir . "emoticons.xml", false);
+			$xml_emoticon_list = $xmlCache->getXml();
 			
 			foreach($xml_emoticon_list->emoticon as $emoticon) {
 				$string_array = array();
