@@ -139,6 +139,14 @@ class KeyChainDB extends KeyChain
 		return $ret;
 	}
 	
+	function relock($passphrase)
+	{
+		parent::relock($passphrase);
+		$this->saved_data = array();
+		if( isset($_SESSION['keychain_saved_data']) )
+			unset($_SESSION['keychain_saved_data']);
+	}
+	
 }
 
 ?>
