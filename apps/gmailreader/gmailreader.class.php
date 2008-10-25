@@ -19,7 +19,7 @@ class gmailReader extends Model
 	{
 		$currentUser = $this->userFactory->getCurrentUser();
 		$keychain = KeyChainFactory::getKeyChain($currentUser);
-		
+		$keychain->unlock();
 		if (
 			isset($this->args['gmaillogin'], $this->args['gmailpass'], $this->args['gmailmax'])
 			&& $this->args['gmaillogin'] != "" && $this->args['gmailpass'] != "" && $this->args['gmailmax'] != ""

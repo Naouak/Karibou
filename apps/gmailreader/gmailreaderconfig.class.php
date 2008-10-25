@@ -18,6 +18,7 @@ class gmailReaderConfig  extends Model
 	public function build()
 	{
 		$keychain = KeyChainFactory::getKeyChain($this->userFactory->getCurrentUser());
+		$keychain->unlock();
 		$this->assign('gmaillogin', $keychain->get('gmaillogin'));
 		$this->assign('gmailpass', $keychain->get('gmailpass'));
 		$this->assign('gmailmax', $keychain->get('gmailmax'));

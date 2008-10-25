@@ -19,6 +19,7 @@ class gmailReaderSaveConfig  extends FormModel
 	{
 		$currentUser = $this->userFactory->getCurrentUser();
 		$keychain = KeyChainFactory::getKeyChain($currentUser);
+		$keychain->unlock();
 		$keychain->set('gmaillogin', $this->args['gmaillogin']);
 		$keychain->set('gmailpass', $this->args['gmailpass']);
 		$keychain->set('gmailmax', $this->args['gmailmax']);
