@@ -62,7 +62,7 @@ function testReturn ()
 		$this->data[$id]['apps'] = $apps;
 	}
 	
-	function	deleteApp($id)
+	function deleteApp($id)
 	{
 		foreach($this->data as $data_key => $container)
 		{

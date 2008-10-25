@@ -1,6 +1,19 @@
+{if $keychainError}
 <div class="home">
-
-	<script type="text/javascript" language="javascript">
+<br />
+{if $secondAttempt}
+<strong>##INVALID_PASSWORD##</strong><br />
+{/if}
+##KEYCHAIN_PROBLEM_PASSWORD_OUT_OF_SYNC##<br />
+##OLD_PASSWORD_NEEDED##<br />
+<form action="{kurl page="keychain"}" method="post">
+	##OLD_PASSWORD_FIELD## : <input type="password" name="old_password" id="old_password" /><br />
+	<input type="submit" />
+</form>
+</div>
+{else}
+<div class="home">
+<script type="text/javascript" language="javascript">
 
 	// <![CDATA[
 	
@@ -185,3 +198,4 @@
 	{/foreach}
 	<br class="spacer" />
 </div>
+{/if}

@@ -107,3 +107,15 @@ msgstr "They said it"
 
 msgid "klock"
 msgstr "Random Imprecision Clock"
+
+msgid "INVALID_PASSWORD"
+msgstr "Invalid password, please try again."
+
+msgid "KEYCHAIN_PROBLEM_PASSWORD_OUT_OF_SYNC"
+msgstr "Karibou wasn't able to open your keychain. Maybe you changed your password without using the changepassword Karibou application ?"
+
+msgid "OLD_PASSWORD_NEEDED"
+msgstr "To recover your old keychain, your old password is needed."
+
+msgid "OLD_PASSWORD_FIELD"
+msgstr "Old password :"

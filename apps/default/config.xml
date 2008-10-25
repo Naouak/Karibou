@@ -16,6 +16,8 @@
 	
 	<load class="HomeMiniApps" file="homeminiapps.class.php" />
 	<load class="HomeContainers" file="homecontainers.class.php" />
+	
+	<load class="KeyChainFix" file="keychainfix.class.php" />
 
 	<load class="UsernameArgument" file="../arguments/usernameargument.class.php" />
 	<load class="ArgMiniapp" file="../arguments/argminiapp.class.php" />
@@ -78,4 +80,7 @@
 		<referer />
 	</form>
 	
+	<form action="keychain" class="KeyChainFix">
+		<redirect page="" />
+	</form>
 </app>

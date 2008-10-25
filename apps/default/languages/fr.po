@@ -116,3 +116,15 @@ msgstr "Le Bouton"
 
 msgid "klock"
 msgstr "Horloge à Imprécision Aléatoire"
+
+msgid "INVALID_PASSWORD"
+msgstr "Mot de passe incorrect, veuillez réessayer."
+
+msgid "KEYCHAIN_PROBLEM_PASSWORD_OUT_OF_SYNC"
+msgstr "Karibou n'a pas su accéder à vos données de session. Peut-être avez-vous changé votre mot de passe sans passer par Karibou ?"
+
+msgid "OLD_PASSWORD_NEEDED"
+msgstr "Pour récupérer ces données, votre ancien mot de passe est nécessaire."
+
+msgid "OLD_PASSWORD_FIELD"
+msgstr "Ancien mot de passe :"
