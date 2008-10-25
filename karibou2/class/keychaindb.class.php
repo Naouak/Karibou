@@ -93,6 +93,7 @@ class KeyChainDB extends KeyChain
 			$qry->bindValue(":name", $name);
 			$qry->bindValue(":data", $data);
 			$qry->execute();
+			$this->saved_data[$name] = $data;
 		}
 		catch(PDOException $e)
 		{
