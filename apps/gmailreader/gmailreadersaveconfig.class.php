@@ -17,30 +17,11 @@ class gmailReaderSaveConfig  extends FormModel
 {
 	public function build()
 	{
-	/*
-		if( isset($this->args['gmaillogin']) )
-		{
-			$this->assign('gmaillogin', $this->args['gmaillogin']);
-		}
-		if( isset($this->args['gmailpass']) )
-		{
-			$this->assign('gmailpass', $this->args['gmailpass']);
-		}
-		if( isset($this->args['gmailmax']) )
-		{
-			$this->assign('gmailmax', $this->args['gmailmax']);
-		}
-		$this->assign('feed', "https://$this->args['feed']);
-		*/
-//setPref
 		$currentUser = $this->userFactory->getCurrentUser();
-//		echo 'gmaillogin : '.$_POST['gmaillogin'];
-		$prefName = 'gmaillogin';
-		$currentUser->setPref($prefName, $this->args['gmaillogin']);
-		$prefName = 'gmailpass';
-		$currentUser->setPref($prefName, $this->args['gmailpass']);
-		$prefName = 'gmailmax';
-		$currentUser->setPref($prefName, $this->args['gmailmax']);
+		$keychain = KeyChainFactory::getKeyChain($currentUser);
+		$keychain->set('gmaillogin', $this->args['gmaillogin']);
+		$keychain->set('gmailpass', $this->args['gmailpass']);
+		$keychain->set('gmailmax', $this->args['gmailmax']);
 		$this->setRedirectArg('page', '');
 	}
 }

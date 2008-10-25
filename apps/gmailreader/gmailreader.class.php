@@ -17,26 +17,22 @@ class gmailReader extends Model
 {
 	public function build()
 	{
-	
+		$currentUser = $this->userFactory->getCurrentUser();
+		$keychain = KeyChainFactory::getKeyChain($currentUser);
+		
 		if (
 			isset($this->args['gmaillogin'], $this->args['gmailpass'], $this->args['gmailmax'])
 			&& $this->args['gmaillogin'] != "" && $this->args['gmailpass'] != "" && $this->args['gmailmax'] != ""
 			)
 		{
-			$currentUser = $this->userFactory->getCurrentUser();
-			$prefName = 'gmaillogin';
-			$currentUser->setPref($prefName, $this->args['gmaillogin']);
-			$prefName = 'gmailpass';
-			$currentUser->setPref($prefName, $this->args['gmailpass']);
-			$prefName = 'gmailmax';
-			$currentUser->setPref($prefName, $this->args['gmailmax']);				
+			$keychain->set('gmaillogin', $this->args['gmaillogin']);
+			$keychain->set('gmailpass', $this->args['gmailpass']);
+			$keychain->set('gmailmax', $this->args['gmailmax']);
 		}
-//		else
-//		{
-			$gmaillogin = $this->userFactory->getCurrentUser()->getPref('gmaillogin');
-			$gmailpass = $this->userFactory->getCurrentUser()->getPref('gmailpass');
-			$gmailmax = $this->userFactory->getCurrentUser()->getPref('gmailmax');
-//		}
+		
+		$gmaillogin = $keychain->get('gmaillogin');
+		$gmailpass = $keychain->get('gmailpass');
+		$gmailmax = $keychain->get('gmailmax');
 
 		if( isset($gmaillogin, $gmailpass, $gmailmax) && $gmaillogin !== FALSE && $gmailpass !== FALSE && $gmailmax !== FALSE)
 		{

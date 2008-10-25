@@ -17,23 +17,10 @@ class gmailReaderConfig  extends Model
 {
 	public function build()
 	{
-		$this->assign('gmaillogin', $this->userFactory->getCurrentUser()->getPref('gmaillogin'));
-		$this->assign('gmailpass', $this->userFactory->getCurrentUser()->getPref('gmailpass'));
-		$this->assign('gmailmax', $this->userFactory->getCurrentUser()->getPref('gmailmax'));
-/*		
-		if( isset($this->userFactory->getCurrentUser()->getPref('gmaillogin')) )
-		{
-			$this->assign('gmaillogin', $this->userFactory->getCurrentUser()->getPref('gmaillogin'));
-		}
-		if( isset($this->userFactory->getCurrentUser()->getPref('gmailpass')) )
-		{
-			$this->assign('gmailpass', $this->userFactory->getCurrentUser()->getPref('gmailpass'));
-		}
-		if( isset($this->userFactory->getCurrentUser()->getPref('gmailmax')) )
-		{
-			$this->assign('gmailmax', $this->userFactory->getCurrentUser()->getPref('gmailmax'));
-		}
-*/		
+		$keychain = KeyChainFactory::getKeyChain($this->userFactory->getCurrentUser());
+		$this->assign('gmaillogin', $keychain->get('gmaillogin'));
+		$this->assign('gmailpass', $keychain->get('gmailpass'));
+		$this->assign('gmailmax', $keychain->get('gmailmax'));
 	}
 }
 
