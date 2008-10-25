@@ -40,7 +40,6 @@ abstract class KeyChain
 		}
 		else
 		{
-		Debug::kill("No, I want mcrypt");
 			$this->use_mcrypt = FALSE;
 		}
 	}
