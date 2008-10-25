@@ -54,7 +54,7 @@ class Emoticons
 			foreach($xml_emoticon_list->emoticon as $emoticon) {
 				$string_array = array();
 				foreach($emoticon->string as $string) {
-					$string_array[] = "#((\s|^)".preg_quote($string)."(\s|$))#U";
+					$string_array[] = "#((\s|^)".preg_quote($string, '#')."(\s|$))#U";
 				}
 				$out = preg_replace($string_array, "<img src=\"" . $user_emoticon_dir . $emoticon['file'] ."\" />", $out);
 			}
