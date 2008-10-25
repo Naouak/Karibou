@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<messaging-emoticon-map >
+
+<emoticon file="anger">
+	<string>:-@</string>
+	<string>:@</string>
+	<string>&gt;:-(</string>
+	<string>&gt;:(</string>
+</emoticon>
+
+<emoticon file="cry">
+	<string>:'(</string>
+	<string>:'-(</string>
+	<string>;-(</string>
+	<string>;(</string>
+</emoticon>
+
+<emoticon file="shame">
+	<string>:-$</string>
+	<string>:$</string>
+</emoticon>
+
+<emoticon file="down">
+	<string>:-|</string>
+	<string>:|</string>
+</emoticon>
+
+<emoticon file="innocent">
+	<string>O:-)</string>
+	<string>O:)</string>
+	<string>O-)</string>
+	<string>0:-)</string>
+	<string>0-)</string>
+</emoticon>
+
+<emoticon file="kiss">
+	<string>:-{}</string>
+	<string>:{}</string>
+	<string>(K)</string>
+	<string>(k)</string>
+	<string>:X</string>
+	<string>:x</string>
+	<string>:*</string>
+</emoticon>
+
+<emoticon file="love">
+	<string>(L)</string>
+	<string>(l)</string>
+</emoticon>
+
+<emoticon file="sad">
+	<string>:-(</string>
+	<string>:(</string>
+</emoticon>
+
+<emoticon file="undecided">
+	<string>:-/</string>
+	<string>:/</string>
+</emoticon>
+
+<emoticon file="undecided2">
+	<string>:-\</string>
+	<string>:\</string>
+</emoticon>
+
+
+<emoticon file="smile">
+	<string>:-)</string>
+	<string>:)</string>
+</emoticon>
+
+<emoticon file="laugh">
+	<string>:-D</string>
+	<string>:D</string>
+</emoticon>
+
+<emoticon file="tongue">
+	<string>:-P</string>
+	<string>:P</string>
+	<string>:-p</string>
+	<string>:p</string>
+</emoticon>
+
+<emoticon file="happy">
+	<string>:]</string>
+	<string>:-]</string>
+	<string>:))</string>
+	<string>:-))</string>
+</emoticon>
+
+<emoticon file="hyper">
+	<string>=)</string>
+	<string>=-)</string>
+	<string>=))</string>
+	<string>=-))</string>
+</emoticon>
+
+<emoticon file="wink">
+	<string>;-)</string>
+	<string>;)</string>
+</emoticon>
+
+<emoticon file="o_o">
+	<string>o_o</string>
+</emoticon>
+
+<emoticon file="o_O-2">
+	<string>o_O</string>
+</emoticon>
+
+<emoticon file="O_o-2">
+	<string>O_o</string>
+</emoticon>
+
+<emoticon file="O_O">
+	<string>O_O</string>
+</emoticon>
+
+<emoticon file="omg">
+	<string>:O</string>
+	<string>:-O</string>
+	<string>:o</string>
+	<string>:-o</string>
+	<string>:0</string>
+	<string>:-0</string>
+</emoticon>
+
+<emoticon file="ouch">
+	<string>o_#</string>
+	<string>O_#</string>
+</emoticon>
+
+<emoticon file="ouch2">
+	<string>#_o</string>
+	<string>#_O</string>
+</emoticon>
+
+<emoticon file="bee">
+	<string>*bee*</string>
+	<string>*bumblebee*</string>
+	<string>*buzz*</string>
+</emoticon>
+	
+
+</messaging-emoticon-map>

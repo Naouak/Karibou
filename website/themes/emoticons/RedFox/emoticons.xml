@@ -1,0 +1,158 @@
+
+<messaging-emoticon-map >
+	<emoticon file="afro">
+		<string>&gt;&gt;:)</string>
+	</emoticon>
+	<emoticon file="angel">
+		<string>:a:</string>
+		<string>:A:</string>
+	</emoticon>
+	<emoticon file="angry">
+		<string>:@</string>
+		<string>:-@</string>
+	</emoticon>
+	<emoticon file="azn">
+		<string>^o)</string>
+		<string>^O)</string>
+	</emoticon>
+	<emoticon file="bag">
+		<string>(:)</string>
+	</emoticon>
+	<emoticon file="cheesy">
+		<string>:D</string>
+		<string>:-D</string>
+		<string>\o/</string>
+	</emoticon>
+	<emoticon file="cool">
+		<string>8)</string>
+		<string>8-)</string>
+	</emoticon>
+	<emoticon file="cry">
+		<string>:'(</string>
+		<string>:"(</string>
+	</emoticon>
+	<emoticon file="drool">
+		<string>*_*</string>
+		<string>*-*</string>
+	</emoticon>
+	<emoticon file="drink">
+		<string>:drink:</string>
+	</emoticon>
+	<emoticon file="embarrased">
+		<string>:$</string>
+	</emoticon>
+	<emoticon file="evil">
+		<string>:]</string>
+	</emoticon>
+	<emoticon file="feed">
+		<string>:eat:</string>
+	</emoticon>
+	<emoticon file="fool">
+		<string>&gt;.&lt;</string>
+	</emoticon>
+	<emoticon file="ghost">
+		<string>:ghost:</string>
+	</emoticon>
+	<emoticon file="grin">
+		<string>:hi:</string>
+	</emoticon>
+	<emoticon file="happy">
+		<string>^^</string>
+		<string>^_^</string>
+		<string>^-^</string>
+	</emoticon>
+	<emoticon file="huh">
+		<string>:?:</string>
+	</emoticon>
+	<emoticon file="humm">
+		<string>:think:</string>
+	</emoticon>
+	<emoticon file="idea">
+		<string>:idea:</string>
+	</emoticon>
+	<emoticon file="irony">
+		<string>¬¬</string>
+		<string>¬_¬</string>
+	</emoticon>
+	<emoticon file="kiss">
+		<string>:k:</string>
+		<string>:K:</string>
+	</emoticon>
+	<emoticon file="laugh">
+		<string>xD</string>
+		<string>XD</string>
+	</emoticon>
+	<emoticon file="lipsrsealed">
+		<string>:/</string>
+	</emoticon>
+	<emoticon file="love">
+		<string>:love:</string>
+	</emoticon>
+	<emoticon file="love2">
+		<string>:love2:</string>
+	</emoticon>
+	<emoticon file="love3">
+		<string>:love3:</string>
+	</emoticon>
+	<emoticon file="no">
+		<string>:no:</string>
+	</emoticon>
+	<emoticon file="nopes">
+		<string>¬.¬</string>
+	</emoticon>
+	<emoticon file="ok">
+		<string>:ok:</string>
+	</emoticon>
+	<emoticon file="police">
+		<string>:ninja:</string>
+	</emoticon>
+	<emoticon file="puagh">
+		<string>:+</string>
+	</emoticon>
+	<emoticon file="rolleyes">
+		<string>::)</string>
+	</emoticon>
+	<emoticon file="sad">
+		<string>:(</string>
+		<string>:-(</string>
+	</emoticon>
+	<emoticon file="shocked">
+		<string>:o</string>
+		<string>:O</string>
+	</emoticon>
+	<emoticon file="sip">
+		<string>:yes:</string>
+	</emoticon>
+	<emoticon file="smiley">
+		<string>:)</string>
+		<string>:-)</string>
+	</emoticon>
+	<emoticon file="tongue">
+		<string>:p</string>
+		<string>:P</string>
+	</emoticon>
+	<emoticon file="tss">
+		<string>:tss:</string>
+	</emoticon>
+	<emoticon file="undecided">
+		<string>:s</string>
+		<string>:S</string>
+	</emoticon>
+	<emoticon file="woa">
+		<string>^^u</string>
+		<string>^^U</string>
+	</emoticon>
+	<emoticon file="wtf">
+		<string>8o</string>
+		<string>8-o</string>
+		<string>8O</string>
+		<string>8-O</string>
+	</emoticon>
+	<emoticon file="yawn">
+		<string>:()</string>
+	</emoticon>
+	<emoticon file="zoom">
+		<string>:zoom:</string>
+	</emoticon>
+
+</messaging-emoticon-map>
