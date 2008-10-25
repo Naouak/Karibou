@@ -37,13 +37,13 @@ class XMLCache
 		return $this->xml;
 	}
 	
-	function loadFile($xml)
+	function loadFile($xml, $use_basename = true)
 	{
 		if( ! is_file($xml) )
 			Debug::kill("File : $xml doesn't exist");
 		$this->lastmodified = filemtime($xml);
 		
-		return $this->load($xml);
+		return $this->load($xml, false, $use_basename);
 	}
 
 	function loadURL($xml, $timeout=3600)
@@ -63,12 +63,12 @@ class XMLCache
 		return false;
 	}
 	
-	function load($xml, $from_url = false)
+	function load($xml, $from_url = false, $use_basename = true)
 	{
 		ExecutionTimer::getRef()->start("XMLCache Load");
 		$this->xmlfile = $xml;
 		$this->cacheid = md5($xml);
-		if( $from_url )
+		if( ( $from_url ) || (!$use_basename) )
 		{
 			$this->cachefile = $this->cachedir.'/'.$this->cacheid.".php";
 		}
