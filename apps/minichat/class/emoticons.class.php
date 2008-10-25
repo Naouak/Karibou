@@ -47,8 +47,8 @@ class Emoticons
 	
 	public function render($in) {
 		$out = $in;
-		if ($this->get_user_emoticon_theme() != "None") {
-			$user_emoticon_dir = $this->emoticon_dir . "/" . $this->get_user_emoticon_theme() . "/";
+		$user_emoticon_dir = $this->emoticon_dir . "/" . $this->get_user_emoticon_theme() . "/";
+		if (is_file($user_emoticon_dir . "/emoticons.xml")) {
 			$xml_emoticon_list = simplexml_load_file($user_emoticon_dir . "emoticons.xml");
 			
 			foreach($xml_emoticon_list->emoticon as $emoticon) {
@@ -56,7 +56,13 @@ class Emoticons
 				foreach($emoticon->string as $string) {
 					$string_array[] = "#((\s|^)".preg_quote($string, '#')."(\s|$))#U";
 				}
-				$out = preg_replace($string_array, "$2<img src=\"" . $user_emoticon_dir . $emoticon['file'] ."\" />$3", $out);
+				$fileName = $emoticon['file'];
+				if (!is_file($user_emoticon_dir . "/" . $fileName))
+					if (is_file($user_emoticon_dir . "/" . $fileName . ".png"))
+						$fileName .= ".png";
+					else if (is_file($user_emoticon_dir . "/" . $fileName . ".gif"))
+						$fileName .= ".gif";
+				$out = preg_replace($string_array, "$2<img src=\"" . $user_emoticon_dir . $fileName ."\" />$3", $out);
 			}
 		}
 		
