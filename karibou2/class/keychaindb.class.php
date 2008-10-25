@@ -54,7 +54,10 @@ class KeyChainDB extends KeyChain
 		{
 			try
 			{
-				$stmt = $this->db->query("SELECT data FROM keychain WHERE user_id='".$this->user->getID()."' AND name='".$name."' LIMIT 1");
+				$stmt = $this->db->prepare("SELECT data FROM keychain WHERE user_id=:user AND name=:name LIMIT 1");
+				$stmt->bindValue(":user", $this->user->getID());
+				$stmt->bindValue(":name", $name);
+				$stmt->execute();
 			}
 			catch(PDOException $e)
 			{
@@ -78,11 +81,18 @@ class KeyChainDB extends KeyChain
 	
 	function setData($name, $data)
 	{
-		$qry = "DELETE FROM keychain WHERE user_id='".$this->user->getID()."' AND name='".$name."' ; ";
-		$qry .= "INSERT INTO keychain (user_id, name, data) VALUES (".$this->user->getID().",'".$name."', '".$data."') ; ";/*$data WAS $encrypted*/
+		/*$data WAS $encrypted*/
 		try
 		{
-			$this->db->exec($qry);
+			$qry = $this->db->prepare("DELETE FROM keychain WHERE user_id=:user AND name=:name");
+			$qry->bindValue(":user", $this->user->getID());
+			$qry->bindValue(":name", $name);
+			$qry->execute();
+			$qry = $this->db->prepare("INSERT INTO keychain (user_id, name, data) VALUES (:user, :name, :data)");
+			$qry->bindValue(":user", $this->user->getID());
+			$qry->bindValue(":name", $name);
+			$qry->bindValue(":data", $data);
+			$qry->execute();
 		}
 		catch(PDOException $e)
 		{
