@@ -13,6 +13,10 @@
 			<value name="small">0</value>
 			<value name="normal">0</value>
 		</param>
+		<param name="emoticon_theme">
+			<value name="small">0</value>
+			<value name="normal">0</value>
+		</param>
 		<param name="refresh">
 			<value name="small">10</value>
 		</param>
@@ -23,6 +27,7 @@
 	<load class="MinichatMessageList"		file="./class/minichatmessagelist.class.php" />
 	<load class="MinichatMessage"			file="./class/minichatmessage.class.php" />
 	<load class="MinichatRendering"			file="./class/minichatrendering.class.php" />
+	<load class="Emoticons"				file="./class/emoticons.class.php" />
 	<load class="PageArgument"			file="../arguments/pageargument.class.php" />
 	<load class="NumberArgument"	    		file="../arguments/numberargument.class.php" />
 
@@ -30,6 +35,7 @@
 	<load class="MCConfig"		file="mcconfig.class.php" />
 
 	<view name="mini" class="MCDefault" template="small.tpl" />	
+	<view name="mini" class="MCDefault" template="small.tpl" />
 	<view name="small" class="MCDefault" template="small.tpl" />
 	<view name="smallconfig" class="MCConfig" template="smallconfig.tpl" />
 	<view name="big" class="MCDefault" template="minichat.tpl" />
@@ -51,6 +57,7 @@
 		<option name="maxlines" class="NumberArgument" />
 		<option name="userichtext" class="NumberArgument" />
 		<option name="inversepostorder" class="NumberArgument" />
+		<option name="emoticon_theme" class="NumberArgument" />
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>

@@ -12,11 +12,13 @@
 class MinichatRendering
 {	
 	protected $userichtext;
+	protected $emoticons;
 	protected $current_user;
 
-	function __construct($userichtext, $current_user)
+	function __construct($userichtext, $current_user, $emoticons)
 	{
 		$this->userichtext = $userichtext;
+		$this->emoticons = $emoticons;
 		$this->current_user = $current_user;
 	}
 
@@ -54,6 +56,12 @@ class MinichatRendering
 		return $out;
 	}
 
+	protected function emoticons($in) {
+		
+		$out = $in;
+		return $out;
+	}
+
 	protected function wordwrap_if_needed($in) 
 	{	
 		$wordwrap_needed = false;
@@ -77,6 +85,7 @@ class MinichatRendering
 	{
 		$out = $this->wordwrap_if_needed($in);
 		$out = $this->bbcode($out);
+		$out = $this->emoticons->render($out);
 		
 		$out = str_ireplace($this->current_user->getSurname(), "<strong>".$this->current_user->getSurname()."</strong>", $out);
 		

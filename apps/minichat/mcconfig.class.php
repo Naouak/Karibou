@@ -43,6 +43,22 @@ class MCConfig extends Model
 		{
 			$this->assign('inversepostorder', $config["inversepostorder"]["small"]);
 		}
+
+		$emoticons = new Emoticons($this->userFactory);
+		
+		if( isset($this->args['emoticon_theme']) )
+		{
+			$this->assign('emoticon_theme', $this->args['emoticon_theme']);	
+			$emoticons->set_user_emoticon_theme($this->args['emoticon_theme']);
+		}
+		else
+		{
+			$this->assign('emoticon_theme', $config["emoticon_theme"]["small"]);
+			//$emoticons->set_user_emoticon_theme($config["emoticon_theme"]["small"]);
+		}
+
+		$this->assign("emoticon_themes", $emoticons->get_emoticon_themes());
+				
 	}
 }
 

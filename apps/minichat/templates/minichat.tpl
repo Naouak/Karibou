@@ -23,7 +23,7 @@
 
 		var post_vars = queryComponents.join("&");
 
-		new Ajax.Updater(content_id, '{/literal}{kurl app="minichat" page="content" pagenum=$pagenum maxlines=$max}{literal}', {
+		new Ajax.Updater(content_id, '{/literal}{kurl app="minichat" page="content" pagenum=$pagenum maxlines=$max userichtext=$userichtext inversepostorder=$inversepostorder}{literal}', {
 				asynchronous:true,
 				evalScripts:true,
 				method:'post',

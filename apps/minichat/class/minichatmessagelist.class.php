@@ -12,6 +12,7 @@
 class MiniChatMessageList
 {
 	protected $db;
+	protected $emoticons;
 	protected $rendering;
 	protected $inversepostorder;
 
@@ -19,8 +20,9 @@ class MiniChatMessageList
 	{
 		$this->db = $db;
 		$this->userFactory = $userFactory;
-		$this->inversepostorder = $inversepostorder;	
-		$this->rendering = new MinichatRendering($userichtext, $userFactory->getCurrentUser());
+		$this->inversepostorder = $inversepostorder;
+		$this->emoticons = new Emoticons($this->userFactory);	
+		$this->rendering = new MinichatRendering($userichtext, $userFactory->getCurrentUser(), $this->emoticons);
 	}
 	
 	function count()
