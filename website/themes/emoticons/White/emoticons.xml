@@ -104,15 +104,15 @@
 	<string>o_o</string>
 </emoticon>
 
-<emoticon file="o_O-2">
+<emoticon file="o_O-right">
 	<string>o_O</string>
 </emoticon>
 
-<emoticon file="O_o-2">
+<emoticon file="O_o-left">
 	<string>O_o</string>
 </emoticon>
 
-<emoticon file="O_O">
+<emoticon file="O_O-all">
 	<string>O_O</string>
 </emoticon>
 
