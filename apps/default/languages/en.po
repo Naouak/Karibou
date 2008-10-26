@@ -3,17 +3,18 @@ msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: team@karibou.org\n"
 "POT-Creation-Date: 2006-07-24 16:54+0200\n"
-"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2008-10-26 21:12+0200\n"
 "Last-Translator: Karibou Team <team@karibou.org>\n"
 "Language-Team: Karibou Team <team@karibou.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
+
 msgid "BACKHOME"
 msgstr "Back to home page"
 
 msgid "DEFAULT_EDIT"
-msgstr "Personnalise my home page"
+msgstr "Personalize my home page"
 
 msgid "DEFAULT_END_EDIT"
 msgstr "Close the application list"
@@ -28,10 +29,10 @@ msgid "TRASH"
 msgstr "Trash"
 
 msgid "ADDEMAIL"
-msgstr "You must add at least one email to your profile in order to have fully access to the intranet. This email will be used as contact email if you can't access to the intranet (lost password...)."
+msgstr "You must add at least one email address to your profile in order to fully access the intranet. This address will be used as a contact address in the event you can't access the intranet (lost password...)."
 
 msgid "ADDEMAIL_TITLE"
-msgstr "You must add an email to your profile"
+msgstr "You must add an email address to your profile"
 
 msgid "ACTION_REQUIRED"
 msgstr "Action required"
@@ -73,13 +74,13 @@ msgid "fileshare"
 msgstr "File Share"
 
 msgid "gmailreader"
-msgstr "GMail Reader"
+msgstr "Gmail Reader"
 
 msgid "citation"
-msgstr "The citation"
+msgstr "Quote of the day"
 
 msgid "daytof"
-msgstr "The picture"
+msgstr "Picture of the day"
 
 msgid "deezer"
 msgstr "Deezer Music"
@@ -88,10 +89,10 @@ msgid "dday"
 msgstr "D Day"
 
 msgid "video"
-msgstr "The video"
+msgstr "Video of the day"
 
 msgid "DEFAULT_CHANGEPASSWORD_DESCRIPTION"
-msgstr "In order to ensure your account security, you must change your password. Click on the link below to go to the \"change password\" page."
+msgstr "In order to ensure the security of your account, you must change your password. Click on the link below to go to the \"change password\" page."
 
 msgid "CHANGEPASSWORD_LINK"
 msgstr "To the \"change password\" page."
