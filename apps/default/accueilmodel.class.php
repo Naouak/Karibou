@@ -50,6 +50,10 @@ class AccueilModel extends Model
 			if( ($containers = $currentUser->getPref('containers'))
 				&& ($miniapps = $currentUser->getPref('miniapps')) )
 			{
+				// the configuration of the applications (including config view etc) are stored in the user profile : the configuration has to be reloaded into the user's profile
+				$app_config = $miniapps->updateConfig();
+				$currentUser->setPref('miniapps', $miniapps );
+				$currentUser->savePrefs($this->db);
 			}
 			else
 			{
@@ -99,9 +103,11 @@ class AccueilModel extends Model
 				$currentUser->setPref('miniapps', $miniapps );
 				$currentUser->setPref('containers', $containers );
 				$currentUser->savePrefs($this->db);
+
+				$app_config = $miniapps->getConfig();
 			}
-			//print_r($miniapps);
-			$this->assign("miniapps", $miniapps->getConfig() );
+			
+			$this->assign("miniapps", $app_config );
 			$default = $containers->getDefaultApps();
 			foreach($default as $app)
 			{
