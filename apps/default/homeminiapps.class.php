@@ -82,8 +82,13 @@ class HomeMiniApps extends ObjectList
 		
 		foreach($this->data as $id => $app) {
 			if(isset($config[$app["id"]])) {
-				$this->data[$id] = array_merge($app, $config[$app["id"]]);
-				if(!isset($config[$app["id"]]["configview"])) unset($this->data[$id]["configview"]);
+				if($app instanceof XMLElement) {
+					$this->data[$id]->attributes = array_merge($this->data[$id]->attributes, $config[$app->attributes["id"]]);
+					if(!isset($config[$app->attributes["id"]]["configview"])) unset($this->data[$id]->attributes["configview"]);
+				} else {
+					$this->data[$id] = array_merge($this->data[$id], $config[$app["id"]]);
+					if(!isset($config[$app["id"]]["configview"])) unset($this->data[$id]["configview"]);
+				}
 			}
 		}
 
