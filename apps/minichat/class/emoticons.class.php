@@ -56,7 +56,7 @@ class Emoticons
 			foreach($xml_emoticon_list->emoticon as $emoticon) {
 				$string_array = array();
 				foreach($emoticon->string as $string) {
-					$string_array[] = "#((\s|^)".preg_quote($string, '#')."(\s|$))#U";
+					$string_array[] = "#((\s|^)".preg_quote(htmlspecialchars($string), '#')."(\s|$))#U";
 				}
 				$fileName = $emoticon['file'];
 				if (!is_file($user_emoticon_dir . "/" . $fileName))
