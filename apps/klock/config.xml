@@ -1,18 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- klock application, by Rémy Sanchez <remy.sanchez@hyperthese.net> -->
+
 <app class="klock">
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 
+	<!-- ***********
+	CLASSES TO LOAD
+	************ -->
+	
+	<!-- mini application -->
 	<load class="klock" file="klock.class.php" />
+	<!-- svg picture of the analog clock -->
 	<load class="klockSvg" file="klockSvg.class.php" />
+	<!-- configuration -->
+	<load class="klockConfig" file="klockConfig.class.php" />
+
+	<!-- arguments -->
+	<!-- a number -->
+	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
 	
-	<header app="header" view="default" />
-	<footer app="footer" view="default" />
-	
+	<!-- ***********
+	VIEWS
+	************ -->
+	 
+	<!-- mini application -->
 	<view name="mini" class="klock" template="klock.tpl" />
+	<!-- svg picture of the analog clock -->
 	<view name="svg" class="klockSvg" template="picture.svg.tpl" />
+	<!-- configuration -->
+	<view name="conf" class="klockConfig" template="smallconfig.tpl" />
 	
+	<!-- ***********
+	PAGES
+	************ -->
+	
+	<!-- a page that shows the SVG picture. Of course, nothing has to be
+	     sent before or after the SVG picture, so header and footer
+	     are empty -->
 	<page name="svg" class="klockSvg" view="svg">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
+
+		<!-- the imprecision must be given as an argument -->
+		<option name="imprecision" class="NumberArgument" />
 	</page>
+	
+	<!-- ***********
+	CONFIGURATION VALUES
+	************ -->
+	
+	<config>
+		<!-- clock mode ("analog", "textual", "binary" or "digital")
+		       * analog : analogic clock
+		       * textual : shows text instead of time (ex: "half past ten")
+		       * binary : shows the time in binary
+		       * digital : shows a digital clock
+		-->
+		<param name="mode">
+			<value name="small">analog</value>
+			<value name="normal">analog</value>
+		</param>
+		<!-- imprecision (in minutes) -->
+		<param name="imprecision">
+			<value name="small">15</value>
+			<value name="normal">15</value>
+		</param>
+	</config>
 </app>

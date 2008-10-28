@@ -12,3 +12,24 @@ msgstr ""
 
 msgid "KLOCKTITLE"
 msgstr "Klock"
+
+msgid "KLOCK_MODE"
+msgstr "Type d'horloge"
+
+msgid "KLOCK_PREFS_WARNING"
+msgstr "<strong>ATTENTION</strong>: pour prendre en compte une nouvelle imprecision, il faut recharger Karibou."
+
+msgid "KLOCK_MODE_ANALOG"
+msgstr "Analogique"
+
+msgid "KLOCK_MODE_TEXTUAL"
+msgstr "Textuelle"
+
+msgid "KLOCK_MODE_BINARY"
+msgstr "Binaire"
+
+msgid "KLOCK_MODE_DIGITAL"
+msgstr "Digitale"
+
+msgid "KLOCK_IMPRECISION"
+msgstr "Imprécision (en minutes, >= 5)"
