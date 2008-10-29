@@ -1,5 +1,9 @@
-<h1>##TITLE##</h1>
+<h1>##ADMINISTRATION##</h1>
 <h3>##VIEWING_GROUP## 
+{if isset($thegroup.description) && $thegroup.description != ""}
+<h5>{$thegroup.description}</h5>
+{/if}
+
 {if isset($thegroup.url) && $thegroup.url != ""}
 <a href="{$thegroup.url}">{$thegroup.name}</a>
 {else}
@@ -33,17 +37,21 @@
 				{else}
 						{$user.login}
 				{/if}
-				{if $user.role == "admin" }
-				<br />[Admin]
-				{/if}
+
 				</a>
+				
+		<br />Retirer cet utilisateur du groupe
+		<br />Passer la main / Enlever le controle
 			</div>
+			
+
 	</div>
+		
 {/foreach}
 <hr style="clear: both;" />
-{if $group_admin}
-	<br /><a href="{kurl page="groupadmin" id=$thegroup.id}"><i>Afficher la page d'administration du groupe</i></a>
-{/if}
+
+<br /><a href="{kurl page="groupadmin" id=$thegroup.id}"><i>Penser a modifier la cible du lien :p Ajouter un utilisateur</i></a>
+<br /><a href="{kurl page="groupadmin" id=$thegroup.id}"><i>Changer la description du groupe</i></a>
 <br />
 <br />
 </div>

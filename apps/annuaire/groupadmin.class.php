@@ -14,7 +14,7 @@
  * 
  * @package applications
  */
-class GroupDisplay extends Model
+class GroupAdmin extends Model
 {
 	function build()
 	{
@@ -115,3 +115,4 @@ class GroupDisplay extends Model
 
 }
 ?>
+

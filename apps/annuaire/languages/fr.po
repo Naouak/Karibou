@@ -52,6 +52,9 @@ msgstr "Résultats de la recherche"
 msgid "TITLE"
 msgstr "Annuaire des utilisateurs"
 
+msgid "ADMINISTRATION"
+msgstr "Page d'administration du groupe"
+
 msgid "SEARCH_TITLE"
 msgstr "Rechercher"
 

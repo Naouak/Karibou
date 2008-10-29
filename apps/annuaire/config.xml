@@ -22,6 +22,7 @@
 	<load class="ModifyProfile" file="modifyprofile.class.php" />
 	<load class="GroupsDisplay" file="groupsdisplay.class.php" />
 	<load class="GroupDisplay" file="groupdisplay.class.php" />
+	<load class="GroupAdmin" file="groupadmin.class.php" />
 	<load class="AnnuaireSearch" file="search.class.php" />
 
 	<load class="AnnuaireMenu" file="annuairemenu.class.php" />
@@ -32,6 +33,7 @@
 	<view name="default" class="Annuaire" template="default.tpl" />
 	<view name="groups" class="GroupsDisplay" template="groups.tpl" />
 	<view name="group" class="GroupDisplay" template="group.tpl" />
+	<view name="groupadmin" class="GroupAdmin" template="groupadmin.tpl" />
 	<view name="profile" class="AnnuaireProfile" template="profile.tpl" />
 	<view name="editprofile" class="AnnuaireProfile" template="form.tpl" />
 	<view name="search" class="AnnuaireSearch" template="search.tpl" />
@@ -54,6 +56,10 @@
 	<page name="search" view="search" />
 	
 	<page name="groupid" view="group">
+		<argument name="id" class="NumberArgument" />
+	</page>
+	
+	<page name="groupadmin" view="groupadmin">
 		<argument name="id" class="NumberArgument" />
 	</page>
 	
