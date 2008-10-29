@@ -60,7 +60,7 @@
 		var s_dec = date.getSeconds();
 
 		// Time to make some base conversion
-		var h_bin = decimalToBinary(h_dec, 4);
+		var h_bin = decimalToBinary(h_dec, 5);
 		var m_bin = decimalToBinary(m_dec, 6);
 		var s_bin = decimalToBinary(s_dec, 6);
 
@@ -98,7 +98,7 @@
 	 */
 	function decimalToBinary(dec, digits) {
 		// First : how long is the number we want ?
-		var len = Math.floor(Math.log(dec) / Math.LN2);
+		var len = Math.floor(Math.log(dec) / Math.LN2) + 1;
 
 		// We'll take the longer between len and digits
 		len = Math.max(digits, len);
