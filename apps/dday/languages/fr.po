@@ -28,5 +28,8 @@ msgstr "Necessite une permission"
 msgid "DDAYDESC"
 msgstr "Description"
 
+msgid "DDAYLINK"
+msgstr "Lien"
+
 msgid "NODESC"
 msgstr "Pas de description"

@@ -21,7 +21,8 @@ class Dday extends Model
             if (get_magic_quotes_gpc()) {
                 $_POST['ddayevent'] = stripslashes($_POST['ddayevent']);
                 $_POST['ddaydesc'] = stripslashes($_POST['ddaydesc']);
-                $_POST['ddaydate'] = stripslashes($_POST['ddaydate']);
+		$_POST['ddaydate'] = stripslashes($_POST['ddaydate']);
+		$_POST['ddaylink'] = stripslashes($_POST['ddaylink']);
             }
             $event = strip_tags($_POST['ddayevent']); //strip_tags = enleve code html
             if ($_POST['ddayevent']!= "" && strlen($_POST['ddaydate'])== 10)
@@ -30,10 +31,11 @@ class Dday extends Model
                 $ddaydate = str_replace("-", "", $_POST['ddaydate']);
                 if ($ddaydate >= date('Ymd'))
                 {
-                    $stmt = $this->db->prepare('INSERT INTO dday (user_id, event, date, `desc`) VALUES (:user, :event, :date, :desc)');
+                    $stmt = $this->db->prepare('INSERT INTO dday (user_id, event, date, link, `desc`) VALUES (:user, :event, :date, :link, :desc)');
                     $stmt->bindValue(':user', $this->currentUser->getID());
                     $stmt->bindValue(':event', $event);
                     $stmt->bindValue(':date', $ddaydate);
+                    $stmt->bindValue(':link', $ddaylink);
                     $stmt->bindValue(':desc', strip_tags($_POST['ddaydesc']));
                     $stmt->execute();
                 }
