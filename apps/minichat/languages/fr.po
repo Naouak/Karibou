@@ -35,3 +35,6 @@ msgstr "Date à afficher"
 
 msgid "TODAY"
 msgstr "Aujourd'hui"
+
+msgid "EMOTICONTHEME"
+msgstr "Thème d'émoticones"
