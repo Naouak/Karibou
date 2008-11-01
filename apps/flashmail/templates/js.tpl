@@ -41,7 +41,7 @@ var FlashmailManager = Class.create({
         }});
     },
     markAsRead: function (flashmailId) {
-        new Ajax.Request('{/literal}{kurl app="flashmail" page="setasread"}{literal}', {
+        new Ajax.Request('{/literal}{kurl app="flashmail" action="setasread"}{literal}', {
             asynchronous: true,
             method: 'post',
             postBody: 'flashmailid=' + flashmailId,
@@ -99,7 +99,7 @@ var FlashmailManager = Class.create({
             
             var post_vars = queryComponents.join("&");
 
-            new Ajax.Request('{/literal}{kurl app="flashmail" page="send"}{literal}', {
+            new Ajax.Request('{/literal}{kurl app="flashmail" action="send"}{literal}', {
                     asynchronous:true,
                     evalScripts:false,
                     method:'post',
@@ -214,7 +214,7 @@ var FlashmailManager = Class.create({
                         
                         var post_vars = queryComponents.join("&");
 
-                        new Ajax.Request('{/literal}{kurl app="flashmail" page="send"}{literal}', {
+                        new Ajax.Request('{/literal}{kurl app="flashmail" action="send"}{literal}', {
                                 asynchronous:true,
                                 evalScripts:false,
                                 method:'post',
