@@ -1,6 +1,7 @@
 <?php
 /* BEWARE made by Naouak*/
 /* Nux also came here, it's now harmless */
+/* Pinaraf came too, so it's understandable now, and not complex by design any more... */
  
 /**
  * Classe resetbuttonstats
@@ -13,13 +14,10 @@ class resetbuttonmystats extends Model
 	private function longtime(){
 		$stmt = $this->db->prepare("
 		SELECT
-			COALESCE(SEC_TO_TIME(MAX(TIME_TO_SEC(TIMEDIFF(cut.date , frst.date)))), TIME('00:00:00')) as hour
+			COALESCE(MAX(TIMEDIFF(cut.date , frst.date)), TIME('00:00:00')) as hour
 		FROM
-			resetbutton AS frst,
-			resetbutton AS cut
-		WHERE
-			cut.id = frst.id + 1
-			AND cut.user = :user
+			resetbutton AS frst
+		INNER JOIN resetbutton cut ON cut.user=:user AND cut.id=frst.id+1
 		");
 		$stmt->bindValue(':user',$this->currentUser->getID(),PDO::PARAM_INT);
 		$stmt->execute();
@@ -71,27 +69,13 @@ class resetbuttonmystats extends Model
 	private function myscore(){
 		$sth = $this->db->prepare("
 		SELECT
-			COALESCE((
-				SELECT
-					SUM(TIME_TO_SEC(TIMEDIFF(one1.date, two1.date)))
-				FROM
-					resetbutton AS one1,
-					resetbutton AS two1
-				WHERE
-					one1.id = two1.id - 1
-					AND one1.user = :user
-			), 0)
-			+
-			COALESCE((
-				SELECT
-					SUM(TIME_TO_SEC(TIMEDIFF(two2.date, one2.date)))
-				FROM
-					resetbutton AS one2,
-					resetbutton AS two2
-				WHERE
-					one2.id = two2.id - 1
-					AND two2.user = :user
-			), 0)
+			SUM(IF(r1.user=:user, TIME_TO_SEC(TIMEDIFF(r1.date, r2.date)), TIME_TO_SEC(TIMEDIFF(r2.date, r1.date))))
+		FROM
+			resetbutton r1
+		LEFT JOIN
+			resetbutton r2 ON r2.id = r1.id+1
+		WHERE
+			r1.user = :user OR r2.user = :user;
 		");
 		$sth->bindValue(':user', $this->currentUser->getID(), PDO::PARAM_INT);
 		$sth->execute();

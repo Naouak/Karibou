@@ -1,7 +1,7 @@
 <?php
 /* BEWARE made by Naouak*/
 /* Nux also came here, it's now harmless */
- 
+/* Pinaraf came too, so it's understandable now, and not complex by design any more... */
 /**
  * Classe resetbuttonstats
  *
@@ -45,10 +45,8 @@ class resetbuttonstats extends Model
 			two.user AS user,
 			SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(two.date, one.date)))) AS compte
 		FROM
-			resetbutton AS one,
-			resetbutton AS two
-		WHERE
-			two.id = one.id + 1
+			resetbutton AS one
+		INNER JOIN resetbutton two ON two.id = one.id + 1
 		GROUP BY
 			user
 		ORDER BY
@@ -68,6 +66,8 @@ class resetbuttonstats extends Model
 	}
 	
 	private function stolenpoints(){
+		// This one deserves a special mention for being really dirty...
+		// I prefer not risk rewriting it in a mysql-incompatible way....
 		$sth = $this->db->prepare("
 		SELECT
 			user,
@@ -79,10 +79,8 @@ class resetbuttonstats extends Model
 						SUM(TIME_TO_SEC(TIMEDIFF(one1.date, two1.date))) AS score,
 						one1.user AS user
 					FROM
-						resetbutton AS one1,
 						resetbutton AS two1
-					WHERE
-						one1.id = two1.id - 1
+					LEFT JOIN resetbutton AS one1 ON one1.id = two1.id - 1
 					GROUP BY
 						user
 				) AS DerivedTable1
@@ -92,10 +90,8 @@ class resetbuttonstats extends Model
 						SUM(TIME_TO_SEC(TIMEDIFF(two2.date, one2.date))) AS score,
 						two2.user AS user
 					FROM
-						resetbutton AS one2,
 						resetbutton AS two2
-					WHERE
-						one2.id = two2.id - 1
+					LEFT JOIN resetbutton AS one2 ON one2.id = two2.id - 1
 					GROUP BY
 						user
 				) AS DerivedTable2
