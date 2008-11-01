@@ -1,5 +1,6 @@
 <?php
-/* BEWARE made by Naouak*/ 
+/* BEWARE made by Naouak*/
+/* Nux also came here, it's now harmless */
  
 /**
  * Classe resetbuttonstats
@@ -10,11 +11,16 @@
 class resetbuttonmystats extends Model
 {	
 	private function longtime(){
-		$stmt = $this->db->prepare(" SELECT TIMEDIFF( cut.date , frst.date) as hour
-					FROM resetbutton AS frst, resetbutton AS cut
-					WHERE cut.id = frst.id + 1 AND cut.user = :user
-					ORDER BY hour DESC
-					LIMIT 1");
+		$stmt = $this->db->prepare("
+		SELECT
+			COALESCE(SEC_TO_TIME(MAX(TIME_TO_SEC(TIMEDIFF(cut.date , frst.date)))), TIME('00:00:00')) as hour
+		FROM
+			resetbutton AS frst,
+			resetbutton AS cut
+		WHERE
+			cut.id = frst.id + 1
+			AND cut.user = :user
+		");
 		$stmt->bindValue(':user',$this->currentUser->getID(),PDO::PARAM_INT);
 		$stmt->execute();
 		$temp = $stmt->fetch();
@@ -22,55 +28,101 @@ class resetbuttonmystats extends Model
 	}
 	
 	private function reseter(){
-		$stmt = $this->db->prepare(" SELECT COUNT( id ) AS compte
-				FROM resetbutton
-				WHERE user = :user
-				LIMIT 1 ");
-		$stmt->bindValue(':user',$this->currentUser->getID(),PDO::PARAM_INT);		
+		$stmt = $this->db->prepare("
+		SELECT
+			COUNT( id ) AS compte
+		FROM
+			resetbutton
+		WHERE
+			user = :user
+		");
+		$stmt->bindValue(':user',$this->currentUser->getID(),PDO::PARAM_INT);
 		$stmt->execute();
 		$result = $stmt->fetch();
 		$this->assign("myresetcount", $result['compte']);
 	}
 	
 	private function stolenpoints(){
-				 $stmt = $this->db->prepare("
-				 SELECT cutter, COALESCE(hours,0) as Score, date FROM
-(SELECT -TIME_TO_SEC(TIMEDIFF( cut.date, frst.date )) AS HOURs, frst.user AS cutter, cut.date as date, cut.id as id
-		FROM resetbutton AS frst LEFT JOIN resetbutton AS cut ON frst.id = cut.id-1
-UNION
-SELECT -TIME_TO_SEC(TIMEDIFF( frst.date,COALESCE(cut.date,NOW()) )) AS HOURs, COALESCE(cut.user,frst.user) AS cutter, cut.date as date, cut.id as id
-		FROM resetbutton AS frst LEFT JOIN resetbutton AS cut ON frst.id = cut.id-1
-	) as t
-	WHERE cutter = :user
-ORDER BY date DESC,id DESC
-");
-		$stmt->bindValue(':user',$this->currentUser->getID(),PDO::PARAM_INT);
-		$stmt->execute();
+		$sth = $this->db->prepare("
+		(
+			SELECT
+				two1.user AS cutter,
+				TIME_TO_SEC(TIMEDIFF(one1.date, two1.date)) AS scorediff,
+				two1.date AS date
+			FROM
+				resetbutton AS one1,
+				resetbutton AS two1
+			WHERE
+				one1.id = two1.id - 1
+				AND one1.user = :user
+			ORDER BY
+				date DESC
+			LIMIT
+				10
+		)
+		UNION
+		(
+			SELECT
+				two2.user AS cutter,
+				TIME_TO_SEC(TIMEDIFF(two2.date, one2.date)) AS scorediff,
+				two2.date AS date
+			FROM
+				resetbutton AS one2,
+				resetbutton AS two2
+			WHERE
+				one2.id = two2.id - 1
+				AND two2.user = :user
+			ORDER BY
+				date DESC
+			LIMIT
+				10
+		)
+		ORDER BY
+			date DESC
+		LIMIT
+			10
+		");
+		$sth->bindValue(":user", $this->currentUser->getID(), PDO::PARAM_INT);
+		$sth->execute();
+
 		$i=0;
-		while($result = $stmt->fetch()){
+		$final = array();
+		while(($result = $sth->fetch()) !== false){
 			$profil = $this->userFactory->prepareUserFromId($result['cutter']);
-			$final[$i] = array($profil,$result['Score'],$result['date']);
-			$i++;
+			$final[$i++] = array($profil,$result['scorediff'],$result['date']);
 		}
 		$this->assign("scorelist", $final);
 	}
 	
 	private function myscore(){
-		$stmt = $this->db->prepare(" SELECT timed.cutter AS user, FLOOR(SUM( LN(TIME_TO_SEC( timed.hours )) )) AS compte
-FROM (
+		$sth = $this->db->prepare("
+		SELECT
+			COALESCE((
+				SELECT
+					SUM(TIME_TO_SEC(TIMEDIFF(one1.date, two1.date)))
+				FROM
+					resetbutton AS one1,
+					resetbutton AS two1
+				WHERE
+					one1.id = two1.id - 1
+					AND one1.user = :user
+			), 0)
+			+
+			COALESCE((
+				SELECT
+					SUM(TIME_TO_SEC(TIMEDIFF(two2.date, one2.date)))
+				FROM
+					resetbutton AS one2,
+					resetbutton AS two2
+				WHERE
+					one2.id = two2.id - 1
+					AND two2.user = :user
+			), 0)
+		");
+		$sth->bindValue(':user', $this->currentUser->getID(), PDO::PARAM_INT);
+		$sth->execute();
 
-SELECT TIMEDIFF( cut.date, frst.date ) AS HOURs, cut.user AS cutter
-FROM resetbutton AS frst, resetbutton AS cut
-WHERE cut.id = frst.id +1
-ORDER BY HOURs DESC
-) AS timed
-GROUP BY cutter
-HAVING cutter = :user
-ORDER BY compte DESC LIMIT 100");
-		$stmt->bindValue(':user',$this->currentUser->getID(),PDO::PARAM_INT);
-		$stmt->execute();
-		$result = $stmt->fetch();
-		$this->assign("myscore", $result['compte']);
+		$this->assign("myscore", $sth->fetchColumn(0));
 	}
 
 	public function build()

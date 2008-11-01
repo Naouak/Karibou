@@ -1,5 +1,6 @@
 <?php
-/* BEWARE made by Naouak*/ 
+/* BEWARE made by Naouak*/
+/* Nux also came here, it's now harmless */
  
 /**
  * Classe resetbuttonstats
@@ -39,66 +40,79 @@ class resetbuttonstats extends Model
 	}
 	
 	private function timecount(){
-		 $stmt = $this->db->prepare(" SELECT timed.cutter AS user, CONCAT( FLOOR( SUM( TIME_TO_SEC( timed.hours ) ) /3600 ) , ':', FLOOR( MOD( SUM( TIME_TO_SEC( timed.hours ) ) , 3600 ) /60 ) , ':', MOD( SUM( TIME_TO_SEC( timed.hours ) ) , 60 ) ) AS compte
-FROM (
+		$sth = $this->db->prepare("
+		SELECT
+			two.user AS user,
+			SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(two.date, one.date)))) AS compte
+		FROM
+			resetbutton AS one,
+			resetbutton AS two
+		WHERE
+			two.id = one.id + 1
+		GROUP BY
+			user
+		ORDER BY
+			compte DESC
+		LIMIT
+			10
+		");
 
-SELECT TIMEDIFF( cut.date, frst.date ) AS HOURs, cut.user AS cutter
-FROM resetbutton AS frst, resetbutton AS cut
-WHERE cut.id = frst.id +1
-ORDER BY HOURs DESC
-) AS timed
-GROUP BY cutter
-HAVING cutter <>0
-ORDER BY FLOOR( SUM( TIME_TO_SEC( timed.hours ) ) /3600 ) DESC,  FLOOR( MOD( SUM( TIME_TO_SEC( timed.hours ) ) , 3600 ) /60 ) DESC, MOD( SUM( TIME_TO_SEC( timed.hours ) ) , 60 ) DESC LIMIT 100");
-		$stmt->execute();
+		$sth->execute();
 		$i=0;
-		while($result = $stmt->fetch()){
+		$final = array();
+		while(($result = $sth->fetch()) !== false){
 			$profil = $this->userFactory->prepareUserFromId($result['user']);
-			$final[$i] = array($profil,$result['compte']);
-			$i++;
+			$final[$i++] = array($profil,$result['compte']);
 		}
 		$this->assign("timecountlist", $final);
 	}
 	
-	private function score(){
-		 $stmt = $this->db->prepare(" SELECT timed.cutter AS user, FLOOR(SUM( LN(TIME_TO_SEC( timed.hours )) )) AS compte
-FROM (
-
-SELECT TIMEDIFF( cut.date, frst.date ) AS HOURs, cut.user AS cutter
-FROM resetbutton AS frst, resetbutton AS cut
-WHERE cut.id = frst.id +1
-ORDER BY HOURs DESC
-) AS timed
-GROUP BY cutter
-HAVING cutter <>0
-ORDER BY compte DESC LIMIT 100");
-		$stmt->execute();
-		$i=0;
-		while($result = $stmt->fetch()){
-			$profil = $this->userFactory->prepareUserFromId($result['user']);
-			$final[$i] = array($profil,$result['compte']);
-			$i++;
-		}
-		$this->assign("scorelist", $final);
-	}
-	
 	private function stolenpoints(){
-				 $stmt = $this->db->prepare("SELECT cutter, SUM(COALESCE(hours,0)) as Score FROM
-(SELECT -SUM(TIME_TO_SEC(TIMEDIFF( cut.date, frst.date ))) AS HOURs, frst.user AS cutter
-		FROM resetbutton AS frst LEFT JOIN resetbutton AS cut ON frst.id = cut.id-1
-		GROUP BY cutter
-UNION
-SELECT -SUM(TIME_TO_SEC(TIMEDIFF( frst.date,COALESCE(cut.date,NOW()) ))) AS HOURs, COALESCE(cut.user,frst.user) AS cutter
-		FROM resetbutton AS frst LEFT JOIN resetbutton AS cut ON frst.id = cut.id-1
-		GROUP BY cutter) as t
-GROUP BY cutter
-ORDER BY Score DESC");
-		$stmt->execute();
+		$sth = $this->db->prepare("
+		SELECT
+			user,
+			SUM(score) AS score
+		FROM
+			(
+				SELECT * FROM (
+					SELECT
+						SUM(TIME_TO_SEC(TIMEDIFF(one1.date, two1.date))) AS score,
+						one1.user AS user
+					FROM
+						resetbutton AS one1,
+						resetbutton AS two1
+					WHERE
+						one1.id = two1.id - 1
+					GROUP BY
+						user
+				) AS DerivedTable1
+				UNION ALL
+				SELECT * FROM (
+					SELECT
+						SUM(TIME_TO_SEC(TIMEDIFF(two2.date, one2.date))) AS score,
+						two2.user AS user
+					FROM
+						resetbutton AS one2,
+						resetbutton AS two2
+					WHERE
+						one2.id = two2.id - 1
+					GROUP BY
+						user
+				) AS DerivedTable2
+			) AS MainTable
+		GROUP BY
+			user
+		ORDER BY
+			score DESC
+		LIMIT 10
+		");
+
+		$sth->execute();
 		$i=0;
-		while($result = $stmt->fetch()){
-			$profil = $this->userFactory->prepareUserFromId($result['cutter']);
-			$final[$i] = array($profil,$result['Score']);
-			$i++;
+		$final = array();
+		while(($result = $sth->fetch()) !== false){
+			$profil = $this->userFactory->prepareUserFromId($result['user']);
+			$final[$i++] = array($profil,$result['score']);
 		}
 		$this->assign("scorelist", $final);
 	}
