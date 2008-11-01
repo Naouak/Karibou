@@ -44,44 +44,18 @@ class resetbuttonmystats extends Model
 	
 	private function stolenpoints(){
 		$sth = $this->db->prepare("
-		(
 			SELECT
-				two1.user AS cutter,
-				TIME_TO_SEC(TIMEDIFF(one1.date, two1.date)) AS scorediff,
-				two1.date AS date
+				r2.user AS cutter,
+				IF(r1.user=:user, TIME_TO_SEC(TIMEDIFF(r1.date, r2.date)), TIME_TO_SEC(TIMEDIFF(r2.date, r1.date))) AS scorediff,
+				r1.date AS date
 			FROM
-				resetbutton AS one1,
-				resetbutton AS two1
+				resetbutton r1
+			LEFT JOIN
+				resetbutton r2 ON r2.id = r1.id+1
 			WHERE
-				one1.id = two1.id - 1
-				AND one1.user = :user
-			ORDER BY
-				date DESC
-			LIMIT
-				10
-		)
-		UNION
-		(
-			SELECT
-				two2.user AS cutter,
-				TIME_TO_SEC(TIMEDIFF(two2.date, one2.date)) AS scorediff,
-				two2.date AS date
-			FROM
-				resetbutton AS one2,
-				resetbutton AS two2
-			WHERE
-				one2.id = two2.id - 1
-				AND two2.user = :user
-			ORDER BY
-				date DESC
-			LIMIT
-				10
-		)
-		ORDER BY
-			date DESC
-		LIMIT
-			10
-		");
+				r1.user = :user OR r2.user = :user
+			ORDER BY r1.date DESC
+			LIMIT 10");
 		$sth->bindValue(":user", $this->currentUser->getID(), PDO::PARAM_INT);
 		$sth->execute();
 
