@@ -28,7 +28,7 @@ class MCDefault extends Model
 				}
 			}
 			$flooding = false;
-			$flood_sql = "SELECT COUNT(*) FROM minichat WHERE id_auteur=:userId AND TIME_TO_SEC(DATEDIFF(NOW(), time)) < 60";
+			$flood_sql = "SELECT COUNT(*) FROM minichat WHERE id_auteur=:userId AND TIME_TO_SEC(TIMEDIFF(NOW(), `time`)) < 60";
 			try {
 				$stmt = $this->db->prepare($flood_sql);
 				$stmt->bindValue(":userId", $this->currentUser->getID());
