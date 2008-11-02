@@ -27,7 +27,19 @@ class MCDefault extends Model
 					$message = stripslashes($message);
 				}
 			}
-			if ((isset($message)) && (strlen(trim($message)) > 0))
+			$flooding = false;
+			$flood_sql = "SELECT COUNT(*) FROM minichat WHERE id_auteur=:userId AND TIME_TO_SEC(DATEDIFF(NOW(), time)) < 60";
+			try {
+				$stmt = $this->db->prepare($flood_sql);
+				$stmt->bindValue(":userId", $this->currentUser->getID());
+				$stmt->execute();
+				$row = $stmt->fetch();
+				if ($row[0] >= 20)
+					$flooding = true;
+			} catch (PDOException $e) {
+				Debug::kill($e->getMessage());
+			}
+			if ((isset($message)) && (strlen(trim($message)) > 0) && !$flooding)
 			{
 				$req_sql = "INSERT INTO minichat 
 					(time, id_auteur, post) VALUES
