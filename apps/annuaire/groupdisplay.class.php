@@ -60,6 +60,7 @@ class GroupDisplay extends Model
 				u.id as id,
 				g.name as groupname,
 				g.id as groupid,
+				p.id as profileid,
 				p.firstname,
 				p.lastname,
 				gu.role
@@ -97,9 +98,9 @@ class GroupDisplay extends Model
 		$userlist = $stmt->fetchAll(PDO::FETCH_ASSOC) ;
 		foreach($userlist as &$u)
 		{
-			if( is_file(KARIBOU_PUB_DIR.'/profile_pictures/'.$u['id'].".jpg") )
+			if( is_file(KARIBOU_PUB_DIR.'/profile_pictures/'.$u['profileid'].".jpg") )
 			{
-				$u["picture"] = "/pub/profile_pictures/".$u['id'].".jpg";
+				$u["picture"] = "/pub/profile_pictures/".$u['profileid'].".jpg";
 			}
 			else
 			{
