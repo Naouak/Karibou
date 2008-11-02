@@ -12,12 +12,12 @@
 	<view name="download" class="MyFiles" template="none.tpl" />
 	
 	<page view="default" />
-	<page name="list" class="MyFiles" view="list">
+	<page name="list" view="list">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>
 	
-	<page name="download" class="MyFiles" view="download">
+	<page name="download" view="download">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>

@@ -38,7 +38,7 @@
 	<!-- a page that shows the SVG picture. Of course, nothing has to be
 	     sent before or after the SVG picture, so header and footer
 	     are empty -->
-	<page name="svg" class="klockSvg" view="svg">
+	<page name="svg" view="svg">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 

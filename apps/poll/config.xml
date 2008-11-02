@@ -9,7 +9,7 @@
     <view name="mini" class="Poll" template="poll.tpl" />
     <view name="miniVote" class="Poll" template="votes.tpl" />
     
-    <page name="miniVote" class="Poll" view="miniVote">
+    <page name="miniVote" view="miniVote">
         <header app="header" view="empty" />
         <footer app="footer" view="empty" />
     </page>

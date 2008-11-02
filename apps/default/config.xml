@@ -19,7 +19,6 @@
 	
 	<load class="KeyChainFix" file="keychainfix.class.php" />
 
-	<load class="UsernameArgument" file="../arguments/usernameargument.class.php" />
 	<load class="ArgMiniapp" file="../arguments/argminiapp.class.php" />
 	<load class="ArgAction" file="../arguments/argaction.class.php" />
 	

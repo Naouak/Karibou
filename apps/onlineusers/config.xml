@@ -22,17 +22,17 @@
 	
 	<page view="default" />
 	
-	<page name="list" class="OnlineUsersList" view="list">
+	<page name="list" view="list">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>
 
-	<page name="nbrusersconnected" class="OnlineUsersList" view="nbrusersconnected">
+	<page name="nbrusersconnected" view="nbrusersconnected">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>
 
-	<page name="setuserstate" class="OnlineUsersList" view="default">
+	<page name="setuserstate" view="default">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>
