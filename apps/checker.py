@@ -194,18 +194,21 @@ class Application:
 			return False
 		pageName = ""
 		if not "name" in attrs:
-			print "Warning: missing name attribute in the page node"
+			#print "Warning: missing name attribute in the page node"
+			pass
 		else:
 			pageName = attrs["name"]
-			for page in self.pages:
-				if page[0] == attrs["name"]:
-					print "Duplicated page name '%s'" % attrs["name"]
-					return False
+			#for page in self.pages:
+				#if page[0] == attrs["name"]:
+					#print "Duplicated page name '%s'" % attrs["name"]
+					#return False
 		for attr in attrs.keys():
 			if not attr in ["name", "view"]:
 				print "Invalid attribute %s for the page node" % attr
 				return False
 		for subnode in node.getchildren():
+			if isinstance(subnode, lxml.etree._Comment):
+				continue
 			if not subnode.tag in ["footer", "header", "argument", "option"]:
 				print "Invalid subnode %s for the page node" % subnode.tag
 				return False

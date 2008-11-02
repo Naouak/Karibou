@@ -7,7 +7,6 @@
 	<load class="ElementId"		file="../arguments/elementid.class.php" />
 
 	<load class="KFFactory"		file="class/KFFactory.class.php" />
-	<load class="KFThread"		file="class/KFThread.class.php" />
 	<load class="KFMessage"		file="class/KFMessage.class.php" />
 	<load class="KFForum"		file="class/KFForum.class.php" />
 	<load class="KFElement"		file="class/KFElement.class.php" />
@@ -15,8 +14,6 @@
 	<load class="KFDefault"			file="default.class.php" />
 	<load class="KFMessageEdit"	file="messageedit.class.php" />
 	<load class="KFMessageSave"	file="messagesave.class.php" />
-
-	<load class="ForumMenu" file="forummenu.class.php" />
 
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
@@ -45,7 +42,8 @@
 
 	<form action="forumsave" class="KFForumSave">
 		<redirect />
-	</form>
+	</form>
+
 	<form action="messagesave" class="KFMessageSave">
 		<redirect />
 	</form>

@@ -19,7 +19,6 @@
 	<load class="KSMenu"				file="surveymenu.class.php" />
 
 	<load class="KSDefault"				file="default.class.php" />
-	<load class="KSList"				file="list.class.php" />
 	<load class="KSDisplayQuestions"	file="displayquestions.class.php" />
 	<load class="KSDisplayAnswers"		file="displayanswers.class.php" />
 	<load class="KSDisplayUserAnswers"	file="displayuseranswers.class.php" />
