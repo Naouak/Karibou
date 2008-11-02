@@ -18,7 +18,7 @@ class resetbuttonstats extends Model
 					LIMIT 1");
 		$stmt->execute();
 		$temp = $stmt->fetch();
-		$this->assign("longestcutter",$this->userFactory->prepareUserFromId($temp['cutter']));
+		$this->assign("longestcutter",$this->userFactory->prepareUserFromId(intval($temp['cutter'])));
 		$this->assign("longestresethour",$temp['hour']);
 	}
 	
@@ -32,7 +32,7 @@ class resetbuttonstats extends Model
 		$stmt->execute();
 		$i=0;
 		while($result = $stmt->fetch()){
-			$profil = $this->userFactory->prepareUserFromId($result['user']);
+			$profil = $this->userFactory->prepareUserFromId(intval($result['user']));
 			$final[$i] = array($profil,$result['compte']);
 			$i++;
 		}
@@ -59,7 +59,7 @@ class resetbuttonstats extends Model
 		$i=0;
 		$final = array();
 		while(($result = $sth->fetch()) !== false){
-			$profil = $this->userFactory->prepareUserFromId($result['user']);
+			$profil = $this->userFactory->prepareUserFromId(intval($result['user']));
 			$final[$i++] = array($profil,$result['compte']);
 		}
 		$this->assign("timecountlist", $final);
@@ -107,7 +107,7 @@ class resetbuttonstats extends Model
 		$i=0;
 		$final = array();
 		while(($result = $sth->fetch()) !== false){
-			$profil = $this->userFactory->prepareUserFromId($result['user']);
+			$profil = $this->userFactory->prepareUserFromId(intval($result['user']));
 			$final[$i++] = array($profil,$result['score']);
 		}
 		$this->assign("scorelist", $final);

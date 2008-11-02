@@ -60,7 +60,7 @@ class resetbuttonmystats extends Model
 		$i=0;
 		$final = array();
 		while(($result = $sth->fetch()) !== false){
-			$profil = $this->userFactory->prepareUserFromId($result['cutter']);
+			$profil = $this->userFactory->prepareUserFromId(intval($result['cutter']));
 			$final[$i++] = array($profil,$result['scorediff'],$result['date']);
 		}
 		$this->assign("scorelist", $final);

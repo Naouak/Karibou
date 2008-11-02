@@ -22,7 +22,7 @@ class resetbutton extends Model
 
 		if($temp !== false) {
 			$this->assign("resethour",$temp['hour']);
-			$this->assign("lastresetby",$this->userFactory->prepareUserFromId($temp['user']));
+			$this->assign("lastresetby",$this->userFactory->prepareUserFromId(intval($temp['user'])));
 		}
 	}
 }
