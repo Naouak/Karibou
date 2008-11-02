@@ -34,7 +34,6 @@
 	<load class="MCDefault"		file="mcdefault.class.php" />
 	<load class="MCConfig"		file="mcconfig.class.php" />
 
-	<view name="mini" class="MCDefault" template="small.tpl" />	
 	<view name="mini" class="MCDefault" template="small.tpl" />
 	<view name="small" class="MCDefault" template="small.tpl" />
 	<view name="smallconfig" class="MCConfig" template="smallconfig.tpl" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<app class="AppliVide">
+<app>
 	<load class="AppliVide" file="applivide.class.php" />
 	<view name="default" class="AppliVide" template="vide.tpl" />
 	<page view="default" />

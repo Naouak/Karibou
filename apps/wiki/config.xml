@@ -1,4 +1,4 @@
-<app class="wiki">
+<app>
 
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 

@@ -2,7 +2,7 @@
 
 <!-- klock application, by Rémy Sanchez <remy.sanchez@hyperthese.net> -->
 
-<app class="klock">
+<app>
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 
 	<!-- ***********

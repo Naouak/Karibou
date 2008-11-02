@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<header>
+<app>
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 	
 	<load class="HeaderHome" file="headerhome.class.php" />
@@ -9,4 +9,4 @@
 	<view name="simple" class="HeaderHome" template="headersimple.tpl" />
 	<view name="popup" class="HeaderHome" template="headerpopup.tpl" />
 
-</header>
+</app>

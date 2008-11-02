@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<app class="Stats">
+<app>
 	<config>
 		<param name="numberofchampions">
 			<value name="normal">100</value>
