@@ -32,6 +32,7 @@
 	<load class="NumberArgument"	    		file="../arguments/numberargument.class.php" />
 
 	<load class="MCDefault"		file="mcdefault.class.php" />
+	<load class="MCPost"		file="mcpost.class.php" />
 	<load class="MCConfig"		file="mcconfig.class.php" />
 
 	<view name="mini" class="MCDefault" template="small.tpl" />
@@ -61,8 +62,5 @@
 		<footer app="footer" view="empty" />
 	</page>
 	
-	<form action="post" class="MCPost">
-		<referer />
-	</form>
-	
+	<form action="post" class="MCPost" />
 </app>

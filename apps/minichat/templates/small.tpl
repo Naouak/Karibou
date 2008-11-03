@@ -2,9 +2,8 @@
 	// <![CDATA[
 
 {literal}
-	function submit_mc_form(form_id, content_id)
+	function submit_mc_form(f)
 	{
-		var f = document.getElementById(form_id);
 		inputList = f.getElementsByTagName('input');
 		var queryComponents = new Array();
 		for( i=0 ; i < inputList.length ; i++ )
@@ -23,7 +22,7 @@
 
 		var post_vars = queryComponents.join("&");
 
-		new Ajax.Updater(content_id, '{/literal}{kurl app="minichat" page="content" pagenum=$pagenum maxlines=$maxlines userichtext=$userichtext inversepostorder=$inversepostorder}{literal}', {
+		new Ajax.Request('{/literal}{kurl action="post"}{literal}', {
 				asynchronous:true,
 				evalScripts:true,
 				method:'post',
@@ -54,7 +53,7 @@ window.minichat_ajax_updater = new Ajax.PeriodicalUpdater('minichat_live', '{kur
 	</div>
 {/if}
     {if $permission > _READ_ONLY_}
-    <form autocomplete="off" action="{kurl action="post"}" method="post" id="minichat_live_form" onsubmit="return submit_mc_form('minichat_live_form', 'minichat_live');">
+    <form autocomplete="off" action="{kurl action="post"}" method="post" id="minichat_live_form" onsubmit="return submit_mc_form(this);">
         <input type="text" name="post" id="message" 
 class="minichatMessage" />
         <input type="submit" value="##MINICHAT_SEND##" class="button" />

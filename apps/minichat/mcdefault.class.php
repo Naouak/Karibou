@@ -17,46 +17,7 @@ class MCDefault extends Model
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
 		$this->assign("config", $config);
-		if ($this->currentUser->isLogged())
-		{
-			/* POST */
-			if (isset($_POST['post']))
-			{
-				$message = $_POST['post'];
-				if (get_magic_quotes_gpc()) {
-					$message = stripslashes($message);
-				}
-			}
-			$flooding = false;
-			$flood_sql = "SELECT COUNT(*) FROM minichat WHERE id_auteur=:userId AND TIME_TO_SEC(TIMEDIFF(NOW(), `time`)) < 60";
-			try {
-				$stmt = $this->db->prepare($flood_sql);
-				$stmt->bindValue(":userId", $this->currentUser->getID());
-				$stmt->execute();
-				$row = $stmt->fetch();
-				if ($row[0] >= 20)
-					$flooding = true;
-			} catch (PDOException $e) {
-				Debug::kill($e->getMessage());
-			}
-			if ((isset($message)) && (strlen(trim($message)) > 0) && !$flooding)
-			{
-				$req_sql = "INSERT INTO minichat 
-					(time, id_auteur, post) VALUES
-					(NOW(), :userId, :message)";
-				try
-				{
-					$stmt = $this->db->prepare($req_sql);
-					$stmt->bindValue(":userId", $this->currentUser->getID());
-					$stmt->bindValue(":message", htmlspecialchars($message));
-					$stmt->execute();
-				}
-				catch(PDOException $e)
-				{
-					Debug::kill($e->getMessage());
-				}
-			}
-		}
+		
 		if( isset($this->args['maxlines']) && $this->args['maxlines'] != "" )
 		{
 			$max = $this->args['maxlines'] ;
@@ -99,8 +60,6 @@ class MCDefault extends Model
 		$this->assign("maxlines", $max);
 		$this->assign("userichtext", $userichtext);
 		$this->assign("inversepostorder", $inversepostorder);
-		$userichtext = ($userichtext == 1);
-		$inversepostorder = ($inversepostorder == 1);
 		
 		if(isset($this->args['pagenum']) && $this->args['pagenum'] != "")
 			$page = $this->args['pagenum'];
@@ -108,7 +67,7 @@ class MCDefault extends Model
 			$page = 1;
 			
 		$this->assign("pagenum", $page);
-		$minichatMessageList = new MinichatMessageList($this->db, $this->userFactory, $userichtext, $inversepostorder);
+		$minichatMessageList = new MinichatMessageList($this->db, $this->userFactory, $userichtext == 1, $inversepostorder == 1);
 		$dateRange = $minichatMessageList->dateRange();
 		$this->assign("minDate", $dateRange[0]);
 		$this->assign("maxDate", $dateRange[1]);
