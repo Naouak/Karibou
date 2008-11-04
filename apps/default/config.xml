@@ -38,9 +38,7 @@
 	<footer app="footer" view="default" />
 	
 	<page view="default" />
-	<page view="edit">
-		<argument name="act" class="ArgAction" />
-	</page>
+	
 	<page name="miniappaddajax" view="miniappaddajax">
 		<header app="empty" view="default" />
 		<footer app="empty" view="default" />
