@@ -45,7 +45,6 @@ class AccueilModel extends Model
 		}
 		if (!$keychainError) {
 			$thisapp = $this->appList->getApp($this->appname);
-			$thisapp->addView("menu", "header_menu");
 			
 			if( ($containers = $currentUser->getPref('containers'))
 				&& ($miniapps = $currentUser->getPref('miniapps')) )

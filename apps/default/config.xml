@@ -23,9 +23,9 @@
 	<load class="ArgAction" file="../arguments/argaction.class.php" />
 	
 	<view name="menu" class="DefaultMenu" template="menu.tpl" />
+	<hook name="header_menu" view="menu" />
 
 	<view name="default" class="AccueilModel" template="accueil.tpl" />
-	<view name="hookhead" class="AccueilHead" template="hookhead.tpl" />
 
 	<view name="miniappview" class="MiniAppView" template="miniappview.tpl" />
 	<view name="miniappedit" class="MiniAppView" template="miniappedit.tpl" />
