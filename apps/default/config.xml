@@ -62,10 +62,8 @@
 		<argument name="miniapp" class="ArgMiniapp" />
 	</page>
 	
-	<form action="saveapps" class="AccueilSaveApps">
-	</form>
-	<form action="deleteapps" class="AccueilDeleteApps">
-	</form>
+	<form action="saveapps" class="AccueilSaveApps" />
+	<form action="deleteapps" class="AccueilDeleteApps" />
 
 	<form action="setcontainers" class="AccueilSetContainers">
 		<referer />
