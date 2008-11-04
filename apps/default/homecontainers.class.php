@@ -21,11 +21,6 @@ class HomeContainers extends ObjectList
 	{
 		$this->default = array();
 	}
-
-function testReturn ()
-{
-	return $this->default;
-}
 	
 	function add($size = 's')
 	{
