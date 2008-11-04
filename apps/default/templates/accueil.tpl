@@ -181,7 +181,7 @@
 		<div class="configbar" >
 			##ADDMINIAPP##
 			{foreach item=app from=$miniapps}
-				<a href="{kurl action='addapp'}?app={$app.id}" onclick="add_application('{kurl page='miniappaddajax' miniapp=$app.id}'); return false;">{translate key=$app.id}</a> |
+				<a href="#app_{$app.id}" onclick="add_application('{kurl page='miniappaddajax' miniapp=$app.id}'); return false;">{translate key=$app.id}</a> |
 			{/foreach}
 		</div>
 	</div>

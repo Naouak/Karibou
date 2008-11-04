@@ -37,7 +37,7 @@ class AccueilSaveApps extends FormModel
 					$containers->setApps($name, $post);
 				}
 			}
-			if( preg_match('/^default_container$/', $name) )
+			if( $name == 'default_container' )
 			{
 				$containers->setDefaultApps($post);
 			}

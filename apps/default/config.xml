@@ -7,7 +7,6 @@
 	<load class="AccueilDeleteApps" file="accueildeleteapps.class.php" />
 	<load class="AccueilSetContainers" file="accueilsetcontainers.class.php" />
 	<load class="MiniAppView" file="miniappview.class.php" />
-	<load class="MiniAppAdd" file="miniappadd.class.php" />
 	<load class="MiniAppAddAjax" file="miniappaddajax.class.php" />
 	<load class="MiniAppConfig" file="miniappconfig.class.php" />
 	<load class="MiniAppConfigAjax" file="miniappconfigajax.class.php" />
@@ -66,10 +65,6 @@
 	<form action="deleteapps" class="AccueilDeleteApps" />
 
 	<form action="setcontainers" class="AccueilSetContainers">
-		<referer />
-	</form>
-
-	<form action="addapp" class="MiniAppAdd">
 		<referer />
 	</form>
 
