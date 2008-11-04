@@ -28,7 +28,7 @@
 				method:'post',
 				postBody:post_vars
 			});
-
+		new Ajax.Updater('minichat_live', {/literal}'{kurl page="content" pagenum=$pagenum maxlines=$maxlines userichtext=$userichtext inversepostorder=$inversepostorder}', {literal} {asynchronous: true, evalScripts: true});
 		return false;
 	}
 {/literal}
@@ -40,7 +40,7 @@
 if (window.minichat_ajax_updater !== undefined) {ldelim}
 	window.minichat_ajax_updater.stop();
 {rdelim}
-window.minichat_ajax_updater = new Ajax.PeriodicalUpdater('minichat_live', '{kurl app="minichat" page="content" pagenum=$pagenum maxlines=$maxlines userichtext=$userichtext inversepostorder=$inversepostorder}', {ldelim}asynchronous:true, evalScripts:true, frequency:{$config.refresh.small}{rdelim});
+window.minichat_ajax_updater = new Ajax.PeriodicalUpdater('minichat_live', '{kurl page="content" pagenum=$pagenum maxlines=$maxlines userichtext=$userichtext inversepostorder=$inversepostorder}', {ldelim}asynchronous:true, evalScripts:true, frequency:{$config.refresh.small}{rdelim});
 	// ]]>
 	</script>
 
