@@ -25,12 +25,12 @@ class AccueilDeleteApps extends FormModel
 		
 		foreach( $_POST as $name => $post )
 		{
-			if( preg_match('/^delete_container$/', $name) )
+			if( $name == 'delete_container' )
 			{
 				$miniapps->deleteApps($post);
 			}
 			
-			if( preg_match('/^delete_id$/', $name) )
+			if( $name == 'delete_id' )
 			{
 				$miniapps->deleteApp($post);
 				$containers->deleteApp($post);
