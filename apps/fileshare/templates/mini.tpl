@@ -1,10 +1,9 @@
 <h3>##FILESHARE##</h3>
 <div class="fileshare mini">
 	<div class="lastadded">
-		<h4><a onclick="new Effect.toggle(document.getElementById('lastad')); return false;" href="#">##LASTADDEDFILES##</a></h4>
+		<h4>##LASTADDEDFILES##</h4>
 		{if $lastAddedFiles|@count > 0}
 		<ul>
-						<ol style="list-style-type:decimal; display: none;" id="lastad">
 			{foreach from=$lastAddedFiles item="file"}
 				<li>
 					<span class="name">
@@ -14,8 +13,8 @@
 					
 					<a href="{kurl page="download" filename=$file->getPathBase64()}" title="##DOWNLOAD## {$file->getName()}">
 						<span class="downloadlink"><span>##DOWNLOAD##</span></span>
-					</a>
-					
+					</a>(<a onClick="new Effect.toggle($('dl_{$file->getFileId()}')); return false;" href="#">infos</a>)
+							<div id="dl_{$file->getFileId()}" style="display: none;">
 							{if $file->getLastVersionInfo("description") != ""}
 							<span class="description">
 								<label for="description">##DESCRIPTION## :</label>
@@ -43,18 +42,17 @@
 									<a href="{kurl app="annuaire" username=$uploader->getLogin()}">{$uploader->getUserLink()}</a>
 								</span>
 							</span>
+							</div>
 						
 				</li>
-			{/foreach}
-			</ol>
+			{/foreach}			
 			</ul>
 		{/if}
 	</div>
 	<div class="mostdownloaded">
-		<h4><a onclick="new Effect.toggle(document.getElementById('mostdl')); return false;" href="#">##MOSTDOWNLOADEDFILES##</a></h4>
+		<h4>##MOSTDOWNLOADEDFILES##</h4>
 		{if $mostDownloadedFiles|@count > 0}
 		<ul>
-		<ol style="list-style-type:decimal; display: none;" id="mostdl">
 			{foreach from=$mostDownloadedFiles item="file"}
 				<li>
 					<span class="name">
@@ -62,8 +60,10 @@
 					</span>
 					<a href="{kurl page="download" filename=$file->getPathBase64()}" title="##DOWNLOAD## {$file->getName()}">
 						<span class="downloadlink"><span>##DOWNLOAD##</span></span>
-					</a>
+					</a>(<a onClick="new Effect.toggle($('dl2_{$file->getFileId()}')); return false;" href="#">infos</a>)
 					{if $file->getLastVersionInfo("description") != ""}
+					<div id="dl2_{$file->getFileId()}" style="display: none;">
+
 					<span class="description">
 						<label for="description">##DESCRIPTION## :</label>
 						<span name="description">{$file->getLastVersionInfo("description")|strip_tags|truncate:300:"...":false}</span>
@@ -82,7 +82,6 @@
 					</span>
 				</li>
 			{/foreach}
-		</ol>
 		</ul>
 		{/if}
 	</div>
