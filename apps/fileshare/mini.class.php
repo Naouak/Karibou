@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 
 /**
  * @copyright 2005 Antoine Leclercq <http://antoine.leclercq.netcv.org>
@@ -16,6 +16,7 @@ class FileShareMini extends Model
 		$myKDBFSElementFactory = new KDBFSElementFactory($this->db, $this->userFactory, $this->permission);
 		$this->assign("lastAddedFiles", $myKDBFSElementFactory->getLastAddedFiles());
 		$this->assign("mostDownloadedFiles", $myKDBFSElementFactory->getMostDownloadedFiles());
+		$this->assign("islogged", $this->currentUser->isLogged());
 	}
 }
 ?>

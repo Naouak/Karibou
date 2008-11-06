@@ -39,7 +39,7 @@
 								<label for="uploader">##UPLOADED_BY## :</label>
 								{assign var="uploader" value=$file->getLastVersionInfo("user")}
 								<span name="uploader">
-									<a href="{kurl app="annuaire" username=$uploader->getLogin()}">{$uploader->getUserLink()}</a>
+									{userlink user=$uploader showpicture=$islogged noicon=true}
 								</span>
 							</span>
 							</div>
