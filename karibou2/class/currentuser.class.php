@@ -195,6 +195,13 @@ class CurrentUser extends User
 	{
 		$this->prefs[$name] = serialize($value);
 	}
+	public function deletePref($name)
+	{
+		if (isset($this->prefs[$name]))
+		{
+			unset($this->prefs[$name]);
+		}
+	}
 }
 
 ?>
