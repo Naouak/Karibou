@@ -32,7 +32,7 @@ msgid "LONGESTTIME"
 msgstr "Longest time"
 
 msgid "TIME"
-msgstr "time"
+msgstr "Time"
 
 msgid "CUTTER"
 msgstr "The who reset such a long time"
@@ -78,3 +78,18 @@ msgstr "Total time of counter capture"
 
 msgid "GOTCOUNTER"
 msgstr "captured the counter for:"
+
+msgid "MYSTATSNAVIG"
+msgstr "My stats"
+
+msgid "MYLONGESTTIME"
+msgstr "Mon longest time of conquest"
+
+msgid "YOURESETEDIT"
+msgstr "Mon click's number"
+
+msgid "MYSCOREHISTORY"
+msgstr "My score history"
+
+msgid "MYSCORE"
+msgstr "My score"

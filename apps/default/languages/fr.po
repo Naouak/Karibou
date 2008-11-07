@@ -128,3 +128,6 @@ msgstr "Pour récupérer ces données, votre ancien mot de passe est nécessaire
 
 msgid "OLD_PASSWORD_FIELD"
 msgstr "Ancien mot de passe :"
+
+msgid "SAVE"
+msgstr "Enregistrer"

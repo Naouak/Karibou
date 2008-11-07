@@ -21,8 +21,13 @@
 								<span name="description">{$file->getLastVersionInfo("description")|strip_tags|truncate:300:"...":false}</span>
 							</span>
 							{/if}
-							<span class="ago">
-							##AGO1##
+							<span class="uploader">
+								<label for="uploader">##UPLOADED_BY## :</label>
+								{assign var="uploader" value=$file->getLastVersionInfo("user")}
+								<span name="uploader">
+									{userlink user=$uploader showpicture=$islogged noicon=true}
+								</span>
+							##AGO3##
 							{assign var="since" value=$file->getSecondsSinceLastUpdate()}
 							{if $since > 86400}
 								{$since/86400|string_format:"%d"} ##DAY##{if $since/86400|string_format:"%d" >= 2}##S##{/if}
@@ -34,13 +39,6 @@
 								{$since} ##SECOND##{if $since >= 2}##S##{/if}
 							{/if}
 							##AGO2##
-							</span>
-							<span class="uploader">
-								<label for="uploader">##UPLOADED_BY## :</label>
-								{assign var="uploader" value=$file->getLastVersionInfo("user")}
-								<span name="uploader">
-									{userlink user=$uploader showpicture=$islogged noicon=true}
-								</span>
 							</span>
 							</div>
 						

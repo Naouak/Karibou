@@ -9,5 +9,5 @@
 	onsubmit="return submit_form('{$id}_form', '{$id}_content')">
 <input type="hidden" name="miniappid" value="{$id}" />
 {hook name=$id}
-<input type="submit" value="save" />
+<input type="submit" value="##SAVE##" />
 </form>

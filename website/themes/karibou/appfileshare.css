@@ -515,7 +515,7 @@ clear: both;
 	font-weight: bold;
 }
 
-.fileshare.mini ul li span.hits, .fileshare.mini ul li span.uploader,  .fileshare.mini ul li span.description, .fileshare.mini ul li span.ago {
+.fileshare.mini ul li span.hits, .fileshare.mini ul li span.uploader,  .fileshare.mini ul li span.description {
 	margin-left: 20px;
 	display: block;
 }

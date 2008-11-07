@@ -120,3 +120,6 @@ msgstr "To recover your old keychain, your old password is needed."
 
 msgid "OLD_PASSWORD_FIELD"
 msgstr "Old password :"
+
+msgid "SAVE"
+msgstr "Save"
