@@ -18,6 +18,8 @@ msgstr "File sharing"
 msgid "FILESHARE_DESCRIPTION"
 msgstr "Click on a file to proceed to download. If you want to add a file so that it can be downloaded, click on the button \"Upload a file\"."
 
+msgid "EXPLORER"
+msgstr "Files' explorer"
 msgid "UPLOAD_A_FILE"
 msgstr "Upload a file"
 

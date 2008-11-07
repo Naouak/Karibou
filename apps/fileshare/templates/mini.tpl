@@ -1,5 +1,6 @@
 <h3>##FILESHARE##</h3>
 <div class="fileshare mini">
+<center><a href="{kurl app="fileshare"}">##EXPLORER##</a></center>
 	<div class="lastadded">
 		<h4>##LASTADDEDFILES##</h4>
 		{if $lastAddedFiles|@count > 0}

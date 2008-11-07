@@ -18,6 +18,9 @@ msgstr "Partage de fichiers"
 msgid "FILESHARE_DESCRIPTION"
 msgstr "Cliquez sur un fichier pour le télécharger. Si vous souhaitez ajouter un fichier pour qu'il puisse etre téléchargé, cliquez sur le bouton \"Ajouter un fichier\"."
 
+msgid "EXPLORER"
+msgstr "Explorateur de fichiers"
+
 msgid "UPLOAD_A_FILE"
 msgstr "Ajouter un fichier"
 
