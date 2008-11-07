@@ -24,3 +24,24 @@ msgstr "Nombre de jours de prévisions"
 
 msgid "MSG_NEW_TOWN"
 msgstr "Pour trouver le code d'une ville, vous pouvez utiliser le site <a href=\"http://www.patelins.info/meteo\">patelins.info</a>"
+
+msgid "Monday"
+msgstr "Lundi"
+
+msgid "Tuesday"
+msgstr "Mardi"
+
+msgid "Wednesday"
+msgstr "Mercredi"
+
+msgid "Thursday"
+msgstr "Jeudi"
+
+msgid "Friday"
+msgstr "Vendredi"
+
+msgid "Saturday"
+msgstr "Samedi"
+
+msgid "Sunday"
+msgstr "Dimanche"
