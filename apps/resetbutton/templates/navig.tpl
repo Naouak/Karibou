@@ -5,6 +5,7 @@
 		border-bottom: black solid 1px;
 		width: 100%;
 		margin:0px;
+		clear:both;
 	}
 	
 	#resetbuttonnavigbar > li{
@@ -16,7 +17,8 @@
 		width: 100px;
 		text-align: center;
 	}
-	
+
+	/* INUTILE 
 	#resetbuttonnavigbar > li:last-child{
 		color: blue;
 		float: none;
@@ -25,7 +27,7 @@
 		margin-left: 222px;
 		width: 100px;
 	}
-	
+	*/
 	#resetbuttonbutton{
 		margin: auto;
 		text-align: center;
