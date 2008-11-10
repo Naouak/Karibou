@@ -56,9 +56,13 @@ class weather extends Model
 			else
 				$lowest_temp[$i] = "N/A";
 			
-			if ($days->part['p'] == "d")
-				$image[$i] = $picture_dir."/".$days->part->icon.".png";
+			if ($days->part['p'] == "d") {
+				if (strlen($days->part->icon) == 1)
+					$image[$i] = $picture_dir . "/0" . $days->part->icon . ".png";
+				else
+					$image[$i] = $picture_dir . "/" . $days->part->icon . ".png";
 				$alt[$i] = $days->part->t;
+			}
 
 			$i++;
 		}
