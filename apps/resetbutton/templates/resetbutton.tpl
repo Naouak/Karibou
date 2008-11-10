@@ -28,7 +28,7 @@ function resetbuttonpushed() {
 
 <h3 class="handle">##RESETBUTTONTITLE##</h3>
 {include file="navig.tpl"}
-<div>
+<div style="clear:both">
 {if $islogged}
 <form onsubmit="return resetbuttonpushed()">
 	<input  id="resetbuttonbutton" type="submit" value="##RESET##" />
