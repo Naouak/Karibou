@@ -2,7 +2,7 @@
 <div class="mail">
 	{if $messagecount >= 0}
 		<div class="messagesnb">
-			<a href="mail/">{$messagecount} messages in INBOX</a><br />
+			<a href="mail/">{if $messagecount == 1}1 ##MESSAGEININBOX##{elseif $messagecount > 1}{$messagecount} ##MESSAGESININBOX##{else}##NOMESSAGEININBOX##{/if}</a><br />
 		</div>
 
 		{if $quota}

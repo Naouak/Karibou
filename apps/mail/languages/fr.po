@@ -30,8 +30,29 @@ msgstr "Mes messages électroniques"
 msgid "EMAIL_VIEW"
 msgstr "Visualisation d'un email"
 
+msgid "MESSAGEININBOX"
+msgstr "Message dans votre boite de reception"
+
+msgid "MESSAGESININBOX"
+msgstr "Messages dans votre boite de reception"
+
+msgid "NOMESSAGEININBOX"
+msgstr "Il n'y a pas de messages dans votre boite de reception"
+
 msgid "FROM"
 msgstr "De"
+
+msgid "FROM:"
+msgstr "De :"
+
+msgid "TO:"
+msgstr "À :"
+
+msgid "CC:"
+msgstr "Cc :"
+
+msgid "SUBJECT:"
+msgstr "Objet :"
 
 msgid "Reply to"
 msgstr "Répondre à"

@@ -30,8 +30,29 @@ msgstr "My electronic mails"
 msgid "EMAIL_VIEW"
 msgstr "Email view"
 
+msgid "MESSAGEININBOX"
+msgstr "Message in inbox"
+
+msgid "MESSAGESININBOX"
+msgstr "Messages in inbox"
+
+msgid "NOMESSAGEININBOX"
+msgstr "No message in inbox"
+
 msgid "FROM"
 msgstr "From"
+
+msgid "FROM:"
+msgstr "From :"
+
+msgid "TO:"
+msgstr "To :"
+
+msgid "CC:"
+msgstr "Cc :"
+
+msgid "SUBJECT:"
+msgstr "Subject :"
 
 msgid "Reply to"
 msgstr "Reply to"
