@@ -1,4 +1,4 @@
-<h3 class="handle">##BDAY_TITLE##</h3>
+<h3 class="handle">{if count($bdayers) > 1}##BDAY_TITLE##{elseif count($bdayers) ==1}##ONEBDAY##{else}##TODAY_NOBDAY##</h3>
 <div class="bday">
 {if count($bdayers) > 0}
 <h5>##TODAY_BDAY##</h5>

@@ -25,6 +25,9 @@ msgstr "Next address for this person"
 msgid "BDAY_TITLE"
 msgstr "Today's birthdays"
 
+msgid "ONEBDAY"
+msgstr "Today's birthday"
+
 msgid "TODAY_NOBDAY"
 msgstr "No birthdays today"
 

@@ -13,6 +13,9 @@ msgstr ""
 msgid "BDAY_TITLE"
 msgstr "Anniversaires"
 
+msgid "ONEBDAY"
+msgstr "Anniversaire"
+
 msgid "TODAY_BDAY"
 msgstr "Aujourd'hui, souhaitons un bon anniversaire à : "
 
