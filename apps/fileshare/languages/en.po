@@ -199,3 +199,9 @@ msgstr "Rename"
 
 msgid "FS_FILEDOESNOTEXIST"
 msgstr "This file does not exist. It might have been renamed or deleted."
+
+msgid "NUMBEROFFILESLASTADDED"
+msgstr "Number of last added files you want to see"
+
+msgid "NUMBEROFFILESMOSTDOWNLOAD"
+msgstr "Number of most download files you want to see"

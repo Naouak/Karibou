@@ -13,10 +13,29 @@ class FileShareMini extends Model
 {
 	public function build()
 	{
+		
+		if( isset($this->args['maxfilesadd']) && $this->args['maxfilesadd'] != "")
+		{
+			$maxadd = $this->args['maxfilesadd'];
+		}
+		else
+			$maxadd = 3;
+		
+		
+		if( isset($this->args['maxfilesdown']) && $this->args['maxfilesdown'] != "")
+		{
+			$maxdown = $this->args['maxfilesdown'];
+		}
+		else 
+			$maxdown = 3;
+		
+		
 		$myKDBFSElementFactory = new KDBFSElementFactory($this->db, $this->userFactory, $this->permission);
-		$this->assign("lastAddedFiles", $myKDBFSElementFactory->getLastAddedFiles());
-		$this->assign("mostDownloadedFiles", $myKDBFSElementFactory->getMostDownloadedFiles());
+		$this->assign("lastAddedFiles", $myKDBFSElementFactory->getLastAddedFiles($maxadd));
+		$this->assign("mostDownloadedFiles", $myKDBFSElementFactory->getMostDownloadedFiles($maxdown));
 		$this->assign("islogged", $this->currentUser->isLogged());
+		
+
 	}
 }
 ?>
