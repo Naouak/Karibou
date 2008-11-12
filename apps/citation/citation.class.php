@@ -16,9 +16,8 @@ class Citation extends Model
 {
     public function build()
     {
-		if (isset($_POST, $_POST['newcitation']) && ($this->currentUser->getID() > 0) ) 
+	    if (($citation= filter_input(INPUT_POST,'newannonce',FILTER_SANITIZE_SPECIAL_CHARS))!==false && ($this->currentUser->getID() > 0) ) 
 		{
-			$citation = strip_tags($_POST['newcitation']); //strip_tags = enleve code html
 			if (strlen($citation) > 3)
 			{
 				//Requete d'insertion
