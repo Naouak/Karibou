@@ -25,7 +25,7 @@ class Citation extends Model
 				//@TODO : handle time to live here...
 				$sql = "INSERT INTO citation (user_id, citation, datetime) VALUES (:user, :citation, NOW());";
 				$stmt = $this->db->prepare("INSERT INTO citation(user_id, citation, datetime) VALUES (:user, :citation, NOW());");
-				$stmt->bindValue(":user", $this->currentUser->getId());
+				$stmt->bindValue(":user", $this->currentUser->getID());
 				$stmt->bindValue(":citation", $citation);
 				$stmt->execute();
 			}
