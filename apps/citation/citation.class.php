@@ -21,8 +21,11 @@ class Citation extends Model
 			if (strlen($citation) > 3)
 			{
 				//Requete d'insertion
-				$sql = "INSERT INTO citation (user_id, citation, datetime) VALUES ('".$this->currentUser->getID()."','".$citation."', NOW());";
-				$this->db->exec($sql);
+				$sql = "INSERT INTO citation (user_id, citation, datetime) VALUES (:user, :citation, NOW());";
+				$stmt = $this->db->prepare("INSERT INTO citation(user_id, citation, datetime) VALUES (:user, :citation, NOW());");
+				$stmt->bindValue(":user", $this->currentUser->getId());
+				$stmt->bindValue(":citation", $citation);
+				$stmt->execute();
 			}
 			
 		}
