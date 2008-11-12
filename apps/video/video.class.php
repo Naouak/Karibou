@@ -69,7 +69,7 @@ class Video extends Model
 	// // En fait, ça servirait à interdire de mettre une vidéo en vitesse pour remplacer une vidéo "compromettante" par exemple
 	//$min_t2l = $config["max"]["time2live"];	
 
-        $sql = "SELECT * FROM video WHERE (UNIX_TIMESTAMP(datetime) < NOW()) ORDER BY datetime DESC LIMIT 5";
+        $sql = "SELECT * FROM video WHERE datetime < NOW() ORDER BY datetime DESC LIMIT 5";
         try
         {
             $stmt = $this->db->query($sql);
@@ -81,10 +81,10 @@ class Video extends Model
 
 	if ($videoonline = $stmt->fetchall(PDO::FETCH_ASSOC)) {
 		//je recupere l'user
-		if ($user["object"] =  $this->userFactory->prepareUserFromId($videoonline['0']["user_id"])) {
-			$this->assign("videonow",$videoonline['0']["video"]);
-			$this->assign("commentaire",$videoonline['0']["comment"]);
-			$this->assign("url",$videoonline['0']["site"]);
+		if ($user["object"] =  $this->userFactory->prepareUserFromId($videoonline[0]["user_id"])) {
+			$this->assign("videonow",$videoonline[0]["video"]);
+			$this->assign("commentaire",$videoonline[0]["comment"]);
+			$this->assign("url",$videoonline[0]["site"]);
 
 			foreach ($videoonline as $id => $items) {
 				$videoonline[$id]["user"] = $this->userFactory->prepareUserFromId($videoonline[$id]["user_id"]);
