@@ -14,13 +14,15 @@
  **/
 class Citation extends Model
 {
-    public function build()
-    {
-	    if (($citation= filter_input(INPUT_POST,'newcitation',FILTER_SANITIZE_SPECIAL_CHARS))!==false && ($this->currentUser->getID() > 0) ) 
+	public function build()
+	{
+		$citation = filter_input(INPUT_POST, 'newcitation', FILTER_SANITIZE_SPECIAL_CHARS);
+		if (($citation !== false) && ($this->currentUser->isLogged()) ) 
 		{
 			if (strlen($citation) > 3)
 			{
 				//Requete d'insertion
+				//@TODO : handle time to live here...
 				$sql = "INSERT INTO citation (user_id, citation, datetime) VALUES (:user, :citation, NOW());";
 				$stmt = $this->db->prepare("INSERT INTO citation(user_id, citation, datetime) VALUES (:user, :citation, NOW());");
 				$stmt->bindValue(":user", $this->currentUser->getId());
@@ -30,34 +32,30 @@ class Citation extends Model
 			
 		}
 
+		$app = $this->appList->getApp($this->appname);
+		$config = $app->getConfig();
 
-        $app = $this->appList->getApp($this->appname);
-        $config = $app->getConfig();
+		// duree de vie min d une citation 
+		$min_t2l = $config["max"]["time2live"];
 
-       //duree de vie min d une citation 
-	$min_t2l = $config["max"]["time2live"];
-
-        $sql = "SELECT * FROM citation WHERE (UNIX_TIMESTAMP(datetime) < '".(time()+1)."') ORDER BY datetime DESC LIMIT 1 ";
-        try
-        {
-            $stmt = $this->db->query($sql);
-        }
-        catch(PDOException $e)
-        {
-            Debug::kill($e->getMessage());
-        }
+		$sql = "SELECT * FROM citation WHERE (UNIX_TIMESTAMP(datetime) <= NOW()) ORDER BY datetime DESC LIMIT 1 ";
+		try
+		{
+			$stmt = $this->db->query($sql);
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}
 		if ($citationonline = $stmt->fetch(PDO::FETCH_ASSOC)) {
-	        //je recupere l'user
-   		    if ($user["object"] =  $this->userFactory->prepareUserFromId($citationonline["user_id"])) {
-
-	        	$this->assign("citationnow",$citationonline["citation"]);
-		       $this->assign("citationauthor",$user);
-			$this->assign("islogged", $this->currentUser->isLogged());
-
-
+			// Get the user object associated with this user id
+			if ($user["object"] =  $this->userFactory->prepareUserFromId($citationonline["user_id"])) {
+				$this->assign("citationnow",$citationonline["citation"]);
+				$this->assign("citationauthor",$user);
+				$this->assign("islogged", $this->currentUser->isLogged());
 			}
 		}
-    }
+	}
 }
 
 ?>
