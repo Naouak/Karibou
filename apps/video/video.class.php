@@ -18,20 +18,21 @@ class Video extends Model
     {
     	if (isset($_POST, $_POST['newvideo']) && ($this->currentUser->getID() > 0) ) 
 	{
-		$video = $_POST['newvideo'];
+		$video = filter_input(INPUT_POST, 'newvideo', FILTER_SANITIZE_SPECIAL_CHARS);	
+		$comment = filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_SPECIAL_CHARS);	
 
 		// Enregistrement URL : Youtube ou Dailymotion
 		//$site = $_POST['site'];
 		$site = "unknown";
-		if (eregi("http://(.*)youtube.com/watch\?v=(.*)", stripslashes($video), $out)) {
+		if (eregi("http://(.*)youtube.com/watch\?v=(.*)", $video, $out)) {
 			$video = $out[2];
 			$urlvid = "http://www.youtube.com/v/";
 			$site = "youtube";
-		} else if (eregi("http://(.*)vimeo.com/(.*)", stripslashes($video), $out)) {
+		} else if (eregi("http://(.*)vimeo.com/(.*)", $video, $out)) {
 			$video = $out[2];
 			$urlvid = "http://vimeo.com/moogaloop.swf?clip_id=";
 			$site = "vimeo";	
-		} else if (eregi("http://(.*)dailymotion.com/(.*)", stripslashes($video), $out)) {
+		} else if (eregi("http://(.*)dailymotion.com/(.*)", $video, $out)) {
 			$urlvid = "http://www.dailymotion.com/swf/";
 			$site = "dailymotion";
 			
@@ -48,11 +49,15 @@ class Video extends Model
 			}
 		}
 		
-		$comment = strip_tags($_POST['comment']); //strip_tags = enleve code html
-		if ((strlen($video) > 3) || (strcmp($site, "unknown")))
+		if ((strlen($video) > 3) && ($site != "unknown"))
 		{
 			// Requete d'insertion
-			$sql = "INSERT INTO video (user_id, video, site, comment, datetime) VALUES ('".$this->currentUser->getID()."','".$video."','".$urlvid."','".$comment."', NOW());";
+			$sql = "INSERT INTO video (user_id, video, site, comment, datetime) VALUES (:user, :vid, :url, :comment, NOW())";
+			$stmt = $this->db->prepare($sql);
+			$stmt->bindValue(":user", $this->currentUser->getID());
+			$stmt->bindValue(":vid", $video);
+			$stmt->bindValue(":url", $urlvid);
+			$stmt->bindValue(":comment", $comment);
 			$this->db->exec($sql);
 		}
 	}
@@ -61,9 +66,10 @@ class Video extends Model
         $config = $app->getConfig();
 
 	//duree de vie min d une video => sa sert a rien ce truc ?
+	// // En fait, ça servirait à interdire de mettre une vidéo en vitesse pour remplacer une vidéo "compromettante" par exemple
 	//$min_t2l = $config["max"]["time2live"];	
 
-        $sql = "SELECT * FROM video WHERE (UNIX_TIMESTAMP(datetime) < '".(time()+1)."') ORDER BY datetime DESC LIMIT 5";
+        $sql = "SELECT * FROM video WHERE (UNIX_TIMESTAMP(datetime) < NOW()) ORDER BY datetime DESC LIMIT 5";
         try
         {
             $stmt = $this->db->query($sql);
@@ -79,12 +85,6 @@ class Video extends Model
 			$this->assign("videonow",$videoonline['0']["video"]);
 			$this->assign("commentaire",$videoonline['0']["comment"]);
 			$this->assign("url",$videoonline['0']["site"]);
-//			if ( strcmp($videoonline['0']["site"] , "youtube") == 0 )   {
-//				$this->assign("url","http://youtube.com/v/");
-//			}
-//			else {
-//				$this->assign("url","http://www.dailymotion.com/swf/");
-//			}
 
 			foreach ($videoonline as $id => $items) {
 				$videoonline[$id]["user"] = $this->userFactory->prepareUserFromId($videoonline[$id]["user_id"]);
@@ -92,9 +92,6 @@ class Video extends Model
 		   	$this->assign("videosarray", $videoonline);
 			$this->assign("videoauthor",$user);
 			$this->assign("islogged", $this->currentUser->isLogged());
-			//$temps = time();
-			//$this->assign("letemps",$temps);
-			//$affia = print_r($videoonline);
 		}
 		else
 		{
