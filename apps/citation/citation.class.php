@@ -16,7 +16,7 @@ class Citation extends Model
 {
     public function build()
     {
-	    if (($citation= filter_input(INPUT_POST,'newannonce',FILTER_SANITIZE_SPECIAL_CHARS))!==false && ($this->currentUser->getID() > 0) ) 
+	    if (($citation= filter_input(INPUT_POST,'newcitation',FILTER_SANITIZE_SPECIAL_CHARS))!==false && ($this->currentUser->getID() > 0) ) 
 		{
 			if (strlen($citation) > 3)
 			{
