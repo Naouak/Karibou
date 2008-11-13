@@ -86,7 +86,7 @@ class MinichatRendering
 		$out = $this->wordwrap_if_needed($in);
 		$out = $this->bbcode($out);
 		$out = $this->emoticons->render($out);
-		$surname = $this->current_user->getSurname();
+		$surname = preg_quote($this->current_user->getSurname());
 		$out = preg_replace("/(\b)$surname(\b)/i", "$1<strong>$surname</strong>$2", $out);
 
 		return $out;
