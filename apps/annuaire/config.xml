@@ -67,7 +67,7 @@
 	</page>
 	
 	<form action="addusertogroup" class="AddUserToGroup">
-		<redirect page="" />
+		<redirect page="groupid" />
 	</form>
 	
 	<form action="modifygroup" class="ModifyGroup">

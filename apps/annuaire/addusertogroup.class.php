@@ -52,6 +52,7 @@ class AddUserToGroup extends FormModel
 			$stmt->bindValue(":user", $userid);
 			$stmt->bindValue(":group", $groupid);
 			$stmt->execute();
+			$this->setRedirectArg("id", $groupid);
 		} catch (PDOException $e) {
 			Debug::kill($e->getMessage());
 		}
