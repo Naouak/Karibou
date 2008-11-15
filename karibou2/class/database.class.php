@@ -22,10 +22,10 @@ Class Database extends PDO
 	{
 		parent::__construct($dsn, $username, $password);
 		parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-		if (parent::getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql')
+		if (parent::getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql') {
 			parent::setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
-		
-		$this->exec("SET NAMES utf8;");
+			$this->exec("SET NAMES utf8;");
+		}
 	}
 	
 	function query($qry)
