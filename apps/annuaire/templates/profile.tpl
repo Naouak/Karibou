@@ -101,4 +101,18 @@
 		<hr class="clear" />
 	</div>
 {/if}
+
+{if ($currentUserAdmin|@count>0)}
+	<div class="groupsAdd">
+		<br />
+		{foreach item=currentUserGroup from=$currentUserAdmin}
+		<form action="{kurl action="addusertogroup"}" method="post">
+			<input type="hidden" name="group_id" id="group_id" value="{$currentUserGroup.id}" />
+			<input type="hidden" name="user_id" id="user_id" value="{$user->getID()}" />
+			<input type="submit" value="Add user to group {$currentUserGroup.name}" />
+		</form>
+		{/foreach}
+		<hr class="clear" />
+	</div>
+{/if}
 </div>

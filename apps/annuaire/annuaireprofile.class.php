@@ -82,6 +82,24 @@ class AnnuaireProfile extends Model
 		
 		$this->assign('noflashmail', $GLOBALS['config']['noflashmail']);
 
+		
+		$currentUserGroups = $this->currentUser->getGroups();
+		$groupsAdmin = array();
+		foreach ($currentUserGroups as $group) {
+			if ($group->role == 'admin') {
+				$valid = true;
+				foreach ($userallgroups as $userGroup) {
+					if ($userGroup->getID() == $group->getID()) {
+						$valid = false;
+						break;
+					}
+				}
+				if ($valid)
+					$groupsAdmin[] = array('name' => $group->getName(), 'id' => $group->getID());
+			}
+		}
+		$this->assign('currentUserAdmin', $groupsAdmin);
+		$this->assign('currentUserId', $this->currentUser->getID());
 	}
 }
 

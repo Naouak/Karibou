@@ -142,8 +142,10 @@ function geocalc(name)
 }
 {/literal}
 </script>
+<h2><center><a href="{kurl username=$username}">##USER_LINK##</a></center></h2>
 
 <div class="directory">
+	
 	<form action="{kurl action='modifyprofile'}" method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="username" value="{$username}" />
 		<fieldset class="largefieldset">

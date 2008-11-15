@@ -16,9 +16,26 @@
  */
 class GroupAdmin extends Model
 {
+	function getPermission()
+	{
+		$groupid = filter_var($this->args['id'],FILTER_VALIDATE_INT);
+		if ($groupid == false)
+			Debug::kill("Error : groupid is invalid");
+		
+		// Check rights
+		$framework = $GLOBALS['config']['bdd']["frameworkdb"];
+		$stmt = $this->db->prepare("SELECT role FROM " . $framework . ".group_user WHERE group_id=:group AND user_id=:user");
+		$stmt->bindValue(":group", $groupid);
+		$stmt->bindValue(":user", $this->currentUser->getID());
+		$stmt->execute();
+		if ($row = $stmt->fetch())
+			if ($row[0] == 'admin')
+				return _FULL_WRITE_;
+		return _NO_ACCESS_;
+	}
+	
 	function build()
 	{
-	
 		$menuApp = $this->appList->getApp($this->appname);
 		$menuApp->addView("menu", "header_menu", array("page" => "groupdisplay") );
 	
@@ -60,6 +77,7 @@ class GroupAdmin extends Model
 				u.id as id,
 				g.name as groupname,
 				g.id as groupid,
+				p.id as profileid,
 				p.firstname,
 				p.lastname,
 				gu.role
@@ -97,9 +115,9 @@ class GroupAdmin extends Model
 		$userlist = $stmt->fetchAll(PDO::FETCH_ASSOC) ;
 		foreach($userlist as &$u)
 		{
-			if( is_file(KARIBOU_PUB_DIR.'/profile_pictures/'.$u['id'].".jpg") )
+			if( is_file(KARIBOU_PUB_DIR.'/profile_pictures/'.$u['profileid'].".jpg") )
 			{
-				$u["picture"] = "/pub/profile_pictures/".$u['id'].".jpg";
+				$u["picture"] = "/pub/profile_pictures/".$u['profileid'].".jpg";
 			}
 			else
 			{
