@@ -22,7 +22,6 @@ class Video extends Model
 		$comment = filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_SPECIAL_CHARS);	
 
 		// Enregistrement URL : Youtube ou Dailymotion
-		//$site = $_POST['site'];
 		$site = "unknown";
 		if (eregi("http://(.*)youtube.com/watch\?v=(.*)", $video, $out)) {
 			$video = $out[2];
@@ -52,22 +51,18 @@ class Video extends Model
 		if ((strlen($video) > 3) && ($site != "unknown"))
 		{
 			// Requete d'insertion
-			$sql = "INSERT INTO video (user_id, video, site, comment, datetime) VALUES (:user, :vid, :url, :comment, NOW())";
+			$sql = "INSERT INTO video (`datetime`, user_id, video, site, comment) VALUES (NOW(), :user, :vid, :url, :comment)";
 			$stmt = $this->db->prepare($sql);
 			$stmt->bindValue(":user", $this->currentUser->getID());
 			$stmt->bindValue(":vid", $video);
 			$stmt->bindValue(":url", $urlvid);
 			$stmt->bindValue(":comment", $comment);
-			$this->db->exec($sql);
+			$stmt->execute();
 		}
 	}
 
         $app = $this->appList->getApp($this->appname);
         $config = $app->getConfig();
-
-	//duree de vie min d une video => sa sert a rien ce truc ?
-	// // En fait, ça servirait à interdire de mettre une vidéo en vitesse pour remplacer une vidéo "compromettante" par exemple
-	//$min_t2l = $config["max"]["time2live"];	
 
         $sql = "SELECT * FROM video WHERE datetime < NOW() ORDER BY datetime DESC LIMIT 5";
         try
