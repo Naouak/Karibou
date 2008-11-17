@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: UTF-8\n"
 
 msgid "ANNONCEJOUR"
-msgstr "Annonce of day"
+msgstr "Advert"
 
 msgid "NEWANNONCE"
 msgstr "Add a annonce"
