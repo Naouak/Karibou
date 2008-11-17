@@ -1,4 +1,4 @@
-<h3 class="handle">##ANNONCEJOUR##</h3>
+<h3 class="handle">##SMALLADS##</h3>
 
 <script type="text/javascript">
 {literal}

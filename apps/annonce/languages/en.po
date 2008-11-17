@@ -10,8 +10,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
 
-msgid "ANNONCEJOUR"
-msgstr "Advert"
+msgid "SMALLADS"
+msgstr "Small ads"
 
 msgid "NEWANNONCE"
 msgstr "Add a annonce"
