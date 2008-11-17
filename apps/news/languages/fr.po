@@ -9,6 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n>1;"
+
 msgid "NEWS"
 msgstr "Actualités"
 
@@ -89,6 +91,11 @@ msgstr "Description"
 
 msgid "COMMENT"
 msgstr "commentaire"
+
+msgid "%1 Comment"
+msgid_plural "%1 Comments"
+msgstr[0] "%1 Commentaire"
+msgstr[1] "%1 Commentaires"
 
 msgid "DISPLAY_COMMENTS"
 msgstr "Afficher les commentaires"
