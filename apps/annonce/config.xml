@@ -1,0 +1,37 @@
+<app>
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+	<!-- Class loading -->
+	<load class="Annonce" file="annonce.class.php" />
+	<load class="AnnonceConfig" file="annonceconfig.class.php" />
+	<load class="AnnonceAdd" file="annonceadd.class.php" />
+	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+
+	<!--- Default header/footer -->
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<!-- Views -->
+	<view name="content" class="Annonce" template="annonce.tpl" />
+	<view name="mini" class="Annonce" template="container.tpl" />
+	<view name="miniconfig" class="AnnonceConfig" template="annonceconfig.tpl" />
+	
+	<!-- Pages -->
+	<page name="content" view="content">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+		<option name="error" class="NumberArgument" />
+	</page>
+
+	<!-- Param -->
+	<config>
+		<param name="maxannonce">
+			<value name="default">5</value>
+		</param>
+	</config>
+	
+	<!-- Forms -->
+	<form action="add" class="AnnonceAdd">
+		<redirect app="annonce" page="content" />
+	</form>
+</app>
