@@ -1,4 +1,4 @@
-<h3 class="handle">##DDAY##</h3>
+<h3 class="handle">{t}D Day{/t}</h3>
 {if !isset($DDempty)}
 	<table>
 	{foreach from=$ddaylist key=key item=dd}
@@ -6,8 +6,8 @@
 				{/if}
 				<td>{if $dd.link}<a href="{$dd.link}">{$dd.event}</a>{else}{$dd.event}{/if}<br /><font size="1">{$dd.date}</font></td>
 				<td width="15%" valign="top"><b>
-{if $dd.JJ>0} ##DORJ##-{$dd.JJ} 
-{else} <font color="red">##DORJ##</font>
+{if $dd.JJ>0} {t}D{/t}-{$dd.JJ}
+{else} <font color="red">{t}D{/t}</font>
 {/if}
 				</b></td>
 				</tr>

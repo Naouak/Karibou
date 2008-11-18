@@ -9,27 +9,25 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n>1\n"
 
-msgid "DDAY"
+msgid "D Day"
 msgstr "Jour J"
 
-msgid "DORJ"
+msgid "D"
 msgstr "J"
 
-msgid "DDAYEVENT"
-msgstr "Evenement"
+msgid "Event"
+msgstr "Evénement"
 
-msgid "DDAYDATE"
-msgstr "Date YYYY-MM-DD"
+msgid "Date (format: YYYY-MM-DD)"
+msgstr "Date (format : AAAA-MM-JJ)"
 
-msgid "DDAYPERM"
-msgstr "Necessite une permission"
+msgid "You don't have sufficient privileges to add an event"
+msgstr "Vous n'avez pas les privilèges nécessaires pour ajouter un événement"
 
-msgid "DDAYDESC"
+msgid "Description"
 msgstr "Description"
 
-msgid "DDAYLINK"
+msgid "Link"
 msgstr "Lien"
-
-msgid "NODESC"
-msgstr "Pas de description"
