@@ -9,12 +9,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n>1\n"
 
-msgid "CITATIONJOUR"
+
+msgid "Quote of day"
 msgstr "Citation du jour"
 
-msgid "NEWCITATION"
+msgid "Add a quote"
 msgstr "Ajout d'une citation"
 
-msgid "SURNAME_AUTHOR"
+msgid "Quote posted by"
 msgstr "Citation postée par"
