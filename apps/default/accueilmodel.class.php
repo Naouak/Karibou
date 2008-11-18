@@ -105,6 +105,8 @@ class AccueilModel extends Model
 
 				$app_config = $miniapps->getConfig();
 			}
+
+			usort($app_config, array($this, "compareApp"));
 			
 			$this->assign("miniapps", $app_config );
 			$default = $containers->getDefaultApps();
@@ -151,6 +153,10 @@ class AccueilModel extends Model
 	//print_r($containers);
 			$this->assign("messages", $this->messageManager->getMessages("default"));
 		}
+	}
+
+	static function compareApp($a1, $a2) {
+		return strcasecmp(_($a1["id"]), _($a2["id"]));
 	}
 }
 
