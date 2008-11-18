@@ -1,4 +1,4 @@
-<h3 class="handle">##THEYSAIDIT##</h3>
+<h3 class="handle">{t}That's what they said{/t}</h3>
 {foreach item=quote from=$quotes}
 <p>
 <b>{$quote.author}</b><br />
