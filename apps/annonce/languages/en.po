@@ -42,3 +42,9 @@ msgstr "Add an announce"
 
 msgid "MAXANNONCE"
 msgstr "Number of announces to show"
+
+msgid "ADDSUBMIT"
+msgstr "Add an announce"
+
+msgid "ADDCANCEL"
+msgstr "CANCEL"

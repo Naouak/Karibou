@@ -12,7 +12,17 @@ class AnnonceConfig extends Model
 {
     public function build()
     {
-
+	$app = $this->appList->getApp($this->appname);
+	$config = $app->getConfig();
+	$this->assign("config", $config);
+	if ( isset($this->args['maxannonce']) && $this->args['maxannonce'] !="")
+	{
+		$this->assign("maxannounce",$this->args['maxannonce']);
+	}
+	else
+	{
+		$this->assign("maxannounce",$config['maxannonce']['default']);
+	}
     }
 }
 

@@ -42,3 +42,9 @@ msgstr "Ajoutez une annonce"
 
 msgid "MAXANNONCE"
 msgstr "nombre d'annonces à afficher"
+
+msgid "ADDSUBMIT"
+msgstr "Ajouter une annonce"
+
+msgid "ADDCANCEL"
+msgstr "Annuler"
