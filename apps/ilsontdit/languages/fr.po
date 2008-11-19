@@ -11,6 +11,9 @@ msgstr ""
 "Content-Transfer-Encoding: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=n>1\n"
 
+msgid "THEYSAIDIT"
+msgstr "Ils l'ont dit"
+
 msgid "That's what they said"
 msgstr "Ils l'ont dit"
 
