@@ -83,7 +83,7 @@ class AnnuaireProfile extends Model
 		$this->assign('noflashmail', $GLOBALS['config']['noflashmail']);
 
 		
-		$currentUserGroups = $this->currentUser->getGroups();
+		$currentUserGroups = $this->currentUser->getGroups($this->db);
 		$groupsAdmin = array();
 		foreach ($currentUserGroups as $group) {
 			if ($group->role == 'admin') {
