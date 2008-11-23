@@ -13,7 +13,7 @@ msgstr ""
 
 
 msgid "Video of the day"
-msgstr "Video du jour"
+msgstr "Vidéo du jour"
 
 msgid "Add a video"
 msgstr "Ajout d'une vidéo" 
