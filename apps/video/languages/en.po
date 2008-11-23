@@ -3,42 +3,50 @@ msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: team@karibou.org\n"
 "POT-Creation-Date: 2006-07-24 16:54+0200\n"
-"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2008-11-23 18:16+0200\n"
 "Last-Translator: Karibou Team <team@karibou.org>\n"
 "Language-Team: Karibou Team <team@karibou.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n!=1\n"
 
-msgid "VIDEOJOUR"
+
+msgid "Video of the day"
 msgstr "Video of the day"
 
-msgid "NEWVIDEO"
+msgid "Add a video"
 msgstr "Add a video"
 
-msgid "VIDEO_POSTED_BY"
+msgid "Video posted by"
 msgstr "Video posted by"
 
-msgid "VIDEO_HISTORY"
+msgid "See the previous videos"
 msgstr "See the previous videos"
 
-msgid "VIDEO_EXPL"
-msgstr "To add a video, just input the URL of the YouTube, Dailymotion or Vimeo page that contained it."
+msgid "To add a video, just input the URL of the YouTube, Dailymotion, Vimeo or Koreus page that contained it."
+msgstr "To add a video, just input the URL of the YouTube, Dailymotion, Vimeo or Koreus page that contained it."
 
-msgid "YOUTUBE"
-msgstr "Example for YouTube : http://www.youtube.com/watch?v=rQgIOUwVZ1"
+msgid "Example for YouTube:"
+msgstr "Example for YouTube:"
 
-msgid "DAILYMOTION"
-msgstr "Example for Dailymotion : http://www.dailymotion.com/swf/5Mpi5TJ9gfoeahP6G"
+msgid "Example for Dailymotion:"
+msgstr "Example for Dailymotion:"
 
-msgid "VIMEO"
-msgstr "Example for Vimeo : http://www.vimeo.com/1715202"
+msgid "Example for Vimeo:"
+msgstr "Example for Vimeo:"
 
-msgid "VIDEO_ATTN"
+msgid "Example for Koreus:"
+msgstr "Example for Koreus:"
+
+msgid "Careful, you must input the whole address of the page containing the video, including the http:// text."
 msgstr "Careful, you must input the whole address of the page containing the video, including the http:// text."
 
-msgid "VIDEO_ADDR"
+msgid "Please input the page's address: "
 msgstr "Please input the page's address: "
 
-msgid "VIDEO_COMMENT"
+msgid "Add your comment here: "
 msgstr "Add your comment here: "
+
+msgid "Explanation & Examples"
+msgstr "Explanation & Examples"
