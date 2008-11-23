@@ -41,11 +41,11 @@ class Data extends Model
 				if(is_string($k))
 					$xw->writeElement($k,$v);
 			}
-			$xw->endElement('user');
+			$xw->endElement();
 
 			$i++;
 		}
-		$xw->endElement('users');
+		$xw->endElement();
 		$this->assign('data', $xw->outputMemory(true));
 	}
 	
