@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+	<load class="Birthday"		file="birthday.class.php" />
+
+	<view name="mini" class="Birthday" template="small.tpl" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<page view="mini" />
+</app>

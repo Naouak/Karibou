@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<load class="DefaultMenu" file="class/defaultmenu.class.php" />
+	<load class="MiniApp" file="class/miniapp.class.php" />
+	<load class="MiniAppFactory" file="class/miniappfactory.class.php" />
+	<load class="AppMainView" file="class/appmainview.class.php" />
+	<load class="AppJSView" file="class/appjsview.class.php" />
+
+	<load class="DefaultModel" file="class/defaultmodel.class.php" />
+	
+	<load class="ArgMiniapp" file="../arguments/argminiapp.class.php" />
+	
+	<view name="menu" class="DefaultMenu" template="menu.tpl" />
+
+	<view name="default" class="DefaultModel" template="accueil.tpl" />
+	<view name="appMainView" class="AppMainView" template="appmainview.tpl" />
+	<view name="appJSView" class="AppJSView" template="appjsview.tpl" />
+	
+	<header app="header" view="home" />
+	<footer app="footer" view="default" />
+	
+	<page view="default" />
+	
+	<page name="appmainview" view="appMainView">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" />
+		<argument name="miniapp" class="ArgMiniapp" />
+	</page>
+	
+	<page name="appjsview" view="appJSView">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" />
+		<argument name="miniapp" class="ArgMiniapp" />
+	</page>
+	
+	
+</app>

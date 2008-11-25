@@ -1,0 +1,15 @@
+Fonctionnement de la nouvelle appli default
+
+Objet Karibou :
+	Rôle central
+	Se charge de rassembler les classes des applications, lance le chargement des applis, ceci cela
+
+Objet KAppLoader :
+	Objet instancié pour "représenter" la demande de chargement d'une application.
+	Il demande à l'objet Karibou de charger la vue et le JS de l'application,
+	puis il attend que le chargement soit terminé pour instancier le JS de l'appli et pourrir le DOM.
+
+Objet KApp :
+	Objet de base pour le JavaScript d'une application.
+	Il va notamment fournir un DOM "local" à l'application (exemple : getElementById...)
+
