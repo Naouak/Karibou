@@ -31,6 +31,8 @@
 .flashmail .message {
     margin-left: 15px;
     margin-right: 15px;
+    max-height: 200px;
+    overflow: auto;
 }
 
 .flashmail .oldmessage {
@@ -38,6 +40,8 @@
     margin-right: 20px;
     margin-bottom: 20px;
     color: gray;
+    max-height: 150px;
+    overflow: auto;
 }
 
 a.sendflashmaillink {
