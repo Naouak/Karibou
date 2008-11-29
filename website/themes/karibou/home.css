@@ -48,31 +48,6 @@
 	margin: 5px;
 	min-height: 50px;
 }
-/*
-.view {
-	background-color: #fafafe;
-	border: 1px solid #f6f6fa;
-}
-
-.view_s {
-	background-color: #FFDDFF;
-	border: 1px solid #FFCCFF;
-}
-
-.view_m {
-	background-color: #FFFFDD;
-	border: 1px solid #FFFFCC;
-}
-
-.view_l {
-	background-color: #DDFFFF;
-	border: 1px solid #CCFFFF;
-}
-
-.view_xl {
-	background-color: #99FF66;
-	border: 1px solid #f6f6fa;
-}*/
 
 .view, .view_l, .view_xl, .view_m, .view_s {
     background-color: #D6EEFF;
@@ -82,8 +57,6 @@
 .sbox {
 	position: relative;
 	float: left;
-/*	margin: 2px;
-	padding: 1px;*/
 	border: 1px #eee solid;
 	background-color: #fafafa;
 	width: 100%;
@@ -94,8 +67,6 @@
 .mbox {
 	position: relative;
 	float: left;
-	/*margin: 2px;
-	padding: 1px;*/
 	border: 1px #eee solid;
 	background-color: #fafafa;
 	width: 100%;
@@ -106,8 +77,6 @@
 .lbox {
 	position: relative;
 	float: left;
-	/*margin: 2px;
-	padding: 1px;*/
 	border: 1px #eee solid;
 	background-color: #fafafa;
 	width: 100%;
