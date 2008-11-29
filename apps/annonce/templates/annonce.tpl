@@ -19,9 +19,9 @@
 {if isset($annonce.expirationdate) && $annonce.expirationdate!='0000-00-00'}
 <span id="annoncecssdate">##to## </span>{$annonce.expirationdate}
 {/if}
-<!-- {assign var="idannonce" value="$annonce.id" } -->
-<!--{$annonce.id}
-<a href="{kurl app="annonce" page="update" idannonce=$annonce.id}" > update annonce</a>-->
+{* {assign var="idannonce" value="$annonce.id" } 
+{$annonce.id}
+<a href="{kurl app="annonce" page="update" idannonce=$annonce.id}" > update annonce</a>*}
 <br />
 </div>
 {/foreach}
