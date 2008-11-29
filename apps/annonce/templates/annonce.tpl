@@ -5,16 +5,25 @@
 
 <!-- LIST ANNOUNCES -->
 <p>
+
 {foreach item=annonce from=$annonces}
-##SURNAMEANN_AUTHOR## : {userlink user=$annonce.author showpicture=$islogged }
+<div id="annoncecss">
+<span id="annoncecsstext">##SURNAMEANN_AUTHOR## </span>: {userlink user=$annonce.author showpicture=$islogged }
 <br />
 {$annonce.text|wordwrap:34:" ":true}
 {if isset($annonce.price) && $annonce.price!=0}
-##prix## {$annonce.price|string_format:"%.2f"}€
-{/if}
-{if isset($annonce.expirationdate) && $annonce.expirationdate!='0000-00-00'}
-##to## {$annonce.expirationdate}
+<br />
+<span id="annoncecssprix">##prix## </span>{$annonce.price|string_format:"%.2f"}€
 {/if}
 <br />
+{if isset($annonce.expirationdate) && $annonce.expirationdate!='0000-00-00'}
+<span id="annoncecssdate">##to## </span>{$annonce.expirationdate}
+{/if}
+<!-- {assign var="idannonce" value="$annonce.id" } -->
+<!--{$annonce.id}
+<a href="{kurl app="annonce" page="update" idannonce=$annonce.id}" > update annonce</a>-->
+<br />
+</div>
 {/foreach}
+
 </p>
