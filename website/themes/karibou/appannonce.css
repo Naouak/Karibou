@@ -1,7 +1,9 @@
 #annoncecss{
-border-bottom : 1px solid;
-
+background-color: #efefef;
+margin : 5px;
+padding : 3px ; 
 }
+
 
 #annoncecsstext{
 font-weight : bold;
