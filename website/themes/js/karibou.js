@@ -28,7 +28,7 @@ var KSortable = Object.extend(Sortable, {
  * Open a popup.
  */
 function popup(url, name, height, width, top, left) {
-	window.open(url, name, "menubar=false, status=false, location=false, scrollbar=false, resizable=false, height='+height+', width='+width+', top='+top+', left='+left);
+	window.open(url, name, 'menubar=false, status=false, location=false, scrollbar=false, resizable=false, height='+height+', width='+width+', top='+top+', left='+left);
 }
 
 /**
