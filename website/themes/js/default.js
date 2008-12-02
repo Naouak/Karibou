@@ -1,5 +1,5 @@
 function add_application (appUrl) {
-	new Ajax.Updater('default_container', appUrl, {asynchronous:true, evalScripts:true, onComplete:handlerFunc, insertion:insertFunc });
+	new Ajax.Updater('default_container', appUrl, {asynchronous:true, evalScripts:true, onComplete:handlerFunc, insertion: "top"});
 }
 
 var gDisplayedHomeApps = false;
