@@ -97,12 +97,6 @@
 	    createSortable();
 	{rdelim}
 	
-	var insertFunc = function(id, content)
-	{ldelim}
-	    div = $(id);
-	    div.innerHTML += content;
-	{rdelim}
-	
 	function submit_form(form_id, content_id)
 	{ldelim}
 		var f = document.getElementById(form_id);
