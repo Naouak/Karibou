@@ -15,41 +15,41 @@ Ajouter une application :<br />
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/default2.js"></script>
 
 <script language="javascript">
-karibou = null;
+var karibou = null;
+
+function tabLinkClickedBack (evt) {ldelim}
+	karibou.tabLinkClicked(evt);
+{rdelim}
+
 Event.observe(window, "load", function() {ldelim}
-	karibou = new Karibou("{kurl page="listuserapps"}", "{kurl page="appmainview"}", "{kurl page="appjsview"}");
+	karibou = new Karibou("{kurl page="listuserapps"}", "{kurl page="appmainview"}", "{kurl page="appjsview"}", tabLinkClickedBack);
+	karibou.createNewTab("default");
 {rdelim});
+
 function $app (obj) {ldelim}
 	return karibou.getAppFromNode(obj);
+{rdelim}
+
+function addTab () {ldelim}
+	var name = prompt("Tab name ?", "");
+	if ((name) && (name.length > 0))
+		karibou.createNewTab(name);
+{rdelim}
+
+function closeTab () {ldelim}
+	karibou.closeCurrentTab();
 {rdelim}
 </script>
 <div id="appContainer">
 </div>
-{*
-{if $keychainError}
-<div class="home">
-<br />
-{if $secondAttempt}
-<strong>##INVALID_PASSWORD##</strong><br />
-{/if}
-##KEYCHAIN_PROBLEM_PASSWORD_OUT_OF_SYNC##<br />
-##OLD_PASSWORD_NEEDED##<br />
-<form action="{kurl page="keychain"}" method="post">
-	##OLD_PASSWORD_FIELD## : <input type="password" name="old_password" id="old_password" /><br />
-	<input type="submit" />
-</form>
+<div>
+<input type="button" onclick="addTab();" value="[+]" />
+<span id="tabsBar"></span>
+<input type="button" onclick="closeTab();" value="[-]" />
 </div>
-{else}
-<div class="home">
-	<br class="spacer" />
-	<script language="javascript">
-{literal}
-Event.observe(window, "load", function() {
-	new Ajax.Updater("testApp", {/literal}"{kurl app="default" page="miniappeditview" miniapp="bday_0"}"{literal});
-});
-{/literal}
-	</script>
-	<div id="testApp">Something</div>
-</div>
-{/if}
-*}
+<div id="tabsContainer"></div>
+<!--<div id="colonnes">
+<div id="colonne"></div>
+<div id="colonne"></div>
+<div id="colonne"></div>
+</div>-->

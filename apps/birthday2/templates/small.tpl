@@ -14,5 +14,5 @@
 {/if}
 <br />
 <span id="truc">machin</span><br />
-<a onclick="n = $app(this).getElementById('truc'); alert('Hop :' + n); if (n.innerHTML=='bidule') n.innerHTML = 'machin'; else n.innerHTML = 'bidule'; return false;">Test</a><br />
+<a onclick="n = $app(this).getElementById('truc');  if (n.innerHTML=='bidule') n.innerHTML = 'machin'; else n.innerHTML = 'bidule'; return false;">Test</a><br />
 

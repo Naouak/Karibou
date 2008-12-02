@@ -1,13 +1,60 @@
+// Work around a stupid scriptaculous design mistake : it requires the containers for Sortable to have a unique ID...
+// Why, why do they use id instead of DOM objects...
+var containerID = 0;
+
+// Class containing mini-applications and handling drag'n'drop
+var KSortable = Sortable; //Object.extend(Sortable, {});
+
+// Class for a tab in the window
+var KTab = Class.create({
+	initialize: function (tabName, tabDiv) {
+		this.tabName = tabName;
+		this.tabDiv = tabDiv;
+		this.tabContainers = new Array();
+		for (var i = 0 ; i < 3 ; i++) {
+			var divNode = document.createElement("div");
+			divNode.setAttribute("id", "container_" + containerID);
+			if (i == 1)
+				divNode.setAttribute("class", "cont_mcol left view_m");
+			else
+				divNode.setAttribute("class", "cont_scol left view_s");
+			divNode.setAttribute("style", "position: relative;");
+			this.tabDiv.appendChild(divNode);
+			this.tabContainers.push(divNode);
+			containerID++;
+		}
+		this.rebuildContainers();
+	},
+	rebuildContainers: function () {
+		for (var i = 0 ; i < this.tabContainers.length ; i++) {
+			KSortable.create(this.tabContainers[i], {dropOnEmpty: true, tag: "div", overlap: "horizontal", handle: "handle", constraint: false, containment: this.tabContainers, accept: ["appRootContainer"]});
+		}
+	},
+	destroy: function () {
+		alert("Destroying a tab");
+	}
+});
+
 // Base class for every karibou application
 var KApp = Class.create({
-	initialize: function (appName, mainContainer) {
-		alert("Creating a new KApp");
+	initialize: function (appName, mainContainer, karibou) {
+		this.karibou = karibou;
 		this.mainContainer = mainContainer;
 		this.appName = appName;
-		truc = document.createElement("span");
-		truc.innerHTML = "Hello from KApp";
-		this.mainContainer.appendChild(truc);
 		this.mainContainer.setAttribute("kapp", true);
+		id = this.appName + "_" + this.karibou.getNewIDForApp(this.appName);
+		this.mainContainer.setAttribute("id", id); 
+		this.appBox = this.getElementById(this.appName);
+	},
+	shade: function() {
+		Effect.toggle(this.appBox, 'appear', { duration: 0.2 });
+	},
+	refresh: function() {
+		req = new Ajax.Updater(this.mainContainer, this.karibou.appContentUrl + this.appName, {asynchronous: true, onComplete: function (transport) {
+			app = transport.request.application;
+			app.appBox = app.getElementById(app.appName);
+		}});
+		req.application = this;
 	},
 	getElementById: function (id) {
 		function checkNode(subNode) {
@@ -27,17 +74,116 @@ var KApp = Class.create({
 	}
 });
 
-
 // Class responsible for loading the KApp classes, handling the various loaded applications on the screen...
 var Karibou = Class.create({
-	initialize: function(appListingUrl, appContentUrl, appJSUrl) {
+	initialize: function(appListingUrl, appContentUrl, appJSUrl, tabLinkClicked) {
 		this.appListingUrl = appListingUrl;
 		this.appContentUrl = appContentUrl;
 		this.appJSUrl = appJSUrl;
-		this.applicationsClass = new Array();
-		this.loadedApplicationsJS = new Array();
-		this.appLoaders = new Array();
-		this.appObjs = new Array();
+		this.applicationsClass = new Array();					// {app name => JS class}
+		this.loadedApplicationsJS = new Array();				// [app name]
+		this.appLoaders = new Array();						// [KAppLoader], the applications being loaded
+		this.appObjs = new Array();						// [KApp objects]
+		this.tabsContainer = document.getElementById("tabsContainer");
+		this.tabsBar = document.getElementById("tabsBar");
+		this.tabLinkClickedCallback = tabLinkClicked;
+		this.tabs = new Array();						// [KTab objects]
+		this.currentTab = null;
+		this.appIds = new Array();						// {app name => max used ID}
+	},
+	getNewIDForApp: function(appName) {
+		if (this.appIds[appName] != undefined) {
+			this.appIds[appName] = this.appIds[appName] + 1;
+		} else {
+			this.appIds[appName] = 0;
+		}
+		return this.appIds[appName];
+	},
+	createNewTab: function(tabName) {
+		for (var i = 0 ; i < this.tabs.length ; i++) {
+			if (this.tabs[i].tabName == tabName) {
+				alert("Duplicate tab name");
+				return;
+			}
+		}
+		if (this.currentTab != null) {
+			this.currentTab.tabDiv.style.display = "none";
+			this.currentTab = null;
+			for (var i = 0 ; i < this.tabsBar.childNodes.length ; i++) {
+				if (this.tabsBar.childNodes[i].attributes.getNamedItem("class") != null) {
+					if (this.tabsBar.childNodes[i].attributes.getNamedItem("class").nodeValue == "activeTabLink")
+						this.tabsBar.childNodes[i].setAttribute("class", "");
+				}
+			}
+		}
+		var tabTitleNode = document.createElement("span");
+		var aNode = document.createElement("a");
+		$(aNode).observe('click', this.tabLinkClickedCallback);
+		tabTitleNode.setAttribute("tabName", tabName);
+		tabTitleNode.setAttribute("class", "activeTabLink");
+		aNode.innerHTML = tabName;
+		tabTitleNode.appendChild(aNode);
+		this.tabsBar.appendChild(tabTitleNode);
+
+		var tabNode = document.createElement("div");
+		tabNode.setAttribute("class", "tab home");
+		this.tabsContainer.appendChild(tabNode);
+		var tabObj = new KTab(tabName, tabNode);
+		this.tabs.push(tabObj);
+		this.currentTab = tabObj;
+	},
+	tabLinkClicked: function (evt) {
+		var elem = Event.element(evt);
+		this.focusTab(elem.parentNode.attributes.getNamedItem("tabName").nodeValue);
+	},
+	closeCurrentTab: function () {
+		if (this.currentTab != null) {
+			tabName = this.currentTab.tabName;
+
+			this.currentTab.destroy();
+			
+			newCurrentTabIdx = this.tabs.indexOf(this.currentTab) - 1;
+			this.tabs = this.tabs.without(this.currentTab);
+			if ((newCurrentTabIdx == -1) && (this.tabs.length > 0))
+				newCurrentTabIdx = 0;
+			
+			this.currentTab.tabDiv.parentNode.removeChild(this.currentTab.tabDiv);
+
+			for (var i = 0 ; i < this.tabsBar.childNodes.length ; i++) {
+				if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabName") != null) {
+					if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabName").nodeValue == tabName)
+						this.tabsBar.childNodes[i].parentNode.removeChild(this.tabsBar.childNodes[i]);
+				}	
+			}
+			if (newCurrentTabIdx != -1) {
+				this.focusTab(this.tabs[newCurrentTabIdx].tabName);
+			}
+		}
+	},
+	focusTab: function(tabName) {
+		var goodTab = null;
+		for (var i = 0 ; i < this.tabs.length ; i++) {
+			var tab = this.tabs[i];
+			if (tab.tabName == tabName) {
+				goodTab = tab;
+			}
+		}
+		if (goodTab == null) {
+			alert("Tab not found");
+		} else {
+			if (this.currentTab != null)
+				this.currentTab.tabDiv.style.display="none";
+			goodTab.tabDiv.style.display="block";
+			this.currentTab = goodTab;
+			for (var i = 0 ; i < this.tabsBar.childNodes.length ; i++) {
+				if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabName") != null) {
+					if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabName").nodeValue != tabName)
+						this.tabsBar.childNodes[i].setAttribute("class", "");
+					else
+						this.tabsBar.childNodes[i].setAttribute("class", "activeTabLink");
+				}	
+			}
+		}
 	},
 	loadApplicationView: function(application, container) {
 		req = new Ajax.Updater(container, this.appContentUrl + application, {asynchronous: true, onComplete: function (transport) {
@@ -87,6 +233,9 @@ var Karibou = Class.create({
 		return this.applicationsClass[applicationName];
 	},
 	instanciateApplication: function (applicationName, container) {
+		//@TODO : fix me !
+		if (this.currentTab)
+			container = this.currentTab.tabContainers[0];
 		var appLoader = new KAppLoader(applicationName, container, this);
 		this.appLoaders.push(appLoader);
 		appLoader.load();
@@ -117,6 +266,7 @@ var KAppLoader = Class.create({
 		this.container = container;
 		this.karibou = karibou;
 		this.targetNode = document.createElement("div");
+		this.targetNode.setAttribute("class", "appRootContainer");
 	},
 	load: function () {
 		this.karibou.loadApplicationJS(this.appName);
@@ -128,9 +278,11 @@ var KAppLoader = Class.create({
 	onHandler: function () {
 		if (this.loaded()) {
 			klass = this.karibou.getApplicationClass(this.appName);
-			var appObj = new klass(this.appName, this.targetNode);
 			this.container.appendChild(this.targetNode);
+			var appObj = new klass(this.appName, this.targetNode, this.karibou);
 			this.karibou.registerAppObj(appObj);
+			if (this.karibou.currentTab != null) 
+				this.karibou.currentTab.rebuildContainers();
 		}
 	},
 	handlerJS: function (application) {
@@ -148,4 +300,3 @@ var KAppLoader = Class.create({
 Karibou.APP_LOADING = 0;
 Karibou.APP_LOADED = 1;
 Karibou.APP_FAILURE = 2;
-
