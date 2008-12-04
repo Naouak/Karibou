@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+	
+	<load class="OnlineUsersList" file="onlineuserslist.class.php" />
+	<load class="JSOnlineUsersModel" file="jsonlineusersmodel.class.php" />
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+
+	<view name="list" class="OnlineUsersList" template="list.tpl" />
+	<view name="default" class="OnlineUsersList" template="default.tpl" />
+	<view name="mini" class="OnlineUsersList" template="small.tpl" />
+
+	<view name="JS" class="JSOnlineUsersModel" template="js.tpl" />
+	
+	<page view="default" />
+	
+	<page name="list" view="list">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+
+	<page name="setuserstate" view="default">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+
+</app>

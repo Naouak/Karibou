@@ -1,0 +1,136 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2006-07-24 16:54+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+
+msgid "ONLINEUSERS"
+msgstr "utilisateurs en ligne"
+
+msgid "ONEONLINEUSER"
+msgstr "1 utilisateur en ligne"
+
+msgid "NOBODYONLINE"
+msgstr "Personne en ligne :/"
+
+msgid "ALIAS"
+msgstr "alias"
+
+msgid "SINCE"
+msgstr "depuis"
+
+msgid "LASTACTION"
+msgstr "Derniere action il y a"
+
+msgid "AGO"
+msgstr ""
+
+msgid "NOUSERCONNECTED"
+msgstr "Aucun utilisateur connecté"
+
+msgid "CHANGESTATE"
+msgstr "Changer d'état"
+
+msgid "MOOD_none"
+msgstr "Aucune"
+
+msgid "MOOD_happy"
+msgstr "Heureux"
+msgid "MOODE_happy"
+msgstr "Heureuse"
+
+msgid "MOOD_sad"
+msgstr "Triste"
+
+msgid "MOOD_angry"
+msgstr "En colère"
+
+msgid "MOOD_bored"
+msgstr "S'ennuie"
+
+msgid "MOOD_depressed"
+msgstr "Déprimé"
+
+msgid "MOOD_disgusted"
+msgstr "Dégoûté"
+
+msgid "MOOD_excited"
+msgstr "Excité"
+
+msgid "MOODE_depressed"
+msgstr "Déprimée"
+
+msgid "MOODE_disgusted"
+msgstr "Dégoûtée"
+
+msgid "MOODE_excited"
+msgstr "Excitée"
+
+msgid "MOOD_invincible"
+msgstr "Invincible"
+
+msgid "MOOD_proud"
+msgstr "Fier"
+
+msgid "MOODE_proud"
+msgstr "Fière"
+
+msgid "MOOD_sick"
+msgstr "Malade"
+
+msgid "MOOD_in_love"
+msgstr "Amoureux"
+
+msgid "MOODE_in_love"
+msgstr "Amoureuse"
+
+msgid "MOOD_stressed"
+msgstr "Stressé"
+
+msgid "MOOD_surprised"
+msgstr "Surpris"
+
+msgid "MOOD_worried"
+msgstr "Inquiet"
+
+msgid "MOOD_serious"
+msgstr "Sérieux"
+
+msgid "MOOD_distracted"
+msgstr "Distrait"
+
+msgid "MOODE_stressed"
+msgstr "Stressée"
+
+msgid "MOODE_surprised"
+msgstr "Surprise"
+
+msgid "MOODE_worried"
+msgstr "Inquiète"
+
+msgid "MOODE_serious"
+msgstr "Sérieuse"
+
+msgid "MOODE_distracted"
+msgstr "Distraite"
+
+msgid "MOOD_working"
+msgstr "Bosse"
+
+msgid "MOOD_desperate"
+msgstr "Désespéré"
+
+msgid "MOOD_furious"
+msgstr "Furieux"
+
+msgid "MOODE_desperate"
+msgstr "Désespérée"
+
+msgid "MOODE_furious"
+msgstr "Furieuse"
