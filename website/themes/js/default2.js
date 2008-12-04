@@ -2,24 +2,30 @@
 // Why, why do they use id instead of DOM objects...
 var containerID = 0;
 
-// Class containing mini-applications and handling drag'n'drop
-var KSortable = Sortable; //Object.extend(Sortable, {});
+// Class handling drag'n'drop
+var KSortable = Object.extend(Sortable, {});
 
 // Class for a tab in the window
 var KTab = Class.create({
-	initialize: function (tabName, tabDiv) {
+	initialize: function (tabId, tabName, tabDiv) {
+		this.tabId = tabId;
 		this.tabName = tabName;
 		this.tabDiv = tabDiv;
+		this.resizing = false;
+		this.tabsSettingsNode = document.createElement("div");
+		this.tabsSettingsNode.setAttribute("class", "tabsSettings");
+		this.tabDiv.appendChild(this.tabsSettingsNode);
+		this.columnsContainer = document.createElement("div");
+		this.columnsContainer.setAttribute("class", "colonnes");
+		this.tabDiv.appendChild(this.columnsContainer);
 		this.tabContainers = new Array();
 		for (var i = 0 ; i < 3 ; i++) {
 			var divNode = document.createElement("div");
 			divNode.setAttribute("id", "container_" + containerID);
-			if (i == 1)
-				divNode.setAttribute("class", "cont_mcol left view_m");
-			else
-				divNode.setAttribute("class", "cont_scol left view_s");
-			divNode.setAttribute("style", "position: relative;");
-			this.tabDiv.appendChild(divNode);
+			divNode.setAttribute("class", "colonne");
+			// Warning: the columns can't use 100% of the available size : they have a border...
+			divNode.style.width = Math.round(99/3) + '%';
+			this.columnsContainer.appendChild(divNode);
 			this.tabContainers.push(divNode);
 			containerID++;
 		}
@@ -32,11 +38,46 @@ var KTab = Class.create({
 	},
 	destroy: function () {
 		alert("Destroying a tab");
+	},
+	startResize: function () {
+		if (this.resizing) {
+			alert("You can't resize twice");
+			return;
+		}
+		this.resizing = true;
+		var slider = document.createElement("div");
+		slider.setAttribute("class", "slider");
+		var currentWidth = 0;
+		var handles = new Array();
+		var sliderValues = new Array();
+		for (var i = 0 ; i < this.tabContainers.length - 1 ; i++) {
+			var widthTxt = new String(this.tabContainers[i].style.width);
+			currentWidth += Number(widthTxt.substring(0, widthTxt.length - 1));
+			var handle = document.createElement("div");
+			handle.setAttribute("class", "handle");
+			sliderValues.push(currentWidth);
+			slider.appendChild(handle);
+			handles.push(handle);
+		}
+		this.tabsSettingsNode.appendChild(slider);
+		var sliderObject = new Control.Slider(handles, slider, { range: $R(0, 100), tabObject: this, sliderValue: sliderValues, restricted: true, onSlide: function (value) {
+			var previousSize = 0;
+			for (var i = 0 ; i < value.length ; i++) {
+				if ((i == value.length-1) && value[i] > 90)
+					value[i] = 90;
+				var colSize = value[i] - previousSize;
+				if (colSize < 10)
+					colSize = 10;
+				this.tabObject.tabContainers[i].style.width = colSize + '%';
+				previousSize += colSize;
+			}
+			this.tabObject.tabContainers[i].style.width = (99 - previousSize) + '%';
+		}});
 	}
 });
 
 // Base class for every karibou application
-var KApp = Class.create({
+KApp = Class.create({
 	initialize: function (appName, mainContainer, karibou) {
 		this.karibou = karibou;
 		this.mainContainer = mainContainer;
@@ -45,6 +86,7 @@ var KApp = Class.create({
 		id = this.appName + "_" + this.karibou.getNewIDForApp(this.appName);
 		this.mainContainer.setAttribute("id", id); 
 		this.appBox = this.getElementById(this.appName);
+		this.appHandle = this.getElementById(this.appName + "_handle");
 	},
 	shade: function() {
 		Effect.toggle(this.appBox, 'appear', { duration: 0.2 });
@@ -71,6 +113,9 @@ var KApp = Class.create({
 			return;
 		}
 		return checkNode(this.mainContainer);
+	},
+	setTitle: function (title) {
+		this.appHandle.innerHTML = title;
 	}
 });
 
@@ -88,6 +133,7 @@ var Karibou = Class.create({
 		this.tabsBar = document.getElementById("tabsBar");
 		this.tabLinkClickedCallback = tabLinkClicked;
 		this.tabs = new Array();						// [KTab objects]
+		this.maxTabId = 0;
 		this.currentTab = null;
 		this.appIds = new Array();						// {app name => max used ID}
 	},
@@ -121,20 +167,27 @@ var Karibou = Class.create({
 		$(aNode).observe('click', this.tabLinkClickedCallback);
 		tabTitleNode.setAttribute("tabName", tabName);
 		tabTitleNode.setAttribute("class", "activeTabLink");
+		tabTitleNode.setAttribute("id", "tabTitle_" + this.maxTabId);
 		aNode.innerHTML = tabName;
 		tabTitleNode.appendChild(aNode);
 		this.tabsBar.appendChild(tabTitleNode);
 
 		var tabNode = document.createElement("div");
 		tabNode.setAttribute("class", "tab home");
+		tabNode.setAttribute("id", "tab_" + this.maxTabId);
 		this.tabsContainer.appendChild(tabNode);
-		var tabObj = new KTab(tabName, tabNode);
-		this.tabs.push(tabObj);
+		var tabObj = new KTab(this.maxTabId, tabName, tabNode);
+		this.tabs[this.maxTabId] = tabObj;
 		this.currentTab = tabObj;
+		this.maxTabId++;
 	},
 	tabLinkClicked: function (evt) {
 		var elem = Event.element(evt);
-		this.focusTab(elem.parentNode.attributes.getNamedItem("tabName").nodeValue);
+		//alert(elem.parentNode.id);
+		if (elem.parentNode.id.substring(0, 9) == "tabTitle_") {
+			id = elem.parentNode.id.substring(9);
+			this.focusTab(this.tabs[id]);
+		}
 	},
 	closeCurrentTab: function () {
 		if (this.currentTab != null) {
@@ -160,29 +213,18 @@ var Karibou = Class.create({
 			}
 		}
 	},
-	focusTab: function(tabName) {
-		var goodTab = null;
-		for (var i = 0 ; i < this.tabs.length ; i++) {
-			var tab = this.tabs[i];
-			if (tab.tabName == tabName) {
-				goodTab = tab;
-			}
-		}
-		if (goodTab == null) {
-			alert("Tab not found");
-		} else {
-			if (this.currentTab != null)
-				this.currentTab.tabDiv.style.display="none";
-			goodTab.tabDiv.style.display="block";
-			this.currentTab = goodTab;
-			for (var i = 0 ; i < this.tabsBar.childNodes.length ; i++) {
-				if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabName") != null) {
-					if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabName").nodeValue != tabName)
-						this.tabsBar.childNodes[i].setAttribute("class", "");
-					else
-						this.tabsBar.childNodes[i].setAttribute("class", "activeTabLink");
-				}	
-			}
+	focusTab: function(tabObject) {
+		if (this.currentTab != null)
+			this.currentTab.tabDiv.style.display="none";
+		tabObject.tabDiv.style.display="block";
+		this.currentTab = tabObject;
+		for (var i = 0 ; i < this.tabsBar.childNodes.length ; i++) {
+			if (this.tabsBar.childNodes[i].id != null) {
+				if (this.tabsBar.childNodes[i].id != "tabTitle_" + tabObject.tabId)
+					this.tabsBar.childNodes[i].setAttribute("class", "");
+				else
+					this.tabsBar.childNodes[i].setAttribute("class", "activeTabLink");
+			}	
 		}
 	},
 	loadApplicationView: function(application, container) {

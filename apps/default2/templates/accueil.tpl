@@ -40,16 +40,11 @@ function closeTab () {ldelim}
 	karibou.closeCurrentTab();
 {rdelim}
 </script>
-<div id="appContainer">
-</div>
+<a href="" onclick="karibou.currentTab.startResize(); return false;">Resize</a><br />
 <div>
 <input type="button" onclick="addTab();" value="[+]" />
 <span id="tabsBar"></span>
 <input type="button" onclick="closeTab();" value="[-]" />
 </div>
 <div id="tabsContainer"></div>
-<!--<div id="colonnes">
-<div id="colonne"></div>
-<div id="colonne"></div>
-<div id="colonne"></div>
-</div>-->
+
