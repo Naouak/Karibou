@@ -16,7 +16,7 @@ onlineusers2Class = Class.create(KApp, {
 			});
 	},
 	setUserState: function () {
-		new Ajax.Request({/literal}'{kurl page="setuserstate"}'{literal}, {
+		new Ajax.Updater(document.getElementById('onlineusers_live'), {/literal}'{kurl page="setuserstate"}'{literal}, {
 			method: 'post',
 			parameters: 'userState=' + encodeURIComponent(this.getElementById("userStateSetter").value) + '&userMood=' + this.getElementById("userMoodSetter").value
 		});
