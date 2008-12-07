@@ -1,0 +1,7 @@
+name_fr = Photo du jour
+name_en = Picture of the day
+desc_fr = La photo du jour, envoyée par les utilisateurs du site
+desc_en = The picture of the day, sent by the website users
+view = mini
+submitmodel = DaytofSubmit
+JSview = JS

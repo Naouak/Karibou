@@ -124,6 +124,8 @@ KApp = Class.create({
 		var queryComponents = new Array();
 
 		queryComponents.push("miniapp=" + encodeURIComponent(this.appName));
+		var containsFile = false;
+
 		for (fieldID in this.constructor.submitFields) {
 			fieldObject = this.constructor.submitFields[fieldID];
 			if (fieldObject["type"] == "span")
@@ -147,20 +149,43 @@ KApp = Class.create({
 					}
 				}
 				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
+			} else if (fieldObject["type"] == "file") {
+				alert("Aie aie sir");
+				containsFile = true;
+				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
+					if (formObject.value == "") {
+						alert("One or more fields are missing.");
+						formObject.focus();
+						return false;
+					}
+				}
 			} else {
 				alert("Hooo no, I can't do this !");
 				return false;
 			}
 		}
-
-		alert(this.karibou.appSubmitUrl);
-		var postData = queryComponents.join('&');
-		new Ajax.Request(this.karibou.appSubmitUrl, {asynchronous: true, evalScripts: false, method: 'post', postBody: postData});
-		this.onSubmit();
-		this.submitBox.parentNode.removeChild(this.submitBox);
-		this.submitBox = null;
-		this.mainContainer.style.height = this.submitHeightBackup;
-		return false;
+		if (containsFile) {
+			iframeName = "iframe_" + (new Date()).getTime();
+			var formNode = getSubElementById("submitForm", this.submitBox);	
+			iframeNode = document.createElement("iframe");
+			iframeNode.setAttribute("src", "");
+			iframeNode.setAttribute("name", iframeName);
+			iframeNode.setAttribute("id", iframeName);
+			//Debug : iframeNode.setAttribute("style", "border: 1px solid rgb(204, 204, 204); width: 100px; height: 100px;");
+			iframeNode.style.display = "none";
+			formNode.appendChild(iframeNode);
+			formNode.setAttribute("target", iframeName);
+			iframeNode.onload = function () { app = $app(this); app.cancelSubmit(); app.onSubmit(); return true; };
+			return true; 
+		} else {
+			var postData = queryComponents.join('&');
+			new Ajax.Request(this.karibou.appSubmitUrl, {asynchronous: true, evalScripts: false, method: 'post', postBody: postData});
+			this.onSubmit();
+			this.submitBox.parentNode.removeChild(this.submitBox);
+			this.submitBox = null;
+			this.mainContainer.style.height = this.submitHeightBackup;
+			return false;
+		}
 	},
 	cancelSubmit: function() {
 		if (this.submitBox) {
@@ -175,8 +200,17 @@ KApp = Class.create({
 		this.submitBox.setAttribute("class", "overBox");
 		this.submitBox.appendChild(document.createElement("br"));
 		formNode = document.createElement("form");
+		formNode.setAttribute("id", "submitForm");
 		this.submitBox.appendChild(formNode);
 		formNode.setAttribute("onsubmit", "return $app(this).doneSubmitContent();");
+		hiddenNode = document.createElement("input");
+		hiddenNode.setAttribute("type", "hidden");
+		hiddenNode.setAttribute("name", "miniapp");
+		hiddenNode.setAttribute("id", "miniapp");
+		hiddenNode.setAttribute("value", this.appName);
+		formNode.appendChild(hiddenNode);
+		formNode.setAttribute("action", this.karibou.appSubmitUrl);
+		formNode.setAttribute("method", "post");
 		for (fieldID in this.constructor.submitFields) {
 			fieldObject = this.constructor.submitFields[fieldID];
 			if (fieldObject["type"] == "span") {
@@ -192,6 +226,7 @@ KApp = Class.create({
 				}
 				inputNode = document.createElement("input");
 				inputNode.setAttribute("id", fieldID);
+				inputNode.setAttribute("name", fieldID);
 				inputNode.setAttribute("type", "text");
 				if (fieldObject["maxlength"])
 					inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
@@ -206,11 +241,26 @@ KApp = Class.create({
 				}
 				areaNode = document.createElement("textarea");
 				areaNode.setAttribute("id", fieldID);
+				areaNode.setAttribute("name", fieldID);
 				if (fieldObject["columns"])
 					areaNode.setAttribute("cols", fieldObject["columns"]);
 				if (fieldObject["rows"])
 					areaNode.setAttribute("rows", fieldObject["rows"]);
 				formNode.appendChild(areaNode);
+			} else if (fieldObject["type"] == "file") {
+				formNode.setAttribute("enctype", "multipart/form-data");
+				if (fieldObject["label"]) {
+					lblNode = document.createElement("label");
+					lblNode.innerHTML = fieldObject["label"];
+					lblNode.setAttribute("for", fieldID);
+					formNode.appendChild(lblNode);
+					formNode.appendChild(document.createElement("br"));
+				}
+				fileNode = document.createElement("input");
+				fileNode.setAttribute("id", fieldID);
+				fileNode.setAttribute("name", fieldID);
+				fileNode.setAttribute("type", "file");
+				formNode.appendChild(fileNode);
 			} else {
 				alert("Unknown field type " + fieldObject["type"]);
 			}
@@ -231,11 +281,11 @@ KApp = Class.create({
 			this.mainContainer.style.height = this.submitBox.scrollHeight + "px";
 	},
 	refresh: function() {
-		req = new Ajax.Updater(this.mainContainer, this.karibou.appContentUrl + this.appName, {asynchronous: true, onComplete: function (transport) {
-			app = transport.request.application;
+		req = new Ajax.Updater(this.mainContainer, this.karibou.appContentUrl + this.appName, {asynchronous: true, app: this, onComplete: function (transport) {
+			app = transport.request.options.app;
 			app.appBox = app.getElementById(app.appName);
+			app.karibou.getTabFromApplication(app).rebuildContainers();
 		}});
-		req.application = this;
 	},
 	getElementById: function (id) {
 		return getSubElementById(id, this.mainContainer);
@@ -324,19 +374,19 @@ var Karibou = Class.create({
 			
 			newCurrentTabIdx = this.tabs.indexOf(this.currentTab) - 1;
 			this.tabs = this.tabs.without(this.currentTab);
-			if ((newCurrentTabIdx == -1) && (this.tabs.length > 0))
+			if (((newCurrentTabIdx == -1) && (this.tabs.length > 0)) || (newCurrentTabIdx >= this.tabs.length))
 				newCurrentTabIdx = 0;
 			
 			this.currentTab.tabDiv.parentNode.removeChild(this.currentTab.tabDiv);
 
 			for (var i = 0 ; i < this.tabsBar.childNodes.length ; i++) {
-				if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabName") != null) {
-					if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabName").nodeValue == tabName)
+				if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabname") != null) {
+					if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabname").nodeValue == tabName)
 						this.tabsBar.childNodes[i].parentNode.removeChild(this.tabsBar.childNodes[i]);
 				}	
 			}
 			if (newCurrentTabIdx != -1) {
-				this.focusTab(this.tabs[newCurrentTabIdx].tabName);
+				this.focusTab(this.tabs[newCurrentTabIdx]);
 			}
 		}
 	},
@@ -353,6 +403,13 @@ var Karibou = Class.create({
 					this.tabsBar.childNodes[i].setAttribute("class", "activeTabLink");
 			}	
 		}
+	},
+	getTabFromApplication: function(application) {
+		node = application.mainContainer;
+		while ((node.id == null) || (node.id.substring(0, 4) != "tab_"))
+			node = node.parentNode;
+		tabId = node.id.substring(4);
+		return this.tabs[tabId];
 	},
 	loadApplicationView: function(application, container) {
 		req = new Ajax.Updater(container, this.appContentUrl + application, {asynchronous: true, onComplete: function (transport) {

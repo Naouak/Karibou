@@ -28,6 +28,8 @@ abstract class AppContentModel {
 				$value = filter_input(INPUT_POST, $fieldID, FILTER_SANITIZE_STRING);
 			} else if ($fieldObj["type"] == "textarea") {
 				$value = filter_input(INPUT_POST, $fieldID, FILTER_SANITIZE_STRING);
+			} else if ($fieldObj["type"] == "file") {
+				$value = $_FILES[$fieldID];
 			} else {
 				throw new Exception("Unsupported field type");
 			}

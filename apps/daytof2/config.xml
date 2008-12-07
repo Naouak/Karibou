@@ -1,0 +1,31 @@
+<app>	
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+	
+	<load class="DayTof" file="daytof.class.php" />
+	<load class="DaTof" file="datof.class.php" />
+	<load class="BigDayTof" file="bigdaytof.class.php" />
+	<load class="DaytofSubmit" file="daytofsubmit.class.php" />
+	
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
+	
+	<view name="mini" class="DayTof" template="daytof.tpl" />
+	<view name="bigdaytof" class="BigDayTof" template="bigdaytof.tpl" />
+	
+	<view name="datof" class="DaTof" template="datof.tpl" />
+	<view name="JS" class="DayTof" template="js.tpl" />
+
+	<page name="datof" view="datof">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+	<page name="datof" view="datof">
+		<option name="tofnum" class="NumberArgument" />
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+	
+	<page name="history" view="bigdaytof" />
+</app>
