@@ -5,9 +5,11 @@
 	<load class="MiniAppFactory" file="class/miniappfactory.class.php" />
 	<load class="AppMainView" file="class/appmainview.class.php" />
 	<load class="AppJSView" file="class/appjsview.class.php" />
+	<load class="AppSubmit" file="class/appsubmit.class.php" />
 
 	<load class="DefaultModel" file="class/defaultmodel.class.php" />
-	
+	<load class="AppContentModel" file="class/appcontentmodel.class.php" />	
+
 	<load class="ArgMiniapp" file="../arguments/argminiapp.class.php" />
 	
 	<view name="menu" class="DefaultMenu" template="menu.tpl" />
@@ -32,6 +34,7 @@
 		<footer app="empty" view="default" />
 		<argument name="miniapp" class="ArgMiniapp" />
 	</page>
-	
+
+	<form action="appsubmit" class="AppSubmit" />
 	
 </app>

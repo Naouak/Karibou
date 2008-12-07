@@ -1,0 +1,6 @@
+name_fr = Ils ont dit
+name_en = They said it
+desc_fr = Petits détournements entre amis...
+desc_en = Small quote derouting between friends...
+view = mini
+submitmodel = IlsontditSubmit

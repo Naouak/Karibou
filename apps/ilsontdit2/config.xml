@@ -1,0 +1,11 @@
+<app>
+    <permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+    <load class="Ilsontdit" file="ilsontdit.class.php" />
+    <load class="IlsontditSubmit" file="ilsontditsubmit.class.php" />
+    
+    <header app="header" view="default" />
+    <footer app="footer" view="default" />
+    
+    <view name="mini" class="Ilsontdit" template="ilsontdit.tpl" />
+</app>
