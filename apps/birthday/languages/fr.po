@@ -27,3 +27,6 @@ msgid "Birthday"
 msgid_plural "Birthdays"
 msgstr[0] "Anniversaire"
 msgstr[1] "Anniversaires"
+
+msgid "bday"
+msgstr "Anniversaires"
