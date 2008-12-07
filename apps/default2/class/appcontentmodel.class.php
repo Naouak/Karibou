@@ -12,9 +12,6 @@ abstract class AppContentModel {
 	}
 
 	public function build() {
-		/*return array("author" => array("type" => "text", "required" => true, "label" => "Qui l'a dit : "),
-		  "group" => array("type" => "text", "required" => true, "label" => "Promo : "),
-		  "quote" => array("type" => "textarea" ,"required" => true, "label" => "Citation : ", "columns" => 30, "rows" => 8));*/
 		// 1) lire les parametres en post
 		// 2) les vérifier
 		// 3) les stocker dans un tableau
@@ -28,6 +25,20 @@ abstract class AppContentModel {
 				$value = filter_input(INPUT_POST, $fieldID, FILTER_SANITIZE_STRING);
 			} else if ($fieldObj["type"] == "textarea") {
 				$value = filter_input(INPUT_POST, $fieldID, FILTER_SANITIZE_STRING);
+			} else if ($fieldObj["type"] == "url") {
+				$value = filter_input(INPUT_POST, $fieldID, FILTER_VALIDATE_URL);
+				if ($value === false)
+					throw new Exception("Invalid field value");
+			} else if ($fieldObj["type"] == "date") {
+				$value = $_POST[$fieldID];
+				if (preg_match('/^(\d\d)\/(\d\d)\/(\d\d\d\d)$/', $value, $result)) {
+					$day = $result[1];
+					$month = $result[2];
+					$year = $result[3];
+					$value = "$year-$month-$day";
+				} else {
+					throw new Exception("Invalid field value");
+				}
 			} else if ($fieldObj["type"] == "file") {
 				$value = $_FILES[$fieldID];
 			} else {

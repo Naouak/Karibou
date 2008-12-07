@@ -13,6 +13,7 @@ Ajouter une application :<br />
 - {$birthday->getDesc('fr')}<br />
 *}
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/default2.js"></script>
+<script type="text/javascript" src="{$karibou_base_url}/themes/js/scal.js"></script>
 
 <script language="javascript">
 var karibou = null;
