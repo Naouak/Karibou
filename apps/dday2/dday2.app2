@@ -1,0 +1,7 @@
+name_fr = Jour J
+name_en = D Day
+desc_fr = Affiche les prochains évènements connus
+desc_en = Display the next known events
+view = mini
+submitmodel = DDaySubmit
+

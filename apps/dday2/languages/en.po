@@ -1,0 +1,33 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2006-07-24 16:54+0200\n"
+"PO-Revision-Date: 2008-11-18 02:32+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n!=1\n"
+
+msgid "D Day"
+msgstr "D Day"
+
+msgid "D"
+msgstr "D"
+
+msgid "Event"
+msgstr "Event"
+
+msgid "Date (format: YYYY-MM-DD)"
+msgstr "Date (format: YYYY-MM-DD)"
+
+msgid "You don't have sufficient privileges to add an event"
+msgstr "You don't have sufficient privileges to add an event"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Link"
+msgstr "Link"
