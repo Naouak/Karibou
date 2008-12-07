@@ -86,6 +86,24 @@
 	display: none;
 }
 
+.appRootContainer .submit {
+        width: 16px;
+        height: 16px;
+        background-image: url("images/submit.png");
+        visibility: hidden;
+}
+
+.appRootContainer:hover .submit {
+	position: absolute;
+	top: 1px;
+	left: 25px;
+	visibility: visible;
+}
+
+.appRootContainer .submit .text {
+	display: none;
+}
+
 .appRootContainer .update {
         width: 16px;
         height: 16px;
@@ -104,3 +122,16 @@
 	display: none;
 }
 
+.appRootContainer .overBox {
+	background-color: black;
+	color: white;
+	display: block;
+	height: 100%;
+	opacity: 0.85;
+	position: absolute;
+	right: 0;
+	top: 0px;
+	width: 100%;
+	z-index: 10;
+	overflow: auto;
+}

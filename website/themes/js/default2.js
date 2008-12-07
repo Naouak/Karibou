@@ -2,6 +2,20 @@
 // Why, why do they use id instead of DOM objects...
 var containerID = 0;
 
+function getSubElementById(id, subNode) {
+	if (subNode.nodeType != 1)
+		return;
+	if (subNode.id == id)
+		return subNode;
+	for (var i = 0 ; i < subNode.childNodes.length ; i++) {
+		childNode = subNode.childNodes[i];
+		result = getSubElementById(id, childNode);
+		if (result)
+			return result;
+	}
+	return;
+}
+
 // Class handling drag'n'drop
 var KSortable = Object.extend(Sortable, {});
 
@@ -90,6 +104,130 @@ KApp = Class.create({
 	},
 	shade: function() {
 		Effect.toggle(this.appBox, 'appear', { duration: 0.2 });
+		this.onShade();
+	},
+	onShade: function() {
+		// Apps should overload this if they want to do something after they have been shaded
+	},
+	onSubmit: function() {
+		// Apps should overload this if they want to do something after content has been submitted
+		this.refresh();
+	},
+	doneSubmitContent: function() {
+		// Check the fields in the form
+		// Warn if there is something invalid
+		// Then send the content
+		// Ho, BTW, use some nice hacks to submit files... http://www.openjs.com/articles/ajax/ajax_file_upload/ and http://www.openjs.com/articles/ajax/ajax_file_upload/response_data.php
+		if (!this.submitBox)
+			return false;
+
+		var queryComponents = new Array();
+
+		queryComponents.push("miniapp=" + encodeURIComponent(this.appName));
+		for (fieldID in this.constructor.submitFields) {
+			fieldObject = this.constructor.submitFields[fieldID];
+			if (fieldObject["type"] == "span")
+				continue;
+			formObject = getSubElementById(fieldID, this.submitBox);
+			if (fieldObject["type"] == "text") {
+				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
+					if (formObject.value == "") {
+						alert("One or more fields are missing.");
+						formObject.focus();
+						return false;
+					}
+				}
+				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
+			} else if (fieldObject["type"] == "textarea") {
+				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
+					if (formObject.value == "") {
+						alert("One or more fields are missing.");
+						formObject.focus();
+						return false;
+					}
+				}
+				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
+			} else {
+				alert("Hooo no, I can't do this !");
+				return false;
+			}
+		}
+
+		alert(this.karibou.appSubmitUrl);
+		var postData = queryComponents.join('&');
+		new Ajax.Request(this.karibou.appSubmitUrl, {asynchronous: true, evalScripts: false, method: 'post', postBody: postData});
+		this.onSubmit();
+		this.submitBox.parentNode.removeChild(this.submitBox);
+		this.submitBox = null;
+		this.mainContainer.style.height = this.submitHeightBackup;
+		return false;
+	},
+	cancelSubmit: function() {
+		if (this.submitBox) {
+			this.submitBox.parentNode.removeChild(this.submitBox);
+			this.submitBox = null;
+		}
+	},
+	submitContent: function() {
+		//alert(this.constructor.submitFields);
+		this.submitBox = document.createElement("div");
+		this.submitBox.setAttribute("class", "overBox");
+		this.submitBox.appendChild(document.createElement("br"));
+		formNode = document.createElement("form");
+		this.submitBox.appendChild(formNode);
+		formNode.setAttribute("onsubmit", "return $app(this).doneSubmitContent();");
+		for (fieldID in this.constructor.submitFields) {
+			fieldObject = this.constructor.submitFields[fieldID];
+			if (fieldObject["type"] == "span") {
+				spanNode = document.createElement("span");
+				spanNode.innerHTML = fieldObject["text"];
+				formNode.appendChild(spanNode);
+			} else if (fieldObject["type"] == "text") {
+				if (fieldObject["label"]) {
+					lblNode = document.createElement("label");
+					lblNode.innerHTML = fieldObject["label"];
+					lblNode.setAttribute("for", fieldID);
+					formNode.appendChild(lblNode);
+				}
+				inputNode = document.createElement("input");
+				inputNode.setAttribute("id", fieldID);
+				inputNode.setAttribute("type", "text");
+				if (fieldObject["maxlength"])
+					inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
+				formNode.appendChild(inputNode);
+			} else if (fieldObject["type"] == "textarea") {
+				if (fieldObject["label"]) {
+					lblNode = document.createElement("label");
+					lblNode.innerHTML = fieldObject["label"];
+					lblNode.setAttribute("for", fieldID);
+					formNode.appendChild(lblNode);
+					formNode.appendChild(document.createElement("br"));
+				}
+				areaNode = document.createElement("textarea");
+				areaNode.setAttribute("id", fieldID);
+				if (fieldObject["columns"])
+					areaNode.setAttribute("cols", fieldObject["columns"]);
+				if (fieldObject["rows"])
+					areaNode.setAttribute("rows", fieldObject["rows"]);
+				formNode.appendChild(areaNode);
+			} else {
+				alert("Unknown field type " + fieldObject["type"]);
+			}
+			formNode.appendChild(document.createElement("br"));
+		}
+		submitNode = document.createElement("input");
+		submitNode.setAttribute("type", "submit");
+		submitNode.setAttribute("value", "Envoyer");
+		formNode.appendChild(submitNode);
+		cancelNode = document.createElement("input");
+		cancelNode.setAttribute("type", "button");
+		cancelNode.setAttribute("value", "Cancel");
+		cancelNode.setAttribute("onclick", "$app(this).cancelSubmit()");
+		formNode.appendChild(cancelNode);
+		this.mainContainer.appendChild(this.submitBox);
+		this.submitHeightBackup = this.mainContainer.style.height;
+		if (this.submitBox.scrollHeight > this.mainContainer.scrollHeight)
+			this.mainContainer.style.height = this.submitBox.scrollHeight + "px";
 	},
 	refresh: function() {
 		req = new Ajax.Updater(this.mainContainer, this.karibou.appContentUrl + this.appName, {asynchronous: true, onComplete: function (transport) {
@@ -99,20 +237,7 @@ KApp = Class.create({
 		req.application = this;
 	},
 	getElementById: function (id) {
-		function checkNode(subNode) {
-			if (subNode.nodeType != 1)
-				return;
-			if (subNode.id == id)
-				return subNode;
-			for (var i = 0 ; i < subNode.childNodes.length ; i++) {
-				childNode = subNode.childNodes[i];
-				result = checkNode(childNode);
-				if (result)
-					return result;
-			}
-			return;
-		}
-		return checkNode(this.mainContainer);
+		return getSubElementById(id, this.mainContainer);
 	},
 	setTitle: function (title) {
 		this.appHandle.innerHTML = title;
@@ -121,8 +246,9 @@ KApp = Class.create({
 
 // Class responsible for loading the KApp classes, handling the various loaded applications on the screen...
 var Karibou = Class.create({
-	initialize: function(appListingUrl, appContentUrl, appJSUrl, tabLinkClicked) {
+	initialize: function(appListingUrl, appContentUrl, appJSUrl, appSubmitUrl, tabLinkClicked) {
 		this.appListingUrl = appListingUrl;
+		this.appSubmitUrl = appSubmitUrl;
 		this.appContentUrl = appContentUrl;
 		this.appJSUrl = appJSUrl;
 		this.applicationsClass = new Array();					// {app name => JS class}
