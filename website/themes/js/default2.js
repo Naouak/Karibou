@@ -164,6 +164,7 @@ KApp = Class.create({
 	},
 	cancelSubmit: function() {
 		if (this.submitBox) {
+			this.mainContainer.style.height = this.submitHeightBackup;
 			this.submitBox.parentNode.removeChild(this.submitBox);
 			this.submitBox = null;
 		}
