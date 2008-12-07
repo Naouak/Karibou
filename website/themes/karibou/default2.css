@@ -46,6 +46,19 @@
 	cursor: move;
 }
 
+/*@import 'calendar.css';*/
+
+.calendar_link {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	background-image: url("images/calendar_open.png");
+}
+
+.calendar_link .text {
+	display: none;
+}
+
 .appRootContainer {
 	background-color: white;
 }

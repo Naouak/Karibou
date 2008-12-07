@@ -140,6 +140,33 @@ KApp = Class.create({
 					}
 				}
 				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
+			} else if (fieldObject["type"] == "url") {
+				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
+					if (formObject.value == "") {
+						alert("One or more fields are missing.");
+						formObject.focus();
+						return false;
+					}
+				}
+				//@TODO : validate with a regular expression for urls, I'm too lazy to do that now
+				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
+			} else if (fieldObject["type"] == "date") {
+				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
+					if (formObject.value == "") {
+						alert("One or more fields are missing.");
+						formObject.focus();
+						return false;
+					}
+				}
+				if (formObject.value != "") {
+					// Validate the date with a regular expression
+					if (!formObject.value.match(/^\d\d\/\d\d\/\d\d\d\d$/)) {
+						alert("Field value is not valid.");
+						formObject.focus();
+						return false;
+					}
+				}
+				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
 			} else if (fieldObject["type"] == "textarea") {
 				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
 					if (formObject.value == "") {
@@ -171,7 +198,7 @@ KApp = Class.create({
 			iframeNode.setAttribute("src", "");
 			iframeNode.setAttribute("name", iframeName);
 			iframeNode.setAttribute("id", iframeName);
-			//Debug : iframeNode.setAttribute("style", "border: 1px solid rgb(204, 204, 204); width: 100px; height: 100px;");
+			//Debug : iframeNode.setAttribute("style", "border: 1px solid rgb(204, 204, 204); width: 100px; height: 100px; color: white;");
 			iframeNode.style.display = "none";
 			formNode.appendChild(iframeNode);
 			formNode.setAttribute("target", iframeName);
@@ -217,7 +244,7 @@ KApp = Class.create({
 				spanNode = document.createElement("span");
 				spanNode.innerHTML = fieldObject["text"];
 				formNode.appendChild(spanNode);
-			} else if (fieldObject["type"] == "text") {
+			} else if ((fieldObject["type"] == "text") || (fieldObject["type"] == "url")) {
 				if (fieldObject["label"]) {
 					lblNode = document.createElement("label");
 					lblNode.innerHTML = fieldObject["label"];
@@ -231,6 +258,38 @@ KApp = Class.create({
 				if (fieldObject["maxlength"])
 					inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
 				formNode.appendChild(inputNode);
+			} else if (fieldObject["type"] == "date") {
+				if (fieldObject["label"]) {
+					lblNode = document.createElement("label");
+					lblNode.setAttribute("for", fieldID);
+					acroNode = document.createElement("acronym");
+					acroNode.setAttribute("title", "Format : dd/mm/yyyy");
+					acroNode.innerHTML = fieldObject["label"];
+					lblNode.appendChild(acroNode);
+					formNode.appendChild(lblNode);
+				}
+				inputNode = document.createElement("input");
+				inputNode.setAttribute("id", fieldID);
+				inputNode.setAttribute("name", fieldID);
+				inputNode.setAttribute("type", "text");
+				if (fieldObject["maxlength"])
+					inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
+				formNode.appendChild(inputNode);
+				calNode = document.createElement("span");
+				calNode.setAttribute("class", "calendar_link");
+				calNode.setAttribute("for", fieldID);
+				calNode.onclick = function() {
+					var inputNode = $app(this).getElementById(this.attributes.getNamedItem("for").nodeValue);
+					var divNode = document.createElement("div");
+					divNode.setAttribute("class", "floating_calendar");
+					inputNode.parentNode.insertBefore(divNode, inputNode.nextSibling);
+					var inputScal = new scal(divNode, inputNode, {updateformat: 'dd/mm/yyyy'});
+				};
+				txtNode = document.createElement("span");
+				txtNode.setAttribute("class", "text");
+				txtNode.innerHTML = "Open calendar";
+				calNode.appendChild(txtNode);
+				formNode.appendChild(calNode);
 			} else if (fieldObject["type"] == "textarea") {
 				if (fieldObject["label"]) {
 					lblNode = document.createElement("label");
