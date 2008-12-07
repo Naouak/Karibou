@@ -447,6 +447,9 @@ class KApp
 		return false;
 	}
 
+	public function getPermission() {
+		return $this->permission;
+	}
 }
 
 ?>
