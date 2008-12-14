@@ -1,0 +1,121 @@
+/*Styles for date picker*/
+
+.floating_calendar{
+	background-color: white;
+	margin:0px;
+	position: absolute;
+	border:1px solid #bfcdd4;
+	font-family: Arial;
+	font-size:12px;
+	width:219px; /* cellwidth * 7 + cellpadding * 14 + cellborder * 14 */
+	display:block;
+	padding:0px;
+	min-height:175px;
+}
+.floating_calendar:hover {
+	cursor: pointer;
+}
+
+.floating_calendar .calwrapper{
+	display:block;
+}
+.floating_calendar .calweekswrapper{
+	display:block;
+	border: solid 1px White;
+}
+.floating_calendar .calheader{
+	display: block;
+	width:100%;
+	text-align:center;
+	color:#CF6228;
+	font-size:13px;
+	font-weight: bold;
+	background-color: #EEF3F6;
+	padding-bottom: 2px;
+}
+.floating_calendar .caltitle{
+	width:auto;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+}
+.floating_calendar .calcontrol{
+	font-weight: bold;
+	width:20px;
+	background: transparent no-repeat center center;
+}
+
+.floating_calendar .calcontrol:hover {
+}
+.floating_calendar .calclose{
+	float:right;
+	display:block;
+	background-image: url(images/calendar_close.png);
+}
+.floating_calendar .calprevmonth{
+	float:left;
+}
+.floating_calendar .calnextmonth{
+	float:right;
+}
+.floating_calendar .calnextyear{
+        float:right;
+}
+.floating_calendar .calprevyear{
+        float:left;
+}
+.floating_calendar .daybox{
+	float:left;
+	background-color: white;
+	border:1px solid white;
+	width:25px;
+	padding:2px;
+	color:black;
+	text-align:center;	
+}
+.floating_calendar .dayboxvalue{
+    display: none;
+}
+.floating_calendar .dayboxname{
+	border: 1px solid #EEF3F6;
+        background-color: #EEF3F6;
+	color:#6190AA;
+}
+.floating_calendar .dayboxsunday{
+	background-color: White;
+	border: 1px solid White;
+}
+.floating_calendar .dayboxsaturday{
+	background-color: White;
+	border: 1px solid White;
+}
+.floating_calendar .daybox:hover {
+}
+.floating_calendar .dayboxname:hover {
+}
+.floating_calendar .dayinmonth{
+	color:#6190AA;
+}
+.floating_calendar .dayoutmonth{
+	color:gray;
+}
+.floating_calendar .dayselected{
+	background-color: #CF6228;
+	color: White;
+}
+.floating_calendar .daycurrent{
+	border:1px solid #e8eef7;
+}
+.floating_calendar .weekbox{
+	width:100%;
+	min-height:21px;
+	display:block;
+        margin-top:3px;
+        background-color: #EEF3F6;
+}
+.floating_calendar .endweek{
+	float:left;
+}
+.floating_calendar .weekboxname{
+        background-color: #EEF3F6;
+}
