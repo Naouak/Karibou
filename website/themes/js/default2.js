@@ -90,156 +90,26 @@ var KTab = Class.create({
 	}
 });
 
-// Base class for every karibou application
-KApp = Class.create({
-	initialize: function (appName, mainContainer, karibou) {
-		this.karibou = karibou;
-		this.mainContainer = mainContainer;
-		this.appName = appName;
-		this.mainContainer.setAttribute("kapp", true);
-		id = this.appName + "_" + this.karibou.getNewIDForApp(this.appName);
-		this.mainContainer.setAttribute("id", id); 
-		this.appBox = this.getElementById(this.appName);
-		this.appHandle = this.getElementById(this.appName + "_handle");
-	},
-	shade: function() {
-		Effect.toggle(this.appBox, 'appear', { duration: 0.2 });
-		this.onShade();
-	},
-	onShade: function() {
-		// Apps should overload this if they want to do something after they have been shaded
-	},
-	onSubmit: function() {
-		// Apps should overload this if they want to do something after content has been submitted
-		this.refresh();
-	},
-	doneSubmitContent: function() {
-		// Check the fields in the form
-		// Warn if there is something invalid
-		// Then send the content
-		// Ho, BTW, use some nice hacks to submit files... http://www.openjs.com/articles/ajax/ajax_file_upload/ and http://www.openjs.com/articles/ajax/ajax_file_upload/response_data.php
-		if (!this.submitBox)
-			return false;
-
-		var queryComponents = new Array();
-
-		queryComponents.push("miniapp=" + encodeURIComponent(this.appName));
-		var containsFile = false;
-
-		for (fieldID in this.constructor.submitFields) {
-			fieldObject = this.constructor.submitFields[fieldID];
-			if (fieldObject["type"] == "span")
-				continue;
-			formObject = getSubElementById(fieldID, this.submitBox);
-			if (fieldObject["type"] == "text") {
-				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
-					if (formObject.value == "") {
-						alert("One or more fields are missing.");
-						formObject.focus();
-						return false;
-					}
-				}
-				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
-			} else if (fieldObject["type"] == "url") {
-				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
-					if (formObject.value == "") {
-						alert("One or more fields are missing.");
-						formObject.focus();
-						return false;
-					}
-				}
-				//@TODO : validate with a regular expression for urls, I'm too lazy to do that now
-				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
-			} else if (fieldObject["type"] == "date") {
-				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
-					if (formObject.value == "") {
-						alert("One or more fields are missing.");
-						formObject.focus();
-						return false;
-					}
-				}
-				if (formObject.value != "") {
-					// Validate the date with a regular expression
-					if (!formObject.value.match(/^\d\d\/\d\d\/\d\d\d\d$/)) {
-						alert("Field value is not valid.");
-						formObject.focus();
-						return false;
-					}
-				}
-				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
-			} else if (fieldObject["type"] == "textarea") {
-				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
-					if (formObject.value == "") {
-						alert("One or more fields are missing.");
-						formObject.focus();
-						return false;
-					}
-				}
-				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
-			} else if (fieldObject["type"] == "file") {
-				alert("Aie aie sir");
-				containsFile = true;
-				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
-					if (formObject.value == "") {
-						alert("One or more fields are missing.");
-						formObject.focus();
-						return false;
-					}
-				}
-			} else {
-				alert("Hooo no, I can't do this !");
-				return false;
-			}
+KForm = Class.create({
+	initialize: function (formFields, targetNode, extraParameters, submitCallBack, cancelCallBack) {
+		if (!KForm.forms) {
+			KForm.forms = new Array();
+			KForm.getFormFromNode = this.getFormFromNode;
 		}
-		if (containsFile) {
-			iframeName = "iframe_" + (new Date()).getTime();
-			var formNode = getSubElementById("submitForm", this.submitBox);	
-			iframeNode = document.createElement("iframe");
-			iframeNode.setAttribute("src", "");
-			iframeNode.setAttribute("name", iframeName);
-			iframeNode.setAttribute("id", iframeName);
-			//Debug : iframeNode.setAttribute("style", "border: 1px solid rgb(204, 204, 204); width: 100px; height: 100px; color: white;");
-			iframeNode.style.display = "none";
-			formNode.appendChild(iframeNode);
-			formNode.setAttribute("target", iframeName);
-			iframeNode.onload = function () { app = $app(this); app.cancelSubmit(); app.onSubmit(); return true; };
-			return true; 
-		} else {
-			var postData = queryComponents.join('&');
-			new Ajax.Request(this.karibou.appSubmitUrl, {asynchronous: true, evalScripts: false, method: 'post', postBody: postData});
-			this.onSubmit();
-			this.submitBox.parentNode.removeChild(this.submitBox);
-			this.submitBox = null;
-			this.mainContainer.style.height = this.submitHeightBackup;
-			return false;
-		}
+		KForm.forms.push(new Array(targetNode, this));
+		this.extraParameters = extraParameters;		// {name => value}
+		this.formFields = formFields;
+		this.targetNode = targetNode;
+		this.submitCallBack = submitCallBack;
+		this.cancelCallBack = cancelCallBack;
 	},
-	cancelSubmit: function() {
-		if (this.submitBox) {
-			this.mainContainer.style.height = this.submitHeightBackup;
-			this.submitBox.parentNode.removeChild(this.submitBox);
-			this.submitBox = null;
-		}
-	},
-	submitContent: function() {
-		//alert(this.constructor.submitFields);
-		this.submitBox = document.createElement("div");
-		this.submitBox.setAttribute("class", "overBox");
-		this.submitBox.appendChild(document.createElement("br"));
-		formNode = document.createElement("form");
-		formNode.setAttribute("id", "submitForm");
-		this.submitBox.appendChild(formNode);
-		formNode.setAttribute("onsubmit", "return $app(this).doneSubmitContent();");
-		hiddenNode = document.createElement("input");
-		hiddenNode.setAttribute("type", "hidden");
-		hiddenNode.setAttribute("name", "miniapp");
-		hiddenNode.setAttribute("id", "miniapp");
-		hiddenNode.setAttribute("value", this.appName);
-		formNode.appendChild(hiddenNode);
-		formNode.setAttribute("action", this.karibou.appSubmitUrl);
+	buildForm: function() {
+		var formNode = this.targetNode;
 		formNode.setAttribute("method", "post");
-		for (fieldID in this.constructor.submitFields) {
-			fieldObject = this.constructor.submitFields[fieldID];
+		formNode.setAttribute("onsubmit", "return KForm.getFormFromNode(this).submit();");
+
+		for (fieldID in this.formFields) {
+			fieldObject = this.formFields[fieldID];
 			if (fieldObject["type"] == "span") {
 				spanNode = document.createElement("span");
 				spanNode.innerHTML = fieldObject["text"];
@@ -329,11 +199,196 @@ KApp = Class.create({
 		submitNode.setAttribute("type", "submit");
 		submitNode.setAttribute("value", "Envoyer");
 		formNode.appendChild(submitNode);
-		cancelNode = document.createElement("input");
-		cancelNode.setAttribute("type", "button");
-		cancelNode.setAttribute("value", "Cancel");
-		cancelNode.setAttribute("onclick", "$app(this).cancelSubmit()");
-		formNode.appendChild(cancelNode);
+
+		if (this.cancelCallBack) {
+			cancelNode = document.createElement("input");
+			cancelNode.setAttribute("type", "button");
+			cancelNode.setAttribute("value", "Cancel");
+			cancelNode.setAttribute("onclick", "KForm.getFormFromNode(this.parentNode).cancel();");
+			formNode.appendChild(cancelNode);
+		}
+	},
+	getFormFromNode: function (node) {
+		for (var idx = 0 ; idx < KForm.forms.length ; idx++) {
+			form = KForm.forms[idx];
+			if (form[0] == node) {
+				return form[1];
+			}
+		}
+		return null;
+	},
+	cancel: function () {
+		if (this.cancelCallBack) {
+			if (this.cancelCallBack instanceof Array) {
+				this.cancelCallBack[0][this.cancelCallBack[1]]();
+			} else if (this.cancelCallBack instanceof Function) {
+				this.cancelCallBack();
+			}
+		}
+	},
+	submitted: function () {
+		// This function is called after content has been sent...
+		if (this.submitCallBack instanceof Array) {
+			this.submitCallBack[0][this.submitCallBack[1]]();
+		} else if (this.submitCallBack instanceof Function) {
+			this.submitCallBack();
+		}
+	},
+	submit: function () {
+		// Check the fields in the form
+		// Warn if there is something invalid
+		// Then send the content
+		// Ho, BTW, use some nice hacks to submit files... http://www.openjs.com/articles/ajax/ajax_file_upload/ and http://www.openjs.com/articles/ajax/ajax_file_upload/response_data.php
+		var queryComponents = new Array();
+		for (paramName in this.extraParameters)
+			queryComponents.push(paramName + "=" + encodeURIComponent(this.extraParameters[paramName]));
+		var containsFile = false;
+
+		for (fieldID in this.formFields) {
+			fieldObject = this.formFields[fieldID];
+			if (fieldObject["type"] == "span")
+				continue;
+			formObject = getSubElementById(fieldID, this.targetNode);
+			if (fieldObject["type"] == "text") {
+				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
+					if (formObject.value == "") {
+						alert("One or more fields are missing.");
+						formObject.focus();
+						return false;
+					}
+				}
+				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
+			} else if (fieldObject["type"] == "url") {
+				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
+					if (formObject.value == "") {
+						alert("One or more fields are missing.");
+						formObject.focus();
+						return false;
+					}
+				}
+				//@TODO : validate with a regular expression for urls, I'm too lazy to do that now
+				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
+			} else if (fieldObject["type"] == "date") {
+				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
+					if (formObject.value == "") {
+						alert("One or more fields are missing.");
+						formObject.focus();
+						return false;
+					}
+				}
+				if (formObject.value != "") {
+					// Validate the date with a regular expression
+					if (!formObject.value.match(/^\d\d\/\d\d\/\d\d\d\d$/)) {
+						alert("Field value is not valid.");
+						formObject.focus();
+						return false;
+					}
+				}
+				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
+			} else if (fieldObject["type"] == "textarea") {
+				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
+					if (formObject.value == "") {
+						alert("One or more fields are missing.");
+						formObject.focus();
+						return false;
+					}
+				}
+				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
+			} else if (fieldObject["type"] == "file") {
+				alert("Aie aie sir");
+				containsFile = true;
+				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
+					if (formObject.value == "") {
+						alert("One or more fields are missing.");
+						formObject.focus();
+						return false;
+					}
+				}
+			} else {
+				alert("Hooo no, I can't do this !");
+				return false;
+			}
+		}
+		if (containsFile) {
+			iframeName = "iframe_" + (new Date()).getTime();
+			iframeNode = document.createElement("iframe");
+			iframeNode.setAttribute("src", "");
+			iframeNode.setAttribute("name", iframeName);
+			iframeNode.setAttribute("id", iframeName);
+			//Debug : iframeNode.setAttribute("style", "border: 1px solid rgb(204, 204, 204); width: 100px; height: 100px; color: white;");
+			iframeNode.style.display = "none";
+			this.targetNode.appendChild(iframeNode);
+			this.targetNode.setAttribute("target", iframeName);
+			iframeNode.onload = function () { KForm.getFormFromNode(this.parentNode).submitted(); return true; };
+			return true; 
+		} else {
+			var postData = queryComponents.join('&');
+			var url = this.targetNode.attributes.getNamedItem("action").nodeValue;
+			new Ajax.Request(url, {asynchronous: true, evalScripts: false, method: 'post', postBody: postData, form: this, onComplete: function(transport) {
+				form = transport.request.options.form;
+				form.submitted();
+			}});
+			return false;
+		}
+		return false;
+	}
+});
+
+// Base class for every karibou application
+KApp = Class.create({
+	initialize: function (appName, mainContainer, karibou) {
+		this.karibou = karibou;
+		this.mainContainer = mainContainer;
+		this.appName = appName;
+		this.mainContainer.setAttribute("kapp", true);
+		id = this.appName + "_" + this.karibou.getNewIDForApp(this.appName);
+		this.mainContainer.setAttribute("id", id); 
+		this.appBox = this.getElementById(this.appName);
+		this.appHandle = this.getElementById(this.appName + "_handle");
+	},
+	shade: function() {
+		Effect.toggle(this.appBox, 'appear', { duration: 0.2 });
+		this.onShade();
+	},
+	onShade: function() {
+		// Apps should overload this if they want to do something after they have been shaded
+	},
+	onSubmit: function() {
+		// Apps should overload this if they want to do something after content has been submitted
+		this.refresh();
+	},
+	cancelledSubmit: function() {
+		if (this.submitBox) {
+			this.mainContainer.style.height = this.submitHeightBackup;
+			this.submitBox.parentNode.removeChild(this.submitBox);
+			this.submitBox = null;
+		}
+	},
+	submittedContent: function() {
+		// This function will call the onSubmit function after doing its own cleanups
+		if (this.submitBox) {
+			this.mainContainer.style.height = this.submitHeightBackup;
+			this.submitBox.parentNode.removeChild(this.submitBox);
+			this.submitBox = null;
+			this.onSubmit();
+		}
+	},
+	submitContent: function() {
+		this.submitBox = document.createElement("div");
+		this.submitBox.setAttribute("class", "overBox");
+		this.submitBox.appendChild(document.createElement("br"));
+		formNode = document.createElement("form");
+		formNode.setAttribute("action", this.karibou.appSubmitUrl);
+		this.submitBox.appendChild(formNode);
+		
+		var form = new KForm(this.constructor.submitFields, 	// The fields list
+				formNode, 				// The form node
+				{"miniapp": this.appName},		// The extra parameters
+				[this, "submittedContent"],		// The onSubmit callback
+				[this, "cancelledSubmit"]			// The onCancelSubmit callback
+				);
+		form.buildForm();
+
 		this.mainContainer.appendChild(this.submitBox);
 		this.submitHeightBackup = this.mainContainer.style.height;
 		if (this.submitBox.scrollHeight > this.mainContainer.scrollHeight)
