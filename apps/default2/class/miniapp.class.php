@@ -23,8 +23,8 @@ class MiniApp {
 		$this->mainView = $parameters["view"];
 		if (strlen($this->mainView) < 1)
 			throw new Exception("Missing parameter view for MiniApp $appName");
-		if (array_key_exists("configview", $parameters))
-			$this->configView = $parameters["configview"];
+		if (array_key_exists("configmodel", $parameters))
+			$this->configModel = $parameters["configmodel"];
 		else
 			$this->configView = "";
 		if (array_key_exists("JSview", $parameters))
@@ -45,8 +45,8 @@ class MiniApp {
 		return $this->mainView;
 	}
 	
-	public function getConfigView() {
-		return $this->configView;
+	public function getConfigModel() {
+		return $this->configModel;
 	}
 	
 	public function getJsView() {

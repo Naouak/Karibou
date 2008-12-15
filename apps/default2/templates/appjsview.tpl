@@ -9,6 +9,9 @@
 {if ($submitFields != "")}
 {$appName}Class.submitFields = {$submitFields};
 {/if}
+{if ($configFields != "")}
+{$appName}Class.configFields = {$configFields};
+{/if}
 
 karibou.registerApplicationClass('{$appName}', {$appName}Class);
 

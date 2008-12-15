@@ -6,16 +6,31 @@ class AppMainView extends Model
 	{
 		if (isset($this->args['miniapp']))
 		{
-			$miniapp = MiniAppFactory::buildApplication($this->args['miniapp']);
-			$app = $this->appList->getApp($this->args['miniapp']);
-			$app->addView($miniapp->getMainView(), $miniapp->getAppName());
-			if ($miniapp->getSubmitModel() != "") {
-				$this->assign("canSubmit", ($app->getPermission() >= _SELF_WRITE_));
-			} else {
-				$this->assign("canSubmit", false);
+			if (preg_match('/^([a-zA-Z0-9\-_]*)_(\d*)$/i', $this->args['miniapp'], $result)) {
+				$miniappName = $result[1];
+				$miniappId = $result[2];
+				$miniapp = MiniAppFactory::buildApplication($miniappName);
+				$app = $this->appList->getApp($miniappName);
+				$prefs = array();
+				if ($this->currentUser->isLogged()) {
+					$prefs = $this->currentUser->getPref($this->args["miniapp"]);
+					if ($prefs === FALSE)
+						$prefs = array();
+				}
+				$app->addView($miniapp->getMainView(), $miniapp->getAppName(), $prefs);
+				if ($miniapp->getSubmitModel() != "") {
+					$this->assign("canSubmit", ($app->getPermission() >= _SELF_WRITE_));
+				} else {
+					$this->assign("canSubmit", false);
+				}
+				if ($miniapp->getConfigModel() != "") {
+					$this->assign("canConfig", ($app->getPermission() >= _SELF_WRITE_));
+				} else {
+					$this->assign("canConfig", false);
+				}
+				$this->assign("appName", $miniapp->getAppName());
+				$this->assign("appTitle", $miniapp->getName("fr"));
 			}
-			$this->assign("appName", $miniapp->getAppName());
-			$this->assign("appTitle", $miniapp->getName("fr"));
 		}
 	}
 }

@@ -117,6 +117,23 @@
 	display: none;
 }
 
+.appRootContainer .config {
+        width: 16px;
+        height: 16px;
+        background-image: url("images/edit.png");
+        visibility: hidden;
+}
+
+.appRootContainer:hover .config {
+	position: absolute;
+	top: 1px;
+	left: 42px;
+	visibility: visible;
+}
+
+.appRootContainer .config .text {
+	display: none;
+}
 .appRootContainer .update {
         width: 16px;
         height: 16px;

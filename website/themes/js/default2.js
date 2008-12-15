@@ -127,6 +127,8 @@ KForm = Class.create({
 				inputNode.setAttribute("type", "text");
 				if (fieldObject["maxlength"])
 					inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
+				if (fieldObject["value"])
+					inputNode.setAttribute("value", fieldObject["value"]);
 				formNode.appendChild(inputNode);
 			} else if (fieldObject["type"] == "date") {
 				if (fieldObject["label"]) {
@@ -142,6 +144,8 @@ KForm = Class.create({
 				inputNode.setAttribute("id", fieldID);
 				inputNode.setAttribute("name", fieldID);
 				inputNode.setAttribute("type", "text");
+				if (fieldObject["value"])
+					inputNode.setAttribute("value", fieldObject["value"]);
 				if (fieldObject["maxlength"])
 					inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
 				formNode.appendChild(inputNode);
@@ -175,6 +179,8 @@ KForm = Class.create({
 					areaNode.setAttribute("cols", fieldObject["columns"]);
 				if (fieldObject["rows"])
 					areaNode.setAttribute("rows", fieldObject["rows"]);
+				if (fieldObject["value"])
+					areaNode.innerHTML = fieldObject["value"];
 				formNode.appendChild(areaNode);
 			} else if (fieldObject["type"] == "file") {
 				formNode.setAttribute("enctype", "multipart/form-data");
@@ -336,15 +342,50 @@ KForm = Class.create({
 
 // Base class for every karibou application
 KApp = Class.create({
-	initialize: function (appName, mainContainer, karibou) {
+	initialize: function (appName, id, mainContainer, karibou) {
 		this.karibou = karibou;
 		this.mainContainer = mainContainer;
 		this.appName = appName;
 		this.mainContainer.setAttribute("kapp", true);
-		id = this.appName + "_" + this.karibou.getNewIDForApp(this.appName);
-		this.mainContainer.setAttribute("id", id); 
+		this.appId = this.appName + "_" + id;
+		this.mainContainer.setAttribute("id", this.appId); 
 		this.appBox = this.getElementById(this.appName);
 		this.appHandle = this.getElementById(this.appName + "_handle");
+		this.config = null;
+		if (this.constructor.configFields) {
+			new Ajax.Request(karibou.appGetConfigUrl + this.appId, {method: 'post', app: this, onComplete: function(transport) {
+				transport.request.options.app.config = transport.responseText.evalJSON();
+			}});
+		}
+	},
+	configure: function() {
+		this.submitBox = document.createElement("div");
+		this.submitBox.setAttribute("class", "overBox");
+		this.submitBox.appendChild(document.createElement("br"));
+		formNode = document.createElement("form");
+		formNode.setAttribute("action", this.karibou.appSetConfigUrl);
+		this.submitBox.appendChild(formNode);
+
+		var configFields = this.constructor.configFields;
+		if (this.config) {
+			for (var fieldID in configFields) {
+				if (this.config[fieldID])
+					configFields[fieldID]["value"] = this.config[fieldID];
+			}
+		}
+		
+		var form = new KForm(this.constructor.configFields, 	// The fields list
+				formNode, 				// The form node
+				{"miniapp": this.appId},		// The extra parameters
+				[this, "submittedConfig"],		// The onSubmit callback
+				[this, "cancelledOverlay"]		// The onCancelSubmit callback
+				);
+		form.buildForm();
+
+		this.mainContainer.appendChild(this.submitBox);
+		this.submitHeightBackup = this.mainContainer.style.height;
+		if (this.submitBox.scrollHeight > this.mainContainer.scrollHeight)
+			this.mainContainer.style.height = this.submitBox.scrollHeight + "px";
 	},
 	shade: function() {
 		Effect.toggle(this.appBox, 'appear', { duration: 0.2 });
@@ -357,7 +398,23 @@ KApp = Class.create({
 		// Apps should overload this if they want to do something after content has been submitted
 		this.refresh();
 	},
-	cancelledSubmit: function() {
+	onConfig: function() {
+		// Apps should overload this if they want to do something after they have been configured
+		this.refresh();
+	},
+	submittedConfig: function() {
+		// This function will call the onConfig function after doing its own cleanups
+		if (this.submitBox) {
+			new Ajax.Request(this.karibou.appGetConfigUrl + this.appId, {method: 'post', app: this, onComplete: function(transport) {
+				transport.request.options.app.config = transport.responseText.evalJSON();
+			}});
+			this.mainContainer.style.height = this.submitHeightBackup;
+			this.submitBox.parentNode.removeChild(this.submitBox);
+			this.submitBox = null;
+			this.onConfig();
+		}
+	},
+	cancelledOverlay: function() {
 		if (this.submitBox) {
 			this.mainContainer.style.height = this.submitHeightBackup;
 			this.submitBox.parentNode.removeChild(this.submitBox);
@@ -385,7 +442,7 @@ KApp = Class.create({
 				formNode, 				// The form node
 				{"miniapp": this.appName},		// The extra parameters
 				[this, "submittedContent"],		// The onSubmit callback
-				[this, "cancelledSubmit"]			// The onCancelSubmit callback
+				[this, "cancelledOverlay"]		// The onCancelSubmit callback
 				);
 		form.buildForm();
 
@@ -395,7 +452,7 @@ KApp = Class.create({
 			this.mainContainer.style.height = this.submitBox.scrollHeight + "px";
 	},
 	refresh: function() {
-		req = new Ajax.Updater(this.mainContainer, this.karibou.appContentUrl + this.appName, {asynchronous: true, app: this, onComplete: function (transport) {
+		req = new Ajax.Updater(this.mainContainer, this.karibou.appContentUrl + this.appId, {asynchronous: true, app: this, onComplete: function (transport) {
 			app = transport.request.options.app;
 			app.appBox = app.getElementById(app.appName);
 			app.karibou.getTabFromApplication(app).rebuildContainers();
@@ -411,10 +468,11 @@ KApp = Class.create({
 
 // Class responsible for loading the KApp classes, handling the various loaded applications on the screen...
 var Karibou = Class.create({
-	initialize: function(appListingUrl, appContentUrl, appJSUrl, appSubmitUrl, tabLinkClicked) {
-		this.appListingUrl = appListingUrl;
+	initialize: function(appContentUrl, appJSUrl, appSubmitUrl, appSetConfigUrl, appGetConfigUrl, tabLinkClicked) {
 		this.appSubmitUrl = appSubmitUrl;
 		this.appContentUrl = appContentUrl;
+		this.appSetConfigUrl = appSetConfigUrl;
+		this.appGetConfigUrl = appGetConfigUrl;
 		this.appJSUrl = appJSUrl;
 		this.applicationsClass = new Array();					// {app name => JS class}
 		this.loadedApplicationsJS = new Array();				// [app name]
@@ -525,8 +583,8 @@ var Karibou = Class.create({
 		tabId = node.id.substring(4);
 		return this.tabs[tabId];
 	},
-	loadApplicationView: function(application, container) {
-		req = new Ajax.Updater(container, this.appContentUrl + application, {asynchronous: true, onComplete: function (transport) {
+	loadApplicationView: function(application, appId, container) {
+		req = new Ajax.Updater(container, this.appContentUrl + application + "_" + appId, {asynchronous: true, onComplete: function (transport) {
 			this.karibou.applicationViewLoaded(application);
 		}});
 		req.karibou = this;
@@ -576,7 +634,7 @@ var Karibou = Class.create({
 		//@TODO : fix me !
 		if (this.currentTab)
 			container = this.currentTab.tabContainers[0];
-		var appLoader = new KAppLoader(applicationName, container, this);
+		var appLoader = new KAppLoader(applicationName, this.getNewIDForApp(applicationName), container, this);
 		this.appLoaders.push(appLoader);
 		appLoader.load();
 	},
@@ -599,10 +657,11 @@ var Karibou = Class.create({
 });
 
 var KAppLoader = Class.create({
-	initialize: function(applicationName, container, karibou) {
+	initialize: function(applicationName, id, container, karibou) {
 		this.jsloaded = false;
 		this.mainloaded = false;
 		this.appName = applicationName;
+		this.appId = id;
 		this.container = container;
 		this.karibou = karibou;
 		this.targetNode = document.createElement("div");
@@ -610,7 +669,7 @@ var KAppLoader = Class.create({
 	},
 	load: function () {
 		this.karibou.loadApplicationJS(this.appName);
-		this.karibou.loadApplicationView(this.appName, this.targetNode);
+		this.karibou.loadApplicationView(this.appName, this.appId, this.targetNode);
 	},
 	loaded: function () {
 		return this.jsloaded && this.mainloaded;
@@ -619,7 +678,7 @@ var KAppLoader = Class.create({
 		if (this.loaded()) {
 			klass = this.karibou.getApplicationClass(this.appName);
 			this.container.appendChild(this.targetNode);
-			var appObj = new klass(this.appName, this.targetNode, this.karibou);
+			var appObj = new klass(this.appName, this.appId, this.targetNode, this.karibou);
 			this.karibou.registerAppObj(appObj);
 			if (this.karibou.currentTab != null) 
 				this.karibou.currentTab.rebuildContainers();

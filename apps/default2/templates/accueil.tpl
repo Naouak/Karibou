@@ -23,7 +23,7 @@ function tabLinkClickedBack (evt) {ldelim}
 {rdelim}
 
 Event.observe(window, "load", function() {ldelim}
-	karibou = new Karibou("{kurl page="listuserapps"}", "{kurl page="appmainview"}", "{kurl page="appjsview"}", "{kurl page="appsubmit"}", tabLinkClickedBack);
+	karibou = new Karibou("{kurl page="appmainview"}", "{kurl page="appjsview"}", "{kurl page="appsubmit"}", "{kurl page="appconfig"}", "{kurl page="appjsconfigview"}", tabLinkClickedBack);
 	karibou.createNewTab("default");
 {rdelim});
 

@@ -1,6 +1,6 @@
 <?php
 
-abstract class AppContentModel {
+abstract class DefaultFormModel {
 
 	protected $db;
 
@@ -56,6 +56,20 @@ abstract class AppContentModel {
 	public abstract function formFields();
 
 	public abstract function submit($parameters);
+}
+
+abstract class AppContentModel extends DefaultFormModel {
+
+}
+
+abstract class AppConfigModel extends DefaultFormModel {
+	public function submit($parameters) {
+		if (!isset($_POST["miniapp"]))
+			throw new Exception("Missing miniapp parameter");
+		if (preg_match('/^([a-zA-Z0-9\-_]*)_(\d*)$/i', $_POST['miniapp'], $result)) {
+			$this->currentUser->setPref($_POST["miniapp"], $parameters);
+		}
+	}
 }
 
 ?>

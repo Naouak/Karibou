@@ -8,7 +8,8 @@
  * desc_en
  * view
  * JSview
- * configview
+ * configmodel
+ * submitmodel
  **/
 
 class MiniAppFactory {
@@ -31,7 +32,7 @@ class MiniAppFactory {
 							$names[substr($key, 5)] = $value;
 						else if ((strpos($key, "desc_") === 0) && (strlen($key) != 5))
 							$descs[substr($key, 5)] = $value;
-						else if (($key == "view") || ($key == "JSview") || ($key == "configview") || ($key == "submitmodel"))
+						else if (($key == "view") || ($key == "JSview") || ($key == "configmodel") || ($key == "submitmodel"))
 							$app[$key] = $value;
 					}
 					$app["names"] = $names;

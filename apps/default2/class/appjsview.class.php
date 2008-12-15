@@ -21,6 +21,13 @@ class AppJSView extends Model
 			} else {
 				$this->assign("submitFields", "");
 			}
+			$configModelName = $miniapp->getConfigModel();
+			if ($configModelName != "") {
+				$configModel = new $configModelName($this->db, $this->currentUser);
+				$this->assign("configFields", json_encode($configModel->formFields()));
+			} else {
+				$this->assign("configFields", "");
+			}
 			$this->assign("appName", $miniapp->getAppName());
 		}
 	}

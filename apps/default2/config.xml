@@ -5,10 +5,14 @@
 	<load class="MiniAppFactory" file="class/miniappfactory.class.php" />
 	<load class="AppMainView" file="class/appmainview.class.php" />
 	<load class="AppJSView" file="class/appjsview.class.php" />
+	<load class="AppJSConfigView" file="class/appjsconfigview.class.php" />
 	<load class="AppSubmit" file="class/appsubmit.class.php" />
+	<load class="AppConfig" file="class/appconfig.class.php" />
 
 	<load class="DefaultModel" file="class/defaultmodel.class.php" />
+	<!-- TODO : split appcontentmodel in three files -->
 	<load class="AppContentModel" file="class/appcontentmodel.class.php" />	
+	<load class="AppConfigModel" file="class/appcontentmodel.class.php" />	
 
 	<load class="ArgMiniapp" file="../arguments/argminiapp.class.php" />
 	
@@ -17,6 +21,7 @@
 	<view name="default" class="DefaultModel" template="accueil.tpl" />
 	<view name="appMainView" class="AppMainView" template="appmainview.tpl" />
 	<view name="appJSView" class="AppJSView" template="appjsview.tpl" />
+	<view name="appJSConfigView" class="AppJSConfigView" template="appjsconfigview.tpl" />
 	
 	<header app="header" view="home" />
 	<footer app="footer" view="default" />
@@ -35,6 +40,13 @@
 		<argument name="miniapp" class="ArgMiniapp" />
 	</page>
 
+	<page name="appjsconfigview" view="appJSConfigView">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" />
+		<argument name="miniapp" class="ArgMiniapp" />
+	</page>
+
 	<form action="appsubmit" class="AppSubmit" />
+	<form action="appconfig" class="AppConfig" />
 	
 </app>
