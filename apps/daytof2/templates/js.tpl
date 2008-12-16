@@ -1,8 +1,8 @@
 {literal}
 
 daytof2Class = Class.create(KApp, {
-	initialize: function($super, appName, container, karibou) {
-		$super(appName, container, karibou);
+	initialize: function($super, appName, id, container, karibou) {
+		$super(appName, id, container, karibou);
 		{/literal}
 		this.urls = ['{kurl app="daytof" page="datof" tofnum="0"}', '{kurl app="daytof" page="datof" tofnum="1"}', '{kurl app="daytof" page="datof" tofnum="2"}'];
 		{literal}
