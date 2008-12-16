@@ -1,7 +1,7 @@
 Ajouter une application :<br />
 <ul>
 {foreach item=appName from=$apps}
-<li><a href="#" onclick="karibou.instanciateApplication('{$appName}', document.getElementById('appContainer')); return false;">{$appName}</a></li><br />
+<li><a href="#" onclick="karibou.instanciateApplication('{$appName}'); return false;">{$appName}</a></li><br />
 {/foreach}
 </ul>
 {*
@@ -12,6 +12,7 @@ Ajouter une application :<br />
 - {$birthday->getName('fr')}<br />
 - {$birthday->getDesc('fr')}<br />
 *}
+<div id="configViewer">config</div>
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/default2.js"></script>
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/scal.js"></script>
 
@@ -23,8 +24,9 @@ function tabLinkClickedBack (evt) {ldelim}
 {rdelim}
 
 Event.observe(window, "load", function() {ldelim}
-	karibou = new Karibou("{kurl page="appmainview"}", "{kurl page="appjsview"}", "{kurl page="appsubmit"}", "{kurl page="appconfig"}", "{kurl page="appjsconfigview"}", tabLinkClickedBack);
-	karibou.createNewTab("default");
+	karibou = new Karibou("{kurl page="appmainview"}", "{kurl page="appjsview"}", "{kurl page="appsubmit"}", "{kurl page="appconfig"}", "{kurl page="appjsconfigview"}", "{kurl page="savehome"}", tabLinkClickedBack);
+	//karibou.createNewTab("default");
+	karibou.loadUrl("{kurl page="homeconfig"}");
 {rdelim});
 
 function $app (obj) {ldelim}
@@ -40,8 +42,33 @@ function addTab () {ldelim}
 function closeTab () {ldelim}
 	karibou.closeCurrentTab();
 {rdelim}
+
+function resizeTab () {ldelim}
+	karibou.currentTab.startResize();
+	document.getElementById("resizeLink").style.display = "none";
+	document.getElementById("cancelResizeLink").style.display = "block";
+	document.getElementById("doneResizeLink").style.display = "block";
+{rdelim}
+
+function cancelResizeTab () {ldelim}
+	karibou.currentTab.cancelResize();
+	document.getElementById("resizeLink").style.display = "block";
+	document.getElementById("cancelResizeLink").style.display = "none";
+	document.getElementById("doneResizeLink").style.display = "none";
+{rdelim}
+
+function doneResizeTab () {ldelim}
+	karibou.currentTab.doneResize();
+	document.getElementById("resizeLink").style.display = "block";
+	document.getElementById("cancelResizeLink").style.display = "none";
+	document.getElementById("doneResizeLink").style.display = "none";
+{rdelim}
+
 </script>
-<a href="" onclick="karibou.currentTab.startResize(); return false;">Resize</a><br />
+<a href="" onclick="resizeTab(); return false;" id="resizeLink">Resize</a>
+<a href="" onclick="cancelResizeTab(); return false;" id="cancelResizeLink" style="display: none;">Cancel</a> 
+<a href="" onclick="doneResizeTab(); return false;" id="doneResizeLink" style="display: none;">Done</a>
+<br />
 <div>
 <input type="button" onclick="addTab();" value="[+]" />
 <span id="tabsBar"></span>

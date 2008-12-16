@@ -21,11 +21,13 @@ var KSortable = Object.extend(Sortable, {});
 
 // Class for a tab in the window
 var KTab = Class.create({
-	initialize: function (tabId, tabName, tabDiv) {
+	initialize: function (karibou, tabId, tabName, tabDiv) {
+		this.karibou = karibou;
 		this.tabId = tabId;
 		this.tabName = tabName;
 		this.tabDiv = tabDiv;
 		this.resizing = false;
+		this.slider = null;
 		this.tabsSettingsNode = document.createElement("div");
 		this.tabsSettingsNode.setAttribute("class", "tabsSettings");
 		this.tabDiv.appendChild(this.tabsSettingsNode);
@@ -33,21 +35,35 @@ var KTab = Class.create({
 		this.columnsContainer.setAttribute("class", "colonnes");
 		this.tabDiv.appendChild(this.columnsContainer);
 		this.tabContainers = new Array();
+		this.tabSizes = new Array();			// The saved tab sizes
+		this.newTabSizes = new Array();			// The tab sizes during the resize
 		for (var i = 0 ; i < 3 ; i++) {
 			var divNode = document.createElement("div");
 			divNode.setAttribute("id", "container_" + containerID);
 			divNode.setAttribute("class", "colonne");
 			// Warning: the columns can't use 100% of the available size : they have a border...
-			divNode.style.width = Math.round(99/3) + '%';
+			divNode.style.width = '33%';
 			this.columnsContainer.appendChild(divNode);
 			this.tabContainers.push(divNode);
+			this.tabSizes.push(33);
 			containerID++;
 		}
 		this.rebuildContainers();
 	},
 	rebuildContainers: function () {
 		for (var i = 0 ; i < this.tabContainers.length ; i++) {
-			KSortable.create(this.tabContainers[i], {dropOnEmpty: true, tag: "div", overlap: "horizontal", handle: "handle", constraint: false, containment: this.tabContainers, accept: ["appRootContainer"]});
+			KSortable.create(this.tabContainers[i], {dropOnEmpty: true, 
+								tag: "div", 
+								overlap: "horizontal", 
+								handle: "handle", 
+								constraint: false, 
+								containment: this.tabContainers, 
+								accept: ["appRootContainer"],
+								karibou: this,
+								onUpdate: function(container) {
+									Sortable.sortables[container.id].karibou.save();
+								}});
+			Sortable.sortables[this.tabContainers[i].id].karibou = this.karibou;
 		}
 	},
 	destroy: function () {
@@ -58,9 +74,10 @@ var KTab = Class.create({
 			alert("You can't resize twice");
 			return;
 		}
+		this.newTabSizes = this.tabSizes;
 		this.resizing = true;
-		var slider = document.createElement("div");
-		slider.setAttribute("class", "slider");
+		this.slider = document.createElement("div");
+		this.slider.setAttribute("class", "slider");
 		var currentWidth = 0;
 		var handles = new Array();
 		var sliderValues = new Array();
@@ -70,11 +87,12 @@ var KTab = Class.create({
 			var handle = document.createElement("div");
 			handle.setAttribute("class", "handle");
 			sliderValues.push(currentWidth);
-			slider.appendChild(handle);
+			this.slider.appendChild(handle);
 			handles.push(handle);
 		}
-		this.tabsSettingsNode.appendChild(slider);
-		var sliderObject = new Control.Slider(handles, slider, { range: $R(0, 100), tabObject: this, sliderValue: sliderValues, restricted: true, onSlide: function (value) {
+		this.tabsSettingsNode.appendChild(this.slider);
+		var sliderObject = new Control.Slider(handles, this.slider, { range: $R(0, 100), tabObject: this, sliderValue: sliderValues, restricted: true, onSlide: function (value) {
+			this.tabObject.newTabSizes = new Array();
 			var previousSize = 0;
 			for (var i = 0 ; i < value.length ; i++) {
 				if ((i == value.length-1) && value[i] > 90)
@@ -83,13 +101,55 @@ var KTab = Class.create({
 				if (colSize < 10)
 					colSize = 10;
 				this.tabObject.tabContainers[i].style.width = colSize + '%';
+				this.tabObject.newTabSizes.push(colSize);
 				previousSize += colSize;
 			}
 			this.tabObject.tabContainers[i].style.width = (99 - previousSize) + '%';
+			this.tabObject.newTabSizes.push(99 - previousSize);
 		}});
+	},
+	cancelResize: function () {
+		if (!this.resizing) {
+			alert("You must be resizing to cancel resize...");
+			return;
+		}
+		for (var i = 0 ; i < this.tabSizes.length ; i++) {
+			this.tabContainers[i].style.width = this.tabSizes[i] + '%';
+		}
+		this.newTabSizes = this.tabSizes;
+		this.resizing = false;
+		this.slider.parentNode.removeChild(this.slider);
+		this.slider = null;
+	},
+	doneResize: function () {
+		if (!this.resizing) {
+			alert("You must be resizing to finish resize...");
+			return;
+		}
+		this.tabSizes = this.newTabSizes;
+		this.resizing = false;
+		this.slider.parentNode.removeChild(this.slider);
+		this.slider = null;
+		this.karibou.save();
+	},
+	toJSON: function () {
+		var containers = new Array();
+		for (var i = 0 ; i < this.tabContainers.length ; i++) {
+			var containerNode = this.tabContainers[i];
+			var container = new Array();
+			for (var j = 0 ; j < containerNode.childNodes.length ; j++) {
+				var node = containerNode.childNodes[j];
+				if (node.attributes.getNamedItem("kapp").nodeValue == "true") {
+					container.push(node.id);
+				}
+			}
+			containers.push(container);
+		}
+		return Object.toJSON({"name": this.tabName, "id": this.tabId, "sizes": this.tabSizes, "containers": containers});
 	}
 });
 
+// Class to handle javascript-validated and sent forms
 KForm = Class.create({
 	initialize: function (formFields, targetNode, extraParameters, submitCallBack, cancelCallBack) {
 		if (!KForm.forms) {
@@ -353,10 +413,11 @@ KApp = Class.create({
 		this.appHandle = this.getElementById(this.appName + "_handle");
 		this.config = null;
 		if (this.constructor.configFields) {
-			new Ajax.Request(karibou.appGetConfigUrl + this.appId, {method: 'post', app: this, onComplete: function(transport) {
+			new Ajax.Request(karibou.appGetConfigUrl + this.appId, {method: 'post', app: this, asynchronous: false, onComplete: function(transport) {
 				transport.request.options.app.config = transport.responseText.evalJSON();
 			}});
 		}
+		this.karibou.save();
 	},
 	configure: function() {
 		this.submitBox = document.createElement("div");
@@ -388,7 +449,7 @@ KApp = Class.create({
 			this.mainContainer.style.height = this.submitBox.scrollHeight + "px";
 	},
 	shade: function() {
-		Effect.toggle(this.appBox, 'appear', { duration: 0.2 });
+		Effect.toggle(this.appBox, 'slide', { duration: 0.5 });
 		this.onShade();
 	},
 	onShade: function() {
@@ -405,7 +466,7 @@ KApp = Class.create({
 	submittedConfig: function() {
 		// This function will call the onConfig function after doing its own cleanups
 		if (this.submitBox) {
-			new Ajax.Request(this.karibou.appGetConfigUrl + this.appId, {method: 'post', app: this, onComplete: function(transport) {
+			new Ajax.Request(this.karibou.appGetConfigUrl + this.appId, {method: 'post', app: this, asynchronous: false, onComplete: function(transport) {
 				transport.request.options.app.config = transport.responseText.evalJSON();
 			}});
 			this.mainContainer.style.height = this.submitHeightBackup;
@@ -468,11 +529,12 @@ KApp = Class.create({
 
 // Class responsible for loading the KApp classes, handling the various loaded applications on the screen...
 var Karibou = Class.create({
-	initialize: function(appContentUrl, appJSUrl, appSubmitUrl, appSetConfigUrl, appGetConfigUrl, tabLinkClicked) {
+	initialize: function(appContentUrl, appJSUrl, appSubmitUrl, appSetConfigUrl, appGetConfigUrl, saveHomeUrl, tabLinkClicked) {
 		this.appSubmitUrl = appSubmitUrl;
 		this.appContentUrl = appContentUrl;
 		this.appSetConfigUrl = appSetConfigUrl;
 		this.appGetConfigUrl = appGetConfigUrl;
+		this.saveHomeUrl = saveHomeUrl;
 		this.appJSUrl = appJSUrl;
 		this.applicationsClass = new Array();					// {app name => JS class}
 		this.loadedApplicationsJS = new Array();				// [app name]
@@ -494,11 +556,13 @@ var Karibou = Class.create({
 		}
 		return this.appIds[appName];
 	},
-	createNewTab: function(tabName) {
+	createNewTab: function(tabName, settings) {
 		for (var i = 0 ; i < this.tabs.length ; i++) {
-			if (this.tabs[i].tabName == tabName) {
-				alert("Duplicate tab name");
-				return;
+			if (this.tabs[i]) {
+				if (this.tabs[i].tabName == tabName) {
+					alert("Duplicate tab name");
+					return;
+				}
 			}
 		}
 		if (this.currentTab != null) {
@@ -525,17 +589,28 @@ var Karibou = Class.create({
 		tabNode.setAttribute("class", "tab home");
 		tabNode.setAttribute("id", "tab_" + this.maxTabId);
 		this.tabsContainer.appendChild(tabNode);
-		var tabObj = new KTab(this.maxTabId, tabName, tabNode);
+		var tabObj = null;
+		if (settings != null) {
+			// We are loading a tab from the configuration, do something more... 'exceptionnal'
+			tabObj = new KTab(this, this.maxTabId, tabName, tabNode);
+		} else {
+			tabObj = new KTab(this, this.maxTabId, tabName, tabNode);
+		}
 		this.tabs[this.maxTabId] = tabObj;
 		this.currentTab = tabObj;
 		this.maxTabId++;
+		this.save();
 	},
 	tabLinkClicked: function (evt) {
 		var elem = Event.element(evt);
 		//alert(elem.parentNode.id);
 		if (elem.parentNode.id.substring(0, 9) == "tabTitle_") {
-			id = elem.parentNode.id.substring(9);
-			this.focusTab(this.tabs[id]);
+			id = Number(elem.parentNode.id.substring(9));
+			for (var i = 0 ; i < this.tabs.length ; i++) {
+				var tab = this.tabs[i];
+				if (tab.tabId == id)
+					return this.focusTab(tab);
+			}
 		}
 	},
 	closeCurrentTab: function () {
@@ -561,6 +636,7 @@ var Karibou = Class.create({
 				this.focusTab(this.tabs[newCurrentTabIdx]);
 			}
 		}
+		this.save();
 	},
 	focusTab: function(tabObject) {
 		if (this.currentTab != null)
@@ -631,10 +707,22 @@ var Karibou = Class.create({
 		return this.applicationsClass[applicationName];
 	},
 	instanciateApplication: function (applicationName, container) {
-		//@TODO : fix me !
-		if (this.currentTab)
-			container = this.currentTab.tabContainers[0];
-		var appLoader = new KAppLoader(applicationName, this.getNewIDForApp(applicationName), container, this);
+		var choosenContainer = container;
+		if ((this.currentTab) && (!choosenContainer)) {
+			var minHeight = this.currentTab.tabContainers[0].scrollHeight + 1;
+			for (var i = 0 ; i < this.currentTab.tabContainers.length ; i++) {
+				var container = this.currentTab.tabContainers[i];
+				if (container.scrollHeight < minHeight) {
+					choosenContainer = container;
+					minHeight = container.scrollHeight;
+				}
+			}
+		}
+		if (choosenContainer == null) {
+			alert("Cannot instanciate application.");
+			return;
+		}
+		var appLoader = new KAppLoader(applicationName, this.getNewIDForApp(applicationName), choosenContainer, this);
 		this.appLoaders.push(appLoader);
 		appLoader.load();
 	},
@@ -653,6 +741,24 @@ var Karibou = Class.create({
 			return;
 		} else if (node.parentNode)
 			return this.getAppFromNode(node.parentNode);
+	},
+	save: function (node) {
+		var data = {"tabs": this.tabs};
+		var jsonised = Object.toJSON(data);
+		document.getElementById("configViewer").innerHTML = jsonised;
+		new Ajax.Request(this.saveHomeUrl, {method: 'post', postBody: "home=" + encodeURIComponent(jsonised)}); 
+	},
+	loadUrl: function (url) {
+		new Ajax.Request(url, {method: 'get', karibou: this, onComplete: function(transport) {
+			transport.request.options.karibou.loadData(transport.responseText.evalJSON());
+		}});
+	},
+	loadData: function (data) {
+		var tabs = data["tabs"];
+		for (var i = 0 ; i < tabs.length ; i++) {
+			//alert(tabs[i]["name"]);
+			this.createNewTab(tabs[i]["name"]);
+		}
 	}
 });
 
@@ -699,3 +805,4 @@ var KAppLoader = Class.create({
 Karibou.APP_LOADING = 0;
 Karibou.APP_LOADED = 1;
 Karibou.APP_FAILURE = 2;
+

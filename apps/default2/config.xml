@@ -8,6 +8,8 @@
 	<load class="AppJSConfigView" file="class/appjsconfigview.class.php" />
 	<load class="AppSubmit" file="class/appsubmit.class.php" />
 	<load class="AppConfig" file="class/appconfig.class.php" />
+	<load class="HomeConfig" file="class/homeconfig.class.php" />
+	<load class="SaveHome" file="class/savehome.class.php" />
 
 	<load class="DefaultModel" file="class/defaultmodel.class.php" />
 	<!-- TODO : split appcontentmodel in three files -->
@@ -19,34 +21,35 @@
 	<view name="menu" class="DefaultMenu" template="menu.tpl" />
 
 	<view name="default" class="DefaultModel" template="accueil.tpl" />
+	<view name="homeConfig" class="HomeConfig" template="homeconfig.tpl" />
 	<view name="appMainView" class="AppMainView" template="appmainview.tpl" />
 	<view name="appJSView" class="AppJSView" template="appjsview.tpl" />
 	<view name="appJSConfigView" class="AppJSConfigView" template="appjsconfigview.tpl" />
 	
-	<header app="header" view="home" />
-	<footer app="footer" view="default" />
+	<header app="empty" view="default" />
+	<footer app="empty" view="default" />
 	
-	<page view="default" />
+	<page view="default">
+		<header app="header" view="home" />
+		<footer app="footer" view="default" />
+	</page>
 	
 	<page name="appmainview" view="appMainView">
-		<header app="empty" view="default" />
-		<footer app="empty" view="default" />
 		<argument name="miniapp" class="ArgMiniapp" />
 	</page>
 	
 	<page name="appjsview" view="appJSView">
-		<header app="empty" view="default" />
-		<footer app="empty" view="default" />
 		<argument name="miniapp" class="ArgMiniapp" />
 	</page>
 
 	<page name="appjsconfigview" view="appJSConfigView">
-		<header app="empty" view="default" />
-		<footer app="empty" view="default" />
 		<argument name="miniapp" class="ArgMiniapp" />
 	</page>
 
+	<page name="homeconfig" view="homeConfig" />
+
 	<form action="appsubmit" class="AppSubmit" />
 	<form action="appconfig" class="AppConfig" />
+	<form action="savehome" class="SaveHome" />
 	
 </app>

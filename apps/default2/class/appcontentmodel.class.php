@@ -68,6 +68,7 @@ abstract class AppConfigModel extends DefaultFormModel {
 			throw new Exception("Missing miniapp parameter");
 		if (preg_match('/^([a-zA-Z0-9\-_]*)_(\d*)$/i', $_POST['miniapp'], $result)) {
 			$this->currentUser->setPref($_POST["miniapp"], $parameters);
+			$this->currentUser->savePrefs($this->db);
 		}
 	}
 }
