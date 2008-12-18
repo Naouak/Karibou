@@ -21,10 +21,16 @@ var KSortable = Object.extend(Sortable, {});
 
 // Class for a tab in the window
 var KTab = Class.create({
-	initialize: function (karibou, tabId, tabName, tabDiv) {
+	// Special case : if settings is not undefined, we ignore tabName, and we will require many applications....
+	initialize: function (karibou, tabName, tabDiv, settings) {
 		this.karibou = karibou;
-		this.tabId = tabId;
-		this.tabName = tabName;
+		if (settings) {
+			this.tabName = settings["name"];
+			this.tabSizes = settings["sizes"];
+		} else {
+			this.tabName = tabName;
+			this.tabSizes = [33,33,33];			// The saved tab sizes
+		}
 		this.tabDiv = tabDiv;
 		this.resizing = false;
 		this.slider = null;
@@ -35,17 +41,15 @@ var KTab = Class.create({
 		this.columnsContainer.setAttribute("class", "colonnes");
 		this.tabDiv.appendChild(this.columnsContainer);
 		this.tabContainers = new Array();
-		this.tabSizes = new Array();			// The saved tab sizes
-		this.newTabSizes = new Array();			// The tab sizes during the resize
-		for (var i = 0 ; i < 3 ; i++) {
+		this.newTabSizes = null;			// The tab sizes during the resize
+		for (var i = 0 ; i < this.tabSizes.length ; i++) {
 			var divNode = document.createElement("div");
 			divNode.setAttribute("id", "container_" + containerID);
 			divNode.setAttribute("class", "colonne");
 			// Warning: the columns can't use 100% of the available size : they have a border...
-			divNode.style.width = '33%';
+			divNode.style.width = this.tabSizes[i] + '%';
 			this.columnsContainer.appendChild(divNode);
 			this.tabContainers.push(divNode);
-			this.tabSizes.push(33);
 			containerID++;
 		}
 		this.rebuildContainers();
@@ -145,7 +149,7 @@ var KTab = Class.create({
 			}
 			containers.push(container);
 		}
-		return Object.toJSON({"name": this.tabName, "id": this.tabId, "sizes": this.tabSizes, "containers": containers});
+		return Object.toJSON({"name": this.tabName, "sizes": this.tabSizes, "containers": containers});
 	}
 });
 
@@ -543,8 +547,7 @@ var Karibou = Class.create({
 		this.tabsContainer = document.getElementById("tabsContainer");
 		this.tabsBar = document.getElementById("tabsBar");
 		this.tabLinkClickedCallback = tabLinkClicked;
-		this.tabs = new Array();						// [KTab objects]
-		this.maxTabId = 0;
+		this.tabs = {}; 		// {tab name => KTab object} //new Array();						// [KTab objects]
 		this.currentTab = null;
 		this.appIds = new Array();						// {app name => max used ID}
 	},
@@ -557,13 +560,9 @@ var Karibou = Class.create({
 		return this.appIds[appName];
 	},
 	createNewTab: function(tabName, settings) {
-		for (var i = 0 ; i < this.tabs.length ; i++) {
-			if (this.tabs[i]) {
-				if (this.tabs[i].tabName == tabName) {
-					alert("Duplicate tab name");
-					return;
-				}
-			}
+		if (this.tabs[tabName]) {
+			alert("Duplicate tab name");
+			return;
 		}
 		if (this.currentTab != null) {
 			this.currentTab.tabDiv.style.display = "none";
@@ -580,49 +579,54 @@ var Karibou = Class.create({
 		$(aNode).observe('click', this.tabLinkClickedCallback);
 		tabTitleNode.setAttribute("tabName", tabName);
 		tabTitleNode.setAttribute("class", "activeTabLink");
-		tabTitleNode.setAttribute("id", "tabTitle_" + this.maxTabId);
 		aNode.innerHTML = tabName;
 		tabTitleNode.appendChild(aNode);
 		this.tabsBar.appendChild(tabTitleNode);
 
 		var tabNode = document.createElement("div");
 		tabNode.setAttribute("class", "tab home");
-		tabNode.setAttribute("id", "tab_" + this.maxTabId);
 		this.tabsContainer.appendChild(tabNode);
 		var tabObj = null;
-		if (settings != null) {
+		if (settings) {
 			// We are loading a tab from the configuration, do something more... 'exceptionnal'
-			tabObj = new KTab(this, this.maxTabId, tabName, tabNode);
+			tabObj = new KTab(this, null, tabNode, settings);
 		} else {
-			tabObj = new KTab(this, this.maxTabId, tabName, tabNode);
+			tabObj = new KTab(this, tabName, tabNode);
 		}
-		this.tabs[this.maxTabId] = tabObj;
+		this.tabs[tabName] = tabObj;
 		this.currentTab = tabObj;
-		this.maxTabId++;
 		this.save();
 	},
 	tabLinkClicked: function (evt) {
 		var elem = Event.element(evt);
-		//alert(elem.parentNode.id);
-		if (elem.parentNode.id.substring(0, 9) == "tabTitle_") {
-			id = Number(elem.parentNode.id.substring(9));
-			for (var i = 0 ; i < this.tabs.length ; i++) {
-				var tab = this.tabs[i];
-				if (tab.tabId == id)
-					return this.focusTab(tab);
-			}
-		}
+		var tab = this.tabs[elem.innerHTML];
+		if (tab)
+			return this.focusTab(tab);
+		return false;
 	},
 	closeCurrentTab: function () {
 		if (this.currentTab != null) {
-			tabName = this.currentTab.tabName;
+			var tabName = this.currentTab.tabName;
 
 			this.currentTab.destroy();
+
+			var newTabs = {};
+			var newTabName = null;
+			var previousTabName = null;
+			for (var oldTabName in this.tabs) {
+				if (oldTabName != tabName) {
+					newTabs[oldTabName] = this.tabs[oldTabName];
+					if (newTabName == null)
+						newTabName = newTabName;
+					previousTabName = oldTabName;
+				} else {
+					newTabName = previousTabName;
+				}
+			}
 			
-			newCurrentTabIdx = this.tabs.indexOf(this.currentTab) - 1;
-			this.tabs = this.tabs.without(this.currentTab);
-			if (((newCurrentTabIdx == -1) && (this.tabs.length > 0)) || (newCurrentTabIdx >= this.tabs.length))
-				newCurrentTabIdx = 0;
+			this.tabs = newTabs;
+
+			newTab = this.tabs[newTabName];
 			
 			this.currentTab.tabDiv.parentNode.removeChild(this.currentTab.tabDiv);
 
@@ -632,8 +636,9 @@ var Karibou = Class.create({
 						this.tabsBar.childNodes[i].parentNode.removeChild(this.tabsBar.childNodes[i]);
 				}	
 			}
-			if (newCurrentTabIdx != -1) {
-				this.focusTab(this.tabs[newCurrentTabIdx]);
+			this.save();
+			if (newTab) {
+				this.focusTab(newTab);
 			}
 		}
 		this.save();
@@ -644,8 +649,8 @@ var Karibou = Class.create({
 		tabObject.tabDiv.style.display="block";
 		this.currentTab = tabObject;
 		for (var i = 0 ; i < this.tabsBar.childNodes.length ; i++) {
-			if (this.tabsBar.childNodes[i].id != null) {
-				if (this.tabsBar.childNodes[i].id != "tabTitle_" + tabObject.tabId)
+			if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabname") != null) {
+				if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabname").nodeValue != tabObject.tabName)
 					this.tabsBar.childNodes[i].setAttribute("class", "");
 				else
 					this.tabsBar.childNodes[i].setAttribute("class", "activeTabLink");
@@ -654,10 +659,14 @@ var Karibou = Class.create({
 	},
 	getTabFromApplication: function(application) {
 		node = application.mainContainer;
-		while ((node.id == null) || (node.id.substring(0, 4) != "tab_"))
+		while ((node.attributes.getNamedItem("class") == null) || (node.attributes.getNamedItem("class").nodeValue != "tab home")) {
 			node = node.parentNode;
-		tabId = node.id.substring(4);
-		return this.tabs[tabId];
+		}
+		for (var name in this.tabs) {
+			if (this.tabs[name].tabDiv == node)
+				return this.tabs[name];
+		}
+		return null;
 	},
 	loadApplicationView: function(application, appId, container) {
 		req = new Ajax.Updater(container, this.appContentUrl + application + "_" + appId, {asynchronous: true, onComplete: function (transport) {
@@ -755,9 +764,8 @@ var Karibou = Class.create({
 	},
 	loadData: function (data) {
 		var tabs = data["tabs"];
-		for (var i = 0 ; i < tabs.length ; i++) {
-			//alert(tabs[i]["name"]);
-			this.createNewTab(tabs[i]["name"]);
+		for (var tabName in tabs) {
+			this.createNewTab(tabName, tabs[tabName]);
 		}
 	}
 });
