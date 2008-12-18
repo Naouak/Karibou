@@ -1,0 +1,48 @@
+    Guide pour porter une application
+1) Changements majeurs
+- Le système de configuration des applis change complètement.
+- L'ajout de contenu dans une appli (exemple : envoi d'une citation) est géré par l'appli default directement.
+- Tout code JavaScript doit être réécrit dans un style objet
+- Le fichier .app est renommé en .app2 et change de structure.
+
+2) Fichiers .app2
+Les entrées possibles sont les suivantes :
+    o Paramètres obligatoires
+- name_LANG = NAME
+Le nom affiché pour l'application dans la liste des applis. Ce nom peut être traduit désormais.
+- desc_LANG = DESCRIPTION
+Une description de l'application (pas encore utilisé, mais ça va l'être)
+- view = miniappview
+La vue à utiliser pour le contenu de la mini-application
+    o Paramètres optionnels
+- JSview = myJSview
+La vue à utiliser fournissant le code JavaScript de la mini-appli. C'est dans une vue pour pouvoir utiliser kurl notamment...
+- configmodel = myConfigClass
+La classe à utiliser pour la gestion de la configuration de l'appli.
+- submitmodel = mySubmitClass
+La classe à utiliser pour la gestion de l'envoi de contenu sur l'appli.
+
+3) Envoi de contenu et configuration
+Ces deux classes sont très proches (en interne le code est partagé à 99%).
+Il y a une fonction abstraite dans les deux cas : public void formFields().
+Cette fonction renvoie un tableau listant les champs à afficher dans le formulaire.
+Les données sont automatiquement validés en JavaScript et en PHP...
+La deuxième fonction abstraite pour l'envoi de contenu (et disposant d'une implémentation par défaut dans le cas de la config) est la fonction public void submit($parameters).
+$parameters est un tableau {nom du champ => valeur validée}. Pas besoin de s'inquiéter de la validation, des magic quotes... C'est le boulot de default2.
+Exemples d'implémentations :
+- appli mynotes pour la config
+- appli ilsontdit pour l'envoi de contenu
+Les champs restent à documenter....
+
+La configuration d'une appli est accessible à la vue par le système habituel. Par contre, il n'est pas accessible à la vue pour le JavaScript. En effet, l'objet JavaScript de l'appli a directement accès à la config via une variable, pas besoin de se fatiguer...
+
+4) L'API JavaScript
+Toute application a une instance d'un objet JavaScript. 
+Il est hors de question qu'une application dispose de code hors de cet objet.
+Cet objet dispose également d'un accès simplifié au DOM, un genre de "DOM local". Pour l'instant il n'y a qu'une fonction getElementById dedans, mais il serait envisageable d'avoir d'autres fonctions comme getElementsByClassName par exemple.
+Il est hors de question qu'une application fasse appel au DOM "global".
+L'objet lui-même hérite de KApp. Il peut réimplémenter des fonctions clés pour réagir à certains évènements. Par exemple il lui est possible de réagir à un changement de configuration de l'application par exemple, ou à un "repli" de l'application...
+
+Exemples d'implémentations :
+- appli onlineusers
+
