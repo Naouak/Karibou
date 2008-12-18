@@ -29,7 +29,7 @@ var KTab = Class.create({
 			this.tabSizes = settings["sizes"];
 		} else {
 			this.tabName = tabName;
-			this.tabSizes = [33,33,33];			// The saved tab sizes
+			this.tabSizes = [33,33,33];
 		}
 		this.tabDiv = tabDiv;
 		this.resizing = false;
@@ -53,6 +53,21 @@ var KTab = Class.create({
 			containerID++;
 		}
 		this.rebuildContainers();
+		if (settings) {
+			for (var i = 0 ; i < this.tabSizes.length ; i++) {
+				var appList = settings["containers"][i];
+				for (var j = 0 ; j < appList.length ; j++) {
+					var splits = appList[j].split("_");
+					if (splits.length != 2) {
+						alert("C'est quoi cette appli de merde avec un _ dans le nom ?");
+					} else {
+						var appName = splits[0];
+						var appId = splits[1];
+						this.karibou.instanciateApplication(appName, this.tabContainers[i], appId);
+					}
+				}
+			}
+		}
 	},
 	rebuildContainers: function () {
 		for (var i = 0 ; i < this.tabContainers.length ; i++) {
@@ -634,7 +649,7 @@ var Karibou = Class.create({
 				if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabname") != null) {
 					if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabname").nodeValue == tabName)
 						this.tabsBar.childNodes[i].parentNode.removeChild(this.tabsBar.childNodes[i]);
-				}	
+				}
 			}
 			this.save();
 			if (newTab) {
@@ -715,7 +730,7 @@ var Karibou = Class.create({
 	getApplicationClass: function (applicationName) {
 		return this.applicationsClass[applicationName];
 	},
-	instanciateApplication: function (applicationName, container) {
+	instanciateApplication: function (applicationName, container, force_id) {
 		var choosenContainer = container;
 		if ((this.currentTab) && (!choosenContainer)) {
 			var minHeight = this.currentTab.tabContainers[0].scrollHeight + 1;
@@ -728,10 +743,14 @@ var Karibou = Class.create({
 			}
 		}
 		if (choosenContainer == null) {
-			alert("Cannot instanciate application.");
+			alert("Cannot instanciate application, no container.");
 			return;
 		}
-		var appLoader = new KAppLoader(applicationName, this.getNewIDForApp(applicationName), choosenContainer, this);
+		var appLoader = null;
+		if (force_id != null)
+			var appLoader = new KAppLoader(applicationName, force_id, choosenContainer, this);
+		else
+			var appLoader = new KAppLoader(applicationName, this.getNewIDForApp(applicationName), choosenContainer, this);
 		this.appLoaders.push(appLoader);
 		appLoader.load();
 	},
@@ -752,7 +771,7 @@ var Karibou = Class.create({
 			return this.getAppFromNode(node.parentNode);
 	},
 	save: function (node) {
-		var data = {"tabs": this.tabs};
+		var data = {"tabs": this.tabs, "appIds": this.appIds};
 		var jsonised = Object.toJSON(data);
 		document.getElementById("configViewer").innerHTML = jsonised;
 		new Ajax.Request(this.saveHomeUrl, {method: 'post', postBody: "home=" + encodeURIComponent(jsonised)}); 
@@ -767,6 +786,7 @@ var Karibou = Class.create({
 		for (var tabName in tabs) {
 			this.createNewTab(tabName, tabs[tabName]);
 		}
+		this.appIds = data["appIds"];
 	}
 });
 
