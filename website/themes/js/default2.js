@@ -564,7 +564,7 @@ var Karibou = Class.create({
 		this.tabLinkClickedCallback = tabLinkClicked;
 		this.tabs = {}; 		// {tab name => KTab object} //new Array();						// [KTab objects]
 		this.currentTab = null;
-		this.appIds = new Array();						// {app name => max used ID}
+		this.appIds = {};						// {app name => max used ID}
 	},
 	getNewIDForApp: function(appName) {
 		if (this.appIds[appName] != undefined) {
