@@ -158,8 +158,10 @@ var KTab = Class.create({
 			var container = new Array();
 			for (var j = 0 ; j < containerNode.childNodes.length ; j++) {
 				var node = containerNode.childNodes[j];
-				if (node.attributes.getNamedItem("kapp").nodeValue == "true") {
-					container.push(node.id);
+				if (node.attributes.getNamedItem("kapp")) {
+					if (node.attributes.getNamedItem("kapp").nodeValue == "true") {
+						container.push(node.id);
+					}
 				}
 			}
 			containers.push(container);
@@ -684,10 +686,9 @@ var Karibou = Class.create({
 		return null;
 	},
 	loadApplicationView: function(application, appId, container) {
-		req = new Ajax.Updater(container, this.appContentUrl + application + "_" + appId, {asynchronous: true, onComplete: function (transport) {
-			this.karibou.applicationViewLoaded(application);
+		new Ajax.Updater(container, this.appContentUrl + application + "_" + appId, {asynchronous: true, karibou: this, app: application, onComplete: function (transport) {
+			transport.request.options.karibou.applicationViewLoaded(transport.request.options.app);
 		}});
-		req.karibou = this;
 	},
 	applicationViewLoaded: function (application) {
 		for (var i = 0 ; i < this.appLoaders.length ; i++) {
@@ -800,6 +801,8 @@ var KAppLoader = Class.create({
 		this.karibou = karibou;
 		this.targetNode = document.createElement("div");
 		this.targetNode.setAttribute("class", "appRootContainer");
+		this.targetNode.innerHTML = "Please wait...";
+		this.container.appendChild(this.targetNode);
 	},
 	load: function () {
 		this.karibou.loadApplicationJS(this.appName);
@@ -811,7 +814,6 @@ var KAppLoader = Class.create({
 	onHandler: function () {
 		if (this.loaded()) {
 			klass = this.karibou.getApplicationClass(this.appName);
-			this.container.appendChild(this.targetNode);
 			var appObj = new klass(this.appName, this.appId, this.targetNode, this.karibou);
 			this.karibou.registerAppObj(appObj);
 			if (this.karibou.currentTab != null) 
@@ -819,11 +821,13 @@ var KAppLoader = Class.create({
 		}
 	},
 	handlerJS: function (application) {
+		//alert("handleJS called");
 		if (this.appName == application)
 			this.jsloaded = true;
 		this.onHandler();
 	},
 	handlerMain: function (application) {
+		//alert("handlerMain called");
 		if (this.appName == application)
 			this.mainloaded = true;
 		this.onHandler();
