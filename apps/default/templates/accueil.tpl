@@ -1,4 +1,6 @@
-Ajouter une application :<br />
+
+<a href="#" onclick="new Effect.toggle($('accueillist')); return false;">Ajouter une application :</a><br />
+<div id="accueillist" style="display : none">
 <ul>
 {foreach item=appName from=$apps}
 <li><a href="#" onclick="karibou.instanciateApplication('{$appName}'); return false;">{$appName}</a></li><br />
@@ -12,6 +14,7 @@ Ajouter une application :<br />
 - {$birthday->getName('fr')}<br />
 - {$birthday->getDesc('fr')}<br />
 *}
+</div>
 <div id="configViewer">config</div>
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/default2.js"></script>
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/scal.js"></script>
