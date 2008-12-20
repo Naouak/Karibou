@@ -1,4 +1,3 @@
-<h3 class="handle">{t}D Day{/t}</h3>
 {if !isset($DDempty)}
 	<table>
 	{foreach from=$ddaylist key=key item=dd}
