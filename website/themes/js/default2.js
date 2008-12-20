@@ -476,6 +476,14 @@ KApp = Class.create({
 	onShade: function() {
 		// Apps should overload this if they want to do something after they have been shaded
 	},
+	close: function() {
+		this.mainContainer.parentNode.removeChild(this.mainContainer);
+		this.onClose();
+		this.karibou.save();
+	},
+	onClose: function() {
+		// Apps should overload this if they want to do something when they have been closed
+	 },
 	onSubmit: function() {
 		// Apps should overload this if they want to do something after content has been submitted
 		this.refresh();
