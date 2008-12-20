@@ -16,22 +16,6 @@ class Citation extends Model
 {
 	public function build()
 	{
-		$citation = filter_input(INPUT_POST, 'newcitation', FILTER_SANITIZE_SPECIAL_CHARS);
-		if (($citation !== false) && ($this->currentUser->isLogged()) ) 
-		{
-			if (strlen($citation) > 3)
-			{
-				//Requete d'insertion
-				//@TODO : handle time to live here...
-				$sql = "INSERT INTO citation (user_id, citation, datetime) VALUES (:user, :citation, NOW());";
-				$stmt = $this->db->prepare("INSERT INTO citation(user_id, citation, datetime) VALUES (:user, :citation, NOW());");
-				$stmt->bindValue(":user", $this->currentUser->getID());
-				$stmt->bindValue(":citation", $citation);
-				$stmt->execute();
-			}
-			
-		}
-
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
 

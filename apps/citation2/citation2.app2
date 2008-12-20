@@ -1,6 +1,0 @@
-name_en = Quote of the day
-name_fr = Citation du jour
-desc_fr = Affiche la citation du jour
-desc_en = Display the quote of the day 
-view = mini
-submitmodel = CitationSubmit
