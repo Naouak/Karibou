@@ -1,6 +1,6 @@
-<?php 
+<?php
 /**
- * @copyright 2005 JoN
+ * @copyright 2008 Pinaraf <pinaraf@pinaraf.info>
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU Public License
  * See the enclosed file COPYING for license information.
@@ -8,16 +8,11 @@
  * @package applications
  **/
 
-/** 
- * 
- * @package applications
- **/
-class MyNotesConfig extends Model
+class MyNotesConfig extends AppConfigModel
 {
-	public function build()
+	public function formFields()
 	{
-		if(isset($this->args['notes']))
-			$this->assign('notes', $this->args['notes']);
+		return array("notes" => array("type" => "textarea"));
 	}
 }
 
