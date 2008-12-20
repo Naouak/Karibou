@@ -1,0 +1,6 @@
+name_fr = Postit
+name_en = Postit
+desc_fr = Petit post-it simple et rapide...
+desc_en = Small simple and quick postit...
+view = mini
+configmodel = MyNotesConfig
