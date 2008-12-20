@@ -21,14 +21,13 @@
 <?
 	}
 ?>
-<!--[if lt IE 7]>
-<script src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE7.js" type="text/javascript"></script>
+<!--[if lt IE 8]>
+<script src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE8.js" type="text/javascript"></script>
 <![endif]-->
-	<script type="text/javascript" src="http://www.netvibes.com/js/UWA/load.js.php?env=BlogWidget"></script>
 	<script type="text/javascript" src="<?=$this->vars['karibou']['base_url']?>/themes/js/prototype.js"></script>
 	<script type="text/javascript" src="<?=$this->vars['karibou']['base_url']?>/themes/js/scriptaculous.js"></script>
 	<script type="text/javascript" src="<?=$this->vars['karibou']['base_url']?>/themes/js/karibou.js"></script>
-        <script type="text/javascript" src="<?=$this->vars['karibou']['base_url']?>/themes/js/default.js"></script>
+    <!--<script type="text/javascript" src="<?=$this->vars['karibou']['base_url']?>/themes/js/default.js"></script>-->
 	<script type="text/javascript" src="<?=$this->vars['karibou']['base_url']?>/themes/js/hintbox.js"></script>
 <? hook(array('name'=>"html_head")); ?>
 </head>

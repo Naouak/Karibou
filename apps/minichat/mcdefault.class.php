@@ -44,17 +44,13 @@ class MCDefault extends Model
 			$inversepostorder = $config["inversepostorder"]["small"];
 		}
 		
-		$emoticons = new Emoticons($this->userFactory);
-		
 		if( isset($this->args['emoticon_theme']) && $this->args['emoticon_theme'] != "" )
 		{
 			$emoticon_theme = $this->args['emoticon_theme'];
-			$emoticons->set_user_emoticon_theme($this->args['emoticon_theme']);
 		}
 		else
 		{
 			$emoticon_theme = $config["emoticon_theme"]["small"];
-			//$emoticons->set_user_emoticon_theme($config["emoticon_theme"]["small"]);
 		}
 		$this->assign("emoticon_theme", $emoticon_theme);
 		$this->assign("maxlines", $max);
