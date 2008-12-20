@@ -8,7 +8,7 @@ class HomeConfig extends Model {
 				return;
 			}
 		}
-		$this->assign("homeConfig", '{"tabs": {"Default": {"name": "Default", "sizes": [33, 33, 33], "containers": [["citation2_0", "ilsontdit2_0"], ["onlineusers2_0"], ["dday2_0", "birthday2_0"]]}}, "appIds": {"citation2": 0, "dday2": 0, "birthday2": 0, "ilsontdit2": 0, "onlineusers2": 0}}');
+		$this->assign("homeConfig", '{"tabs": {"Default": {"name": "Default", "sizes": [33, 33, 33], "containers": [["citation_0", "ilsontdit_0"], ["onlineusers_0"], ["dday_0", "birthday_0"]]}}, "appIds": {"citation": 0, "dday": 0, "birthday": 0, "ilsontdit": 0, "onlineusers": 0}}');
 	}
 }
 
