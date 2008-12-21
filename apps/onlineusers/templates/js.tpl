@@ -1,6 +1,6 @@
 {literal}
 
-onlineusers2Class = Class.create(KApp, {
+onlineusersClass = Class.create(KApp, {
 	initialize: function ($super, appName, id, container, karibou) {
 		$super(appName, id, container, karibou);
 		this.refresher = new Ajax.PeriodicalUpdater(this.getElementById('onlineusers_live'), '{/literal}{kurl page="list"}{literal}', 
