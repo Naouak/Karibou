@@ -288,7 +288,7 @@ KForm = Class.create({
 				inputNode.setAttribute("id", fieldID);
 				inputNode.setAttribute("name", fieldID);
 				inputNode.setAttribute("type", "text");
-				formNode.appendChild(fileNode);
+				formNode.appendChild(inputNode);
 			} else {
 				alert("Unknown field type " + fieldObject["type"]);
 			}
