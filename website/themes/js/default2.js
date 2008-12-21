@@ -277,6 +277,18 @@ KForm = Class.create({
 				fileNode.setAttribute("name", fieldID);
 				fileNode.setAttribute("type", "file");
 				formNode.appendChild(fileNode);
+			} else if ( fieldObject["type"] == "int" || fieldObject["type"] == "float") {
+				if (fieldObject["label"]) {
+					lblNode = document.createElement("label");
+					lblNode.innerHTML = fieldObject["label"];
+					lblNode.setAttribute("for", fieldId);
+					fromNode.appendChild(lblNode);
+				}
+				inputNode = document.createElement("input");
+				inputNode.setAttribute("id", fieldID);
+				inputNode.setAttribute("name", fieldID);
+				inputNode.setAttribute("type", "text");
+				formNode.appendChild(fileNode);
 			} else {
 				alert("Unknown field type " + fieldObject["type"]);
 			}
@@ -391,6 +403,50 @@ KForm = Class.create({
 						return false;
 					}
 				}
+			}else if (fieldObject["type"] == "int") {
+				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
+					if (formObject.value == "") {
+						alert("One or more fields are missing.");
+						formObject.focus();
+						return false;
+					}
+				}
+				if (formObject.value !=""){
+					var num = Number(formObject.value);
+					if (num.toString() == "NaN" || Math.round(num) == num){
+						alert("Field value is not a valid number, you must enter a int");
+						formObject.focus();
+						return false;
+					}
+				}
+				if ((formObject.value < fieldObject["min"]) || (formObject.value > fieldObject["max"])){
+					alert("number is not between" + fieldObject["max"] + "and" + fieldObject["min"]);
+					formObject.focus();
+					return false;
+				}
+				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
+			} else if (fieldObject["type"] == "float") {
+				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
+					if (formObject.value == "") {
+						alert("One or more fields are missing.");
+						formObject.focus();
+						return false;
+					}
+				}
+				if (formObject.value !=""){
+					var num = Number(formObject.value);
+					if (num.toString() == "NaN" ){
+						alert("Field value is not a valid number");
+						formObject.focus();
+						return false;
+					}
+				}
+				if ((formObject.value < fieldObject["min"]) || (formObject.value > fieldObject["max"])){
+					alert("number is not between" + fieldObject["max"] + "and" + fieldObject["min"]);
+					formObject.focus();
+					return false;
+				}
+				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
 			} else {
 				alert("Hooo no, I can't do this !");
 				return false;
