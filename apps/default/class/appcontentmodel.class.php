@@ -41,7 +41,23 @@ abstract class DefaultFormModel {
 				}
 			} else if ($fieldObj["type"] == "file") {
 				$value = $_FILES[$fieldID];
-			} else {
+			} else if ($fieldObj["type"] == "float") {
+				$value = filter_input(INPUT_POST, $fieldID, FILTER_VALIDATE_FLOAT);
+				if ($value === false)
+					throw new Exception("Invalid field value");
+				if (array_key_exists("max", $fieldObj) && $value>$fieldObj["max"])
+					throw new Exception("Invalid field value");
+				if (array_key_exists("min", $fieldObj) && $value<$fieldObj["min"])
+					throw new Exception("Invalid field value");	
+			} else if ($fieldObj["type"] == "int") {
+				$value = filter_input(INPUT_POST, $fieldID, FILTER_VALIDATE_INT);
+				if ($value === false)
+					throw new Exception("Invalid field value");
+				if (array_key_exists("max", $fieldObj) && $value>$fieldObj["max"])
+					throw new Exception("Invalid field value");
+				if (array_key_exists("min", $fieldObj) && $value<$fieldObj["min"])
+					throw new Exception("Invalid field value");
+			}else {
 				throw new Exception("Unsupported field type");
 			}
 			if ((array_key_exists("required", $fieldObj) && ($fieldObj["required"] == true)) && ($value == "")) {
