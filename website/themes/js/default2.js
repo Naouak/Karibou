@@ -210,9 +210,6 @@ KForm = Class.create({
 					inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
 				if (fieldObject["value"])
 					inputNode.setAttribute("value", fieldObject["value"]);
-				if (fieldObject["default"]){
-					inputNode.setAttribute("value",fieldObject["default"]);
-				}
 				formNode.appendChild(inputNode);
 			} else if (fieldObject["type"] == "date") {
 				if (fieldObject["label"]) {
@@ -236,9 +233,6 @@ KForm = Class.create({
 				calNode = document.createElement("span");
 				calNode.setAttribute("class", "calendar_link");
 				calNode.setAttribute("for", fieldID);
-				if (fieldObject["default"]){
-					calNode.setAttribute("value",fieldObject["default"]);
-				}
 				calNode.onclick = function() {
 					var inputNode = $app(this).getElementById(this.attributes.getNamedItem("for").nodeValue);
 					var divNode = document.createElement("div");
@@ -268,9 +262,6 @@ KForm = Class.create({
 					areaNode.setAttribute("rows", fieldObject["rows"]);
 				if (fieldObject["value"])
 					areaNode.innerHTML = fieldObject["value"];
-				if (fieldObject["default"]){
-					areaNode.setAttribute("value",fieldObject["default"]);
-				}
 				formNode.appendChild(areaNode);
 			} else if (fieldObject["type"] == "file") {
 				formNode.setAttribute("enctype", "multipart/form-data");
@@ -285,9 +276,6 @@ KForm = Class.create({
 				fileNode.setAttribute("id", fieldID);
 				fileNode.setAttribute("name", fieldID);
 				fileNode.setAttribute("type", "file");
-				if (fieldObject["default"]){
-					fileNode.setAttribute("value",fieldObject["default"]);
-				}
 				formNode.appendChild(fileNode);
 			} else if ( fieldObject["type"] == "int" || fieldObject["type"] == "float") {
 				if (fieldObject["label"]) {
@@ -300,9 +288,8 @@ KForm = Class.create({
 				inputNode.setAttribute("id", fieldID);
 				inputNode.setAttribute("name", fieldID);
 				inputNode.setAttribute("type", "text");
-				if (fieldObject["default"]){
-					inputNode.setAttribute("value",fieldObject["default"]);
-				}
+				if (fieldObject["value"])
+					inputNode.setAttribute("value", fieldObject["value"]);
 				formNode.appendChild(inputNode);
 			} else {
 				alert("Unknown field type " + fieldObject["type"]);
