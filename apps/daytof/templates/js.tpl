@@ -1,6 +1,6 @@
 {literal}
 
-daytof2Class = Class.create(KApp, {
+daytofClass = Class.create(KApp, {
 	initialize: function($super, appName, id, container, karibou) {
 		$super(appName, id, container, karibou);
 		{/literal}
