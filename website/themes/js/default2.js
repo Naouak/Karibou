@@ -210,6 +210,9 @@ KForm = Class.create({
 					inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
 				if (fieldObject["value"])
 					inputNode.setAttribute("value", fieldObject["value"]);
+				if (fieldObject["default"]){
+					inputNode.setAttribute("value",fieldObject["default"]);
+				}
 				formNode.appendChild(inputNode);
 			} else if (fieldObject["type"] == "date") {
 				if (fieldObject["label"]) {
@@ -233,6 +236,9 @@ KForm = Class.create({
 				calNode = document.createElement("span");
 				calNode.setAttribute("class", "calendar_link");
 				calNode.setAttribute("for", fieldID);
+				if (fieldObject["default"]){
+					calNode.setAttribute("value",fieldObject["default"]);
+				}
 				calNode.onclick = function() {
 					var inputNode = $app(this).getElementById(this.attributes.getNamedItem("for").nodeValue);
 					var divNode = document.createElement("div");
@@ -262,6 +268,9 @@ KForm = Class.create({
 					areaNode.setAttribute("rows", fieldObject["rows"]);
 				if (fieldObject["value"])
 					areaNode.innerHTML = fieldObject["value"];
+				if (fieldObject["default"]){
+					areaNode.setAttribute("value",fieldObject["default"]);
+				}
 				formNode.appendChild(areaNode);
 			} else if (fieldObject["type"] == "file") {
 				formNode.setAttribute("enctype", "multipart/form-data");
@@ -276,18 +285,24 @@ KForm = Class.create({
 				fileNode.setAttribute("id", fieldID);
 				fileNode.setAttribute("name", fieldID);
 				fileNode.setAttribute("type", "file");
+				if (fieldObject["default"]){
+					fileNode.setAttribute("value",fieldObject["default"]);
+				}
 				formNode.appendChild(fileNode);
 			} else if ( fieldObject["type"] == "int" || fieldObject["type"] == "float") {
 				if (fieldObject["label"]) {
 					lblNode = document.createElement("label");
 					lblNode.innerHTML = fieldObject["label"];
-					lblNode.setAttribute("for", fieldId);
-					fromNode.appendChild(lblNode);
+					lblNode.setAttribute("for", fieldID);
+					formNode.appendChild(lblNode);
 				}
 				inputNode = document.createElement("input");
 				inputNode.setAttribute("id", fieldID);
 				inputNode.setAttribute("name", fieldID);
 				inputNode.setAttribute("type", "text");
+				if (fieldObject["default"]){
+					inputNode.setAttribute("value",fieldObject["default"]);
+				}
 				formNode.appendChild(inputNode);
 			} else {
 				alert("Unknown field type " + fieldObject["type"]);
@@ -413,7 +428,7 @@ KForm = Class.create({
 				}
 				if (formObject.value !=""){
 					var num = Number(formObject.value);
-					if (num.toString() == "NaN" || Math.round(num) == num){
+					if (num.toString() == "NaN" || Math.round(num) !== num){
 						alert("Field value is not a valid number, you must enter a int");
 						formObject.focus();
 						return false;
