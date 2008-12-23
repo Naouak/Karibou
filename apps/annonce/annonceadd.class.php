@@ -12,23 +12,20 @@
  * 
  * @package applications
  **/
-class AnnonceAdd extends FormModel
+class AnnonceAdd extends AppContentModel
 {
-	public function build()
+	public function submit($parameters)
 	{
-		$annonce= filter_input(INPUT_POST,'newannonce',FILTER_SANITIZE_SPECIAL_CHARS);
-		$price = filter_input(INPUT_POST,'price',FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-		$expirationdate = filter_input(INPUT_POST,'expirationday',FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>"@\d{4}-\d{2}-\d{2}@")));
 		
-		if (strlen($annonce) > 3 && ($this->currentUser->getID() > 0) && $price!==false && $expirationdate!==false) 
+		if (strlen($parameters["annonce"]) > 3 && ($this->currentUser->getID() > 0) && $pararmeters["date"]!==false) 
 		{
 			//Requete d'insertion
 			$sql = "INSERT INTO annonce (Id_user, annonce, datetime, price, expirationdate) VALUES (:user,:annonce, NOW(), :price , :expirationdate );";
 			$stmt = $this->db->prepare($sql);
 			$stmt->bindValue(":user",$this->currentUser->getID());
-			$stmt->bindValue(":annonce",$annonce);
-			$stmt->bindValue(":price",$price);
-			$stmt->bindValue(":expirationdate",$expirationdate);
+			$stmt->bindValue(":annonce",$parameters["annonce"]);
+			$stmt->bindValue(":price",$parameters["price"]);
+			$stmt->bindValue(":expirationdate",$parameters["date"]);
 			
 			try {
 				$stmt->execute();
@@ -36,9 +33,10 @@ class AnnonceAdd extends FormModel
 				Debug::kill($e->getMessage());
 			}
 		}
-		else
-		{
-			$this->setRedirectArg("error", 1);
-		}
+	}
+	
+	public function formFields()
+	{
+		return array("annonce" => array("type" => "textarea", "required" =>true, "label" => _(textannonce) , "columns" => "30", "rows" => "8"), "price" => array("type" => "text", "required" => false, "label" => _(price)), "date" => array("type"=>"date", "required" => true , "label" => _(expirationdate)));
 	}
 }

@@ -10,11 +10,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
 
-msgid "SMALLADS"
-msgstr "Small ads"
-
-msgid "NEWANNONCE"
-msgstr "Add a annonce"
 
 msgid "SURNAMEANN_AUTHOR"
 msgstr "Annonce posted by"
@@ -34,17 +29,5 @@ msgstr "costing"
 msgid "to"
 msgstr "to"
 
-msgid "WRONGCONTENT"
-msgstr "You don't enter a correct announce. Please type again"
-
-msgid "ADDANNOUNCE"
-msgstr "Add an announce"
-
 msgid "MAXANNONCE"
 msgstr "Number of announces to show"
-
-msgid "ADDSUBMIT"
-msgstr "Add an announce"
-
-msgid "ADDCANCEL"
-msgstr "CANCEL"

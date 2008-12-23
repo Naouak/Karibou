@@ -12,16 +12,16 @@
 	<footer app="footer" view="default" />
 
 	<!-- Views -->
-	<view name="content" class="Annonce" template="annonce.tpl" />
-	<view name="mini" class="Annonce" template="container.tpl" />
-	<view name="miniconfig" class="AnnonceConfig" template="annonceconfig.tpl" />
+	<view name="mini" class="Annonce" template="annonce.tpl" />
+	<view name="update" class="AnnonceUpdate" template="annonceupdate.tpl" />
 	
 	<!-- Pages -->
-	<page name="content" view="content">
+	<page name="mini" view="mini">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
-		<option name="error" class="NumberArgument" />
+		<option name="maxannonce" class="NumberArgument"/>
 	</page>
+
 
 	<!-- Param -->
 	<config>
@@ -30,8 +30,4 @@
 		</param>
 	</config>
 	
-	<!-- Forms -->
-	<form action="add" class="AnnonceAdd">
-		<redirect app="annonce" page="content" />
-	</form>
 </app>

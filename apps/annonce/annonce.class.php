@@ -20,7 +20,7 @@ class Annonce extends Model
 		$config = $app->getConfig();
 		$this->assign("config", $config);
 
-		if ( isset($this->args['maxannonce']) && $this->args['maxannonce'] !="")
+		if ( isset($this->args['maxannonce']) )
 		{
 			$maxannonce = $this->args['maxannonce'];
 		}
@@ -28,6 +28,7 @@ class Annonce extends Model
 		{
 			$maxannonce = $config['maxannonce']['default'];
 		}
+		
 
 		$sql = "SELECT * FROM annonce WHERE `expirationdate` > NOW() ORDER BY datetime DESC LIMIT :maxannonce";
 		try
@@ -49,13 +50,15 @@ class Annonce extends Model
 					"author" => $user['object'],
 					"text" => $annonceRow['annonce'],
 					"price" => $annonceRow['price'],
-					"expirationdate" => $annonceRow['expirationdate']
+					"expirationdate" => $annonceRow['expirationdate'],
+					"id" => $annonceRow['Id'],
+					"iduser" => $annonceRow['Id_user']
 				);
 			}
 		}
 
-		if(isset($this->args["error"])) $this->assign("error", $this->args["error"]);
 		$this->assign("annonces",$annonces);
 		$this->assign("islogged", $this->currentUser->isLogged());
+		$this->assign("currentuser", $this->currentUser->getID());
 	}
 }

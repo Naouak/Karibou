@@ -10,11 +10,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
 
-msgid "SMALLADS"
-msgstr "Petites Annonces"
-
-msgid "NEWANNONCE"
-msgstr "Ajout d'une annonce"
 
 msgid "SURNAMEANN_AUTHOR"
 msgstr "Annonce postée par"
@@ -34,17 +29,5 @@ msgstr "au prix de"
 msgid "to"
 msgstr "jusqu'au"
 
-msgid "WRONGCONTENT"
-msgstr "Vous n'avez pas saisi une annonce correcte. Veuillez recommencer"
-
-msgid "ADDANNOUNCE"
-msgstr "Ajoutez une annonce"
-
 msgid "MAXANNONCE"
-msgstr "nombre d'annonces à afficher"
-
-msgid "ADDSUBMIT"
-msgstr "Ajouter une annonce"
-
-msgid "ADDCANCEL"
-msgstr "Annuler"
+msgstr "nombre d'annonces à afficher "
