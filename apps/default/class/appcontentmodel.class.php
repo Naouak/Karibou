@@ -43,6 +43,7 @@ abstract class DefaultFormModel {
 				$value = $_FILES[$fieldID];
 			} else if ($fieldObj["type"] == "float") {
 				$value = filter_input(INPUT_POST, $fieldID, FILTER_VALIDATE_FLOAT);
+				$value = floatval($value);
 				if ($value === false)
 					throw new Exception("Invalid field value");
 				if (array_key_exists("max", $fieldObj) && $value>$fieldObj["max"])
@@ -51,6 +52,7 @@ abstract class DefaultFormModel {
 					throw new Exception("Invalid field value");	
 			} else if ($fieldObj["type"] == "int") {
 				$value = filter_input(INPUT_POST, $fieldID, FILTER_VALIDATE_INT);
+				$value = intval($value);
 				if ($value === false)
 					throw new Exception("Invalid field value");
 				if (array_key_exists("max", $fieldObj) && $value>$fieldObj["max"])
