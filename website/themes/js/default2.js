@@ -405,7 +405,8 @@ KForm = Class.create({
 						return false;
 					}
 				}
-			}else if (fieldObject["type"] == "int") {
+			} else if (fieldObject["type"] == "int") {
+                // Is the field required ?
 				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
 					if (formObject.value == "") {
 						alert("One or more fields are missing.");
@@ -413,21 +414,40 @@ KForm = Class.create({
 						return false;
 					}
 				}
+
+                // Is the field filled ?
 				if (formObject.value !=""){
 					var num = Number(formObject.value);
+                    var min = Number(fieldObject["min"]);
+                    var max = Number(fieldObject["max"]);
+
+                    // Test of the content : is it really an integer ?
 					if (num.toString() == "NaN" || Math.round(num) !== num){
 						alert("Field value is not a valid number, you must enter a int");
 						formObject.focus();
 						return false;
 					}
+
+                    // If there is a min, is it greater than the min ?
+                    if (typeof(fieldObject["min"]) != "undefined" && (num < min)){
+                        var label = (fieldObject["label"]) ? fieldObject["label"] : "Number";
+                        alert(label + " (value: " + num.toString() + ") should not be smaller than " + min.toString());
+                        formObject.focus();
+                        return false;
+                    }
+                    // If there is a max, is it smaller than the max ?
+                    if (typeof(fieldObject["max"]) != "undefined" && (num > max)){
+                        var label = (fieldObject["label"]) ? fieldObject["label"] : "Number";
+                        alert(label + " (value: " + num.toString() + ")  should not be greater than " + max.toString());
+                        formObject.focus();
+                        return false;
+                    }
+
+                    // Now all the tests are passed, we add the value to the query
+                    queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
 				}
-				if ((formObject.value < fieldObject["min"]) || (formObject.value > fieldObject["max"])){
-					alert("number is not between" + fieldObject["max"] + "and" + fieldObject["min"]);
-					formObject.focus();
-					return false;
-				}
-				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
 			} else if (fieldObject["type"] == "float") {
+                // Is the field required ?
 				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
 					if (formObject.value == "") {
 						alert("One or more fields are missing.");
@@ -435,20 +455,38 @@ KForm = Class.create({
 						return false;
 					}
 				}
+
+                // Is the field filled ?
 				if (formObject.value !=""){
 					var num = Number(formObject.value);
-					if (num.toString() == "NaN" ){
-						alert("Field value is not a valid number");
+                    var min = Number(fieldObject["min"]);
+                    var max = Number(fieldObject["max"]);
+
+                    // Test of the content : is it really a number ?
+					if (num.toString() == "NaN"){
+						alert("Field value is not a valid number, you must enter a int");
 						formObject.focus();
 						return false;
 					}
+
+                    // If there is a min, is it greater than the min ?
+                    if (typeof(fieldObject["min"]) != "undefined" && (num < min)){
+                        var label = (fieldObject["label"]) ? fieldObject["label"] : "Number";
+                        alert(label + " (value: " + num.toString() + ") should not be smaller than " + min.toString());
+                        formObject.focus();
+                        return false;
+                    }
+                    // If there is a max, is it smaller than the max ?
+                    if (typeof(fieldObject["max"]) != "undefined" && (num > max)){
+                        var label = (fieldObject["label"]) ? fieldObject["label"] : "Number";
+                        alert(label + " (value: " + num.toString() + ")  should not be greater than " + max.toString());
+                        formObject.focus();
+                        return false;
+                    }
+
+                    // Now all the tests are passed, we add the value to the query
+                    queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
 				}
-				if ((formObject.value < fieldObject["min"]) || (formObject.value > fieldObject["max"])){
-					alert("number is not between" + fieldObject["max"] + "and" + fieldObject["min"]);
-					formObject.focus();
-					return false;
-				}
-				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
 			} else {
 				alert("Hooo no, I can't do this !");
 				return false;
