@@ -16,9 +16,6 @@ function getSubElementById(id, subNode) {
 	return;
 }
 
-// Class handling drag'n'drop
-var KSortable = Object.extend(Sortable, {});
-
 // Class for a tab in the window
 var KTab = Class.create({
 	// Special case : if settings is not undefined, we ignore tabName, and we will require many applications....
@@ -71,7 +68,7 @@ var KTab = Class.create({
 	},
 	rebuildContainers: function () {
 		for (var i = 0 ; i < this.tabContainers.length ; i++) {
-			KSortable.create(this.tabContainers[i], {dropOnEmpty: true, 
+			Sortable.create(this.tabContainers[i], {dropOnEmpty: true, 
 								tag: "div", 
 								overlap: "horizontal", 
 								handle: "handle", 
@@ -171,14 +168,12 @@ var KTab = Class.create({
 });
 
 // Base class for every karibou application
-KApp = Class.create({
+var KApp = Class.create({
 	initialize: function (appName, id, mainContainer, karibou) {
-		//alert("Initializing a KApp");
 		this.karibou = karibou;
 		this.mainContainer = mainContainer;
 		this.appName = appName;
 		this.mainContainer.setAttribute("kapp", true);
-		//alert("Setting the attribute");
 		this.appId = this.appName + "_" + id;
 		this.mainContainer.setAttribute("id", this.appId); 
 		this.appBox = this.getElementById(this.appName);
@@ -226,24 +221,10 @@ KApp = Class.create({
 		Effect.toggle(this.appBox, 'slide', { duration: 0.5 });
 		this.onShade();
 	},
-	onShade: function() {
-		// Apps should overload this if they want to do something after they have been shaded
-	},
 	close: function() {
 		this.mainContainer.parentNode.removeChild(this.mainContainer);
 		this.onClose();
 		this.karibou.save();
-	},
-	onClose: function() {
-		// Apps should overload this if they want to do something when they have been closed
-	 },
-	onSubmit: function() {
-		// Apps should overload this if they want to do something after content has been submitted
-		this.refresh();
-	},
-	onConfig: function() {
-		// Apps should overload this if they want to do something after they have been configured
-		this.refresh();
 	},
 	submittedConfig: function() {
 		// This function will call the onConfig function after doing its own cleanups
@@ -294,9 +275,6 @@ KApp = Class.create({
 		if (this.submitBox.scrollHeight > this.mainContainer.scrollHeight)
 			this.mainContainer.style.height = this.submitBox.scrollHeight + "px";
 	},
-	onRefresh: function() {
-		// Apps should overload this if they want to do something when they have been refreshed.
-	},
 	refresh: function() {
 		req = new Ajax.Updater(this.mainContainer, this.karibou.appContentUrl + this.appId, {asynchronous: true, app: this, onComplete: function (transport) {
 			app = transport.request.options.app;
@@ -311,6 +289,23 @@ KApp = Class.create({
 	},
 	setTitle: function (title) {
 		this.appHandle.innerHTML = title;
+	},
+	onShade: function() {
+		// Apps should overload this if they want to do something after they have been shaded
+	},
+	onClose: function() {
+		// Apps should overload this if they want to do something when they have been closed
+	},
+	onRefresh: function() {
+		// Apps should overload this if they want to do something when they have been refreshed.
+	},
+	onSubmit: function() {
+		// Apps should overload this if they want to do something after content has been submitted
+		this.refresh();
+	},
+	onConfig: function() {
+		// Apps should overload this if they want to do something after they have been configured
+		this.refresh();
 	}
 });
 
@@ -324,8 +319,8 @@ var Karibou = Class.create({
 		this.appGetConfigUrl = appGetConfigUrl;
 		this.saveHomeUrl = saveHomeUrl;
 		this.appJSUrl = appJSUrl;
-		this.applicationsClass = new Array();					// {app name => JS class}
-		this.loadedApplicationsJS = new Array();				// [app name]
+		this.applicationsClass = {};						// {app name => JS class}
+		this.loadedApplicationsJS = {};						// [app name]
 		this.appLoaders = new Array();						// [KAppLoader], the applications being loaded
 		this.appObjs = new Array();						// [KApp objects]
 		this.tabsContainer = document.getElementById("tabsContainer");
@@ -453,16 +448,17 @@ var Karibou = Class.create({
 		return null;
 	},
 	loadApplicationView: function(application, appId, container) {
-		new Ajax.Updater(container, this.appContentUrl + application + "_" + appId, {asynchronous: true, karibou: this, app: application, onComplete: function (transport) {
-			transport.request.options.karibou.applicationViewLoaded(transport.request.options.app);
+		new Ajax.Updater(container, this.appContentUrl + application + "_" + appId, {asynchronous: true, karibou: this, appName: application, appId: appId, onComplete: function (transport) {
+			transport.request.options.karibou.applicationViewLoaded(transport.request.options.appName, transport.request.options.appId);
 		}});
 	},
-	applicationViewLoaded: function (application) {
+	applicationViewLoaded: function (appName, appId) {
 		for (var i = 0 ; i < this.appLoaders.length ; i++) {
 			appLoader = this.appLoaders[i];
-			appLoader.handlerMain(application);
+			appLoader.handlerMain(appName, appId);
 			if (appLoader.loaded()) {
 				this.appLoaders = this.appLoaders.without(appLoader);
+				i = -1;
 			}
 		}
 	},
@@ -489,14 +485,18 @@ var Karibou = Class.create({
 			appLoader.handlerJS(application);
 			if (appLoader.loaded()) {
 				this.appLoaders = this.appLoaders.without(appLoader);
+				i = -1;
 			}
 		}
 	},
 	registerApplicationClass: function (applicationName, applicationClass) {
 		this.applicationsClass[applicationName] = applicationClass;
+		this.applicationJSLoaded(applicationName);
 	},
 	getApplicationClass: function (applicationName) {
-		return this.applicationsClass[applicationName];
+		if (this.applicationsClass[applicationName])
+			return this.applicationsClass[applicationName];
+		return Class.create(KApp, {});
 	},
 	instanciateApplication: function (applicationName, container, force_id) {
 		var choosenContainer = container;
@@ -516,9 +516,9 @@ var Karibou = Class.create({
 		}
 		var appLoader = null;
 		if (force_id != null)
-			var appLoader = new KAppLoader(applicationName, force_id, choosenContainer, this);
+			appLoader = new KAppLoader(applicationName, force_id, choosenContainer, this);
 		else
-			var appLoader = new KAppLoader(applicationName, this.getNewIDForApp(applicationName), choosenContainer, this);
+			appLoader = new KAppLoader(applicationName, this.getNewIDForApp(applicationName), choosenContainer, this);
 		this.appLoaders.push(appLoader);
 		appLoader.load();
 	},
@@ -568,6 +568,7 @@ var KAppLoader = Class.create({
 	initialize: function(applicationName, id, container, karibou) {
 		this.jsloaded = false;
 		this.mainloaded = false;
+		this.done = false;
 		this.appName = applicationName;
 		this.appId = id;
 		this.container = container;
@@ -586,9 +587,11 @@ var KAppLoader = Class.create({
 	},
 	onHandler: function () {
 		if (this.loaded()) {
+			if (this.done)
+				return;
+			this.done = true;
 			try {
-				klass = this.karibou.getApplicationClass(this.appName);
-				var appObj = new klass(this.appName, this.appId, this.targetNode, this.karibou);
+				var appObj = new (this.karibou.getApplicationClass(this.appName))(this.appName, this.appId, this.targetNode, this.karibou);
 				this.karibou.registerAppObj(appObj);
 				if (this.karibou.currentTab != null) 
 					this.karibou.currentTab.rebuildContainers();
@@ -599,14 +602,12 @@ var KAppLoader = Class.create({
 		}
 	},
 	handlerJS: function (application) {
-		//alert("handleJS called");
 		if (this.appName == application)
 			this.jsloaded = true;
 		this.onHandler();
 	},
-	handlerMain: function (application) {
-		//alert("handlerMain called");
-		if (this.appName == application)
+	handlerMain: function (appName, appId) {
+		if ((this.appName == appName) && (this.appId == appId))
 			this.mainloaded = true;
 		this.onHandler();
 	}

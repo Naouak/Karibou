@@ -1,4 +1,3 @@
-
 <a href="#" onclick="new Effect.toggle($('accueillist')); return false;">Ajouter une application :</a><br />
 <div id="accueillist" style="display : none">
 <ul>
@@ -6,14 +5,6 @@
 <li><a href="#" onclick="karibou.instanciateApplication('{$appName}'); return false;">{$appName}</a></li><br />
 {/foreach}
 </ul>
-{*
-- {$birthday->getAppName()}<br />
-- {$birthday->getMainView()}<br />
-- {$birthday->getConfigView()}<br />
-- {$birthday->getJsView()}<br />
-- {$birthday->getName('fr')}<br />
-- {$birthday->getDesc('fr')}<br />
-*}
 </div>
 <div id="configViewer">config</div>
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/default2.js"></script>
@@ -28,7 +19,6 @@ function tabLinkClickedBack (evt) {ldelim}
 
 Event.observe(window, "load", function() {ldelim}
 	karibou = new Karibou("{kurl page="appmainview"}", "{kurl page="appjsview"}", "{kurl page="appsubmit"}", "{kurl page="appconfig"}", "{kurl page="appjsconfigview"}", "{kurl page="savehome"}", tabLinkClickedBack);
-	//karibou.createNewTab("default");
 	karibou.loadUrl("{kurl page="homeconfig"}");
 {rdelim});
 
@@ -78,4 +68,3 @@ function doneResizeTab () {ldelim}
 <input type="button" onclick="closeTab();" value="[-]" />
 </div>
 <div id="tabsContainer"></div>
-
