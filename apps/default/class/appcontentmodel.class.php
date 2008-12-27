@@ -59,7 +59,11 @@ abstract class DefaultFormModel {
 					throw new Exception("Invalid field value");
 				if (array_key_exists("min", $fieldObj) && $value<$fieldObj["min"])
 					throw new Exception("Invalid field value");
-			}else {
+            } else if ($fieldObj["type"] == "enum") {
+                $value = filter_input(INPUT_POST, $fieldID);
+                if(!array_key_exists($value, $fieldObj["values"]))
+                    throw new Exception("Invalid field value");
+			} else {
 				throw new Exception("Unsupported field type");
 			}
 			if ((array_key_exists("required", $fieldObj) && ($fieldObj["required"] == true)) && ($value == "")) {

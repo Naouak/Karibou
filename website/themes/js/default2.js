@@ -291,7 +291,45 @@ KForm = Class.create({
 				if (fieldObject["value"])
 					inputNode.setAttribute("value", fieldObject["value"]);
 				formNode.appendChild(inputNode);
-			} else {
+			} else if(fieldObject["type"] == "enum") {
+				if (fieldObject["label"]) {
+					lblNode = document.createElement("span");
+					lblNode.innerHTML = fieldObject["label"];
+					formNode.appendChild(lblNode);
+				}
+
+                // Here we face a choice : do we use radio or select ?
+                if (fieldObject["radio"] == "yes") {
+                    for(item in fieldObject["values"]) {
+                        radio = document.createElement("input");
+                        radio.setAttribute("id", fieldID + item);
+                        radio.setAttribute("name", fieldID);
+                        radio.setAttribute("type", "radio");
+                        radio.setAttribute("value", item);
+                        if(fieldObject["value"] == item)
+                            radio.setAttribute("checked", "checked");
+                        formNode.appendChild(radio);
+
+                        label = document.createElement("label");
+                        label.setAttribute("for", fieldID + item);
+                        label.innerHTML = fieldObject["values"][item];
+                        formNode.appendChild(label);
+                    }
+                } else {
+                    select = document.createElement("select");
+                    select.setAttribute("name", fieldID);
+                    select.setAttribute("id", fieldID);
+                    for(item in fieldObject["values"]) {
+                        option = document.createElement("option");
+                        option.setAttribute("value", item);
+                        if(fieldObject["value"] == item)
+                            option.setAttribute("selected", "selected");
+                        option.innerHTML = fieldObject["values"][item];
+                        select.appendChild(option);
+                    }
+                    formNode.appendChild(select);
+                }
+            } else {
 				alert("Unknown field type " + fieldObject["type"]);
 			}
 			formNode.appendChild(document.createElement("br"));
@@ -487,6 +525,24 @@ KForm = Class.create({
                     // Now all the tests are passed, we add the value to the query
                     queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
 				}
+            } else if (fieldObject["type"] == "enum") {
+                value = false;
+                if (fieldObject["radio"] == "yes") {
+                    var inputs = this.getInputs('radio', fieldID);
+                    for (radio in inputs) {
+                       if(inputs["radio"].checked) {
+                           value = inputs["radio"].value;
+                       }
+                    }
+                    if(!value) {
+                        alert("You did not chose anything !");
+                        inputs[0].focus();
+                        return false;
+                    }
+                } else {
+                    value = formObject.value;
+                }
+                queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(value));
 			} else {
 				alert("Hooo no, I can't do this !");
 				return false;
