@@ -19,7 +19,7 @@ class AppConfig extends FormModel {
 		if ($app->getPermission() < _SELF_WRITE_)
 			return;
 		$modelName = $miniapp->getConfigModel();
-		$model = new $modelName($this->db, $this->currentUser);
+		$model = new $modelName($this->db, $this->currentUser, $miniappName, $app);
 		$model->build();
 	}
 }

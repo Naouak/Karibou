@@ -11,10 +11,24 @@ class AppJSConfigView extends Model {
 			throw new Exception("Invalid miniapp parameter");
 		}
 		$miniapp = MiniAppFactory::buildApplication($miniappName);
-		if ($miniapp->getConfigModel() == "")
+		if ($miniapp->getConfigModel() == "") {
 			$this->assign("config", "");
-		else
-			$this->assign("config", json_encode($this->currentUser->getPref($miniappName . '_' . $miniappId)));
+		} else {
+			$conf = $this->currentUser->getPref($miniappName . '_' . $miniappId);
+			if (($conf == "") || ($conf === false)) {
+				$confModelName = $miniapp->getConfigModel();
+				$app = $this->appList->getApp($miniappName);
+				$confModel = new $confModelName($this->db, $this->currentUser, $miniappName, $app); 
+				$confArray = array();
+				foreach ($confModel->formFields() as $key => $value) {
+					if (array_key_exists("value", $value))
+						$confArray[$key] = $value["value"];
+				}
+				$this->assign("config", json_encode($confArray));
+			} else {
+				$this->assign("config", json_encode($conf));
+			}
+		}
 	}
 }
 

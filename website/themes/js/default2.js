@@ -277,7 +277,7 @@ KForm = Class.create({
 				fileNode.setAttribute("name", fieldID);
 				fileNode.setAttribute("type", "file");
 				formNode.appendChild(fileNode);
-			} else if ( fieldObject["type"] == "int" || fieldObject["type"] == "float") {
+			} else if (fieldObject["type"] == "int" || fieldObject["type"] == "float") {
 				if (fieldObject["label"]) {
 					lblNode = document.createElement("label");
 					lblNode.innerHTML = fieldObject["label"];
@@ -291,6 +291,23 @@ KForm = Class.create({
 				if (fieldObject["value"])
 					inputNode.setAttribute("value", fieldObject["value"]);
 				formNode.appendChild(inputNode);
+			} else if (fieldObject["type"] == "bool") {
+				if (fieldObject["label"]) {
+					lblNode = document.createElement("label");
+					lblNode.innerHTML = fieldObject["label"];
+					lblNode.setAttribute("for", fieldID);
+					formNode.appendChild(lblNode);
+				}
+				inputNode = document.createElement("input");
+				inputNode.setAttribute("id", fieldID);
+				inputNode.setAttribute("name", fieldID);
+				inputNode.setAttribute("type", "checkbox");
+				inputNode.setAttribute("value", "on");
+				if (fieldObject["value"]) {
+					if ((fieldObject["value"] == "true") || (fieldObject["value"] == 1) || (fieldObject["value"] == true))
+						inputNode.setAttribute("checked", "checked");
+				}
+				formNode.appendChild(inputNode);
 			} else if(fieldObject["type"] == "enum") {
 				if (fieldObject["label"]) {
 					lblNode = document.createElement("span");
@@ -298,9 +315,9 @@ KForm = Class.create({
 					formNode.appendChild(lblNode);
 				}
 
-                // Here we face a choice : do we use radio or select ?
-                if (fieldObject["radio"] == "yes") {
-                    for(item in fieldObject["values"]) {
+				// Here we face a choice : do we use radio or select ?
+				if (fieldObject["radio"] == "yes") {
+					for (item in fieldObject["values"]) {
                         radio = document.createElement("input");
                         radio.setAttribute("id", fieldID + item);
                         radio.setAttribute("name", fieldID);
@@ -434,7 +451,6 @@ KForm = Class.create({
 				}
 				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
 			} else if (fieldObject["type"] == "file") {
-				alert("Aie aie sir");
 				containsFile = true;
 				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
 					if (formObject.value == "") {
@@ -443,8 +459,8 @@ KForm = Class.create({
 						return false;
 					}
 				}
-			} else if (fieldObject["type"] == "int") {
-                // Is the field required ?
+			} else if ((fieldObject["type"] == "int") || (fieldObject["type"] == "float")) {
+				// Is the field required ?
 				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
 					if (formObject.value == "") {
 						alert("One or more fields are missing.");
@@ -453,96 +469,61 @@ KForm = Class.create({
 					}
 				}
 
-                // Is the field filled ?
-				if (formObject.value !=""){
+				// Is the field filled ?
+				if (formObject.value != "") {
 					var num = Number(formObject.value);
-                    var min = Number(fieldObject["min"]);
-                    var max = Number(fieldObject["max"]);
+					var min = Number(fieldObject["min"]);
+					var max = Number(fieldObject["max"]);
 
-                    // Test of the content : is it really an integer ?
-					if (num.toString() == "NaN" || Math.round(num) !== num){
+					// Test of the content : is it really a number, and an integer if needed ?
+					if (num.toString() == "NaN" || ((Math.round(num) != num) && fieldObject["type"] == "int")) {
 						alert("Field value is not a valid number, you must enter a int");
 						formObject.focus();
 						return false;
 					}
 
-                    // If there is a min, is it greater than the min ?
-                    if (typeof(fieldObject["min"]) != "undefined" && (num < min)){
-                        var label = (fieldObject["label"]) ? fieldObject["label"] : "Number";
-                        alert(label + " (value: " + num.toString() + ") should not be smaller than " + min.toString());
-                        formObject.focus();
-                        return false;
-                    }
-                    // If there is a max, is it smaller than the max ?
-                    if (typeof(fieldObject["max"]) != "undefined" && (num > max)){
-                        var label = (fieldObject["label"]) ? fieldObject["label"] : "Number";
-                        alert(label + " (value: " + num.toString() + ")  should not be greater than " + max.toString());
-                        formObject.focus();
-                        return false;
-                    }
+					// If there is a min, is it greater than the min ?
+					if (fieldObject["min"] != undefined && (num < min)) {
+						var label = (fieldObject["label"]) ? fieldObject["label"] : "Number";
+						alert(label + " (value: " + num.toString() + ") should not be smaller than " + min.toString());
+						formObject.focus();
+						return false;
+					}
+					// If there is a max, is it smaller than the max ?
+					if (fieldObject["max"] != undefined && (num > max)) {
+						var label = (fieldObject["label"]) ? fieldObject["label"] : "Number";
+						alert(label + " (value: " + num.toString() + ")  should not be greater than " + max.toString());
+						formObject.focus();
+						return false;
+					}
 
-                    // Now all the tests are passed, we add the value to the query
-                    queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
+					// Now all the tests are passed, we add the value to the query
+					queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
 				}
-			} else if (fieldObject["type"] == "float") {
-                // Is the field required ?
+			} else if (fieldObject["type"] == "enum") {
+				value = false;
+				if (fieldObject["radio"] == "yes") {
+					var inputs = this.getInputs('radio', fieldID);
+					for (radio in inputs) {
+						if(inputs["radio"].checked) {
+							value = inputs["radio"].value;
+						}
+					}
+					if(!value) {
+						alert("You did not chose anything !");
+						inputs[0].focus();
+					return false;
+					}
+				} else {
+					value = formObject.value;
+				}
+				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(value));
+			} else if (fieldObject["type"] == "bool") {
 				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
-					if (formObject.value == "") {
-						alert("One or more fields are missing.");
-						formObject.focus();
-						return false;
-					}
+					alert("How can you use required on a bool ???");
+					return false;
 				}
-
-                // Is the field filled ?
-				if (formObject.value !=""){
-					var num = Number(formObject.value);
-                    var min = Number(fieldObject["min"]);
-                    var max = Number(fieldObject["max"]);
-
-                    // Test of the content : is it really a number ?
-					if (num.toString() == "NaN"){
-						alert("Field value is not a valid number, you must enter a int");
-						formObject.focus();
-						return false;
-					}
-
-                    // If there is a min, is it greater than the min ?
-                    if (typeof(fieldObject["min"]) != "undefined" && (num < min)){
-                        var label = (fieldObject["label"]) ? fieldObject["label"] : "Number";
-                        alert(label + " (value: " + num.toString() + ") should not be smaller than " + min.toString());
-                        formObject.focus();
-                        return false;
-                    }
-                    // If there is a max, is it smaller than the max ?
-                    if (typeof(fieldObject["max"]) != "undefined" && (num > max)){
-                        var label = (fieldObject["label"]) ? fieldObject["label"] : "Number";
-                        alert(label + " (value: " + num.toString() + ")  should not be greater than " + max.toString());
-                        formObject.focus();
-                        return false;
-                    }
-
-                    // Now all the tests are passed, we add the value to the query
-                    queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
-				}
-            } else if (fieldObject["type"] == "enum") {
-                value = false;
-                if (fieldObject["radio"] == "yes") {
-                    var inputs = this.getInputs('radio', fieldID);
-                    for (radio in inputs) {
-                       if(inputs["radio"].checked) {
-                           value = inputs["radio"].value;
-                       }
-                    }
-                    if(!value) {
-                        alert("You did not chose anything !");
-                        inputs[0].focus();
-                        return false;
-                    }
-                } else {
-                    value = formObject.value;
-                }
-                queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(value));
+				queryComponents.push(encodeURIComponent(fieldID) + "=" + formObject.checked);
 			} else {
 				alert("Hooo no, I can't do this !");
 				return false;
@@ -576,10 +557,12 @@ KForm = Class.create({
 // Base class for every karibou application
 KApp = Class.create({
 	initialize: function (appName, id, mainContainer, karibou) {
+		//alert("Initializing a KApp");
 		this.karibou = karibou;
 		this.mainContainer = mainContainer;
 		this.appName = appName;
 		this.mainContainer.setAttribute("kapp", true);
+		//alert("Setting the attribute");
 		this.appId = this.appName + "_" + id;
 		this.mainContainer.setAttribute("id", this.appId); 
 		this.appBox = this.getElementById(this.appName);
@@ -599,16 +582,18 @@ KApp = Class.create({
 		formNode = document.createElement("form");
 		formNode.setAttribute("action", this.karibou.appSetConfigUrl);
 		this.submitBox.appendChild(formNode);
-
-		var configFields = this.constructor.configFields;
+		var configFields = {};
+		for (var fieldID in this.constructor.configFields) {
+			configFields[fieldID] = this.constructor.configFields[fieldID];
+		}
 		if (this.config) {
 			for (var fieldID in configFields) {
-				if (this.config[fieldID])
+				if (this.config[fieldID] != undefined)
 					configFields[fieldID]["value"] = this.config[fieldID];
 			}
 		}
 		
-		var form = new KForm(this.constructor.configFields, 	// The fields list
+		var form = new KForm(configFields, 			// The fields list
 				formNode, 				// The form node
 				{"miniapp": this.appId},		// The extra parameters
 				[this, "submittedConfig"],		// The onSubmit callback
@@ -693,10 +678,15 @@ KApp = Class.create({
 		if (this.submitBox.scrollHeight > this.mainContainer.scrollHeight)
 			this.mainContainer.style.height = this.submitBox.scrollHeight + "px";
 	},
+	onRefresh: function() {
+		// Apps should overload this if they want to do something when they have been refreshed.
+	},
 	refresh: function() {
 		req = new Ajax.Updater(this.mainContainer, this.karibou.appContentUrl + this.appId, {asynchronous: true, app: this, onComplete: function (transport) {
 			app = transport.request.options.app;
 			app.appBox = app.getElementById(app.appName);
+			app.appHandle = app.getElementById(app.appName + "_handle");
+			app.onRefresh();
 			app.karibou.getTabFromApplication(app).rebuildContainers();
 		}});
 	},
@@ -711,6 +701,7 @@ KApp = Class.create({
 // Class responsible for loading the KApp classes, handling the various loaded applications on the screen...
 var Karibou = Class.create({
 	initialize: function(appContentUrl, appJSUrl, appSubmitUrl, appSetConfigUrl, appGetConfigUrl, saveHomeUrl, tabLinkClicked) {
+		this.loading = false;
 		this.appSubmitUrl = appSubmitUrl;
 		this.appContentUrl = appContentUrl;
 		this.appSetConfigUrl = appSetConfigUrl;
@@ -724,7 +715,7 @@ var Karibou = Class.create({
 		this.tabsContainer = document.getElementById("tabsContainer");
 		this.tabsBar = document.getElementById("tabsBar");
 		this.tabLinkClickedCallback = tabLinkClicked;
-		this.tabs = {}; 		// {tab name => KTab object} //new Array();						// [KTab objects]
+		this.tabs = {}; 						// {tab name => KTab object}
 		this.currentTab = null;
 		this.appIds = {};						// {app name => max used ID}
 	},
@@ -920,6 +911,7 @@ var Karibou = Class.create({
 	},
 	getAppFromNode: function (node) {
 		if (node == document.body) {
+			alert("Went to the body, bad !");
 			return;
 		}
 		if (node.attributes.getNamedItem("kapp")) {
@@ -927,11 +919,14 @@ var Karibou = Class.create({
 				if (this.appObjs[i].mainContainer == node)
 					return this.appObjs[i];
 			}
+			alert("Didn't find the application in this.appObjs");
 			return;
 		} else if (node.parentNode)
 			return this.getAppFromNode(node.parentNode);
 	},
 	save: function (node) {
+		if (this.loading)
+			return;
 		var data = {"tabs": this.tabs, "appIds": this.appIds};
 		var jsonised = Object.toJSON(data);
 		document.getElementById("configViewer").innerHTML = jsonised;
@@ -943,11 +938,13 @@ var Karibou = Class.create({
 		}});
 	},
 	loadData: function (data) {
+		this.loading = true;
 		var tabs = data["tabs"];
 		for (var tabName in tabs) {
 			this.createNewTab(tabName, tabs[tabName]);
 		}
 		this.appIds = data["appIds"];
+		this.loading = false;
 	}
 });
 
@@ -973,11 +970,16 @@ var KAppLoader = Class.create({
 	},
 	onHandler: function () {
 		if (this.loaded()) {
-			klass = this.karibou.getApplicationClass(this.appName);
-			var appObj = new klass(this.appName, this.appId, this.targetNode, this.karibou);
-			this.karibou.registerAppObj(appObj);
-			if (this.karibou.currentTab != null) 
-				this.karibou.currentTab.rebuildContainers();
+			try {
+				klass = this.karibou.getApplicationClass(this.appName);
+				var appObj = new klass(this.appName, this.appId, this.targetNode, this.karibou);
+				this.karibou.registerAppObj(appObj);
+				if (this.karibou.currentTab != null) 
+					this.karibou.currentTab.rebuildContainers();
+			} catch (err) {
+				alert("Exception occured with " + this.appName + ":" + this.appId);
+				alert(err);
+			}
 		}
 	},
 	handlerJS: function (application) {

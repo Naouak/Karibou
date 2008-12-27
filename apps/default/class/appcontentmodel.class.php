@@ -6,9 +6,15 @@ abstract class DefaultFormModel {
 
 	protected $currentUser;
 
-	public function __construct(PDO $db, CurrentUser $currentUser) {
+	protected $appName;
+
+	protected $app;
+
+	public function __construct(PDO $db, CurrentUser $currentUser, $appName, $app) {
 		$this->db = $db;
 		$this->currentUser = $currentUser;
+		$this->appName = $appName;
+		$this->app = $app;
 	}
 
 	public function build() {
@@ -59,15 +65,20 @@ abstract class DefaultFormModel {
 					throw new Exception("Invalid field value");
 				if (array_key_exists("min", $fieldObj) && $value<$fieldObj["min"])
 					throw new Exception("Invalid field value");
-            } else if ($fieldObj["type"] == "enum") {
-                $value = filter_input(INPUT_POST, $fieldID);
-                if(!array_key_exists($value, $fieldObj["values"]))
-                    throw new Exception("Invalid field value");
+			} else if ($fieldObj["type"] == "bool") {
+				$value = filter_input(INPUT_POST, $fieldID, FILTER_VALIDATE_BOOLEAN);
+				if ($value === null)
+					throw new Exception("Invalid field value : " . $_POST[$fieldID]);
+				$value = ($value == "true");
+			} else if ($fieldObj["type"] == "enum") {
+				$value = filter_input(INPUT_POST, $fieldID);
+				if (!array_key_exists($value, $fieldObj["values"]))
+					throw new Exception("Invalid field value");
 			} else {
 				throw new Exception("Unsupported field type");
 			}
 			if ((array_key_exists("required", $fieldObj) && ($fieldObj["required"] == true)) && ($value == "")) {
-				throw new Exception("Missing required value");
+				throw new Exception("Missing required value for field $fieldID");
 			} else {
 				$params[$fieldID] = $value;
 			}
