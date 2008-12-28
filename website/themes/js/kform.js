@@ -144,7 +144,24 @@ KForm = Class.create({
 				}
 
 				// Here we face a choice : do we use radio or select ?
-				if (fieldObject["radio"] == "yes") {
+				if (fieldObject["radio"]) {
+					// If the field is not required the user is not forced to make a choice
+					if(!fieldObject["required"]) {
+						radio = document.createElement("input");
+						radio.setAttribute("id", "empty"+fieldID);
+						radio.setAttribute("name", fieldID);
+						radio.setAttribute("type", "radio");
+						radio.setAttribute("value", "");
+						if(fieldObject["value"] == "" || fieldObject["value"] == undefined)
+							radio.setAttribute("checked", "checked");
+						formNode.appendChild(radio);
+
+						label = document.createElement("label");
+						label.setAttribute("for", "empty" + fieldID);
+						label.innerHTML = "<em>[no choice]</em>";
+						formNode.appendChild(label);
+					}
+
 					for (item in fieldObject["values"]) {
 						radio = document.createElement("input");
 						radio.setAttribute("id", fieldID + item);
@@ -163,6 +180,14 @@ KForm = Class.create({
 					select = document.createElement("select");
 					select.setAttribute("name", fieldID);
 					select.setAttribute("id", fieldID);
+
+					if(!fieldObject["required"]) {
+						option = document.createElement("option");
+						option.setAttribute("value", "");
+						option.innerHTML = "";
+						select.appendChild(option);
+					}
+
 					for(item in fieldObject["values"]) {
 						option = document.createElement("option");
 						option.setAttribute("value", item);
@@ -299,8 +324,8 @@ KForm = Class.create({
 				// Is the field filled ?
 				if (formObject.value != "") {
 					var num = Number(formObject.value);
-					var min = Number(fieldObject["min"]);
-					var max = Number(fieldObject["max"]);
+					var min = fieldObject["min"];
+					var max = fieldObject["max"];
 
 					// Test of the content : is it really a number, and an integer if needed ?
 					if (num.toString() == "NaN" || ((Math.round(num) != num) && fieldObject["type"] == "int")) {
@@ -323,23 +348,23 @@ KForm = Class.create({
 						formObject.focus();
 						return false;
 					}
-
-					// Now all the tests are passed, we add the value to the query
-					queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
 				}
+				
+				// Now all the tests are passed, we add the value to the query
+				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
 			} else if (fieldObject["type"] == "enum") {
-				value = false;
-				if (fieldObject["radio"] == "yes") {
-					var inputs = this.getInputs('radio', fieldID);
+				value = "";
+				if (fieldObject["radio"]) {
+					var inputs = this.targetNode.getInputs('radio', fieldID);
 					for (radio in inputs) {
-						if(inputs["radio"].checked) {
-							value = inputs["radio"].value;
+						if(inputs[radio].checked) {
+							value = inputs[radio].value;
 						}
 					}
-					if(!value) {
+					if(value == "" && fieldObject["required"]) {
 						alert("You did not chose anything !");
 						inputs[0].focus();
-					return false;
+						return false;
 					}
 				} else {
 					value = formObject.value;
