@@ -421,7 +421,10 @@ class KApp
 	function display()
 	{
 		// We'll look for a Content-Type property
-		if($this->contentType !== null) header("Content-Type: ".$this->contentType);
+		if($this->contentType !== null)
+			header("Content-Type: ".$this->contentType);
+		elseif(!empty($GLOBALS["config"]["contenttype"]))
+			header("Content-Type: ".$GLOBALS["config"]["contenttype"]);
 	
 		$this->hookManager->display("header");
 		$this->hookManager->display("default");
