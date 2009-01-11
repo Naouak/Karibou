@@ -28,6 +28,7 @@ class PageParser
 		$this->name = $name;
 		$this->viewname = $viewname;
 		$this->args = array();
+		$this->contentType = $GLOBALS["config"]["default-content-type"];
 	}
 	
 	function getName()

@@ -79,7 +79,7 @@ $config['keychain']['storage'] = 'session';
 $config['geoloc']['gkey'] = 'cle-google-maps';
 
 // Content-Type par défault
-$config['contenttype'] = "text/html; charset=UTF-8";
+$config['default-content-type'] = "text/html; charset=UTF-8";
 
 //Définit le message à afficher dans le footer (en première position)
 //$config['footer']['message'] = '<a href="http://www.karibou.org" title="Karibou : L\'Intranet">Karibou</a>';
