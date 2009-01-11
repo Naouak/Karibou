@@ -6,8 +6,8 @@
 			<value name="normal">20</value>
 		</param>
 		<param name="userichtext">
-			<value name="small">1</value>
-			<value name="normal">1</value>
+			<value name="small">true</value>
+			<value name="normal">true</value>
 		</param>
 		<param name="inversepostorder">
 			<value name="small">0</value>
@@ -33,12 +33,13 @@
 
 	<load class="MCDefault"		file="mcdefault.class.php" />
 	<load class="MCPost"		file="mcpost.class.php" />
-	<load class="MCConfig"		file="mcconfig.class.php" />
+	<load class="MCJS"		file="mcjs.class.php" />
+	<load class="MinichatConfig"    file="./class/minichatconfig.class.php" />
 
 	<view name="mini" class="MCDefault" template="small.tpl" />
 	<view name="small" class="MCDefault" template="small.tpl" />
-	<view name="smallconfig" class="MCConfig" template="smallconfig.tpl" />
 	<view name="big" class="MCDefault" template="minichat.tpl" />
+	<view name="JS" class="MCJS" template="js.tpl" />
 
 	<view name="content" class="MCDefault" template="content.tpl" />
 	
@@ -53,7 +54,6 @@
 	</page>
 	
 	<page name="content" view="content">
-		<option name="pagenum" class="PageArgument" />
 		<option name="maxlines" class="NumberArgument" />
 		<option name="userichtext" class="NumberArgument" />
 		<option name="inversepostorder" class="NumberArgument" />

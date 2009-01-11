@@ -15,7 +15,7 @@ class MinichatRendering
 	protected $emoticons;
 	protected $current_user;
 
-	function __construct($userichtext, $current_user, $emoticons)
+	function __construct($userichtext, $current_user, Emoticons $emoticons)
 	{
 		$this->userichtext = $userichtext;
 		$this->emoticons = $emoticons;

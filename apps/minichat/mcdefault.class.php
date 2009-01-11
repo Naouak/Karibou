@@ -17,7 +17,6 @@ class MCDefault extends Model
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
 		$this->assign("config", $config);
-		
 		if( isset($this->args['maxlines']) && $this->args['maxlines'] != "" )
 		{
 			$max = $this->args['maxlines'] ;
@@ -44,17 +43,15 @@ class MCDefault extends Model
 			$inversepostorder = $config["inversepostorder"]["small"];
 		}
 		
-		$emoticons = new Emoticons($this->userFactory);
-		
 		if( isset($this->args['emoticon_theme']) && $this->args['emoticon_theme'] != "" )
 		{
 			$emoticon_theme = $this->args['emoticon_theme'];
-			$emoticons->set_user_emoticon_theme($this->args['emoticon_theme']);
+			$emoticons = new Emoticons($this->userFactory);
+			$emoticons->set_user_emoticon_theme($emoticon_theme);
 		}
 		else
 		{
 			$emoticon_theme = $config["emoticon_theme"]["small"];
-			//$emoticons->set_user_emoticon_theme($config["emoticon_theme"]["small"]);
 		}
 		$this->assign("emoticon_theme", $emoticon_theme);
 		$this->assign("maxlines", $max);
@@ -80,13 +77,13 @@ class MCDefault extends Model
 			$this->assign('page', $page);
 		}
 		if ((isset($this->args["day"])) && ($this->args["day"] != "")) {
-            $this->assign("post", $minichatMessageList->getMessagesFromDate($this->args["day"]));
-        } else {
-            if (isset($max) && isset($page))
-                $this->assign("post", $minichatMessageList->getMessages($max, $page));
-            else
-                $this->assign("post", $minichatMessageList->getMessagesFromDate(time()));
-        }
+			$this->assign("post", $minichatMessageList->getMessagesFromDate($this->args["day"]));
+		} else {
+			if (isset($max) && isset($page))
+				$this->assign("post", $minichatMessageList->getMessages($max, $page));
+			else
+				$this->assign("post", $minichatMessageList->getMessagesFromDate(time()));
+		}
 
 		$this->assign('permission', $this->permission);
 		$this->assign('time', time());
