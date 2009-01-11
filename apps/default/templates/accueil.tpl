@@ -1,17 +1,42 @@
-<a href="#" onclick="new Effect.toggle($('accueillist')); return false;">Ajouter une application :</a><br />
-<div id="accueillist" style="display : none">
-<ul>
-{foreach item=appName from=$apps}
-<li><a href="#" onclick="karibou.instanciateApplication('{$appName}'); return false;">{$appName}</a></li><br />
+<input id="homeAppAddButton" type="button" onclick="new Effect.toggle($('homeAppAdder'), 'appear'); new Effect.toggle($('homeAppAddButton')); return false;" value="Ajouter une application" /><br />
+
+<div id="homeAppAdder" style="display : none">
+Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="filterAppList();" length="150" />
+<input id="homeAppAddCloseButton" type="button" value="Close" onclick="new Effect.toggle($('homeAppAdder'), 'appear'); new Effect.toggle($('homeAppAddButton'));  return false;" /><br />
+<div id="homeAppList">
+{foreach key=appName item=appObject from=$apps}
+<p class="homeAppChoice">
+{$appObject->getName($lang)} : {$appObject->getDesc($lang)}
+&nbsp;&nbsp;&nbsp;
+<a onclick="karibou.instanciateApplication('{$appName}'); return false;">Ajouter</a> <br />
+</p>
 {/foreach}
-</ul>
 </div>
+</div>
+
+
 <div id="configViewer">config</div>
+
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/default2.js"></script>
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/scal.js"></script>
 
 <script language="javascript">
 var karibou = null;
+
+function filterAppList () {ldelim}
+	var val = document.getElementById("filterAppList").value.toLowerCase();
+	var targetNode = document.getElementById("homeAppList");
+	var subNode = targetNode.firstChild;
+	while (subNode) {ldelim}
+		if (subNode.nodeType == Node.ELEMENT_NODE) {ldelim}
+			if (String(subNode.innerHTML).toLowerCase().indexOf(val) == -1)
+				subNode.style.display = "none";
+			else
+				subNode.style.display = "block";
+		{rdelim}
+		subNode = subNode.nextSibling;
+	{rdelim}
+{rdelim}
 
 function tabLinkClickedBack (evt) {ldelim}
 	karibou.tabLinkClicked(evt);

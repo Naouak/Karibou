@@ -165,3 +165,33 @@
 	z-index: 10;
 	overflow: auto;
 }
+
+#homeAppAdder {
+	z-index: 10;
+	overflow: none;
+	max-height: 25%;
+	/*top: 60px;*/
+	position: absolute;
+	background-color: black;
+	right: 0px;
+	width: 100%;
+	opacity: 0.85;
+	color: white;
+}
+
+#homeAppList {
+	overflow-y: auto;
+/*	position: absolute;*/
+	max-height: 80%;
+}
+
+#homeAppAddButton {
+	right: 10px;
+	position: absolute;
+}
+
+#homeAppAddCloseButton {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
