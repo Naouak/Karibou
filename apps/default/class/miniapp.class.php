@@ -10,7 +10,7 @@ class MiniApp {
 	 */
 	private $descs = array();
 	
-	private $appName, $mainView, $jsView, $configView, $submitModel;
+	private $appName, $mainView, $jsView, $configModel, $submitModel;
 	
 	public function __construct($appName, $parameters) {
 		$this->appName = $appName;
@@ -26,7 +26,7 @@ class MiniApp {
 		if (array_key_exists("configmodel", $parameters))
 			$this->configModel = $parameters["configmodel"];
 		else
-			$this->configView = "";
+			$this->configModel = "";
 		if (array_key_exists("JSview", $parameters))
 			$this->jsView = $parameters["JSview"];
 		else
