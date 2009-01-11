@@ -79,6 +79,7 @@ class KApp
 	protected $argArray = false;
 
 	protected $config = array();
+	protected $contentType;
 
 	/**
 	 * cette fonction construit la partie commune des applis
@@ -395,6 +396,7 @@ class KApp
 			$app = $this->appList->getApp( $footer['app']  );
 			$app->addView($footer['view'], "footer");
 		}
+		$this->contentType = $page->getContentType();
 		
 		if( ! $this->addView($page->getViewName(), "default", $page->getArguments()) )
 		{
@@ -418,6 +420,9 @@ class KApp
 	}
 	function display()
 	{
+		// We'll look for a Content-Type property
+		if($this->contentType !== null) header("Content-Type: ".$this->contentType);
+	
 		$this->hookManager->display("header");
 		$this->hookManager->display("default");
 		$this->hookManager->display("footer");

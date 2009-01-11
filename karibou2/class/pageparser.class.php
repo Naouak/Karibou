@@ -18,6 +18,7 @@ class PageParser
 	protected $name;
 	protected $viewname;
 	protected $args;
+	protected $contentType;
 	
 	protected $header;
 	protected $footer;
@@ -54,6 +55,14 @@ class PageParser
 	function setFooter($app, $view)
 	{
 		$this->footer = array( 'app' => $app, 'view' => $view);
+	}
+
+	function setContentType($type) {
+		$this->contentType = $type;
+	}
+
+	function getContentType($type) {
+		return $this->contentType;
 	}
 
 	/**

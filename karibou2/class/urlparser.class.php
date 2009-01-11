@@ -281,6 +281,10 @@ class URLParser
 			{
 				$myPage->setFooter( $default_footer['app'], $default_footer['view'] );
 			}
+			if( isset($page["contenttype"]) )
+			{
+				$myPage->setContentType($page["contenttype"]);
+			}
 			
 			if( isset($page->argument) )
 			{
