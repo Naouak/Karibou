@@ -7,21 +7,29 @@
  * @package applications
  */
 
-class klockConfig extends Model
+class klockConfig extends AppConfigModel
 {	
-	public function build()
-	{
-		// Valid modes
-		$modes = array("analog", "textual", "binary", "digital");
-		
-		// Getting current mode
-		$current_mode = (in_array($this->args["mode"], $modes)) ? $this->args["mode"] : "binary";
-		// Getting current imprecision
-		$current_imprecision = ($this->args["imprecision"] > 5) ? $this->args["imprecision"] : 5;
-		
-		// Time to assign
-		$this->assign("mode", $current_mode);
-		$this->assign("imprecision", $current_imprecision);
+	public function formFields() {
+        return array(
+            "mode" => array(
+				"type" => "enum",
+				"label" => _("Mode"),
+				"values" => array(
+					"binary" => _("Binary"),
+					"analog" => _("Analogical"),
+					"digital" => _("Digital")
+				),
+				"radio" => false,
+				"value" => "digital",
+				"required" => true
+			),
+			"imprecision" => array(
+				"type" => "float",
+				"min" => 5,
+				"label" => _("Imprecision"),
+				"value" => 5
+			)
+		);
 	}
 }
 ?>

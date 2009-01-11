@@ -11,9 +11,6 @@ class klockSvg extends Model
 {	
 	public function build()
 	{
-		// This is svg !
-		header("Content-type: image/svg+xml");
-		
 		// Let's get the imprecision from config
 		$imprecision = ($this->args["imprecision"] > 300) ? (int) $this->args["imprecision"] : 300;
 		
