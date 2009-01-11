@@ -143,6 +143,14 @@ KForm = Class.create({
 					formNode.appendChild(lblNode);
 				}
 
+				var fieldValues = fieldObject["values"];
+				if (fieldObject["values"] instanceof Array) {
+					fieldValues = {};
+					for (var fieldValIdx = 0 ; fieldValIdx < fieldObject["values"].length ; fieldValIdx++) {
+						fieldValues[fieldValIdx] = fieldObject["values"][fieldValIdx];
+					}
+				}
+
 				// Here we face a choice : do we use radio or select ?
 				if (fieldObject["radio"]) {
 					// If the field is not required the user is not forced to make a choice
@@ -162,7 +170,7 @@ KForm = Class.create({
 						formNode.appendChild(label);
 					}
 
-					for (item in fieldObject["values"]) {
+					for (item in fieldValues) {
 						radio = document.createElement("input");
 						radio.setAttribute("id", fieldID + item);
 						radio.setAttribute("name", fieldID);
@@ -173,7 +181,7 @@ KForm = Class.create({
 						formNode.appendChild(radio);
 						label = document.createElement("label");
 						label.setAttribute("for", fieldID + item);
-						label.innerHTML = fieldObject["values"][item];
+						label.innerHTML = fieldValues[item];
 						formNode.appendChild(label);
 					}
 				} else {
@@ -188,12 +196,12 @@ KForm = Class.create({
 						select.appendChild(option);
 					}
 
-					for(item in fieldObject["values"]) {
+					for(item in fieldValues) {
 						option = document.createElement("option");
 						option.setAttribute("value", item);
 						if(fieldObject["value"] == item)
 							option.setAttribute("selected", "selected");
-						option.innerHTML = fieldObject["values"][item];
+						option.innerHTML = fieldValues[item];
 						select.appendChild(option);
 					}
 					formNode.appendChild(select);
