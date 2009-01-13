@@ -62,7 +62,7 @@ class PageParser
 		$this->contentType = $type;
 	}
 
-	function getContentType($type) {
+	function getContentType() {
 		return $this->contentType;
 	}
 
