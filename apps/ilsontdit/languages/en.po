@@ -25,3 +25,7 @@ msgstr "Who said this:"
 
 msgid "Class:"
 msgstr "Class:"
+
+msgid "Number of quotes to display :"
+msgstr "Number of quotes to display :"
+

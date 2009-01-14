@@ -13,29 +13,33 @@
  * @package applications
  **/
 class Ilsontdit extends Model {
-    public function build() {
-        $app = $this->appList->getApp($this->appname);
-        $config = $app->getConfig();
+	public function build() {
+		$app = $this->appList->getApp($this->appname);
+		$config = $app->getConfig();
 
-        $sql = "SELECT * FROM ilsontdit ORDER BY date_report DESC LIMIT 3 ";
-        try {
-            $stmt = $this->db->query($sql);
-        } catch(PDOException $e) {
-            Debug::kill($e->getMessage());
-        }
-	
-        $quotes = array();
-        while ($quoteRow = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            if ($user["object"] =  $this->userFactory->prepareUserFromId($quoteRow["reporter"])) {
-                $quote = array();
-                $quote["author"] = $quoteRow["who"] . " (" . $quoteRow["group"] . ")";
-                $quote["text"] = stripslashes($quoteRow["message"]);
-                $quotes[] = $quote;
-            }
-        }
-        $this->assign("islogged", $this->currentUser->isLogged());
-        $this->assign("quotes", $quotes);
-    }
+		$sql = "SELECT * FROM ilsontdit ORDER BY date_report DESC LIMIT :maxquotes ";
+		try {
+			$stmt = $this->db->prepare($sql);
+			$maxquotes = 3;
+			if (isset($this->args["maxquotes"]))
+				$maxquotes = intval($this->args["maxquotes"]);
+			$stmt->bindValue(":maxquotes", $maxquotes, PDO::PARAM_INT);
+			$stmt->execute();
+		} catch(PDOException $e) {
+			Debug::kill($e->getMessage());
+		}
+
+		$quotes = array();
+		while ($quoteRow = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			if ($user["object"] =  $this->userFactory->prepareUserFromId($quoteRow["reporter"])) {
+				$quote = array();
+				$quote["author"] = $quoteRow["who"] . " (" . $quoteRow["group"] . ")";
+				$quote["text"] = stripslashes($quoteRow["message"]);
+				$quotes[] = $quote;
+			}
+		}
+		$this->assign("quotes", $quotes);
+	}
 }
 
 ?>

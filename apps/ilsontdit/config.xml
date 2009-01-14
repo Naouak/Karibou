@@ -3,6 +3,7 @@
 
     <load class="Ilsontdit" file="ilsontdit.class.php" />
     <load class="IlsontditSubmit" file="ilsontditsubmit.class.php" />
+    <load class="IlsontditConfig" file="ilsontditconfig.class.php" />
     
     <header app="header" view="default" />
     <footer app="footer" view="default" />

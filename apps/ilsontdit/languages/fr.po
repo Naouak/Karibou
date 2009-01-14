@@ -25,3 +25,7 @@ msgstr "Qui l'a dit :"
 
 msgid "Class:"
 msgstr "Promo :"
+
+msgid "Number of quotes to display :"
+msgstr "Nombre de citations à afficher :"
+
