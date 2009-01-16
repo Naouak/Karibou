@@ -1,4 +1,3 @@
-<h3 class="handle">Mail</h3>
 <div class="mail">
 	{if $messagecount >= 0}
 		<div class="messagesnb">
