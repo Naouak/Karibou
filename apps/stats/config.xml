@@ -8,14 +8,12 @@
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 
 	<load class="Stats" file="stats.class.php" />
-	<load class="StatsConfig" file="statsconfig.class.php" />
 	<view name="default" class="Stats" template="statsbig.tpl" />
 	
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 	
 	<view name="mini" class="Stats" template="stats.tpl" />
-	<view name="smallconfig" class="StatsConfig" template="statsconfig.tpl" />
 	
 	<page view="default" />
 </app>

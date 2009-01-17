@@ -39,3 +39,6 @@ msgstr "the first 100 !"
 
 msgid "CHAMPIONSOFFLOOD"
 msgstr "Champions of Minichat Flood"
+
+msgid "HELP"
+msgstr "Help"

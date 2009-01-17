@@ -39,3 +39,6 @@ msgstr "Pas de champions pour l'instant"
 
 msgid "CHAMPIONSOFFLOOD"
 msgstr "Plus gros posteurs sur le minichat"
+
+msgid "HELP"
+msgstr "Aide"
