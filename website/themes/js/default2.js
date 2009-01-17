@@ -164,6 +164,64 @@ var KTab = Class.create({
 			containers.push(container);
 		}
 		return Object.toJSON({"name": this.tabName, "sizes": this.tabSizes, "containers": containers});
+	},
+	addColumn: function () {
+		if (this.resizing)
+			return;
+		var coef = this.tabSizes.length / (this.tabSizes.length + 1);
+		var newSize = 99;
+		for (var i = 0 ; i < this.tabSizes.length ; i++) {
+			this.tabSizes[i] = this.tabSizes[i] * coef;
+			newSize = newSize - this.tabSizes[i];
+		}
+		this.tabSizes[this.tabSizes.length] = Math.floor(newSize);
+
+		var divNode = document.createElement("div");
+		divNode.setAttribute("id", "container_" + containerID);
+		divNode.setAttribute("class", "colonne");
+		// Warning: the columns can't use 100% of the available size : they have a border...
+		divNode.style.width = this.tabSizes[this.tabSizes.length] + '%';
+		this.columnsContainer.appendChild(divNode);
+		this.tabContainers.push(divNode);
+		for (var i = 0 ; i < this.tabSizes.length ; i++) {
+			this.tabContainers[i].style.width = this.tabSizes[i] + '%';
+		}
+		containerID++;
+		this.rebuildContainers();
+		this.karibou.save();
+	},
+	removeLastColumn: function () {
+		if (this.resizing)
+			return;
+		// Find a way to list and delete every application on the last column
+		var containerNode = this.tabContainers[this.tabContainers.length - 1];
+		for (var j = 0 ; j < containerNode.childNodes.length ; j++) {
+			var node = containerNode.childNodes[j];
+			if (node.attributes.getNamedItem("kapp")) {
+				if (node.attributes.getNamedItem("kapp").nodeValue == "true") {
+					alert("Destroy application " + node.id);
+					containerNode.removeChild(node);
+				}
+			}
+		}
+
+		// Resize columns
+		var extraSize = this.tabSizes[this.tabSizes.length - 1]/(this.tabSizes.length - 1);
+		var newTabSizes = new Array();
+		var newContainers = new Array();
+		for (var i = 0 ; i < this.tabSizes.length - 1 ; i++) {
+			newTabSizes[i] = this.tabSizes[i] + extraSize;
+			newContainers[i] = this.tabContainers[i];
+		}
+		this.tabSizes = newTabSizes;
+		this.tabContainers = newContainers;
+		containerNode.parentNode.removeChild(containerNode);
+
+		for (var i = 0 ; i < this.tabSizes.length ; i++) {
+			this.tabContainers[i].style.width = this.tabSizes[i] + '%';
+		}
+		this.rebuildContainers();
+		this.karibou.save();
 	}
 });
 

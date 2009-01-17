@@ -61,31 +61,51 @@ function closeTab () {ldelim}
 	karibou.closeCurrentTab();
 {rdelim}
 
+function customizeTab() {ldelim}
+	new Effect.toggle("customizeSection");
+	document.getElementById("columnsLinks").style.display = "block";
+	document.getElementById("resizeLinks").style.display = "none";
+	document.getElementById("resizeLink").style.display = "block";
+{rdelim}
+
 function resizeTab () {ldelim}
-	karibou.currentTab.startResize();
+	document.getElementById("resizeLinks").style.display = "block";
+	document.getElementById("columnsLinks").style.display = "none";
 	document.getElementById("resizeLink").style.display = "none";
-	document.getElementById("cancelResizeLink").style.display = "block";
-	document.getElementById("doneResizeLink").style.display = "block";
+	karibou.currentTab.startResize();
 {rdelim}
 
 function cancelResizeTab () {ldelim}
+	new Effect.toggle("customizeSection");
 	karibou.currentTab.cancelResize();
-	document.getElementById("resizeLink").style.display = "block";
-	document.getElementById("cancelResizeLink").style.display = "none";
-	document.getElementById("doneResizeLink").style.display = "none";
 {rdelim}
 
 function doneResizeTab () {ldelim}
+	new Effect.toggle("customizeSection");
 	karibou.currentTab.doneResize();
-	document.getElementById("resizeLink").style.display = "block";
-	document.getElementById("cancelResizeLink").style.display = "none";
-	document.getElementById("doneResizeLink").style.display = "none";
+{rdelim}
+
+function addColumn () {ldelim}
+	karibou.currentTab.addColumn();
+{rdelim}
+
+function removeLastColumn () {ldelim}
+	karibou.currentTab.removeLastColumn();
 {rdelim}
 
 </script>
-<a href="" onclick="resizeTab(); return false;" id="resizeLink">Resize</a>
-<a href="" onclick="cancelResizeTab(); return false;" id="cancelResizeLink" style="display: none;">Cancel</a> 
-<a href="" onclick="doneResizeTab(); return false;" id="doneResizeLink" style="display: none;">Done</a>
+<a href="" onclick="customizeTab(); return false;">Customize</a><br />
+<span id="customizeSection" style="display: none;">
+<a href="" onclick="resizeTab(); return false;" id="resizeLink">- Resize</a><br />
+<span id="columnsLinks">
+<a href="" onclick="addColumn(); return false;" id="addColumnLink">- Add a column</a><br />
+<a href="" onclick="removeLastColumn(); return false;" id="removeColumnLink">- Remove the last column</a>
+</span>
+<span id="resizeLinks">
+<a href="" onclick="cancelResizeTab(); return false;" id="cancelResizeLink">- Cancel</a><br />
+<a href="" onclick="doneResizeTab(); return false;" id="doneResizeLink">- Done</a>
+</span>
+</span>
 <br />
 <div>
 <input type="button" onclick="addTab();" value="[+]" />
