@@ -4,7 +4,7 @@
 	<ol style="list-style-type:decimal; display: none;" id="statsPreumsList">
 		<h4>
 		{foreach item=contact from=$contacts}
-		{if $contact.index<10}
+		{if $contact.iteration<=10}
 		<li>
 			{$contact.iteration} / {userlink user=$contact[0] showpicture=$islogged} : {$contact[1]}
 		</li>
@@ -17,7 +17,7 @@
 	<ol style="list-style-type:decimal; display:none;" id="statsFloodList">
 	<h4>
 		{foreach name=outer item=contact from=$flooderlist}
-		{if $contact.index<10}
+		{if $contact.iteration<=10}
 		<li>
 			{$contact.iteration} / {userlink user=$contact[0] showpicture=$islogged} : {$contact[1]}
 		</li>
