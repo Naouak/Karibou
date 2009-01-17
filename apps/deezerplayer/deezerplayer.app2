@@ -1,0 +1,6 @@
+name_fr = Lecteur Deezer
+name_en = Deezer player
+desc_fr = Deezer directement sur votre Karibou
+desc_en = Deezer directly on your Karibou
+view = mini
+configmodel = DeezerConfig

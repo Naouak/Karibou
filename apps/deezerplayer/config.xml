@@ -15,5 +15,4 @@
     <footer app="footer" view="default" />
     
     <view name="mini" class="Deezer" template="deezer.tpl" />
-    <view name="miniconfig" class="DeezerConfig" template="deezerconfig.tpl" />
 </app>

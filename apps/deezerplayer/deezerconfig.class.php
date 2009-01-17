@@ -12,11 +12,11 @@
  * 
  * @package applications
  **/
-class DeezerConfig extends Model
+class DeezerConfig extends AppConfigModel
 {
-    public function build()
+    public function formFields()
     {
-
+	    return array("deezer_path" => array("type" => "int", "required" =>true, "label" => _("deezerpath")), "deezer_id" => array("type" => "int", "required" => true, "label" => _("deezerid")));
     }
 }
 
