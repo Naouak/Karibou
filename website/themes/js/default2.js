@@ -49,7 +49,6 @@ var KTab = Class.create({
 			this.tabContainers.push(divNode);
 			containerID++;
 		}
-		this.rebuildContainers();
 		if (settings) {
 			for (var i = 0 ; i < this.tabSizes.length ; i++) {
 				var appList = settings["containers"][i];
@@ -65,6 +64,7 @@ var KTab = Class.create({
 				}
 			}
 		}
+		this.rebuildContainers();
 	},
 	rebuildContainers: function () {
 		for (var i = 0 ; i < this.tabContainers.length ; i++) {
@@ -201,6 +201,7 @@ var KTab = Class.create({
 				if (node.attributes.getNamedItem("kapp").nodeValue == "true") {
 					alert("Destroy application " + node.id);
 					containerNode.removeChild(node);
+					j--;
 				}
 			}
 		}
