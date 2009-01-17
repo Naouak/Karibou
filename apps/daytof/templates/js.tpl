@@ -4,8 +4,12 @@ daytofClass = Class.create(KApp, {
 	initialize: function($super, appName, id, container, karibou) {
 		$super(appName, id, container, karibou);
 		{/literal}
-		this.urls = ['{kurl app="daytof" page="datof" tofnum="0"}', '{kurl app="daytof" page="datof" tofnum="1"}', '{kurl app="daytof" page="datof" tofnum="2"}'];
+		this.baseURL = '{kurl app="daytof" page="datof" tofnum="9999"}';
 		{literal}
+		this.urls = [];
+		for (var i = 0 ; i < this.config["maxtof"] ; i++) {
+			this.urls[i] = this.baseURL.replace("9999", i);
+		}
 		this.urlIndex = 0;
 		this.displayNewPicture();
 		this.pe = new PeriodicalExecuter(function (pe) {
@@ -21,6 +25,15 @@ daytofClass = Class.create(KApp, {
 		this.urlIndex++;
 		if (this.urlIndex >= this.urls.length)
 			this.urlIndex = 0; 
+	},
+	onConfig: function() {
+		this.urls = [];
+		if (this.urlIndex >= this.config["maxtof"])
+			this.urlIndex = 0;
+		for (var i = 0 ; i < this.config["maxtof"] ; i++) {
+			this.urls[i] = this.baseURL.replace("9999", i);
+		}
+		this.displayNewPicture();
 	}
 });
 

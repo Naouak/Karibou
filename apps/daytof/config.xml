@@ -1,22 +1,27 @@
 <app>	
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 
+	<!--Class loading-->
 	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
 	
 	<load class="DayTof" file="daytof.class.php" />
 	<load class="DaTof" file="datof.class.php" />
 	<load class="BigDayTof" file="bigdaytof.class.php" />
 	<load class="DaytofSubmit" file="daytofsubmit.class.php" />
+	<load class="DaytofConfig" file="daytofconfig.class.php" />
 	
+	<!--Default header and footer-->
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 	
+	<!--View-->
 	<view name="mini" class="DayTof" template="daytof.tpl" />
 	<view name="bigdaytof" class="BigDayTof" template="bigdaytof.tpl" />
 	
 	<view name="datof" class="DaTof" template="datof.tpl" />
 	<view name="JS" class="DayTof" template="js.tpl" />
 
+	<!--Pages-->
 	<page name="datof" view="datof">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
@@ -28,4 +33,11 @@
 	</page>
 	
 	<page name="history" view="bigdaytof" />
+	
+	<!-- Param -->
+	<config>
+		<param name="maxtof">
+			<value name="default">3</value>
+		</param>
+	</config>
 </app>

@@ -4,4 +4,5 @@ desc_fr = La photo du jour, envoyée par les utilisateurs du site
 desc_en = The picture of the day, sent by the website users
 view = mini
 submitmodel = DaytofSubmit
+configmodel = DaytofConfig
 JSview = JS
