@@ -1,4 +1,4 @@
-msgid ""
+﻿msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: team@karibou.org\n"
@@ -16,3 +16,8 @@ msgstr "Path de la playlist"
 
 msgid "deezer_id"
 msgstr "Id de la playlist"
+
+msgid "FINDPATHANDID"
+msgstr "Afin de trouver le Path et l'Id de la playlist nécessaires pour configurer l'application, vous devez vous rendre sur le site de Deezer. Selectionnez votre playlist dans le menu 'Musique' -> 'Playlists'.
+Copiez/collez le code HTML sous l'intitulé 'Lecteur exportable' pour plus de visibilité. Cherchez ensuite 'widget.swf?path='. Le path est indiqué après le caractère =, l'id se trouve quand à lui quelques caractères plus loin.
+Il ne vous reste plus qu'à copier ces deux numéros dans la configuration du Lecteur Deezer pour profiter de votre playlist."

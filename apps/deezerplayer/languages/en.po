@@ -16,3 +16,8 @@ msgstr "Path of playlist"
 
 msgid "deezer_id"
 msgstr "Id of playlist"
+
+msgid "FINDPATHANDID"
+msgstr "In order to find the Path and the Id of the playlist which are needed to config the application, you have to go to Deezer's website. Then, choose your playlist in 'Music' -> 'Playlists'.
+Copy and paste the HTML under 'Embeddable player' for more visibility. Look for 'widget.swf?path='. The path is afer the figure =, the id is some figures far.
+Copy the numbers in the config's fields of Karibou. Enjoy it!"

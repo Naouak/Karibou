@@ -7,4 +7,11 @@
 		<br />
 	</div>
 </center>
+<span>
+<a onclick = "new Effect.toggle($app(this).getElementById('help')); return false; " href="#" >##HELP##</a>
+	<div style = "display : none; " id="help">
+		##FINDPATHANDID##
+	</div>
+</span>
+
 
