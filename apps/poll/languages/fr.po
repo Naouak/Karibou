@@ -10,8 +10,5 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
 
-msgid "POLL"
-msgstr "Sondage"
-
 msgid "VOTES"
 msgstr "Votes"
