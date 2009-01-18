@@ -40,7 +40,6 @@ function cryptPass()
 {/literal}
 </script>
 {/if}
-<h3>##TITLE_AUTH##</h3>
 <div class="login">
 {section name=m loop=$loginMessages step=1}
 	<div class="error">
