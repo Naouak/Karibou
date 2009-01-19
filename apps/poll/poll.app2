@@ -4,3 +4,5 @@ desc_fr = Votez et participez aux sondages
 desc_en = Vote and participate to the polls
 size = small
 view = mini
+JSview = JS
+

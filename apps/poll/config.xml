@@ -2,12 +2,14 @@
     <permissions default="_READ_ONLY_" logged="_READ_ONLY_" />
 
     <load class="Poll" file="poll.class.php" />
+    <load class="EmptyPoll" file="empty.class.php" />
     
     <header app="header" view="default" />
     <footer app="footer" view="default" />
     
     <view name="mini" class="Poll" template="poll.tpl" />
     <view name="miniVote" class="Poll" template="votes.tpl" />
+    <view name="JS" class="EmptyPoll" template="js.tpl" />
     
     <page name="miniVote" view="miniVote">
         <header app="header" view="empty" />
