@@ -24,6 +24,11 @@ $timer->start("Full Load");
 
 $karibou = new Karibou();
 $karibou->loadAppDir(KARIBOU_APP_DIR, "config.xml");
+if (isset($config["site"]["extra_apps"])) {
+	foreach ($config["site"]["extra_apps"] as $appDir) {
+		$karibou->loadAppDir($appDir, "config.xml");
+	}
+}
 
 //Chargement normal de la page d'accueil par défaut
 $karibou->build();

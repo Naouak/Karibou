@@ -18,27 +18,37 @@ class MiniAppFactory {
 	private static function initAppCache () {
 		if (count(self::$appsCache) > 0)
 			return;
-		if ($dh = opendir(KARIBOU_APP_DIR)) {
-			while (($file = readdir($dh)) !== false) {
-				$fullName = KARIBOU_APP_DIR . '/' . $file;
-				if (($file[0] != '.') && (is_dir($fullName)) && (is_file($fullName . "/$file.app2"))) {
-					$appFile = "$fullName/$file.app2";
-					$attributes = parse_ini_file($appFile);
-					$names = array();
-					$descs = array();
-					$app = array();
-					foreach ($attributes as $key => $value) {
-						if ((strpos($key, "name_") === 0) && (strlen($key) != 5))
-							$names[substr($key, 5)] = $value;
-						else if ((strpos($key, "desc_") === 0) && (strlen($key) != 5))
-							$descs[substr($key, 5)] = $value;
-						else if (($key == "view") || ($key == "JSview") || ($key == "configmodel") || ($key == "submitmodel"))
-							$app[$key] = $value;
+		$appDirs = array();
+		$appDirs[] = KARIBOU_APP_DIR;
+		if (isset($GLOBALS["config"]["site"]["extra_apps"])) {
+			foreach ($GLOBALS["config"]["site"]["extra_apps"] as $appDir) {
+				$appDirs[] = $appDir;
+			}
+		}
+		foreach ($appDirs as $appDir) {
+			if ($dh = opendir($appDir)) {
+				while (($file = readdir($dh)) !== false) {
+					$fullName = $appDir . '/' . $file;
+					if (($file[0] != '.') && (is_dir($fullName)) && (is_file($fullName . "/$file.app2"))) {
+						$appFile = "$fullName/$file.app2";
+						$attributes = parse_ini_file($appFile);
+						$names = array();
+						$descs = array();
+						$app = array();
+						foreach ($attributes as $key => $value) {
+							if ((strpos($key, "name_") === 0) && (strlen($key) != 5))
+								$names[substr($key, 5)] = $value;
+							else if ((strpos($key, "desc_") === 0) && (strlen($key) != 5))
+								$descs[substr($key, 5)] = $value;
+							else if (($key == "view") || ($key == "JSview") || ($key == "configmodel") || ($key == "submitmodel"))
+								$app[$key] = $value;
+						}
+						$app["names"] = $names;
+						$app["descs"] = $descs;
+						self::$appsCache[$file] = $app;
 					}
-					$app["names"] = $names;
-					$app["descs"] = $descs;
-					self::$appsCache[$file] = $app;
 				}
+				closedir($dh);
 			}
 		}
 	}
