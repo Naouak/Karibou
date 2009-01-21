@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<extension name="simple_krb5">
+    <summary>Simple kerberos5 extension</summary>
+    <deps language="c" platform="all">
+        <with>
+            <header name="gssapi/gssapi.h" />
+            <header name="gssapi/gssapi_generic.h" />
+            <header name="gssapi/gssapi_krb5.h" />
+            <lib name="gssapi_krb5" />
+        </with>
+    </deps>
+    <function name="simple_krb5_auth">
+        <proto>bool simple_krb5_auth(string username, string password)</proto>
+        <summary>Check the username and password using kerberos</summary>
+        <code>
+            <![CDATA[
+    krb5_context    kcontext = NULL;
+    krb5_error_code code;
+    krb5_principal  client = NULL;
+    krb5_principal  server = NULL;
+    int             ret = 0;
+    char            *name = NULL;
+    
+    code = krb5_init_context(&kcontext);
+    if (code)
+        return -1;
+    
+    ret = krb5_parse_name (kcontext, "", &server);
+    if (ret) {
+        ret = -1;
+        goto end;
+    }
+    
+    code = krb5_unparse_name(kcontext, server, &name);
+    if (code) {
+        ret = -1;
+        goto end;
+    }
+    free(name);
+    
+    name = (char *)malloc(256);
+    snprintf(name, 256, "%s", username);
+    
+    code = krb5_parse_name(kcontext, name, &client);
+    if (code) {
+        ret = -1;
+        goto end;
+    }
+    
+    krb5_creds creds;
+    krb5_get_init_creds_opt gic_options;
+    memset(&creds, 0, sizeof(creds));
+    if (krb5_unparse_name(kcontext, client, &name) == 0) {
+        free(name);
+        name = NULL;
+    }
+    
+    krb5_get_init_creds_opt_init(&gic_options);
+    
+    // Check the login now !
+    code = krb5_get_init_creds_password(kcontext, &creds, client, (char *)password, NULL, NULL, 0, NULL, &gic_options);
+    if (code)
+        code = -1;
+    krb5_free_cred_contents(kcontext, &creds);
+    
+    if (code) {
+        ret = 0;
+        goto end;
+    }
+    
+    ret = 1;
+    
+end:
+    if (name)
+        free(name);
+    if (client)
+        krb5_free_principal(kcontext, client);
+    if (server)
+        krb5_free_principal(kcontext, server);
+    krb5_free_context(kcontext);
+    if (ret == 1)
+        RETURN_TRUE;
+    RETURN_FALSE;
+            ]]>
+        </code>
+    </function>
+    <function name="simple_krb5_chpass">
+        <proto>bool simple_krb5_chpass(string username, string oldpassword, string newpassword)</proto>
+        <summary>Change the password using kerberos</summary>
+        <code>
+            <![CDATA[
+    krb5_error_code ret;
+    krb5_context context;
+    krb5_principal princ;
+    krb5_get_init_creds_opt *opts = NULL;
+    krb5_creds creds;
+    
+    int result_code;
+    krb5_data result_code_string, result_string;
+    
+    ret = krb5_init_context(&context);
+    if (ret) {
+        RETURN_FALSE;
+    }
+    
+    if ((ret = krb5_parse_name(context, username, &princ))) {
+        RETURN_FALSE;
+    }
+    
+    if ((ret = krb5_get_init_creds_opt_alloc(context, &opts))) {
+        RETURN_FALSE;
+    }
+    krb5_get_init_creds_opt_set_tkt_life(opts, 5*60);
+    krb5_get_init_creds_opt_set_renew_life(opts, 0);
+    krb5_get_init_creds_opt_set_forwardable(opts, 0);
+    krb5_get_init_creds_opt_set_proxiable(opts, 0);
+    
+    if ((ret = krb5_get_init_creds_password(context, &creds, princ, (char *) oldpassword, krb5_prompter_posix, NULL, 0, "kadmin/changepw", opts))) {
+        krb5_get_init_creds_opt_free(context, opts);
+        RETURN_FALSE;
+    }
+    
+    if ((ret = krb5_change_password(context, &creds, (char *)newpassword, &result_code, &result_code_string, &result_string))) {
+        krb5_get_init_creds_opt_free(context, opts);
+        RETURN_FALSE;
+    }
+    
+    if (result_code) {
+        krb5_get_init_creds_opt_free(context, opts);
+        RETURN_FALSE;
+    }
+    
+    if (result_string.data != NULL) 
+        free(result_string.data);
+    if (result_code_string.data != NULL)
+        free(result_code_string.data);
+    krb5_get_init_creds_opt_free(context, opts);
+    RETURN_TRUE;
+            ]]>
+        </code>
+    </function>
+</extension>
