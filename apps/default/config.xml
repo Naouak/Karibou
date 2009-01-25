@@ -10,6 +10,7 @@
 	<load class="AppConfig" file="class/appconfig.class.php" />
 	<load class="HomeConfig" file="class/homeconfig.class.php" />
 	<load class="SaveHome" file="class/savehome.class.php" />
+	<load class="DefaultMenu" file="class/defaultmenu.class.php" />
 
 	<load class="DefaultModel" file="class/defaultmodel.class.php" />
 	<!-- TODO : split appcontentmodel in three files -->
@@ -19,6 +20,7 @@
 	<load class="ArgMiniapp" file="../arguments/argminiapp.class.php" />
 	
 	<view name="menu" class="DefaultMenu" template="menu.tpl" />
+	<hook name="header_menu" view="menu" />
 
 	<view name="default" class="DefaultModel" template="accueil.tpl" />
 	<view name="homeConfig" class="HomeConfig" template="homeconfig.tpl" />
