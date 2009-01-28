@@ -1,4 +1,4 @@
-<input id="homeAppAddButton" type="button" onclick="new Effect.toggle($('homeAppAdder'), 'appear'); new Effect.toggle($('homeAppAddButton')); return false;" value="Ajouter une application" /><br />
+<input id="homeAppAddButton" type="button" onclick="new Effect.toggle($('homeAppAdder'), 'appear'); new Effect.toggle($('homeAppAddButton')); document.getElementById('filterAppList').focus(); return false;" value="Ajouter une application" /><br />
 
 <div id="homeAppAdder" style="display : none">
 Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="filterAppList();" length="150" />
