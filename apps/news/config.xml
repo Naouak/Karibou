@@ -22,7 +22,7 @@
 	<load class="NewsPost" file="newspost.class.php" />
 	<load class="NewsAddComment" file="newsaddcomment.class.php" />
 	<load class="NewsMini" file="newsmini.class.php" />
-	<load class="NewsMiniConfig" file="newsminiconfig.class.php" />
+	<load class="NewsConfig" file="class/newsconfig.class.php" />
 	<load class="wiki2xhtmlBasic" file="../wiki/wiki2xhtml.basic.class.php" />
 	
 	<load class="NewsMenu" file="newsmenu.class.php" />
@@ -39,7 +39,6 @@
 	<view name="view" class="NewsView" template="newsview.php" />
 
 	<view name="mini" class="NewsMini" template="small.tpl" />
-	<view name="miniconfig" class="NewsMiniConfig" template="smallconfig.tpl" />
 
 	<view name="menu" class="NewsMenu" template="menu.tpl" />
 

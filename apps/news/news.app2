@@ -1,0 +1,7 @@
+name_fr = Actualités
+name_en = News
+desc_fr = Les dernières nouvelles postées par les utilisateurs
+desc_en = The last news sent by the users
+view = mini
+configmodel = NewsConfig
+
