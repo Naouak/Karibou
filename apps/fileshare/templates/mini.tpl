@@ -1,4 +1,3 @@
-<h3>##FILESHARE##</h3>
 <div class="fileshare mini">
 <center><a href="{kurl app="fileshare"}">##EXPLORER##</a></center>
 	<div class="lastadded">
@@ -14,7 +13,7 @@
 					
 					<a href="{kurl page="download" filename=$file->getPathBase64()}" title="##DOWNLOAD## {$file->getName()}">
 						<span class="downloadlink"><span>##DOWNLOAD##</span></span>
-					</a>(<a onClick="new Effect.toggle($('dl_{$file->getFileId()}')); return false;" href="#">infos</a>)
+					</a>(<a onClick="new Effect.toggle($app(this).getElementById('dl_{$file->getFileId()}')); return false;" href="#">infos</a>)
 							<div id="dl_{$file->getFileId()}" style="display: none;">
 							{if $file->getLastVersionInfo("description") != ""}
 							<span class="description">
@@ -59,7 +58,7 @@
 					</span>
 					<a href="{kurl page="download" filename=$file->getPathBase64()}" title="##DOWNLOAD## {$file->getName()}">
 						<span class="downloadlink"><span>##DOWNLOAD##</span></span>
-					</a>(<a onClick="new Effect.toggle($('dl2_{$file->getFileId()}')); return false;" href="#">infos</a>)
+					</a>(<a onClick="new Effect.toggle($app(this).getElementById('dl2_{$file->getFileId()}')); return false;" href="#">infos</a>)
 					{if $file->getLastVersionInfo("description") != ""}
 					<div id="dl2_{$file->getFileId()}" style="display: none;">
 

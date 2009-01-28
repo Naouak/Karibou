@@ -1,0 +1,7 @@
+name_en = Files share
+name_fr = Partage de fichiers
+desc_fr = Partagez des fichiers avec les autres utilisateurs
+desc_en = Share files with the other users
+view = mini
+configmodel = FileShareConfig
+
