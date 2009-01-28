@@ -1,0 +1,7 @@
+name_en = RSS reader
+name_fr = Lecteur RSS
+desc_en = A simple RSS reader
+desc_fr = Un simple lecteur de flux RSS
+view = mini
+configmodel = RSSReaderConfig
+

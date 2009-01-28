@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<app>	
+<app>
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 
 	<load class="RSSReader" file="rssreader.class.php" />
 	<load class="RSSReaderConfig" file="rssreaderconfig.class.php" />
-	
-	<header app="header" view="default" />
-	<footer app="footer" view="default" />
-	
+
 	<view name="mini" class="RSSReader" template="reader.tpl" />
-	<view name="miniconfig" class="RSSReaderConfig" template="readerconfig.tpl" />
 </app>

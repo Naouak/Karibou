@@ -1,7 +1,6 @@
-<?php 
+<?php
 /**
- * @version $Id:  preferenceslarge.class.php,v 0.1 2005/06/26 10:52:56 dat Exp $
- * @copyright 2005 Antoine Leclercq <http://antoine.leclercq.netcv.org>
+ * @copyright 2009 Pierre Ducroquet <pinaraf@gmail.com>
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU Public License
  * See the enclosed file COPYING for license information.
@@ -9,22 +8,14 @@
  * @package applications
  **/
 
-/** 
- * 
- * @package applications
- **/
-class RSSReaderConfig extends Model
+class RSSReaderConfig extends AppConfigModel
 {
-	public function build()
+	public function formFields ()
 	{
-		if( isset($this->args['feed']) )
-		{
-			$this->assign('feed', $this->args['feed']);
-		}
-		if( isset($this->args['max']) )
-		{
-			$this->assign('max', $this->args['max']);
-		}
+		return array(
+			"feed" => array("type" => "url", "required" => true, "label" => _("Feed url")),
+			"max" => array("type" => "int", "required" => true, "label" => _("Displayed articles"), "value" => 5, "min" => 2, "max" => 10)
+			);
 	}
 }
 
