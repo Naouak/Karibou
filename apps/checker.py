@@ -61,7 +61,7 @@ class Application:
 		return True
 	
 	def checkFiles (self):
-		validFiles = ["config.xml", self.folder + ".app"]
+		validFiles = ["config.xml", self.folder + ".app2"]
 		# First, check the classes...
 		for load in self.classes.values():
 			if not os.path.isfile(load):
@@ -203,7 +203,7 @@ class Application:
 					#print "Duplicated page name '%s'" % attrs["name"]
 					#return False
 		for attr in attrs.keys():
-			if not attr in ["name", "view"]:
+			if not attr in ["name", "view", "contenttype"]:
 				print "Invalid attribute %s for the page node" % attr
 				return False
 		for subnode in node.getchildren():
