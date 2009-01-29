@@ -8,13 +8,9 @@
  * @package lib
  **/
 
+// Including files on which Krypt depends (Pear classes)
 require_once 'PEAR.php';
-
-ClassLoader::add('Crypt_RSA', 'Crypt/RSA.php');
-ClassLoader::add('Crypt_RSA_Math_BigInt', 'Crypt/RSA/Math/BigInt.php');
-ClassLoader::add('Crypt_RSA_KeyPair', 'Crypt/RSA.php');
-ClassLoader::add('Crypt_RSA_Math_GMP', 'Crypt/RSA.php');
-
+require_once("Crypt/RSA.php");
 
 function binToHex($str)
 {
