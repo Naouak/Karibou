@@ -31,6 +31,9 @@ abstract class DefaultFormModel {
 				$value = null;
 				if ($fieldObj["type"] == "text") {
 					$value = filter_input(INPUT_POST, $fieldID, FILTER_SANITIZE_STRING);
+				} else if ($fieldObj["type"] == "password") {
+					$krypt = new Krypt();
+					$value = $krypt->decrypt(filter_input(INPUT_POST, $fieldID));
 				} else if ($fieldObj["type"] == "textarea") {
 					$value = filter_input(INPUT_POST, $fieldID, FILTER_SANITIZE_STRING);
 				} else if ($fieldObj["type"] == "url") {

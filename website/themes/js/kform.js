@@ -23,7 +23,7 @@ KForm = Class.create({
 				spanNode = document.createElement("span");
 				spanNode.innerHTML = fieldObject["text"];
 				formNode.appendChild(spanNode);
-			} else if ((fieldObject["type"] == "text") || (fieldObject["type"] == "url")) {
+			} else if ((fieldObject["type"] == "text") || (fieldObject["type"] == "url") || (fieldObject["type"] == "password")) {
 				if (fieldObject["label"]) {
 					lblNode = document.createElement("label");
 					lblNode.innerHTML = fieldObject["label"];
@@ -33,7 +33,12 @@ KForm = Class.create({
 				inputNode = document.createElement("input");
 				inputNode.setAttribute("id", fieldID);
 				inputNode.setAttribute("name", fieldID);
-				inputNode.setAttribute("type", "text");
+
+				if(fieldObject["type"] != "password")
+					inputNode.setAttribute("type", "text");
+				else
+					inputNode.setAttribute("type", "password");
+
 				if (fieldObject["maxlength"])
 					inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
 				if (fieldObject["value"])
@@ -274,6 +279,15 @@ KForm = Class.create({
 					}
 				}
 				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
+			} else if (fieldObject["type"] == "password") {
+				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
+					if (formObject.value == "") {
+						alert("One or more fields are missing.");
+						formObject.focus();
+						return false;
+					}
+				}
+				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(encryptedString2(KeyPair, formObject.value)));
 			} else if (fieldObject["type"] == "url") {
 				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
 					if (formObject.value == "") {

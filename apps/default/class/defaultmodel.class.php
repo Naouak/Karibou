@@ -10,6 +10,12 @@ class DefaultModel extends Model {
 		}
 		$this->assign("apps", $appArray);
 		$this->assign("karibou_base_url", $GLOBALS['config']['base_url']);
+
+		// RSA Key
+		$krypt = new Krypt();
+		$pubkey = $krypt->getPublicKey();
+		$this->assign("pubkey_exp", binToHex($pubkey->getExponent()) );
+		$this->assign("pubkey_mod", binToHex($pubkey->getModulus()) );
 	}
 }
 
