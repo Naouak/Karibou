@@ -2,32 +2,29 @@
 <app>
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 
-	<load class="resetbutton" file="resetbutton.class.php" />
-	<load class="resetbuttonreset" file="resetbuttonreset.class.php" />
-	<load class="resetbuttonstats" file="resetbuttonstats.class.php" />
-	<load class="resetbuttonmystats" file="resetbuttonmystats.class.php" />
+	<load class="RBReset" file="class/RBReset.class.php" />
+	<load class="RBState" file="class/RBState.class.php" />
+	<load class="RBStats" file="class/RBStats.class.php" />
+	<load class="RBMyStats" file="class/RBMyStats.class.php" />
+	<load class="RBMini" file="class/RBMini.class.php" />
+	<load class="RBJS" file="class/RBJS.class.php" />
 	
 	<header app="header" view="empty" />
 	<footer app="footer" view="empty" />
 	
-	<view name="mini" class="resetbutton" template="resetbutton.tpl" />
-	<view name="content" class="resetbutton" template="content.tpl" />
-	<view name="reset" class="resetbuttonreset" template="content.tpl" />
-	<view name="stats" class="resetbuttonstats" template="stats.tpl" />
-	<view name="mystats" class="resetbuttonmystats" template="mystats.tpl" />
-	
-	<page view="default">
-		<header app="header" view="default" />
-		<footer app="footer" view="default" />
-	</page>
+	<view name="state" class="RBState" template="state.tpl" />
+	<view name="stats" class="RBStats" template="stats.tpl" />
+	<view name="mystats" class="RBMyStats" template="mystats.tpl" />
+	<view name="mini" class="RBMini" template="mini.tpl" />
+	<view name="JS" class="RBJS" template="js.tpl" />
 	
 	<page name="stats" view="stats" />
 	
 	<page name="mystats" view="mystats" />
 	
-	<page name="content" view="content" />
-	
-	<page name="reset" view="reset" />
+	<page name="state" view="state" />
 
-	<page name="mini" view="mini" />
+	<form action="reset" class="RBReset">
+		<redirect page="state" />
+	</form>	
 </app>

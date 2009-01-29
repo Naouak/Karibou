@@ -1,5 +1,3 @@
-<h3>##STATS##</h3>
-{include file="navig.tpl"}
 <div id="resetbuttonstatscontent">
 <h4>##LONGESTTIME##</h4>
 <div>
@@ -10,9 +8,7 @@
 <ol>
 	{foreach name=outer item=contact from=$reseterlist}
 		{if $smarty.foreach.outer.index<10}
-		<li>
-			{$smarty.foreach.outer.iteration} / {userlink user=$contact[0] showpicture=$islogged} ##HASRESETIT## {$contact[1]} ##TIMES##
-		</li>
+		<li>{userlink user=$contact[0] showpicture=$islogged} ##HASRESETIT## {$contact[1]} ##TIMES##</li>
 		{/if}
 	{/foreach}
 </ol>
@@ -21,9 +17,7 @@
 <ol>
 	{foreach name=outer item=contact from=$timecountlist}
 		{if $smarty.foreach.outer.index<10}
-		<li>
-			{$smarty.foreach.outer.iteration} / {userlink user=$contact[0] showpicture=$islogged} ##GOTCOUNTER## {$contact[1]}
-		</li>
+		<li>{userlink user=$contact[0] showpicture=$islogged} ##GOTCOUNTER## {$contact[1]}</li>
 		{/if}
 	{/foreach}
 </ol>
@@ -32,9 +26,7 @@
 <ol>
 	{foreach name=outer item=contact from=$scorelist}
 		{if $smarty.foreach.outer.index<10}
-		<li>
-			{$smarty.foreach.outer.iteration} / {userlink user=$contact[0] showpicture=$islogged} ##SCORED## {$contact[1]} ##POINTS##
-		</li>
+		<li>{userlink user=$contact[0] showpicture=$islogged} ##SCORED## {$contact[1]} ##POINTS##</li>
 		{/if}
 	{/foreach}
 </ol>

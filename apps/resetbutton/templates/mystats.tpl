@@ -1,5 +1,3 @@
-<h3>##MYSTATS##</h3>
-{include file="navig.tpl"}
 <div id="resetbuttonstatscontent">
 <h4>##MYSCORE##</h4>
 <div>
