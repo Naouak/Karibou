@@ -12,7 +12,10 @@ class DaytofConfig extends AppConfigModel
 {
     public function formFields()
     {
-	    return array("maxtof" => array("type" => "int","required" => false,"label" => _("MAXTOF") , "value" => "3", "min" => 1, "max" => 10));
+	    return array(
+		    	"maxtof" => array("type" => "int","required" => false,"label" => _("MAXTOF") , "value" => 3, "min" => 1, "max" => 10),
+			"speed" => array("type" => "int", "required" => false, "label" => _("Picture duration (in seconds)"), "value" => 1, "min" => 10, "max" => 240)
+		);
     }
 }
 

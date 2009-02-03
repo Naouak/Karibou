@@ -12,25 +12,19 @@ msgstr ""
 
 
 msgid "DAYTOF_TITLE"
-
 msgstr "Photo du jour"
 
-
 msgid "DAYTOF_FILE"
-
 msgstr "fichier photo"
 
-
 msgid "DAYTOF_COMMENT"
-
 msgstr "Commentaire"
 
-
 msgid "DAYTOF_HISTORY"
-
 msgstr "Historique des photos"
 
-
 msgid "DAYTOF_POSTED_BY"
-
 msgstr "Photo postée par"
+
+msgid "Picture duration (in seconds)"
+msgstr "Durée de la photo (en secondes)"
