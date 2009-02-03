@@ -18,7 +18,7 @@
 			<value name="normal">0</value>
 		</param>
 		<param name="refresh">
-			<value name="small">10</value>
+			<value name="small">4</value>
 		</param>
 	</config>
 	
