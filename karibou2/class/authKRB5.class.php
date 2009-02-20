@@ -32,7 +32,13 @@ class AuthKRB5 extends Auth
 	 */
 	function change ($user, $old_password, $new_password)
 	{
-		return simple_krb5_chpass($user, $old_password, $new_password);
+		if (simple_krb5_chpass($user, $old_password, $new_password)) {
+			return true;
+		} else {
+			// Ok, sometimes, simple_krb5_chpass will return false while the new password will be set and all right...
+			// so, instead, we check if the new password is working.
+			return simple_krb5_auth($user, $new_password);
+		}
 	}
 }
 
