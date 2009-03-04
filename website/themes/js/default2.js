@@ -307,9 +307,11 @@ var KApp = Class.create({
 		this.karibou.save();
 	},
 	close: function() {
-		this.mainContainer.parentNode.removeChild(this.mainContainer);
+		Effect.SwitchOff(this.mainContainer, { afterFinish: function (effect) {
+			effect.element.parentNode.removeChild(effect.element);
+			this.karibou.save();
+		}, karibou: this.karibou});
 		this.onClose();
-		this.karibou.save();
 	},
 	submittedConfig: function() {
 		// This function will call the onConfig function after doing its own cleanups
