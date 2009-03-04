@@ -16,9 +16,17 @@ function getSubElementById(id, subNode) {
 	return;
 }
 
+var KSortable = Object.extend(Sortable, {
+	serialize: function (element) {
+		// This hack is needed. You can't return a constant value, and we don't care/are too lazy to write a fully featured serialize function.
+		// The default serialize function doesn't handle our box ids...
+		return new Date();
+	}
+});
+
 // Class for a tab in the window
 var KTab = Class.create({
-	// Special case : if settings is not undefined, we ignore tabName, and we will require many applications....
+	// Special case : if settings is not undefined, we ignore tabName, and we will load the applications....
 	initialize: function (karibou, tabName, tabDiv, settings) {
 		this.karibou = karibou;
 		if (settings) {
@@ -33,9 +41,11 @@ var KTab = Class.create({
 		this.slider = null;
 		this.tabsSettingsNode = document.createElement("div");
 		this.tabsSettingsNode.setAttribute("class", "tabsSettings");
+		this.tabsSettingsNode.className = "tabsSettings";
 		this.tabDiv.appendChild(this.tabsSettingsNode);
 		this.columnsContainer = document.createElement("div");
 		this.columnsContainer.setAttribute("class", "colonnes");
+		this.columnsContainer.className = "colonnes";
 		this.tabDiv.appendChild(this.columnsContainer);
 		this.tabContainers = new Array();
 		this.newTabSizes = null;			// The tab sizes during the resize
@@ -43,6 +53,7 @@ var KTab = Class.create({
 			var divNode = document.createElement("div");
 			divNode.setAttribute("id", "container_" + containerID);
 			divNode.setAttribute("class", "colonne");
+			divNode.className = "colonne";
 			// Warning: the columns can't use 100% of the available size : they have a border...
 			divNode.style.width = this.tabSizes[i] + '%';
 			this.columnsContainer.appendChild(divNode);
@@ -68,7 +79,7 @@ var KTab = Class.create({
 	},
 	rebuildContainers: function () {
 		for (var i = 0 ; i < this.tabContainers.length ; i++) {
-			Sortable.create(this.tabContainers[i], {dropOnEmpty: true, 
+			KSortable.create(this.tabContainers[i], {dropOnEmpty: true, 
 								tag: "div", 
 								overlap: "horizontal", 
 								handle: "handle", 
@@ -90,10 +101,13 @@ var KTab = Class.create({
 			alert("You can't resize twice");
 			return;
 		}
+		if (this.tabSizes.length == 1)
+			return;
 		this.newTabSizes = this.tabSizes;
 		this.resizing = true;
 		this.slider = document.createElement("div");
 		this.slider.setAttribute("class", "slider");
+		this.slider.className = "slider";
 		var currentWidth = 0;
 		var handles = new Array();
 		var sliderValues = new Array();
@@ -102,6 +116,7 @@ var KTab = Class.create({
 			currentWidth += Number(widthTxt.substring(0, widthTxt.length - 1));
 			var handle = document.createElement("div");
 			handle.setAttribute("class", "handle");
+			handle.className = "handle";
 			sliderValues.push(currentWidth);
 			this.slider.appendChild(handle);
 			handles.push(handle);
@@ -157,7 +172,14 @@ var KTab = Class.create({
 				var node = containerNode.childNodes[j];
 				if (node.attributes.getNamedItem("kapp")) {
 					if (node.attributes.getNamedItem("kapp").nodeValue == "true") {
-						container.push(node.id);
+						var appObj = this.karibou.getAppFromNode(node);
+						if (appObj) {
+							if (appObj.shaded)
+								container.push("*" + node.id);
+							else
+								container.push(node.id);
+						} else
+							container.push(node.id);
 					}
 				}
 			}
@@ -179,6 +201,7 @@ var KTab = Class.create({
 		var divNode = document.createElement("div");
 		divNode.setAttribute("id", "container_" + containerID);
 		divNode.setAttribute("class", "colonne");
+		divNode.className = "colonne";
 		// Warning: the columns can't use 100% of the available size : they have a border...
 		divNode.style.width = this.tabSizes[this.tabSizes.length] + '%';
 		this.columnsContainer.appendChild(divNode);
@@ -243,11 +266,12 @@ var KApp = Class.create({
 				transport.request.options.app.config = transport.responseText.evalJSON();
 			}});
 		}
-		this.karibou.save();
+		this.shaded = false;
 	},
 	configure: function() {
 		this.submitBox = document.createElement("div");
 		this.submitBox.setAttribute("class", "overBox");
+		this.submitBox.className = "overBox";
 		this.submitBox.appendChild(document.createElement("br"));
 		formNode = document.createElement("form");
 		formNode.setAttribute("action", this.karibou.appSetConfigUrl);
@@ -277,8 +301,10 @@ var KApp = Class.create({
 			this.mainContainer.style.height = this.submitBox.scrollHeight + "px";
 	},
 	shade: function() {
+		this.shaded = !this.shaded;
 		Effect.toggle(this.appBox, 'slide', { duration: 0.5 });
 		this.onShade();
+		this.karibou.save();
 	},
 	close: function() {
 		this.mainContainer.parentNode.removeChild(this.mainContainer);
@@ -316,6 +342,7 @@ var KApp = Class.create({
 	submitContent: function() {
 		this.submitBox = document.createElement("div");
 		this.submitBox.setAttribute("class", "overBox");
+		this.submitBox.className = "overBox";
 		this.submitBox.appendChild(document.createElement("br"));
 		formNode = document.createElement("form");
 		formNode.setAttribute("action", this.karibou.appSubmitUrl);
@@ -409,6 +436,7 @@ var Karibou = Class.create({
 				if (this.tabsBar.childNodes[i].attributes.getNamedItem("class") != null) {
 					if (this.tabsBar.childNodes[i].attributes.getNamedItem("class").nodeValue == "activeTabLink")
 						this.tabsBar.childNodes[i].setAttribute("class", "");
+						this.tabsBar.childNodes[i].className = "";
 				}
 			}
 		}
@@ -417,12 +445,14 @@ var Karibou = Class.create({
 		$(aNode).observe('click', this.tabLinkClickedCallback);
 		tabTitleNode.setAttribute("tabName", tabName);
 		tabTitleNode.setAttribute("class", "activeTabLink");
+		tabTitleNode.className = "activeTabLink";
 		aNode.innerHTML = tabName;
 		tabTitleNode.appendChild(aNode);
 		this.tabsBar.appendChild(tabTitleNode);
 
 		var tabNode = document.createElement("div");
 		tabNode.setAttribute("class", "tab home");
+		tabNode.className = "tab home";
 		this.tabsContainer.appendChild(tabNode);
 		var tabObj = null;
 		if (settings) {
@@ -474,7 +504,6 @@ var Karibou = Class.create({
 						this.tabsBar.childNodes[i].parentNode.removeChild(this.tabsBar.childNodes[i]);
 				}
 			}
-			this.save();
 			if (newTab) {
 				this.focusTab(newTab);
 			}
@@ -517,6 +546,8 @@ var Karibou = Class.create({
 			appLoader.handlerMain(appName, appId);
 			if (appLoader.loaded()) {
 				this.appLoaders = this.appLoaders.without(appLoader);
+				if (this.appLoaders.length == 0)
+					this.loading = false;
 				i = -1;
 			}
 		}
@@ -544,6 +575,8 @@ var Karibou = Class.create({
 			appLoader.handlerJS(application);
 			if (appLoader.loaded()) {
 				this.appLoaders = this.appLoaders.without(appLoader);
+				if (this.appLoaders.length == 0)
+					this.loading = false;
 				i = -1;
 			}
 		}
@@ -594,7 +627,7 @@ var Karibou = Class.create({
 				if (this.appObjs[i].mainContainer == node)
 					return this.appObjs[i];
 			}
-			alert("Didn't find the application in this.appObjs");
+			//alert("Didn't find the application in this.appObjs");
 			return;
 		} else if (node.parentNode)
 			return this.getAppFromNode(node.parentNode);
@@ -619,7 +652,6 @@ var Karibou = Class.create({
 			this.createNewTab(tabName, tabs[tabName]);
 		}
 		this.appIds = data["appIds"];
-		this.loading = false;
 	}
 });
 
@@ -628,12 +660,19 @@ var KAppLoader = Class.create({
 		this.jsloaded = false;
 		this.mainloaded = false;
 		this.done = false;
-		this.appName = applicationName;
+		if (applicationName.charAt(0) == '*') {
+			this.shaded = true;
+			this.appName = applicationName.substr(1);
+		} else {
+			this.shaded = false;
+			this.appName = applicationName;
+		}
 		this.appId = id;
 		this.container = container;
 		this.karibou = karibou;
 		this.targetNode = document.createElement("div");
 		this.targetNode.setAttribute("class", "appRootContainer");
+		this.targetNode.className = "appRootContainer";
 		this.targetNode.innerHTML = "Please wait...";
 		this.container.appendChild(this.targetNode);
 	},
@@ -652,8 +691,11 @@ var KAppLoader = Class.create({
 			try {
 				var appObj = new (this.karibou.getApplicationClass(this.appName))(this.appName, this.appId, this.targetNode, this.karibou);
 				this.karibou.registerAppObj(appObj);
+				if (this.shaded)
+					appObj.shade();
 				if (this.karibou.currentTab != null) 
 					this.karibou.currentTab.rebuildContainers();
+				this.karibou.save();
 			} catch (err) {
 				alert("Exception occured with " + this.appName + ":" + this.appId);
 				alert(err);
