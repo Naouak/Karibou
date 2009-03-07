@@ -23,6 +23,18 @@ KForm = Class.create({
 				spanNode = document.createElement("span");
 				spanNode.innerHTML = fieldObject["text"];
 				formNode.appendChild(spanNode);
+			} else if (fieldObject["type"] == "help") {
+				titleNode = document.createElement("a");
+				titleNode.setAttribute("href", "#");
+				titleNode.innerHTML = "Help ?";
+				formNode.appendChild(titleNode);
+				helpNode = document.createElement("span");
+				helpNode.setAttribute("style", "display: none;");
+				helpNode.innerHTML = fieldObject["text"];
+				helpNode.id = "__karibou_help_node_" + Math.ceil(Math.random()*1000000);
+				titleNode.setAttribute("onclick", "new Effect.toggle(document.getElementById('" + helpNode.id + "')); return false;");
+				formNode.appendChild(helpNode);
+				helpNode.insertBefore(document.createElement("br"), helpNode.firstChild);
 			} else if ((fieldObject["type"] == "text") || (fieldObject["type"] == "url") || (fieldObject["type"] == "password")) {
 				if (fieldObject["label"]) {
 					lblNode = document.createElement("label");
