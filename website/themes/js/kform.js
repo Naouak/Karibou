@@ -26,7 +26,10 @@ KForm = Class.create({
 			} else if (fieldObject["type"] == "help") {
 				titleNode = document.createElement("a");
 				titleNode.setAttribute("href", "#");
-				titleNode.innerHTML = "Help ?";
+				if (fieldObject["title"])
+					titleNode.innerHTML = fieldObject["title"];
+				else
+					titleNode.innerHTML = "Help ?";
 				formNode.appendChild(titleNode);
 				helpNode = document.createElement("span");
 				helpNode.setAttribute("style", "display: none;");
