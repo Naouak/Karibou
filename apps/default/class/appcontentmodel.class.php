@@ -28,6 +28,8 @@ abstract class DefaultFormModel {
 			if($value != "") {
 				if ($fieldObj["type"] == "span")
 					return;
+				if ($fieldObj["type"] == "help")
+					return;
 				$value = null;
 				if ($fieldObj["type"] == "text") {
 					$value = filter_input(INPUT_POST, $fieldID, FILTER_SANITIZE_STRING);
