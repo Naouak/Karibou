@@ -1,4 +1,3 @@
-<h3 class="handle">{t}Video of the day{/t}</h3>
 <div align="center">
 <p>
 {t}Video posted by{/t} : {userlink user=$videoauthor.object showpicture=$islogged}
