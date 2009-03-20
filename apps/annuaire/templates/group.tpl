@@ -27,15 +27,14 @@
 	<div class="thumbnail">
 			<a href="{kurl page="" username=$user.login}"><img src="{$user.picture}" border="0" /></a>
 			<div class="thumbtitle">
+				{if $user.role == "admin" }<u>{/if}
 				<a href="{kurl page="" username=$user.login}">
 				{if $user.firstname}
 						{$user.firstname} {$user.lastname}
 				{else}
 						{$user.login}
 				{/if}
-				{if $user.role == "admin" }
-				<br />[Admin]
-				{/if}
+				{if $user.role == "admin" }</u>{/if}
 				</a>
 			</div>
 	</div>
