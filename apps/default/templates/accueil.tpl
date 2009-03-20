@@ -1,3 +1,6 @@
+Attention, attention : on est en train de bosser !<br /><br />
+
+{if $loggedUser}
 <input id="homeAppAddButton" type="button" onclick="new Effect.toggle($('homeAppAdder'), 'appear'); new Effect.toggle($('homeAppAddButton')); document.getElementById('filterAppList').focus(); return false;" value="Ajouter une application" /><br />
 
 <div id="homeAppAdder" style="display : none">
@@ -13,9 +16,7 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 {/foreach}
 </div>
 </div>
-
-
-<div id="configViewer">config</div>
+{/if}
 
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/default2.js"></script>
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/scal.js"></script>
@@ -104,6 +105,7 @@ var KeyPair = new RSAKeyPair(
 );
 
 </script>
+{if $loggedUser}
 <a href="" onclick="customizeTab(); return false;">Customize</a><br />
 <span id="customizeSection" style="display: none;">
 <a href="" onclick="resizeTab(); return false;" id="resizeLink">- Resize</a><br />
@@ -116,10 +118,15 @@ var KeyPair = new RSAKeyPair(
 <a href="" onclick="doneResizeTab(); return false;" id="doneResizeLink">- Done</a>
 </span>
 </span>
+{/if}
 <br />
 <div>
+{if $loggedUser}
 <input type="button" onclick="addTab();" value="[+]" />
+{/if}
 <span id="tabsBar"></span>
+{if $loggedUser}
 <input type="button" onclick="closeTab();" value="[-]" />
+{/if}
 </div>
 <div id="tabsContainer"></div>
