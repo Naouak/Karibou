@@ -5,6 +5,7 @@
     width: 400px;
     background-color: white;
     text-align: left;
+    z-index: 200;
 }
 
 .flashmail {

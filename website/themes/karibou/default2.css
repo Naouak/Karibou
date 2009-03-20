@@ -5,15 +5,17 @@
 	background-color: #D6EEFF;
 	border: 1px solid #B2DFFF;
 	float: left;
+	z-index: 5;
 }
 
 .colonnes {
 	width: 100%;
+	z-index: 1;
 }
 
 .tabsSettings .slider {
 	width: 100%;
-	background-color: white;/*#ccc;*/
+	background-color: white;
 	height: 14px;
 	position: relative;
 	margin-left: 2px;
@@ -46,8 +48,6 @@
 	cursor: move;
 }
 
-/*@import 'calendar.css';*/
-
 .calendar_link {
 	width: 20px;
 	height: 20px;
@@ -60,7 +60,22 @@
 }
 
 .appRootContainer {
+	/*
+	Problème ici avec IE7...
+	*/
 	background-color: white;
+	/*float: none;
+	position: relative;
+	width: 200px;
+	z-index: 3;
+	left: 30px;*/
+}
+
+.appBox {
+	position: relative;
+/*	width: 200px;
+	left: 0px;
+	z-index: 4;*/
 }
 
 .appRootContainer .del {
@@ -168,9 +183,6 @@
 
 #homeAppAdder {
 	z-index: 10;
-	overflow: none;
-	max-height: 25%;
-	/*top: 60px;*/
 	position: absolute;
 	background-color: black;
 	right: 0px;
@@ -181,8 +193,7 @@
 
 #homeAppList {
 	overflow-y: auto;
-/*	position: absolute;*/
-	max-height: 80%;
+	max-height: 150px;
 }
 
 #homeAppAddButton {
@@ -195,3 +206,4 @@
 	top: 0px;
 	right: 0px;
 }
+

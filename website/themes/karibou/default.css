@@ -1,5 +1,6 @@
-@import 'autocompleter.css';
+@import 'default2.css';
 @import 'karibou.css';
+@import 'autocompleter.css';
 @import 'home.css';
 @import 'navigation.css';
 
@@ -30,9 +31,9 @@
 @import 'account.css';
 @import 'appflashmail.css';
 
-@import 'default2.css';
 
 /*
 @import 'override.css';
 */
+
 @import 'calendar.css';
