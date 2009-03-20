@@ -10,7 +10,7 @@
 
 class NewsConfig extends AppConfigModel {
 	public function formFields () {
-		return array("max" => array("type" => "int", "value" => 5, "label" => _("NUMBEROFNEWS"), "required" => true));
+		return array("max" => array("type" => "int", "value" => 3, "label" => _("NUMBEROFNEWS"), "required" => true));
 	}
 }
 
