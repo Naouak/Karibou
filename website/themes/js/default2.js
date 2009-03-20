@@ -475,6 +475,13 @@ var Karibou = Class.create({
 		return false;
 	},
 	closeCurrentTab: function () {
+		var tabCount = 0;
+		for (var tabName in this.tabs)
+			tabCount++;
+		if (tabCount == 1) {
+			if (!confirm("As-tu plus de deux neurones ?"))
+				return;
+		}
 		if (this.currentTab != null) {
 			var tabName = this.currentTab.tabName;
 
@@ -639,7 +646,6 @@ var Karibou = Class.create({
 			return;
 		var data = {"tabs": this.tabs, "appIds": this.appIds};
 		var jsonised = Object.toJSON(data);
-		document.getElementById("configViewer").innerHTML = jsonised;
 		new Ajax.Request(this.saveHomeUrl, {method: 'post', postBody: "home=" + encodeURIComponent(jsonised)}); 
 	},
 	loadUrl: function (url) {
