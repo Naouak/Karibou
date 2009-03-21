@@ -24,7 +24,7 @@ class VideoSubmit extends AppContentModel {
 	}
 
 	public function submit($parameters) {
-		$video = parameters["newvideo"];
+		$video = $parameters["newvideo"];
 		$comment = $parameters["comment"];
 
 		// Enregistrement URL : Youtube ou Dailymotion
