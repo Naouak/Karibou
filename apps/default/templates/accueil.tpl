@@ -1,22 +1,6 @@
 Attention, attention : on '{$lang}' est en train de bosser !<br /><br />
 
-{if $loggedUser}
-<input id="homeAppAddButton" type="button" onclick="new Effect.toggle($('homeAppAdder'), 'appear'); new Effect.toggle($('homeAppAddButton')); document.getElementById('filterAppList').focus(); return false;" value="Ajouter une application" /><br />
 
-<div id="homeAppAdder" style="display : none">
-Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="filterAppList();" length="150" />
-<input id="homeAppAddCloseButton" type="button" value="Close" onclick="new Effect.toggle($('homeAppAdder'), 'appear'); new Effect.toggle($('homeAppAddButton'));  return false;" /><br />
-<div id="homeAppList">
-{foreach key=appName item=appObject from=$apps}
-<p class="homeAppChoice">
-{$appObject->getName("$lang")} : {$appObject->getDesc("$lang")}
-&nbsp;&nbsp;&nbsp;
-<a onclick="karibou.instanciateApplication('{$appName}'); return false;">Ajouter</a> <br />
-</p>
-{/foreach}
-</div>
-</div>
-{/if}
 
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/default2.js"></script>
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/scal.js"></script>
@@ -106,27 +90,52 @@ var KeyPair = new RSAKeyPair(
 
 </script>
 {if $loggedUser}
-<a href="" onclick="customizeTab(); return false;">Customize</a><br />
+<div class="default2_customize">
+
+<a href="" onclick="customizeTab(); return false;">Customize</a><input id="homeAppAddButton" type="button" onclick="new Effect.toggle($('homeAppAdder'), 'appear'); new Effect.toggle($('homeAppAddButton')); document.getElementById('filterAppList').focus(); return false;" value="Ajouter une application" /><br />
+
 <span id="customizeSection" style="display: none;">
-<a href="" onclick="resizeTab(); return false;" id="resizeLink">- Resize</a><br />
+<ul>
+<li><a href="" onclick="resizeTab(); return false;" id="resizeLink">Resize</a></li>
 <span id="columnsLinks">
-<a href="" onclick="addColumn(); return false;" id="addColumnLink">- Add a column</a><br />
-<a href="" onclick="removeLastColumn(); return false;" id="removeColumnLink">- Remove the last column</a>
+<li><a href="" onclick="addColumn(); return false;" id="addColumnLink">Add a column</a></li>
+<li><a href="" onclick="removeLastColumn(); return false;" id="removeColumnLink">Remove the last column</a></li>
 </span>
 <span id="resizeLinks">
-<a href="" onclick="cancelResizeTab(); return false;" id="cancelResizeLink">- Cancel</a><br />
-<a href="" onclick="doneResizeTab(); return false;" id="doneResizeLink">- Done</a>
+<li><a href="" onclick="cancelResizeTab(); return false;" id="cancelResizeLink">Cancel</a></li>
+<li><a href="" onclick="doneResizeTab(); return false;" id="doneResizeLink">Done</a></li>
 </span>
+</ul>
 </span>
+
+
+<div id="homeAppAdder" style="display : none">
+Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="filterAppList();" length="150" />
+<input id="homeAppAddCloseButton" type="button" value="Close" onclick="new Effect.toggle($('homeAppAdder'), 'appear'); new Effect.toggle($('homeAppAddButton'));  return false;" /><br />
+<div id="homeAppList">
+{foreach key=appName item=appObject from=$apps}
+<p class="homeAppChoice">
+{$appObject->getName("$lang")} : {$appObject->getDesc("$lang")}
+&nbsp;&nbsp;&nbsp;
+<a onclick="karibou.instanciateApplication('{$appName}'); return false;">Ajouter</a> <br />
+</p>
+{/foreach}
+</div>
+
+
+</div>
+
+
+</div>
 {/if}
 <br />
 <div>
 {if $loggedUser}
-<input type="button" onclick="addTab();" value="[+]" />
+<input type="button" onclick="addTab();" value="+" />
 {/if}
 <span id="tabsBar"></span>
 {if $loggedUser}
-<input type="button" onclick="closeTab();" value="[-]" />
+<input type="button" onclick="closeTab();" value="-" />
 {/if}
 </div>
 <div id="tabsContainer"></div>

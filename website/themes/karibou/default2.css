@@ -207,3 +207,26 @@
 	right: 0px;
 }
 
+input[type=button],input[type=submit],input[type=reset]{
+    background: RGB(225,225,225);
+    border: solid 2px RGB(200,200,200);
+    color: RGB(50,50,150);
+    font-weight:bold;
+}
+
+.default2_customize{
+	background: RGB(250,250,250);
+    border:1px solid #B2DFFF;
+    color: RGB(50,50,150);
+    font-weight:bold;
+	min-height: 40px;
+}
+
+.default2_customize a{
+	color: RGB(50,50,150);
+}
+
+.default2_customize a:visited{
+	color: RGB(50,50,150);
+}
+

@@ -1,5 +1,6 @@
 
 RewriteEngine On
+RewriteBase /karibou/website
 RewriteRule ^themes/	-			[L]
 RewriteRule ^pub/	-				[L]
 RewriteRule ^.*$		index.php	[L]
