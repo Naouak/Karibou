@@ -1,4 +1,4 @@
-Attention, attention : on est en train de bosser !<br /><br />
+Attention, attention : on '{$lang}' est en train de bosser !<br /><br />
 
 {if $loggedUser}
 <input id="homeAppAddButton" type="button" onclick="new Effect.toggle($('homeAppAdder'), 'appear'); new Effect.toggle($('homeAppAddButton')); document.getElementById('filterAppList').focus(); return false;" value="Ajouter une application" /><br />
@@ -9,7 +9,7 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 <div id="homeAppList">
 {foreach key=appName item=appObject from=$apps}
 <p class="homeAppChoice">
-{$appObject->getName($lang)} : {$appObject->getDesc($lang)}
+{$appObject->getName("$lang")} : {$appObject->getDesc("$lang")}
 &nbsp;&nbsp;&nbsp;
 <a onclick="karibou.instanciateApplication('{$appName}'); return false;">Ajouter</a> <br />
 </p>

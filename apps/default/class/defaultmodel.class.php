@@ -2,7 +2,7 @@
 
 class DefaultModel extends Model {
 	public function build() {
-		$this->assign("lang", $this->currentUser->getPref("lang"));
+		$this->assign("lang", $this->smarty->getLanguage());
 		$appNames = MiniAppFactory::listApplications();
 		$appArray = Array();
 		foreach($appNames as $appName) {

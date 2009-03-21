@@ -75,6 +75,10 @@ class KSmarty extends Smarty
 
 
 	}
+
+	public function getLanguage() {
+		return $this->currentLanguage;
+	}
 	
 	function fetch($_smarty_tpl_file, $_smarty_cache_id = null, $_smarty_compile_id = null, $_smarty_display = false) {
 	  // We need to set the cache id and the compile id so a new script will be
