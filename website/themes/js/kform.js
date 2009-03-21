@@ -428,6 +428,15 @@ KForm = Class.create({
 			iframeNode.style.display = "none";
 			this.targetNode.appendChild(iframeNode);
 			this.targetNode.setAttribute("target", iframeName);
+			for (paramName in this.extraParameters) {
+				// Put every extra parameter in a hidden field...
+				var hiddenNode = document.createElement("input");
+				hiddenNode.setAttribute("type", "hidden");
+				hiddenNode.setAttribute("name", paramName);
+				hiddenNode.setAttribute("id", paramName);
+				hiddenNode.setAttribute("value", this.extraParameters[paramName]);
+				this.targetNode.appendChild(hiddenNode);
+			}
 			iframeNode.onload = function () { KForm.getFormFromNode(this.parentNode).submitted(); return true; };
 			return true; 
 		} else {
