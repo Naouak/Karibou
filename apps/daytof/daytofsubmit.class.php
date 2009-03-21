@@ -4,15 +4,12 @@ class DaytofSubmit extends AppContentModel {
 	private $max_width_daytof = 200;
 	private $max_height_daytof = 200;
 	public function submit($parameters) {
-		echo "Hello world\n";
-
 		$tofdir = KARIBOU_PUB_DIR.'/daytof';
 		// If the images folder doesn't exist, create it.
 		if( ! is_dir( $tofdir ) )
 			mkdir( $tofdir, 0744, true);
 
 		$tmpFileName = $parameters['file']['tmp_name'];
-		echo "$tmpFileName\n";
 		if( is_uploaded_file($tmpFileName) && filesize($tmpFileName)<1512000)
 		{
 			// Get the id for the new picture
