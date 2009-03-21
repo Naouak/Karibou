@@ -1,10 +1,10 @@
-.onlineusers ul {
+#onlineusers ul {
 	margin: 2px;
 	padding: 0px;
-	list-style: none;
+	list-style-type: none;
 }
 
-.onlineusers li {
+#onlineusers li {
 	line-height: 20px;
 }
 
