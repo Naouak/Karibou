@@ -25,7 +25,7 @@ abstract class DefaultFormModel {
 		$params = array();
 		foreach ($this->formFields() as $fieldID => $fieldObj) {
 			$value = filter_input(INPUT_POST, $fieldID);
-			if($value != "") {
+			if (($value != "") || ($fieldObj["type"] == "file")) {
 				if ($fieldObj["type"] == "span")
 					return;
 				if ($fieldObj["type"] == "help")
