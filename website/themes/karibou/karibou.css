@@ -126,7 +126,7 @@ html>body #content {
 	height: 43px;
 	top: 0px;
 	right: 0px;
-	z-index: 4;
+	z-index: 999;
 	font-size: 0.8em;
 	background-image: url(images/search/searchmodule.png);
 	/* margin-right: -1px; */
