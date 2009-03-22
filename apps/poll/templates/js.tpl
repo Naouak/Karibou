@@ -8,7 +8,7 @@ var pollClass = Class.create(KApp, {
 		this.canVote = false;
 		if (this.getElementById("canVote"))
 			this.canVote = true;
-		if (this.canVote) {
+		if (!this.canVote) {
 			this.refresher = new Ajax.PeriodicalUpdater(this.getElementById('poll_votes'), this.refreshURL, {asynchronous:true, frequency: 3600});
 			this.refresher.start();
 		}		
