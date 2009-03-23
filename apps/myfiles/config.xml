@@ -3,6 +3,7 @@
 	<permissions default="_NO_ACCESS_" logged="_READ_ONLY_" />
 	
 	<load class="MyFiles" file="myfiles.class.php" />
+	<load class="JSModel" file="jsmodel.class.php" />
 	
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
@@ -10,8 +11,8 @@
 	<view name="mini" class="MyFiles" template="small.tpl" />
 	<view name="list" class="MyFiles" template="list.tpl" />
 	<view name="download" class="MyFiles" template="none.tpl" />
+	<view name="JS" class="JSModel" template="js.tpl" />
 	
-	<page view="default" />
 	<page name="list" view="list">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />

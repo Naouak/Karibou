@@ -49,6 +49,10 @@ class SmbFileEntry {
 	public function getFullPath () {
 		return $this->fullPath;
 	}
+
+	public function getFullPathBase64() {
+		return base64_encode($this->fullPath);
+	}
 }
 
 class SmbClient {

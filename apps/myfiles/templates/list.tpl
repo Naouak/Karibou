@@ -3,11 +3,11 @@
 			{foreach from=$fileEntries key=key item=entry}
 			<li>
 				{if $entry->isFolder()}
-				<a href="#" onclick="changeFolder('{$entry->getFullPath()}')">
+				<a href="#" onclick="$app(this).changeFolder('{$entry->getFullPathBase64()}')">
 				<img src="themes/karibou/images/fileshare/detailed/directory.png" />{$entry->getName()}
 				</a>
 				{else}
-				<a href="{kurl app="myfiles" page="download"}?fileName={$entry->getFullPath()}">
+				<a href="{kurl app="myfiles" page="download"}?fileName={$entry->getFullPathBase64()}">
 				<img src="themes/karibou/images/fileshare/detailed/default.png" />{$entry->getName()}
 				</a>
 				{/if}

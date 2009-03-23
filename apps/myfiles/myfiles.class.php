@@ -53,7 +53,7 @@ class MyFiles extends Model
 	{
 		$folder = "/";
 		if (isset($_POST["folder"]))
-			$folder = substr(escapeshellarg($_POST["folder"]), 1, strlen(escapeshellarg($_POST["folder"])) - 2);
+			$folder = substr(escapeshellarg(base64_decode($_POST["folder"])), 1, strlen(escapeshellarg(base64_decode($_POST["folder"]))) - 2);
 		if ((strpos($folder, "..")) || (strpos($folder, "`"))) {
 			die("Invalid path.");
 		}
@@ -61,7 +61,7 @@ class MyFiles extends Model
 		$smb = $this->getSmbClient();
 		
 		if (isset($_GET["fileName"])) {
-			$fileName = substr(escapeshellarg($_GET["fileName"]), 1, strlen(escapeshellarg($_GET["fileName"])) - 2);
+			$fileName = substr(escapeshellarg(base64_decode($_GET["fileName"])), 1, strlen(escapeshellarg(base64_decode($_GET["fileName"]))) - 2);
 			if ((strpos($fileName, "..")) || (strpos($fileName, "`"))) {
 				die("Invalid path.");
 			}
