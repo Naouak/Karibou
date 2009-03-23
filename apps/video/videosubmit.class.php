@@ -41,21 +41,10 @@ class VideoSubmit extends AppContentModel {
 			$video = $out[2];
 			$urlvid = "http://www.koreus.com/video/";
 			$site = "koreus";
-		} else if (eregi("http://(.*)dailymotion.com/(.*)", $video, $out)) {
+		} else if (eregi("http://(.*)dailymotion.com/video/(.*)", $video, $out)) {
+			$video = $out[2];
 			$urlvid = "http://www.dailymotion.com/swf/";
 			$site = "dailymotion";
-			
-			$file = fopen ($video, "r");
-			if ($file) {
-				while (!feof($file)) {
-					$line = fgets($file, 1024);
-					if (preg_match ("<link rel=\"video_src\" href=\"http://www.dailymotion.com/swf/([^\?]*)(.*)?\" />", $line, $out)) {
-						$video = $out[1];
-						break;
-					}
-				}
-				fclose($file);
-			}
 		}
 		
 		if ((strlen($video) > 3) && ($site != "unknown"))
