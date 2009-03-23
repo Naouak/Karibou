@@ -1,0 +1,7 @@
+name_fr = partage de lien
+name_en = linkshare
+desc_fr = partage de liens entre amis
+desc_en = share of links with friends
+view = mini
+submitmodel = linkshareSubmit
+configmodel = linkshareConfig
