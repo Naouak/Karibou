@@ -35,7 +35,7 @@ msgid "NOUSERCONNECTED"
 msgstr "Aucun utilisateur connecté"
 
 msgid "CHANGESTATE"
-msgstr "Changer d'état"
+msgstr "Appliquer"
 
 msgid "MOOD_none"
 msgstr "Aucune"
