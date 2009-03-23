@@ -41,8 +41,8 @@ class VideoSubmit extends AppContentModel {
 			$video = $out[2];
 			$urlvid = "http://www.koreus.com/video/";
 			$site = "koreus";
-		} else if (eregi("http://(.*)dailymotion.com/video/(.*)", $video, $out)) {
-			$video = $out[2];
+		} else if (eregi("http://(.*)dailymotion.com/(.*)", $video, $out)) {
+			$video = end(explode("/", $out[2]));
 			$urlvid = "http://www.dailymotion.com/swf/";
 			$site = "dailymotion";
 		}
