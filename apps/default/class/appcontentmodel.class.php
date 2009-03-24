@@ -27,9 +27,9 @@ abstract class DefaultFormModel {
 			$value = filter_input(INPUT_POST, $fieldID);
 			if (($value != "") || ($fieldObj["type"] == "file")) {
 				if ($fieldObj["type"] == "span")
-					return;
+					continue;
 				if ($fieldObj["type"] == "help")
-					return;
+					continue;
 				$value = null;
 				if ($fieldObj["type"] == "text") {
 					$value = filter_input(INPUT_POST, $fieldID, FILTER_SANITIZE_STRING);
