@@ -27,8 +27,11 @@ var resetbuttonClass = Class.create(KApp, {
 		this.refresher = new PeriodicalExecuter(function(pe) {
 				pe.app.updateTimer();
 				pe.app.counter++;
-				if (pe.app.counter > 10)
-					pe.app.showButton();
+				if ((pe.app.counter % 10) == 0) {
+					new Ajax.Updater(pe.app.getElementById("currentView"), "{/literal}{kurl page="state"}{literal}", {asynchronous: true, evalScripts: false, method: "post", postBody: ((new Date()).toString())});
+				}
+				//if (pe.app.counter > 10)
+				//	pe.app.showButton();
 			}, 1);
 		this.refresher.app = this;
 	},
