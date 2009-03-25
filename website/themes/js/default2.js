@@ -532,6 +532,7 @@ var Karibou = Class.create({
 					this.tabsBar.childNodes[i].setAttribute("class", "activeTabLink");
 			}	
 		}
+		this.save();
 	},
 	getTabFromApplication: function(application) {
 		node = application.mainContainer;
@@ -645,6 +646,8 @@ var Karibou = Class.create({
 		if (this.loading)
 			return;
 		var data = {"tabs": this.tabs, "appIds": this.appIds};
+		if (this.currentTab)
+			data["defaultTab"] = this.currentTab.tabName;
 		var jsonised = Object.toJSON(data);
 		new Ajax.Request(this.saveHomeUrl, {method: 'post', postBody: "home=" + encodeURIComponent(jsonised)}); 
 	},
@@ -660,6 +663,9 @@ var Karibou = Class.create({
 			this.createNewTab(tabName, tabs[tabName]);
 		}
 		this.appIds = data["appIds"];
+		if ("defaultTab" in data) {
+			this.focusTab(this.tabs[data["defaultTab"]]);
+		}
 	}
 });
 
