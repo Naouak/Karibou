@@ -114,6 +114,23 @@
 	display: none;
 }
 
+.appRootContainer .detach {
+        width: 16px;
+        height: 16px;
+        background-image: url("images/detach.png");
+        visibility: hidden;
+}
+
+.appRootContainer:hover .detach {
+	position: absolute;
+	top: 1px;
+	right: 45px;
+	visibility: visible;
+}
+
+.appRootContainer .detach .text {
+	display: none;
+}
 .appRootContainer .submit {
         width: 16px;
         height: 16px;

@@ -267,6 +267,38 @@ var KApp = Class.create({
 			}});
 		}
 		this.shaded = false;
+		this.detached = false;
+		this.detachedNode = null;
+		this.detachedParent = null;
+		this.detachedNext = null;
+	},
+	detach: function() {
+		if (!this.detached) {
+			this.detachedNode = document.createElement("div");
+			this.detachedNode.style.position = "fixed";
+			this.detachedNode.style.width = "90%";
+			this.detachedNode.style.height = "90%";
+			this.detachedNode.style.left = "5%";
+			this.detachedNode.style.top = "5%";
+			this.detachedNode.style.display = "block";
+			this.detachedNode.style.zIndex = 9999;
+			this.detachedParent = this.mainContainer.parentNode;
+			if (this.mainContainer.nextSibling)
+				this.detachedNext = this.mainContainer.nextSibling;
+			this.detachedNode.appendChild(this.mainContainer.parentNode.removeChild(this.mainContainer));
+			document.body.appendChild(this.detachedNode);
+			this.detached = true;
+		} else {
+			this.detached = false;
+			if (this.detachedNext)
+				this.detachedParent.insertBefore(this.detachedNode.removeChild(this.detachedNode.firstChild), this.detachedNext);
+			else
+				this.detachedParent.appendChild(this.detachedNode.removeChild(this.detachedNode.firstChild));
+			document.body.removeChild(this.detachedNode);
+			this.detachedNode = null;
+			this.detachedParent = null;
+			this.detachedNext = null;
+		}
 	},
 	configure: function() {
 		this.submitBox = document.createElement("div");
