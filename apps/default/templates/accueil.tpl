@@ -1,12 +1,22 @@
-Attention, attention : on '{$lang}' est en train de bosser !<br /><br />
-
-
-
+{if $keychainError}
+<div class="home">
+<br />
+{if $secondAttempt}
+<strong>##INVALID_PASSWORD##</strong><br />
+{/if}
+##KEYCHAIN_PROBLEM_PASSWORD_OUT_OF_SYNC##<br />
+##OLD_PASSWORD_NEEDED##<br />
+<form action="{kurl page="keychain"}" method="post">
+	##OLD_PASSWORD_FIELD## : <input type="password" name="old_password" id="old_password" /><br />
+	<input type="submit" />
+</form>
+</div>
+{else}
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/default2.js"></script>
-<script type="text/javascript" src="{$karibou_base_url}/themes/js/scal.js"></script>
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/Barrett.js"></script>
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/BigInt.js"></script>
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/RSA.js"></script>
+<script type="text/javascript" src="{$karibou_base_url}/themes/js/scal.js"></script>
 
 <script language="javascript">
 var karibou = null;
@@ -121,8 +131,6 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 </p>
 {/foreach}
 </div>
-
-
 </div>
 
 
@@ -139,3 +147,4 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 {/if}
 </div>
 <div id="tabsContainer"></div>
+{/if}
