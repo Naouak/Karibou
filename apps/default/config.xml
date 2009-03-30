@@ -11,7 +11,7 @@
 	<load class="HomeConfig" file="class/homeconfig.class.php" />
 	<load class="SaveHome" file="class/savehome.class.php" />
 
-	<load class="KeyChainFix" file="keychainfix.class.php" />
+	<load class="KeyChainFix" file="class/keychainfix.class.php" />
 
 	<load class="DefaultModel" file="class/defaultmodel.class.php" />
 	<!-- TODO : split appcontentmodel in three files -->
