@@ -15,10 +15,6 @@
 abstract class FormModel extends Model
 {
 	private $form;
-	
-	//Needed for SmartyValidate
-	public $smarty;
-	
 
 	function __construct(
 		PDO $p_db,
@@ -41,7 +37,6 @@ abstract class FormModel extends Model
 		$this->eventManager = $eventManager;
 		$this->messageManager = $messageManager;
 		$this->currentUser = $userFactory->getCurrentUser();
-		$this->smarty = $smarty;
 		
 		$this->appList = $appList;
 		

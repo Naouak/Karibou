@@ -18,8 +18,6 @@ require_once dirname(__FILE__).'/smarty/t.block.php';
 require_once dirname(__FILE__).'/smarty/find.modifier.php';
 require_once dirname(__FILE__).'/smarty/highlight.modifier.php';
 
-require_once dirname(__FILE__).'/smarty/SmartyValidate/SmartyValidate.class.php';
-
 /**
  * Smarty template engine customization
  * 
@@ -50,7 +48,6 @@ class KSmarty extends Smarty
         $this->register_modifier('find', 		'smarty_modifier_find');
         $this->register_modifier('highlight',	'smarty_modifier_highlight');
 		
-		array_push ($this->plugins_dir, dirname(__FILE__).'/smarty/SmartyValidate/plugins');
 		
 		if ($hookManager !== FALSE)
 		{
