@@ -3,7 +3,9 @@
 
 	<load class="VisitorsLogin" file="visitorslogin.class.php" />
 	<load class="VisitorsLoad" file="visitorsload.class.php" />
+        <load class="VisitorsLogout" file="visitorslogout.class.php" />
 
+	<listen event="logout" class="VisitorsLogout" />
 	<listen event="load" class="VisitorsLoad" />
 	<listen event="login" class="VisitorsLogin" />
 
