@@ -6,7 +6,5 @@
 	
 	<view name="home" class="HeaderHome" template="headerhome.php" />
 	<view name="default" class="HeaderHome" template="headerhome.php" />
-	<view name="simple" class="HeaderHome" template="headersimple.tpl" />
-	<view name="popup" class="HeaderHome" template="headerpopup.tpl" />
 
 </app>
