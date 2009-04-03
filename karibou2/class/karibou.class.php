@@ -143,11 +143,6 @@ class Karibou
 	 */
 	protected $baseUrl;
 
-	/**
-	 * @var Bool
-	 */
-	protected $affiche_popup = 0;
-	
 	protected $appHeader;
 	protected $appFooter;
 	
