@@ -111,10 +111,6 @@ $config['style'][0]['titre']        = "karibou";
 $config['style'][0]['fichier_css']    = KARIBOU_THEMES_URL."/karibou/default.css";
 $config['style'][0]['home_css']    = KARIBOU_THEMES_URL."/karibou/default.css";
 
-$config['style'][1]['titre']        = "default";
-$config['style'][1]['fichier_css']    = KARIBOU_THEMES_URL."/default/greu.css";
-$config['style'][1]['home_css']    = KARIBOU_THEMES_URL."/default/home.css";
-
 /* Emails */
 //START Email dans config
 $config['admin']['email_accountcreation']['subject'] = "Bienvenue sur l'Intranet ##INTRANET_URL##";
