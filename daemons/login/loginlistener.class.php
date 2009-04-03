@@ -9,9 +9,6 @@
  * @package daemons
  **/
 
-ClassLoader::add('ProfileFactory', KARIBOU_APP_DIR.'/annuaire/classes/profilefactory.class.php');
-ClassLoader::add('Profile', KARIBOU_APP_DIR.'/annuaire/classes/profile.class.php');
-
 /**
  * @package daemons
  */
@@ -21,32 +18,21 @@ class LoginListener extends Listener
 	{
 		$currentUser = $this->userFactory->getCurrentUser();
 
-		$factory = new ProfileFactory($this->db, $GLOBALS['config']['bdd']["frameworkdb"].".profile");
-		if( $profile = $factory->fetchFromUsername($currentUser->getLogin()) )
+		if ( isset($GLOBALS['config']['login']['firsttimechangepassword']) && ($GLOBALS['config']['login']['firsttimechangepassword'] === TRUE))
 		{
-			$factory->fetchEmails($profile);
-			$emails = $profile->getEmails();
-			if (count ($emails) < 2)
+			if ($currentUser->getPref('changePassword') === FALSE)
 			{
-				$this->messageManager->addMessage("default", "NOEMAIL");
+				 //No changepassword pref set
+				$this->messageManager->addMessage("default", "CHANGEPASSWORD");
 			}
-			
-			if ( isset($GLOBALS['config']['login']['firsttimechangepassword']) && ($GLOBALS['config']['login']['firsttimechangepassword'] === TRUE))
+			elseif ($currentUser->getPref('changePassword') == 0)
 			{
-				if ($currentUser->getPref('changePassword') === FALSE)
-				{
-					 //No changepassword pref set
-					$this->messageManager->addMessage("default", "CHANGEPASSWORD");
-				}
-				elseif ($currentUser->getPref('changePassword') == 0)
-				{
-					 //No need to change password
-				}
-				elseif ($currentUser->getPref('changePassword') == 1)
-				{
-					 //User must change password
-					$this->messageManager->addMessage("default", "CHANGEPASSWORD");
-				}
+				 //No need to change password
+			}
+			elseif ($currentUser->getPref('changePassword') == 1)
+			{
+				 //User must change password
+				$this->messageManager->addMessage("default", "CHANGEPASSWORD");
 			}
 		}
 	}
