@@ -74,6 +74,7 @@ class NewsMini extends Model
 
 		$this->assign("theNews", $theNews);
 		$this->assign("permission", $this->permission);
+		$this->assign("islogged", $this->currentUser->isLogged());
 	}
 }
 ?>
