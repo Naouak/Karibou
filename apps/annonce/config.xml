@@ -6,6 +6,8 @@
 	<load class="AnnonceConfig" file="annonceconfig.class.php" />
 	<load class="AnnonceAdd" file="annonceadd.class.php" />
 	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+	<load class="AnnonceJS" file="annoncejs.class.php" />
+	<load class="AnnonceUpdate" file="annonceupdate.class.php" />
 
 	<!--- Default header/footer -->
 	<header app="header" view="default" />
@@ -14,6 +16,7 @@
 	<!-- Views -->
 	<view name="mini" class="Annonce" template="annonce.tpl" />
 	<view name="update" class="AnnonceUpdate" template="annonceupdate.tpl" />
+	<view name="JSannonce" class="AnnonceJS" template="annoncejs.tpl" />
 	
 	<!-- Pages -->
 	<page name="mini" view="mini">
@@ -30,4 +33,5 @@
 		</param>
 	</config>
 	
+	<form action="update" class="AnnonceUpdate" />
 </app>

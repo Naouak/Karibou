@@ -19,7 +19,12 @@
 <span id="annoncecssdate">##to## </span>{$annonce.expirationdate}
 {/if}
 <br />
+
+{if $annonce.iduser == $currentuser}
+<p> <input type="submit" name="bouton" value="enlever" onclick="$app(this).update('{$annonce.id}');" />
+{/if}
 </div>
 {/foreach}
 
+</p>
 </p>

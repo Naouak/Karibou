@@ -30,7 +30,7 @@ class Annonce extends Model
 		}
 		
 
-		$sql = "SELECT * FROM annonce WHERE `expirationdate` > NOW() ORDER BY datetime DESC LIMIT :maxannonce";
+		$sql = "SELECT * FROM annonce WHERE `expirationdate` > NOW() AND `visible`=1 ORDER BY datetime DESC LIMIT :maxannonce";
 		try
 		{
 			$stmt = $this->db->prepare($sql);

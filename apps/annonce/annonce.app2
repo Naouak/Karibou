@@ -5,3 +5,4 @@ desc_en = let your small ads
 view = mini
 submitmodel = AnnonceAdd
 configmodel = AnnonceConfig
+JSview = JSannonce
