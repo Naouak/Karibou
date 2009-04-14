@@ -8,8 +8,10 @@ var annonceClass = Class.create(KApp, {
 			method: 'post',
 			parameters: 'update=' + encodeURIComponent(id),
 			app: this,
-			});
-		this.refresh();
+			onSuccess: function (transport) {
+				transport.request.options.app.refresh();
+			}
+		});
 		return false;
 	}
 });
