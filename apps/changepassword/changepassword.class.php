@@ -33,8 +33,8 @@ class ChangePassword extends FormModel
 					$config = $app->getConfig();
 
 					$login = $this->currentUser->getLogin();
-					$oldpassword = stripslashes($_POST["currentpassword"]);
-					$newpassword = stripslashes($_POST["newpassword1"]);
+					$oldpassword = iconv("UTF-8", "ISO-8859-1//IGNORE", stripslashes($_POST["currentpassword"]));
+					$newpassword = iconv("UTF-8", "ISO-8859-1//IGNORE", stripslashes($_POST["newpassword1"]));
 					$authManager = new AuthManager($this->db);
 					if( !$authManager->changePassword($login, $oldpassword, $newpassword) )
 					{
