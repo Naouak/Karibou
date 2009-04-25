@@ -72,7 +72,7 @@ class Krypt
 			$this->keypair = unserialize($_SESSION['rsakeypair']);
 			if( PEAR::isError($this->keypair) )
 			{
-				session_unregister('rsakeypair');
+				unset($_SESSION['rsakeypair']);
 				Debug::kill($this->keypair->getMessage());
 			}
 		}
