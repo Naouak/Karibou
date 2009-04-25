@@ -84,7 +84,7 @@ class UserFactory
 	function getCurrentUser($reFetch = false)
 	{
 		// si il y a un utilisateur loggé
-		if ( session_is_registered('currentUser') )
+		if ( isset($_SESSION['currentUser']) )
 		{
 			// on récupère en session
 			if($reFetch)
