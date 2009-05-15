@@ -18,6 +18,7 @@ require_once dirname(__FILE__).'/urlparser.class.php';
 class BaseUrl
 {
 	static private $ref;
+	private $current_user;
 	
 	protected $base_url;
 	protected $app;
@@ -25,7 +26,6 @@ class BaseUrl
 
 	private function __construct()
 	{
-		//$this->app = "accueil";
 		if( isset($GLOBALS['config']["base_url"]) )
 		{
 			$this->base_url = $GLOBALS['config']["base_url"].'/';
@@ -35,6 +35,7 @@ class BaseUrl
 			die("il manque l'url de base dans le fichier de config de la community");
 		}
 		$this->arguments = '/';
+		$this->current_user = null;
 	}
 	
 	static public function getRef()
@@ -44,6 +45,11 @@ class BaseUrl
 			self::$ref = new BaseUrl();
 		}
 		return self::$ref;
+	}
+
+	function setCurrentUser(CurrentUser $currentUser)
+	{
+		$this->current_user = $currentUser;
 	}
 	
 	function getBaseUrl()
@@ -64,6 +70,9 @@ class BaseUrl
 			if ( ereg("^".$this->base_url."[/]*$", $p_url) )
 			{
 				$this->app = $GLOBALS['config']['defaultapp'];
+				if ($this->current_user != null)
+					if ($this->current_user->isLogged() && isset($GLOBALS['config']['defaultloggedapp']))
+						$this->app = $GLOBALS['config']['defaultloggedapp'];
 			}
 			//Recherche pour déterminer si nous sommes dans un espace
 			elseif (preg_match('#^'.$this->base_url.'([0-9A-Za-z_.]+)(\S*|\z)#',$p_url,$match))
@@ -100,19 +109,6 @@ class BaseUrl
 					}
 				}
 			}
-
-		/*
-		//Logout rajouté par DaT (2005.07.13 @ 11h37)
-		//Il y a peut-être une méthode plus sympa de gérer le logout non ?
-		else if (isset($_GET["reason"]) && $_GET["reason"] == "logout")
-		{
-			$this->app = $GLOBALS['config']['defaultapp'];
-		}
-		else
-		{
-			die("Erreur de parse URL");
-		}
-		*/
 	}
 
 	function getApp()
