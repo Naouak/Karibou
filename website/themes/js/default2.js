@@ -515,6 +515,8 @@ var Karibou = Class.create({
 				return;
 		}
 		if (this.currentTab != null) {
+			if (!confirm("Are you sure ?"))
+				return;
 			var tabName = this.currentTab.tabName;
 
 			this.currentTab.destroy();
