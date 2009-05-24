@@ -74,6 +74,7 @@ class NewsGrand extends Model
 			//";//".(($page-1)*$max).
 
 		$theNews = array ();
+        $groupname= array ();
 		$resSqlAllArticles = $this->db->prepare($reqSqlAllArticles);
 		$resSqlAllArticles->execute();
 		
@@ -94,8 +95,18 @@ class NewsGrand extends Model
 				);
 
 			$theNews[] = $aNews;
-		}
-		
+		// cette boucle permet de récupérer le nom du groupe si la news est postée par un groupe
+		foreach ($this->userFactory->getGroups() as $group)
+            {
+                if ($group->getId() == $aNews->getGroup())
+                {
+                    $groupname[$row['id']]=$group->getName();
+                }
+
+            }
+        }
+        $this->assign("group",$groupname);
+        $this->assign("currentuser",$this->userFactory->getCurrentUser());
 		//Verification de la presence d'erreur et affection du message d'erreur a afficher
 		$this->assign("theNewsMessages", $this->formMessage->getSession());
 		$this->formMessage->flush();
@@ -109,6 +120,17 @@ class NewsGrand extends Model
 		$this->assign('servername', $_SERVER['SERVER_NAME']);
 		$this->assign("currentUserId", $this->currentUser->getId());
 		$this->assign("newsgrand", TRUE);
+ $this->currentuser = $this->userFactory->getCurrentUser();
+        $this->groups = $this->currentuser->getGroups();
+        $grouparray = array();
+        foreach ($this->groups as $group2)
+        {
+            $idofgroup = $group2->getId();
+            $grouparray[$idofgroup]=$group2->role;
+
+
+        }
+        $this->assign('grouparray',$grouparray);
 	}
 
 }

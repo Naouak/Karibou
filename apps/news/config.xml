@@ -36,15 +36,15 @@
 	<view name="add" class="NewsAdd" template="newsmodify.tpl" />
 	<view name="modify" class="NewsModify" template="newsmodify.tpl" />
 	<view name="addcomment" class="NewsAddComment" template="newsaddcomment.tpl" />
-	<view name="view" class="NewsView" template="newsview.php" />
+	<view name="view" class="NewsView" template="newsview.tpl" />
 
 	<view name="mini" class="NewsMini" template="small.tpl" />
 
 	<view name="menu" class="NewsMenu" template="menu.tpl" />
 
-	<page name="" view="default" />
+	<page name="" view="defaulttpl" />
 	
-	<page name="" view="default" >
+	<page name="" view="defaulttpl" >
 		<option name="year" class="NumberArgument" />
 		<option name="month" class="NumberArgument" />
 	</page>

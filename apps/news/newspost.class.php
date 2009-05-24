@@ -37,6 +37,7 @@ class NewsPost extends FormModel
 				{
 					if (!isset($_POST['id']))
 					{
+                        $probleme=0;
 						//Insertion de la nouvelle news
 						$maxNewId = $this->getMaxNewsID()+1;
 						$req_sql = "INSERT INTO news
@@ -48,12 +49,47 @@ class NewsPost extends FormModel
 						$insertRes->bindValue(":id_groups", $_POST["group"]);
 						$insertRes->bindValue(":title", stripslashes($_POST["title"]));
 						$insertRes->bindValue(":content", stripslashes($_POST["content"]));
-						if ($insertRes->execute()) {
-							$this->formMessage->add (FormMessage::SUCCESS, gettext("ADDED_ARTICLE"));
-							$this->setRedirectArg('page', '');
-						} else {
+                        if(isset($_POST['DDay']))
+                        {
+                            $event = filter_input(INPUT_POST,"event", FILTER_SANITIZE_SPECIAL_CHARS);
+                            $date = filter_input(INPUT_POST, "date",FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>"/^[0-9]{4}-((0[0-9])|(1[0-2]))-(([0-2][0-9])|(3[0-1]))/")));
+                            $description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_SPECIAL_CHARS);
+                            $URL = filter_input(INPUT_POST, "URL", FILTER_VALIDATE_URL);
+
+                           
+                            if ($date!=false && $date!=NULL && ($URL!=false || $_POST["URL"]=="") && $event!=NULL)
+                            {
+                                $stmt = $this->db->prepare('INSERT INTO dday (user_id, event, date, link, `desc`) VALUES (:user, :event, :date, :link, :desc)');
+                                $stmt->bindValue(':user', $this->currentUser->getID());
+                                $stmt->bindValue(':event', $event);
+                                $stmt->bindValue(':date', $date);
+                                $stmt->bindValue(':link', $URL);
+                                $stmt->bindValue(':desc', $description);
+                                $stmt->execute();
+                            }
+                            else {
+                              
+                                $probleme=1;
+                            }
+                           
+
+
+                        }
+                        if ($probleme==0)
+                        {
+                            if ($insertRes->execute()) {
+
+                                $this->formMessage->add (FormMessage::SUCCESS, gettext("ADDED_ARTICLE"));
+                                $this->setRedirectArg('page', '');
+                            }
+                            else {
 							$this->formMessage->add (FormMessage::FATAL_ERROR, gettext("ADD_ERROR"));
-							$this->setRedirectArg('page', 'modify');
+							$this->setRedirectArg('page', '');
+						}
+                        }
+                        else {
+							$this->formMessage->add (FormMessage::FATAL_ERROR, gettext("ADD_ERROR"));
+							$this->setRedirectArg('page', '');
 						}
 					}
 					else

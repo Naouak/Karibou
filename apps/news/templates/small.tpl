@@ -4,8 +4,12 @@
 			{*assign var="newsLink" value="kurl app="news" page="view" id=$theArticle->getId()"*}
 		<div class="aSmallNews {cycle values="one,two"}">
 			<span class="title" title="{$theArticle->getTitle()}"><a href="{kurl app="news" page="view" id=$theArticle->getId()}">{if $theArticle->getTitle()==""}##NOTITLE##{else}{$theArticle->getTitle()|truncate:50:"...":false}{/if}</a></span>
-			<span class="author">##BY## 
+			<span class="author">##BY##
+            {if $theArticle->getGroup()==""}
 			{userlink user=$theArticle->getAuthorObject() showpicture=$islogged}
+            {else}
+            <a href="{kurl app='annuaire' page='groupid' id=$theArticle->getGroup()}"> {$groups[i]} </a>
+            {/if}
 			{* <a href="{kurl app="annuaire" username=$theArticle->getAuthorLogin()}">{$theArticle->getAuthor()}</a>*}
 			</span>
 			<div class="time">{$theArticle->getDate()}</div>

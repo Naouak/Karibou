@@ -66,6 +66,16 @@ class NewsView extends Model
 			//	$this->assign("notingroup", TRUE);
 				//L'utilisateur n'appartient pas au groupe de destination
 			}
+
+            // permet de récupérer le nom du groupe correspondant au groupe qui a posté la news
+            foreach ($this->userFactory->getGroups() as $group)
+            {
+                if ($group->getId() == $this->article->getGroup())
+                {
+                    $this->assign("group",$group->getName());
+                }
+
+            }
 		}
 		else
 		{
@@ -73,6 +83,20 @@ class NewsView extends Model
 		}
 		
 		$this->assign('permission', $this->permission);
+        $this->assign('currentuser',$this->userFactory->getCurrentUser());
+        $this->assign('db',$this->db);
+        echo "<br />";echo "<br />";echo "<br />";echo "<br />";echo "<br />";echo "<br />";
+        $this->currentuser = $this->userFactory->getCurrentUser();
+        $this->groups = $this->currentuser->getGroups();
+        $grouparray = array();
+        foreach ($this->groups as $group2)
+        {
+            $idofgroup = $group2->getId();
+            $grouparray[$idofgroup]=$group2->role;
+            
+            
+        }
+        $this->assign('grouparray',$grouparray);
 	}
 	
 	//Retourne le contenu du commentaire en cours

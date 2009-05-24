@@ -50,13 +50,15 @@ class NewsMini extends Model
 			";
 
 		$theNews = array ();
+        $groupname = array();
 		$resSqlAllArticles = $this->db->prepare($reqSqlAllArticles);
 		$resSqlAllArticles->execute();
-		
+		$i=0;
 		//Pour eviter les problemes de "Err 2014 : Command out of sync. You can't run this query now..."
 		//il faut faire un fetchall, afin de vider la pile des enregistrements pour les traiter par la suite
 		while ( $row = $resSqlAllArticles->fetch(PDO::FETCH_ASSOC) )
 		{
+
 			//Creation de l'objet d'une news
 			$aNews = new News($this->userFactory);
 			$aNews->load(
@@ -68,13 +70,27 @@ class NewsMini extends Model
 				$row['content'],
 				$row['nb_comments']
 				);
+                
 
 			$theNews[] = $aNews;
+            foreach ($this->userFactory->getGroups() as $group)
+            {
+                if ($group->getId() == $row['id_groups'])
+                {
+                    $groupname[$i] = $group->getName();
+                }
+
+            }
+
+            $i++;
 		}
 
 		$this->assign("theNews", $theNews);
 		$this->assign("permission", $this->permission);
 		$this->assign("islogged", $this->currentUser->isLogged());
+        $this->assign("groups",$groupname);
+      //  print_r($groupname);
+        //print_r($theNews);
 	}
 }
 ?>

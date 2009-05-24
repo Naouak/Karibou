@@ -5,15 +5,24 @@
 
 	{if isset($theArticle)}
 		{assign var="idNews" value=$theArticle->getID()}
+        {assign var="groupid" value=$theArticle->getGroup()}
 		<div class="aNews">
 			<div class="time">{$theArticle->getDate()}</div>
 			<h1>{if $theArticle->getTitle()==""}##NOTITLE##{else}{$theArticle->getTitle()}{/if}</h1>
 			<div class="author">
-				##BY## {userlink user=$theArticle->getAuthorObject() showpicture=true}
+				##BY##
+                {if $theArticle->getGroup()==""}
+			{userlink user=$theArticle->getAuthorObject() showpicture=$islogged}
+            {elseif !isset($newsgrand)}
+            <a href="{kurl app='annuaire' page='groupid' id=$theArticle->getGroup()}"> {$group} </a>
+            {else}
+            <a href="{kurl app='annuaire' page='groupid' id=$theArticle->getGroup()}"> {$group[$idNews]} </a>
+            {/if}
 				{*<a href="{kurl app="annuaire" username=$theArticle->getAuthorLogin()}">{$theArticle->getAuthor()}</a>*}
 			</div>
-		{if ($theArticle->getAuthorId() == $currentUserId)}
+		{if ($theArticle->getAuthorId() == $currentUserId) || $grouparray[$groupid]=="admin"}
 			<div class="controls">
+                
 				<form action="{kurl app="news" page="modify" id="$idNews"}" method="get">
 					<input type="submit" value="##MODIFY##" />
 				</form>

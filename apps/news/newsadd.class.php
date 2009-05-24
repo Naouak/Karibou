@@ -14,17 +14,30 @@ class NewsAdd extends Model
 
 	public function build()
 	{
-		$menuApp = $this->appList->getApp($this->appname);
-		$menuApp->addView("menu", "header_menu", array("page" => "add") );
+        $this->currentuser = $this->userFactory->getCurrentUser() ;
+		$app = $this->appList->getApp($this->appname);
+		$app->addView("menu", "header_menu", array("page" => "add") );
 		
 		$this->assign('permission', $this->permission);
 		
 		//Verification de la presence d'erreur et affection du message d'erreur a afficher
 		$this->assign("theNewsMessages", $this->formMessage->getSession());
 		$this->formMessage->flush();
-		
+
+
+        $admingroups = $this->currentuser->getAllAdminGroups($this->db);
 		$groups = $this->userFactory->getGroups();
-		$this->assign('grouptree', $groups->getTree() );
+        $array = array();
+        $i=0;
+        foreach ($admingroups as $key)
+        {
+
+            $array[$i][name] = $key->getName();
+            $array[$i][Id] = $key->getId();
+            $i++;
+            
+        }
+        $this->assign('Admin',$array);
 	}
 }
 
