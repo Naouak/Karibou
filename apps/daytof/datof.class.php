@@ -46,10 +46,23 @@ class DaTof extends Model
 		for ($i = 0 ; $i < $tofnum ; $i++)
 			$row = $stmt->fetch();
 		// $row now contains the tof infos...
-		
+
+		$tofdir = KARIBOU_PUB_DIR.'/daytof';
+
 		if ($user["object"] =  $this->userFactory->prepareUserFromId($row["user_id"])) {
-			$this->assign("tof",('pub/daytof/mPIC' . str_pad($row["id"], 5, "0", STR_PAD_LEFT) . '.png'));
-			$this->assign("linktof",('pub/daytof/PIC' . str_pad($row["id"], 5, "0", STR_PAD_LEFT) . '.png'));
+			$file = "PIC" . str_pad($row["id"], 5, "0", STR_PAD_LEFT);
+			$path = "$tofdir/$file";
+
+			/* Here we test if the .png file exists, because at some point we
+				switched from PNG to JPEG because of file size issues */
+			if(is_readable("$path.png")) {
+				$filename = "$file.png";
+			} else {
+				$filename = "$file.jpg";
+			}
+   
+			$this->assign("tof",('pub/daytof/m' . $filename));
+			$this->assign("linktof",('pub/daytof/' . $filename));
 			$this->assign("datofauthor",$user);
 			$this->assign("datofcomment",$row["comment"]);
 			$this->assign("islogged", $this->currentUser->isLogged());

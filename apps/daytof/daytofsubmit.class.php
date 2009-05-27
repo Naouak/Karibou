@@ -32,7 +32,7 @@ class DaytofSubmit extends AppContentModel {
 			if($im)
 			{
 				//sauvegarde
-				imagepng($im, $tofdir.'/'.$tof_file.'.png', 0);
+				imagejpeg($im, $tofdir.'/'.$tof_file.'.jpg', 95);
 				
 				//miniature					
 				$x = imagesx($im);
@@ -54,7 +54,7 @@ class DaytofSubmit extends AppContentModel {
 				$new_im = imagecreatetruecolor($new_x, $new_y);
 				imagecopyresampled($new_im, $im, 0, 0, 0, 0, $new_x, $new_y, $x, $y);
 				imagedestroy($im);
-				imagepng($new_im, $tofdir.'/m'.$tof_file.'.png', 0);
+				imagejpeg($new_im, $tofdir.'/m'.$tof_file.'.jpg', 95);
 				imagedestroy($new_im);
 				
 				if($parameters['comment']=="") $daytof_comment="RAS";
