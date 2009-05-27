@@ -30,8 +30,6 @@ var resetbuttonClass = Class.create(KApp, {
 				if ((pe.app.counter % 10) == 0) {
 					new Ajax.Updater(pe.app.getElementById("currentView"), "{/literal}{kurl page="state"}{literal}", {asynchronous: true, evalScripts: false, method: "post", postBody: ((new Date()).toString())});
 				}
-				//if (pe.app.counter > 10)
-				//	pe.app.showButton();
 			}, 1);
 		this.refresher.app = this;
 	},
@@ -39,13 +37,13 @@ var resetbuttonClass = Class.create(KApp, {
 		target = this.getElementById("resethour");
 		if (target) {
 			time = target.innerHTML.split(':');
-			time[0] = parseInt(time[0]);
-			time[1] = parseInt(time[1]);
-			time[2] = parseInt(time[2]) + 1;
-			if (time[2] % 60 != time[2]) {
+			time[0] = parseInt(time[0], 10);
+			time[1] = parseInt(time[1], 10);
+			time[2] = parseInt(time[2], 10) + 1;
+			if (time[2] > 59) {
 				time[1]++;
 				time[2] = time[2] % 60;
-				if (time[1] % 60 != time[1]) {
+				if (time[1] > 59) {
 					time[0]++;
 					time[1] = time[1] % 60;
 				}
