@@ -91,6 +91,12 @@ function removeLastColumn () {ldelim}
 	karibou.currentTab.removeLastColumn();
 {rdelim}
 
+function showAddAppList() {ldelim}
+	new Effect.toggle($('homeAppAdder'), 'appear');
+	new Effect.toggle($('homeAppAddButton'));
+	setTimeout("$('filterAppList').focus();", 1300);
+{rdelim}
+
 // The RSA key
 var KeyPair = new RSAKeyPair(
 	"{$pubkey_exp}",
@@ -102,7 +108,7 @@ var KeyPair = new RSAKeyPair(
 {if $loggedUser}
 <div class="default2_customize">
 
-<a href="" onclick="customizeTab(); return false;">Customize</a><input id="homeAppAddButton" type="button" onclick="new Effect.toggle($('homeAppAdder'), 'appear'); new Effect.toggle($('homeAppAddButton')); document.getElementById('filterAppList').focus(); return false;" value="Ajouter une application" /><br />
+<a href="" onclick="customizeTab(); return false;">Customize</a><input id="homeAppAddButton" type="button" onclick="showAddAppList(); return false;" value="Ajouter une application" /><br />
 
 <span id="customizeSection" style="display: none;">
 <ul>
@@ -127,7 +133,7 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 <p class="homeAppChoice">
 {$appObject->getName("$lang")} : {$appObject->getDesc("$lang")}
 &nbsp;&nbsp;&nbsp;
-<a onclick="karibou.instanciateApplication('{$appName}'); return false;">Ajouter</a> <br />
+<a onclick="karibou.instanciateApplication('{$appName}'); $('filterAppList').focus(); return false;">Ajouter</a> <br />
 </p>
 {/foreach}
 </div>
