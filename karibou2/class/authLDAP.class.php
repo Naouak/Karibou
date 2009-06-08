@@ -16,6 +16,10 @@
 
 class AuthLDAP extends Auth
 {
+	function __construct ($params = null) {
+		$this->params = $params;
+	}
+	
 	/**
 	 * @param String $user
 	 * @param String $pass
@@ -39,12 +43,6 @@ class AuthLDAP extends Auth
 		return false;
 	}
 	
-	/**
-	 * Not supported by LDAP.
-	 */
-	function change ($user, $old_password, $new_password) {
-		return false;
-	}
 }
 
 ?>
