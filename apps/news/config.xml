@@ -30,26 +30,23 @@
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 
-	<view name="default" class="NewsGrand" template="newsgrand.php" />
-	<view name="defaulttpl" class="NewsGrand" template="newsgrand.tpl" />
+	<view name="default" class="NewsGrand" template="newsgrand.tpl" />
 	<view name="rss" class="NewsGrand" template="newsgrandrss.tpl" />
 	<view name="add" class="NewsAdd" template="newsmodify.tpl" />
 	<view name="modify" class="NewsModify" template="newsmodify.tpl" />
 	<view name="addcomment" class="NewsAddComment" template="newsaddcomment.tpl" />
 	<view name="view" class="NewsView" template="newsview.tpl" />
-
 	<view name="mini" class="NewsMini" template="small.tpl" />
-
 	<view name="menu" class="NewsMenu" template="menu.tpl" />
 
-	<page name="" view="defaulttpl" />
-	
-	<page name="" view="defaulttpl" >
+	<page view="default" />
+
+	<page view="default" >
 		<option name="year" class="NumberArgument" />
 		<option name="month" class="NumberArgument" />
 	</page>
 
-	<page name="defaulttpl" view="defaulttpl" />
+	<page name="defaulttpl" view="default" />
 
 	<page name="rss" view="rss">
 		<header app="empty" view="default" />

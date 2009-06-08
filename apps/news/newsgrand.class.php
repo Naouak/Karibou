@@ -74,7 +74,7 @@ class NewsGrand extends Model
 			//";//".(($page-1)*$max).
 
 		$theNews = array ();
-        $groupname= array ();
+		$groupname = array ();
 		$resSqlAllArticles = $this->db->prepare($reqSqlAllArticles);
 		$resSqlAllArticles->execute();
 		
@@ -95,44 +95,41 @@ class NewsGrand extends Model
 				);
 
 			$theNews[] = $aNews;
-		// cette boucle permet de récupérer le nom du groupe si la news est postée par un groupe
-		foreach ($this->userFactory->getGroups() as $group)
-            {
-                if ($group->getId() == $aNews->getGroup())
-                {
-                    $groupname[$row['id']]=$group->getName();
-                }
-
-            }
-        }
-        $this->assign("group",$groupname);
-        $this->assign("currentuser",$this->userFactory->getCurrentUser());
+			// cette boucle permet de récupérer le nom du groupe si la news est postée par un groupe
+			foreach ($this->userFactory->getGroups($this->db) as $group)
+            		{
+				if ($group->getId() == $aNews->getGroup())
+				{
+					$groupname[$row['id']]=$group->getName();
+				}
+			}
+		}
+		$this->assign("group",$groupname);
+		$this->assign("currentuser",$this->userFactory->getCurrentUser());
 		//Verification de la presence d'erreur et affection du message d'erreur a afficher
 		$this->assign("theNewsMessages", $this->formMessage->getSession());
 		$this->formMessage->flush();
 		
 		//Ajout du hook pour le rss
 		//$this->hookManager->add("html_head", "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"Karibou :: News\" href=\"http://k2/news/rss/\"\">");
-		
 		//Affectation des variables a afficher
 		$this->assign("theNews", $theNews);
 		$this->assign('permission', $this->permission);
 		$this->assign('servername', $_SERVER['SERVER_NAME']);
 		$this->assign("currentUserId", $this->currentUser->getId());
 		$this->assign("newsgrand", TRUE);
- $this->currentuser = $this->userFactory->getCurrentUser();
-        $this->groups = $this->currentuser->getGroups();
-        $grouparray = array();
-        foreach ($this->groups as $group2)
-        {
-            $idofgroup = $group2->getId();
-            $grouparray[$idofgroup]=$group2->role;
-
-
-        }
-        $this->assign('grouparray',$grouparray);
+		
+		$this->currentuser = $this->userFactory->getCurrentUser();
+		$grouparray = array();
+		if ($this->currentuser->isLogged()) {
+			$this->groups = $this->currentuser->getGroups($this->db);
+			foreach ($this->groups as $group2)
+			{
+				$grouparray[$group2->getId()]=$group2->role;
+			}
+		}
+		$this->assign('grouparray',$grouparray);
 	}
-
 }
 
 ?>

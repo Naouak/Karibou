@@ -1,4 +1,4 @@
-{if $permission > _DEFAULT_}
+{if $permission >= _READ_ONLY_}
 {if !isset($newsgrand)}
 	{include file="newsmessage.tpl"}
 {/if}
