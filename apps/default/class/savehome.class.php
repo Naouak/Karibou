@@ -8,6 +8,10 @@ class SaveHome extends FormModel {
 				$this->currentUser->setPref("default2", $data);
 				$this->currentUser->savePrefs($this->db);
 			}
+			$stmt = $this->db->prepare("INSERT INTO default_log(user, `date`, msg) VALUES (:user, NOW(), :msg)");
+			$stmt->bindValue(":user", $this->currentUser->getId());
+			$stmt->bindValue(":msg", "Saved home : $data");
+			$stmt->execute();
 		}
 	}
 }

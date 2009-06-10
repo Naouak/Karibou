@@ -10,6 +10,7 @@
 	##OLD_PASSWORD_FIELD## : <input type="password" name="old_password" id="old_password" /><br />
 	<input type="submit" />
 </form>
+<form action="{kurl page="keychainreset"}" method="post"><input type="submit" value="##IGNORE##" /></form>
 </div>
 {else}
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/default2.js"></script>
@@ -92,9 +93,8 @@ function removeLastColumn () {ldelim}
 {rdelim}
 
 function showAddAppList() {ldelim}
-	new Effect.toggle($('homeAppAdder'), 'appear');
+	new Effect.toggle($('homeAppAdder'), 'appear', {ldelim} afterFinish: function(eff) {ldelim} $('filterAppList').focus(); {rdelim} {rdelim} );
 	new Effect.toggle($('homeAppAddButton'));
-	setTimeout("$('filterAppList').focus();", 1300);
 {rdelim}
 
 // The RSA key

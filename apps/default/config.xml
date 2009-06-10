@@ -12,6 +12,7 @@
 	<load class="SaveHome" file="class/savehome.class.php" />
 
 	<load class="KeyChainFix" file="class/keychainfix.class.php" />
+	<load class="KeyChainReset" file="class/keychainreset.class.php" />
 
 	<load class="DefaultModel" file="class/defaultmodel.class.php" />
 	<!-- TODO : split appcontentmodel in three files -->
@@ -56,6 +57,9 @@
 	<form action="savehome" class="SaveHome" />
 	
 	<form action="keychain" class="KeyChainFix">
+		<redirect page="" />
+	</form>
+	<form action="keychainreset" class="KeyChainReset">
 		<redirect page="" />
 	</form>
 </app>
