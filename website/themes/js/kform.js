@@ -282,7 +282,7 @@ KForm = Class.create({
 
 		for (fieldID in this.formFields) {
 			fieldObject = this.formFields[fieldID];
-			if (fieldObject["type"] == "span")
+			if ((fieldObject["type"] == "span") || (fieldObject["type"] == "help"))
 				continue;
 			formObject = getSubElementById(fieldID, this.targetNode);
 			if (fieldObject["type"] == "text") {

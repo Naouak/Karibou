@@ -135,8 +135,8 @@ var KTab = Class.create({
 				this.tabObject.newTabSizes.push(colSize);
 				previousSize += colSize;
 			}
-			this.tabObject.tabContainers[i].style.width = (99 - previousSize) + '%';
-			this.tabObject.newTabSizes.push(99 - previousSize);
+			this.tabObject.tabContainers[i].style.width = (98.5 - previousSize) + '%';
+			this.tabObject.newTabSizes.push(98.5 - previousSize);
 		}});
 	},
 	cancelResize: function () {
@@ -191,7 +191,7 @@ var KTab = Class.create({
 		if (this.resizing)
 			return;
 		var coef = this.tabSizes.length / (this.tabSizes.length + 1);
-		var newSize = 99;
+		var newSize = 98.5;
 		for (var i = 0 ; i < this.tabSizes.length ; i++) {
 			this.tabSizes[i] = this.tabSizes[i] * coef;
 			newSize = newSize - this.tabSizes[i];
@@ -511,7 +511,7 @@ var Karibou = Class.create({
 		for (var tabName in this.tabs)
 			tabCount++;
 		if (tabCount == 1) {
-			if (!confirm("As-tu plus de deux neurones ?"))
+			if (!confirm("Do you really want to close the last tab ?"))
 				return;
 		}
 		if (this.currentTab != null) {
