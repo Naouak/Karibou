@@ -432,7 +432,6 @@ var KApp = Class.create({
 // Class responsible for loading the KApp classes, handling the various loaded applications on the screen...
 var Karibou = Class.create({
 	initialize: function(appContentUrl, appJSUrl, appSubmitUrl, appSetConfigUrl, appGetConfigUrl, saveHomeUrl, tabLinkClicked) {
-		this.loading = false;
 		this.appSubmitUrl = appSubmitUrl;
 		this.appContentUrl = appContentUrl;
 		this.appSetConfigUrl = appSetConfigUrl;
@@ -449,6 +448,7 @@ var Karibou = Class.create({
 		this.tabs = {}; 						// {tab name => KTab object}
 		this.currentTab = null;
 		this.appIds = {};						// {app name => max used ID}
+		this.saveTimeout = null;
 	},
 	getNewIDForApp: function(appName) {
 		if (this.appIds[appName] != undefined) {
@@ -590,8 +590,6 @@ var Karibou = Class.create({
 			appLoader.handlerMain(appName, appId);
 			if (appLoader.loaded()) {
 				this.appLoaders = this.appLoaders.without(appLoader);
-				if (this.appLoaders.length == 0)
-					this.loading = false;
 				i = -1;
 			}
 		}
@@ -619,8 +617,6 @@ var Karibou = Class.create({
 			appLoader.handlerJS(application);
 			if (appLoader.loaded()) {
 				this.appLoaders = this.appLoaders.without(appLoader);
-				if (this.appLoaders.length == 0)
-					this.loading = false;
 				i = -1;
 			}
 		}
@@ -676,14 +672,18 @@ var Karibou = Class.create({
 		} else if (node.parentNode)
 			return this.getAppFromNode(node.parentNode);
 	},
-	save: function (node) {
-		if (this.loading)
-			return;
+	save: function () {
+		if (this.saveTimeout != null)
+			window.clearTimeout(this.saveTimeout);
+		this.saveTimeout = window.setTimeout(function(kar) { kar._realSave(); }, 2000, this);
+	},
+	_realSave: function () {
+		this.saveTimeout = null;
 		var data = {"tabs": this.tabs, "appIds": this.appIds};
 		if (this.currentTab)
 			data["defaultTab"] = this.currentTab.tabName;
 		var jsonised = Object.toJSON(data);
-		new Ajax.Request(this.saveHomeUrl, {method: 'post', postBody: "home=" + encodeURIComponent(jsonised)}); 
+		new Ajax.Request(this.saveHomeUrl, {method: 'post', postBody: "home=" + encodeURIComponent(jsonised)});
 	},
 	loadUrl: function (url) {
 		new Ajax.Request(url, {method: 'get', karibou: this, onComplete: function(transport) {
@@ -691,7 +691,6 @@ var Karibou = Class.create({
 		}});
 	},
 	loadData: function (data) {
-		this.loading = true;
 		var tabs = data["tabs"];
 		for (var tabName in tabs) {
 			this.createNewTab(tabName, tabs[tabName]);
