@@ -15,7 +15,7 @@
  * @package applications
  */
 
-class KeyChainFix extends FormModel
+class KeyChainReset extends FormModel
 {
 	function build()
 	{
