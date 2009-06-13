@@ -271,6 +271,9 @@ var KApp = Class.create({
 		this.detachedNode = null;
 		this.detachedParent = null;
 		this.detachedNext = null;
+		this.eventsAutoConnect();
+	},
+	eventsAutoConnect: function () {
 		var regExp = /on_(\w*)_(\w*)/i;
 		for (var name in this) {
 			if (regExp.match(name)) {
