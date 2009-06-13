@@ -8,7 +8,7 @@ var minichatClass = Class.create(KApp, {
 		this.refresher = new Ajax.PeriodicalUpdater(this.getElementById('minichat_live'), this.refreshURL, {asynchronous:true, evalScripts:true, frequency: this.refreshInterval});
 		this.refresher.start();
 	},
-	postMessage: function () {
+	on_minichat_live_form_submit: function () {
 		new Ajax.Request({/literal}'{kurl action="post"}'{literal}, {
 			method: 'post',
 			parameters: 'post=' + encodeURIComponent(this.getElementById("message").value),
