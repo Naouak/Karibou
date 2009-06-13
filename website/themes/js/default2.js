@@ -271,6 +271,17 @@ var KApp = Class.create({
 		this.detachedNode = null;
 		this.detachedParent = null;
 		this.detachedNext = null;
+		var regExp = /on_(\w*)_(\w*)/i;
+		for (var name in this) {
+			if (regExp.match(name)) {
+				var matches = regExp.exec(name);
+				var eventName = matches[2];
+				var realObject = this.getElementById(matches[1]);
+				if (realObject) {
+					realObject.setAttribute("on" + eventName, "return $app(this)." + name + "(" + this[name].argumentNames() + ");");
+				}
+			}
+		}		
 	},
 	detach: function() {
 		if (!this.detached) {
