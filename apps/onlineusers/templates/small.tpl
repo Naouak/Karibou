@@ -2,7 +2,7 @@
 {include file="list.tpl"}
 </div>
 {if $islogged}
-	<form onsubmit="return $app(this).setUserState()">
+	<form id="userState">
 		<input type="text" id="userStateSetter" name="userStateSetter" length="64" value="{$currentUserState}" />
 		<select name="userMoodSetter" id="userMoodSetter">
 		{foreach key=moodValue item=moodText from=$moodList}
