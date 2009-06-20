@@ -234,6 +234,9 @@ class Karibou
 		$this->hookManager, $this->eventManager, $this->messageManager );
 		$daemonLoader->loadDaemonDir(KARIBOU_DAEMON_DIR);
 
+		$this->eventManager->sendEvent("running");
+		$this->eventManager->performActions();
+
 		// traitement des fonctions formulaire des applis
 		if( $model = $this->app->doForm($urlParser) )
 		{

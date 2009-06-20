@@ -4,5 +4,5 @@
     <load class="ScoreManager" file="ScoreManager.class.php" />
     <load class="ScoreDaemon" file="ScoreDaemon.class.php" />
 
-	<listen event="load" class="ScoreDaemon" />
+	<listen event="running" class="ScoreDaemon" />
 </daemon>
