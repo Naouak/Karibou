@@ -209,7 +209,7 @@ class UserFactory
 			}
 			else
 			{
-				$tab["picture"] = "/themes/default/images/0.jpg";
+				$tab["picture"] = "/themes/karibou/images/0.jpg";
 			}
 		
 			$user = new User($tab);
