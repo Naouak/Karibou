@@ -5,8 +5,7 @@ var minichatClass = Class.create(KApp, {
 		$super(appName, id, container, karibou);
 		this.refreshURL = {/literal}'{kurl page="content"}'{literal} + this.config["maxlines"] + "," + (this.config["userichtext"]?1:0) + "," + (this.config["inversepostorder"]?1:0);
 		this.refreshInterval = Number({/literal}{$refreshInterval}{literal});
-		this.refresher = new Ajax.PeriodicalUpdater(this.getElementById('minichat_live'), this.refreshURL, {asynchronous:true, evalScripts:true, frequency: this.refreshInterval});
-		this.refresher.start();
+		this.refresher = new Ajax.PeriodicalUpdater(this.getElementById('minichat_live'), this.refreshURL, {asynchronous:false, evalScripts:true, frequency: this.refreshInterval});
 	},
 	on_minichat_live_form_submit: function () {
 		new Ajax.Request({/literal}'{kurl action="post"}'{literal}, {
@@ -21,13 +20,12 @@ var minichatClass = Class.create(KApp, {
 		return false;
 	},
 	refreshMessageList: function () {
-		new Ajax.Updater(this.getElementById('minichat_live'), this.refreshURL, {asynchronous: true, evelScripts: true});
+		new Ajax.Updater(this.getElementById('minichat_live'), this.refreshURL, {asynchronous: true, evalScripts: true});
 	},
 	onRefresh: function () {
 		this.refresher.stop();
 		this.refreshURL = {/literal}'{kurl page="content"}'{literal} + this.config["maxlines"] + "," + (this.config["userichtext"]?1:0) + "," + (this.config["inversepostorder"]?1:0);
 		this.refresher = new Ajax.PeriodicalUpdater(this.getElementById('minichat_live'), this.refreshURL, {asynchronous:true, evalScripts:true, frequency: this.refreshInterval});
-		this.refresher.start();
 	}
 });
 {/literal}
