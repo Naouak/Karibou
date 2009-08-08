@@ -308,6 +308,8 @@ var FlashmailManager = Class.create({
                 divNode.setAttribute("class", "message");
                 while (messageText.indexOf("\n") != -1)
                     messageText = messageText.replace("\n", "<br />");
+                // Replace links, using a great regexp....
+		messageText = messageText.replace(/\b(http(s?):\/\/(\S*)\.(\S*)((\/\S*)*))\b/gi, "<a href=\"$1\" target=\"_blank\">$1</a>");
                 divNode.innerHTML = messageText;
                 flashNode.appendChild(divNode);
                 
