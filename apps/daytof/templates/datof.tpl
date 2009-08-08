@@ -1,3 +1,6 @@
+{if $missingPicture}
+<div style="text-align:center;">No picture available !</div>
+{/if}
 {if $tof}
 <div style="text-align: center;">
 	<div style="display: table; width: 100%; height: 200px; margin: 0; margin-bottom: 5px; padding: 0; overflow: hidden;">
