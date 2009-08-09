@@ -68,6 +68,34 @@ class FlashMailFactory
 		$this->flashmails = $flashmails;
 	}
 
+	public function getAllWithSentFromDB ()
+	{
+		$flashmails = array();
+
+		$id = $this->currentUser->getID();
+
+		$qry = "SELECT f.*, o.message AS oldmessage FROM flashmail f LEFT JOIN flashmail o ON o.id=f.omsgid WHERE (f.to_user_id=$id OR f.from_user_id=$id)";
+		
+		try
+		{
+			$stmt = $this->db->query($qry);
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage() );
+		}
+		
+		$aflashmails = $stmt->fetchAll(PDO::FETCH_ASSOC) ;
+		foreach($aflashmails as $f)
+		{
+			$flashmails[] = new FlashMail ($this->userFactory, $f); 
+			
+		}
+		unset($stmt);
+		
+		$this->flashmails = $flashmails;
+	}
+	
 	public function getUnreadFromDB ()
 	{
 		$flashmails = array();
@@ -129,42 +157,6 @@ class FlashMailFactory
 	public function returnAll ()
 	{
 		return $this->flashmails;
-	}
-	
-	/*
-	 * Set methods
-	 */
-	public function setAsRead ()
-	{
-		try
-		{
-			$this->db->exec("UPDATE flashmail SET `read`=1 WHERE to_user_id=".$this->currentUser->getID()."");
-		}
-		catch(PDOException $e)
-		{
-			Debug::kill($e->getMessage() );
-		}
-	}
-	
-	public function countNew ()
-	{
-			$qry = "SELECT COUNT(*) cnt FROM flashmail WHERE to_user_id=".$this->currentUser->getID()." AND `read`=0";
-			try
-			{
-				$stmt = $this->db->query($qry);
-			}
-			catch( PDOException $e )
-			{
-				Debug::kill( $e->getMessage() );
-			}
-			$cnt = $stmt->fetchAll();
-			//unset( $stmt );
-			return $cnt[0]['cnt'];
-	}
-	
-	public function checkNew()
-	{
-        return ($this->countNew() > 0);
 	}
 }
 
