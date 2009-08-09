@@ -19,7 +19,7 @@
 	<load class="AppContentModel" file="class/appcontentmodel.class.php" />	
 	<load class="AppConfigModel" file="class/appcontentmodel.class.php" />	
 
-	<load class="ArgMiniapp" file="../arguments/argminiapp.class.php" />
+	<load class="[arguments]/ArgMiniapp" />
 	
 	<view name="menu" class="DefaultMenu" template="menu.tpl" />
 	<hook name="header_menu" view="menu" />
