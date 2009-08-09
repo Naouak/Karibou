@@ -211,7 +211,14 @@ class KApp
 		{
 			foreach($xml->load as $loadclass)
 			{
-				ClassLoader::add($loadclass['class'], $this->relativeDir.'/'.$loadclass['file']);
+				if (preg_match('/\[(\w*)\]\/(\w*)/i', $loadclass['class'], $result)) {
+					//print_r($result);
+					// Load class $result[2] from app $result[1]
+					$this->appList->getApp($result[1]);
+				} else {
+					//print_r("Loading class " . $loadclass['class'] . " in " . $this->name . "\n");
+					ClassLoader::add($loadclass['class'], $this->relativeDir.'/'.$loadclass['file']);
+				}
 			}
 		}
 		
