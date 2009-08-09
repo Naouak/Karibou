@@ -18,9 +18,6 @@ class UnReadFlashMailList extends Model
 		$flashmailFactory = new FlashMailFactory($this->db, $this->currentUser, $this->userFactory, FALSE);
 		$flashmailFactory->getUnreadFromDB();
 		$this->assign("flashmails", $flashmailFactory->returnAll());
-		
-		//$flashmailFactory->setAsRead();
-		
 	}
 }
 
