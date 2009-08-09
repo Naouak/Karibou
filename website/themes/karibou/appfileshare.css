@@ -576,3 +576,57 @@ clear: both;
 .fileshare.mini ul li a span.downloadlink span {
 	visibility: hidden;
 }
+
+
+/************************************************\
+* The new look fo the fileshare mini application *
+\************************************************/
+.fileshareMini ul.directory {	
+	padding-left: 0px;
+	margin-left: 0px;
+}
+
+.fileshareMini li.directory {
+	background-image: url(images/fileshare/detailed/directory-expanded.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	list-style: none;	
+	padding-left: 20px;
+	margin-left: 0px;
+}
+
+.fileshareMini li.directory.expanded {
+	background-image: url(images/fileshare/detailed/directory-reduced.png);
+}
+
+.fileshareMini li.file {
+	background-image: url(images/fileshare/file16.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	list-style: none;	
+	padding-left: 20px;
+	margin-left: 0px;
+}
+
+.fileshareMini li.file.xls {	
+	background-image: url(images/fileshare/detailed/files/xls.png);
+}
+
+.fileshareMini li.file.pdf {	
+	background-image: url(images/fileshare/detailed/files/pdf.png);
+}
+
+.fileshareMini li.file.doc {	
+	background-image: url(images/fileshare/detailed/files/doc.png);
+}
+
+.fileshareMini li.file.ppt {	
+	background-image: url(images/fileshare/detailed/files/ppt.png);
+}
+.fileshareMini li.file.pps {	
+	background-image: url(images/fileshare/detailed/files/ppt.png);
+}
+
+.fileshareMini li.file.zip {	
+	background-image: url(images/fileshare/detailed/files/zip.png);
+}
