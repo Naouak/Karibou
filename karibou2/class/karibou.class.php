@@ -12,7 +12,6 @@
 require_once dirname(__FILE__).'/../config/config.inc.php';
 
 require_once KARIBOU_CLASS_DIR.'/ClassLoader.class.php';
-require_once KARIBOU_CLASS_DIR.'/executiontimer.class.php';
 
 ClassLoader::add('Database', KARIBOU_CLASS_DIR.'/database.class.php');
 ClassLoader::add('Debug', KARIBOU_CLASS_DIR.'/debug.class.php');
@@ -64,28 +63,6 @@ ClassLoader::add('Geo', KARIBOU_LIB_DIR."/geo/geo.class.php");
  * @todo move session_start() in a class
  */
 session_start();
-
-/**
- * Class autoload, uses ClassLoader
- * @param String
- */
-
-function __autoload($className)
-{
-	//ExecutionTimer::getRef()->stop("building Karibou");
-	ExecutionTimer::getRef()->start("ALL __autoload");
-	ExecutionTimer::getRef()->start("Include __autoload (".$className.")");
-	$file = ClassLoader::getFilename($className);
-	
-	if (!is_file($file))
-		Debug::kill("Missing class : ".$className);
-	else
-		require_once $file;
-	
-	ExecutionTimer::getRef()->stop("Include __autoload (".$className.")");
-	ExecutionTimer::getRef()->stop("ALL __autoload");
-	//ExecutionTimer::getRef()->start("building Karibou");
-}
 
 /**
  * Framework de l'intranet
