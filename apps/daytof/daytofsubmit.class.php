@@ -12,6 +12,7 @@ class DaytofSubmit extends AppContentModel {
 		$tmpFileName = $parameters['file']['tmp_name'];
 		if( is_uploaded_file($tmpFileName) && filesize($tmpFileName)<1512000)
 		{
+			$new_id = 1;
 			// Get the id for the new picture
 			try
 			{
