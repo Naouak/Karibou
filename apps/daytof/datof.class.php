@@ -42,9 +42,13 @@ class DaTof extends Model
 		{
 			Debug::kill($e->getMessage());
 		}
-		
-		for ($i = 0 ; $i < $tofnum ; $i++)
-			$row = $stmt->fetch();
+		$row = FALSE;
+
+		for ($i = 0 ; $i < $tofnum ; $i++) {
+			$temp = $stmt->fetch();
+			if ($temp !== FALSE)
+				$row = $temp;
+		}
 		// $row now contains the tof infos...
 		if ($row !== FALSE) {
 			$tofdir = KARIBOU_PUB_DIR.'/daytof';
