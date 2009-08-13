@@ -36,7 +36,6 @@
 			<div class="groupsdestination">{*##NEWS_GROUPS_DESTINATION## {$theArticle->getGroupName()}*}&nbsp;</div>
 			<div class="content">{$theArticle->getContentXHTML()}</div>
 			{if $permission > _READ_ONLY_}
-			{/if}
 			<div class="commentsHidden">
 				{$theArticle->getNbComments()} ##COMMENT##{if (($theArticle->getNbComments())>1)}s{/if} 
 				{if ($theArticle->getNbComments()>0)}
@@ -44,6 +43,7 @@
 				{/if}
 				<a href="{kurl page="addcomment" id=$idNews}">##ADD_COMMENT##</a>
 			</div>
+			{/if}
 			{if (isset($addComment))}
 				<div class="newNewsCommentForm">
 					<h3>##ADD_A_COMMENT_TO_ARTICLE## "{if $theArticle->getTitle()==""}##NOTITLE##{else}{$theArticle->getTitle()}{/if}"</h3>
