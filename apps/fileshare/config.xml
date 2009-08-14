@@ -30,7 +30,6 @@
 	<load class="FileShareRename" file="rename.class.php" />
 	<load class="FileShareConfig" file="fileshareconfig.class.php" />
 	<load class="FileShareDirectoryJS" file="directoryjs.class.php" />
-	<load class="emptyModel" file="empty.class.php" />
 
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
@@ -50,7 +49,7 @@
 
 	<view name="directory" class="FileShareDirectory" template="directory.tpl" />
 	<view name="json" class="FileShareDirectoryJS" template="json.tpl" />
-	<view name="JS" class="emptyModel" template="js.tpl" />
+	<view name="JS" template="js.tpl" />
 
 	<page view="directory" />
 

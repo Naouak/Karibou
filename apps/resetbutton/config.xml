@@ -7,7 +7,6 @@
 	<load class="RBStats" file="class/RBStats.class.php" />
 	<load class="RBMyStats" file="class/RBMyStats.class.php" />
 	<load class="RBMini" file="class/RBMini.class.php" />
-	<load class="RBJS" file="class/RBJS.class.php" />
 	
 	<header app="header" view="empty" />
 	<footer app="footer" view="empty" />
@@ -16,7 +15,7 @@
 	<view name="stats" class="RBStats" template="stats.tpl" />
 	<view name="mystats" class="RBMyStats" template="mystats.tpl" />
 	<view name="mini" class="RBMini" template="mini.tpl" />
-	<view name="JS" class="RBJS" template="js.tpl" />
+	<view name="JS" template="js.tpl" />
 	
 	<page name="stats" view="stats" />
 	

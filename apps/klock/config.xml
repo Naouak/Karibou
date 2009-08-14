@@ -15,12 +15,10 @@
 	<load class="klockSvg" file="klockSvg.class.php" />
 	<!-- configuration -->
 	<load class="klockConfig" file="klockConfig.class.php" />
-	<!-- Javascript -->
-	<load class="klockJs" file="klockJs.class.php" />
 
 	<!-- arguments -->
 	<!-- a number -->
-	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+	<load class="[arguments]/NumberArgument" />
 	
 	<!-- ***********
 	VIEWS
@@ -31,7 +29,7 @@
 	<!-- svg picture of the analog clock -->
 	<view name="svg" class="klockSvg" template="picture.svg.tpl" />
 	<!-- javascript view -->
-	<view name="js" class="klockJs" template="klock.js.tpl" />
+	<view name="js" template="klock.js.tpl" />
 	
 	<!-- ***********
 	PAGES
