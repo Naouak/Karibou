@@ -10,14 +10,13 @@
 	<load class="UnReadFlashMailList" file="unreadlist.class.php" />
 	<load class="FlashMailSend" file="send.class.php" />
 	<load class="FlashMailSetAsRead" file="setasread.class.php" />
-	<load class="FlashMailNothing" file="nothing.class.php" />
 
 	<!-- Display the full flashmail list on one page -->
 	<view name="default" class="FlashMailList" template="default.tpl" />
 	<!-- Generate the JS code for flashmails -->
-	<view name="flashmailJS" class="FlashMailNothing" template="js.tpl" />
+	<view name="flashmailJS" template="js.tpl" />
 	<!-- Contains the hook for the <head> tag -->
-	<view name="flashmail_head" class="FlashMailNothing" template="html_head.tpl" />
+	<view name="flashmail_head" template="html_head.tpl" />
 	<!-- Lists the unread flashmails in XML -->
 	<view name="unreadlistXML" class="UnReadFlashMailList" template="listXML.tpl" />
 	
