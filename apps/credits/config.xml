@@ -5,9 +5,7 @@
 
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 
-	<load class="CreditsDefault" file="default.class.php" />
-
-	<view name="default" class="CreditsDefault" template="default.tpl" />
+	<view name="default" template="default.tpl" />
 
 	<page view="default" />
 </app>

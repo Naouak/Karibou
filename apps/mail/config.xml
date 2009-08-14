@@ -21,7 +21,6 @@
 	<load class="Failed" file="failed.class.php" />
 
 	<load class="MiniMail" file="minimail.class.php" />
-	<load class="MiniMailConfig" file="minimailconfig.class.php" />
 
 	<load class="Mailbox" file="classes/mailbox.class.php" />
 	<load class="Message" file="classes/message.class.php" />
@@ -42,7 +41,7 @@
 	<view name="failed" class="Failed" template="failed.tpl" />
 
 	<view name="mini" class="MiniMail" template="small.tpl" />
-	<view name="miniconfig" class="MiniMailConfig" template="smallconfig.tpl" />
+	<view name="miniconfig" template="smallconfig.tpl" />
 	
 	<view name="menu" class="MailMenu" template="menu.tpl" />
 	

@@ -7,7 +7,6 @@
 	
 	<load class="LDAPInterface" file="class/ldapinterface.class.php" />
 
-	<load class="Admin" file="admin.class.php" />
 	<load class="UsersAdmin" file="usersadmin.class.php" />
 	<load class="UserAdmin" file="useradmin.class.php" />
 	<load class="AddUser" file="adduser.class.php" />
@@ -21,7 +20,7 @@
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 	
-	<view name="default" class="Admin" template="default.tpl" />
+	<view name="default" template="default.tpl" />
 	<view name="users" class="UsersAdmin" template="usersadmin.tpl" />
 	<view name="useradmin" class="UserAdmin" template="useradmin.tpl" />
 	<view name="groups" class="GroupsAdmin" template="groupsadmin.tpl" />

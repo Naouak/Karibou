@@ -2,12 +2,10 @@
 <app>
 	<permissions default="_READ_ONLY_" logged="_READ_ONLY_" />
 
-	<load class="RobotsTxtDefault" file="default.class.php" />
-
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />
 
-	<view name="default" class="RobotsTxtDefault" template="default.tpl" />
+	<view name="default" template="default.tpl" />
 
 	<page view="default">
 		<header app="header" view="empty" />
