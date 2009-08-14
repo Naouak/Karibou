@@ -30,6 +30,7 @@ ClassLoader::add('DaemonLoader', KARIBOU_CLASS_DIR."/daemonloader.class.php");
 ClassLoader::add('KApp', KARIBOU_CLASS_DIR.'/kapp.class.php');
 ClassLoader::add('AppList', KARIBOU_CLASS_DIR."/applist.class.php");
 ClassLoader::add('Model', KARIBOU_CLASS_DIR.'/model.class.php');
+ClassLoader::add('EmptyModel', KARIBOU_CLASS_DIR.'/EmptyModel.class.php');
 ClassLoader::add('FormModel', KARIBOU_CLASS_DIR.'/formmodel.class.php');
 ClassLoader::add('ModelFactory', KARIBOU_CLASS_DIR.'/modelfactory.class.php');
 ClassLoader::add('ModelBuilder', KARIBOU_CLASS_DIR.'/modelbuilder.class.php');
