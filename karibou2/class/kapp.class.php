@@ -366,8 +366,11 @@ class KApp
 			if( !isset($this->configViewList[$name]) ) return false;
 			$configview =  $this->configViewList[$name];
 			
-			Debug::display("Adding new view : ".$name." (".$configview['class'].") => ".$hook);
+			if ((!isset($configview['class'])) || (empty($configview['class'])))
+				$configview['class'] = 'EmptyModel';
 			
+			Debug::display("Adding new view : ".$name." (".$configview['class'].") => ".$hook);
+
 			$model = $this->modelFactory->getModel($configview['class'],
 				$this->name,
 				$this->templatedir,
