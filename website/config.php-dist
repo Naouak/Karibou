@@ -50,14 +50,6 @@ $config["login"]["loginBackends"] = array (
     ),
 );
 
-/*
-//Si utilisation du LDAP pour l'authentification
-$config['login']['backend'] = "imap";
-$config['login']['server'] = "mail.karibou.org";
-$config['login']['server_schema'] = "INBOX";
-$config['login']['server_options'] = "/imap/tls/novalidate-cert";
-$config['login']['post_username'] = "@karibou.org";
-*/
 //Autoriser la création d'utilisateur ?
 $config['login']['allowaccountcreation'] = FALSE;
 //Création de l'utilisateur dans Karibou lors de la première connexion ?

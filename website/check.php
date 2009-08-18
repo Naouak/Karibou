@@ -3,17 +3,10 @@
 	/**
 	 * Liste des fonctions nécessaires
 	 */
-	$checklist[] = array(
-		'type'				=> 'function',
-		'name'				=> 'imap_open',
-		'errortitle'		=> 'Le module IMAP pour PHP n\'est pas charg&eacute;',
-		'errordescription'	=> 'Le module IMAP pour PHP est n&eacute;cessaire pour le bon fonctionnement de l\'application <em>mail</em> de <a href="http://www.karibou.org" title="Karibou : L\'Intranet">Karibou</a>.',
-		'resolve'			=> '
-					Vous devez ajouter la ligne 
-					<pre>extension=php_imap.dll</pre>
-					dans votre fichier <strong><em>php.ini</em></strong> si vous &ecirc;tes sous <em>Windows</em>.'
-		);
-	
+
+	/* No more check is made on the functions... But the type "function"
+	   still exists, so keep that in mind for new features. */
+
 	/**
 	 * Liste des extensions nécessaires
 	 */
