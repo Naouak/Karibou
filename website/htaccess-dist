@@ -1,0 +1,12 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Activate this if karibou is not at the root of the vhost (think
+# about changing the "/karibou/website" by the real path to your
+# karibou...)
+#RewriteBase /karibou/website
+
+# Some rules...
+RewriteRule ^themes/	-		[L]
+RewriteRule ^pub/	-		[L]
+RewriteRule ^.*$	index.php	[L]
