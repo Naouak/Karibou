@@ -8,6 +8,34 @@
 	   still exists, so keep that in mind for new features. */
 
 	/**
+	 * Liste des fichiers nécessaires
+	 */
+	
+	$checklist[] = array(
+		'type'			=> 'file',
+		'name'			=> KARIBOU_SMARTY_DIR . '/Smarty.class.php',
+		'errortitle'		=> 'Smarty est introuvable',
+		'errordescription'	=> 'Karibou utilise <a href="http://www.smarty.net/">Smarty</a> comme moteur de template. Cependant, il est impossible de trouver Smarty. ',
+		'resolve'		=> 'Vous devez installer Smarty dans le <em>include_path</em> de PHP. Sous Debian, la commande <br /><pre>aptitude install smarty</pre> devrait régler le problème.'
+	);
+
+	$checklist[] = array(
+		'type'			=> 'file',
+		'name'			=> 'PEAR.php',
+		'errortitle'		=> 'PEAR est introuvable',
+		'errordescription'	=> 'Karibou utilise des classes en provnenance de <a href="http://pear.php.net/">PEAR</a>. Cependant, il est impossible de trouver PEAR.',
+		'resolve'		=> 'Vous devez installer PEAR dans le <em>include_path</em> de PHP. Sous Debian, la commande <br /><pre>aptitude install php-pear</pre> devrait régler le problème.'
+	);
+
+	$checklist[] = array(
+		'type'			=> 'file',
+		'name'			=> 'Crypt/RSA.php',
+		'errortitle'		=> 'CryptRSA est introuvable',
+		'errordescription'	=> 'Certaines données sont chiffrées en utilisant la classe CryptRSA de PEAR. Cependant, il semblerait qu\'elle ne soit pas actuellement installée.',
+		'resolve'		=> 'Vous devez installer CryptRSA dans le <em>include_path</em> de PHP. Si PEAR est correctement, la commande <br /><pre>pear install Crypt_RSA</pre> devrait régler le problème.'
+	);
+
+	/**
 	 * Liste des extensions nécessaires
 	 */
 	$checklist[] = array(
@@ -80,10 +108,15 @@
 			{
 				$exist = extension_loaded($check['name']);
 			}
-      elseif ($check['type'] == 'directory')
-      {
-        $exist = is_dir($check['name']);
-      }
+			elseif ($check['type'] == 'directory')
+			{
+				$exist = is_dir($check['name']);
+			}
+			elseif ($check['type'] == 'file')
+			{
+				$exist = is_readable_ext($check['name']);
+			}
+
 			if ( !$exist )
 			{
 				$error++;
@@ -128,4 +161,16 @@
 		echo $errormessages;
 		die();
 	}
+
+function is_readable_ext($file) {
+	$dirs = explode(':', ini_get('include_path'));
+
+	foreach($dirs as $dir) {
+		if(is_readable("$dir/$file")) {
+			return true;
+		}
+	}
+
+	return false;
+}
 ?>
