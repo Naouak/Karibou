@@ -9,8 +9,6 @@
 	{$username}
 	{/if}
 </h2>
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key={$gkey}"
-            type="text/javascript"></script>
 <script>
 var address_next_id = 1;
 var phone_next_id = 1;
