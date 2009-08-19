@@ -12,7 +12,7 @@ class AnnonceConfig extends AppConfigModel
 {
     public function formFields()
     {
-	    return array("maxannonce" => array("type" => "int","required" => false,"label" => _(MAXANNONCE) , "value" => "5"));
+	    return array("maxannonce" => array("type" => "int","required" => false,"label" => _("MAXANNONCE") , "value" => "5"));
     }
 }
 

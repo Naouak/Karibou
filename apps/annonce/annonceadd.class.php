@@ -37,6 +37,6 @@ class AnnonceAdd extends AppContentModel
 	
 	public function formFields()
 	{
-		return array("annonce" => array("type" => "textarea", "required" =>true, "label" => _(textannonce) , "columns" => "30", "rows" => "8"), "price" => array("type" => "text", "required" => false, "label" => _(price)), "date" => array("type"=>"date", "required" => true , "label" => _(expirationdate)));
+		return array("annonce" => array("type" => "textarea", "required" =>true, "label" => _("textannonce") , "columns" => "30", "rows" => "8"), "price" => array("type" => "text", "required" => false, "label" => _("price")), "date" => array("type"=>"date", "required" => true , "label" => _("expirationdate")));
 	}
 }
