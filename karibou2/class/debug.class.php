@@ -166,8 +166,8 @@ class Debug
 				}
 			}
 			$output .= "\n";
-			$output .= " * call: {$bt['class']}{$bt['type']}{$bt['function']}($args)\n";
-			$output .= " * file: {$bt['line']} - {$bt['file']}\n";
+			if(isset($bt['line'], $bt['type'], $bt['function'])) $output .= " * call: {$bt['class']}{$bt['type']}{$bt['function']}($args)\n";
+			if(isset($bt['line'], $bt['file'])) $output .= " * file: {$bt['line']} - {$bt['file']}\n";
 		}
 		$output .= "\n";
 		return $output;
