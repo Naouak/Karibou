@@ -85,16 +85,13 @@ class NewsView extends Model
 		$this->assign('permission', $this->permission);
         $this->assign('currentuser',$this->userFactory->getCurrentUser());
         $this->assign('db',$this->db);
-        echo "<br />";echo "<br />";echo "<br />";echo "<br />";echo "<br />";echo "<br />";
         $this->currentuser = $this->userFactory->getCurrentUser();
-        $this->groups = $this->currentuser->getGroups();
+        $this->groups = $this->currentuser->getGroups($this->db);
         $grouparray = array();
         foreach ($this->groups as $group2)
         {
             $idofgroup = $group2->getId();
             $grouparray[$idofgroup]=$group2->role;
-            
-            
         }
         $this->assign('grouparray',$grouparray);
 	}
