@@ -72,7 +72,7 @@ class AppList extends ObjectList
 
 
 		ExecutionTimer::getRef()->start("New Smarty");
-		$this->smarty = new KSmarty($this, $this->hookManager, $userFactory->getCurrentUser()->getPref("lang"));
+		$this->smarty = new KSmarty($this, $this->hookManager, $userFactory->getCurrentUser()->getPref("lang", $GLOBALS["config"]["lang"]));
 		ExecutionTimer::getRef()->stop("New Smarty");
 	}
 

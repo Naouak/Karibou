@@ -28,6 +28,9 @@ $config['noflashmail'] = FALSE;
 //Définit la possibilité ou non d'utiliser le minichat
 $config['nominichat'] = FALSE;
 
+//Définit la langue par défault
+$config['lang'] = 'fr';
+
 //Définit l'application d'accueil à utiliser (application par défaut)
 $config['defaultapp'] = "default";
 

@@ -183,13 +183,13 @@ class CurrentUser extends User
 		}
 	}
 	
-	public function getPref($name)
+	public function getPref($name, $default = false)
 	{
 		if( isset($this->prefs[$name]) )
 		{
 			return unserialize($this->prefs[$name]);
 		}
-		return FALSE;
+		return $default;
 	}
 	public function setPref($name, $value)
 	{
