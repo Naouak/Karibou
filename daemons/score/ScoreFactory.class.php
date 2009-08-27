@@ -23,12 +23,6 @@ class ScoreFactory {
 	}
 
 	public static function initialize($db) {
-		try {
-			$db->query("CREATE VIEW scores_total AS SELECT user_id, SUM(score) AS score, app FROM scores GROUP BY user_id, app");
-		} catch (PDOException $e) {
-			// do nothing
-		}
-
 		self::$instance = new ScoreManager($db);
 	}
 

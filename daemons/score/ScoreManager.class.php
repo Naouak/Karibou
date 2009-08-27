@@ -20,23 +20,27 @@ class ScoreManager {
 	public function getScoreOf(User $user, $app = null) {
 		if(is_null($app)) {
 			$query =
-				"SELECT SUM(score) AS score ".
-				"FROM scores_total ".
-				"WHERE user_id = :user ";
+				"SELECT COALESCE(SUM(score), 0) AS score ".
+				"FROM scores ".
+				"WHERE user_id = :user ".
+				"AND date >= FROM_UNIXTIME(:time) ";
 			$sth = $this->db->prepare($query);
 			$sth->bindValue(":user", $user->getID());
+			$sth->bindValue(":time", $GLOBALS["config"]["scores"]["start"]);
 			$sth->execute();
 
 			return $sth->fetchColumn(0);
 		} else {
 			$query =
-				"SELECT SUM(score) AS score ".
-				"FROM scores_total ".
+				"SELECT COALESCE(SUM(score), 0) AS score ".
+				"FROM scores ".
 				"WHERE user_id = :user ".
-				"AND app = :app";
+				"AND app = :app ".
+				"AND date >= FROM_UNIXTIME(:time)";
 			$sth = $this->db->prepare($query);
 			$sth->bindValue(":user", $user->getID());
 			$sth->bindValue(":app", $app);
+			$sth->bindValue(":time", $GLOBALS["config"]["scores"]["start"]);
 			$sth->execute();
 
 			return $sth->fetchColumn(0);
