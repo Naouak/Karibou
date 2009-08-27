@@ -1,0 +1,6 @@
+name_fr = Tableau de Score
+name_en = Score Board
+desc_fr = Tableau de score commun à tous les jeux de Karibou
+desc_en = Common score board for Karibou games
+view = mini
+configmodel = ScoreboardConfig

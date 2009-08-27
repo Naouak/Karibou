@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Scoreboard, by Rémy Sanchez <remy.sanchez@hyperthese.net -->
+<!-- Under GPL -->
+
+<app>
+	<!-- Permissions -->
+	<permissions default="_SELF_WRITE_" logged="_SELF_WRITE_" />
+
+	<!-- Classes -->
+	<load class="Scoreboard" file="scoreboard.class.php" />
+	<load class="ScoreboardConfig" file="scoreboard_config.class.php" />
+
+	<!-- Views -->
+	<view name="mini" class="Scoreboard" template="mini.tpl" />
+</app>
