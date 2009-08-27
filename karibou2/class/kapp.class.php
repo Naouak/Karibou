@@ -217,7 +217,7 @@ class KApp
 					// Load class $result[2] from app $result[1]
 					$otherApp = $this->appList->getApp($result[1]);
 					ClassLoader::add($result[2], ClassLoader::getFilename($result[2]));
-					ClassLoader::unloadContext($result[1]);
+					//ClassLoader::unloadContext($result[1]);
 					unset($otherApp);
 				} else {
 					//print_r("Loading class " . $loadclass['class'] . " in " . $this->name . "\n");
