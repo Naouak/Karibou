@@ -30,6 +30,25 @@ class RBReset extends FormModel
 		$stmt->bindValue(':user',$this->currentUser->getID(),PDO::PARAM_INT);
 		$stmt->execute();
 		if($stmt->fetch() === false){
+			// Score calculation
+			$stmt = $this->db->prepare("
+				SELECT
+					user,
+					TIME_TO_SEC(TIMEDIFF(NOW(), date)) AS score
+				FROM
+					resetbutton
+				ORDER BY
+					date DESC
+				LIMIT
+					1
+			");
+			$stmt->execute();
+
+			if($row = $stmt->fetch()) {
+				ScoreFactory::addScoreToUser($this->currentUser, $row["score"], "resetbutton");
+				ScoreFactory::addScoreToUser($this->userFactory->prepareUserFromId($row["user"]), - $row["score"], "resetbutton");
+			}
+
 			//ajout si passe l'anti-flood
 			$stmt = $this->db->prepare("INSERT INTO resetbutton(date,user) VALUES ( NOW(), :user );");
 			$stmt->bindValue(':user',$this->currentUser->getID(),PDO::PARAM_INT);
