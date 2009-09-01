@@ -233,11 +233,12 @@ input[type=button],input[type=submit],input[type=reset]{
 }
 
 .default2_customize{
-	background: RGB(250,250,250);
+/*	background: RGB(250,250,250);
     border:1px solid #B2DFFF;
-    color: RGB(50,50,150);
+    color: RGB(50,50,150);*/
     font-weight:bold;
-	min-height: 40px;
+	min-height: 21px;
+	margin-top: 5px;
 }
 
 .default2_customize a{
