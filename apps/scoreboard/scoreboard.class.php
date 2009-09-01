@@ -21,14 +21,12 @@ class Scoreboard extends Model {
 
 		$sth = $this->db->prepare("
 			SELECT
-				SUM(score) AS score,
-				user_id
+				score,
+				user_id,
+				rank,
+				rank_inv
 			FROM
-				scores
-			WHERE
-				date >= FROM_UNIXTIME(:from)
-			GROUP BY
-				user_id
+				scores_total
 			ORDER BY
 				score $order
 			LIMIT
@@ -43,11 +41,14 @@ class Scoreboard extends Model {
 		if($result) while($row = $sth->fetch()) {
 			$scores[] = array(
 				"score" => $row["score"],
-				"user" => $this->userFactory->prepareUserFromId($row["user_id"])
+				"user" => $this->userFactory->prepareUserFromId($row["user_id"]),
+				"rank" => ($this->args["from"] == "top") ? $row["rank"] : $row["rank_inv"]
 			);
 		}
 
 		$this->assign("selfscore", ScoreFactory::getScoreOf($this->userFactory->getCurrentUser()));
+		$this->assign("selfrank", ScoreFactory::getRankOf($this->userFactory->getCurrentUser()));
+		$this->assign("selfrankinv", ScoreFactory::getInvRankOf($this->userFactory->getCurrentUser()));
 		$this->assign("scores", $scores);
 		$this->assign("islogged", $this->currentUser->islogged());
 	}
