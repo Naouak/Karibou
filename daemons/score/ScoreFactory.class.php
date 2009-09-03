@@ -22,8 +22,8 @@ class ScoreFactory {
 		return self::$instance;
 	}
 
-	public static function initialize($db) {
-		self::$instance = new ScoreManager($db);
+	public static function initialize($db, $uf) {
+		self::$instance = new ScoreManager($db, $uf);
 
 		// Shall we update the scores_valid view ?
 		if(is_readable(KARIBOU_CACHE_DIR . '/score_start_time')) {
@@ -72,12 +72,15 @@ class ScoreFactory {
 		return self::getInstance()->getScoreOf($user, $app);
 	}
 
-	public static function getRankOf(User $user) {
-		return self::getInstance()->getRankOf($user);
+	public static function getRankOf(User $user, $app = null) {
+		return self::getInstance()->getRankOf($user, $app);
 	}
 
-	public static function getInvRankOf(User $user) {
-		return self::getInstance()->getInvRankOf($user);
+	public static function getInvRankOf(User $user, $app = null) {
+		return self::getInstance()->getInvRankOf($user, $app);
+	}
+
+	public static function getScoreBoard($num, $inv = false, $app = null) {
+		return self::getInstance()->getScoreBoard($num, $inv, $app);
 	}
 }
-?>
