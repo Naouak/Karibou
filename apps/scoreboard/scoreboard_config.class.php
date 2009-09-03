@@ -21,6 +21,11 @@ class ScoreboardConfig extends AppConfigModel
 				"max" => 100,
 				"label" => _("Nombre de lignes à afficher"),
 				"value" => 10
+			),
+			"hide" => array(
+				"type" => "bool",
+				"label" => _("Cacher mon score"),
+				"value" => false
 			)
 		);
 	}
