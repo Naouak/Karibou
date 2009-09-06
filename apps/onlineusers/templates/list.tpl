@@ -5,7 +5,7 @@
 				{userlink user=$user.object showpicture=$islogged}
 {if ($islogged)}
 	{if (!$noflashmail)}
-		<a href="#" class="sendflashmaillink" onclick="FlashmailManager.Instance.newFlashmail('{$user.object->getSurname()|escape:'javascript'}', {$user.object->getId()}); return false;"><span>Flash</span></a>
+		<a href="#" class="sendflashmaillink" onclick="FlashmailManager.Instance.newFlashmail('{$user.object->getSurname()|escape:'quotes'|escape:'html'}', {$user.object->getId()}); return false;"><span>Flash</span></a>
 	{/if}
 	{if $user.mood}
 		<i>(##{$user.mood}##)</i>
