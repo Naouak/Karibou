@@ -21,7 +21,7 @@ class Login extends FormModel
 	{
 		if (isset ($_POST['_user']) && isset ($_POST['_pass']))
 		{
-			$user = $_POST['_user'];
+			$user = trim($_POST['_user']);
 			$pass = iconv("UTF-8", "ISO-8859-1//IGNORE", stripslashes($_POST['_pass']));
 			
 			if( isset($_POST['_crypt']) )
