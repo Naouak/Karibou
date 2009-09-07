@@ -30,11 +30,12 @@ class DDayFlashListener extends Listener
 		}
 		while ( ($fetch=$stmt->fetch(PDO::FETCH_ASSOC)) !== false)
 		{
+			$message = "Aujourd'hui, n'oublie pas : " . $fetch["event"];
 			$user_id = $this->currentUser->getID();
 			$sql1 = "SELECT id from flashmail where date(`date`)=CURRENT_DATE and message = :message and to_user_id = :user_id";
 			try {
 				$stmt1 = $this->db->prepare($sql1);
-				$stmt1->bindValue(":message","aujourd'hui n'oublie pas : ".$fetch["event"]);
+				$stmt1->bindValue(":message", $message);
 				$stmt1->bindValue(":user_id", $user_id);
 				$stmt1->execute();
 			}
@@ -51,7 +52,7 @@ class DDayFlashListener extends Listener
 					$stmt2 = $this->db->prepare($sql2);
 					$stmt2->bindValue(":fromid", "0");
 					$stmt2->bindValue(":toid", $user_id);
-					$stmt2->bindValue(":message","aujourd'hui n'oublie pas : ".$fetch["event"]);
+					$stmt2->bindValue(":message", $message);
 					$stmt2->execute();
 				}
 				catch(PDOException $e)
