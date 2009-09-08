@@ -14,7 +14,7 @@
 	<!-- Display the full flashmail list on one page -->
 	<view name="default" class="FlashMailList" template="default.tpl" />
 	<!-- Generate the JS code for flashmails -->
-	<view name="flashmailJS" template="js.tpl" />
+	<view name="flashmailJS" template="flashmail_js.tpl" />
 	<!-- Contains the hook for the <head> tag -->
 	<view name="flashmail_head" template="html_head.tpl" />
 	<!-- Lists the unread flashmails in XML -->
