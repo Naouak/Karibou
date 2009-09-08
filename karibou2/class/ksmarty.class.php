@@ -80,17 +80,23 @@ class KSmarty extends Smarty
 	function fetch($_smarty_tpl_file, $_smarty_cache_id = null, $_smarty_compile_id = null, $_smarty_display = false) {
 	  // We need to set the cache id and the compile id so a new script will be
 	  // compiled for each language. This makes things really fast ;-)
-	  $_smarty_compile_id = $this->currentLanguage.'-'.$_smarty_compile_id;
+	  $_smarty_compile_id = $this->kapp . '-' . $this->currentLanguage . '-' . $_smarty_compile_id;
 	  $_smarty_cache_id = $_smarty_compile_id;
 
 	  // Now call parent method
 	  return parent::fetch( $_smarty_tpl_file, $_smarty_cache_id, $_smarty_compile_id, $_smarty_display );
 	}
 	
+	/**
+	 * @returns : name of the application (string)
+	 */
 	function getApp()
 	{
 		return $this->kapp;
 	}
+	/**
+	 * @param $app : name of the application (string)
+	 */
 	function setApp($app)
 	{
 		$this->kapp = $app;
