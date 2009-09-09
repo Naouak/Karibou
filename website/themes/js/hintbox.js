@@ -3,6 +3,7 @@ var offsetypoint = 20; // Customize y offset of tooltip
 
 var hintEnabled = false;
 var hintObject = null;
+var hintSource = "A";
 
 Event.observe(window, "load", function() {
     hintObject = document.createElement("div");
@@ -14,6 +15,10 @@ Event.observe(document, "mousemove", positiontip);
 
 function showhint (diplayText, displayClass) {
     if (hintObject) {
+        hintSource = "A";
+        if (window.event)
+            if (window.event.srcElement)
+                hintSource = window.event.srcElement.nodeName;
         if (typeof displayClass!="undefined" && displayClass!="") {
             hintObject.className = 'hint ' + displayClass;
         }
@@ -23,7 +28,7 @@ function showhint (diplayText, displayClass) {
 }
 
 function positiontip (e) {
-    if (e.element().nodeName != "A") {
+    if (e.element().nodeName != hintSource) {
         hidehint();
     }
     if (hintEnabled) {
