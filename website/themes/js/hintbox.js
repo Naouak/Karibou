@@ -23,10 +23,13 @@ function showhint (diplayText, displayClass) {
 }
 
 function positiontip (e) {
+    if (e.element().nodeName != "A") {
+        hidehint();
+    }
     if (hintEnabled) {
         var curX = e.pointerX();
         var curY = e.pointerY();
-        
+         
         // Find out how close the mouse is to the corner of the window
         var rightedge = document.viewport.getWidth() - curX - offsetxpoint;
         var bottomedge = document.viewport.getHeight() - curY - offsetypoint;
@@ -50,6 +53,8 @@ function positiontip (e) {
             hintObject.style.top = curY + offsetypoint + "px";
         }
         hintObject.style.visibility = "visible";
+    } else {
+        hidehint();
     }
 }
 
