@@ -1,3 +1,14 @@
+CREATE TABLE `scores` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `user_id` int(11) NOT NULL,
+  `score` int(11) NOT NULL,
+  `app` varchar(20) collate utf8_unicode_ci NOT NULL,
+  `date` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Views
+
 CREATE VIEW
 	scores_valid
 AS
