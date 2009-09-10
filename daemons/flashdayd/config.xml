@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <daemon>
 
->-------<load class="DDayFlashListener" file="ddayflashlistener.class.php" />
+	<load class="DDayFlashListener" file="ddayflashlistener.class.php" />
 
->-------<listen event="login" class="DDayFlashListener" />
+	<listen event="loggedin" class="DDayFlashListener" />
 
 </daemon>
 
