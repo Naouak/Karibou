@@ -92,6 +92,7 @@ class Login extends FormModel
 						}
 					}
 					$this->eventManager->sendEvent("login");
+					$this->eventManager->sendEvent("loggedin");
 				}
 			}
 			else // Login Failed
