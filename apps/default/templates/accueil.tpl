@@ -22,7 +22,8 @@
 <script language="javascript">
 var karibou = null;
 
-function filterAppList () {ldelim}
+function filterAppList (evt) {ldelim}
+//	alert(evt.keyCode);
 	var val = document.getElementById("filterAppList").value.toLowerCase();
 	var targetNode = document.getElementById("homeAppList");
 	var subNode = targetNode.firstChild;
@@ -61,6 +62,7 @@ function closeTab () {ldelim}
 {rdelim}
 
 function customizeTab() {ldelim}
+	karibou.locked = false;
 	new Effect.toggle("customizeSection");
 	document.getElementById("columnsLinks").style.display = "block";
 	document.getElementById("resizeLinks").style.display = "none";
@@ -93,6 +95,7 @@ function removeLastColumn () {ldelim}
 {rdelim}
 
 function showAddAppList() {ldelim}
+	karibou.locked = false;
 	new Effect.toggle($('homeAppAdder'), 'appear', {ldelim} afterFinish: function(eff) {ldelim} $('filterAppList').focus(); {rdelim} {rdelim} );
 	new Effect.toggle($('homeAppAddButton'));
 {rdelim}
@@ -126,7 +129,7 @@ var KeyPair = new RSAKeyPair(
 
 
 <div id="homeAppAdder" style="display : none">
-Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="filterAppList();" length="150" />
+Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="filterAppList(event);" length="150" />
 <input id="homeAppAddCloseButton" type="button" value="Close" onclick="new Effect.toggle($('homeAppAdder'), 'appear'); new Effect.toggle($('homeAppAddButton'));  return false;" /><br />
 <div id="homeAppList">
 {foreach key=appName item=appObject from=$apps}

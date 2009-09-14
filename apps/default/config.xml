@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <app>
-	<load class="DefaultMenu" file="class/defaultmenu.class.php" />
 	<load class="MiniApp" file="class/miniapp.class.php" />
 	<load class="MiniAppFactory" file="class/miniappfactory.class.php" />
 	<load class="AppMainView" file="class/appmainview.class.php" />
@@ -21,7 +20,7 @@
 
 	<load class="[arguments]/ArgMiniapp" />
 	
-	<view name="menu" class="DefaultMenu" template="menu.tpl" />
+	<view name="menu" template="menu.tpl" />
 	<hook name="header_menu" view="menu" />
 
 	<view name="default" class="DefaultModel" template="accueil.tpl" />

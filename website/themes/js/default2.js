@@ -88,6 +88,7 @@ var KTab = Class.create({
 								accept: ["appRootContainer"],
 								karibou: this,
 								onUpdate: function(container) {
+									Sortable.sortables[container.id].karibou.locked = false;
 									Sortable.sortables[container.id].karibou.save();
 								}});
 			Sortable.sortables[this.tabContainers[i].id].karibou = this.karibou;
@@ -452,6 +453,7 @@ var Karibou = Class.create({
 		this.appGetConfigUrl = appGetConfigUrl;
 		this.saveHomeUrl = saveHomeUrl;
 		this.appJSUrl = appJSUrl;
+		this.locked = true;
 		this.applicationsClass = {};						// {app name => JS class}
 		this.loadedApplicationsJS = {};						// [app name]
 		this.appLoaders = new Array();						// [KAppLoader], the applications being loaded
@@ -687,6 +689,8 @@ var Karibou = Class.create({
 			return this.getAppFromNode(node.parentNode);
 	},
 	save: function () {
+		if (this.locked)
+			return;
 		if (this.saveTimeout != null)
 			window.clearTimeout(this.saveTimeout);
 		this.saveTimeout = window.setTimeout(function(kar) { kar._realSave(); }, 2000, this);
