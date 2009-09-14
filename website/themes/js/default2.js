@@ -86,9 +86,9 @@ var KTab = Class.create({
 								constraint: false, 
 								containment: this.tabContainers, 
 								accept: ["appRootContainer"],
-								karibou: this,
+								karibou: this.karibou,
 								onUpdate: function(container) {
-									Sortable.sortables[container.id].karibou.locked = false;
+									Sortable.sortables[container.id].karibou.unlock();
 									Sortable.sortables[container.id].karibou.save();
 								}});
 			Sortable.sortables[this.tabContainers[i].id].karibou = this.karibou;
@@ -223,7 +223,7 @@ var KTab = Class.create({
 			var node = containerNode.childNodes[j];
 			if (node.attributes.getNamedItem("kapp")) {
 				if (node.attributes.getNamedItem("kapp").nodeValue == "true") {
-					alert("Destroy application " + node.id);
+					//alert("Destroy application " + node.id);
 					containerNode.removeChild(node);
 					j--;
 				}
@@ -351,6 +351,7 @@ var KApp = Class.create({
 		this.shaded = !this.shaded;
 		Effect.toggle(this.appBox, 'slide', { duration: 0.5 });
 		this.onShade();
+		this.karibou.unlock();
 		this.karibou.save();
 	},
 	close: function() {
@@ -688,8 +689,11 @@ var Karibou = Class.create({
 		} else if (node.parentNode)
 			return this.getAppFromNode(node.parentNode);
 	},
+	unlock: function () {
+		this.locked = false;
+	},
 	save: function () {
-		if (this.locked)
+		if (this.locked == true)
 			return;
 		if (this.saveTimeout != null)
 			window.clearTimeout(this.saveTimeout);

@@ -62,7 +62,7 @@ function closeTab () {ldelim}
 {rdelim}
 
 function customizeTab() {ldelim}
-	karibou.locked = false;
+        karibou.unlock();
 	new Effect.toggle("customizeSection");
 	document.getElementById("columnsLinks").style.display = "block";
 	document.getElementById("resizeLinks").style.display = "none";
@@ -95,7 +95,7 @@ function removeLastColumn () {ldelim}
 {rdelim}
 
 function showAddAppList() {ldelim}
-	karibou.locked = false;
+	karibou.unlock();
 	new Effect.toggle($('homeAppAdder'), 'appear', {ldelim} afterFinish: function(eff) {ldelim} $('filterAppList').focus(); {rdelim} {rdelim} );
 	new Effect.toggle($('homeAppAddButton'));
 {rdelim}
