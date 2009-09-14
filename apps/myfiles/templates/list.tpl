@@ -3,7 +3,7 @@
 			{foreach from=$fileEntries key=key item=entry}
 			<li>
 				{if $entry->isFolder()}
-				<a href="#" onclick="$app(this).changeFolder('{$entry->getFullPathBase64()}')">
+				<a href="#" onclick="$app(this).changeFolder('{$entry->getFullPathBase64()}'); return false;">
 				<img src="themes/karibou/images/fileshare/detailed/directory.png" />{$entry->getName()}
 				</a>
 				{else}
