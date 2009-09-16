@@ -3,6 +3,11 @@
 class DaytofSubmit extends AppContentModel {
 	private $max_width_daytof = 200;
 	private $max_height_daytof = 200;
+
+	private function is_ani($filename) {
+		// Returns true when a given file is an animated image
+		return (bool)preg_match('#(\x00\x21\xF9\x04.{4}\x00\x2C.*){2,}#s', file_get_contents($filename));
+	}
 	public function submit($parameters) {
 		$tofdir = KARIBOU_PUB_DIR.'/daytof';
 		// If the images folder doesn't exist, create it.
@@ -10,6 +15,11 @@ class DaytofSubmit extends AppContentModel {
 			mkdir( $tofdir, 0744, true);
 
 		$tmpFileName = $parameters['file']['tmp_name'];
+		if ($parameters['comment']=="")
+			$daytof_comment="RAS";
+		else
+			$daytof_comment=$parameters['comment'];
+
 		if( is_uploaded_file($tmpFileName) && filesize($tmpFileName)<1512000)
 		{
 			$new_id = 1;
@@ -33,7 +43,11 @@ class DaytofSubmit extends AppContentModel {
 			if($im)
 			{
 				//sauvegarde
-				imagejpeg($im, $tofdir.'/'.$tof_file.'.jpg', 95);
+				if ($this->is_ani($tmpFileName)) {
+					copy($tmpFileName, $tofdir.'/'.$tof_file.'.gif');
+				} else {
+					imagejpeg($im, $tofdir.'/'.$tof_file.'.jpg', 95);
+				}
 				
 				//miniature					
 				$x = imagesx($im);
@@ -58,8 +72,6 @@ class DaytofSubmit extends AppContentModel {
 				imagejpeg($new_im, $tofdir.'/m'.$tof_file.'.jpg', 95);
 				imagedestroy($new_im);
 				
-				if($parameters['comment']=="") $daytof_comment="RAS";
-				else $daytof_comment=$parameters['comment'];
 				
 				// Insert into the database.
 				$stmt = $this->db->prepare("INSERT INTO daytof (id, user_id, comment, datetime) VALUES(:id, :user, :comment, NOW())");

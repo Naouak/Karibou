@@ -58,17 +58,23 @@ class DaTof extends Model
 				$path = "$tofdir/$file";
 	
 				/* Here we test if the .png file exists, because at some point we
-					switched from PNG to JPEG because of file size issues */
-				if(is_readable("$path.png")) {
+					switched from PNG to JPEG because of file size issues.
+				        Also, .gif files aren't converted to keep animations. */
+				if (is_readable("$path.png")) {
 					$filename = "$file.png";
+					$smallName = "m$file.png";
+				} else if (is_readable("$path.gif")) {
+					$filename = "$file.gif";
+					$smallName = "m$file.jpg";
 				} else {
 					$filename = "$file.jpg";
+					$smallName = "m$file.jpg";
 				}
    	
-				$this->assign("tof",('pub/daytof/m' . $filename));
-				$this->assign("linktof",('pub/daytof/' . $filename));
-				$this->assign("datofauthor",$user);
-				$this->assign("datofcomment",$row["comment"]);
+				$this->assign("tof", ('pub/daytof/' . $smallName));
+				$this->assign("linktof", ('pub/daytof/' . $filename));
+				$this->assign("datofauthor", $user);
+				$this->assign("datofcomment", $row["comment"]);
 				$this->assign("islogged", $this->currentUser->isLogged());
 			}
 		} else {
