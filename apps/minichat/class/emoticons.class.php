@@ -46,10 +46,8 @@ class Emoticons
 	}
 	
 	public function render($in) {
-		touch("/tmp/aaaa_render_mc.txt");
 		$out = $in;
 		$user_emoticon_dir = $this->emoticon_dir . "/" . $this->get_user_emoticon_theme() . "/";
-		touch("/tmp/aaaa_" . $this->get_user_emoticon_theme() . "render_mc.txt");
 		if (is_file($user_emoticon_dir . "/emoticons.xml")) {
 			$xmlCache = new XMLCache(KARIBOU_CACHE_DIR.'/emoticons');
 			$xmlCache->loadFile($user_emoticon_dir . "emoticons.xml", false);
