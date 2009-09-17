@@ -2,6 +2,8 @@
 
 <!-- klock application, by Rémy Sanchez <remy.sanchez@hyperthese.net> -->
 
+<!-- SVN Mailer il est méchant avec moi ! -->
+
 <app>
 	<permissions default="_SELF_WRITE_" logged="_SELF_WRITE_" />
 
