@@ -2,6 +2,9 @@
 
 <!-- klock application, by Rémy Sanchez <remy.sanchez@hyperthese.net> -->
 
+<!-- This version == a test ! -->
+<!-- Les éléphants aiment les endives -->
+
 <app>
 	<permissions default="_SELF_WRITE_" logged="_SELF_WRITE_" />
 
