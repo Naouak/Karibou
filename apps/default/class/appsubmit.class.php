@@ -14,7 +14,7 @@ class AppSubmit extends FormModel {
 		if ($miniapp->getSubmitModel() == "")
 			return;
 		$app = $this->appList->getApp($miniappName);
-		if ($app->getPermission() < _SELF_WRITE_)
+		if ($app->getPermission() < _GROUP_WRITE_)
 			return;
 		$modelName = $miniapp->getSubmitModel();
 		$model = new $modelName($this->db, $this->currentUser, $miniappName, $app);
