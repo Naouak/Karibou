@@ -1,5 +1,5 @@
 <app>
-	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+	<permissions default="_READ_ONLY_" logged="_FULL_WRITE_" />
 
 	<!-- Class loading -->
 	<load class="Annonce" file="annonce.class.php" />
