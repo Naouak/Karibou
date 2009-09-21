@@ -16,7 +16,8 @@ class MCPost extends FormModel
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
 		$this->assign("config", $config);
-		if ($this->currentUser->isLogged())
+		if ($app->getPermission() > _READ_ONLY_)
+//		if ($this->currentUser->isLogged())
 		{
 			/* POST */
 			if (isset($_POST['post']))
