@@ -9,6 +9,7 @@
 	
 	<view name="mini" class="Video" template="video.tpl" />
 	<view name="big" class="Video" template="big.tpl" />
+	<view name="JS" template="js.tpl" />
 	
 	<page view="big" />
 </app>
