@@ -316,6 +316,7 @@ var KApp = Class.create({
 		}
 	},
 	configure: function() {
+		this.beforeOverlay();
 		this.submitBox = document.createElement("div");
 		this.submitBox.setAttribute("class", "overBox");
 		this.submitBox.className = "overBox";
@@ -370,14 +371,22 @@ var KApp = Class.create({
 			this.mainContainer.style.height = this.submitHeightBackup;
 			this.submitBox.parentNode.removeChild(this.submitBox);
 			this.submitBox = null;
+			this.afterOverlay();
 			this.onConfig();
 		}
+	},
+	beforeOverlay: function() {
+		// Apps should overload this function to do something before an overlay is displayed.
+	},
+	afterOverlay: function() {
+		// Apps should overload this function to do something after an overlay disappears.
 	},
 	cancelledOverlay: function() {
 		if (this.submitBox) {
 			this.mainContainer.style.height = this.submitHeightBackup;
 			this.submitBox.parentNode.removeChild(this.submitBox);
 			this.submitBox = null;
+			this.afterOverlay();
 		}
 	},
 	submittedContent: function() {
@@ -386,10 +395,12 @@ var KApp = Class.create({
 			this.mainContainer.style.height = this.submitHeightBackup;
 			this.submitBox.parentNode.removeChild(this.submitBox);
 			this.submitBox = null;
+			this.afterOverlay();
 			this.onSubmit();
 		}
 	},
 	submitContent: function() {
+		this.beforeOverlay();
 		this.submitBox = document.createElement("div");
 		this.submitBox.setAttribute("class", "overBox");
 		this.submitBox.className = "overBox";
