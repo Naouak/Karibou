@@ -9,4 +9,10 @@
     <footer app="footer" view="default" />
     
     <view name="mini" class="Dday" template="dday.tpl" />
+    <view name="vcal" class="Dday" template="vcal.tpl" />
+
+    <page name="vcal" view="vcal" contenttype="text/x-vCalendar">
+        <header app="header" view="empty" />
+	<footer app="footer" view="empty" />
+    </page>
 </app>

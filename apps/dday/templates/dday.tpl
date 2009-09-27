@@ -12,5 +12,7 @@
 				</tr>
 	{/foreach}
 	</table>
+{else}
+	Nothing...
 {/if}
 
