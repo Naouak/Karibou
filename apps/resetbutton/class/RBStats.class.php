@@ -113,12 +113,62 @@ class RBStats extends Model
 		$this->assign("scorelist", $final);
 	}
 
+	private function minusstolenpoints(){
+		// This one deserves a special mention for being really dirty...
+		// I prefer not risk rewriting it in a mysql-incompatible way....
+		$sth = $this->db->prepare("
+		SELECT
+			user,
+			SUM(score) AS score
+		FROM
+			(
+				SELECT * FROM (
+					SELECT
+						SUM(TIME_TO_SEC(TIMEDIFF(one1.date, two1.date))) AS score,
+						one1.user AS user
+					FROM
+						resetbutton AS two1
+					LEFT JOIN resetbutton AS one1 ON one1.id = two1.id - 1
+					GROUP BY
+						user
+				) AS DerivedTable1
+				UNION ALL
+				SELECT * FROM (
+					SELECT
+						SUM(TIME_TO_SEC(TIMEDIFF(two2.date, one2.date))) AS score,
+						two2.user AS user
+					FROM
+						resetbutton AS two2
+					LEFT JOIN resetbutton AS one2 ON one2.id = two2.id - 1
+					GROUP BY
+						user
+				) AS DerivedTable2
+			) AS MainTable
+		GROUP BY
+			user
+		ORDER BY
+			score ASC
+		LIMIT 11
+		");
+
+		$sth->execute();
+		$sth->fetch();	// Skip the first line that is obviously wrong
+		$i=0;
+		$final = array();
+		while(($result = $sth->fetch()) !== false){
+			$profil = $this->userFactory->prepareUserFromId(intval($result['user']));
+			$final[$i++] = array($profil,$result['score']);
+		}
+		$this->assign("minusscorelist", $final);
+	}
+
 	public function build()
 	{
 		$this->longtime();
 		$this->reseters();
 		$this->timecount();
 		$this->stolenpoints();
+		$this->minusstolenpoints();
 		$this->assign("islogged", $this->currentUser->isLogged());
 	}
 	

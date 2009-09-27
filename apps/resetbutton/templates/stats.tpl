@@ -31,4 +31,12 @@
 	{/foreach}
 </ol>
 
+<h4>- ##SCORETIME##</h4>
+<ol>
+	{foreach name=outer item=contact from=$minusscorelist}
+		{if $smarty.foreach.outer.index<10}
+		<li>{userlink user=$contact[0] showpicture=$islogged} ##SCORED## {$contact[1]} ##POINTS##</li>
+		{/if}
+	{/foreach}
+</ol>
 </div>
