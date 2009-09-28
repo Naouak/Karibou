@@ -1,4 +1,7 @@
 <div id="resetbuttonstatscontent">
+
+<p><strong style="color: red;">/!\ Attention ! /!\</strong> les scores ne sont plus ici ! Vous pouvez utiliser l'application "Tableau de score" pour visualiser des scores généralisés à tous les jeux de Karibou :) .</p>
+
 <h4>##LONGESTTIME##</h4>
 <div>
 	##TIME##: {$longestresethour}<br />
@@ -22,6 +25,7 @@
 	{/foreach}
 </ol>
 
+<!--
 <h4>##SCORETIME##</h4>
 <ol>
 	{foreach name=outer item=contact from=$scorelist}
@@ -39,4 +43,5 @@
 		{/if}
 	{/foreach}
 </ol>
+-->
 </div>
