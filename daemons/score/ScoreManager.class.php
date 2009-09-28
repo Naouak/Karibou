@@ -18,8 +18,8 @@ class ScoreManager {
 		$sth->execute();
 
 		$query =
-			"INSERT INTO minichat (id_auteur, post) ".
-			"VALUES (:user, :post)";
+			"INSERT INTO minichat (id_auteur, post, type) ".
+			"VALUES (:user, :post, 'score')";
 		$sth = $this->db->prepare($query);
 		$sth->bindValue(":user", $user->getID());
 		$sth->bindValue(":post", sprintf("/me a %s %d point%s ! (application: %s)", $score >= 0 ? "gagné" : "perdu", abs($score), abs($score) > 1 ? "s" : "", $app));
