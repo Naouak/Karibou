@@ -1,8 +1,8 @@
-name_fr = annonce
-name_en = small ads
-desc_fr = déposez vos annonces ...
-desc_en = let your small ads
-view = mini
-submitmodel = AnnonceAdd
-configmodel = AnnonceConfig
-JSview = JSannonce
+name_fr ="annonce"
+name_en ="small ads"
+desc_fr ="déposez vos annonces ..."
+desc_en ="let your small ads"
+view ="mini"
+submitmodel ="AnnonceAdd"
+configmodel ="AnnonceConfig"
+JSview ="JSannonce"

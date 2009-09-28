@@ -16,13 +16,19 @@ class MinichatMessage
 	protected $author;
 	protected $message;
 	protected $rendering;
+	protected $id;
 
-	function __construct($time, $author, $message, $rendering)
+	function __construct($id, $time, $author, $message, $rendering)
 	{
+		$this->id = $id;
 		$this->time = $time;
 		$this->author = $author;
 		$this->message = $message;
 		$this->rendering = $rendering;
+	}
+
+	function getId() {
+		return $this->id;
 	}
 
 	function getAuthor()

@@ -16,11 +16,15 @@ class FlashMailList extends Model
 {
 	function build()
 	{
-		$flashmailFactory = new FlashMailFactory($this->db, $this->currentUser, $this->userFactory);
-
-		$this->assign("flashmails", $flashmailFactory->returnAll());
-		
-		//$flashmailFactory->setAsRead();
+		$flashmailFactory = new FlashMailFactory($this->db, $this->currentUser, $this->userFactory, false);
+		$flashmailFactory->getAllWithSentFromDB();
+		$all = $flashmailFactory->returnAll();
+		$res = array();
+		foreach ($all as $flashmail) {
+			if ($flashmail->getOldMessageId() == 0)
+				$res[] = $flashmail;
+		}
+		$this->assign("flashmails", $res);
 	}
 }
 

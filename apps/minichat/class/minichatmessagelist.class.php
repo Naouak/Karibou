@@ -48,7 +48,7 @@ class MiniChatMessageList
 
 		$req_sql = "
 			SELECT
-				UNIX_TIMESTAMP(time) as timestamp, id_auteur, post 
+				id, UNIX_TIMESTAMP(time) as timestamp, id_auteur, post 
 			FROM
 				minichat
 			ORDER BY
@@ -71,6 +71,7 @@ class MiniChatMessageList
 		while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) )
 		{
 			$line = new MinichatMessage(
+				$row['id'],
 				$row['timestamp'], 
 				$this->userFactory->prepareUserFromId($row['id_auteur']), 
 				strip_tags($row['post']),
@@ -84,7 +85,7 @@ class MiniChatMessageList
 	}
     
     function getMessagesFromDate ($timestamp) {
-        $sql = "SELECT UNIX_TIMESTAMP(time) as timestamp, id_auteur, post FROM minichat WHERE DATE(time) = DATE(FROM_UNIXTIME(:timeStamp)) ORDER BY time DESC;";
+        $sql = "SELECT id, UNIX_TIMESTAMP(time) as timestamp, id_auteur, post FROM minichat WHERE DATE(time) = DATE(FROM_UNIXTIME(:timeStamp)) ORDER BY time DESC;";
         try {
             $stmt = $this->db->prepare($sql);
             $stmt->bindValue(":timeStamp", $timestamp);
@@ -95,7 +96,8 @@ class MiniChatMessageList
         $post = array();
         while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) )
         {
-            $line = new MinichatMessage(
+		$line = new MinichatMessage(
+					$row['id'],
                                         $row['timestamp'], 
                                         $this->userFactory->prepareUserFromId($row['id_auteur']),
                                         $row['post'],

@@ -1,5 +1,5 @@
-name_fr = Mail
-name_en = Mail
-desc_fr = Lire, envoyer des mails
-desc_en = Read and send e-mails
-view = mini
+name_fr ="Mail"
+name_en ="Mail"
+desc_fr ="Lire, envoyer des mails"
+desc_en ="Read and send e-mails"
+view ="mini"

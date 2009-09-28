@@ -1,6 +1,6 @@
-name_en = My files
-name_fr = Mes fichiers
-view = mini
-desc_en = A simple way to access your remote profile files.
-desc_fr = Un moyen simple pour accéder à distance aux fichiers de votre profil.
-JSview = JS
+name_en ="My files"
+name_fr ="Mes fichiers"
+view ="mini"
+desc_en ="A simple way to access your remote profile files."
+desc_fr ="Un moyen simple pour accéder à distance aux fichiers de votre profil."
+JSview ="JS"

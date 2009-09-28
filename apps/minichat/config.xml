@@ -36,6 +36,7 @@
 	<load class="MCJS"		file="mcjs.class.php" />
 	<load class="MinichatConfig"    file="./class/minichatconfig.class.php" />
 
+	<view name="json" class="MCDefault" template="json.tpl" />
 	<view name="mini" class="MCDefault" template="small.tpl" />
 	<view name="small" class="MCDefault" template="small.tpl" />
 	<view name="big" class="MCDefault" template="minichat.tpl" />
@@ -58,6 +59,11 @@
 		<option name="userichtext" class="NumberArgument" />
 		<option name="inversepostorder" class="NumberArgument" />
 		<option name="emoticon_theme" class="NumberArgument" />
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
+
+	<page name="json" view="json">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>

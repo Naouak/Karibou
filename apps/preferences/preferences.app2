@@ -1,5 +1,5 @@
-name_fr = Sélecteur de langue
-name_en = Language selection
-desc_fr = Choisir la langue de Karibou
-desc_en = Chose Karibou's language
-view = mini
+name_fr ="Sélecteur de langue"
+name_en ="Language selection"
+desc_fr ="Choisir la langue de Karibou"
+desc_en ="Chose Karibou's language"
+view ="mini"

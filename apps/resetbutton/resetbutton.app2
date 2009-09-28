@@ -1,7 +1,7 @@
-name_en = The button
-name_fr = Le bouton
-desc_en = How to have fun in just one click...
-desc_fr = Comment s'amuser avec juste un bouton...
-view = mini
-JSview = RBJS
+name_en ="The button"
+name_fr ="Le bouton"
+desc_en ="How to have fun in just one click..."
+desc_fr ="Comment s'amuser avec juste un bouton..."
+view ="mini"
+JSview ="RBJS"
 

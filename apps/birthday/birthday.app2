@@ -1,5 +1,5 @@
-name_fr = Anniversaires
-name_en = Birthdays
-desc_fr = Affiche les anniversaires du jour
-desc_en = Display the today's birthdays
-view = mini
+name_fr ="Anniversaires"
+name_en ="Birthdays"
+desc_fr ="Affiche les anniversaires du jour"
+desc_en ="Display the today's birthdays"
+view ="mini"

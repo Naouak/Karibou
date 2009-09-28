@@ -1,6 +1,6 @@
-name_en = Online users
-name_fr = Utilisateurs en ligne
-view = mini
-desc_fr = Affiche la liste des utilisateurs actuellement connectés
-desc_en = Display the list of online users
-JSview = JS
+name_en ="Online users"
+name_fr ="Utilisateurs en ligne"
+view ="mini"
+desc_fr ="Affiche la liste des utilisateurs actuellement connectés"
+desc_en ="Display the list of online users"
+JSview ="JS"
