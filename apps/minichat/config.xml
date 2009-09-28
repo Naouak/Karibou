@@ -63,10 +63,5 @@
 		<footer app="footer" view="empty" />
 	</page>
 
-	<page name="json" view="json">
-		<header app="header" view="empty" />
-		<footer app="footer" view="empty" />
-	</page>
-	
 	<form action="post" class="MCPost" />
 </app>
