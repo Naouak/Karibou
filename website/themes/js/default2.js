@@ -358,6 +358,7 @@ var KApp = Class.create({
 	close: function() {
 		Effect.SwitchOff(this.mainContainer, { afterFinish: function (effect) {
 			effect.element.parentNode.removeChild(effect.element);
+			this.karibou.unlock();
 			this.karibou.save();
 		}, karibou: this.karibou});
 		this.onClose();
