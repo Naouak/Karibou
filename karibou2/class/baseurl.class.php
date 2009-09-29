@@ -67,7 +67,7 @@ class BaseUrl
 		
 			//Chargement d'une page de l'Intranet
 			//Requête de la page d'accueil
-			if ( ereg("^".$this->base_url."[/]*$", $p_url) )
+			if ( preg_match('/^'.addcslashes($this->base_url, "/")."[\\/]*$/", $p_url) )
 			{
 				$this->app = $GLOBALS['config']['defaultapp'];
 				if ($this->current_user != null)
