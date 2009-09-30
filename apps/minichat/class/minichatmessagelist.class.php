@@ -15,14 +15,16 @@ class MiniChatMessageList
 	protected $emoticons;
 	protected $rendering;
 	protected $inversepostorder;
+	protected $showscore;
 
-	function __construct(PDO $db, UserFactory $userFactory, $userichtext, $inversepostorder)
+	function __construct(PDO $db, UserFactory $userFactory, $userichtext, $inversepostorder, $showscore = true)
 	{
 		$this->db = $db;
 		$this->userFactory = $userFactory;
 		$this->inversepostorder = $inversepostorder;
 		$this->emoticons = new Emoticons($this->userFactory);	
 		$this->rendering = new MinichatRendering($userichtext, $userFactory->getCurrentUser(), $this->emoticons);
+		$this->showscore = $showscore;
 	}
 	
 	function count()
@@ -46,11 +48,14 @@ class MiniChatMessageList
 		$max = (int) $max;
 		$page = (int) $page;
 
+		$where = $this->showscore ? "" : "WHERE type = 'msg'";
+
 		$req_sql = "
 			SELECT
 				id, UNIX_TIMESTAMP(time) as timestamp, id_auteur, post 
 			FROM
 				minichat
+			$where
 			ORDER BY
 				time DESC
 			LIMIT :max OFFSET :offset";

@@ -21,7 +21,8 @@ class MinichatConfig extends AppConfigModel {
 		return array("maxlines" => array("type" => "int", "required" => true, "value" => $config["max"]["small"], "label" => _("NUMBEROFLINES"), "min" => 2, "max" => 40),
 			"userichtext" => array("type" => "bool", "value" => $config["userichtext"]["small"], "label" => _("USERICHTEXT")),
 			"inversepostorder" => array("type" => "bool", "value" => $config["inversepostorder"]["small"], "label" => _("INVERSEPOSTORDER")),
-			"emoticon_theme" => array("type" => "enum", "values" => $themes, "value" => $config["emoticon_theme"]["small"], "label" => _("EMOTICONTHEME"))
+			"emoticon_theme" => array("type" => "enum", "values" => $themes, "value" => $config["emoticon_theme"]["small"], "label" => _("EMOTICONTHEME")),
+			"showscore" => array("type" => "bool", "value" => "true", "label" => _("Afficher les notifications de changement de score"))
 		);
 	}
 }

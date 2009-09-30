@@ -53,6 +53,11 @@ class MCDefault extends Model
 		{
 			$emoticon_theme = $config["emoticon_theme"]["small"];
 		}
+
+		if(!isset($this->args["showscore"]) || empty($this->args["showscore"])) {
+			$this->args["showscore"] = (bool) $config["showscore"]["small"];
+		}
+
 		$this->assign("emoticon_theme", $emoticon_theme);
 		$this->assign("maxlines", $max);
 		$this->assign("userichtext", $userichtext);
@@ -64,7 +69,7 @@ class MCDefault extends Model
 			$page = 1;
 			
 		$this->assign("pagenum", $page);
-		$minichatMessageList = new MinichatMessageList($this->db, $this->userFactory, $userichtext == 1, $inversepostorder == 1);
+		$minichatMessageList = new MinichatMessageList($this->db, $this->userFactory, $userichtext == 1, $inversepostorder == 1, $this->args["showscore"]);
 		$dateRange = $minichatMessageList->dateRange();
 		$this->assign("minDate", $dateRange[0]);
 		$this->assign("maxDate", $dateRange[1]);

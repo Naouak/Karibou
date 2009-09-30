@@ -20,6 +20,10 @@
 		<param name="refresh">
 			<value name="small">4</value>
 		</param>
+		<param name="showscore">
+			<value name="small">0</value>
+			<value name="normal">1</value>
+		</param>
 	</config>
 	
 	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
@@ -59,6 +63,7 @@
 		<option name="userichtext" class="NumberArgument" />
 		<option name="inversepostorder" class="NumberArgument" />
 		<option name="emoticon_theme" class="NumberArgument" />
+		<option name="showscore" class="NumberArgument" />
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>
