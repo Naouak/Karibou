@@ -26,6 +26,35 @@ class ScoreManager {
 		$sth->execute();
 	}
 
+	public function stealScoreFromUser(User $thief, User $victim, $score, $app = "none") {
+		$query = "
+			INSERT INTO scores (user_id, score, app)
+			VALUES (:user, :score, :app)
+		";
+		$sth = $this->db->prepare($query);
+
+		$sth->bindValue(":user", $thief->getID());
+		$sth->bindValue(":score", $score);
+		$sth->bindValue(":app", $app);
+		$sth->execute();
+
+		$sth->bindValue(":user", $victim->getID());
+		$sth->bindValue(":score", -$score);
+		$sth->bindValue(":app", $app);
+		$sth->execute();
+
+		// Nobody's seen that
+		$this->uf->setUserList();
+
+		$query =
+			"INSERT INTO minichat (id_auteur, post, type) ".
+			"VALUES (:user, :post, 'score')";
+		$sth = $this->db->prepare($query);
+		$sth->bindValue(":user", $thief->getID());
+		$sth->bindValue(":post", sprintf("/me a volé %d points à %s", $score, $victim->getDisplayName()));
+		$sth->execute();
+	}
+
 	public function getScoreOf(User $user, $app = null) {
 		if(is_null($app)) {
 			$query =
@@ -98,6 +127,11 @@ class ScoreManager {
 		$sth->execute();
 
 		return $sth->fetchColumn(0);
+	}
+
+	public function getNumberOfPlayers() {
+		$query = "SELECT COUNT(*) FROM (SELECT * FROM scores_valid GROUP BY user_id) AS t";
+		return $this->db->query($query)->fetchColumn(0);
 	}
 
 	public function getScoreBoard($num, $inv = false, $app = null) {

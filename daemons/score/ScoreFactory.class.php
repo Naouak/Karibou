@@ -83,4 +83,12 @@ class ScoreFactory {
 	public static function getScoreBoard($num, $inv = false, $app = null) {
 		return self::getInstance()->getScoreBoard($num, $inv, $app);
 	}
+
+	public static function stealScoreFromUser($thief, $victim, $score, $app = "none") {
+		return self::getInstance()->stealScoreFromUser($thief, $victim, $score, $app);
+	}
+
+	public static function getNumberOfPlayers() {
+		return self::getInstance()->getNumberOfPlayers();
+	}
 }
