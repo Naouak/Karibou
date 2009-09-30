@@ -2,8 +2,8 @@
 {if $selfrank and !$hide}
 	<ul>
 		<li><strong>{t}Mon score{/t}:</strong> {$selfscore}</li>
-		<li><strong>{t}Mon classement{/t}:</strong> {$selfrank}</li>
-		<li><strong>{t}Mon classement inversé{/t}:</strong> {$selfrankinv}</li>
+		<li><strong>{t}Mon classement{/t}:</strong> {$selfrank}/{$players}</li>
+		<li><strong>{t}Mon classement inversé{/t}:</strong> {$selfrankinv}/{$players}</li>
 	</ul>
 {/if}
 

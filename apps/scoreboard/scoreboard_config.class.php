@@ -3,7 +3,7 @@
 class ScoreboardConfig extends AppConfigModel
 {	
 	public function formFields() {
-        return array(
+	return array(
 			"from" => array(
 				"type" => "enum",
 				"label" => _("À partir"),
