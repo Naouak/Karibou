@@ -3,6 +3,6 @@ name_fr ="Minichat"
 desc_en ="Chat with the other users"
 desc_fr ="Discutez avec les autres utilisateurs"
 view ="mini"
-configmodel ="MinichatConfig "
+configmodel ="MinichatConfig"
 JSview ="JS"
 
