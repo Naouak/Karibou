@@ -430,6 +430,7 @@ var KApp = Class.create({
 			app.appHandle = app.getElementById(app.appName + "_handle");
 			app.onRefresh();
 			app.karibou.getTabFromApplication(app).rebuildContainers();
+			app.eventsAutoConnect();
 		}});
 	},
 	getElementById: function (id) {
