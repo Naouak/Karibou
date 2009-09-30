@@ -41,6 +41,84 @@ class MCPost extends FormModel
 			}
 			if ((isset($message)) && (strlen(trim($message)) > 0) && !$flooding)
 			{
+				/*****
+				 * Games section
+				 *****/
+
+				// Alone on Karibou
+				if(strcasecmp("alone on karibou", $message) == 0) {
+					$last_hour = $this->db->prepare("SELECT COUNT(*) FROM minichat WHERE id_auteur = :user AND post = 'alone on karibou' AND `time` > SUBTIME(NOW(), '01:00:00')");
+					$last_hour->bindValue(":user", $this->currentUser->getID());
+					$last_hour->execute();
+
+					if($this->db->query("SELECT COUNT(*) FROM onlineusers")->fetchColumn(0) == 1 and $last_hour->fetchColumn(0) == 0) {
+						ScoreFactory::addScoreToUser($this->currentUser, 6000, "alone on karibou");
+					}
+				}
+
+				// Preums
+				if($message == "preums" or $message == "deuz" or $message == "troiz") {
+					$res = array(
+						"preums" => false,
+						"deuz" => false,
+						"troiz" => false
+					);
+
+					$scores = array(
+						"preums" => 5000,
+						"deuz" => 2000,
+						"troiz" => 1000
+					);
+
+					$nodonuts = false;
+
+					$sth = $this->db->query("SELECT id_auteur, post FROM minichat WHERE DATE(`time`) = DATE(NOW()) AND post IN ('preums', 'deuz', 'troiz') ORDER BY id ASC");
+					while($row = $sth->fetch()) {
+						if(!$res["preums"] && $row["post"] == "preums") {
+							if($row["id_auteur"] == $this->currentUser) {
+								$nodonuts = true;
+								break;
+							}
+							$res["preums"] = true;
+						} elseif(!$res["deuz"] && $row["post"] == "deuz") {
+							if($row["id_auteur"] == $this->currentUser) {
+								$nodonuts = true;
+								break;
+							}
+							$res["deuz"] = true;
+						} elseif(!$res["troiz"] && $row["post"] == "troiz") {
+							if($row["id_auteur"] == $this->currentUser) {
+								$nodonuts = true;
+								break;
+							}
+							$res["troiz"] = true;
+						}
+					}
+
+					if(!$nodonuts && !$res[$message]) {
+						ScoreFactory::addScoreToUser($this->currentUser, $scores[$message], "preums");
+					}
+				}
+
+				// Dernz
+				if($message == "dernz") {
+					// Lookup for the last dernz
+					$sth = $this->db->prepare("SELECT id_auteur FROM minichat WHERE DATE(`time`) = DATE(NOW()) AND post = 'dernz' ORDER BY id DESC LIMIT 1");
+					$sth->bindValue(":user", $this->currentUser->getID());
+					$sth->execute();
+
+					if($row = $sth->fetch()) {
+						if($row["id_auteur"] != $this->currentUser->getID())
+							ScoreFactory::stealScoreFromUser($this->currentUser, $this->userFactory->prepareUserFromId($row["id_auteur"]), 3000, "preums");
+					} else {
+						ScoreFactory::addScoreToUser($this->currentUser, 3000, "preums");
+					}
+				}
+
+				/*****
+				 * Message insertion
+				 *****/
+
 				$req_sql = "INSERT INTO minichat 
 					(time, id_auteur, post) VALUES
 					(NOW(), :userId, :message)";
