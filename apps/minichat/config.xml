@@ -62,7 +62,7 @@
 		<option name="maxlines" class="NumberArgument" />
 		<option name="userichtext" class="NumberArgument" />
 		<option name="inversepostorder" class="NumberArgument" />
-		<option name="emoticon_theme" class="NumberArgument" />
+		<!-- <option name="emoticon_theme" class="NumberArgument" /> -->
 		<option name="showscore" class="NumberArgument" />
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
