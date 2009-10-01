@@ -57,7 +57,8 @@ class MiniChatMessageList
 				minichat
 			$where
 			ORDER BY
-				time DESC
+				time DESC,
+				id DESC
 			LIMIT :max OFFSET :offset";
 
 		$post = array ();
@@ -90,7 +91,7 @@ class MiniChatMessageList
 	}
     
     function getMessagesFromDate ($timestamp) {
-        $sql = "SELECT id, UNIX_TIMESTAMP(time) as timestamp, id_auteur, post FROM minichat WHERE DATE(time) = DATE(FROM_UNIXTIME(:timeStamp)) ORDER BY time DESC;";
+        $sql = "SELECT id, UNIX_TIMESTAMP(time) as timestamp, id_auteur, post FROM minichat WHERE DATE(time) = DATE(FROM_UNIXTIME(:timeStamp)) ORDER BY time DESC, id DESC;";
         try {
             $stmt = $this->db->prepare($sql);
             $stmt->bindValue(":timeStamp", $timestamp);
