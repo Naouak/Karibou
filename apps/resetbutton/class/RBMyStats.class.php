@@ -45,7 +45,7 @@ class RBMyStats extends Model
 			SELECT
 				r2.user AS cutter,
 				IF(r1.user=:user, TIME_TO_SEC(TIMEDIFF(r1.date, r2.date)), TIME_TO_SEC(TIMEDIFF(r2.date, r1.date))) AS scorediff,
-				r1.date AS date
+				IF(r2.user=:user, r1.date, r2.date) AS date
 			FROM
 				resetbutton r1
 			LEFT JOIN
