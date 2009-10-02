@@ -16,8 +16,10 @@
  * @package applications
  */
 
+// name of the class and extends permit to have an heritage of an class 
 class AppliVide extends Model
 {
+// you would have the function build() in all apps you create
 	public function build()
 	{
 	}

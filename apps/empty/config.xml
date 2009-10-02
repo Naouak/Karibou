@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <app>
+<!-- management of the permission of the apps, default give the permission when we are not logged in and logged where we are logged in -->
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+
+<!--load is used to associate a class name with a the class file name -->
 	<load class="AppliVide" file="applivide.class.php" />
+
+<!--view is used to associate a the name of the view, the class and the template file -->
 	<view name="default" class="AppliVide" template="vide.tpl" />
-	<page view="default" />
+
+<!--the following lines defines the header and the footer; for a normal apps the view="default" -->
+    <header app="header" view="default" />
+    <footer app="footer" view="default" />
+
+<!--association of the page name and the view-->
+	<page name="pagename" view="default" >
+    <!--parameters of the page -->
+        <header app="header" view="empty" />
+        <footer app="footer" view="empty" />
+        <option name="" class=""/>
+    </page>
+
+<!--definition  -->
+	<config>
+		<param name="">
+			<value name="name of the value">value</value>
+		</param>
+	</config>
+
+<!--definition of a form who permit to create event in reaction of form -->
+	<form action="name of the action" class="Class who react to the form" />
+
 </app>

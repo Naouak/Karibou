@@ -1,0 +1,14 @@
+; Name of the apps
+name_fr = "nom de l'appli"
+name_en = "name of the apps"
+; Description of the apps
+desc_fr = "description de l'appli"
+desc_en = "description of the apps"
+; for  the class or view name it would be the one you wrote in the config.xml
+view = "name of the view"
+; if you need a submit view , you would add the following line
+submitmodel = "Name of the submit class"
+; if you need a config view , you would add the following line
+configmodel = "Name of the config class"
+; if you need a JS view , you would add the following line
+JSview = "Name of the JS view"
