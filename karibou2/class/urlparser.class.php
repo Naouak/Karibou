@@ -43,7 +43,7 @@ class URLParser
 			$this->appname = $appname;
 
 			//Requête vers la page par défaut
-			if ( empty($this->url) || ereg("^/$", $this->url) || ereg("^/\?", $this->url) )
+			if ( empty($this->url) || preg_match("|^/$|", $this->url) || preg_match("|^/\?|", $this->url) )
 			{
 				$this->pagename = "";
 				$this->args = array();
