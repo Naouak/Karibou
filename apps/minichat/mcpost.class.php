@@ -45,6 +45,8 @@ class MCPost extends FormModel
 				 * Games section
 				 *****/
 
+				$this->db->query("LOCK TABLE minichat WRITE");
+
 				// Alone on Karibou
 				if(strcasecmp("alone on karibou", $message) == 0) {
 					$last_hour = $this->db->prepare("SELECT COUNT(*) FROM minichat WHERE id_auteur = :user AND post = 'alone on karibou' AND `time` > SUBTIME(NOW(), '01:00:00')");
@@ -105,6 +107,8 @@ class MCPost extends FormModel
 						ScoreFactory::addScoreToUser($this->currentUser, 3000, "preums");
 					}
 				}
+
+				$sql->db->query("UNLOCK TABLES");
 
 				/*****
 				 * Message insertion
