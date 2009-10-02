@@ -15,7 +15,7 @@ class klock extends Model
 		$modes = array("analog", "textual", "binary", "digital");
 		
 		// Getting current mode
-		$current_mode = (in_array($this->args["mode"], $modes)) ? $this->args["mode"] : "binary";
+		$current_mode = (in_array($this->args["mode"], $modes)) ? $this->args["mode"] : "analog";
 		// Getting current imprecision
 		$current_imprecision = ($this->args["imprecision"] > 5) ? $this->args["imprecision"] : 5;
 
