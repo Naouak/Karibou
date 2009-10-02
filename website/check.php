@@ -163,6 +163,9 @@
 	}
 
 function is_readable_ext($file) {
+	if (is_readable($file))
+		return true;
+
 	$dirs = explode(':', ini_get('include_path'));
 
 	foreach($dirs as $dir) {
