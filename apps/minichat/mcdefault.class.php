@@ -92,6 +92,7 @@ class MCDefault extends Model
 
 		$this->assign('permission', $this->permission);
 		$this->assign('time', time());
+		$this->assign('maxHeight', intval($max) * 20);
 	}
 }
 

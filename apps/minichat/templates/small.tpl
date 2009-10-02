@@ -1,6 +1,6 @@
 <div class="minichat">
 {if !$inversepostorder}
-	<div id="minichat_live">
+	<div id="minichat_live"  style="display: block; height: {$maxHeight}px; max-height: {$maxHeight}px; overflow: hidden;">
 		{include file="content.tpl"}
 	</div>
 {/if}
@@ -11,7 +11,7 @@
     </form>
     {/if}
 {if $inversepostorder}
-	<div id="minichat_live">
+	<div id="minichat_live"  style="display: block; height: {$maxHeight}px; max-height: {$maxHeight}px; overflow: hidden;">
 		{include file="content.tpl"}
 	</div>
 {/if}
