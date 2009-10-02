@@ -70,32 +70,23 @@ class MCPost extends FormModel
 						"troiz" => 1000
 					);
 
-					$nodonuts = false;
+					$winners = array();
 
 					$sth = $this->db->query("SELECT id_auteur, post FROM minichat WHERE DATE(`time`) = DATE(NOW()) AND post IN ('preums', 'deuz', 'troiz') ORDER BY id ASC");
 					while($row = $sth->fetch()) {
 						if(!$res["preums"] && $row["post"] == "preums") {
-							if($row["id_auteur"] == $this->currentUser) {
-								$nodonuts = true;
-								break;
-							}
 							$res["preums"] = true;
-						} elseif(!$res["deuz"] && $row["post"] == "deuz") {
-							if($row["id_auteur"] == $this->currentUser) {
-								$nodonuts = true;
-								break;
-							}
+							$winners[] = $row["id_auteur"];
+						} elseif(!$res["deuz"] && $row["post"] == "deuz" && !in_array($row["id_auteur"], $winners)) {
 							$res["deuz"] = true;
-						} elseif(!$res["troiz"] && $row["post"] == "troiz") {
-							if($row["id_auteur"] == $this->currentUser) {
-								$nodonuts = true;
-								break;
-							}
+							$winners[] = $row["id_auteur"];
+						} elseif(!$res["troiz"] && $row["post"] == "troiz" && !in_array($row["id_auteur"], $winners)) {
 							$res["troiz"] = true;
+							$winners[] = $row["id_auteur"];
 						}
 					}
 
-					if(!$nodonuts && !$res[$message]) {
+					if(!in_array($this->currentUser->getID(), $winners) && !$res[$message]) {
 						ScoreFactory::addScoreToUser($this->currentUser, $scores[$message], "preums");
 					}
 				}
