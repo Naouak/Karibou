@@ -11,12 +11,28 @@ class AppMainView extends Model
 				$miniappId = $result[2];
 				$miniapp = MiniAppFactory::buildApplication($miniappName);
 				$app = $this->appList->getApp($miniappName);
+
+				// Empty array for prefs
 				$prefs = array();
-				if ($this->currentUser->isLogged()) {
-					$prefs = $this->currentUser->getPref($this->args["miniapp"]);
-					if ($prefs === FALSE)
-						$prefs = array();
+
+				// Get the default preferences
+				$conf_mod_name = $miniapp->getConfigModel();
+				if(!empty($conf_mod_name)) {
+					$conf_mod = new $conf_mod_name($this->db, $this->currentUser, $miniappName, $app);
+					$fields = $conf_mod->formFields();
+
+					if(!empty($fields)) foreach($fields as $key => $field) {
+						if(isset($field["value"])) {
+							$prefs[$key] = $field["value"];
+						}
+					}
 				}
+
+				// If the user is logged in, get its preferences
+				if ($this->currentUser->isLogged()) {
+					$prefs = array_merge($app, $this->currentUser->getPref($this->args["miniapp"]));
+				}
+
 				$app->addView($miniapp->getMainView(), $miniapp->getAppName(), $prefs);
 				if ($miniapp->getSubmitModel() != "") {
 					$this->assign("canSubmit", ($app->getPermission() >= _SELF_WRITE_));
