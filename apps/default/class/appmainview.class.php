@@ -30,7 +30,7 @@ class AppMainView extends Model
 
 				// If the user is logged in, get its preferences
 				if ($this->currentUser->isLogged()) {
-					$prefs = array_merge($app, $this->currentUser->getPref($this->args["miniapp"]));
+					$prefs = array_merge($prefs, $this->currentUser->getPref($this->args["miniapp"]));
 				}
 
 				$app->addView($miniapp->getMainView(), $miniapp->getAppName(), $prefs);
