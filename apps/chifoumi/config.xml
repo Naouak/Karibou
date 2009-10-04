@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<app>
+	<permissions default="_SELF_WRITE_" logged="_SELF_WRITE_" />
+
+	<load class="Chifoumi" file="chifoumi.class.php" />
+	<load class="ChifoumiConfig" file="config.class.php" />
+	<load class="ChifoumiJs" file="js.class.php" />
+	<load class="ChifoumiPost" file="post.class.php" />
+	<load class="ChifoumiChallenge" file="challenge.class.php" />
+	
+	<load class="[arguments]/NumberArgument" />
+
+	<view name="mini" class="Chifoumi" template="chifoumi.tpl" />
+	<view name="js" class="ChifoumiJs" template="js.tpl" />
+	<view name="challenge" class="ChifoumiChallenge" template="challenge.tpl" />
+	
+	<page name="challenge" view="challenge">
+		<option name="weapon" class="NumberArgument" />
+		<option name="id" class="NumberArgument" />
+	</page>
+	
+	<form action="post" class="ChifoumiPost">
+		<redirect page="mini" />
+	</form>
+</app>

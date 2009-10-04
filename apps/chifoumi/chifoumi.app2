@@ -1,0 +1,7 @@
+name_fr = "chifoumi"
+name_en = "vtff"
+desc_fr = "Ciseau... T'as perdu !"
+desc_en = "Blork blurp barg bruk"
+view = "mini"
+configmodel = "ChifoumiConfig"
+JSview = "js"

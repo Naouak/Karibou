@@ -1,0 +1,60 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: team@karibou.org\n"
+"POT-Creation-Date: 2007-02-20 16:54+0200\n"
+"PO-Revision-Date: 2008-11-18 01:57+0200\n"
+"Last-Translator: Karibou Team <team@karibou.org>\n"
+"Language-Team: Karibou Team <team@karibou.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n>1\n"
+
+
+msgid "Set a challenge"
+msgstr "Lancer un défi"
+
+msgid "Choose Your Weapon"
+msgstr "Choisis ton arme"
+
+msgid "Choose Your Bet"
+msgstr "Choisis ton pari"
+
+msgid "Message"
+msgstr "Message"
+
+msgid "Challenges"
+msgstr "Défis"
+
+msgid "Bet must be between 0 and 100000"
+msgstr "Le pari doit être entre 0 et 100000"
+
+msgid "Sending bet"
+msgstr "Envoi du pari en cours. Nos Bookmakers font leurs possible pour répondre le plus vite possible à votre demande."
+
+msgid "Bet sent"
+msgstr "Pari reçu. Les Bookmakers de Karibou vous remercient de votre fiélité."
+
+msgid "You have been challenged for"
+msgstr "Vous avez été défié ! Le pari est de"
+
+msgid "points"
+msgstr "points"
+
+msgid "Your answer"
+msgstr "Quelle sera votre réponse ?"
+
+msgid "Rock"
+msgstr "Pierre"
+
+msgid "Paper"
+msgstr "Papier"
+
+msgid "Cissors"
+msgstr "Ciseaux"
+
+msgid "refuse challenge"
+msgstr "Je suis peureux"
+
+
