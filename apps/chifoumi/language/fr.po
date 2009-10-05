@@ -34,7 +34,7 @@ msgid "Sending bet"
 msgstr "Envoi du pari en cours. Nos Bookmakers font leurs possible pour répondre le plus vite possible à votre demande."
 
 msgid "Bet sent"
-msgstr "Pari reçu. Les Bookmakers de Karibou vous remercient de votre fiélité."
+msgstr "Pari reçu. Les Bookmakers de Karibou vous remercient de votre fidélité."
 
 msgid "You have been challenged for"
 msgstr "Vous avez été défié ! Le pari est de"

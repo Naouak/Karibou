@@ -38,6 +38,9 @@ ChifoumiCont.BaseObj = function(){
 		that.messageContainer = $(id);
 		that.ul = document.createElement("ul");
 		that.messageContainer.appendChild(that.ul);
+		/*if(that.ul.innerHTML == ""){
+			that.ul.innerHTML = "##No messages##";
+		}*/
 	}
 	
 	//Ajout d'un message
@@ -46,6 +49,7 @@ ChifoumiCont.BaseObj = function(){
 		
 		subthat.node = document.createElement("li");
 		subthat.node.innerHTML = msg;
+				
 		that.ul.appendChild(subthat.node);
 		
 		subthat.Destroy = function(){
@@ -134,6 +138,7 @@ ChifoumiCont.ChallengeLine = function(container,id,bet){
 
 	container.appendChild(li);
 	
+	//Fonction de Destruction de la ligne
 	that.Destroy = function(){
 		container.removeChild(li);
 	}
@@ -145,6 +150,9 @@ ChifoumiCont.ChallengeLine = function(container,id,bet){
 ChifoumiCont.Challenge = function(){
 	var that = ChifoumiCont.BaseObj();
 	that.linelist = Array();
+	
+	that.SetMessageContainer("ChifoumiMessage");
+	
 	that.updateChallengeList = function(){
 		new Ajax.Request('{/literal}{kurl page="challenge"}{literal}', 
 			{
@@ -154,21 +162,16 @@ ChifoumiCont.Challenge = function(){
 					var response = JSON.parse(transport.responseText);
 					var challenges = $("chifoumichallenges").childNodes;
 					for(var j=0; j < challenges.length; j++){
-						var present = false;
-						for(var i =0; i < response.length;i++){
-							if(challenges[j].id == "chifoumi"+response[i].id){
-								present = true;
-								break;
-							}
-						}
-						if(!present){
 							$("chifoumichallenges").removeChild(challenges[j]);
-						}
 					}
 					for(var i =0; i < response.length;i++){
 						if($("chifoumi"+response[i].id) == undefined){
 							ChifoumiCont.ChallengeLine($("chifoumichallenges"),response[i].id,response[i].bet);
 						}
+					}
+					
+					if(response.length == 0){
+						$("chifoumichallenges").innerHTML = "##No challenges yet##";
 					}
 				}
 			}
@@ -180,7 +183,7 @@ ChifoumiCont.Challenge = function(){
 	return that;
 }
 
-//Quand on réponds à un challenge			
+//Quand on répond à un challenge			
 ChifoumiCont.ChallengeResponse = function(id,weapon){
 	var that = ChifoumiCont.BaseObj();
 	that.args.id = id;
@@ -191,12 +194,23 @@ ChifoumiCont.ChallengeResponse = function(id,weapon){
 	return that;
 };
 
+ChifoumiCont.toChallenge = function(){
+	$("chifoumiChallengeform").hide();
+	$("chifoumiChallengeList").show();
+};
+
+ChifoumiCont.toSetChallenge = function(){
+	$("chifoumiChallengeform").show();
+	$("chifoumiChallengeList").hide();
+};
+
 //Karibou 2.5 Javascript
 var chifoumiClass = Class.create(KApp, {
 	initialize: function ($super, appName, id, container, karibou) {
 		$super(appName, id, container, karibou);
 		
 		var updater = ChifoumiCont.Challenge();
+		ChifoumiCont.toChallenge();
 	},
 	//Quand on lance un pari
 	on_chifoumiform_submit: function () {
