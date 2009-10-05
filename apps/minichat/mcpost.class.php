@@ -45,7 +45,10 @@ class MCPost extends FormModel
 				 * Games section
 				 *****/
 
-				$this->db->query("LOCK TABLE minichat WRITE");
+				try {
+					$this->db->query("LOCK TABLE minichat WRITE");
+				} catch(PDOException $e) {
+				}
 
 				// Alone on Karibou
 				if(strcasecmp("alone on karibou", $message) == 0) {
@@ -108,7 +111,10 @@ class MCPost extends FormModel
 					}
 				}
 
-				$sql->db->query("UNLOCK TABLES");
+				try {
+					$this->db->query("UNLOCK TABLES");
+				} catch(PDOException $e) {
+				}
 
 				/*****
 				 * Message insertion
