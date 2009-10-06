@@ -45,11 +45,6 @@ class MCPost extends FormModel
 				 * Games section
 				 *****/
 
-				try {
-					$this->db->query("LOCK TABLE minichat WRITE");
-				} catch(PDOException $e) {
-				}
-
 				// Alone on Karibou
 				if(strcasecmp("alone on karibou", $message) == 0) {
 					$last_hour = $this->db->prepare("SELECT COUNT(*) FROM minichat WHERE id_auteur = :user AND post = 'alone on karibou' AND `time` > SUBTIME(NOW(), '01:00:00')");
@@ -63,6 +58,11 @@ class MCPost extends FormModel
 
 				// Preums
 				if($message == "preums" or $message == "deuz" or $message == "troiz") {
+					try {
+						$this->db->query("LOCK TABLE minichat, scores WRITE");
+					} catch(PDOException $e) {
+					}
+
 					$res = array(
 						"preums" => false,
 						"deuz" => false,
@@ -82,38 +82,62 @@ class MCPost extends FormModel
 						if(!$res["preums"] && $row["post"] == "preums") {
 							$res["preums"] = true;
 							$winners[] = $row["id_auteur"];
-						} elseif(!$res["deuz"] && $row["post"] == "deuz" && !in_array($row["id_auteur"], $winners)) {
+						} elseif($res["preums"] && !$res["deuz"] && $row["post"] == "deuz" && !in_array($row["id_auteur"], $winners)) {
 							$res["deuz"] = true;
 							$winners[] = $row["id_auteur"];
-						} elseif(!$res["troiz"] && $row["post"] == "troiz" && !in_array($row["id_auteur"], $winners)) {
+						} elseif($res["deuz"] && !$res["troiz"] && $row["post"] == "troiz" && !in_array($row["id_auteur"], $winners)) {
 							$res["troiz"] = true;
 							$winners[] = $row["id_auteur"];
 						}
 					}
 
-					if(!in_array($this->currentUser->getID(), $winners) && !$res[$message]) {
+					if(
+						!in_array($this->currentUser->getID(), $winners)
+						&& !$res[$message]
+						&& (
+							$message == "preums"
+							|| ($message == "deuz" && $res["preums"])
+							|| ($message == "troiz" && $res["deuz"])
+						)
+					) {
 						ScoreFactory::addScoreToUser($this->currentUser, $scores[$message], "preums");
+					}
+
+					try {
+						$this->db->query("UNLOCK TABLES");
+					} catch(PDOException $e) {
 					}
 				}
 
 				// Dernz
 				if($message == "dernz") {
+					try {
+						$this->db->query("LOCK TABLE minichat, scores WRITE");
+					} catch(PDOException $e) {
+					}
+
 					// Lookup for the last dernz
 					$sth = $this->db->prepare("SELECT id_auteur FROM minichat WHERE DATE(`time`) = DATE(NOW()) AND post = 'dernz' ORDER BY id DESC LIMIT 1");
 					$sth->bindValue(":user", $this->currentUser->getID());
 					$sth->execute();
 
-					if($row = $sth->fetch()) {
-						if($row["id_auteur"] != $this->currentUser->getID())
-							ScoreFactory::stealScoreFromUser($this->currentUser, $this->userFactory->prepareUserFromId($row["id_auteur"]), 3000, "preums");
-					} else {
-						ScoreFactory::addScoreToUser($this->currentUser, 3000, "preums");
-					}
-				}
+					$sth2 = $this->db->prepare("SELECT COUNT(*) FROM minichat WHERE post = 'dernz' AND DATE(`time`) = DATE(NOW()) AND id_auteur = :user");
+					$sth2->bindValue(":user", $this->currentUser->getID());
+					$sth2->execute();
 
-				try {
-					$this->db->query("UNLOCK TABLES");
-				} catch(PDOException $e) {
+					if($sth2->fetchColumn(0) == 0) {
+						if($row = $sth->fetch()) {
+							if($row["id_auteur"] != $this->currentUser->getID())
+								ScoreFactory::stealScoreFromUser($this->currentUser, $this->userFactory->prepareUserFromId($row["id_auteur"]), 3000, "preums");
+						} else {
+							ScoreFactory::addScoreToUser($this->currentUser, 3000, "preums");
+						}
+					}
+
+					try {
+						$this->db->query("UNLOCK TABLES");
+					} catch(PDOException $e) {
+					}
 				}
 
 				/*****
