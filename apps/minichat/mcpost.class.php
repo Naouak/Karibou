@@ -41,6 +41,11 @@ class MCPost extends FormModel
 			}
 			if ((isset($message)) && (strlen(trim($message)) > 0) && !$flooding)
 			{
+				try {
+					$this->db->query("LOCK TABLE minichat, scores WRITE");
+				} catch(PDOException $e) {
+				}
+
 				/*****
 				 * Games section
 				 *****/
@@ -58,11 +63,6 @@ class MCPost extends FormModel
 
 				// Preums
 				if($message == "preums" or $message == "deuz" or $message == "troiz") {
-					try {
-						$this->db->query("LOCK TABLE minichat, scores WRITE");
-					} catch(PDOException $e) {
-					}
-
 					$res = array(
 						"preums" => false,
 						"deuz" => false,
@@ -102,20 +102,10 @@ class MCPost extends FormModel
 					) {
 						ScoreFactory::addScoreToUser($this->currentUser, $scores[$message], "preums");
 					}
-
-					try {
-						$this->db->query("UNLOCK TABLES");
-					} catch(PDOException $e) {
-					}
 				}
 
 				// Dernz
 				if($message == "dernz") {
-					try {
-						$this->db->query("LOCK TABLE minichat, scores WRITE");
-					} catch(PDOException $e) {
-					}
-
 					// Lookup for the last dernz
 					$sth = $this->db->prepare("SELECT id_auteur FROM minichat WHERE DATE(`time`) = DATE(NOW()) AND post = 'dernz' ORDER BY id DESC LIMIT 1");
 					$sth->bindValue(":user", $this->currentUser->getID());
@@ -132,11 +122,6 @@ class MCPost extends FormModel
 						} else {
 							ScoreFactory::addScoreToUser($this->currentUser, 3000, "preums");
 						}
-					}
-
-					try {
-						$this->db->query("UNLOCK TABLES");
-					} catch(PDOException $e) {
 					}
 				}
 
@@ -158,6 +143,11 @@ class MCPost extends FormModel
 				{
 					Debug::kill($e->getMessage());
 				}
+
+					try {
+						$this->db->query("UNLOCK TABLES");
+					} catch(PDOException $e) {
+					}
 			}
 		}
 	}
