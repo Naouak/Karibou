@@ -7,7 +7,7 @@ class ScoreManager {
 		$this->uf = $uf;
 	}
 
-	public function addScoreToUser(User $user, $score, $app = "none") {
+	public function addScoreToUser(User $user, $score, $app = "none", $silent = false) {
 		$query =
 			"INSERT INTO scores (user_id, score, app) ".
 			"VALUES (:user, :score, :app) ";
@@ -17,16 +17,18 @@ class ScoreManager {
 		$sth->bindValue(":app", $app);
 		$sth->execute();
 
-		$query =
-			"INSERT INTO minichat (id_auteur, post, type) ".
-			"VALUES (:user, :post, 'score')";
-		$sth = $this->db->prepare($query);
-		$sth->bindValue(":user", $user->getID());
-		$sth->bindValue(":post", sprintf("/me a %s %d point%s ! (application: %s)", $score >= 0 ? "gagné" : "perdu", abs($score), abs($score) > 1 ? "s" : "", $app));
-		$sth->execute();
+		if(!$silent) {
+			$query =
+				"INSERT INTO minichat (id_auteur, post, type) ".
+				"VALUES (:user, :post, 'score')";
+			$sth = $this->db->prepare($query);
+			$sth->bindValue(":user", $user->getID());
+			$sth->bindValue(":post", sprintf("/me a %s %d point%s ! (application: %s)", $score >= 0 ? "gagné" : "perdu", abs($score), abs($score) > 1 ? "s" : "", $app));
+			$sth->execute();
+		}
 	}
 
-	public function stealScoreFromUser(User $thief, User $victim, $score, $app = "none") {
+	public function stealScoreFromUser(User $thief, User $victim, $score, $app = "none", $silent = false) {
 		$query = "
 			INSERT INTO scores (user_id, score, app)
 			VALUES (:user, :score, :app)
@@ -43,16 +45,18 @@ class ScoreManager {
 		$sth->bindValue(":app", $app);
 		$sth->execute();
 
-		// Nobody's seen that
-		$this->uf->setUserList();
+		if(!$silent) {
+			// Nobody's seen that
+			$this->uf->setUserList();
 
-		$query =
-			"INSERT INTO minichat (id_auteur, post, type) ".
-			"VALUES (:user, :post, 'score')";
-		$sth = $this->db->prepare($query);
-		$sth->bindValue(":user", $thief->getID());
-		$sth->bindValue(":post", sprintf("/me a volé %d points à %s", $score, $victim->getDisplayName()));
-		$sth->execute();
+			$query =
+				"INSERT INTO minichat (id_auteur, post, type) ".
+				"VALUES (:user, :post, 'score')";
+			$sth = $this->db->prepare($query);
+			$sth->bindValue(":user", $thief->getID());
+			$sth->bindValue(":post", sprintf("/me a volé %d points à %s (application: %s)", $score, $victim->getDisplayName(), $app));
+			$sth->execute();
+		}
 	}
 
 	public function getScoreOf(User $user, $app = null) {
