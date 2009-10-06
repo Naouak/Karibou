@@ -9,7 +9,7 @@
 <!--view is used to associate a the name of the view, the class and the template file -->
 	<view name="default" class="AppliVide" template="vide.tpl" />
 
-<!--the following lines defines the header and the footer; for a normal apps the view="default" -->
+<!--the following lines defines the default header and footer when we don't defines special header and footer -->
     <header app="header" view="default" />
     <footer app="footer" view="default" />
 
@@ -18,6 +18,7 @@
     <!--parameters of the page -->
         <header app="header" view="empty" />
         <footer app="footer" view="empty" />
+        <!-- <option /> permits to give the arguments given by the name, the class should be one of the class which are in apps/arguments-->
         <option name="" class=""/>
     </page>
 
@@ -30,5 +31,5 @@
 
 <!--definition of a form who permit to create event in reaction of form -->
 	<form action="name of the action" class="Class who react to the form" />
-
+        
 </app>
