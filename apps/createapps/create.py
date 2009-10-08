@@ -41,16 +41,16 @@ def cleaningoffile(file,commentaire):
 
 #we check if we are in the right directory
 if (os.path.basename(os.getcwd())!="createapps"):
-    print "you are not in the good path"
+    print "Wrong path"
 else:
     # check if an argument were given 
     if len(sys.argv) <2:
-        print "you should have tiped the name of the application"
+        print "Apps name needed as argument 1"
     else:
         arg = sys.argv[1]
         #check if the name is already use for the other apps
         if (os.path.exists("../"+arg)):
-            print "this name is already use for an application, please choose an other one"
+            print "Application already exists."
         else:
             # creation of all needed files and directories
             creationofdir("",arg)
@@ -83,17 +83,17 @@ else:
             classphp_response["classname"] = arg
 
             # all files needed are created, now we are going to create optional files
-            promptconfig = raw_input("do you need configuration sytem ? ")
+            promptconfig = raw_input("Do you need configuration sytem (Y/n)? ")
             if (promptconfig in ["", "yes","y", "o","oui"]):
                 creationoffile("",arg+"config","class.php")
                 app2_response["configmodel"]="config"
 
-            promptsubmit = raw_input("do you need a submit system ? ")
+            promptsubmit = raw_input("Do you need a submit system (Y/n)? ")
             if (promptsubmit in ["","yes","y","o","oui"]):
                 creationoffile("",arg+"submit","class.php")
                 app2_response["submitmodel"]="submit"
 
-            promptjs = raw_input("do you want to use Javascript ? ")
+            promptjs = raw_input("Do you want to use Javascript (Y/n)? ")
             if (promptjs in ["","yes","y","o","oui"]):
                 creationoffile("/templates","js","tpl")
                 app2_response["jsview"]="JS"
