@@ -13,7 +13,7 @@ def creationoffile(dir,name,extension):
 
 def parsingoffile(filesource,filedestination,variable):
     fs = open(filesource, "r")
-    fd = open("../"+filedestination,"w")
+    fd = open("../"+arg+"/"+filedestination,"w")
 
     data = fs.read()
 
@@ -24,14 +24,14 @@ def parsingoffile(filesource,filedestination,variable):
     fs.close()
     fd.close()
 
-def cleaningoffile(file):
-    f= open("../"+file,"r")
+def cleaningoffile(file,commentaire):
+    f= open("../"+arg+"/"+file,"r")
     data=f.read()
     lines=data.splitlines()
     
     for i in range(len(lines)):
         if "{" in lines[i]:
-            lines[i]=";"+lines[i]
+            lines[i]=commentaire+lines[i]
     
     d="\n".join(lines)
     f.close()
@@ -45,7 +45,7 @@ if (os.path.basename(os.getcwd())!="createapps"):
 else:
     # check if an argument were given 
     if len(sys.argv) <2:
-        print "you should have tiped an argument"
+        print "you should have tiped the name of the application"
     else:
         arg = sys.argv[1]
         #check if the name is already use for the other apps
@@ -75,13 +75,20 @@ else:
 
             app2_response["view"]="mini"
 
+            classphp = {"name" : "What is your name", "mail" : "What is your e-mail"}
+            classphp_response = {}
+            for (name,question) in classphp.items()
+                classphp_response[name] = raw_input(question + ":")
+
+            classphp_response["classname"] = arg
+
             # all files needed are created, now we are going to create optional files
-            promptconfig = raw_input("do you need system of config ? ")
+            promptconfig = raw_input("do you need configuration sytem ? ")
             if (promptconfig in ["", "yes","y", "o","oui"]):
                 creationoffile("",arg+"config","class.php")
                 app2_response["configmodel"]="config"
 
-            promptsubmit = raw_input("do you need a configuration system ? ")
+            promptsubmit = raw_input("do you need a submit system ? ")
             if (promptsubmit in ["","yes","y","o","oui"]):
                 creationoffile("",arg+"submit","class.php")
                 app2_response["submitmodel"]="submit"
@@ -91,5 +98,7 @@ else:
                 creationoffile("/templates","js","tpl")
                 app2_response["jsview"]="JS"
 
-            parsingoffile("base.app2",arg+"/"+arg+".app2",app2_response)
-            cleaningoffile(arg+"/"+arg+".app2")
+            parsingoffile("base.app2",arg+".app2",app2_response)
+            cleaningoffile(arg+".app2",";")
+
+            parsingoffile("base.xml",arg+".class.php",classphp_response)
