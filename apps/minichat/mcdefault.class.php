@@ -54,7 +54,9 @@ class MCDefault extends Model
 			$emoticon_theme = $config["emoticon_theme"]["small"];
 		}
 
-		if(!isset($this->args["showscore"]) || empty($this->args["showscore"])) {
+		if (isset($this->args["showscore"]) && $this->args["showscore"] != "") {
+			$this->args["showscore"] = (bool)$this->args["showscore"];
+		} else {
 			$this->args["showscore"] = (bool) $config["showscore"]["small"];
 		}
 
