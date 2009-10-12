@@ -8,7 +8,7 @@
  * @package applications
  **/
 // this is the file which permits to have the configuration system
-class {ClassName}Config extends AppConfigModel
+class {ClassName}config extends AppConfigModel
 {
 
     public function formFields()

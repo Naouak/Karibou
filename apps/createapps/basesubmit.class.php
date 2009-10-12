@@ -13,7 +13,7 @@
  * @package applications
  **/
 //this is the class which permits to create the submit system 
-class {ClassName}Add extends AppContentModel
+class {ClassName}submit extends AppContentModel
 {
     // this fonction permits to use the information the user type 
 	public function submit($parameters)

@@ -4,23 +4,32 @@
 	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
 
 <!--load is used to associate a class name with a the class file name -->
-	<load class="AppliVide" file="applivide.class.php" />
+	<load class= "{classname}" file="{filename}.class.php" />
+	<load class="{classnameconfig}" file="{filenameconfig}.class.php" />
+	<load class="{classnamesubmit}" file="{filenamesubmit}.class.php" />
 
 <!--view is used to associate a the name of the view, the class and the template file -->
-	<view name="default" class="AppliVide" template="vide.tpl" />
+	<view name="mini" class="{classname}" template="mini.tpl" />
+	<view name="{js}" template="js.tpl" />
 
 <!--the following lines defines the default header and footer when we don't defines special header and footer -->
     <header app="header" view="default" />
     <footer app="footer" view="default" />
 
 <!--association of the page name and the view-->
+<!--
 	<page name="pagename" view="default" >
+-->
     <!--parameters of the page -->
+<!--
         <header app="header" view="empty" />
         <footer app="footer" view="empty" />
+-->
         <!-- <option /> permits to give the arguments given by the name, the class should be one of the class which are in apps/arguments-->
+<!--
         <option name="" class=""/>
     </page>
+-->
 
 <!--definition  -->
 <!--

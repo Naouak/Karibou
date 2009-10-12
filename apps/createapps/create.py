@@ -31,14 +31,18 @@ def cleaningoffile(file,commentaire):
     f= open("../"+arg+"/"+file,"r")
     data=f.read()
     lines=data.splitlines()
-    
+    commentaire2=""
+    if commentaire == "xml":
+        commentaire = "<!--"
+        commentaire2 = "-->"
+
     for i in range(len(lines)):
         if "{" in lines[i]:
-            lines[i]=commentaire+lines[i]
+            lines[i]=commentaire+lines[i]+commentaire2
     
     d="\n".join(lines)
     f.close()
-    f=open("../"+file,"w")
+    f=open("../"+arg+"/"+file,"w")
     f.write(d)
     f.close()
     return file+ " cleaned"
@@ -50,8 +54,12 @@ def prompt(what):
         print creationoffile("",arg+what,"class.php")
         app2_response[what+"model"]=what
         parsingoffile("base"+what+".class.php",arg+what+".class.php",classphp_response)
+        config_response["classname"+what]=what
+        config_response["filename"+what]=arg+what
     else:
         print "you won't have a "+what+" system"
+
+config_response={}
 
 #we check if we are in the right directory
 if (os.path.basename(os.getcwd())!="createapps"):
@@ -72,6 +80,8 @@ else:
             creationoffile("","config","xml")
             creationoffile("",arg,"app2")
             creationoffile("",arg,"class.php")
+            config_response["classname"]=arg
+            config_response["filename"]=arg
 
             creationofdir(arg,"languages")
 
@@ -83,6 +93,7 @@ else:
             creationofdir(arg,"templates")
 
             creationoffile("/templates","mini","tpl")
+            
 
             app2 = {"name_fr" : "french name of the app","name_en" : "english name of the app", "desc_fr" : "french description of the app", "desc_en" : "english description of the app" }
             app2_response = {}
@@ -112,6 +123,7 @@ else:
                 js_response={}
                 js_response["appname"]=arg
                 print parsingoffile("basejs.tpl","templates/js.tpl",js_response)
+                config_response["js"]="JS"
             else:
                 print "you won't have the JavaScript system"
 
@@ -119,3 +131,5 @@ else:
             cleaningoffile(arg+".app2",";")
 
             print parsingoffile("base.class.php",arg+".class.php",classphp_response)
+            print parsingoffile("baseconfig.xml","config.xml",config_response)
+            cleaningoffile("config.xml","xml")
