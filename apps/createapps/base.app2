@@ -1,14 +1,14 @@
 ; Name of the apps
-name_fr = {name_fr}
-name_en = {name_en}
+name_fr = "{name_fr}"
+name_en = "{name_en}"
 ; Description of the apps
-desc_fr = {desc_fr}
-desc_en = {desc_en}
+desc_fr = "{desc_fr}"
+desc_en = "{desc_en}"
 ; for  the class or view name it would be the one you wrote in the config.xml
-view = {view}
+view = "{view}"
 ; if you need a submit view , you would add the following line
-submitmodel = {submitmodel}
+submitmodel = "{submitmodel}"
 ; if you need a config view , you would add the following line
-configmodel = {configmodel}
+configmodel = "{configmodel}"
 ; if you need a JS view , you would add the following line
-JSview = {jsview}
+JSview = "{jsview}"
