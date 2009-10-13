@@ -17,8 +17,6 @@ class Annonce extends Model
 	public function build()
 	{	
 		$app = $this->appList->getApp($this->appname);
-		$config = $app->getConfig();
-		$this->assign("config", $config);
 
 		if ( isset($this->args['maxannonce']) )
 		{

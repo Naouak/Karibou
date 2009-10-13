@@ -1,8 +1,3 @@
-<!-- ERRORS -->
-{if $error}
-<p><strong>##ERROR##:</strong> ##WRONGCONTENT##</p>
-{/if}
-
 <!-- LIST ANNOUNCES -->
 <p>
 {foreach item=annonce from=$annonces}
