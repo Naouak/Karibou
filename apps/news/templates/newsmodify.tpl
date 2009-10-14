@@ -22,7 +22,7 @@
                     {if isset($Admin)}
 					<div class="field group">
 						<label for="group">##NEWS_GROUPS_DESTINATION## :</label>
-						<select name="group" id="group" ">
+						<select name="group" id="group" >
 						{* include file="optiongrouptree.tpl" *}
                         <option value=""> pas de groupe </option>
                     { foreach item=Admin from=$Admin }
