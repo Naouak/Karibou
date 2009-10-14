@@ -19,7 +19,7 @@
 					</div>
 					<input type="hidden" name="group" value="">
 
-                    {if isset($Admin)}
+                    {if isset($Admin.0.Id)}
 					<div class="field group">
 						<label for="group">##NEWS_GROUPS_DESTINATION## :</label>
 						<select name="group" id="group" >
@@ -30,6 +30,7 @@
                     {/foreach}
 						</select>
 					</div>
+                    
                     {/if}
                     {if !isset($theNewsToModify)}
                     <div id="checkbox" >
