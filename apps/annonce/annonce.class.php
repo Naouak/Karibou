@@ -17,6 +17,8 @@ class Annonce extends Model
 	public function build()
 	{	
 		$app = $this->appList->getApp($this->appname);
+        $config = $app->getConfig();
+        $this->assign("config", $config);
 
 		if ( isset($this->args['maxannonce']) )
 		{
@@ -58,5 +60,6 @@ class Annonce extends Model
 		$this->assign("annonces",$annonces);
 		$this->assign("islogged", $this->currentUser->isLogged());
 		$this->assign("currentuser", $this->currentUser->getID());
+        $this->assign("isadmin", $this->currentUser->isInGroup($this->db,"1"));
 	}
 }
