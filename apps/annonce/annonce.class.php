@@ -60,6 +60,6 @@ class Annonce extends Model
 		$this->assign("annonces",$annonces);
 		$this->assign("islogged", $this->currentUser->isLogged());
 		$this->assign("currentuser", $this->currentUser->getID());
-        $this->assign("isadmin", $this->currentUser->isInGroup($this->db,"1"));
+        $this->assign("isadmin", $this->currentUser->isGlobalAdmin($this->db));
 	}
 }
