@@ -114,6 +114,10 @@ define("KARIBOU_DEBUG_FILENAME", "/home/jon/projets/karibou/logs/karibou.log");
 $config['style'][0]['titre']        = "karibou";
 $config['style'][0]['home_css']    = KARIBOU_THEMES_URL."/karibou/default.css";
 
+// admin group
+
+$config['admingroup'] = "1";
+
 /* Emails */
 //START Email dans config
 $config['admin']['email_accountcreation']['subject'] = "Bienvenue sur l'Intranet ##INTRANET_URL##";
