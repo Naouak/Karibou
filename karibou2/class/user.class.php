@@ -393,6 +393,13 @@ class User
 		return FALSE;
 	}
 
+    function isGlobalAdmin(PDO $db) {
+        if ($this->isInGroup($db, $GLOBALS["config"]["admingroup"]))
+            return TRUE;
+        else
+            return FALSE;
+    }
+
 	function getGroupTreeWhereAdminArray()
 	{
 		if( $this->groups === FALSE )
