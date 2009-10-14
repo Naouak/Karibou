@@ -76,6 +76,7 @@ class NewsView extends Model
                 }
 
             }
+            $this->assign("isadmin",$this->currentUser->isInGroup($this->db,"1"));
 		}
 		else
 		{

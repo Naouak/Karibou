@@ -20,7 +20,7 @@
             {/if}
 				{*<a href="{kurl app="annuaire" username=$theArticle->getAuthorLogin()}">{$theArticle->getAuthor()}</a>*}
 			</div>
-		{if ($theArticle->getAuthorId() == $currentUserId) || $grouparray[$groupid]=="admin"}
+		{if ($theArticle->getAuthorId() == $currentUserId) || $grouparray[$groupid]=="admin" || $isadmin}
 			<div class="controls">
                 
 				<form action="{kurl app="news" page="modify" id="$idNews"}" method="get">
