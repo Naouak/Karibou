@@ -28,9 +28,12 @@ class AppMainView extends Model
 					}
 				}
 
+				$lang = $_GLOBALS["config"]["lang"];
+
 				// If the user is logged in, get its preferences
 				if ($this->currentUser->isLogged()) {
 					$prefs = array_merge($prefs, $this->currentUser->getPref($this->args["miniapp"]));
+					$lang = $this->currentUser->getPref("lang", $lang);
 				}
 
 				$app->addView($miniapp->getMainView(), $miniapp->getAppName(), $prefs);
@@ -45,7 +48,7 @@ class AppMainView extends Model
 					$this->assign("canConfig", false);
 				}
 				$this->assign("appName", $miniapp->getAppName());
-				$this->assign("appTitle", $miniapp->getName("fr"));
+				$this->assign("appTitle", $miniapp->getName($lang));
 			}
 		}
 	}
