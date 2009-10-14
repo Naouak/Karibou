@@ -19,6 +19,7 @@
 					</div>
 					<input type="hidden" name="group" value="">
 
+                    {if isset($Admin)}
 					<div class="field group">
 						<label for="group">##NEWS_GROUPS_DESTINATION## :</label>
 						<select name="group" id="group" ">
@@ -29,6 +30,7 @@
                     {/foreach}
 						</select>
 					</div>
+                    {/if}
                     {if !isset($theNewsToModify)}
                     <div id="checkbox" >
                         <label for="title">Voulez-vous ajouter en même temps un JourJ ? </label> <input type="checkbox" name="DDay" id="DDay" onchange="new Effect.toggle(document.getElementById('DDayNews')); return false;" >
