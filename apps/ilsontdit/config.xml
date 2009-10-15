@@ -22,6 +22,6 @@
     </page>
 
     <form action="modify" class="modify">
-        <referer />
+        <redirect app="default" page="" />
     </form>
 </app>
