@@ -35,10 +35,14 @@ class Ilsontdit extends Model {
 				$quote = array();
 				$quote["author"] = $quoteRow["who"] . " (" . $quoteRow["group"] . ")";
 				$quote["text"] = stripslashes($quoteRow["message"]);
+                $quote["id"] = $quoteRow["id"];
+                $quote["reporter"]=$quoteRow["reporter"];
 				$quotes[] = $quote;
 			}
 		}
 		$this->assign("quotes", $quotes);
+        $this->assign("isadmin", $this->getPermission() == _ADMIN_);
+        $this->assign("currentuser",$this->currentUser->getId());
 	}
 }
 
