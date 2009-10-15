@@ -9,6 +9,9 @@
 {else} <font color="red">{t}D{/t}</font>
 {/if}
 				</b></td>
+				{if $dd.user_id == $currentuser || $isadmin}
+                    <br /><a href="{kurl app="dday" page="ddmodify" id=$dd.id}"> modifier </a>
+				{/if}
 				</tr>
 	{/foreach}
 	</table>

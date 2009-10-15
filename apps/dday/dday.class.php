@@ -38,6 +38,8 @@ class Dday extends Model
         {
             $this->assign("DDempty","Err empty");
         }
+        $this->assign("isadmin",$this->getPermission() == _ADMIN_);
+        $this->assign("currentuser", $this->currentUser->getId());
     }
 }
 
