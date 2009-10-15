@@ -28,7 +28,7 @@ class AppMainView extends Model
 					}
 				}
 
-				$lang = $_GLOBALS["config"]["lang"];
+				$lang = $GLOBALS["config"]["lang"];
 
 				// If the user is logged in, get its preferences
 				if ($this->currentUser->isLogged()) {
