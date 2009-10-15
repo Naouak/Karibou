@@ -42,41 +42,43 @@ class PermissionsFactory
 		}
 		else
 		{
-            if ($user->isGlobalAdmin()) {
-                $perm->setDefaultPermission(_ADMIN_);
-            }
 			$annudb = $GLOBALS['config']['bdd']['frameworkdb'];
 
-			$qry_groups = $user->getGroupTreeQuery();
-			// On récupère les droits des groupes, tries allant du pere au fils
-			$qry = "
-				SELECT
-					pg.appli,
-					pg.permission
-				FROM 
-					permissions_group pg ,
-					".$annudb.".groups g
-				WHERE
-					g.id = pg.group_id AND
-					( pg.group_id IN (".$qry_groups.") )
-				ORDER BY 
-					g.left ASC ";
+			if ($user->isGlobalAdmin()) {
+				$perm->setDefaultPermission(_ADMIN_);
+			} else {
+				$qry_groups = $user->getGroupTreeQuery();
+				// On récupère les droits des groupes, tries allant du pere au fils
+				$qry = "
+					SELECT
+						pg.appli,
+						pg.permission
+					FROM 
+						permissions_group pg ,
+						".$annudb.".groups g
+					WHERE
+						g.id = pg.group_id AND
+						( pg.group_id IN (".$qry_groups.") )
+					ORDER BY 
+						g.left ASC ";
 
-			// On ecrit les droits dans l'objet permissions
-			// (comme on a trie par parent on ecrase les droits du pere par ceux du fils)
-			try
-			{
-				$stmt = $this->db->query($qry) ;
+				// On ecrit les droits dans l'objet permissions
+				// (comme on a trie par parent on ecrase les droits du pere par ceux du fils)
+				try
+				{
+					$stmt = $this->db->query($qry) ;
+				}
+				catch(PDOException $e)
+				{
+					Debug::kill($qry." : ".$e->getMessage());
+				}
+				while ($tab = $stmt->fetch(PDO::FETCH_ASSOC) )
+				{
+					$perm->set($tab['appli'], $tab['permission']);
+				}
+				unset($stmt);
 			}
-			catch(PDOException $e)
-			{
-				Debug::kill($qry." : ".$e->getMessage());
-			}
-			while ($tab = $stmt->fetch(PDO::FETCH_ASSOC) )
-			{
-				$perm->set($tab['appli'], $tab['permission']);
-			}
-			unset($stmt);
+
 			// pareil, on récupère les droits spécifiques à l'utilisateur
 			$qry = "
 				SELECT
