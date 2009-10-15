@@ -76,7 +76,7 @@ class NewsView extends Model
                 }
 
             }
-            $this->assign("isadmin",$this->currentUser->isGlobalAdmin($this->db));
+            $this->assign("isadmin",$this->getPermission() == _ADMIN_);
 		}
 		else
 		{
