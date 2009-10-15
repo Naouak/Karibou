@@ -42,6 +42,9 @@ class PermissionsFactory
 		}
 		else
 		{
+            if ($user->isGlobalAdmin()) {
+                $perm->setDefaultPermission(_ADMIN_);
+            }
 			$annudb = $GLOBALS['config']['bdd']['frameworkdb'];
 
 			$qry_groups = $user->getGroupTreeQuery();

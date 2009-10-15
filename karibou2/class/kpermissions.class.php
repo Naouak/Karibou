@@ -40,11 +40,14 @@ class KPermissions
 	 * @var Array
 	 */
 	protected $permArray;
+
+    protected $defaultPermission;
 	
 	/**
 	 */
 	function __construct()
 	{
+        $this->defaultPermission = _DEFAULT_;
 		$this->permArray = array();
 	}
 	
@@ -68,9 +71,13 @@ class KPermissions
 		}
 		else
 		{
-			return _DEFAULT_;
+			return $this->defaultPermission;
 		}	
 	}
+
+    public function setDefaultPermission ($permission) {
+        $this->defaultPermission = $permission;
+    }
 	
 	public function getFromText($string)
 	{
