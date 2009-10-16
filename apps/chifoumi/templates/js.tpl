@@ -10,7 +10,7 @@ ChifoumiCont.BaseObj = function(){
 		args: {}
 	};
 	
-	//Création automatique des arguments à passer en Ajax
+	//CrÃ©ation automatique des arguments Ã  passer en Ajax
 	that.parseArgs = function(){
 		var str = "";
 		if(that.args != undefined){
@@ -33,7 +33,7 @@ ChifoumiCont.BaseObj = function(){
 	};
 	
 	//Message Chifoumi
-	//Mise en place du conteneur à message
+	//Mise en place du conteneur Ã  message
 	that.SetMessageContainer = function(id){
 		that.messageContainer = $(id);
 		that.ul = document.createElement("ul");
@@ -74,7 +74,7 @@ ChifoumiCont.BaseObj = function(){
 	return that;
 }
 
-//Objet qui se charge de gérer le formulaire de lancement de défi de Chifoumi
+//Objet qui se charge de gÃ©rer le formulaire de lancement de dÃ©fi de Chifoumi
 ChifoumiCont.Form = function(){
 	var that = ChifoumiCont.BaseObj();
 	that.SetMessageContainer("ChifoumiMessage");
@@ -85,14 +85,14 @@ ChifoumiCont.Form = function(){
 		that.args.weapon = $("chifoumiweapon").selectedIndex;
 	};
 	
-	//Vérification du formulaire
+	//VÃ©rification du formulaire
 	that.check = function(){	
 		if(parseInt(that.args.bet) != parseInt(that.args.bet) || parseInt(that.args.bet) < 0 || parseInt(that.args.bet) > 100000){
 			that.error = "##Bet must be between 0 and 100000##";						
 		}
 	};
 
-	//Envoi des données si valables
+	//Envoi des donnÃ©es si valables
 	that.send = function(){
 		if(that.error != undefined){
 			that.Message("<span class='chifoumierror'>"+that.error+"</span>");
@@ -107,7 +107,7 @@ ChifoumiCont.Form = function(){
 	return that;
 };
 
-//Objet caractérisant une ligne de challenge
+//Objet caractÃ©risant une ligne de challenge
 ChifoumiCont.ChallengeLine = function(container,id,bet){
 	var that = ChifoumiCont.BaseObj();
 	
@@ -183,7 +183,7 @@ ChifoumiCont.Challenge = function(){
 	return that;
 }
 
-//Quand on répond à un challenge			
+//Quand on rÃ©pond Ã  un challenge			
 ChifoumiCont.ChallengeResponse = function(id,weapon){
 	var that = ChifoumiCont.BaseObj();
 	that.args.id = id;
@@ -214,7 +214,7 @@ var chifoumiClass = Class.create(KApp, {
 	},
 	//Quand on lance un pari
 	on_chifoumiform_submit: function () {
-			//Si vous cherchez à comprendre, ça sert juste à protêger la portée(paranoia quand tu nous tiens).
+			//Si vous cherchez Ã  comprendre, Ã§a sert juste Ã  protÃªger la portÃ©e(paranoia quand tu nous tiens).
 			return (function(){
 						var form = ChifoumiCont.Form();
 						form.loadForm();
