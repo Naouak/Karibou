@@ -28,12 +28,6 @@ class KApp
 	protected $titre			= 'appli_abstract';
 	
 	/**
-	 * Liste des permissions
-	 * @var Permissions
-	 */
-	protected $permissions;
-	
-	/**
 	 * @var int
 	 */
 	protected $permission;
