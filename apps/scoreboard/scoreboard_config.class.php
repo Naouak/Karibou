@@ -3,7 +3,12 @@
 class ScoreboardConfig extends AppConfigModel
 {	
 	public function formFields() {
-	return array(
+		$tempApps = ScoreFactory::getApplications();
+		$apps = array("" => _("Tous"));
+		foreach ($tempApps as $app)
+			$apps[$app] = $app;
+
+		return array(
 			"from" => array(
 				"type" => "enum",
 				"label" => _("À partir"),
@@ -14,6 +19,14 @@ class ScoreboardConfig extends AppConfigModel
 				"radio" => false,
 				"value" => "top",
 				"required" => true
+			),
+			"source" => array(
+				"type" => "enum",
+				"required" => true,
+				"label" => _("Limiter à"),
+				"values" => $apps,
+				"radio" => false,
+				"value" => ""
 			),
 			"number" => array(
 				"type" => "float",
