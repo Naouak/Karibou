@@ -133,9 +133,15 @@ class ScoreManager {
 		return $sth->fetchColumn(0);
 	}
 
-	public function getNumberOfPlayers() {
-		$query = "SELECT COUNT(*) FROM (SELECT * FROM scores_valid GROUP BY user_id) AS t";
-		return $this->db->query($query)->fetchColumn(0);
+	public function getNumberOfPlayers($app) {
+		if ($app == null) {
+			$sth = $this->db->prepare("SELECT COUNT(*) FROM (SELECT * FROM scores_valid GROUP BY user_id) AS t");
+		} else {
+			$sth = $this->db->prepare("SELECT COUNT(*) FROM (SELECT * FROM scores_valid WHERE app=:app GROUP BY user_id) AS t");
+			$sth->bindValue(":app", $app);
+		}
+		$sth->execute();
+		return $sth->fetchColumn(0);
 	}
 
 	public function getScoreBoard($num, $inv = false, $app = null) {
@@ -181,4 +187,14 @@ class ScoreManager {
 		
 		return $board;
 	}
+
+	public function getApplications () {
+		$result = array();
+		$qry = $this->db->query("SELECT DISTINCT(app) FROM scores ORDER BY app;");
+		while ($row = $qry->fetch()) {
+			$result[] = $row[0];
+		}
+		return $result;
+	}
 }
+
