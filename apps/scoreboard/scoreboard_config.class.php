@@ -4,7 +4,7 @@ class ScoreboardConfig extends AppConfigModel
 {	
 	public function formFields() {
 		$tempApps = ScoreFactory::getApplications();
-		$apps = array("" => _("Tous"));
+		$apps = array("all" => _("Tous"));
 		foreach ($tempApps as $app)
 			$apps[$app] = $app;
 
@@ -26,7 +26,7 @@ class ScoreboardConfig extends AppConfigModel
 				"label" => _("Limiter à"),
 				"values" => $apps,
 				"radio" => false,
-				"value" => ""
+				"value" => "all"
 			),
 			"number" => array(
 				"type" => "float",

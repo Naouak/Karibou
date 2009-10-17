@@ -13,7 +13,7 @@ class Scoreboard extends Model {
 		if(!isset($this->args["hide"])) $this->args["hide"] = false;
 
 		$app = $this->args["source"];
-		if ($app == "") $app = null;
+		if (($app == "") || ($app == "all")) $app = null;
 
 		$scores = ScoreFactory::getScoreBoard($this->args["number"], $this->args["from"] == "top", $app);
 		$this->assign("app", $app);
