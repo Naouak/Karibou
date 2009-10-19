@@ -8,6 +8,7 @@ class DefaultModel extends Model {
 		foreach($appNames as $appName) {
 			$appArray[$appName] = MiniAppFactory::buildApplication($appName);
 		}
+		ksort($appArray);
 		$this->assign("apps", $appArray);
 		$this->assign("karibou_base_url", $GLOBALS['config']['base_url']);
 		$this->assign("loggedUser", $this->currentUser->isLogged()); 
