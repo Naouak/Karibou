@@ -12,3 +12,5 @@ submitmodel = "{submitmodel}"
 configmodel = "{configmodel}"
 ; if you need a JS view , you would add the following line
 JSview = "{jsview}"
+; automatic refresh just put how many seconds do you to wait for a refresh
+autorefresh={refresh}

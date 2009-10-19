@@ -95,12 +95,14 @@ else:
             creationoffile("/templates","mini","tpl")
             
 
-            app2 = {"name_fr" : "french name of the app","name_en" : "english name of the app", "desc_fr" : "french description of the app", "desc_en" : "english description of the app" }
+            app2 = {"name_fr" : "french name of the app","name_en" : "english name of the app", "desc_fr" : "french description of the app", "desc_en" : "english description of the app", "refresh" : "time of refresh, if you don't want refresh enter 0, warning if you have some JS you can't have this autorefresh" }
             app2_response = {}
             for (name, question) in app2.items():
                 app2_response[name] = raw_input(question + ":")
                 while ("\"" in app2_response[name]):
                     app2_response[name]=raw_input("please don't use \" in your name or description : ")
+            while (not app2_response["refresh"].isdigit()):
+                app2_response["refresh"]= raw_input("please enter a number")
 
             app2_response["view"]="mini"
 
