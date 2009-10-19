@@ -5,3 +5,4 @@ desc_en ="Small quote derouting between friends..."
 view ="mini"
 submitmodel ="IlsontditSubmit"
 configmodel ="IlsontditConfig"
+autorefresh = 300
