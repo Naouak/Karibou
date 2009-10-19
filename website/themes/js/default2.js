@@ -267,6 +267,9 @@ var KApp = Class.create({
 				transport.request.options.app.config = transport.responseText.evalJSON();
 			}});
 		}
+		if (this.constructor.autorefresh) {
+			new PeriodicalExecuter(this.refresh.bind(this), this.constructor.autorefresh);
+		}
 		this.shaded = false;
 		this.detached = false;
 		this.detachedNode = null;
