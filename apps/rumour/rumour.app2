@@ -9,7 +9,7 @@ view = "mini"
 ; if you need a submit view , you would add the following line
 submitmodel = "rumoursubmit"
 ; if you need a config view , you would add the following line
-;configmodel = "{configmodel}"
+configmodel = "rumourconfig"
 ; if you need a JS view , you would add the following line
 ;JSview = "{jsview}"
 autorefresh = 300

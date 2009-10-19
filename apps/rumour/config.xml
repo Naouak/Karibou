@@ -5,7 +5,7 @@
 
 <!--load is used to associate a class name with a the class file name -->
 	<load class= "rumour" file="rumour.class.php" />
-<!--	<load class="{classnameconfig}" file="{filenameconfig}.class.php" />-->
+	<load class="rumourconfig" file="rumourconfig.class.php" />
 	<load class="rumoursubmit" file="rumoursubmit.class.php" />
 
 <!--view is used to associate a the name of the view, the class and the template file -->
