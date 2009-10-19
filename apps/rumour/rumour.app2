@@ -12,3 +12,4 @@ submitmodel = "rumoursubmit"
 ;configmodel = "{configmodel}"
 ; if you need a JS view , you would add the following line
 ;JSview = "{jsview}"
+autorefresh = 300
