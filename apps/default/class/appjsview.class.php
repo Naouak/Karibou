@@ -13,6 +13,9 @@ class AppJSView extends Model
 				$this->assign("hasJS", true);
 			} else {
 				$this->assign("hasJS", false);
+				if ($miniapp->getAutorefresh() > 0) {
+					$this->assign("autorefresh", $miniapp->getAutorefresh());
+				}
 			}
 			$submitModelName = $miniapp->getSubmitModel();
 			if ($submitModelName != "") {
