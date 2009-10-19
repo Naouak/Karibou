@@ -29,7 +29,7 @@ if(chifoumi == undefined){
 				{
 					method: 'post',
 					onSuccess: function(transport){
-						var response = JSON.parse(transport.responseText);
+						var response = transport.responseText.evalJSON();
 						challenges = response;
 						that.sendData();
 					}
