@@ -52,7 +52,7 @@ if(chifoumi == undefined){
 					method: 'post',
 					parameters: "id="+id+"&weapon="+weapon,
 					onSuccess: function(transport){
-						var response = JSON.parse(transport.responseText);
+						var response = transport.responseText.evalJSON();
 						if(response.result == 0){
 							that.message("##No winner##");
 						}
