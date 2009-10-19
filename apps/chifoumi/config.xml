@@ -14,13 +14,12 @@
 	<view name="mini" class="Chifoumi" template="chifoumi.tpl" />
 	<view name="js" class="ChifoumiJs" template="js.tpl" />
 	<view name="challenge" class="ChifoumiChallenge" template="challenge.tpl" />
+	<view name="post" class="ChifoumiPost" template="post.tpl" />
 	
 	<page name="challenge" view="challenge">
 		<option name="weapon" class="NumberArgument" />
 		<option name="id" class="NumberArgument" />
 	</page>
 	
-	<form action="post" class="ChifoumiPost">
-		<redirect page="mini" />
-	</form>
+	<page name="post" view="post" />
 </app>

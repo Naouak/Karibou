@@ -9,11 +9,31 @@ if(chifoumi == undefined){
 		var that = {};
 		var listeners = Array();
 		var challenges = null;
+		var id = 0;
+		that.listenerscount = 0;
 		//Ajoute un élément qui écoute la liste des challenges
 		that.addListener = function(listener){
+			listener.id = id++;
 			listeners.push(listener);
+			that.listenerscount++;
 			that.refreshData();
 		}
+		
+		that.removeListener = function(listener){
+			var i =0;
+			for(var list in listeners){
+				if(listeners[list].id == listener.id){
+					while(i<listeners.length){
+						listeners[i] = listeners[++i];
+					}
+					delete listeners[i];
+					that.listenerscount--;
+					return;
+				}
+				i++;
+			}
+		}
+		
 		//Envoit à chaque écouteur le premier challenge de la liste
 		that.sendData = function(){
 			if(challenges[0] != undefined){
@@ -39,7 +59,7 @@ if(chifoumi == undefined){
 		}
 		
 		var noChallenge = function(){
-			if(challenges.length == 0){
+			if(challenges.length == 0 && that.listenerscount > 0){
 				that.refreshData();
 			}
 		}
@@ -92,7 +112,7 @@ if(chifoumi == undefined){
 						listeners[listener].showForm();
 					}
 				}
-			}).delay(300);
+			}).delay(10);
 		}
 		that.showForm = function(){
 			//@todo: vraie vérification antiflood
@@ -166,6 +186,15 @@ if(chifoumi == undefined){
 				{
 					method: 'post',
 					parameters: "bet="+bet.value+"&weapon="+select.selectedIndex,
+					onSuccess: function(transport){
+						var response = transport.responseText.evalJSON();
+						if(response.result == "true"){
+							chifoumi.pullerInstance.message("##Challenged accepted##");
+						}
+						else{
+							chifoumi.pullerInstance.message("##Challenged refused##");
+						}
+					}
 				}
 			);
 			chifoumi.pullerInstance.challengePosted();
@@ -273,6 +302,12 @@ if(chifoumi == undefined){
 			formContainer.appendChild(form);
 		}
 		
+		//Fermeture de l'appli
+		that.id = undefined;
+		that.close = function(){
+			chifoumi.pullerInstance.removeListener(that);
+		}
+		
 		//Messages
 		var messagecontainer = document.createElement("ul");
 		var messagedelayer = null;
@@ -308,6 +343,9 @@ if(chifoumi == undefined){
 		if(chifoumi.pullerInstance.showForm()){
 			that.showForm();
 		}
+		else{
+			formContainer.innerHTML = "##You have to wait to challenge again##";
+		}
 		
 		//On ajoute la liste des défis
 		title = document.createElement("h4");
@@ -331,6 +369,18 @@ var chifoumiClass = Class.create(KApp, {
 		$super(appName, id, container, karibou);
 		this.instance = chifoumi.instance(container);
 	},
+	refresh: function(){
+		if(this.instance.refresh != undefined){
+			this.instance.refresh();
+		}
+	},
+	onClose: function(){
+		this.instance.close();
+		//delete this.instance;
+		/*if(chifoumi.pullerInstance.listenercount <= 0){
+			delete chifoumi;
+		}*/
+	}
 });
 
 

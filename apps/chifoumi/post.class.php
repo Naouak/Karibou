@@ -1,8 +1,10 @@
 <?php
-class ChifoumiPost extends FormModel
+class ChifoumiPost extends Model
 {
 	public function build()
 	{
+		$result = Array();
+		$result["posted"] = false;
 		$bet = filter_input(INPUT_POST,"bet");
 		$weapon = filter_input(INPUT_POST,"weapon");
 		if(isset($bet) && isset($weapon)){
@@ -32,9 +34,12 @@ class ChifoumiPost extends FormModel
 				$stmt->bindValue(":bet",$bet);
 				$stmt->bindValue(":weapon",$weapon);
 				$stmt->execute();
+				$result["posted"] = true;
 			}
 			
 		}
+		
+		$this->assign("result",json_encode($result));
 	}
 }
 ?>
