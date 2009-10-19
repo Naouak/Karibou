@@ -188,7 +188,7 @@ if(chifoumi == undefined){
 					parameters: "bet="+bet.value+"&weapon="+select.selectedIndex,
 					onSuccess: function(transport){
 						var response = transport.responseText.evalJSON();
-						if(response.result == "true"){
+						if(response.posted == 1){
 							chifoumi.pullerInstance.message("##Challenged accepted##");
 						}
 						else{

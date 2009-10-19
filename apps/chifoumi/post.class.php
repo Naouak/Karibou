@@ -4,7 +4,7 @@ class ChifoumiPost extends Model
 	public function build()
 	{
 		$result = Array();
-		$result["posted"] = false;
+		$result["posted"] = 0;
 		$bet = filter_input(INPUT_POST,"bet");
 		$weapon = filter_input(INPUT_POST,"weapon");
 		if(isset($bet) && isset($weapon)){
@@ -34,7 +34,7 @@ class ChifoumiPost extends Model
 				$stmt->bindValue(":bet",$bet);
 				$stmt->bindValue(":weapon",$weapon);
 				$stmt->execute();
-				$result["posted"] = true;
+				$result["posted"] = 1;
 			}
 			
 		}
