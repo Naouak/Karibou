@@ -275,6 +275,7 @@ var KApp = Class.create({
 		this.detachedNode = null;
 		this.detachedParent = null;
 		this.detachedNext = null;
+		this.submitBox = null;
 		this.eventsAutoConnect();
 	},
 	eventsAutoConnect: function () {
@@ -427,6 +428,8 @@ var KApp = Class.create({
 			this.mainContainer.style.height = this.submitBox.scrollHeight + "px";
 	},
 	refresh: function() {
+		if (this.submitBox != null)
+			return;
 		req = new Ajax.Updater(this.mainContainer, this.karibou.appContentUrl + this.appId, {asynchronous: true, app: this, onComplete: function (transport) {
 			app = transport.request.options.app;
 			app.appBox = app.getElementById(app.appName);
