@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+<!-- management of the permission of the apps, default give the permission when we are not logged in and logged where we are logged in -->
+	<permissions default="_NO_ACCESS_" logged="_FULL_WRITE_" />
+
+<!--load is used to associate a class name with a the class file name -->
+	<load class= "rumour" file="rumour.class.php" />
+<!--	<load class="{classnameconfig}" file="{filenameconfig}.class.php" />-->
+	<load class="rumoursubmit" file="rumoursubmit.class.php" />
+
+<!--view is used to associate a the name of the view, the class and the template file -->
+	<view name="mini" class="rumour" template="mini.tpl" />
+<!--	<view name="{js}" template="js.tpl" />-->
+
+<!--the following lines defines the default header and footer when we don't defines special header and footer -->
+    <header app="header" view="default" />
+    <footer app="footer" view="default" />
+
+<!--association of the page name and the view-->
+<!--
+	<page name="pagename" view="default" >
+-->
+    <!--parameters of the page -->
+<!--
+        <header app="header" view="empty" />
+        <footer app="footer" view="empty" />
+-->
+        <!-- <option /> permits to give the arguments given by the name, the class should be one of the class which are in apps/arguments-->
+<!--
+        <option name="" class=""/>
+    </page>
+-->
+
+<!--definition  -->
+<!--
+	<config>
+		<param name="">
+			<value name="name of the value">value</value>
+		</param>
+	</config>
+-->
+
+<!--definition of a form who permit to create event in reaction of form -->
+<!--
+	<form action="name of the action" class="Class who react to the form" />
+-->
+        
+</app>

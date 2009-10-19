@@ -1,0 +1,14 @@
+; Name of the apps
+name_fr = "Rumeur"
+name_en = "Rumour"
+; Description of the apps
+desc_fr = "On me dit dans l'oreillette"
+desc_en = "I'm told"
+; for  the class or view name it would be the one you wrote in the config.xml
+view = "mini"
+; if you need a submit view , you would add the following line
+submitmodel = "rumoursubmit"
+; if you need a config view , you would add the following line
+;configmodel = "{configmodel}"
+; if you need a JS view , you would add the following line
+;JSview = "{jsview}"
