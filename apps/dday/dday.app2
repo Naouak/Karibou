@@ -4,4 +4,5 @@ desc_fr ="Affiche les prochains évènements connus"
 desc_en ="Display the next known events"
 view ="mini"
 submitmodel ="DDaySubmit"
-
+; Recharger toutes les 5 minutes
+autorefresh=300
