@@ -14,9 +14,9 @@
 	<load class="KeyChainReset" file="class/keychainreset.class.php" />
 
 	<load class="DefaultModel" file="class/defaultmodel.class.php" />
-	<!-- TODO : split appcontentmodel in three files -->
+	<load class="DefaultFormModel" file="class/defaultformmodel.class.php" />
 	<load class="AppContentModel" file="class/appcontentmodel.class.php" />	
-	<load class="AppConfigModel" file="class/appcontentmodel.class.php" />	
+	<load class="AppConfigModel" file="class/appconfigmodel.class.php" />	
 
 	<load class="[arguments]/ArgMiniapp" />
 	
