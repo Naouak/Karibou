@@ -367,7 +367,7 @@ if(chifoumi == undefined){
 var chifoumiClass = Class.create(KApp, {
 	initialize: function ($super, appName, id, container, karibou) {
 		$super(appName, id, container, karibou);
-		this.instance = chifoumi.instance(container);
+		this.instance = chifoumi.instance(getSubElementById("chifoumi",container));
 	},
 	refresh: function(){
 		if(this.instance.refresh != undefined){
@@ -380,6 +380,9 @@ var chifoumiClass = Class.create(KApp, {
 		/*if(chifoumi.pullerInstance.listenercount <= 0){
 			delete chifoumi;
 		}*/
+	},
+	onShade: function(){
+		
 	}
 });
 
