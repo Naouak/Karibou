@@ -12,7 +12,7 @@ class AppJSConfigView extends Model {
 		}
 		$miniapp = MiniAppFactory::buildApplication($miniappName);
 		if ($miniapp->getConfigModel() == "") {
-			$this->assign("config", "");
+			$this->assign("json", "");
 		} else {
 			$conf = $this->currentUser->getPref($miniappName . '_' . $miniappId);
 			if (($conf == "") || ($conf === false)) {
@@ -24,9 +24,9 @@ class AppJSConfigView extends Model {
 					if (array_key_exists("value", $value))
 						$confArray[$key] = $value["value"];
 				}
-				$this->assign("config", json_encode($confArray));
+				$this->assign("json", json_encode($confArray));
 			} else {
-				$this->assign("config", json_encode($conf));
+				$this->assign("json", json_encode($conf));
 			}
 		}
 	}
