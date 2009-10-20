@@ -10,26 +10,22 @@
  
  
 /**
- * Classe AppliVide
+ * Classe rumour
  *
  * @package applications
  */
 
-// name of the class and extends permit to have an heritage of an class 
-class rumour extends Model
-{
-// you would have the function build() in all apps you create
+class rumour extends Model {
 	public function build(){
-        $stmt = $this->db->prepare("SELECT * FROM rumours order by `id` desc LIMIT :limit ;");
-        $stmt->bindParam(":limit",intval($this->args["number"]),PDO::PARAM_INT);
-        try{
-            $stmt->execute();
-        }
-        catch (PDOException $e){
-            Debug::kill($e->getMessage());
-        }
-        $rumours = $stmt->fetchAll();
-        $this->assign("rumours",$rumours);
+		$stmt = $this->db->prepare("SELECT *, RAND() AS rnd FROM (SELECT * FROM rumours order by `id` desc LIMIT :limit) AS s ORDER BY rnd LIMIT 1 ;");
+		$stmt->bindParam(":limit",intval($this->args["number"]),PDO::PARAM_INT);
+		try {
+			$stmt->execute();
+		} catch (PDOException $e) {
+			Debug::kill($e->getMessage());
+		}
+		$rumours = $stmt->fetchAll();
+		$this->assign("rumours",$rumours);
 	}
 }
 ?>
