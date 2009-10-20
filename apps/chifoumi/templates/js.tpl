@@ -63,7 +63,7 @@ if(chifoumi == undefined){
 				that.refreshData();
 			}
 		}
-		new PeriodicalExecuter(noChallenge, 5);
+		new PeriodicalExecuter(noChallenge, 10);
 		
 		//Réponse à un challenge
 		that.answerChallenge = function(id,weapon){
@@ -112,7 +112,7 @@ if(chifoumi == undefined){
 						listeners[listener].showForm();
 					}
 				}
-			}).delay(10);
+			}).delay(300);
 		}
 		that.showForm = function(){
 			//@todo: vraie vérification antiflood
