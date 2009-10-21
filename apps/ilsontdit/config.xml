@@ -6,22 +6,11 @@
 
 
     <load class="Ilsontdit" file="ilsontdit.class.php" />
-    <load class="IlsontditModify" file="ilsontditmodify.class.php" />
     <load class="IlsontditSubmit" file="ilsontditsubmit.class.php" />
     <load class="IlsontditConfig" file="ilsontditconfig.class.php" />
-    <load class="modify" file="modify.class.php" />
     
     <header app="header" view="default" />
     <footer app="footer" view="default" />
     
     <view name="mini" class="Ilsontdit" template="ilsontdit.tpl" />
-    <view name="modify" class="IlsontditModify" template="modify.tpl" />
-
-    <page name="modify2" view="modify">
-        <argument name="id"  class="NumberArgument" />
-    </page>
-
-    <form action="modify" class="modify">
-        <redirect app="default" page="" />
-    </form>
 </app>
