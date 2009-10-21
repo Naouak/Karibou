@@ -288,14 +288,11 @@ var KApp = Class.create({
 			asynchronous: false,
 			onComplete: function(transport) {
 				// Do something
-				response = transport.responseText;
-				alert(response);
-				transport.request.options.app.startModify(modifyKey, response.evalJSON());
+				transport.request.options.app.startModify(modifyKey, transport.responseText.evalJSON());
 			}
 		});
 	},
 	startModify: function(modifyKey, modifyData) {
-		alert(modifyData);
 		this.beforeOverlay();
 		this.submitBox = document.createElement("div");
 		this.submitBox.setAttribute("class", "overBox");
