@@ -278,6 +278,46 @@ var KApp = Class.create({
 		this.submitBox = null;
 		this.eventsAutoConnect();
 	},
+	modify: function (modifyKey) {
+		// This is where weird things will occur !
+		new Ajax.Request(this.karibou.appGetModifyUrl + this.appName, {
+			method: "post",
+			postBody: "key=" + modifyKey,
+			app: this,
+			key: modifyKey,
+			asynchronous: false,
+			onComplete: function(transport) {
+				// Do something
+				response = transport.responseText;
+				alert(response);
+				transport.request.options.app.startModify(modifyKey, response.evalJSON());
+			}
+		});
+	},
+	startModify: function(modifyKey, modifyData) {
+		alert(modifyData);
+		this.beforeOverlay();
+		this.submitBox = document.createElement("div");
+		this.submitBox.setAttribute("class", "overBox");
+		this.submitBox.className = "overBox";
+		this.submitBox.appendChild(document.createElement("br"));
+		formNode = document.createElement("form");
+		formNode.setAttribute("action", this.karibou.appSetModifyUrl + this.appName);
+		this.submitBox.appendChild(formNode);
+		
+		var form = new KForm(modifyData, 			// The fields list
+				formNode, 				// The form node
+				{"__modified_key": modifyKey},			// The extra parameters
+				[this, "submittedContent"],		// The onSubmit callback
+				[this, "cancelledOverlay"]		// The onCancelSubmit callback
+				);
+		form.buildForm();
+
+		this.mainContainer.appendChild(this.submitBox);
+		this.submitHeightBackup = this.mainContainer.style.height;
+		if (this.submitBox.scrollHeight > this.mainContainer.scrollHeight)
+			this.mainContainer.style.height = this.submitBox.scrollHeight + "px";
+	},
 	eventsAutoConnect: function () {
 		var regExp = /on_(\w*)_(\w*)/i;
 		for (var name in this) {
@@ -466,11 +506,13 @@ var KApp = Class.create({
 
 // Class responsible for loading the KApp classes, handling the various loaded applications on the screen...
 var Karibou = Class.create({
-	initialize: function(appContentUrl, appJSUrl, appSubmitUrl, appSetConfigUrl, appGetConfigUrl, saveHomeUrl, tabLinkClicked) {
+	initialize: function(appContentUrl, appJSUrl, appSubmitUrl, appSetConfigUrl, appGetConfigUrl, appGetModifyUrl, appSetModifyUrl, saveHomeUrl, tabLinkClicked) {
 		this.appSubmitUrl = appSubmitUrl;
 		this.appContentUrl = appContentUrl;
 		this.appSetConfigUrl = appSetConfigUrl;
 		this.appGetConfigUrl = appGetConfigUrl;
+		this.appGetModifyUrl = appGetModifyUrl;
+		this.appSetModifyUrl = appSetModifyUrl;
 		this.saveHomeUrl = saveHomeUrl;
 		this.appJSUrl = appJSUrl;
 		this.locked = true;
