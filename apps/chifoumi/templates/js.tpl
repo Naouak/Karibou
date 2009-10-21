@@ -1,6 +1,12 @@
 // {literal}
 // <script>
 
+//hack Google Chrome: thanks Garbage collector and gloal vars defined randomly.
+if(chifoumi != undefined){
+	if(chifoumi.puller == undefined){
+		chifoumi = undefined;
+	}
+}
 //Pour permettre de lancer plusieurs instances de chifoumi sans que ça explose BOUM! \o/
 if(chifoumi == undefined){
 	var chifoumi = {};
