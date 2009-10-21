@@ -6,6 +6,11 @@
 	<load class="AppJSView" file="class/appjsview.class.php" />
 	<load class="AppJSConfigView" file="class/appjsconfigview.class.php" />
 	<load class="AppSubmit" file="class/appsubmit.class.php" />
+
+	<!-- These two classes are used for the modify system -->
+	<load class="AppModifyData" file="class/appmodify.class.php" />
+	<load class="AppGetData" file="class/appgetdata.class.php" />
+
 	<load class="AppConfig" file="class/appconfig.class.php" />
 	<load class="HomeConfig" file="class/homeconfig.class.php" />
 	<load class="SaveHome" file="class/savehome.class.php" />
@@ -27,7 +32,9 @@
 	<view name="homeConfig" class="HomeConfig" template="homeconfig.tpl" />
 	<view name="appMainView" class="AppMainView" template="appmainview.tpl" />
 	<view name="appJSView" class="AppJSView" template="appjsview.tpl" />
-	<view name="appJSConfigView" class="AppJSConfigView" template="appjsconfigview.tpl" />
+	<view name="appJSConfigView" class="AppJSConfigView" template="json.tpl" />
+	<view name="appGetData" class="AppGetData" template="json.tpl" />
+	<view name="appModifyData" class="AppModifyData" template="json.tpl" />
 	
 	<header app="empty" view="default" />
 	<footer app="empty" view="default" />
@@ -46,6 +53,14 @@
 	</page>
 
 	<page name="appjsconfigview" view="appJSConfigView">
+		<argument name="miniapp" class="ArgMiniapp" />
+	</page>
+
+	<page name="appgetdata" view="appGetData">
+		<argument name="miniapp" class="ArgMiniapp" />
+	</page>
+
+	<page name="appmodify" view="appModifyData">
 		<argument name="miniapp" class="ArgMiniapp" />
 	</page>
 

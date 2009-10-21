@@ -91,7 +91,11 @@ abstract class DefaultFormModel {
 				$params[$fieldID] = $value;
 			}
 		}
-		$this->submit($params);
+		$this->validated($params);
+	}
+
+	public function validated($parameters) {
+		$this->submit($parameters);
 	}
 
 	public abstract function formFields();

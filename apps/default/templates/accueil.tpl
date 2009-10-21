@@ -43,7 +43,7 @@ function tabLinkClickedBack (evt) {ldelim}
 {rdelim}
 
 Event.observe(window, "load", function() {ldelim}
-	karibou = new Karibou("{kurl page="appmainview"}", "{kurl page="appjsview"}", "{kurl page="appsubmit"}", "{kurl page="appconfig"}", "{kurl page="appjsconfigview"}", "{kurl page="savehome"}", tabLinkClickedBack);
+	karibou = new Karibou("{kurl page="appmainview"}", "{kurl page="appjsview"}", "{kurl page="appsubmit"}", "{kurl page="appconfig"}", "{kurl page="appjsconfigview"}", "{kurl page="appgetdata"}", "{kurl page="appmodify"}", "{kurl page="savehome"}", tabLinkClickedBack);
 	karibou.loadUrl("{kurl page="homeconfig"}");
 {rdelim});
 
@@ -157,3 +157,8 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 </div>
 <div id="tabsContainer"></div>
 {/if}
+
+<form action="http://telnet.telecom-lille1.eu/~pinaraf/website/default/appgetdata/ilsontdit" method="POST">
+<input type="hidden" name="key" value="42" />
+<input type="submit" />
+</form>
