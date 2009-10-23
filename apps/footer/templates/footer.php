@@ -39,7 +39,7 @@ if (isset($this->hookManager->hooks['header_menu'])) {
 				else
 				{
 				?>
-				<form class="login" action="<?=kurl(array('app'=>"login"));?>" method="post">
+				<form class="login" action="<?php echo kurl(array('app'=>"login"));?>" method="post">
 					<span class="user">
 						<strong><?php echo _('TITLE_AUTH');?></strong>
 					</span>
