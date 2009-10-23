@@ -1,0 +1,25 @@
+pour Pierre
+delete
+Kapp : confirm, alert
+default = big app
+AAAS : Application As A Service
+système de CSS
+iframe
+Amélioration KForm -> choix multiple
+
+pour Nux et Naouak
+minichat 2
+flashmail arabe
+
+Pour Nux et Lupus
+geoloc 
+
+Pour Nux
+notif
+bot
+pourrissage de gueule
+
+pour Tonton
+votesbox
+commentbox
+réécriture News et Calendar
