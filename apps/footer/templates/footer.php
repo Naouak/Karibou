@@ -1,5 +1,7 @@
-						<?php $user = $this->vars['currentUser']; ?>
-						<?php  hook(array('name'=>"page_contenu_end")); ?>
+<?php
+$user = $this->vars['currentUser'];
+hook(array('name'=>"page_contenu_end"));
+?>
 					</div>
 				</div>
 			</div>
@@ -14,9 +16,9 @@
 				</span>
 				<ul style="width: 700px; padding-left: 0px;">
 					<?php hook(array('name'=>"footer_account_start")); ?>
-					<li class="profile"><a href="<?php echo kurl(array('app'=>"annuaire", 'username'=>$user->getLogin(), 'act'=>'edit'));?>"><?=_('EDITPROFILE');?></a></li>
-					<li class="preferences"><a href="<?php echo kurl(array('app'=>"preferences", 'page'=>"")); ?>"><?=_('PREFERENCES');?></a></li>
-					<li class="logout"><a href="<?php echo kurl(array('app'=>"login",'page'=>"logout"));?>"><?=_('LOGOUT');?></a></li>
+					<li class="profile"><a href="<?php echo kurl(array('app'=>"annuaire", 'username'=>$user->getLogin(), 'act'=>'edit'));?>"><?php echo _('EDITPROFILE');?></a></li>
+					<li class="preferences"><a href="<?php echo kurl(array('app'=>"preferences", 'page'=>"")); ?>"><?php echo _('PREFERENCES');?></a></li>
+					<li class="logout"><a href="<?php echo kurl(array('app'=>"login",'page'=>"logout"));?>"><?php echo _('LOGOUT');?></a></li>
 <?php
 if (isset($this->hookManager->hooks['header_menu'])) {
 ?>
@@ -63,8 +65,6 @@ if (isset($this->hookManager->hooks['header_menu'])) {
 			<?php
 				}
 			?>
-			<div id="miniapps"></div>
-			
 		</div>
 		<div id="footer">
 			<ul><?php if (isset($GLOBALS['config']['footer']['message']) && $GLOBALS['config']['footer']['message'] !== '')
