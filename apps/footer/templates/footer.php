@@ -75,7 +75,7 @@ if (isset($this->hookManager->hooks['header_menu'])) {
 				<li<?php if (!(isset($GLOBALS['config']['footer']['message']) && $GLOBALS['config']['footer']['message'] !== '')) {?> class="first"<?php }?>>
 					Intranet <?php echo _('BY')?> <a href="http://www.karibou.org" title="Karibou">Karibou</a></li>
 				<li><a href="<?php echo kurl(array('app'=>"contact"));?>">Contact</a></li>
-				<li><a href="<?php echo kurl(array('app'=>"credits"));?>"><?=_('APP_CREDITS');?></a></li>
+				<li><a href="<?php echo kurl(array('app'=>"credits"));?>"><?php echo _('APP_CREDITS');?></a></li>
 			</ul>
 		</div>
 	</body>
