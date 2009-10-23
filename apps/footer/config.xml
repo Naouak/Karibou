@@ -3,8 +3,5 @@
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 
 	<load class="FooterModel" file="footermodel.class.php" />
-
 	<view name="default" class="FooterModel" template="footer.php" />
-	<view name="simple" class="FooterModel" template="footersimple.tpl" />
-
 </app>
