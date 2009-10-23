@@ -17,7 +17,7 @@ class NumberArgument extends Argument
 {
 	function getVar($arg)
 	{
-		if( preg_match('#([0-9]+)#', $arg, $match) )
+		if( preg_match('#([-]?[0-9]+)#', $arg, $match) )
 		{
 			return $match[1];
 		}
