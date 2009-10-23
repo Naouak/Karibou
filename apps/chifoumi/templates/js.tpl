@@ -271,6 +271,8 @@ if(chifoumi == undefined){
 		var formContainer = document.createElement("div");
 		var challenge = null;
 		var activechallenge = null;
+		var messageTitle = document.createElement("h4");
+		
 		//Challenge en cours
 		that.activeChallenge = function(newchallenge){
 			if(activechallenge != newchallenge){
@@ -320,6 +322,8 @@ if(chifoumi == undefined){
 		
 		var deletemessage = function(){
 			messagecontainer.innerHTML = "##Nothing to say##";
+			messageTitle.style.display = "none";
+			messagecontainer.style.display = "none";
 			messagedelayer = null;
 		}
 		deletemessage();
@@ -329,6 +333,8 @@ if(chifoumi == undefined){
 			if(messagedelayer != null){
 				window.clearTimeout(messagedelayer);
 			}
+			messageTitle.style.display = "block";
+			messagecontainer.style.display = "block";
 			messagedelayer = deletemessage.delay(5);
 		}
 		
@@ -341,6 +347,13 @@ if(chifoumi == undefined){
 		chifoumi.pullerInstance.addListener(that);
 		
 		var  title = null;
+		
+		//On ajoute la liste des défis
+		title = document.createElement("h4");
+		title.innerHTML = "##Challenge##";
+		container.appendChild(title);
+		container.appendChild(challengeContainer);
+		
 		//Formulaire d'ajout de défi
 		title = document.createElement("h4");
 		title.innerHTML = "##Challenge Someone##";
@@ -353,16 +366,10 @@ if(chifoumi == undefined){
 			formContainer.innerHTML = "##You have to wait to challenge again##";
 		}
 		
-		//On ajoute la liste des défis
-		title = document.createElement("h4");
-		title.innerHTML = "##Challenge##";
-		container.appendChild(title);
-		container.appendChild(challengeContainer);
-		
 		//On ajout le conteneur à messages
-		var title = document.createElement("h4");
-		title.innerHTML = "##Message##";
-		container.appendChild(title);
+		
+		messageTitle.innerHTML = "##Message##";
+		container.appendChild(messageTitle);
 		container.appendChild(messagecontainer);
 		
 		return that;
