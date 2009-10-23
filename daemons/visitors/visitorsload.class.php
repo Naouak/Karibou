@@ -1,6 +1,8 @@
 <?php
 /**
  * @copyright 2005 Jonathan Semczyk <jonathan.semczyk@free.fr>
+ * @copyright 2009 Grégoire Leroy <lupuscramus@gmail.com>
+ * @copyright 2009 Rémy Sanchez <remy.sanchez@hyperthese.net>
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU Public License
  * See the enclosed file COPYING for license information (GPL).
@@ -19,26 +21,44 @@ class VisitorsLoad extends Listener
 	{
 		$currentUser = $this->userFactory->getCurrentUser();
 
-		$sql_delete = "DELETE FROM onlineusers";
-		$sql_delete .= " WHERE timestamp < ".(time()-$this->maxAge)." ; ";
-		if ( $currentUser->getID() != 0 )
-		{
-			$sql_insert = "INSERT INTO onlineusers (user_id, timestamp) VALUES (".$currentUser->getID().", ".time().") ";
-			$sql_insert .= " ON DUPLICATE KEY UPDATE timestamp=".time()." ; ";
+		$delete = $this->db->prepare("
+			DELETE FROM
+				onlineusers
+			WHERE
+				timestamp < :time
+				");
+		$delete->bindValue(":time", (time() - $this->maxAge));
+
+		try {
+			$delete->execute();
+		} catch(PDOException $ex) {
+			trigger_error("Unable to prune onlineusers ($ex)", E_USER_WARNING);
 		}
-		try
+
+		if($currentUser->getID() != 0)
 		{
-			$this->db->exec($sql_delete);
-			if (isset($sql_insert))
-			{
-				$this->db->exec($sql_insert);
+			$insert = $this->db->prepare("
+				INSERT INTO
+					onlineusers (user_id, timestamp, user_ip, proxy_ip)
+				VALUES
+					(:user_id, :time, INET_ATON(:user_ip), INET_ATON(:proxy_ip))
+				ON DUPLICATE KEY UPDATE
+					timestamp = :time,
+					user_ip = INET_ATON(:user_ip),
+					proxy_ip = INET_ATON(:proxy_ip)
+			");
+
+			$insert->bindValue(":user_ip", (isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? $_SERVER["HTTP_X_FORWARDED_FOR"] : 
+$_SERVER["REMOTE_ADDR"]));
+			$insert->bindValue(":proxy_ip", (isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? $_SERVER["REMOTE_ADDR"] : null), 
+(isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? PDO::PARAM_INT : PDO::PARAM_NULL));
+			$insert->bindValue(":time", time());
+			$insert->bindValue(":user_id", $currentUser->getID());
+			try {
+				$insert->execute();
+			} catch(PDOException $ex) {
+				trigger_error("Unable to update onlineusers ($ex)", E_USER_WARNING);
 			}
-		}
-		catch(PDOException $e)
-		{
-			Debug::kill( $e->getMessage() );
 		}
 	}
 }
-
-?>
