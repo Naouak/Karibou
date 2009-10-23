@@ -20,11 +20,11 @@ KForm = Class.create({
 		for (fieldID in this.formFields) {
 			fieldObject = this.formFields[fieldID];
 			if (fieldObject["type"] == "span") {
-				spanNode = document.createElement("span");
+				var spanNode = document.createElement("span");
 				spanNode.innerHTML = fieldObject["text"];
 				formNode.appendChild(spanNode);
 			} else if (fieldObject["type"] == "help") {
-				titleNode = document.createElement("a");
+				var titleNode = document.createElement("a");
 				titleNode.setAttribute("href", "#");
 				if (fieldObject["title"])
 					titleNode.innerHTML = fieldObject["title"];
@@ -40,12 +40,12 @@ KForm = Class.create({
 				helpNode.insertBefore(document.createElement("br"), helpNode.firstChild);
 			} else if ((fieldObject["type"] == "text") || (fieldObject["type"] == "url") || (fieldObject["type"] == "password")) {
 				if (fieldObject["label"]) {
-					lblNode = document.createElement("label");
+					var lblNode = document.createElement("label");
 					lblNode.innerHTML = fieldObject["label"];
 					lblNode.setAttribute("for", fieldID);
 					formNode.appendChild(lblNode);
 				}
-				inputNode = document.createElement("input");
+				var inputNode = document.createElement("input");
 				inputNode.setAttribute("id", fieldID);
 				inputNode.setAttribute("name", fieldID);
 
@@ -61,15 +61,15 @@ KForm = Class.create({
 				formNode.appendChild(inputNode);
 			} else if (fieldObject["type"] == "date") {
 				if (fieldObject["label"]) {
-					lblNode = document.createElement("label");
+					var lblNode = document.createElement("label");
 					lblNode.setAttribute("for", fieldID);
-					acroNode = document.createElement("acronym");
+					var acroNode = document.createElement("acronym");
 					acroNode.setAttribute("title", "Format : dd/mm/yyyy");
 					acroNode.innerHTML = fieldObject["label"];
 					lblNode.appendChild(acroNode);
 					formNode.appendChild(lblNode);
 				}
-				inputNode = document.createElement("input");
+				var inputNode = document.createElement("input");
 				inputNode.setAttribute("id", fieldID);
 				inputNode.setAttribute("name", fieldID);
 				inputNode.setAttribute("type", "text");
@@ -78,7 +78,7 @@ KForm = Class.create({
 				if (fieldObject["maxlength"])
 					inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
 				formNode.appendChild(inputNode);
-				calNode = document.createElement("span");
+				var calNode = document.createElement("span");
 				calNode.setAttribute("class", "calendar_link");
 				calNode.setAttribute("for", fieldID);
 				calNode.onclick = function() {
@@ -88,20 +88,20 @@ KForm = Class.create({
 					inputNode.parentNode.insertBefore(divNode, inputNode.nextSibling);
 					var inputScal = new scal(divNode, inputNode, {updateformat: 'dd/mm/yyyy'});
 				};
-				txtNode = document.createElement("span");
+				var txtNode = document.createElement("span");
 				txtNode.setAttribute("class", "text");
 				txtNode.innerHTML = "Open calendar";
 				calNode.appendChild(txtNode);
 				formNode.appendChild(calNode);
 			} else if (fieldObject["type"] == "textarea") {
 				if (fieldObject["label"]) {
-					lblNode = document.createElement("label");
+					var lblNode = document.createElement("label");
 					lblNode.innerHTML = fieldObject["label"];
 					lblNode.setAttribute("for", fieldID);
 					formNode.appendChild(lblNode);
 					formNode.appendChild(document.createElement("br"));
 				}
-				areaNode = document.createElement("textarea");
+				var areaNode = document.createElement("textarea");
 				areaNode.setAttribute("id", fieldID);
 				areaNode.setAttribute("name", fieldID);
 				if (fieldObject["columns"])
@@ -114,25 +114,25 @@ KForm = Class.create({
 			} else if (fieldObject["type"] == "file") {
 				formNode.setAttribute("enctype", "multipart/form-data");
 				if (fieldObject["label"]) {
-					lblNode = document.createElement("label");
+					var lblNode = document.createElement("label");
 					lblNode.innerHTML = fieldObject["label"];
 					lblNode.setAttribute("for", fieldID);
 					formNode.appendChild(lblNode);
 					formNode.appendChild(document.createElement("br"));
 				}
-				fileNode = document.createElement("input");
+				var fileNode = document.createElement("input");
 				fileNode.setAttribute("id", fieldID);
 				fileNode.setAttribute("name", fieldID);
 				fileNode.setAttribute("type", "file");
 				formNode.appendChild(fileNode);
 			} else if (fieldObject["type"] == "int" || fieldObject["type"] == "float") {
 				if (fieldObject["label"]) {
-					lblNode = document.createElement("label");
+					var lblNode = document.createElement("label");
 					lblNode.innerHTML = fieldObject["label"];
 					lblNode.setAttribute("for", fieldID);
 					formNode.appendChild(lblNode);
 				}
-				inputNode = document.createElement("input");
+				var inputNode = document.createElement("input");
 				inputNode.setAttribute("id", fieldID);
 				inputNode.setAttribute("name", fieldID);
 				inputNode.setAttribute("type", "text");
@@ -141,12 +141,12 @@ KForm = Class.create({
 				formNode.appendChild(inputNode);
 			} else if (fieldObject["type"] == "bool") {
 				if (fieldObject["label"]) {
-					lblNode = document.createElement("label");
+					var lblNode = document.createElement("label");
 					lblNode.innerHTML = fieldObject["label"];
 					lblNode.setAttribute("for", fieldID);
 					formNode.appendChild(lblNode);
 				}
-				inputNode = document.createElement("input");
+				var inputNode = document.createElement("input");
 				inputNode.setAttribute("id", fieldID);
 				inputNode.setAttribute("name", fieldID);
 				inputNode.setAttribute("type", "checkbox");
@@ -158,7 +158,7 @@ KForm = Class.create({
 				formNode.appendChild(inputNode);
 			} else if(fieldObject["type"] == "enum") {
 				if (fieldObject["label"]) {
-					lblNode = document.createElement("span");
+					var lblNode = document.createElement("span");
 					lblNode.innerHTML = fieldObject["label"];
 					formNode.appendChild(lblNode);
 				}
@@ -175,7 +175,7 @@ KForm = Class.create({
 				if (fieldObject["radio"]) {
 					// If the field is not required the user is not forced to make a choice
 					if(!fieldObject["required"]) {
-						radio = document.createElement("input");
+						var radio = document.createElement("input");
 						radio.setAttribute("id", "empty"+fieldID);
 						radio.setAttribute("name", fieldID);
 						radio.setAttribute("type", "radio");
@@ -184,14 +184,14 @@ KForm = Class.create({
 							radio.setAttribute("checked", "checked");
 						formNode.appendChild(radio);
 
-						label = document.createElement("label");
+						var label = document.createElement("label");
 						label.setAttribute("for", "empty" + fieldID);
 						label.innerHTML = "<em>[no choice]</em>";
 						formNode.appendChild(label);
 					}
 
 					for (item in fieldValues) {
-						radio = document.createElement("input");
+						var radio = document.createElement("input");
 						radio.setAttribute("id", fieldID + item);
 						radio.setAttribute("name", fieldID);
 						radio.setAttribute("type", "radio");
@@ -199,25 +199,25 @@ KForm = Class.create({
 						if(fieldObject["value"] == item)
 							radio.setAttribute("checked", "checked");
 						formNode.appendChild(radio);
-						label = document.createElement("label");
+						var label = document.createElement("label");
 						label.setAttribute("for", fieldID + item);
 						label.innerHTML = fieldValues[item];
 						formNode.appendChild(label);
 					}
 				} else {
-					select = document.createElement("select");
+					var select = document.createElement("select");
 					select.setAttribute("name", fieldID);
 					select.setAttribute("id", fieldID);
 
 					if(!fieldObject["required"]) {
-						option = document.createElement("option");
+						var option = document.createElement("option");
 						option.setAttribute("value", "");
 						option.innerHTML = "";
 						select.appendChild(option);
 					}
 
 					for(item in fieldValues) {
-						option = document.createElement("option");
+						var option = document.createElement("option");
 						option.setAttribute("value", item);
 						if(fieldObject["value"] == item)
 							option.setAttribute("selected", "selected");
@@ -231,13 +231,13 @@ KForm = Class.create({
 			}
 			formNode.appendChild(document.createElement("br"));
 		}
-		submitNode = document.createElement("input");
+		var submitNode = document.createElement("input");
 		submitNode.setAttribute("type", "submit");
 		submitNode.setAttribute("value", "Envoyer");
 		formNode.appendChild(submitNode);
 
 		if (this.cancelCallBack) {
-			cancelNode = document.createElement("input");
+			var cancelNode = document.createElement("input");
 			cancelNode.setAttribute("type", "button");
 			cancelNode.setAttribute("value", "Cancel");
 			cancelNode.setAttribute("onclick", "KForm.getFormFromNode(this.parentNode).cancel();");
@@ -246,7 +246,7 @@ KForm = Class.create({
 	},
 	getFormFromNode: function (node) {
 		for (var idx = 0 ; idx < KForm.forms.length ; idx++) {
-			form = KForm.forms[idx];
+			var form = KForm.forms[idx];
 			if (form[0] == node) {
 				return form[1];
 			}
@@ -281,7 +281,7 @@ KForm = Class.create({
 		var containsFile = false;
 
 		for (fieldID in this.formFields) {
-			fieldObject = this.formFields[fieldID];
+			var fieldObject = this.formFields[fieldID];
 			if ((fieldObject["type"] == "span") || (fieldObject["type"] == "help"))
 				continue;
 			formObject = getSubElementById(fieldID, this.targetNode);
@@ -340,7 +340,7 @@ KForm = Class.create({
 				}
 				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
 			} else if (fieldObject["type"] == "file") {
-				containsFile = true;
+				var containsFile = true;
 				if ((fieldObject["required"]) && (fieldObject["required"] == true)) {
 					if (formObject.value == "") {
 						alert("One or more fields are missing.");
@@ -390,7 +390,7 @@ KForm = Class.create({
 				// Now all the tests are passed, we add the value to the query
 				queryComponents.push(encodeURIComponent(fieldID) + "=" + encodeURIComponent(formObject.value));
 			} else if (fieldObject["type"] == "enum") {
-				value = "";
+				var value = "";
 				if (fieldObject["radio"]) {
 					var inputs = this.targetNode.getInputs('radio', fieldID);
 					for (radio in inputs) {
@@ -419,8 +419,8 @@ KForm = Class.create({
 			}
 		}
 		if (containsFile) {
-			iframeName = "iframe_" + (new Date()).getTime();
-			iframeNode = document.createElement("iframe");
+			var iframeName = "iframe_" + (new Date()).getTime();
+			var iframeNode = document.createElement("iframe");
 			iframeNode.setAttribute("src", "");
 			iframeNode.setAttribute("name", iframeName);
 			iframeNode.setAttribute("id", iframeName);
