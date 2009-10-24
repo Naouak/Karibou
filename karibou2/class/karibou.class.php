@@ -58,8 +58,6 @@ ClassLoader::add('KForm', KARIBOU_CLASS_DIR."/kform.class.php");
 ClassLoader::add('KFormField', KARIBOU_CLASS_DIR."/kformfield.class.php");
 ClassLoader::add('KFormFactory', KARIBOU_CLASS_DIR."/kformfactory.class.php");
 
-ClassLoader::add('Geo', KARIBOU_LIB_DIR."/geo/geo.class.php");
-
 ClassLoader::add('CommentSource', KARIBOU_CLASS_DIR."/commentsource.class.php");
 
 /**
