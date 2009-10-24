@@ -19,6 +19,14 @@
 <p> <input type="submit" name="bouton" value="enlever" onclick="$app(this).update('{$annonce.id}');" /> 
 {/if}
 </div>
+
+<a href="{kurl app="commentaires"  id=$annonce.idcombox}" > test </a>
+{*kurl app="commentaires"  id=$annonce.idcombox*}
+{commentbox id=$annonce.idcombox} <br />
+{if !$annonce.voted }
+<a href="{kurl app="votes"  id=$annonce.idcombox votes="1"}" > + </a> / <a href="{kurl app="votes"  id=$annonce.idcombox votes='-1'}" > - </a>
+{/if}
+score total {$annonce.score.0} nombre de votants {$annonce.score.1}
 {/foreach}
 
 </p>

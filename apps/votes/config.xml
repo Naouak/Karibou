@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+    <permissions default="_NO_ACCESS_" logged="_FULL_WRITE_" />
+
+    <load class="Votes" file="votes.class.php" />
+    <load class="[arguments]/NumberArgument" />
+
+    <view name="vide" class="Votes" template="vide.tpl" />
+
+    <page view="vide">
+        <argument name="id" class="NumberArgument" />
+        <argument name="votes" class="NumberArgument" />
+    </page>
+</app>
