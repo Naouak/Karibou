@@ -7,7 +7,7 @@ class ChifoumiPost extends Model
 		$result["posted"] = 0;
 		$bet = filter_input(INPUT_POST,"bet");
 		$weapon = filter_input(INPUT_POST,"weapon");
-		if(isset($bet) && isset($weapon)){
+		if(isset($bet) && $bet > 0 && $bet <= 100000 && isset($weapon)){
 			$stmt = $this->db->prepare("SELECT TIME_TO_SEC(TIMEDIFF(NOW(),dateofchallenge)) as diff FROM chifoumi WHERE user = :user ORDER BY id DESC LIMIT 1");
 			$stmt->bindValue(":user",$this->currentUser->getID());
 			$stmt->execute();
