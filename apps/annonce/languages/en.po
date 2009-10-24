@@ -21,7 +21,7 @@ msgid "price"
 msgstr "Please enter price you to ask"
 
 msgid "expirationdate"
-msgstr "please enter the expiration day of the annonce (AAAA-MM-DD):"
+msgstr "please enter the expiration day of the annonce (DD/MM/YYYY):"
 
 msgid "prix"
 msgstr "costing"
