@@ -16,4 +16,4 @@ CREATE TABLE `karibou_apps`.`combox` (
 
 ALTER TABLE `karibou_apps`.`combox` ADD UNIQUE (
 `name`
-)
+);
