@@ -278,6 +278,18 @@ var KApp = Class.create({
 		this.submitBox = null;
 		this.eventsAutoConnect();
 	},
+	deleteContent: function (deleteKey) {
+		if (window.confirm("Sure ?")) {
+			data = "miniapp=" + this.appName + "&key=" + deleteKey;
+			new Ajax.Request(this.karibou.appDeleteUrl, {
+				app: this,
+				parameters: data,
+				onComplete: function(transport) {
+					transport.request.options.app.refresh();
+				}
+			});
+		}
+	},
 	modify: function (modifyKey) {
 		// This is where weird things will occur !
 		new Ajax.Request(this.karibou.appGetModifyUrl + this.appName, {
@@ -503,7 +515,8 @@ var KApp = Class.create({
 
 // Class responsible for loading the KApp classes, handling the various loaded applications on the screen...
 var Karibou = Class.create({
-	initialize: function(appContentUrl, appJSUrl, appSubmitUrl, appSetConfigUrl, appGetConfigUrl, appGetModifyUrl, appSetModifyUrl, saveHomeUrl, tabLinkClicked) {
+	initialize: function(appContentUrl, appJSUrl, appSubmitUrl, appSetConfigUrl, appGetConfigUrl, appGetModifyUrl, appSetModifyUrl, appDeleteUrl, saveHomeUrl, tabLinkClicked) {
+		this.appDeleteUrl = appDeleteUrl;
 		this.appSubmitUrl = appSubmitUrl;
 		this.appContentUrl = appContentUrl;
 		this.appSetConfigUrl = appSetConfigUrl;
