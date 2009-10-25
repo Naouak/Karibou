@@ -9,6 +9,8 @@
 
     <page view="commentaire">
         <argument name="id" class="AnyCharArgument" />
+	<header app="header" view="default" />
+	<footer app="footer" view="default" />
     </page>
 
     <form action="postcomment" class="CommentairesAdd" >

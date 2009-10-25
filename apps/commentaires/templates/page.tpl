@@ -12,7 +12,7 @@ old comments
 {/foreach}
 <br />
 add comments 
-<form action={kurl action="postcomment"} method="POST">
+<form action="{kurl action="postcomment"}" method="POST">
     <input type="text" name="comment" />
     <input type="hidden" name="id" value={$id} />
     <br />
