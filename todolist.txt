@@ -1,5 +1,4 @@
 pour Pierre
-delete
 Kapp : confirm, alert
 default = big app
 AAAS : Application As A Service
