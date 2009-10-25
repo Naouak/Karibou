@@ -22,8 +22,10 @@
 	<load class="DefaultFormModel" file="class/defaultformmodel.class.php" />
 	<load class="AppContentModel" file="class/appcontentmodel.class.php" />	
 	<load class="AppConfigModel" file="class/appconfigmodel.class.php" />	
+	<load class="AppDeleteModel" file="class/appdelete.class.php" />
 
 	<load class="[arguments]/ArgMiniapp" />
+	<load class="[arguments]/AnyCharArgument" />
 	
 	<view name="menu" template="menu.tpl" />
 	<hook name="header_menu" view="menu" />
@@ -69,6 +71,8 @@
 	<form action="appsubmit" class="AppSubmit" />
 	<form action="appconfig" class="AppConfig" />
 	<form action="savehome" class="SaveHome" />
+
+	<form action="appdelete" class="AppDeleteModel" />
 	
 	<form action="keychain" class="KeyChainFix">
 		<redirect page="" />

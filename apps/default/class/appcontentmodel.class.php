@@ -10,6 +10,14 @@ abstract class AppContentModel extends DefaultFormModel {
 		throw new Exception("Unmodifiable content");
 	}
 
+	public function canDelete($key) {
+		return $this->isModifiable($key);
+	}
+
+	public function delete($key) {
+		throw new Exception("Undeletable content");
+	}
+
 	public function fillFields($key, $fields) {
 		throw new Exception("Unmodifiable content");
 	}
