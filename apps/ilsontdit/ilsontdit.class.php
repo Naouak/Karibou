@@ -17,7 +17,7 @@ class Ilsontdit extends Model {
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
 
-		$sql = "SELECT * FROM ilsontdit ORDER BY date_report DESC LIMIT :maxquotes ";
+		$sql = "SELECT * FROM ilsontdit WHERE deleted=0 ORDER BY date_report DESC LIMIT :maxquotes ";
 		try {
 			$stmt = $this->db->prepare($sql);
 			$maxquotes = 3;
