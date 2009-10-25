@@ -9,8 +9,9 @@ CREATE TABLE IF NOT EXISTS `location` (
   `user_mask` int(10) unsigned NOT NULL,
   `proxy_mask` int(10) unsigned default NULL,
   `location` varchar(255) character set utf8 collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `user_ip` (`user_ip`,`proxy_ip`,`user_mask`,`proxy_mask`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
