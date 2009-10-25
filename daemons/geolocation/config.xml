@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<daemon>
+	<load class="GeolocationDaemon" file="GeolocationDaemon.class.php" />
+	<load class="GeolocationFactory" file="GeolocationFactory.class.php" />
+	<load class="GeolocationInfo" file="GeolocationInfo.class.php" />
+
+	<listen event="running" class="GeolocationDaemon" />
+</daemon>
+
