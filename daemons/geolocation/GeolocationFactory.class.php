@@ -53,8 +53,8 @@ class GeolocationFactory {
 					o.user_id AS user_id,
 					IF (
 						p.value IS NULL OR p.value = 'b:1;',
-						COALESCE(l.location, :fallback),
-						:fallback
+						l.location,
+						NULL
 					) AS location
 				FROM
 					onlineusers o
@@ -72,7 +72,6 @@ class GeolocationFactory {
 			GROUP BY
 				user_id
 		");
-		$sth->bindValue(":fallback", _("Inconnu"));
 		$sth->execute();
 
 		while($row = $sth->fetch()) {
