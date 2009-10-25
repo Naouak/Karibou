@@ -28,8 +28,10 @@ class OnlineUsersList extends Model
 			Debug::kill($e->getMessage());
 		}
 		$onlineusers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$g = GeolocationFactory::getInstance();
 		foreach($onlineusers as &$user) {
 			$user["object"] = $this->userFactory->prepareUserFromId($user["user_id"]);
+			$g->prepareForUser($user["object"]);
 			$user["message"] = $user["message"];
 			if (isset($user["mood"]) && ($user["mood"] != -1)) {
 				$tmp = gettext("MOOD_" . $moods[$user["mood"]]);
