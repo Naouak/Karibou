@@ -82,6 +82,11 @@ class GeolocationFactory {
 				unset($this->hungry[$row['user_id']]);
 			}
 		}
+		foreach ($this->hungry as $key=>$val) {
+			$this->hungry[$key]->setLocation(_("Inconnu"));
+			$this->sate[$key] = $this->hungry[$key];
+			unset($this->hungry[$key]);
+		}
 	}
 
 	public function ipToLocation($ip, $proxy) {
