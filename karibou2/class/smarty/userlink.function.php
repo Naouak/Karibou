@@ -81,7 +81,7 @@ function userlink($params , $appList = FALSE)
 					$g = GeolocationFactory::getInstance();
 					if(isset($params["showlocation"]) && ($params["showlocation"] === true)) {
 						$info = $g->prepareForUser($user);
-						if($info->getLocation() != "") $userlink .= "<br />"._('Emplacement').": ".addslashes($info->getLocation());
+						if($info->getLocation() != "") $userlink .= "<br />"._('Où ?')." ".addslashes($info->getLocation());
 					}
 					$userlink .= "</span>','hint_profile');\" onMouseout=\"hidehint()\"";
 				}
