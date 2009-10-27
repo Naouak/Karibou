@@ -71,17 +71,19 @@ function userlink($params , $appList = FALSE)
 					$userlink .= " onMouseover=\"showhint('<img src=\'".$user->getPicturePath()."\' /><span>";
 					$userlink .= $fullName;
 					if ($appList) {
-						$userlink .= "<br />Groups :";
 						$groups = $appList->userFactory->getGroupsFromUser($user);
-						foreach ($groups as $group) {
-							if (abs($group->getLeft() - $group->getRight()) == 1)
-								$userlink .= " " . $group->getName();
+						if(!empty($groups)) {
+							$userlink .= "<br /></span><span>Groups :";
+							foreach ($groups as $group) {
+								if (abs($group->getLeft() - $group->getRight()) == 1)
+									$userlink .= " " . $group->getName();
+							}
 						}
 					}
 					$g = GeolocationFactory::getInstance();
 					if(isset($params["showlocation"]) && ($params["showlocation"] === true)) {
 						$info = $g->prepareForUser($user);
-						if($info->getLocation() != "") $userlink .= "<br />"._('Où ?')." ".addslashes($info->getLocation());
+						if($info->getLocation() != "") $userlink .= "<br /></span><span>".addslashes($info->getLocation());
 					}
 					$userlink .= "</span>','hint_profile');\" onMouseout=\"hidehint()\"";
 				}
