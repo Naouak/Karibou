@@ -563,7 +563,6 @@ var Karibou = Class.create({
 		}
 		var tabTitleNode = document.createElement("span");
 		var aNode = document.createElement("a");
-		$(aNode).observe('click', this.tabLinkClicked.bind(this, tabName));
 		tabTitleNode.setAttribute("tabName", tabName);
 		tabTitleNode.setAttribute("class", "activeTabLink");
 		tabTitleNode.className = "activeTabLink";
@@ -582,15 +581,10 @@ var Karibou = Class.create({
 		} else {
 			tabObj = new KTab(this, tabName, tabNode);
 		}
+		$(aNode).observe('click', this.focusTab.bind(this, tabObj));
 		this.tabs[tabName] = tabObj;
 		this.currentTab = tabObj;
 		this.save();
-	},
-	tabLinkClicked: function (tabName) {
-		var tab = this.tabs[tabName];
-		if (tab)
-			return this.focusTab(tab);
-		return false;
 	},
 	closeCurrentTab: function () {
 		var tabCount = 0;
