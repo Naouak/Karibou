@@ -73,7 +73,7 @@ function userlink($params , $appList = FALSE)
 					if ($appList) {
 						$groups = $appList->userFactory->getGroupsFromUser($user);
 						if(!empty($groups)) {
-							$userlink .= "<br /></span><span>Groups :";
+							$userlink .= "<br /></span><span>"._("Groupes")." :";
 							foreach ($groups as $group) {
 								if (abs($group->getLeft() - $group->getRight()) == 1)
 									$userlink .= " " . $group->getName();
