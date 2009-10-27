@@ -57,12 +57,9 @@ function filterAppList (evt) {
 	}
 }
 
-function tabLinkClickedBack (evt) {
-	karibou.tabLinkClicked(evt);
-}
 {/literal}
 Event.observe(window, "load", function() {ldelim}
-	karibou = new Karibou("{kurl page="appmainview"}", "{kurl page="appjsview"}", "{kurl page="appsubmit"}", "{kurl page="appconfig"}", "{kurl page="appjsconfigview"}", "{kurl page="appgetdata"}", "{kurl page="appmodify"}", "{kurl page="appdelete"}", "{kurl page="savehome"}", tabLinkClickedBack);
+	karibou = new Karibou("{kurl page="appmainview"}", "{kurl page="appjsview"}", "{kurl page="appsubmit"}", "{kurl page="appconfig"}", "{kurl page="appjsconfigview"}", "{kurl page="appgetdata"}", "{kurl page="appmodify"}", "{kurl page="appdelete"}", "{kurl page="savehome"}");
 	karibou.loadUrl("{kurl page="homeconfig"}");
 {rdelim});
 
