@@ -32,7 +32,7 @@ if(chifoumi == undefined){
 					while(i<listeners.length){
 						listeners[i] = listeners[++i];
 					}
-					delete listeners[i];
+					delete listeners[list];
 					that.listenerscount--;
 					return;
 				}
