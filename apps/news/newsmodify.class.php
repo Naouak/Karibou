@@ -23,7 +23,20 @@ class NewsModify extends Model
 		//Chargement de la news a modifier a partir du SQL
 		$this->article->loadFromId($this->db, $this->args['id']);
 		
-		if ($this->article->getAuthorId() == $this->currentUser->getId())
+        $this->currentuser = $this->userFactory->getCurrentUser() ;
+        $admingroups = $this->currentuser->getAllAdminGroups($this->db);
+        $groups = $this->userFactory->getGroups();
+        $array = array();
+        $i=0;
+        foreach ($admingroups as $key)
+        {
+            $array[$i][name] = $key->getName();
+            $array[$i][Id] = $key->getId();
+            $i++;
+        }
+        $this->assign('Admin',$array);
+
+		if (($this->article->getAuthorId() == $this->currentUser->getId()) || (isset($array)))
 		{
 			//Affectation des variables a afficher
 			$this->assign("theNewsToModify", $this->article);
