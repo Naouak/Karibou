@@ -26,14 +26,13 @@ class NewsAdd extends Model
 
 
         $admingroups = $this->currentuser->getAllAdminGroups($this->db);
-		$groups = $this->userFactory->getGroups();
         $array = array();
         $i=0;
         foreach ($admingroups as $key)
         {
 
-            $array[$i][name] = $key->getName();
-            $array[$i][Id] = $key->getId();
+            $array[$i]["name"] = $key->getName();
+            $array[$i]["Id"] = $key->getId();
             $i++;
             
         }
