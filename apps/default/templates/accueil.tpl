@@ -22,26 +22,40 @@
 <script language="javascript">
 var karibou = null;
 
-function filterAppList (evt) {ldelim}
-//	alert(evt.keyCode);
+{literal}
+function filterAppList (evt) {
 	var val = document.getElementById("filterAppList").value.toLowerCase();
 	var targetNode = document.getElementById("homeAppList");
 	var subNode = targetNode.firstChild;
-	while (subNode) {ldelim}
-		if (subNode.nodeType == Node.ELEMENT_NODE) {ldelim}
-			if (String(subNode.innerHTML).toLowerCase().indexOf(val) == -1)
+	var count = 0;
+	var foundNode = null;
+	while (subNode) {
+		if (subNode.nodeType == Node.ELEMENT_NODE) {
+			if (String(subNode.innerHTML).toLowerCase().indexOf(val) == -1) {
 				subNode.style.display = "none";
-			else
+			} else {
 				subNode.style.display = "block";
-		{rdelim}
+				count++;
+				foundNode = subNode;
+			}
+		}
 		subNode = subNode.nextSibling;
-	{rdelim}
-{rdelim}
+	}
+	if ((evt) && (count == 1)) {
+		if (evt.keyCode == 13) {
+			var appName = foundNode.attributes.getNamedItem("kappName").nodeValue;
+			karibou.instanciateApplication(appName);
+			document.getElementById("filterAppList").value = "";
+			document.getElementById("filterAppList").focus();
+			filterAppList(null);
+		}
+	}
+}
 
-function tabLinkClickedBack (evt) {ldelim}
+function tabLinkClickedBack (evt) {
 	karibou.tabLinkClicked(evt);
-{rdelim}
-
+}
+{/literal}
 Event.observe(window, "load", function() {ldelim}
 	karibou = new Karibou("{kurl page="appmainview"}", "{kurl page="appjsview"}", "{kurl page="appsubmit"}", "{kurl page="appconfig"}", "{kurl page="appjsconfigview"}", "{kurl page="appgetdata"}", "{kurl page="appmodify"}", "{kurl page="appdelete"}", "{kurl page="savehome"}", tabLinkClickedBack);
 	karibou.loadUrl("{kurl page="homeconfig"}");
@@ -133,7 +147,7 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 <input id="homeAppAddCloseButton" type="button" value="Close" onclick="new Effect.toggle($('homeAppAdder'), 'appear'); new Effect.toggle($('homeAppAddButton'));  return false;" /><br />
 <div id="homeAppList">
 {foreach key=appName item=appObject from=$apps}
-<p class="homeAppChoice">
+<p class="homeAppChoice" kappName="{$appName}">
 {$appObject->getName("$lang")} : {$appObject->getDesc("$lang")}
 &nbsp;&nbsp;&nbsp;
 <a onclick="karibou.instanciateApplication('{$appName}'); $('filterAppList').focus(); return false;">Ajouter</a> <br />
