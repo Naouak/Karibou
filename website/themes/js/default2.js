@@ -515,7 +515,7 @@ var KApp = Class.create({
 
 // Class responsible for loading the KApp classes, handling the various loaded applications on the screen...
 var Karibou = Class.create({
-	initialize: function(appContentUrl, appJSUrl, appSubmitUrl, appSetConfigUrl, appGetConfigUrl, appGetModifyUrl, appSetModifyUrl, appDeleteUrl, saveHomeUrl, tabLinkClicked) {
+	initialize: function(appContentUrl, appJSUrl, appSubmitUrl, appSetConfigUrl, appGetConfigUrl, appGetModifyUrl, appSetModifyUrl, appDeleteUrl, saveHomeUrl) {
 		this.appDeleteUrl = appDeleteUrl;
 		this.appSubmitUrl = appSubmitUrl;
 		this.appContentUrl = appContentUrl;
@@ -532,7 +532,6 @@ var Karibou = Class.create({
 		this.appObjs = new Array();						// [KApp objects]
 		this.tabsContainer = document.getElementById("tabsContainer");
 		this.tabsBar = document.getElementById("tabsBar");
-		this.tabLinkClickedCallback = tabLinkClicked;
 		this.tabs = {}; 						// {tab name => KTab object}
 		this.currentTab = null;
 		this.appIds = {};						// {app name => max used ID}
@@ -564,7 +563,7 @@ var Karibou = Class.create({
 		}
 		var tabTitleNode = document.createElement("span");
 		var aNode = document.createElement("a");
-		$(aNode).observe('click', this.tabLinkClickedCallback);
+		$(aNode).observe('click', this.tabLinkClicked.bind(this, tabName));
 		tabTitleNode.setAttribute("tabName", tabName);
 		tabTitleNode.setAttribute("class", "activeTabLink");
 		tabTitleNode.className = "activeTabLink";
@@ -587,9 +586,8 @@ var Karibou = Class.create({
 		this.currentTab = tabObj;
 		this.save();
 	},
-	tabLinkClicked: function (evt) {
-		var elem = Event.element(evt);
-		var tab = this.tabs[elem.innerHTML];
+	tabLinkClicked: function (tabName) {
+		var tab = this.tabs[tabName];
 		if (tab)
 			return this.focusTab(tab);
 		return false;
