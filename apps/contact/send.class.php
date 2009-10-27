@@ -15,19 +15,21 @@ class Send extends FormModel
 {
 	function build()
 	{
-		if( isset($_POST['from'], $_POST['subject'], $_POST['message']) )
+		$from = filter_input(INPUT_POST, "from", FILTER_VALIDATE_EMAIL);
+		$subject = filter_input(INPUT_POST, "subject", FILTER_SANITIZE_STRING);
+		$message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_STRING);
+		if( ($from !== false) && ($subject !== false) && ($message !== false) )
 		{
 			$app = $this->appList->getApp($this->appname);
 			$config = $app->getConfig();
 		
 			$mail = new PHPMailer();
 			$mail->CharSet = "UTF-8";
-			$mail->From = $_POST['from'];
-      $mail->FromName = $_POST['from'];
-			//$mail->addAddress($config["email"]);
+			$mail->From = $from;
+			$mail->FromName = $from;
 			$mail->addAddress($GLOBALS['config']['contactemail']);
-			$mail->Subject = stripslashes($_POST['subject']);
-			$mail->Body = stripslashes($_POST['message']);
+			$mail->Subject = $subject;
+			$mail->Body = "Karibou speaking :\r\n" . $message;
 			
 			if( !$mail->Send() )
 			{
