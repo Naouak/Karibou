@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <app>
-	<permissions default="_SELF_WRITE_" logged="_SELF_WRITE_" />
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
 
 	<load class="Chifoumi" file="chifoumi.class.php" />
 	<load class="ChifoumiConfig" file="config.class.php" />
