@@ -256,7 +256,7 @@ if(chifoumi == undefined){
 		//Bouton de confirmation
 		var button = document.createElement("input");
 		button.type = "button";
-		button.value = "##Chalenge##";
+		button.value = "##Challenge##";
 		button.observe("click",submitcallback);
 		
 		dom.appendChild(button);

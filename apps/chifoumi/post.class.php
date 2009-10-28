@@ -20,13 +20,17 @@ class ChifoumiPost extends Model
 							:bet as bet, 
 							:weapon as weapon, 
 							NOW() as dateofchallenge, 
-							user_id as challenged
+							ou.user_id as challenged
 						FROM
-							onlineusers
+							onlineusers ou
+						LEFT JOIN
+							chifoumi c ON c.user=ou.user_id AND c.acepted=0
 						WHERE
-							user_id <> :user
+							ou user_id <> :user
+						GROUP BY
+							ou.user_id
 						ORDER BY 
-							RAND()
+							(COUNT(c.id)+1)*RAND() ASC
 						LIMIT 1
 				");
 				
