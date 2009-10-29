@@ -3,6 +3,9 @@ class ChifoumiChallenge extends Model
 {
 	public function build()
 	{
+		if (!$this->currentUser->isLogged()) {
+			return;
+		}
 		//Pour fournir le JSON à la fin
 		$result = Array();
 	
@@ -14,18 +17,21 @@ class ChifoumiChallenge extends Model
 		}
 		if(!empty($id) && ($weapon) >= 0 && $weapon <= 3 ){
 			$result["challenge"] = "yes";
-			$stmt = $this->db->prepare("SELECT * FROM chifoumi WHERE id = :id LIMIT 1");
+			$stmt = $this->db->prepare("SELECT * FROM chifoumi WHERE id = :id AND acepted=0 AND dateofresponse IS NULL LIMIT 1");
 			$stmt->bindValue(":id",$id);
 			$stmt->execute();
+			$data = $stmt->fetch();
+			if ($data === false)
+				return;
+			if ($data["challenged"] != $this->currentUser->getID())
+				return;
+
 			
 			$stmt2 = $this->db->prepare("UPDATE chifoumi SET defense = :def, acepted = :accepted, dateofresponse = NOW() WHERE id = :id");
 			$stmt2->bindValue(":id",$id);
 			$stmt2->bindValue(":def",$this->args["weapon"]);
 			$stmt2->bindValue(":accepted",($this->args["weapon"] != 3));
 			$stmt2->execute();
-			
-			$data = $stmt->fetch();
-			
 			
 			if($weapon == 3){
 				$result["result"] = -2;
