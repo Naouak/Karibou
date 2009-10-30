@@ -1,5 +1,5 @@
-name_fr ="Sélecteur de langue"
-name_en ="Language selection"
+name_fr ="Mes préferenes"
+name_en ="My preferences"
 desc_fr ="Choisir la langue de Karibou"
-desc_en ="Chose Karibou's language"
+desc_en ="Choose your Karibou preferences"
 view ="mini"
