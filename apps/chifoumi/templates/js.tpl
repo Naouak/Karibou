@@ -193,12 +193,17 @@ if(chifoumi == undefined){
 					method: 'post',
 					parameters: "bet="+bet.value+"&weapon="+select.selectedIndex,
 					onSuccess: function(transport){
-						var response = transport.responseText.evalJSON();
-						if(response.posted == 1){
-							chifoumi.pullerInstance.message("##Challenged accepted##");
+						try{
+							var response = transport.responseText.evalJSON();
+							if(response.posted == 1){
+								chifoumi.pullerInstance.message("##Challenged accepted##");
+							}
+							else{
+								chifoumi.pullerInstance.message("##Challenged refused##");
+							}
 						}
-						else{
-							chifoumi.pullerInstance.message("##Challenged refused##");
+						catch(e){
+							alert("##Please report this problem to administrators:\n##"+e.message);
 						}
 					}
 				}
