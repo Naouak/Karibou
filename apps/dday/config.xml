@@ -4,8 +4,6 @@
 
     <load class="Dday" file="dday.class.php" />
     <load class="DDaySubmit" file="ddaysubmit.class.php" />
-    <load class="DDayModify" file="ddaymodify.class.php" />
-    <load class="actionmodify" file="actionmodify.class.php" />
     <load class="NumberArgument" file="../arguments/numberargument.class.php" />
 
     
@@ -14,18 +12,9 @@
     
     <view name="mini" class="Dday" template="dday.tpl" />
     <view name="vcal" class="Dday" template="vcal.tpl" />
-    <view name="ddmodify" class="DDayModify" template="modify.tpl" />
 
     <page name="vcal" view="vcal" contenttype="text/calendar; charset=UTF-8">
         <header app="header" view="empty" />
 	<footer app="footer" view="empty" />
     </page>
-    
-    <page name="ddmodify" view="ddmodify">
-        <argument name="id" class="NumberArgument" />
-    </page>
-
-    <form action="modify" class="actionmodify">
-        <redirect app="default" page="" />
-    </form>
 </app>

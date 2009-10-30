@@ -10,7 +10,7 @@
 {/if}
 				</b></td>
 				{if $dd.user_id == $currentuser || $isadmin}
-                    <br /><a href="{kurl app="dday" page="ddmodify" id=$dd.id}"> modifier </a>
+				<br /><a onclick="$app(this).modify({$dd.id}); return false;"> modifier </a>
 				{/if}
 				</tr>
 	{/foreach}
