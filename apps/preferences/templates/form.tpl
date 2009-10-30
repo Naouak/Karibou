@@ -66,9 +66,9 @@
 		</fieldset>
 	</form>
 	
-	<div class="changepassword">
-		<h2>##CHANGEPASSWORD##</h2>
+	<fieldset>
+		<legend>##CHANGEPASSWORD##</legend>
 		<a href="{kurl app='changepassword'}">##CHANGEPASSWORD##</a>
-	</div>
+	</fieldset>
 	
 </div>
