@@ -1,27 +1,39 @@
 <h1>##PREFERENCES##</h1>
 <div class="preferences">
-	<fieldset>
-		<legend>##LANGUAGE##</legend>
-		<div class="flags" style="width: 200px;">
-			<form action="{kurl app="preferences" action=post}" method="post" name="french">
-				<input type="hidden" name="lang" value="fr" />
-				<div class="french flag" title="Français"><a href="#" onClick="javascript:document.french.submit(); return false;"><span>Français</span></a></div>
-			</form>
-			<form action="{kurl app="preferences" action=post}" method="post" name="toEnglish">
-				<input type="hidden" name="lang" value="en" />
-				<div class="english flag" title="English"><a href="#" onClick="javascript:document.toEnglish.submit(); return false;"><span>English</span></a></div>
-			</form>
-		</div>
-		<br />
-	</fieldset>
-	<fieldset>
-		<legend>##CONFIGURE_EMAILFW##</legend>
-		<div class="emailforward"><a href="{kurl app="emailforward"}">##CONFIGURE_EMAILFW##</a></div>
-	</fieldset>
-
-
-	<fieldset>
-		<legend>##CHANGEPASSWORD##</legend>
-		<div class="changepassword"><a href="{kurl app="changepassword"}">##CHANGEPASSWORD##</a></div>
-	</fieldset>
+	<form action="{kurl app='preferences' action=post}" method="post">
+		<fieldset>
+			<legend>##LANGUAGE##</legend>
+				<input type="radio" name="lang" value="fr" id="french" />
+				<label for="french">
+					<span>Français</span>
+				</label>
+				<br />
+				<input type="radio" name="lang" value="en" id="english" />
+				<label for="english">
+					<span>English</span>
+				</label>
+		</fieldset>	
+		<fieldset>
+			<legend>##Localization##</legend>
+			<input type="radio" name="localization" value="true" id="yloc" />
+			<label for="yloc">
+				<span>##I want to be localized##</span>
+			</label>
+			<br />
+			<input type="radio" name="localization" value="true" id="nloc" />
+			<label for="nloc">
+				<span>##I don't want to be localized##</span>
+			</label>
+		</fieldset>
+		<fieldset>
+			<legend>##Validation##</legend>
+			<input type="submit" value="##Save my preferences##" />
+		</fieldset>
+	</form>
+	
+	<div class="changepassword">
+		<h2>##CHANGEPASSWORD##</h2>
+		<a href="{kurl app='changepassword'}">##CHANGEPASSWORD##</a>
+	</div>
+	
 </div>
