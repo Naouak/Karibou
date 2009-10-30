@@ -30,7 +30,6 @@ class IlsontditSubmit extends AppContentModel {
 	}
 
 	public function delete ($key) {
-		print("Calling delete($key)");
 		$query = $this->db->prepare("UPDATE ilsontdit SET `deleted`=1 WHERE id=:id LIMIT 1");
 		$query->bindValue(":id", intval($key));
 		if (!$query->execute()) {
