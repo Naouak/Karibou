@@ -12,6 +12,14 @@ msgstr ""
 msgid "PREFERENCES_LANGUAGE"
 msgstr "Langue"
 
-msgid "PREFERENCES"
+ "PREFERENCES"
 msgstr "Préférences"
 
+msgid "Localization"
+msgstr "Localisation"
+
+msgid "I want to be localized"
+msgstr "Je veux être localisé(e)"
+
+msgid "I don't want to be localized"
+msgstr "Je ne veux pas être localisé(e)"
