@@ -19,7 +19,7 @@ class PreferencesLarge extends Model
 	public function build()
 	{
 		$this->assign('lang', $this->userFactory->getCurrentUser()->getPref('lang') );
-		$this->assign('localization', $this->userFactory->getCurrentUser()->getPref('localize'));
+		$this->assign('localization', var_export($this->userFactory->getCurrentUser()->getPref('localize', true), true));
 		$this->assign('permission', $this->permission);
 	}
 }

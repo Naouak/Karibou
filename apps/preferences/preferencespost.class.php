@@ -19,14 +19,15 @@ class PreferencesPost extends FormModel
 	public function build()
 	{
 		$currentUser = $this->userFactory->getCurrentUser();
-		$prefName = array('lang','localize');
+		$prefName = array('lang','localize'); // wtf ??
 		
 		$lang = filter_input(INPUT_POST,"lang",FILTER_SANITIZE_SPECIAL_CHARS);
 		$currentUser->setPref($prefName[0], $lang);
 
 		$loc = filter_input(INPUT_POST, "localization", FILTER_SANITIZE_SPECIAL_CHARS);
-		$currentUser->setPref($prefName[1], $loc);
+		$currentUser->setPref($prefName[1], $loc == "true");
 
+		$currentUser->savePrefs($this->db);
 	}
 }
 ?>
