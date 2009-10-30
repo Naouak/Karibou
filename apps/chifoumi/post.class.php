@@ -26,7 +26,7 @@ class ChifoumiPost extends Model
 						LEFT JOIN
 							chifoumi c ON c.user=ou.user_id AND c.acepted=0
 						WHERE
-							ou user_id <> :user
+							ou.user_id <> :user
 						GROUP BY
 							ou.user_id
 						ORDER BY 
