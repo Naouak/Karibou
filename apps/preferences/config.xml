@@ -1,5 +1,5 @@
 <app>	
-	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
 
 	<load class="PreferencesLarge" file="preferenceslarge.class.php" />
 	<load class="PreferencesPost" file="preferencespost.class.php" />
