@@ -22,7 +22,6 @@
 	}
 	
 	.preferences .changepassword h2, .preferences legend{
-		position: absolute;
 		color: green;
 		font-size: 12pt;
 		background: white;
