@@ -18,10 +18,15 @@
 
 class Votes extends Model {
     public function build() {
-        $sql= $this->db->prepare("INSERT INTO votes (key_id,user,vote) VALUES (:id,:user,:vote)");
-        $sql->bindValue(":id",$this->args["id"]);
-        $sql->bindValue(":user",$this->currentUser->getId());
-        $sql->bindValue(":vote",$this->args["votes"]);
-        $sql->execute();
+        if(abs($this->args["votes"])==1){
+            $sql= $this->db->prepare("INSERT INTO votes (key_id,user,vote) VALUES (:id,:user,:vote)");
+            $sql->bindValue(":id",$this->args["id"]);
+            $sql->bindValue(":user",$this->currentUser->getId());
+            $sql->bindValue(":vote",$this->args["votes"]);
+            $sql->execute();
+        }
+        else {
+            throw new Exception("Qui cherche à contourner le système de vote, allez on se dénonce ... ");
+        }
     }
 }
