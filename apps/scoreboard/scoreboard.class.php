@@ -8,10 +8,6 @@
 
 class Scoreboard extends Model {
 	public function build() {
-		if(!isset($this->args["from"])) $this->args["from"] = "top";
-		if(!isset($this->args["number"])) $this->args["number"] = 10;
-		if(!isset($this->args["hide"])) $this->args["hide"] = false;
-
 		$app = $this->args["source"];
 		if (($app == "") || ($app == "all")) $app = null;
 
