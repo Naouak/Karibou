@@ -8,7 +8,7 @@ var videoClass = Class.create(KApp, {
 		this.getElementById("videoObject").style.visibility = "hidden";
 	},
 	afterOverlay: function() {
-		this.getElementById("videoObject").display = "block";
+		this.getElementById("videoObject").style.visibility = "";
 	}
 });
 {/literal}
