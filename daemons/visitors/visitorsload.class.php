@@ -43,9 +43,7 @@ class VisitorsLoad extends Listener
 				VALUES
 					(:user_id, :time, INET_ATON(:user_ip), INET_ATON(:proxy_ip))
 				ON DUPLICATE KEY UPDATE
-					timestamp = :time,
-					user_ip = INET_ATON(:user_ip),
-					proxy_ip = INET_ATON(:proxy_ip)
+					timestamp = :time
 			");
 
 			$insert->bindValue(":user_ip", (isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? $_SERVER["HTTP_X_FORWARDED_FOR"] : 
