@@ -28,7 +28,7 @@ class Photos extends AlbumBase {
     }
 
 
-    public function getFilename() {
+    public function getFileName() {
         $path="/";
         $parent = $this->parent;
         while($parent != NULL){

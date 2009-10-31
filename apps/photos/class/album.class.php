@@ -39,13 +39,13 @@ class album extends AlbumBase {
     public function addPicture() {
     }
 
-    public function canAddPicture(User $user) {
+    public function can(User $user,$what) {
         $user_id = $user->getId();
         $groups = $user->getGroups($this->db);
 
         $perm = $this->db->prepare("SELECT * FROM album_acl WHERE id_album = :id AND permission=:perm");
         $perm->bindValue(":id",$this->id);
-        $perm->bindValue(":perm","écriture");
+        $perm->bindValue(":perm",$what);
         $perm->execute();
         $acl = $perm->fetchAll();
 
@@ -60,6 +60,14 @@ class album extends AlbumBase {
 
         return false;
 
+    }
+
+    public function getAllPictures() {
+        $sql = $this->db->prepare("SELECT id FROM pictures WHERE album=:album");
+        $sql->bindValue(":album",$this->id);
+        $sql->execute();
+        $pictures = $sql->fetchAll();
+        return $pictures;
     }
 
 }
