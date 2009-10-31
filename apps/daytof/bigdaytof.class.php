@@ -30,15 +30,22 @@ class BigDayTof extends Model
 				$path = "$tofdir/$file";
 
 				/* Here we test if the .png file exists, because at some point we
-				   switched from PNG to JPEG because of file size issues */
+				   switched from PNG to JPEG because of file size issues
+				   And we also support .gif files... */
 				if(is_readable("$path.png")) {
 					$filename = "$file.png";
+					$mfilename = "m$file.png";
+				} else if (is_readable("$path.gif")) {
+					$filename = "$file.gif";
+					$mfilename = "m$file.jpg";
 				} else {
 					$filename = "$file.jpg";
+					$mfilename = "m$file.jpg";
 				}
 
 				$photos[$id]["user"] = $this->userFactory->prepareUserFromId($photos[$id]["user_id"]);
 				$photos[$id]["photo"] = $filename;
+				$photos[$id]["mphoto"] = $mfilename;
 			}
 			$this->assign("tofarray", $photos);
 		}
