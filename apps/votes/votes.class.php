@@ -23,10 +23,16 @@ class Votes extends Model {
             $sql->bindValue(":id",$this->args["id"]);
             $sql->bindValue(":user",$this->currentUser->getId());
             $sql->bindValue(":vote",$this->args["votes"]);
-            $sql->execute();
+            if($sql->execute()) {
+            $this->assign("status","ok");
+            }
+            else{
+            $this->assign("status","insert error");
+            }
         }
         else {
             throw new Exception("Qui cherche à contourner le système de vote, allez on se dénonce ... ");
+            $this->assign("status","codejacking");
         }
     }
 }

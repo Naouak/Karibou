@@ -9,7 +9,7 @@
     <view name="votes_head" template="html_head.tpl" />
     <hook name="html_head" view="votes_head" />
 
-    <view name="default" class="Votes" template="vide.tpl" />
+    <view name="default" class="Votes" template="default.tpl" />
 
     <page view="default">
         <argument name="id" class="NumberArgument" />
