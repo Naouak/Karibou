@@ -23,11 +23,15 @@ class Votes extends Model {
 			$sql->bindValue(":id",$this->args["id"]);
 			$sql->bindValue(":user",$this->currentUser->getId());
 			$sql->bindValue(":vote",$this->args["votes"]);
-			if($sql->execute()) {
-				$this->assign("status","ok");
-			}
-			else{
-				$this->assign("status","insert error");
+			try {
+				if($sql->execute()) {
+					$this->assign("status","ok");
+				}
+				else{
+					$this->assign("status","insert error");
+				}
+			} catch (PDOException $e) {
+				$this->assign("status", "SQL error");
 			}
 		}
 		else {

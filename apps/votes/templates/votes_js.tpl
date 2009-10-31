@@ -1,27 +1,27 @@
-alert("Piou piou piou");
 {literal}
 Votes = {
-	more: function (id) {
+	_base: function (vote, id, elem) {
 {/literal}
-		var url = "{kurl app="votes" page=""}/" + id + ",1";
+		var url = "{kurl app="votes" page=""}/" + id + "," + vote;
 {literal}
 		new Ajax.Request(url, { onSuccess: function(response) {
-				alert(response.responseText);
+				if (response.responseText == "ok") {
+					alert("##VOTE_OK##");
+					if (elem != undefined) {
+						new Effect.toggle(elem);
+					}
+				} else {
+					alert("##VOTE_ERROR##");
+				}
 			}
 		});
 	},
+	more: function (id, elem) {
+		Votes._base(1, id, elem);
+	},
 	less: function (id) {
-{/literal}
-		var url = "{kurl app="votes" page=""}/" + id + ",-1";
-{literal}
-		new Ajax.Request(url, { onSuccess: function(response) {
-				alert(response.responseText);
-			}
-		});
+		Votes._base(-1, id, elem);
 	}
 };
-
 {/literal}
-Votes.more("test");
-Votes.less("test");
 
