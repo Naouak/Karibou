@@ -5,10 +5,19 @@
     <load class="Votes" file="votes.class.php" />
     <load class="[arguments]/NumberArgument" />
 
-    <view name="vide" class="Votes" template="vide.tpl" />
+    <view name="votes_js" template="votes_js.tpl" />
+    <view name="votes_head" template="html_head.tpl" />
+    <hook name="html_head" view="votes_head" />
 
-    <page view="vide">
+    <view name="default" class="Votes" template="vide.tpl" />
+
+    <page view="default">
         <argument name="id" class="NumberArgument" />
         <argument name="votes" class="NumberArgument" />
+    </page>
+
+    <page view="votes_js" name="votesJS">
+	    <header app="header" view="empty" />
+	    <footer app="header" view="empty" />
     </page>
 </app>
