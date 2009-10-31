@@ -42,7 +42,7 @@ class MCPost extends FormModel
 			if ((isset($message)) && (strlen(trim($message)) > 0) && !$flooding)
 			{
 				try {
-					$this->db->query("LOCK TABLE minichat, scores WRITE");
+					$this->db->query("LOCK TABLE minichat READ, scores WRITE");
 				} catch(PDOException $e) {
 				}
 
