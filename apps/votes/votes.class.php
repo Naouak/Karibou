@@ -17,22 +17,22 @@
 
 
 class Votes extends Model {
-    public function build() {
-        if(abs($this->args["votes"])==1){
-            $sql= $this->db->prepare("INSERT INTO votes (key_id,user,vote) VALUES (:id,:user,:vote)");
-            $sql->bindValue(":id",$this->args["id"]);
-            $sql->bindValue(":user",$this->currentUser->getId());
-            $sql->bindValue(":vote",$this->args["votes"]);
-            if($sql->execute()) {
-            $this->assign("status","ok");
-            }
-            else{
-            $this->assign("status","insert error");
-            }
-        }
-        else {
-            throw new Exception("Qui cherche à contourner le système de vote, allez on se dénonce ... ");
-            $this->assign("status","codejacking");
-        }
-    }
+	public function build() {
+		if(abs($this->args["votes"])==1){
+			$sql= $this->db->prepare("INSERT INTO votes (key_id,user,vote) VALUES (:id,:user,:vote)");
+			$sql->bindValue(":id",$this->args["id"]);
+			$sql->bindValue(":user",$this->currentUser->getId());
+			$sql->bindValue(":vote",$this->args["votes"]);
+			if($sql->execute()) {
+				$this->assign("status","ok");
+			}
+			else{
+				$this->assign("status","insert error");
+			}
+		}
+		else {
+			throw new Exception("Qui cherche à contourner le système de vote, allez on se dénonce ... ");
+			$this->assign("status","codejacking");
+		}
+	}
 }
