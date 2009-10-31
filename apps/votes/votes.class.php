@@ -31,7 +31,6 @@ class Votes extends Model {
 			}
 		}
 		else {
-			throw new Exception("Qui cherche à contourner le système de vote, allez on se dénonce ... ");
 			$this->assign("status","codejacking");
 		}
 	}
