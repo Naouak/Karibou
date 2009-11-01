@@ -16,8 +16,8 @@
  */
 
 class rumour extends Model {
-	public function build(){
-		$stmt = $this->args["random"] ? $this->db->prepare("SELECT *, RAND() AS rnd FROM (SELECT * FROM rumours order by `id` desc LIMIT :limit) AS s ORDER BY rnd LIMIT 1 ;") : $this->db->prepare("SELECT * FROM rumours order by `id` desc LIMIT :limit ;");
+	public function build() {
+		$stmt = $this->args["random"] ? $this->db->prepare("SELECT *, RAND() AS rnd FROM (SELECT * FROM rumours WHERE `deleted`=0 order by `id` desc LIMIT :limit) AS s ORDER BY rnd LIMIT 1 ;") : $this->db->prepare("SELECT * FROM rumours order by `id` desc LIMIT :limit ;");
 		$stmt->bindParam(":limit",intval($this->args["number"]),PDO::PARAM_INT);
 		try {
 			$stmt->execute();
@@ -25,7 +25,10 @@ class rumour extends Model {
 			Debug::kill($e->getMessage());
 		}
 		$rumours = $stmt->fetchAll();
+		print_r($rumours);
 		$this->assign("rumours",$rumours);
+		$this->assign("isadmin", $this->getPermission() == _ADMIN_);
+
 	}
 }
 ?>

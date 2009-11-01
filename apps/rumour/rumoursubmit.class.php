@@ -15,7 +15,31 @@
 //this is the class which permits to create the submit system
 class rumoursubmit extends AppContentModel
 {
-    // this fonction permits to use the information the user type
+	public function isModifiable($key) {
+		if ($this->app->getPermission() == _ADMIN_) {
+			return true;
+		}
+		return false;
+	}
+
+	public function modify ($key, $parameters) {
+		$query = $this->db->prepare("UPDATE rumours SET `rumours`=:rumours WHERE id=:id LIMIT 1");
+		$query->bindValue(":rumours", $parameters["rumours"]);
+		$query->bindValue(":id", intval($key));
+		if (!$query->execute()) {
+			Debug::kill("Error while updating");
+		}
+	}
+
+	public function delete ($key) {
+		$query = $this->db->prepare("UPDATE rumours SET `deleted`=1 WHERE id=:id LIMIT 1");
+		$query->bindValue(":id", intval($key));
+		if (!$query->execute()) {
+			Debug::kill("Error while updating");
+		}
+	}
+	
+	// this fonction permits to use the information the user type
 	public function submit($parameters)
 	{
         $stmt = $this->db->prepare("INSERT INTO rumours (rumours,`date`) VALUES (:secret, NOW());");
