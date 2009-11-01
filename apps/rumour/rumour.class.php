@@ -25,7 +25,6 @@ class rumour extends Model {
 			Debug::kill($e->getMessage());
 		}
 		$rumours = $stmt->fetchAll();
-		print_r($rumours);
 		$this->assign("rumours",$rumours);
 		$this->assign("isadmin", $this->getPermission() == _ADMIN_);
 
