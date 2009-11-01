@@ -41,11 +41,6 @@ class MCPost extends FormModel
 			}
 			if ((isset($message)) && (strlen(trim($message)) > 0) && !$flooding)
 			{
-				try {
-					$this->db->query("LOCK TABLE minichat READ, scores WRITE");
-				} catch(PDOException $e) {
-				}
-
 				/*****
 				 * Games section
 				 *****/
@@ -63,6 +58,8 @@ class MCPost extends FormModel
 
 				// Preums
 				if($message == "preums" or $message == "deuz" or $message == "troiz") {
+					$this->db->query("LOCK TABLES minichat_game WRITE, scores WRITE, minichat WRITE");
+
 					$res = array(
 						"preums" => false,
 						"deuz" => false,
@@ -77,7 +74,7 @@ class MCPost extends FormModel
 
 					$winners = array();
 
-					$sth = $this->db->query("SELECT id_auteur, post FROM minichat WHERE DATE(`time`) = DATE(NOW()) AND post IN ('preums', 'deuz', 'troiz') ORDER BY id ASC");
+					$sth = $this->db->query("SELECT id_auteur, post FROM minichat_game WHERE DATE(`time`) = DATE(NOW()) AND post IN ('preums', 'deuz', 'troiz') ORDER BY id ASC");
 					while($row = $sth->fetch()) {
 						if(!$res["preums"] && $row["post"] == "preums") {
 							$res["preums"] = true;
@@ -102,23 +99,53 @@ class MCPost extends FormModel
 					) {
 						ScoreFactory::addScoreToUser($this->currentUser, $scores[$message], "preums");
 					}
+
+					$sth = $this->db->prepare("
+						INSERT INTO
+							minichat_game (id_auteur, post, time)
+						VALUES
+							(:user, :message, NOW())
+					");
+					$sth->bindValue(":user", $this->currentUser->getID());
+					$sth->bindValue(":message", $message);
+					$sth->execute();
+
+					$this->db->query("UNLOCK TABLES");
+					$this->db->query("DELETE FROM minichat_game WHERE DATE(time) != DATE(NOW())");
 				}
 
 				// Dernz
 				if($message == "dernz") {
-					// Lookup for the last dernz
-					$sth = $this->db->prepare("SELECT id_auteur FROM minichat WHERE DATE(`time`) = DATE(NOW()) AND post = 'dernz' ORDER BY id DESC LIMIT 1");
+					$this->db->query("LOCK TABLES minichat WRITE, minichat_game WRITE, scores WRITE");
+
+					// Who did the last dernz ?
+					$sth = $this->db->prepare("SELECT id_auteur FROM minichat_game WHERE DATE(time) = DATE(NOW()) AND post = 'dernz' ORDER BY id DESC LIMIT 1");
+					$sth->execute();
+					$last_user = $sth->fetchColumn(0);
+
+					// Anti flood
+					$sth = $this->db->prepare("SELECT COUNT(*) FROM minichat_game WHERE DATE(time) = DATE(NOW()) AND post = 'dernz' AND id_auteur = :user");
 					$sth->bindValue(":user", $this->currentUser->getID());
 					$sth->execute();
+					$count = $sth->fetchColumn(0);
 
-					$sth2 = $this->db->prepare("SELECT COUNT(*) FROM minichat WHERE post = 'dernz' AND DATE(`time`) = DATE(NOW()) AND id_auteur = :user");
-					$sth2->bindValue(":user", $this->currentUser->getID());
-					$sth2->execute();
+					// Insert the last message
+					$sth = $this->db->prepare("
+						INSERT INTO
+							minichat_game (id_auteur, post, time)
+						VALUES
+							(:user, :message, NOW())
+					");
+					$sth->bindValue(":user", $this->currentUser->getID());
+					$sth->bindValue(":message", $message);
+					$sth->execute();
 
-					if($sth2->fetchColumn(0) == 0) {
-						if($row = $sth->fetch()) {
-							if($row["id_auteur"] != $this->currentUser->getID())
-								ScoreFactory::stealScoreFromUser($this->currentUser, $this->userFactory->prepareUserFromId($row["id_auteur"]), 3000, "preums");
+					$this->db->query("UNLOCK TABLES");
+					$this->db->query("DELETE FROM minichat_game WHERE DATE(time) != DATE(NOW())");
+
+					if($this->currentUser->getID() != $last_user && $count == 0) {
+						if($last_user != false) {
+							ScoreFactory::stealScoreFromUser($this->currentUser, $this->userFactory->prepareUserFromId($last_user), 3000, "preums");
 						} else {
 							ScoreFactory::addScoreToUser($this->currentUser, 3000, "preums");
 						}
@@ -143,11 +170,6 @@ class MCPost extends FormModel
 				{
 					Debug::kill($e->getMessage());
 				}
-
-					try {
-						$this->db->query("UNLOCK TABLES");
-					} catch(PDOException $e) {
-					}
 			}
 		}
 	}
