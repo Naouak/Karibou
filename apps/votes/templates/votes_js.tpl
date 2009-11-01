@@ -16,10 +16,10 @@ Votes = {
 		});
 	},
 	more: function (id, cback) {
-		Votes._base(1, id, elem, cback);
+		Votes._base(1, id, cback);
 	},
 	less: function (id, cback) {
-		Votes._base(-1, id, elem, cback);
+		Votes._base(-1, id, cback);
 	}
 };
 {/literal}
