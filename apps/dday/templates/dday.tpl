@@ -9,9 +9,11 @@
 {else} <font color="red">{t}D{/t}</font>
 {/if}
 				</b></td>
+				<td>
 				{if $dd.user_id == $currentuser || $isadmin}
 				<br /><a onclick="$app(this).modify({$dd.id}); return false;"> modifier </a>
 				{/if}
+				</td>
 				</tr>
 	{/foreach}
 	</table>
