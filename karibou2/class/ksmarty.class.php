@@ -16,6 +16,7 @@ require_once dirname(__FILE__).'/smarty/userlink.function.php';
 require_once dirname(__FILE__).'/smarty/khint.function.php';
 require_once dirname(__FILE__).'/smarty/t.block.php';
 require_once dirname(__FILE__).'/smarty/commentbox.function.php';
+require_once dirname(__FILE__).'/smarty/votesbox.function.php';
 require_once dirname(__FILE__).'/smarty/find.modifier.php';
 require_once dirname(__FILE__).'/smarty/highlight.modifier.php';
 
@@ -49,6 +50,7 @@ class KSmarty extends Smarty
         $this->register_modifier('find', 		'smarty_modifier_find');
         $this->register_modifier('highlight',	'smarty_modifier_highlight');
         $this->register_function('commentbox',	'smarty_function_commentbox');
+        $this->register_function('votesbox',	'smarty_function_votesbox');
 		
 		
 		if ($hookManager !== FALSE)
