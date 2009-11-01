@@ -23,11 +23,7 @@
 <a href="{kurl app="commentaires"  id=$annonce.idcombox}" > test </a>
 {*kurl app="commentaires"  id=$annonce.idcombox*}
 {commentbox id=$annonce.idcombox} <br />
-{if !$annonce.voted }
-<a onclick="Votes.more({$annonce.idcombox}, $app(this).refresh.bind($app(this))); return false;"> + </a> / <a onclick="Votes.less({$annonce.idcombox}, $app(this).refresh.bind($app(this))); return false;" > - </a>
-{/if}
-score total {$annonce.score.0} nombre de votants {$annonce.score.1}
+{votesbox id=$annonce.idcombox score=$annonce.score.0 votant=$annonce.score.1 voted=$annonce.voted}
 {/foreach}
-
 </p>
 </p>
