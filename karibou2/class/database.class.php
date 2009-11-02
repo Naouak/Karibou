@@ -1,5 +1,6 @@
 <?php
 /**
+ * @copyright 2009 Pierre Ducroquet <pinaraf@gmail.com>
  * @copyright 2005 Jonathan Semczyk <jonathan.semczyk@free.fr>
  * @copyright 2005 Antoine Leclercq <http://antoine.leclercq.netcv.org>
  *
@@ -16,31 +17,38 @@
  */
 Class Database extends PDO
 {
-	protected $db;
+	private static $instance = null;
+
+	public function initialize($dsn, $username, $password)
+	{
+		if (Database::$instance == null)
+			Database::$instance = new Database($dsn, $username, $password);
+	}
+
+	public static function instance()
+	{
+		return Database::$instance;
+	}
 
 	public function __construct($dsn, $username, $password)
 	{
 		parent::__construct($dsn, $username, $password);
 		parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-//		if (parent::getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql') {
-//			parent::setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
-//			$this->exec("SET NAMES utf8;");
-//		}
 	}
 	
-	function query($qry)
+	public function query($qry)
 	{
 		Debug::display("PDO::query : ".$qry);
 		return parent::query($qry);
 	}
 
-	function prepare($qry)
+	public function prepare($qry)
 	{
 		Debug::display("PDO::prepare : ".$qry);
 		return parent::prepare($qry);
 	}
 
-	function exec($qry)
+	public function exec($qry)
 	{
 		Debug::display("PDO::exec : ".$qry);
 		return parent::exec($qry);

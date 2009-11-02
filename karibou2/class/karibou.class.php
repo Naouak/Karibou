@@ -296,11 +296,11 @@ class Karibou
 			$dsn = $GLOBALS['config']['bdd']['dsn'];
 		}
 
-		$this->db = new Database(
+		Database::initialize(
 				$dsn, 
 				$GLOBALS['config']['bdd']["username"], 
 				$GLOBALS['config']['bdd']["password"]);
-		
+		$this->db = Database::instance();
 	}
 
 	public function display()
