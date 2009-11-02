@@ -24,7 +24,7 @@ class rumoursubmit extends AppContentModel
 
 	public function modify ($key, $parameters) {
 		$query = $this->db->prepare("UPDATE rumours SET `rumours`=:rumours WHERE id=:id LIMIT 1");
-		$query->bindValue(":rumours", $parameters["rumours"]);
+		$query->bindValue(":rumours", $parameters["rumour"]);
 		$query->bindValue(":id", intval($key));
 		if (!$query->execute()) {
 			Debug::kill("Error while updating");
@@ -46,7 +46,7 @@ class rumoursubmit extends AppContentModel
 			Debug::kill("Error while filling fields");
 		} else {
 			$row = $query->fetch();
-			$fields["rumours"]["value"] = $row["rumours"];
+			$fields["rumour"]["value"] = $row["rumours"];
 		}
 	}
 	
