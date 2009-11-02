@@ -34,10 +34,14 @@ class Citation extends Model
 		if ($citationonline = $stmt->fetch(PDO::FETCH_ASSOC)) {
 			// Get the user object associated with this user id
 			if ($user["object"] =  $this->userFactory->prepareUserFromId($citationonline["user_id"])) {
+				$name=$this->appname."-".$citationonline['Id'];
+				$combox = new CommentSource($this->db,$name,"",$citationonline["citation"]);
+				
 				$this->assign("citationnow",$citationonline["citation"]);
 				$this->assign("citationauthor",$user);
 				$this->assign("islogged", $this->currentUser->isLogged());
 
+				$this->assign("idcombox",$combox->getId());
 				$this->assign("author_id",$citationonline["user_id"]);
 				$this->assign("citation_id",$citationonline["id"]);
 				$this->assign("isadmin", $this->getPermission() == _ADMIN_);
