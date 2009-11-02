@@ -12,11 +12,13 @@
  * 
  * @package applications
  **/
-class Dday extends Model
+class DdayVCal extends Model
 {
 	public function build()
 	{
 		$sql = "SELECT *, 
+			DATE_FORMAT(`date`, \"%Y%m%d\") AS vcalDateStart,
+			DATE_FORMAT(DATE_ADD(`date`, INTERVAL 1 DAY), \"%Y%m%d\") AS vcalDateEnd,
 			(TO_DAYS(`date`) - TO_DAYS(CURRENT_DATE())) AS JJ 
 			FROM `dday` WHERE date >= CURRENT_DATE() AND visible = '1' ORDER BY date LIMIT 5";
 		try

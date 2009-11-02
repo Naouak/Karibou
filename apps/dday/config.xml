@@ -3,6 +3,7 @@
     <permissions default="_READ_ONLY_" logged="_FULL_WRITE_" />
 
     <load class="Dday" file="dday.class.php" />
+    <load class="DdayVCal" file="ddayvcal.class.php" />
     <load class="DDaySubmit" file="ddaysubmit.class.php" />
     <load class="NumberArgument" file="../arguments/numberargument.class.php" />
 
@@ -11,7 +12,7 @@
     <footer app="footer" view="default" />
     
     <view name="mini" class="Dday" template="dday.tpl" />
-    <view name="vcal" class="Dday" template="vcal.tpl" />
+    <view name="vcal" class="DdayVCal" template="vcal.tpl" />
 
     <page name="vcal" view="vcal" contenttype="text/calendar; charset=UTF-8">
         <header app="header" view="empty" />
