@@ -49,7 +49,6 @@ class Annonce extends Model
             if (($user["object"] =  $this->userFactory->prepareUserFromId($annonceRow["Id_user"])) !== false) {
                 $name=$this->appname."-".$annonceRow['Id'];
                 $combox = new CommentSource($this->db,$name,"",$annonceRow["annonce"]);
-                //               $votes = new Score($this->db,$combox->getId(),$this->currentUser->getId());
                 $annonces[] = array(
                                     "author" => $user['object'],
                                     "text" => $annonceRow['annonce'],
