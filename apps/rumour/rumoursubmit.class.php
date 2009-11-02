@@ -38,6 +38,17 @@ class rumoursubmit extends AppContentModel
 			Debug::kill("Error while updating");
 		}
 	}
+
+	public function fillFields($key, &$fields) {
+		$query = $this->db->prepare("SELECT `rumours` FROM rumours WHERE id=:id");
+		$query->bindValue(":id", intval($key));
+		if (!$query->execute()) {
+			Debug::kill("Error while filling fields");
+		} else {
+			$row = $query->fetch();
+			$fields["rumours"]["value"] = $row["rumours"];
+		}
+	}
 	
 	// this fonction permits to use the information the user type
 	public function submit($parameters)
