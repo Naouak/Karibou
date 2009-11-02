@@ -12,7 +12,8 @@
 function smarty_function_votesbox($params,&$smarty){
     $votes = VotesScoreFactory::getInstance();
     $score = $votes->getScore($params['id']);
-    $voted = $votes->Voted($params['id'],$params['user']);
+    $currentUser = UserFactory::instance()->getCurrentUser();
+    $voted = $votes->Voted($params['id'],$currentUser->getID());
     $box = "";
     if (!$voted && $params["type"]=="miniapp"){
         $box .= "<a onclick=\"Votes.more(".$params['id'].",\$app(this).refresh.bind(\$app(this))); return false;\"> + </a> / <a onclick=\"Votes.less(".$params['id'].",\$app(this).refresh.bind(\$app(this))); return false;\" > - </a>";
