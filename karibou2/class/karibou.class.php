@@ -157,7 +157,7 @@ class Karibou
 		}
 
 		// Récupération de l'utilisateur courant
-		$this->userFactory = new UserFactory($this->db);
+		$this->userFactory = UserFactory::instance();
 		$this->currentUser = $this->userFactory->getCurrentUser();
 
 		// Création de la page en fonction des paramètres dans l'url, et création de l'objet BaseUrl
