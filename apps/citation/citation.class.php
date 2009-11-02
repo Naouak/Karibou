@@ -22,7 +22,7 @@ class Citation extends Model
 		// duree de vie min d une citation 
 		$min_t2l = $config["max"]["time2live"];
 
-		$sql = "SELECT * FROM citation WHERE (UNIX_TIMESTAMP(datetime) <= NOW()) ORDER BY datetime DESC LIMIT 1 ";
+		$sql = "SELECT * FROM citation WHERE (UNIX_TIMESTAMP(datetime) <= NOW()) AND deleted=0 ORDER BY datetime DESC LIMIT 1 ";
 		try
 		{
 			$stmt = $this->db->query($sql);
@@ -37,6 +37,11 @@ class Citation extends Model
 				$this->assign("citationnow",$citationonline["citation"]);
 				$this->assign("citationauthor",$user);
 				$this->assign("islogged", $this->currentUser->isLogged());
+
+				$this->assign("author_id",$citationonline["user_id"]);
+				$this->assign("citation_id",$citationonline["id"]);
+				$this->assign("isadmin", $this->getPermission() == _ADMIN_);
+				$this->assign("currentuser",$this->currentUser->getId());
 			}
 		}
 	}
