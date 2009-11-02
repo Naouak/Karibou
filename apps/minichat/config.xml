@@ -37,6 +37,7 @@
 
 	<load class="MCDefault"		file="mcdefault.class.php" />
 	<load class="MCPost"		file="mcpost.class.php" />
+	<load class="MCContent"		file="mccontent.class.php" />
 	<load class="MCJS"		file="mcjs.class.php" />
 	<load class="MinichatConfig"    file="./class/minichatconfig.class.php" />
 
@@ -46,7 +47,7 @@
 	<view name="big" class="MCDefault" template="minichat.tpl" />
 	<view name="JS" class="MCJS" template="js.tpl" />
 
-	<view name="content" class="MCDefault" template="content.tpl" />
+	<view name="content" class="MCContent" template="content.tpl" />
 	
 	<header app="header" view="default" />
 	<footer app="footer" view="default" />

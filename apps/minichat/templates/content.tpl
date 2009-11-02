@@ -1,6 +1,3 @@
-{if ($pagenum != 1)}
-##PAGE## # {$pagenum}
-{/if}
 	<ul>
 	{foreach item=m from=$post}
         <li class="{cycle values="one,two"}">
