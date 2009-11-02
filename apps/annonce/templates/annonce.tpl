@@ -23,7 +23,7 @@
 <a href="{kurl app="commentaires"  id=$annonce.idcombox}" > test </a>
 {*kurl app="commentaires"  id=$annonce.idcombox*}
 {commentbox id=$annonce.idcombox} <br />
-{votesbox id=$annonce.idcombox score=$annonce.score.0 votant=$annonce.score.1 voted=$annonce.voted type="miniapp"}
+{votesbox id=$annonce.idcombox user=$currentuser type="miniapp"}
 {/foreach}
 </p>
 </p>

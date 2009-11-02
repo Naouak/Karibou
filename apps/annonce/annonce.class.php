@@ -42,7 +42,6 @@ class Annonce extends Model
             Debug::kill($e->getMessage());
         }
 
-        $votes = VotesScoreFactory::getInstance();
         $annonces = array();
         while (($annonceRow = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
             //je recupere l'user
@@ -56,9 +55,7 @@ class Annonce extends Model
                                     "expirationdate" => $annonceRow['expirationdate'],
                                     "id" => $annonceRow['Id'],
                                     "iduser" => $annonceRow['Id_user'],
-                                    "idcombox" => $combox->getId(),
-                                    "score" => $votes->getScore($combox->getId()),
-                                    "voted" => $votes->Voted($combox->getId(),$this->currentUser->getId())
+                                    "idcombox" => $combox->getId()
                                    );
             }
         }
