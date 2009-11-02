@@ -65,7 +65,7 @@ class AnnuaireProfile extends Model
 		{
 			$this->assign('addr_types', array("DOM", "INTL", "POSTAL", "HOME", "WORK") );
 			$this->assign('phone_types', array("WORK", "HOME", "FAX", "CELL", "PAGER") );
-			$this->assign('email_types', array("INTERNET", "AIM", "ICQ", "JABBER", "MSN", "SKYPE") );
+			$this->assign('email_types', array("INTERNET", "AIM", "ICQ", "JABBER", "MSN", "SKYPE", "WAVE") );
 		}
 
 		$user = $this->userFactory->prepareUserFromLogin($username);		
