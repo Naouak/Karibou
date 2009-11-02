@@ -136,15 +136,12 @@ class CurrentUser extends User
 	 */
 	protected function setPrefs(PDO $db)
 	{
-		$qry = "SELECT
-				*
-			FROM
-				prefs
-			WHERE 
-				user_id='".$this->id."'";
+		$qry = "SELECT * FROM prefs WHERE user_id=:user";
 		try
 		{
-			$stmt = $db->query($qry);
+			$stmt = $db->prepare($qry);
+			$stmt->bindValue(":user", $this->id);
+			$stmt->execute();
 		}
 		catch(PDOException $e)
 		{
