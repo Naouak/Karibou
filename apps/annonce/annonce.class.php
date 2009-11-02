@@ -14,59 +14,60 @@
  **/
 class Annonce extends Model
 {
-	public function build()
-	{	
-		$app = $this->appList->getApp($this->appname);
+    public function build()
+    {	
+        $app = $this->appList->getApp($this->appname);
         $config = $app->getConfig();
         $this->assign("config", $config);
 
-		if ( isset($this->args['maxannonce']) )
-		{
-			$maxannonce = $this->args['maxannonce'];
-		}
-		else
-		{
-			$maxannonce = $config['maxannonce']['default'];
-		}
-		
+        if ( isset($this->args['maxannonce']) )
+        {
+            $maxannonce = $this->args['maxannonce'];
+        }
+        else
+        {
+            $maxannonce = $config['maxannonce']['default'];
+        }
 
-		$sql = "SELECT * FROM annonce WHERE `expirationdate` > NOW() AND `visible`=1 ORDER BY datetime DESC LIMIT :maxannonce";
-		try
-		{
-			$stmt = $this->db->prepare($sql);
-			$stmt->bindParam(":maxannonce",intval($maxannonce),PDO::PARAM_INT);
-			$stmt->execute();
-		}
-		catch(PDOException $e)
-		{
-			Debug::kill($e->getMessage());
-		}
-		
-		$annonces = array();
-		while (($annonceRow = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
-			//je recupere l'user
-			if (($user["object"] =  $this->userFactory->prepareUserFromId($annonceRow["Id_user"])) !== false) {
+
+        $sql = "SELECT * FROM annonce WHERE `expirationdate` > NOW() AND `visible`=1 ORDER BY datetime DESC LIMIT :maxannonce";
+        try
+        {
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(":maxannonce",intval($maxannonce),PDO::PARAM_INT);
+            $stmt->execute();
+        }
+        catch(PDOException $e)
+        {
+            Debug::kill($e->getMessage());
+        }
+
+        $votes = VotesScoreFactory::getInstance();
+        $annonces = array();
+        while (($annonceRow = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
+            //je recupere l'user
+            if (($user["object"] =  $this->userFactory->prepareUserFromId($annonceRow["Id_user"])) !== false) {
                 $name=$this->appname."-".$annonceRow['Id'];
                 $combox = new CommentSource($this->db,$name,"",$annonceRow["annonce"]);
-                $votes = new Score($this->db,$combox->getId(),$this->currentUser->getId());
-				$annonces[] = array(
-					"author" => $user['object'],
-					"text" => $annonceRow['annonce'],
-					"price" => $annonceRow['price'],
-					"expirationdate" => $annonceRow['expirationdate'],
-					"id" => $annonceRow['Id'],
-					"iduser" => $annonceRow['Id_user'],
-                    "idcombox" => $combox->getId(),
-                    "score" => $votes->getScore(),
-                    "voted" => $votes->Voted()
-				);
-			}
-		}
+                //               $votes = new Score($this->db,$combox->getId(),$this->currentUser->getId());
+                $annonces[] = array(
+                                    "author" => $user['object'],
+                                    "text" => $annonceRow['annonce'],
+                                    "price" => $annonceRow['price'],
+                                    "expirationdate" => $annonceRow['expirationdate'],
+                                    "id" => $annonceRow['Id'],
+                                    "iduser" => $annonceRow['Id_user'],
+                                    "idcombox" => $combox->getId(),
+                                    "score" => $votes->getScore($combox->getId()),
+                                    "voted" => $votes->Voted($combox->getId(),$this->currentUser->getId())
+                                   );
+            }
+        }
 
-		$this->assign("annonces",$annonces);
-		$this->assign("islogged", $this->currentUser->isLogged());
-		$this->assign("currentuser", $this->currentUser->getID());
-		$this->assign("isadmin", $this->getPermission() == _ADMIN_);
+        $this->assign("annonces",$annonces);
+        $this->assign("islogged", $this->currentUser->isLogged());
+        $this->assign("currentuser", $this->currentUser->getID());
+        $this->assign("isadmin", $this->getPermission() == _ADMIN_);
         $this->assign("appname", $this->appname);
-	}
+    }
 }

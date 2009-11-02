@@ -59,7 +59,7 @@ ClassLoader::add('KFormField', KARIBOU_CLASS_DIR."/kformfield.class.php");
 ClassLoader::add('KFormFactory', KARIBOU_CLASS_DIR."/kformfactory.class.php");
 
 ClassLoader::add('CommentSource', KARIBOU_CLASS_DIR."/commentsource.class.php");
-ClassLoader::add('Score', KARIBOU_CLASS_DIR."/votes.class.php");
+ClassLoader::add('VotesScoreFactory', KARIBOU_CLASS_DIR."/votes.class.php");
 
 
 /**
