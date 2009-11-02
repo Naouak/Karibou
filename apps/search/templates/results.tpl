@@ -7,7 +7,6 @@
 			<option value="everywhere" {if $app == 'everywhere'}selected{/if}>##INTRANET##</option>
 			<option value="news" {if $app == 'news'}selected{/if}>##APP_NEWS##</option>
 			<option value="fileshare" {if $app == 'fileshare'}selected{/if}>##APP_FILESHARE##</option>
-			{*<option value="calendar" {if $app == 'calendar'}selected{/if}>##APP_CALENDAR##</option>*}
 			<option value="annuaire" {if $app == 'annuaire'}selected{/if}>##APP_ANNUAIRE##</option>
 		</select>
 		<input type="submit" value="##SEARCH_TITLE##">
@@ -15,8 +14,7 @@
 
 {if isset($articles) && count($articles) > 0 ||
  isset($files) && count($files) > 0 || 
-isset($usersfound) && count($usersfound) > 0 || 
-isset($events) && count($events)> 0}
+isset($usersfound) && count($usersfound) > 0 }
 
 <div class="goto">
 	##SEARCH_GOTO## :
@@ -29,10 +27,6 @@ isset($events) && count($events)> 0}
 		<a href="{kurl app="search"}#search_fileshare">{$files|@count} {if count($files)==1}##SEARCH_RESULT##{else}##RESULTS##{/if} ##SEARCH_IN## ##APP_FILESHARE##</a>
 	{/if}
 	
-	{*{if isset($events) && count($events) > 0}
-		<a href="{kurl app="search"}#search_calendar">{$events|@count} {if count($events)==1}##SEARCH_RESULT##{else}##RESULTS##{/if} ##SEARCH_IN## ##APP_CALENDAR##</a>
-	{/if}*}
-
 	{if isset($usersfound) && count($usersfound) > 0}
 		<a href="{kurl app="search"}#search_annuaire">{$usersfound|@count} {if count($usersfound)==1}##SEARCH_RESULT##{else}##RESULTS##{/if} ##SEARCH_IN## ##APP_ANNUAIRE##</a>
 	{/if}
@@ -92,65 +86,6 @@ isset($events) && count($events)> 0}
 		</div>
 		
 	{/if}
-
-
-{*Comme l'application calendrier n'est pas fonctionnelle pour le moment, je préfère laisser le code la concernant tel quel -- Mick (shuomi)*}	
-{*	if (!isset($this->vars['events']))
-	{
-	}
-	elseif ($this->vars['events']->count()== 0)
-	{
-		echo '<div id="search_calendar" class="resultset">';
-		echo _('SEARCH_NORESULT').' '._('SEARCH_IN').' <strong>'._('CALENDAR').'</strong>';
-		echo "</div>";
-	}
-	else
-	{
-		$this->vars['events']->sort(array("ObjectList","compare_date"));
-
-		echo '<div id="search_calendar" class="resultset">';
-		echo $this->vars['events']->count().' '._('SEARCH_RESULTSS').' '._('SEARCH_IN').' <strong>'._('CALENDAR').'</strong>';
-		echo '<ul class="files">';
-		$previousdate = '';
-		foreach ($this->vars['events'] as $event)
-		{
-			$currentdate = $event->o_start->getDate("%d-%m-%Y");
-
-			if (($previousdate !== $currentdate) && ($previousdate !== '') )
-			{
-				echo " </ul>\n";
-				echo "</li>\n";
-			}
-			
-			if ($previousdate !== $currentdate)
-			{
-				//Nouvelle ligne
-				echo "\n<li><div class=\"title\"><a href=\"".kurl(array('app' => 'calendar', 'page' => 'view', 'cal_id' => $event->calendarid, 'year' => $event->o_start->getYear(), 'month' => $event->o_start->getMonth(), 'day' => $event->o_start->getDay()))."\">".$event->o_start->getDate("%d %B %Y")."</a></div>\n";
-				echo " <ul>\n";
-			}
-echo '<li><div class="colorsquare" style="margin: 2px;background-color: #'.$event->getCalendarColor().';"></div>&nbsp;<strong style="color: #787878;">'.$event->o_start->getDate("%H:%M").'</strong> : ';
-				echo '<span>'.highlight($event->summary, $keywords).'</span>';
-				
-				if ($event->description !== '')
-					echo '<span> ('.highlight($event->description, $keywords).')</span>';
-          
-        if ($event->location !== '')
-					echo '<span style="color: #555;"> @ '.highlight($event->location, $keywords).'</span>';
-				echo '</li>';
-				
-			/*
-			echo '<div class="title"><a href="'.kurl(array('app' => 'fileshare', 'page'=>"details", 'elementpath'=>$file->getPathBase64())).'">'.highlight($file->getName(), $keywords).'</a></div>';
-				echo '<div class="content">'.find_and_highlight($file->getLastVersionInfo('description'), $keywords).'</div>';
-				echo '<div class="url">'.$GLOBALS['config']['site']['base_url'].kurl(array('app' => 'fileshare', 'page'=>"details", 'elementpath'=>$file->getPathBase64())).'</div>';
-				*/
-			$previousdate = $currentdate;
-		}
-		echo '</ul>';
-		echo '</div>';
-		
-	}
-*}
-
 
 	{if !isset($usersfound)}
 	{elseif count($usersfound) == 0}

@@ -59,13 +59,6 @@ class SearchDefault extends Model
 					$this->assign("files", $files);
 				}
 				
-				if ( (isset($app) && $app == 'calendar') || $app == 'everywhere' )
-				{
-					$daoEvents = DAOFactory::create('Events');
-					$events = $daoEvents->find($keywords);
-					$this->assign("events", $events);
-				}
-
 				if ( (isset($app) && $app == 'annuaire') || $app == 'everywhere' )
 				{
 					$daoUsers = DAOFactory::create('Users');
