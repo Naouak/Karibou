@@ -129,19 +129,21 @@ class MCPost extends FormModel
 					$sth->execute();
 					$count = $sth->fetchColumn(0);
 
-					// Insert the last message
-					$sth = $this->db->prepare("
-						INSERT INTO
-							minichat_game (id_auteur, post, time)
-						VALUES
-							(:user, :message, NOW())
-					");
-					$sth->bindValue(":user", $this->currentUser->getID());
-					$sth->bindValue(":message", $message);
-					$sth->execute();
+					if($this->currentUser->getID() != $last_user && $count == 0) {
+						// Insert the last message
+						$sth = $this->db->prepare("
+							INSERT INTO
+								minichat_game (id_auteur, post, time)
+							VALUES
+								(:user, :message, NOW())
+						");
+						$sth->bindValue(":user", $this->currentUser->getID());
+						$sth->bindValue(":message", $message);
+						$sth->execute();
 
-					$this->db->query("UNLOCK TABLES");
-					$this->db->query("DELETE FROM minichat_game WHERE DATE(time) != DATE(NOW())");
+						$this->db->query("UNLOCK TABLES");
+						$this->db->query("DELETE FROM minichat_game WHERE DATE(time) != DATE(NOW())");
+					}
 
 					if($this->currentUser->getID() != $last_user && $count == 0) {
 						if($last_user != false) {
