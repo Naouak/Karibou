@@ -16,11 +16,10 @@ class Dday extends Model
 {
 	public function build()
 	{
-		$sql = "SELECT *, 
-			(TO_DAYS(`date`) - TO_DAYS(CURRENT_DATE())) AS JJ 
-			FROM `dday` WHERE date >= CURRENT_DATE() AND visible = '1' ORDER BY date LIMIT 5";
 		try
 		{
+			$sql = "SELECT *, (days - TO_DAYS(CURRENT_DATE())) AS JJ 
+				FROM `dday` WHERE (days >= TO_DAYS(CURRENT_DATE())) AND visible = 1 ORDER BY JJ DESC LIMIT 5";
 			$stmt = $this->db->query($sql);
 		}
 		catch(PDOException $e)
