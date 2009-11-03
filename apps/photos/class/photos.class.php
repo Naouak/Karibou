@@ -32,7 +32,8 @@ class Photos extends AlbumBase {
         $path="/";
         $parent = $this->parent;
         while($parent != NULL){
-            $objalb = new album($this->db,$parent);
+            $container = containerFactory::getInstance();
+            $objalb = $container->getPictureStorage($parent);
             $parent = $objalb->getParent();
             $path .= $objalb->getName . "/";
         }

@@ -14,11 +14,16 @@ class carton extends AlbumBase {
     protected $name;
     protected $parent;
     protected $date;
+    protected $all;
+    protected $type;
 
-    function __construct($db,$id) {
+    function __construct($db,$carton) {
         $this->db = $db;
-        $this->id = $id;
-        $sql = $this->db->prepare("SELECT * FROM pictures_album WHERE id=:id AND type=:type");
-        $sql->bindValue(":id",$this->id)
+        $this->all = $carton;
+        $this->name = $carton["name"];
+        $this->id = $carton["id"];
+        $this->parent = $carton["parent"];
+        $this->date = $carton["date"];
+        $this->type="carton";
     }
 }

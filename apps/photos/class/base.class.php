@@ -12,6 +12,9 @@ abstract class AlbumBase {
     protected $name;
     protected $id;
     protected $date;
+    protected $parent;
+    protected $type;
+    protected $all;
 
     public function getName(){
         return $this->name;
@@ -29,6 +32,12 @@ abstract class AlbumBase {
         return $this->parent;
     }
 
+    public function getType() {
+        return $this->type;
+    }
 
+    public function getAll() {
+        return $this->all;
+    }
 }
 

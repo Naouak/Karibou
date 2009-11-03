@@ -3,4 +3,7 @@ list of all albums <br />
     {$album.name} <br />
 {/foreach}
 
-list of tags
+list of tags <br />
+
+Folder <br />
+<a href="{kurl page="folder" id=$idslash}"> Racine </a><br />

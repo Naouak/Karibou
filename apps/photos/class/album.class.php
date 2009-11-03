@@ -15,25 +15,20 @@ class album extends AlbumBase {
     protected $name;
     protected $parent;
     protected $date;
+    protected $all;
+    protected $type;
 
 
-
-    function __construct($db,$id) {
+    function __construct($db,$album) {
         $this->db = $db;
-        $this->id = $id;
-        $sql =  $this->db->prepare("SELECT * FROM pictures_album WHERE id=:id AND type=:type");
-        $sql->bindValue(":id",$id);
-        $sql->bindValue(":type","album");
-        $sql->execute();
-        $album = $sql->fetchAll();
-        $this->name = $album[0]["name"];
-        $this->parent = $album[0]["parent"];
-        $this->date = $album[0]["date"];
+        $this->all = $album;
+        $this->id = $this->all["id"];
+        $this->name = $this->all["name"];
+        $this->parent = $this->all["parent"];
+        $this->date = $this->all["date"];
+        $this->type = "album";
     }
 
-    public function getParent() {
-        return $this->parent;
-    }
 
 
     public function addPicture() {
@@ -70,4 +65,12 @@ class album extends AlbumBase {
         return $pictures;
     }
 
+    public function getRandomPicture() {
+        $preview = $this->db->prepare("SELECT p.id,rand() as rnd FROM pictures AS p LEFT JOIN pictures_album AS pa ON p.album = pa.id WHERE pa.name = :album AND p.album = :id ORDER BY rnd  LIMIT 1;");
+        $preview->bindValue(":album",$album["name"]);
+        $preview->bindValue(":id",$this->id);
+        $preview->execute();
+        $random = $preview->fetch();
+
+    }
 }

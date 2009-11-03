@@ -8,7 +8,8 @@
  */
 
 class photosAlbum extends Model {
-    $objalbum = new album($this->args["id"]);
+    $container = containerFactory::getInstance();
+    $objalbum = $container->getPictureStorage($this->args["id"]);
     $pictures = $objalbum->getAllPictures();
     $array_pict = array();
     $i = 0;
