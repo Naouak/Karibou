@@ -6,5 +6,9 @@
 		 {if $quote.reporter == $currentuser || $isadmin}<a onclick="$app(this).modify({$quote.id}); return false;">modifier</a>{/if}
 		 {if $quote.reporter == $currentuser || $isadmin}<a onclick="$app(this).deleteContent({$quote.id}); return false;">supprimer</a>{/if}
 </p>
+<p>
+	{commentbox id=$quote.idcombox} <br />
+	{votesbox id=$quote.idcombox type="miniapp"}
+</p>
 {/foreach}
 </p>

@@ -32,11 +32,14 @@ class Ilsontdit extends Model {
 		$quotes = array();
 		while ($quoteRow = $stmt->fetch(PDO::FETCH_ASSOC)) {
 			if ($user["object"] =  $this->userFactory->prepareUserFromId($quoteRow["reporter"])) {
+				$name=$this->appname."-".$quoteRow['id'];
+                $combox = new CommentSource($this->db,$name,"",$quoteRow["message"]);
 				$quote = array();
 				$quote["author"] = $quoteRow["who"] . " (" . $quoteRow["group"] . ")";
 				$quote["text"] = stripslashes($quoteRow["message"]);
 				$quote["id"] = $quoteRow["id"];
 				$quote["reporter"]=$quoteRow["reporter"];
+				$quote["idcombox"]=$combox->getId();
 				$quotes[] = $quote;
 			}
 		}
