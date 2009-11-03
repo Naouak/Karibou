@@ -20,19 +20,20 @@ class VisitorsLoad extends Listener
 	function eventOccured(Event $event)
 	{
 		$currentUser = $this->userFactory->getCurrentUser();
-
-		$delete = $this->db->prepare("
-			DELETE FROM
-				onlineusers
-			WHERE
-				timestamp < :time
-				");
-		$delete->bindValue(":time", (time() - $this->maxAge));
-
-		try {
-			$delete->execute();
-		} catch(PDOException $ex) {
-			trigger_error("Unable to prune onlineusers ($ex)", E_USER_WARNING);
+		if (((int) time() % 15) == 0) {
+			$delete = $this->db->prepare("
+				DELETE FROM
+					onlineusers
+				WHERE
+					timestamp < :time
+					");
+			$delete->bindValue(":time", (time() - $this->maxAge));
+	
+			try {
+				$delete->execute();
+			} catch(PDOException $ex) {
+				trigger_error("Unable to prune onlineusers ($ex)", E_USER_WARNING);
+			}
 		}
 
 		if($currentUser->getID() != 0)
