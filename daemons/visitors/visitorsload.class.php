@@ -36,7 +36,7 @@ class VisitorsLoad extends Listener
 			}
 		}
 
-		if($currentUser->getID() != 0)
+		if (($currentUser->getID() != 0) && (((int) time() % 5) == 0))
 		{
 			$insert = $this->db->prepare("
 				INSERT INTO
