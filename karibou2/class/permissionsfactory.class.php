@@ -86,9 +86,11 @@ class PermissionsFactory
 				FROM 
 					permissions_user
 				WHERE
-					( user_id = '" . $user->getID() . "' ) ";
+					user_id = :user";
 			// et on ecrase les droits des groupes par ceux de l'utilisateur
-			$stmt = $this->db->query($qry) ;
+			$stmt = $this->db->prepare($qry);
+			$stmt->bindValue(":user", $user->getID());
+			$stmt->execute();
 			while ($tab = $stmt->fetch(PDO::FETCH_ASSOC) )
 			{
 				$perm->set($tab['appli'], $tab['permission']);
