@@ -20,9 +20,6 @@
 {/if}
 </div>
 
-<a href="{kurl app="commentaires"  id=$annonce.idcombox}" > test </a>
-{*kurl app="commentaires"  id=$annonce.idcombox*}
-{commentbox id=$annonce.idcombox} <br />
 {votesbox id=$annonce.idcombox type="miniapp"}
 {/foreach}
 </p>
