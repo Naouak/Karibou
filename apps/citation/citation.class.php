@@ -22,7 +22,7 @@ class Citation extends Model
 		// duree de vie min d une citation 
 		$min_t2l = $config["max"]["time2live"];
 
-		$sql = "SELECT * FROM citation WHERE datetime <= NOW() ORDER BY datetime DESC LIMIT 1 ";
+		$sql = "SELECT * FROM citation WHERE datetime <= NOW() AND deleted=0 ORDER BY datetime DESC LIMIT 1 ";
 		try
 		{
 			$stmt = $this->db->query($sql);
