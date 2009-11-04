@@ -1,6 +1,8 @@
-
 {foreach item=rumour from=$rumours}
-	<p><em>{t}On m'a dit dans l'oreillette que : {/t}</em></p>
+	<div style="background-color: #eeeeee;">
+		<em>{t}On m'a dit dans l'oreillette que : {/t}</em>
+		<div style="float: right;">{votesbox id=$rumour.idcombox type="miniapp"}</div>
+	</div>
 
 	<p style="text-align: center;">
 		<strong>&#8220;</strong>&nbsp;{$rumour.rumours}&nbsp;<strong>&#8221;</strong>
@@ -12,6 +14,4 @@
 		<a onclick="$app(this).deleteContent({$rumour.id}); return false;">supprimer</a>
 	</p>
 	{/if}
-
-	<hr />
 {/foreach}
