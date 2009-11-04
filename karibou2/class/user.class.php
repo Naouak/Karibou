@@ -257,8 +257,9 @@ class User
     /**
 	 * @param PDO $db
 	 */
-	function getGroups(PDO $db)
+	function getGroups()
 	{
+        $db = Database::instance();
 		if( $this->groups !== FALSE )
 		{
 			return $this->groups;
@@ -357,7 +358,7 @@ class User
 			$this->grouptree = new GroupList();
 		}
 		
-		$this->getGroups($db);
+		$this->getGroups();
 		$qry = $this->getGroupTreeQuery("*");
 		
 		try
@@ -442,7 +443,7 @@ class User
 			return $this->grouptreeadmin;
 		}
 		
-		$this->getGroups($db);
+		$this->getGroups();
 		$qry = $this->getGroupTreeAdminQuery("*");
 		
 		Debug::display($qry);

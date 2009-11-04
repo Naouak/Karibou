@@ -61,7 +61,7 @@ class CurrentUser extends User
 	{
 		if( $this->setProperties($db, $login, $create) )
 		{
-			$this->getGroups($db);
+			$this->getGroups();
 			$this->setPrefs($db);
 			return true;
 		}

@@ -96,7 +96,7 @@ class NewsGrand extends Model
 
 			$theNews[] = $aNews;
 			// cette boucle permet de récupérer le nom du groupe si la news est postée par un groupe
-			foreach ($this->userFactory->getGroups($this->db) as $group)
+			foreach ($this->userFactory->getGroups() as $group)
             		{
 				if ($group->getId() == $aNews->getGroup())
 				{
@@ -122,7 +122,7 @@ class NewsGrand extends Model
 		$this->currentuser = $this->userFactory->getCurrentUser();
 		$grouparray = array();
 		if ($this->currentuser->isLogged()) {
-			$this->groups = $this->currentuser->getGroups($this->db);
+			$this->groups = $this->currentuser->getGroups();
 			foreach ($this->groups as $group2)
 			{
 				$grouparray[$group2->getId()]=$group2->role;

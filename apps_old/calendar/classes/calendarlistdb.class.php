@@ -26,7 +26,7 @@ class CalendarListDB extends CalendarList
 	
 	function getDefaultCalendars()
 	{
-		$this->user->getGroups($this->db);
+		$this->user->getGroups();
 		$sql = "
 			SELECT calendar.*, 'user' as caltype FROM calendar_user, calendar WHERE calendar_user.user_id = ".$this->user->getID()." AND calendar.id = calendar_user.calendar_id
 			UNION

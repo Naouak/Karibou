@@ -36,7 +36,7 @@ class NewsMini extends Model
 			DESC
 			LIMIT $max";
 */
-		$this->currentUser->getGroups($this->db);
+		$this->currentUser->getGroups();
 
 		$reqSqlAllArticles = "
 			SELECT news.id, news.id_author, news.id_groups, news.title, news.content, UNIX_TIMESTAMP(news.time) as timestamp, count(news_comments.id) as nb_comments

@@ -74,14 +74,14 @@ class AnnuaireProfile extends Model
 
 		//$groups = $this->userFactory->getGroups();
 		//$this->assign('usergroups', $groups->getTree() );
-		$user->getGroups($this->db);
+		$user->getGroups();
 		$userallgroups = $user->getAllGroups($this->db);
 		$this->assign("usergroups", $userallgroups /*->getTree()*/);
 		
 		$this->assign('noflashmail', $GLOBALS['config']['noflashmail']);
 
 		
-		$currentUserGroups = $this->currentUser->getGroups($this->db);
+		$currentUserGroups = $this->currentUser->getGroups();
 		$groupsAdmin = array();
 		foreach ($currentUserGroups as $group) {
 			if ($group->role == 'admin') {

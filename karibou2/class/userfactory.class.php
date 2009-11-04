@@ -368,7 +368,7 @@ class UserFactory
 	 * @return array of Group objects
 	 */
 	function getGroupsFromUser ($user) {
-		return $user->getGroups($this->db);
+		return $user->getGroups();
 	}
 
 	/**

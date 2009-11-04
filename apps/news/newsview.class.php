@@ -87,7 +87,7 @@ class NewsView extends Model
         $this->assign('currentuser',$this->userFactory->getCurrentUser());
         $this->assign('db',$this->db);
         $this->currentuser = $this->userFactory->getCurrentUser();
-        $this->groups = $this->currentuser->getGroups($this->db);
+        $this->groups = $this->currentuser->getGroups();
         $grouparray = array();
         foreach ($this->groups as $group2)
         {
