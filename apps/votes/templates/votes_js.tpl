@@ -6,11 +6,8 @@ Votes = {
 {literal}
 		new Ajax.Request(url, { onSuccess: function(response) {
 				if (response.responseText == "ok") {
-					alert("##VOTE_OK##");
 					if (cback != undefined)
 						cback();
-				} else {
-					alert("##VOTE_ERROR##");
 				}
 			}
 		});
