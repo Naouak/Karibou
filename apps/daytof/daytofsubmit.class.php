@@ -8,6 +8,53 @@ class DaytofSubmit extends AppContentModel {
 		// Returns true when a given file is an animated image
 		return (bool)preg_match('#(\x00\x21\xF9\x04.{4}\x00\x2C.*){2,}#s', file_get_contents($filename));
 	}
+
+	public function isModifiable($key) {
+		if ($this->app->getPermission() == _ADMIN_) {
+			return true;
+		}
+		$query = $this->db->prepare("SELECT user_id FROM daytof WHERE id=:id");
+		$query->bindValue(":id", $key);
+		if (!$query->execute()) {
+			Debug::kill("Error while checking rights");
+		} else {
+			$row = $query->fetch();
+			if ($row[0] == $this->currentUser->getID())
+				return true;
+		}
+		return false;
+	}
+
+	public function modify ($key, $parameters) {
+		$query = $this->db->prepare("UPDATE daytof SET `comment`=:comment WHERE id=:id LIMIT 1");
+		$query->bindValue(":comment", $parameters['comment']);
+		$query->bindValue(":id", intval($key));
+		if (!$query->execute()) {
+			Debug::kill("Error while updating");
+		}
+	}
+
+	public function delete ($key) {
+		$query = $this->db->prepare("UPDATE daytof SET `deleted`=1 WHERE id=:id LIMIT 1");
+		$query->bindValue(":id", intval($key));
+		if (!$query->execute()) {
+			Debug::kill("Error while updating");
+		}
+	}
+
+	public function fillFields($key, &$fields) {
+		unset($fields["file"]);
+		$query = $this->db->prepare("SELECT `comment` FROM daytof WHERE id=:id");
+		$query->bindValue(":id", intval($key));
+		if (!$query->execute()) {
+			Debug::kill("Error while filling fields");
+		} else {
+			$row = $query->fetch();
+			$fields["comment"]["value"] = $row["comment"];
+			
+		}
+	}
+	
 	public function submit($parameters) {
 		$tofdir = KARIBOU_PUB_DIR.'/daytof';
 		// If the images folder doesn't exist, create it.
@@ -88,6 +135,10 @@ class DaytofSubmit extends AppContentModel {
 	}
 
 	public function formFields() {
+		if (isset($_POST["__modified_key"])) {
+			// Special case for modify
+			return array("comment" => array("type" => "text", "label" => "Commentaire :"));
+		}
 		return array("file" => array("type" => "file", "required" => true, "label" => "Fichier photo"),
 			"comment" => array("type" => "text", "label" => "Commentaire :"));
 	}

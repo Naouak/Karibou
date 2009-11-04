@@ -12,5 +12,9 @@
 	<div style="margin:0; padding: 0; height: 4em;">
 		{userlink user=$datofauthor.object showpicture=$islogged} : {$datofcomment|wordwrap:34:" ":true}
 	</div>
+
+	{if $author_id == $currentuser || $isadmin}<a onclick="$app(this).modify({$id}); return false;">modifier</a>{/if}
+	{if $author_id == $currentuser || $isadmin}<a onclick="$app(this).deleteContent({$id}); return false;">supprimer<br /></a>{/if}
+	{votesbox id=$idcombox type="miniapp"}
 </div>
 {/if}

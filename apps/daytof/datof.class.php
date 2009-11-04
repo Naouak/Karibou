@@ -34,7 +34,7 @@ class DaTof extends Model
 		//===>AFFICHAGE day tof, photo du jour
 		try
 		{
-			$stmt = $this->db->prepare("SELECT * FROM daytof WHERE 1 ORDER BY datetime DESC LIMIT :tofnum");
+			$stmt = $this->db->prepare("SELECT * FROM daytof WHERE deleted=0 ORDER BY datetime DESC LIMIT :tofnum");
 			$stmt->bindValue(":tofnum", $tofnum, PDO::PARAM_INT);
 			$stmt->execute();
 		}
@@ -54,6 +54,8 @@ class DaTof extends Model
 			$tofdir = KARIBOU_PUB_DIR.'/daytof';
 	
 			if ($user["object"] =  $this->userFactory->prepareUserFromId($row["user_id"])) {
+				$name=$this->appname."-".$row['id'];
+				$combox = new CommentSource($this->db,$name,"",$row["comment"]);
 				$file = "PIC" . str_pad($row["id"], 5, "0", STR_PAD_LEFT);
 				$path = "$tofdir/$file";
 	
@@ -70,12 +72,18 @@ class DaTof extends Model
 					$filename = "$file.jpg";
 					$smallName = "m$file.jpg";
 				}
-   	
+
+				$this->assign("id",$row["id"]);
 				$this->assign("tof", ('pub/daytof/' . $smallName));
 				$this->assign("linktof", ('pub/daytof/' . $filename));
 				$this->assign("datofauthor", $user);
 				$this->assign("datofcomment", $row["comment"]);
 				$this->assign("islogged", $this->currentUser->isLogged());
+
+				$this->assign("idcombox", $combox->getId());
+				$this->assign("author_id",$row["user_id"]);
+				$this->assign("isadmin", $this->getPermission() == _ADMIN_);
+				$this->assign("currentuser",$this->currentUser->getId());
 			}
 		} else {
 			$this->assign("missingPicture", true);
