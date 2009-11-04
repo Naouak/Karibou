@@ -24,7 +24,19 @@ class rumour extends Model {
 		} catch (PDOException $e) {
 			Debug::kill($e->getMessage());
 		}
-		$rumours = $stmt->fetchAll();
+		
+		$rumours = array();
+		while($rumourRow = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$name=$this->appname."-".$rumourRow['id'];
+			$combox = new CommentSource($this->db,$name,"",$rumourRow["rumours"]);
+			$rumour = array();
+			$rumour["rumours"] = $rumourRow["rumours"];
+			$rumour["id"] = $rumourRow["id"];
+			$rumour["idcombox"] = $combox->getId();
+			$rumours[] = $rumour;
+		}
+
+			
 		$this->assign("rumours",$rumours);
 		$this->assign("isadmin", $this->getPermission() == _ADMIN_);
 
