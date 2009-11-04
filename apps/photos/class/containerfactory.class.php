@@ -9,7 +9,7 @@
  **/
 class containerFactory {
 
-    private static instance;
+    private static $instance;
 
     private $db;
 
@@ -21,7 +21,9 @@ class containerFactory {
     public static function getInstance() {
         if (self::$instance === null){
             self::$instance = new self();
+        }
         return self::$instance;
+
     }
 
     public function getPictureStorage($id) {

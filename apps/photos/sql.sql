@@ -20,3 +20,24 @@ CREATE TABLE  `karibou_apps`.`pictures_tagged` (
 `pict` INT NOT NULL ,
 `tag` INT NOT NULL
 ) ENGINE = INNODB;
+
+ALTER TABLE `pictures_album` CHANGE `name` `name` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
+
+ALTER TABLE `pictures_album` ADD `type` ENUM( "carton", "album" ) NOT NULL;
+
+ALTER TABLE `pictures_album` ADD `parent` INT NULL;
+
+
+
+ALTER TABLE `pictures_album` ADD UNIQUE (
+`name` ,
+`parent`
+);
+
+CREATE TABLE `karibou_apps`.`pictures_album_acl` (
+`id_album` INT NOT NULL ,
+`group` INT NULL ,
+`user` INT NULL ,
+`droit` ENUM( "read", "write" ) NOT NULL ,
+`id` SERIAL NOT NULL
+) ENGINE = InnoDB;

@@ -38,7 +38,7 @@ class album extends AlbumBase {
         $user_id = $user->getId();
         $groups = $user->getGroups($this->db);
 
-        $perm = $this->db->prepare("SELECT * FROM album_acl WHERE id_album = :id AND permission=:perm");
+        $perm = $this->db->prepare("SELECT * FROM pictures_album_acl WHERE id_album = :id AND permission=:perm");
         $perm->bindValue(":id",$this->id);
         $perm->bindValue(":perm",$what);
         $perm->execute();

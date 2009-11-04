@@ -9,6 +9,8 @@
 	<load class="submit" file="photossubmit.class.php" />
     <load class="photosAlbum" file="photos_album.class.php" />
     <load class="AddContainerForm" file="addcontainerform.class.php" />
+    <load class="AddContainer" file="addcontainer.class.php" />
+    <load class="folder" file="folder.class.php" />
 
     <load class="[arguments]/AnyCharArgument" />
     <load class="[arguments]/NumberArgument" />
@@ -18,12 +20,14 @@
     <load class="album" file="class/album.class.php" />
     <load class="carton" file="class/carton.class.php" />
     <load class="AlbumBase" file="class/base.class.php" />
+    <load class="containerFactory" file="class/containerfactory.class.php" />
 
 <!--view is used to associate a the name of the view, the class and the template file -->
 	<view name="mini" class="photos" template="mini.tpl" />
     <view name="list" class="photos" template="list.tpl" />
     <view name="album" class="photos" template="album.tpl" />
-    <view name="addcontainer" template="addcontainer.tpl" />
+    <view name="addcontainer" class="AddContainer" template="addcontainer.tpl" />
+    <view name="folder" class="folder" template="folder.tpl"/>
 <!--	<view name="{js}" template="js.tpl" />-->
 
 <!--the following lines defines the default header and footer when we don't defines special header and footer -->
@@ -49,7 +53,9 @@
         <argument name="name" class="AnyCharArgument"/>
     </page>
 
-    <page name="addcontainer" view="addcontainer"/>
+    <page name="addcontainer" view="addcontainer">
+        <argument name="parent" class="NumberArgument" />
+    </page>
 
     <page name="folder" view="folder" >
         <argument name="id" class="NumberArgument" />
