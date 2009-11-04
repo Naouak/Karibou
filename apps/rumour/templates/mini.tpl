@@ -5,7 +5,7 @@
 	</div>
 
 	<p style="text-align: center;">
-		<strong>&#8220;</strong>&nbsp;{$rumour.rumours}&nbsp;<strong>&#8221;</strong>
+		<strong>&#8220;</strong>&nbsp;{$rumour.rumours|nl2br}&nbsp;<strong>&#8221;</strong>
 	</p>
 
 	{if $isadmin}
