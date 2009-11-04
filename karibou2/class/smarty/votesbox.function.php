@@ -14,14 +14,16 @@ function smarty_function_votesbox($params,&$smarty){
     $score = $votes->getScore($params['id']);
     $currentUser = UserFactory::instance()->getCurrentUser();
     $voted = $votes->Voted($params['id'],$currentUser->getID());
-    $box = "";
-    if (!$voted && $params["type"]=="miniapp"){
-        $box .= "<a onclick=\"Votes.more(".$params['id'].",\$app(this).refresh.bind(\$app(this))); return false;\"> + </a> / <a onclick=\"Votes.less(".$params['id'].",\$app(this).refresh.bind(\$app(this))); return false;\" > - </a>";
+
+    $box = intval($score[0]) . " (" . intval($score[1]) . ")";
+
+    if(!$voted && $currentUser->isLogged()){
+        $box .= " (";
+        $box .= ($params["type"]=="miniapp") ?
+            "<a onclick=\"Votes.more(".$params['id'].",\$app(this).refresh.bind(\$app(this))); return false;\"> + </a> / <a onclick=\"Votes.less(".$params['id'].",\$app(this).refresh.bind(\$app(this))); return false;\" > - </a>":
+            "<a onclick=\"Votes.more(".$params['id']."); return false;\"> + </a> / <a onclick=\"Votes.less(".$params['id']."); return false;\" > - </a>";
+        $box .= ")";
     }
-// if the vote sytem is not in a miniapp, we don't use refresh system from default
-    elseif(!$voted){
-        $box .= "<a onclick=\"Votes.more(".$params['id']."); return false;\"> + </a> / <a onclick=\"Votes.less(".$params['id']."); return false;\" > - </a>";
-    }
-    $box = $box."score total ".$score[0]." nombre de votants ".$score[1];
+
     return $box;
 }
