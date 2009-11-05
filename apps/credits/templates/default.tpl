@@ -45,8 +45,24 @@
 			<li>The "They said it" application</li>
 			<li>The "my files" application</li>
 			<li>Maintenance</li>
+            <li>Default2</li>
+            <li>Flashmail2</li>
 		</ul>
-	<li>
+	</li>
+    <li>
+        <strong>Gilles DEHAUDT</strong> : Core &amp; App Developer
+        <ul>
+            <li>Annonces</li>
+            <li>Votes</li>
+            <li>Commentaires</li>
+        <ul>
+    </li>
+    <li>
+        <strong>Rémy SANCHEZ</strong> : Core &amp; App Developer
+        <ul>
+            <li>Maintenance </li>
+        </ul>
+    </li>
 		<strong>Thomas Soete</strong> : App Developer
 		<ul>
 			<li>##rssreader##</li>
