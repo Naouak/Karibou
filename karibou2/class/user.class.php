@@ -254,12 +254,12 @@ class User
     }
     
     
-    /**
+	/**
 	 * @param PDO $db
 	 */
 	function getGroups()
 	{
-        $db = Database::instance();
+		$db = Database::instance();
 		if( $this->groups !== FALSE )
 		{
 			return $this->groups;
