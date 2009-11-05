@@ -45,24 +45,28 @@
 			<li>The "They said it" application</li>
 			<li>The "my files" application</li>
 			<li>Maintenance</li>
-            <li>Default2</li>
-            <li>Flashmail2</li>
+			<li>Default2</li>
+			<li>Flashmail2</li>
 		</ul>
 	</li>
-    <li>
-        <strong>Gilles DEHAUDT</strong> : Core &amp; App Developer
-        <ul>
-            <li>Annonces</li>
-            <li>Votes</li>
-            <li>Commentaires</li>
-        <ul>
-    </li>
-    <li>
-        <strong>Rémy SANCHEZ</strong> : Core &amp; App Developer
-        <ul>
-            <li>Maintenance </li>
-        </ul>
-    </li>
+	<li>
+		<strong>Gilles Dehaudt</strong> : Core &amp; App Developer
+		<ul>
+			<li>Annonces</li>
+			<li>Votes</li>
+			<li>Commentaires</li>
+		</ul>
+	</li>
+	<li>
+		<strong>Rémy Sanchez</strong> : Core &amp; App Developer
+		<ul>
+			<li>Maintenance de la branche stable</li>
+			<li>Klock</li>
+			<li>Système de scores</li>
+			<li>Scoreboard</li>
+		</ul>
+	</li>
+	<li>
 		<strong>Thomas Soete</strong> : App Developer
 		<ul>
 			<li>##rssreader##</li>
