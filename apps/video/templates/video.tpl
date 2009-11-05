@@ -10,6 +10,11 @@
 <br />
 
 {$commentaire}
+<p>
+	{if $videoauthor == $currentuser || $isadmin}<a onclick="$app(this).modify({$idnow}); return false;">modifier</a>{/if}
+	{if $videoauthor == $currentuser || $isadmin}<a onclick="$app(this).deleteContent({$idnow}); return false;">supprimer<br /></a>{/if}
+	{votesbox id=$idcomboxnow type="miniapp"}
+</p>
 
 </p>
 <a href="{kurl app="video" page=""}">{t}See the previous videos{/t}</a>

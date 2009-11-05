@@ -9,7 +9,9 @@
 	<param name="movie" value="{$vid.site}{$vid.video}" />
 </object><br />
 </br>{$vid.comment}<br />{t}Video posted by{/t} : {userlink user=$vid.user showpicture=$islogged}
-<br /><br />
+<br />
+	{votesbox id=$vid.idcombox type="bigapp"}
+<br /> <br />
 
 	{/foreach}
 

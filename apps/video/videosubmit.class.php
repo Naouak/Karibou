@@ -10,6 +10,52 @@
 
 class VideoSubmit extends AppContentModel {
 
+	public function isModifiable($key) {
+		if ($this->app->getPermission() == _ADMIN_) {
+			return true;
+		}
+		$query = $this->db->prepare("SELECT user_id FROM video WHERE id=:id");
+		$query->bindValue(":id", $key);
+		if (!$query->execute()) {
+			Debug::kill("Error while checking rights");
+		} else {
+			$row = $query->fetch();
+			if ($row[0] == $this->currentUser->getID())
+				return true;
+		}
+		return false;
+	}
+
+	public function modify ($key, $parameters) {
+		$query = $this->db->prepare("UPDATE video SET `comment`=:comment WHERE id=:id LIMIT 1");
+		$query->bindValue(":comment", $parameters['comment']);
+		$query->bindValue(":id", intval($key));
+		if (!$query->execute()) {
+			Debug::kill("Error while updating");
+		}
+	}
+
+	public function delete ($key) {
+		$query = $this->db->prepare("UPDATE video SET `deleted`=1 WHERE id=:id LIMIT 1");
+		$query->bindValue(":id", intval($key));
+		if (!$query->execute()) {
+			Debug::kill("Error while updating");
+		}
+	}
+
+	public function fillFields($key, &$fields) {
+		unset($fields["newvideo"]);
+		$query = $this->db->prepare("SELECT `comment` FROM video WHERE id=:id");
+		$query->bindValue(":id", intval($key));
+		if (!$query->execute()) {
+			Debug::kill("Error while filling fields");
+		} else {
+			$row = $query->fetch();
+			$fields["comment"]["value"] = $row["comment"];
+
+		}
+	}
+
 	public function formFields() {
 		// Renvoyer un formulaire de config utilisable...
 		$helpText = _("To add a video, just input the URL of the YouTube, Dailymotion, Vimeo or Koreus page that contained it.") . "<br />";
@@ -18,6 +64,10 @@ class VideoSubmit extends AppContentModel {
 		$helpText = $helpText . _("Example for Vimeo:") . " http://www.vimeo.com/1715202<br />";
 		$helpText = $helpText . _("Example for Koreus:") . " http://www.koreus.com/video/numa.html<br />";
 		$helpText = $helpText . _("Careful, you must input the whole address of the page containing the video, including the http:// text.");
+		if (isset($_POST["__modified_key"])) {
+			// Special case for modify
+			return array("comment" => array("type" => "text", "required" => false, "label" => _("Add your comment here: ")));
+		}
 		return array("help" => array("type" => "help", "title" => _("Explanation & Examples"), "text" => $helpText),
 			"newvideo" => array("type" => "url", "required" => true, "label" => _("Please input the page's address")),
 			"comment" => array("type" => "text", "required" => false, "label" => _("Add your comment here: ")));
