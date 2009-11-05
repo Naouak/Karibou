@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <app>
-    <permissions default="_NO_ACCESS_" logged="_FULL_WRITE_"/>
-    <load class="Commentaires" file="commentaires.class.php" />
-    <load class="[arguments]/AnyCharArgument" />
-    <load class="CommentairesAdd" file="commentairesadd.class.php" />
+	<permissions default="_NO_ACCESS_" logged="_FULL_WRITE_"/>
+	<load class="Commentaires" file="commentaires.class.php" />
+	<load class="[arguments]/NumberArgument" />
+	<load class="CommentairesAdd" file="commentairesadd.class.php" />
 
-    <view name="commentaire" class="Commentaires" template="page.tpl" />
+	<view name="commentaire" class="Commentaires" template="page.tpl" />
 
-    <page view="commentaire">
-        <argument name="id" class="AnyCharArgument" />
-	<header app="header" view="default" />
-	<footer app="footer" view="default" />
-    </page>
+	<page view="commentaire">
+		<argument name="id" class="NumberArgument" />
+		<header app="header" view="default" />
+		<footer app="footer" view="default" />
+	</page>
 
-    <form action="postcomment" class="CommentairesAdd" >
-        <referer />
-    </form>
+	<form action="postcomment" class="CommentairesAdd" >
+		<referer />
+	</form>
 </app>

@@ -1,0 +1,8 @@
+.comments_title_title, .comments_content_title, .comments_old_title, .comments_new_title{
+	background-color:#eeeeee;
+	font-weight:bolder;
+}
+.comments_old_content{
+	font-style:italic;
+}
+
