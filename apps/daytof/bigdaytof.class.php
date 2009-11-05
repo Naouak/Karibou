@@ -14,7 +14,7 @@ class BigDayTof extends Model
 	{
 		try
 		{
-			$stmt = $this->db->prepare("SELECT * FROM daytof WHERE 1 ORDER BY datetime DESC LIMIT 10");
+			$stmt = $this->db->prepare("SELECT * FROM daytof WHERE 1 AND `deleted`=0 ORDER BY datetime DESC LIMIT 10");
 			$stmt->execute();
 		}
 		catch(PDOException $e)
@@ -45,9 +45,20 @@ class BigDayTof extends Model
 
 				$photos[$id]["user"] = $this->userFactory->prepareUserFromId($photos[$id]["user_id"]);
 				$photos[$id]["photo"] = $filename;
+				
+				$name=$this->appname."-".$photos[$id]['id'];
+				$combox = new CommentSource($this->db,$name,"",$photos[$id]["photo"]);
+				
 				$photos[$id]["mphoto"] = $mfilename;
+				$photos[$id]["idcombox"] = $combox->getId();
+				
+				
+				
 			}
+			//$this->assign("idcombox", $combox->getId());
 			$this->assign("tofarray", $photos);
+			$this->assign("isadmin", $this->getPermission() == _ADMIN_);
+			$this->assign("currentuser",$this->currentUser->getId());
 		}
 	}
 }

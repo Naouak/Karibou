@@ -6,6 +6,7 @@
 	</a>
 	<br />
 	</br>{$tof.comment}<br />##DAYTOF_POSTED_BY## : {userlink user=$tof.user showpicture=$islogged}
+	{votesbox id=$tof.idcombox type="bigapp"}
 	<p />
 {/foreach}
 </div>
