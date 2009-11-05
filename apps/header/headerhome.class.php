@@ -15,7 +15,6 @@ class HeaderHome extends Model
 {
 	function build()
 	{
-		$this->assign("basehref", $GLOBALS["config"]['site']['base_url']);
 		if( $theme = $this->currentUser->getPref('theme') )
 		{
 			$this->assign("cssFile", $GLOBALS['config']['style']
@@ -30,11 +29,6 @@ class HeaderHome extends Model
 		}
 		
 		$this->assign("styles", $GLOBALS['config']['style']);
-		
-		if( $this->currentUser->isLogged() )
-		{
-			$this-> assign("currentUserName", $this->currentUser->getFullName() );
-		}
 	}
 	
 
