@@ -50,7 +50,7 @@ class AnnuaireProfile extends Model
 			}
 			else
 			{
-				$this->assign("picture", "/themes/default/images/0.jpg");
+				$this->assign("picture", "/themes/karibou/images/0.jpg");
 			}
 		}
 		$currentuser = $this->userFactory->getCurrentUser();
