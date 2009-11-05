@@ -5,8 +5,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<base href="http://<?php echo $_SERVER['HTTP_HOST'].str_replace("index.php","",$_SERVER['SCRIPT_NAME']);?>" />
 
-	<meta name="robots" content="noindex, follow">
-	<meta name="googlebot" content="noindex, follow">
+	<meta name="robots" content="noindex, follow" />
+	<meta name="googlebot" content="noindex, follow" />
 	
 	<title>
 		<?php echo _('HEADER_PAGE_TITLE')." :: "._('KPOWERED');?>
