@@ -24,7 +24,7 @@ class ChifoumiPost extends Model
 						FROM
 							onlineusers ou
 						LEFT JOIN
-							chifoumi c ON c.user=ou.user_id AND c.acepted=0
+							chifoumi c ON c.challenged=ou.user_id AND c.acepted=0
 						WHERE
 							ou.user_id <> :user
 						GROUP BY
