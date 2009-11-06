@@ -47,6 +47,13 @@ class HookManager
 		$this->hooks[$hookname]->addView ($model, $template);
 	}
 
+	function delView ($hookname, $model, $template)
+	{
+		if (isset($this->hooks[$hookname])) {
+			$this->hooks[$hookname]->delView($model, $template);
+		}
+	}
+
 	/*
 	 * Methode affichant le texte present dans l'accroche
 	 */
@@ -77,6 +84,16 @@ class Hook
 	function addView($model, $template)
 	{
 		$this->views[] = array("model"=> $model, "template" => $template);
+	}
+
+	function delView($model, $template)
+	{
+		$newViews = array();
+		foreach ($this->views as $view) {
+			if (($view["model"] != $model) || ($view["template"] != $template))
+				$newView[] = $view;
+		}
+		$this->views = $newViews;
 	}
 
 	function returnViews()
