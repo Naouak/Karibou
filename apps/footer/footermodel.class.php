@@ -18,7 +18,16 @@ class FooterModel extends Model
 		//Assignation de la variable hookManager dans Smarty pour affichage
 		$this->assign("hookManager", $this->hookManager);
 		$currentUser = $this->userFactory->getCurrentUser();
-		$this->assign("currentUser", $currentUser);
+		$this->assign("user", $currentUser);
+		$this->assign("islogged", $currentUser->isLogged());
+		if ($currentUser->isLogged()) {
+			$this->assign("login", $currentUser->getLogin());
+		}
+		if (isset($GLOBALS["config"]["footer"]["message"]))
+			$this->assign("message", $GLOBALS["config"]["footer"]["message"]);
+		else
+			$this->assign("message", "");
+		$this->assign("hasMenu", $this->hookManager->hasHook("header_menu"));
 	}
 }
 
