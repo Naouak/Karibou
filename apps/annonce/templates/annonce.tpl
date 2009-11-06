@@ -2,6 +2,9 @@
 <p>
 {foreach item=annonce from=$annonces}
 <div id="annoncecss">
+<div style="float: right;">
+	{votesbox id=$annonce.idcombox type="miniapp"}
+</div>
 <span id="annoncecsstext">##SURNAMEANN_AUTHOR## </span>: {userlink user=$annonce.author showpicture=$islogged }
 <br />
 {$annonce.text|wordwrap:34:" ":true}
@@ -18,9 +21,10 @@
 {if $annonce.iduser == $currentuser || $isadmin}
 <p> <input type="submit" name="bouton" value="enlever" onclick="$app(this).update('{$annonce.id}');" /> 
 {/if}
+
+
 </div>
 
-{votesbox id=$annonce.idcombox type="miniapp"}
 {/foreach}
 </p>
 </p>
