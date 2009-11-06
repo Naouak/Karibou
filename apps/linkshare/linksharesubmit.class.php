@@ -61,7 +61,10 @@ class linkshareSubmit extends AppContentModel {
 	}
 
 	public function formFields () {
-		return array("link" => array("type" => "url" ,"required" => true, "label" => "Lien à partager : "), "title" => array("type"=>"text","required" => true, "label" => "titre du lien"));
+		return array(
+			"title" => array("type"=>"text","required" => true, "label" => "Titre du lien"),
+			"link" => array("type" => "url" ,"required" => true, "label" => "Lien à partager")
+		);
 	}
 }
 
