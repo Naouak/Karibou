@@ -1,5 +1,3 @@
-{popup_init src="/javascripts/overlib.js"}
-
 {capture name="formulaire_wiki"}
 	<form action="{kurl docu=$titre_wiki mode="add"}" method="post">
         	<input type="hidden" name="page_wiki" value="{$titre_wiki}" />
@@ -23,7 +21,7 @@
 			<img title="Image externe" src="images/bt_img_link.png" />
 			</div>
         	<textarea id="p_content" name="contenu_wiki" cols="60" rows="20">{$contenu_wiki}</textarea>
-			<script type="text/javascript" src="/themes/js/toolbar.js"></script>
+			<script type="text/javascript" src="{$karibou.base_url}/themes/js/toolbar.js"></script>
 			{literal}
 			<script type="text/javascript">
 			// <![CDATA[
