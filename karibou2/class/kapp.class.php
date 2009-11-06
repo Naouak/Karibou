@@ -413,19 +413,6 @@ class KApp
 		return true;
 	}
 
-	/**
-	 * retourne le code html de la version demandée
-	 *
-	 * @param Int $version_asked
-	 * @return String
-	 */
-	function fetch()
-	{
-		$this->html = $this->hookManager->fetch("header");
-		$this->html .= $this->hookManager->fetch("default");
-		$this->html .= $this->hookManager->fetch("footer");
-		return $this->html;
-	}
 	function display()
 	{
 		// We'll send the content type

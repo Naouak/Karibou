@@ -145,74 +145,13 @@ abstract class Model
 	
 	abstract function build();
 	
-	/**
-	 * Lance le moteur de template
-	 * @return String HTML généré
-	 */
-	function fetch($template)
-	{
-		ExecutionTimer::getRef()->start("Config Smarty");
-		// problème avec les hook, smarty appelé recursivement efface des valeurs
-		// ça fonction mieux en commentant cette ligne mais faut trouvé un contournement
-		//$this->smarty->clear_all_assign();
-		$this->smarty->quick_hack_clear_values();
-		$this->smarty->template_dir = $this->templatedir.'/';
-		$this->smarty->compile_dir = KARIBOU_COMPILE_DIR.'/'.get_class($this).'/';
-		if(!is_dir($this->smarty->compile_dir)) mkdir($this->smarty->compile_dir);
-		$this->smarty->config_dir = KARIBOU_CONFIG_DIR.'/';
-		$this->smarty->cache_dir = KARIBOU_CACHE_DIR.'/'.get_class($this).'/';
-		if(!is_dir($this->smarty->cache_dir)) mkdir($this->smarty->cache_dir);
-		$this->smarty->setApp($this->appname);
-		ExecutionTimer::getRef()->stop("Config Smarty");
-
-		foreach($this->vars as $key => $value)
-		{
-			$this->smarty->assign($key, $value);
-		}
-		$html = $this->smarty->fetch($template);
-		return $html;
-	}
 	function display($template)
 	{
 		ExecutionTimer::getRef()->start("Display Model (".$template.") ".$this->appname."(".get_class($this).")");
 		
 		$this->assign("karibou", $GLOBALS["config"]);
-		
-		if (preg_match('/\.php$/i', $template))
-		{
-			/**
-			 * Mise en place des templates PHP (amélioration des performances)
-			 * Le passage en variable globale est une solution temporaire... il faudrait trouver une autre solution
-			 */
-		
-			//Le HookManager doit être en variable globale
-			if (!isset($GLOBALS['phpTemplateHookManager']))
-				$GLOBALS['phpTemplateHookManager'] = $this->hookManager;
-				
-			//Sauvegarde des valeurs initiales pour recopie après exécution
-			if (isset($GLOBALS['phpTemplateCurrentAppList']))
-				$previousAppList = $GLOBALS['phpTemplateCurrentAppList'];
-			if (isset($GLOBALS['phpTemplateCurrentAppName']))
-				$previousAppName = $GLOBALS['phpTemplateCurrentAppName'];
-			
-			//Initialisation des variables qui vont être utilisées pour le template PHP
-			$GLOBALS['phpTemplateCurrentAppList'] = $this->appList;
-			$GLOBALS['phpTemplateCurrentAppName'] = $this->appname;
-			
-			//Inclusion du template (pour display)
-			include($this->templatedir.'/'.$template);
-			
-			//Désaffectation des variables qui ont été utilisées pour le template PHP
-			unset($GLOBALS['phpTemplateCurrentAppList']);
-			unset($GLOBALS['phpTemplateCurrentAppName']);
-			
-			//Recopie si nécessaire
-			if (isset($previousAppList))
-				$GLOBALS['phpTemplateCurrentAppList'] = $previousAppList;
-			if (isset($previousAppName))
-				$GLOBALS['phpTemplateCurrentAppName'] = $previousAppName;
-		}
-		elseif (preg_match('/\.tpl$/i',$template))
+
+		if (preg_match('/\.tpl$/i',$template))
 		{
 			ExecutionTimer::getRef()->start("Config Smarty");
 			// problème avec les hook, smarty appelé recursivement efface des valeurs

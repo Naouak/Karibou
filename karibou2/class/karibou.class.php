@@ -8,7 +8,7 @@
  * 
  * @package framework
  **/
- 
+
 require_once dirname(__FILE__).'/../config/config.inc.php';
 
 require_once KARIBOU_CLASS_DIR.'/ClassLoader.class.php';
@@ -40,11 +40,11 @@ ClassLoader::add('Event', KARIBOU_CLASS_DIR."/event.class.php");
 ClassLoader::add('EventManager', KARIBOU_CLASS_DIR."/eventmanager.class.php");
 ClassLoader::add('MessageManager', KARIBOU_CLASS_DIR."/messagemanager.class.php");
 ClassLoader::add('AuthManager', KARIBOU_CLASS_DIR."/authManager.class.php");
+ClassLoader::add('HookManager', KARIBOU_CLASS_DIR."/hookmanager.class.php");
 
 ClassLoader::add('ObjectList', KARIBOU_LIB_DIR.'/objectlist.class.php');
 ClassLoader::add('KText', KARIBOU_LIB_DIR."/ktext.class.php");
 ClassLoader::add('FormMessage', KARIBOU_LIB_DIR."/formmessage.class.php");
-ClassLoader::add('HookManager', KARIBOU_LIB_DIR."/hookmanager.class.php");
 ClassLoader::add('Krypt', KARIBOU_LIB_DIR."/krypt.class.php");
 ClassLoader::add('Date', KARIBOU_LIB_DIR."/date.class.php");
 ClassLoader::add('Date_Span', KARIBOU_LIB_DIR."/date_span.class.php");
@@ -77,7 +77,7 @@ class Karibou
 	 * @var PDO
 	 */
 	protected $db;
-	
+
 	/**
 	 * @var ErrorHandler
 	 */
@@ -107,12 +107,12 @@ class Karibou
 	 * @var Page
 	 */
 	protected $page;
-	
+
 	/**
 	 * @var KApp
 	 */
 	protected $app;
-	
+
 	/**
 	 * @var String
 	 */
@@ -125,13 +125,13 @@ class Karibou
 
 	protected $appHeader;
 	protected $appFooter;
-	
-	
+
+
 	//Le gestionnaire d'accroche
 	protected $hookManager;
 	protected $eventManager;
 	protected $messageManager;
-	
+
 	//Langue courante
 	protected $currentLanguage;
 
@@ -165,29 +165,29 @@ class Karibou
 		$this->baseUrl->setCurrentUser($this->currentUser);
 		$this->baseUrl->parseURL($_SERVER['REQUEST_URI']);
 
-		$this->hookManager		= new HookManager();
-		$this->eventManager		= new EventManager();
+		$this->hookManager	= new HookManager();
+		$this->eventManager	= new EventManager();
 		$this->messageManager	= new MessageManager();
-		
+
 		//Definition du langage de l'utilisateur
 		//TODO -> A deplacer
 		$lang = $this->currentUser->getPref("lang");
-        if (isset($lang) && $lang != '')
-        {
-            if (substr($lang,0,2) == 'en')
-            {
-                $this->currentLanguage = 'en_US.utf-8';
-            }
-            else
-            {
-                $this->currentLanguage = 'fr_FR.utf-8';
-            }
-        } else {
-            $this->currentLanguage = 'fr_FR.utf-8';
-        }
-        	// On commence la gestion des erreurs
-        	$this->errorHandler = new ErrorHandler($this->db, $this->currentUser);
-        
+		if (isset($lang) && $lang != '')
+		{
+			if (substr($lang,0,2) == 'en')
+			{
+				$this->currentLanguage = 'en_US.utf-8';
+			}
+			else
+			{
+				$this->currentLanguage = 'fr_FR.utf-8';
+			}
+		} else {
+			$this->currentLanguage = 'fr_FR.utf-8';
+		}
+		// On commence la gestion des erreurs
+		$this->errorHandler = new ErrorHandler($this->db, $this->currentUser);
+
 		putenv("LANG=".$this->currentLanguage); 
 		setlocale(LC_ALL, $this->currentLanguage, substr($this->currentLanguage, 0, 2));
 		$domain = 'messages';
@@ -198,20 +198,20 @@ class Karibou
 		$modelbuilder = new ModelBuilder();
 
 		$this->appList = new AppList($modelbuilder, $this->db, $this->userFactory, 
-		$this->hookManager, $this->eventManager, $this->messageManager );
-		
+			$this->hookManager, $this->eventManager, $this->messageManager );
+
 		// on créé la page
 		$this->appName = $this->baseUrl->getApp();
 		$this->app = $this->appList->getApp( $this->appName );
 
 		$urlParser = $this->baseUrl->getParser();
-		
+
 		$this->requestedAppName = $urlParser->getAppName();
 		$this->requestedPageName = $urlParser->getPageName();
 
 		//Chargement du daemonloader et du hookmanager ici pour permettre le logout
 		$daemonLoader = new DaemonLoader($this->db, $this->userFactory, $this->appList,
-		$this->hookManager, $this->eventManager, $this->messageManager );
+			$this->hookManager, $this->eventManager, $this->messageManager );
 		$daemonLoader->loadDaemonDir(KARIBOU_DAEMON_DIR);
 
 		$this->eventManager->sendEvent("running");
@@ -221,7 +221,7 @@ class Karibou
 		if( $model = $this->app->doForm($urlParser) )
 		{
 			$modelbuilder->build();
-			
+
 			// Il faut détruire le gestionnaire d'erreurs
 			unset($this->errorHandler);
 			// On deconnecte de la base de données avant de commencer à afficher
@@ -236,7 +236,7 @@ class Karibou
 		{
 			$this->eventManager->sendEvent("load");
 			$this->eventManager->performActions();
-			
+
 			// construction de l'appli principale
 			if( ! $this->app->buildPage($urlParser) )
 			{
@@ -248,10 +248,10 @@ class Karibou
 			}
 			//(execute la methode build de chaque appli)
 			$modelbuilder->build();
-			
+
 			// quand tout est instancié on lance le remplissage de la pile
 			$this->userFactory->setUserList();
-			
+
 			// On deconnecte de la base de données avant de commencer à afficher
 			unset($this->db);
 		}
@@ -260,15 +260,15 @@ class Karibou
 
 	function __destruct()
 	{
-        if($this->userFactory)
-    		$this->userFactory->saveCurrentUser();
+		if($this->userFactory)
+			$this->userFactory->saveCurrentUser();
 	}
 
 	public function loadApp($name, $file)
 	{
 		Config::loadApp($name, $file);
 	}
-	
+
 	public function loadAppDir($dirname, $configfile="config.xml")
 	{
 		$files = glob($dirname.'/*');
@@ -283,32 +283,32 @@ class Karibou
 
 	/**
 	 * Connexion à la base de données
-	 */
-	protected function connectDB()
-	{
-		//Prise en compte des espaces (si la variable de base de données est initialisée)
-		if (isset($GLOBALS['config']['current_space']['bdd']['appsdb']))
+		 */
+		protected function connectDB()
 		{
-			$dsn = 'mysql:dbname='.$GLOBALS['config']['current_space']['bdd']['appsdb'].';host=localhost';
-		}
-		else
-		{
-			$dsn = $GLOBALS['config']['bdd']['dsn'];
-		}
+			//Prise en compte des espaces (si la variable de base de données est initialisée)
+			if (isset($GLOBALS['config']['current_space']['bdd']['appsdb']))
+			{
+				$dsn = 'mysql:dbname='.$GLOBALS['config']['current_space']['bdd']['appsdb'].';host=localhost';
+			}
+			else
+			{
+				$dsn = $GLOBALS['config']['bdd']['dsn'];
+			}
 
-		Database::initialize(
+			Database::initialize(
 				$dsn, 
 				$GLOBALS['config']['bdd']["username"], 
 				$GLOBALS['config']['bdd']["password"]);
-		$this->db = Database::instance();
-	}
+			$this->db = Database::instance();
+		}
 
-	public function display()
-	{
-		ExecutionTimer::getRef()->start("display Karibou");
-		$this->app->display();
-		ExecutionTimer::getRef()->stop("display Karibou");
-	}
+		public function display()
+		{
+			ExecutionTimer::getRef()->start("display Karibou");
+			$this->app->display();
+			ExecutionTimer::getRef()->stop("display Karibou");
+		}
 
 }
 
