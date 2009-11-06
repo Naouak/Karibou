@@ -13,8 +13,8 @@
 <form action="{kurl page="keychainreset"}" method="post"><input type="submit" value="##IGNORE##" /></form>
 </div>
 {else}
-<script type="text/javascript" src="{$karibou_base_url}/themes/js/default2.js"></script>
-<script type="text/javascript" src="{$karibou_base_url}/themes/js/scal.js"></script>
+<script type="text/javascript" src="{$karibou_base_url}/scripts/default2.js"></script>
+<script type="text/javascript" src="{$karibou_base_url}/scripts/scal.js"></script>
 
 <script language="javascript">
 var karibou = null;

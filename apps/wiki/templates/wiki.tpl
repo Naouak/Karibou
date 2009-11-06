@@ -21,7 +21,7 @@
 			<img title="Image externe" src="images/bt_img_link.png" />
 			</div>
         	<textarea id="p_content" name="contenu_wiki" cols="60" rows="20">{$contenu_wiki}</textarea>
-			<script type="text/javascript" src="{$karibou.base_url}/themes/js/toolbar.js"></script>
+			<script type="text/javascript" src="{$karibou.base_url}/scripts/toolbar.js"></script>
 			{literal}
 			<script type="text/javascript">
 			// <![CDATA[

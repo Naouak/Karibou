@@ -17,14 +17,14 @@
 <!--[if lt IE 8]>
 <script src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE8.js" type="text/javascript"></script>
 <![endif]-->
-	<script type="text/javascript" src="{$base_url}/themes/js/prototype.js"></script>
-	<script type="text/javascript" src="{$base_url}/themes/js/scriptaculous.js"></script>
-	<script type="text/javascript" src="{$base_url}/themes/js/karibou.js"></script>
-	<script type="text/javascript" src="{$base_url}/themes/js/kform.js"></script>
-	<script type="text/javascript" src="{$base_url}/themes/js/hintbox.js"></script>
-	<script type="text/javascript" src="{$base_url}/themes/js/BigInt.js"></script>
-	<script type="text/javascript" src="{$base_url}/themes/js/Barrett.js"></script>
-	<script type="text/javascript" src="{$base_url}/themes/js/RSA.js"></script>
+	<script type="text/javascript" src="{$base_url}/scripts/prototype.js"></script>
+	<script type="text/javascript" src="{$base_url}/scripts/scriptaculous.js"></script>
+	<script type="text/javascript" src="{$base_url}/scripts/karibou.js"></script>
+	<script type="text/javascript" src="{$base_url}/scripts/kform.js"></script>
+	<script type="text/javascript" src="{$base_url}/scripts/hintbox.js"></script>
+	<script type="text/javascript" src="{$base_url}/scripts/BigInt.js"></script>
+	<script type="text/javascript" src="{$base_url}/scripts/Barrett.js"></script>
+	<script type="text/javascript" src="{$base_url}/scripts/RSA.js"></script>
 {hook name="html_head"}
 </head>
 <body>
