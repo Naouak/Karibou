@@ -22,6 +22,9 @@
 	<script type="text/javascript" src="{$base_url}/themes/js/karibou.js"></script>
 	<script type="text/javascript" src="{$base_url}/themes/js/kform.js"></script>
 	<script type="text/javascript" src="{$base_url}/themes/js/hintbox.js"></script>
+	<script type="text/javascript" src="{$base_url}/themes/js/BigInt.js"></script>
+	<script type="text/javascript" src="{$base_url}/themes/js/Barrett.js"></script>
+	<script type="text/javascript" src="{$base_url}/themes/js/RSA.js"></script>
 {hook name="html_head"}
 </head>
 <body>

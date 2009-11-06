@@ -1,7 +1,4 @@
 {if $pubkey_exp}
-<script language="JavaScript" src="/themes/js/BigInt.js"></script>
-<script language="JavaScript" src="/themes/js/Barrett.js"></script>
-<script language="JavaScript" src="/themes/js/RSA.js"></script>
 <script>
 var key = new RSAKeyPair(
 	"{$pubkey_exp}",

@@ -14,9 +14,6 @@
 </div>
 {else}
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/default2.js"></script>
-<script type="text/javascript" src="{$karibou_base_url}/themes/js/Barrett.js"></script>
-<script type="text/javascript" src="{$karibou_base_url}/themes/js/BigInt.js"></script>
-<script type="text/javascript" src="{$karibou_base_url}/themes/js/RSA.js"></script>
 <script type="text/javascript" src="{$karibou_base_url}/themes/js/scal.js"></script>
 
 <script language="javascript">
