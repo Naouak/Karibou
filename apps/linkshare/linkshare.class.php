@@ -44,7 +44,6 @@ class linkshare extends Model {
 			$this->assign("isLogged", $this->currentUser->isLogged());
 			$this->assign("links", $links);
 		} catch(PDOException $e) {
-			exit($e);
 			Debug::kill($e->getMessage());
 		}
 	}
