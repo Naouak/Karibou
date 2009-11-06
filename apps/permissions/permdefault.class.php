@@ -16,8 +16,6 @@ class PermDefault extends Model
 {
 	function build()
 	{
-		$this->template = 'default.tpl';
-		
 		$applis = array();
 		
 		Config::appReset();
