@@ -9,5 +9,6 @@ RewriteEngine On
 # Some rules...
 RewriteRule ^themes/	-		[L]
 RewriteRule ^scripts/	-		[L]
+RewriteRule ^statics/	-		[L]
 RewriteRule ^pub/	-		[L]
 RewriteRule ^.*$	index.php	[L]

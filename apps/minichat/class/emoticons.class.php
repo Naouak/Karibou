@@ -17,7 +17,7 @@ class Emoticons
 	
 	function __construct($userFactory) {
 		$this->userFactory = $userFactory;
-		$this->emoticon_dir = substr(KARIBOU_THEMES_URL . "/emoticons", 1);
+		$this->emoticon_dir = substr(KARIBOU_STATICS_URL . "/emoticons", 1);
 		$this->emoticon_themes = array("None");
 				
 		if (is_dir($this->emoticon_dir)) {

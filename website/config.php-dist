@@ -101,6 +101,7 @@ define("KARIBOU_APP_DIR", dirname(__FILE__).'/../apps');
 define("KARIBOU_DAEMON_DIR", dirname(__FILE__).'/../daemons');
 define("KARIBOU_PUB_DIR", dirname(__FILE__).'/pub');
 define("KARIBOU_THEMES_URL", "/themes");
+define("KARIBOU_STATICS_URL", "/statics");
 define("KARIBOU_SMARTY_DIR", "smarty/libs");
 define("KARIBOU_LOCALE_DIR", dirname(__FILE__).'/../locale');
 
