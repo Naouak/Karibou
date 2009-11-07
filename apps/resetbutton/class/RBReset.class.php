@@ -45,7 +45,7 @@ class RBReset extends FormModel
 			$stmt->execute();
 
 			if($row = $stmt->fetch()) {
-				ScoreFactory::stealScoreFromUser($this->currentUser, $this->userFactory->prepareUserFromId($row["user"]), $row["score"], "resetbutton");
+				ScoreFactory::stealScoreFromUser($this->currentUser, $this->userFactory->prepareUserFromId($row["user"]), $row["score"] * 10, "resetbutton");
 			}
 
 			//ajout si passe l'anti-flood
