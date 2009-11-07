@@ -1,0 +1,6 @@
+name_fr = "Karibou - log SVN"
+name_en = "The last changes on Karibou"
+desc_fr = "Les derniers changements sur Karibou"
+desc_en = "Karibou - SVN log"
+view = "mini"
+configmodel = "svnconfig"

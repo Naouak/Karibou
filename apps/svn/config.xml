@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+<!-- management of the permission of the apps, default give the permission when we are not logged in and logged where we are logged in -->
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+
+<!--load is used to associate a class name with a the class file name -->
+	<load class="SvnModel" file="svn.class.php" />
+	<load class="svnconfig" file="svnconfig.class.php" />
+
+	<view name="mini" class="SvnModel" template="mini.tpl" />
+</app>
