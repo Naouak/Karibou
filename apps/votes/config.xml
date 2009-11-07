@@ -3,7 +3,7 @@
     <permissions default="_NO_ACCESS_" logged="_FULL_WRITE_" />
 
     <load class="Votes" file="votes.class.php" />
-    <load class="[arguments]/NumberArgument" />
+    <load class="[arguments]/RelativeNumberArgument" />
 
     <view name="votes_js" template="votes_js.tpl" />
     <view name="votes_head" template="html_head.tpl" />
@@ -13,7 +13,7 @@
 
     <page view="default">
         <argument name="id" class="NumberArgument" />
-        <argument name="votes" class="NumberArgument" />
+        <argument name="votes" class="RelativeNumberArgument" />
     </page>
 
     <page view="votes_js" name="votesJS">

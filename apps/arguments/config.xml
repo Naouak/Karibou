@@ -18,6 +18,7 @@
 	<load class="MailboxArgument" file="mailboxargument.class.php" />
 	<load class="MonthArgument" file="monthargument.class.php" />
 	<load class="NumberArgument" file="numberargument.class.php" />
+	<load class="RelativeNumberArgument" file="relativenumberargument.class.php" />
 	<load class="PageArgument" file="pageargument.class.php" />
 	<load class="UserName" file="username.class.php" />
 	<load class="WeekArgument" file="weekargument.class.php" />
