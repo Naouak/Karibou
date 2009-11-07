@@ -67,9 +67,9 @@ class MCPost extends FormModel
 					);
 
 					$scores = array(
-						"preums" => 5000,
-						"deuz" => 2000,
-						"troiz" => 1000
+						"preums" => 500000,
+						"deuz" => 200000,
+						"troiz" => 100000
 					);
 
 					$winners = array();
@@ -147,9 +147,9 @@ class MCPost extends FormModel
 
 					if($this->currentUser->getID() != $last_user && $count == 0) {
 						if($last_user != false) {
-							ScoreFactory::stealScoreFromUser($this->currentUser, $this->userFactory->prepareUserFromId($last_user), 3000, "preums");
+							ScoreFactory::stealScoreFromUser($this->currentUser, $this->userFactory->prepareUserFromId($last_user), 300000, "preums");
 						} else {
-							ScoreFactory::addScoreToUser($this->currentUser, 3000, "preums");
+							ScoreFactory::addScoreToUser($this->currentUser, 300000, "preums");
 						}
 					}
 				}
