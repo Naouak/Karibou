@@ -24,7 +24,7 @@
 						<label for="group">##NEWS_GROUPS_DESTINATION## :</label>
 						<select name="group" id="group" >
 						{* include file="optiongrouptree.tpl" *}
-                        <option value=""> pas de groupe </option>
+                        <option selected value="{if isset($theNewsToModify)}{$theNewsToModify->getGroup()}{/if}">{if !$theNewsToModify->getGroup()} pas de groupe {else} {$theNewsToModify->getGroupName()}</option> <option value=""> pas de groupe{/if}</option>
                     { foreach item=Admin from=$Admin }
                         <option value="{$Admin.Id}" > {$Admin.name} </option>
                     {/foreach}
