@@ -52,7 +52,7 @@ class MCPost extends FormModel
 					$last_hour->execute();
 
 					if($this->db->query("SELECT COUNT(*) FROM onlineusers")->fetchColumn(0) == 1 and $last_hour->fetchColumn(0) == 0) {
-						ScoreFactory::addScoreToUser($this->currentUser, 6000, "alone on karibou");
+						ScoreFactory::addScoreToUser($this->currentUser, 600000, "alone on karibou");
 					}
 				}
 
