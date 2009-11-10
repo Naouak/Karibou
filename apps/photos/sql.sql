@@ -41,3 +41,14 @@ CREATE TABLE `karibou_apps`.`pictures_album_acl` (
 `droit` ENUM( "read", "write" ) NOT NULL ,
 `id` SERIAL NOT NULL
 ) ENGINE = InnoDB;
+
+CREATE TABLE `karibou_apps`.`pictures_album_tagged` (
+`id_album` INT NOT NULL ,
+`id_tag` INT NOT NULL
+) ENGINE = InnoDB;
+
+ALTER TABLE `pictures_tags` CHANGE `name` `name` VARCHAR( 56 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL :
+
+ALTER TABLE `pictures_tags` ADD UNIQUE (
+`name`
+);

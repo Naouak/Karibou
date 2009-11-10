@@ -1,9 +1,18 @@
-list of all albums <br />
+
+<div class="photos_accueil_albums">
+<b>list of all albums </b><br />
 {foreach item=album from=$albums}
-    {$album.name} <br />
+    <a href={kurl page="album" id=$album.id}>{$album.name} </a><br />
 {/foreach}
-
-list of tags <br />
-
-Folder <br />
-<a href="{kurl page="folder" id=$idslash}"> Racine </a><br />
+</div>
+<br />
+<div class="photos_accueil_tags">
+<b>list of tags </b><br />
+{foreach item=tag from=$tags}
+	{$tag.name}<br />
+{/foreach}
+</div>
+<br />
+<div class="photos_accueil_slash">
+<a href="{kurl page="carton" id=$idslash}">{t}Navigation dans les cartons et les albums{/t}</a><br />
+</div>

@@ -34,28 +34,6 @@ class album extends AlbumBase {
     public function addPicture() {
     }
 
-    public function can(User $user,$what) {
-        $user_id = $user->getId();
-        $groups = $user->getGroups($this->db);
-
-        $perm = $this->db->prepare("SELECT * FROM pictures_album_acl WHERE id_album = :id AND permission=:perm");
-        $perm->bindValue(":id",$this->id);
-        $perm->bindValue(":perm",$what);
-        $perm->execute();
-        $acl = $perm->fetchAll();
-
-        foreach($acl as $row) {
-            if (in_array($row["group"],$groups)) {
-                return true;
-            }
-            if ($row["user"] == $user_id) {
-                return true;
-            }
-        }
-
-        return false;
-
-    }
 
     public function getAllPictures() {
         $sql = $this->db->prepare("SELECT id FROM pictures WHERE album=:album");

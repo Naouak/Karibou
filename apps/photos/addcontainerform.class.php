@@ -9,15 +9,29 @@
  **/
 
 class AddContainerForm extends FormModel {
-    public function build() {
-        $name = filter_input(INPUT_POST,"name", FILTER_SANITIZE_SPECIAL_CHARS);
-        $type=filter_input(INPUT_POST,"type",FILTER_SANITIZE_SPECIAL_CHARS);
-        $parent=filter_input(INPUT_POST,"parent",FILTER_SANITIZE_NUMBER_INT);
-        $stmt = $this->db->prepare("INSERT INTO pictures_album (`name`,`type`,`parent`) VALUES (:name,:type,:parent);");
-        $stmt->bindValue(":name",$name);
-        $stmt->bindValue(":parent",$parent);
-        $stmt->bindValue(":type",$type);
-        $stmt->execute();
-        
-    }
+	public function build() {
+		// We retrieve all data from the form and we filter this data to avoid problems
+		$name = filter_input(INPUT_POST,"name", FILTER_SANITIZE_SPECIAL_CHARS);
+		$type=filter_input(INPUT_POST,"type",FILTER_SANITIZE_SPECIAL_CHARS);
+		$parent=filter_input(INPUT_POST,"parent",FILTER_SANITIZE_NUMBER_INT);
+		$tags = filter_input(INPUT_POST,"tags",FILTER_SANITIZE_SPECIAL_CHARS);
+
+		// we create the new container
+		$stmt = $this->db->prepare("INSERT INTO pictures_album (`name`,`type`,`parent`) VALUES (:name,:type,:parent);");
+		$stmt->bindValue(":name",$name);
+		$stmt->bindValue(":parent",$parent);
+		$stmt->bindValue(":type",$type);
+		$stmt->execute();
+
+		$array_tags = explode(",",$tags);
+		$sql = $this->db->prepare("INSERT IGNORE INTO pictures_tags SET `name` = :name;");
+		foreach($array_tags as $tag){
+			$sql->bindValue(":name",$tag);
+			$sql->execute();
+		}
+
+		// this permits to Redirect to the page written in the config.xml with this argument after the submit
+		$this->setRedirectArg("id",$parent);
+
+	}
 }

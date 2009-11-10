@@ -22,6 +22,8 @@ class folder extends Model {
             $k = $container->getPictureStorage($kid["id"]);
             $array[] = $k->getAll();
         }
+        $parent = $container->getPictureStorage($this->args["id"]);
+        $this->assign("parentpath",$parent->getAllParent());
         $this->assign("children",$array);
         $this->assign("parent",$this->args["id"]);
     }

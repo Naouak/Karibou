@@ -8,7 +8,7 @@
  *
  */
 
-class Photos extends AlbumBase {
+class pictures extends AlbumBase {
 
     protected $db;
     protected $name;
@@ -16,15 +16,16 @@ class Photos extends AlbumBase {
     protected $id;
     protected $parent;
 
-    function __construct($db,$id) {
-        $this->db = $db;
+    function __construct($id) {
+        $this->db=Database::instance();
         $this->id = $id;
         $this->currentuser = $currentuser;
         $sql = $this->db->prepare("SELECT * FROM pictures where id=:id;");
         $sql->bindValue(":id",$id);
         $sql->execute();
-        $pict = $sql->fetchAll();
-        $this->parent = $pict[0]["album"];
+        $pict = $sql->fetch();
+        $this->parent = $pict["album"];
+        $this->date = $pict["date"];
     }
 
 
@@ -39,25 +40,5 @@ class Photos extends AlbumBase {
         }
     }
     
-    public function canRead(User $user) {
-        $user_id = $user->getId();
-        $groups = $user->getGroups($this->db);
-        
-        $perm = $this->db->prepare("SELECT * FROM pictures_album_acl WHERE id_album = :id");
-        $perm->bindValue(":id",$this->album);
-        $perm->execute();
-        $acl = $perm->fetchAll();
-        
-        foreach($acl as $row) {
-            if (in_array($row["group"],$groups)) {
-                return true;
-            }
-            if ($row["user"] == $user_id) {
-                return true;
-            }
-        }
-        
-        return false;
-    }
 
 }

@@ -10,13 +10,14 @@
     <load class="photosAlbum" file="photos_album.class.php" />
     <load class="AddContainerForm" file="addcontainerform.class.php" />
     <load class="AddContainer" file="addcontainer.class.php" />
+	<load class="AddTagContainerForm" file="addtagcontainerform.class.php" />
     <load class="folder" file="folder.class.php" />
 
     <load class="[arguments]/AnyCharArgument" />
     <load class="[arguments]/NumberArgument" />
 
 
-    <load class="Photos" file="class/photos.class.php" />
+    <load class="pictures" file="class/photos.class.php" />
     <load class="album" file="class/album.class.php" />
     <load class="carton" file="class/carton.class.php" />
     <load class="AlbumBase" file="class/base.class.php" />
@@ -25,9 +26,10 @@
 <!--view is used to associate a the name of the view, the class and the template file -->
 	<view name="mini" class="photos" template="mini.tpl" />
     <view name="list" class="photos" template="list.tpl" />
-    <view name="album" class="photos" template="album.tpl" />
+    <view name="album" class="photosAlbum" template="album.tpl" />
     <view name="addcontainer" class="AddContainer" template="addcontainer.tpl" />
-    <view name="folder" class="folder" template="folder.tpl"/>
+	<view name="addtags" class="AddContainer" template="addtags.tpl" />
+    <view name="folder" class="folder" template="folder.tpl" />
 <!--	<view name="{js}" template="js.tpl" />-->
 
 <!--the following lines defines the default header and footer when we don't defines special header and footer -->
@@ -40,8 +42,8 @@
 
     <!--parameters of the page -->
 
-        <header app="header" view="empty" />
-        <footer app="footer" view="empty" />
+        <header app="header" view="default" />
+        <footer app="footer" view="default" />
 
         <!-- <option /> permits to give the arguments given by the name, the class should be one of the class which are in apps/arguments-->
 <!--
@@ -50,14 +52,18 @@
     </page>
 
     <page name="album" view="album">
-        <argument name="name" class="AnyCharArgument"/>
+        <argument name="id" class="NumberArgument"/>
     </page>
 
     <page name="addcontainer" view="addcontainer">
         <argument name="parent" class="NumberArgument" />
     </page>
 
-    <page name="folder" view="folder" >
+	<page name="addtags" view="addtags">
+		<argument name="parent" class="NumberArgument" />
+	</page>
+
+    <page name="carton" view="folder" >
         <argument name="id" class="NumberArgument" />
     </page>
 
@@ -72,7 +78,10 @@
 
 <!--definition of a form who permit to create event in reaction of form -->
 	<form action="container" class="AddContainerForm" >
-        <referer />
+        <redirect page="carton" />
     </form>
-        
+    
+	<form action="tags" class="AddTagContainerForm" >
+		<redirect />
+	</form>
 </app>
