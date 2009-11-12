@@ -32,7 +32,7 @@
     <footer app="footer" view="default" />
 
 	<form action="post" class="BugsPost">
-		<redirect  page="bugs" />
+		<redirect  page="" />
 	</form>
 
 
