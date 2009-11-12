@@ -12,7 +12,7 @@ msgstr ""
 msgid "PREFERENCES_LANGUAGE"
 msgstr "Langue"
 
- "PREFERENCES"
+msgid "PREFERENCES"
 msgstr "Préférences"
 
 msgid "Localization"
