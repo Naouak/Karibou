@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+
+	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
+	<load class="Bugs" file="bugs.class.php" />
+	<load class="BugsAdd" file="bugsadd.class.php" />
+	<load class="BugsPost" file="bugspost.class.php" />
+	<load class="BugsView" file="bugsview.class.php" />
+	<load class="BugsModify" file="bugsmodify.class.php" />
+
+
+	<view name="BigBug" class="Bugs" template="bigbug.tpl" />
+	<view name="add" class="BugsAdd" template="bugsadd.tpl" />
+	<view name="view" class="BugsView" template="bugsview.tpl" />
+	<view name="modify" class="BugsModify" template="bugsmodify.tpl" />
+	<view name="bugsmini" class="Bugs" template="bugsmini.tpl" />
+	
+	
+	<page view="BigBug" />
+	<page name="add" view="add" />
+	<page name="view" view="BigBug" />
+	<page name="view" view="view" >
+		<argument name="id" class="NumberArgument" />
+	</page>
+	<page name="modify" view="modify" >
+		<argument name="id" class="NumberArgument" />
+	</page>
+
+	
+	<header app="header" view="default" />
+    <footer app="footer" view="default" />
+
+	<form action="post" class="BugsPost">
+		<redirect  page="bugs" />
+	</form>
+
+
+</app>
