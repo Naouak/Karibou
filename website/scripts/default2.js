@@ -747,7 +747,7 @@ var Karibou = Class.create({
 	getAppFromNode: function (node) {
 		if (node == document.body) {
 			alert("Went to the body, bad !");
-			return;
+			return undefined;
 		}
 		if (node.attributes.getNamedItem("kapp")) {
 			for (var i = 0 ; i < this.appObjs.length ; i++) {
@@ -755,9 +755,10 @@ var Karibou = Class.create({
 					return this.appObjs[i];
 			}
 			//alert("Didn't find the application in this.appObjs");
-			return;
+			return undefined;
 		} else if (node.parentNode)
 			return this.getAppFromNode(node.parentNode);
+		return undefined;
 	},
 	unlock: function () {
 		this.locked = false;
@@ -870,4 +871,3 @@ var KAppLoader = Class.create({
 Karibou.APP_LOADING = 0;
 Karibou.APP_LOADED = 1;
 Karibou.APP_FAILURE = 2;
-
