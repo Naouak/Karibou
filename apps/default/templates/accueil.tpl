@@ -76,7 +76,7 @@ function closeTab () {ldelim}
 
 function customizeTab() {ldelim}
         karibou.unlock();
-	new Effect.toggle("customizeSection");
+	new Effect.toggle("customizeSection",'appear',{literal}{ duration: 0.3 }{/literal});
 	document.getElementById("columnsLinks").style.display = "block";
 	document.getElementById("resizeLinks").style.display = "none";
 	document.getElementById("resizeLink").style.display = "block";
