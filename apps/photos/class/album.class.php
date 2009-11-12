@@ -8,16 +8,54 @@
  *
  */
 
+/**
+ * album class from photos apps
+ * @package Application
+ */
+
 class album extends AlbumBase {
 
+	/**
+	 *@var PDO
+	 */
     protected $db;
+
+	/**
+	 *@var int
+	 */
     protected $id;
+
+	/**
+	 *@var string
+	 */
     protected $name;
+
+	/**
+	 *@var int
+	 */
     protected $parent;
+
+	/**
+	 *@var date
+	 */
     protected $date;
+
+	/**
+	 * This contain all you want about the album
+	 *@var array
+	 */
     protected $all;
+
+	/**
+	 *@var string
+	 */
     protected $type;
 
+
+	/**
+	 *@param PDO $db
+	 *@param array $album
+	 */
 
     function __construct($db,$album) {
         $this->db = $db;
@@ -34,6 +72,9 @@ class album extends AlbumBase {
     public function addPicture() {
     }
 
+	/**
+	 * This function returns an array with the id of all pictures from this album
+	 */
 
     public function getAllPictures() {
         $sql = $this->db->prepare("SELECT id FROM pictures WHERE album=:album");
@@ -43,6 +84,10 @@ class album extends AlbumBase {
         return $pictures;
     }
 
+	/**
+	 * This function return a random picture of this album
+	 */
+	
     public function getRandomPicture() {
         $preview = $this->db->prepare("SELECT p.id,rand() as rnd FROM pictures AS p LEFT JOIN pictures_album AS pa ON p.album = pa.id WHERE pa.name = :album AND p.album = :id ORDER BY rnd  LIMIT 1;");
         $preview->bindValue(":album",$album["name"]);

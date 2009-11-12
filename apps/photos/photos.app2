@@ -13,4 +13,4 @@ submitmodel = "submit"
 ; if you need a JS view , you would add the following line
 ;JSview = "{jsview}"
 ; automatic refresh just put how many seconds do you to wait for a refresh
-autorefresh=0
+;autorefresh=0

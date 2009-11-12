@@ -9,38 +9,38 @@
  **/
 
 abstract class AlbumBase {
-    protected $name;
-    protected $id;
-    protected $date;
-    protected $parent;
-    protected $type;
-    protected $all;
+	protected $name;
+	protected $id;
+	protected $date;
+	protected $parent;
+	protected $type;
+	protected $all;
 
-    public function getName(){
+	public function getName(){
         return $this->name;
     }
 
-    public function getId() {
+	public function getId() {
         return $this->id;
     }
 
-    public function getDate() {
+	public function getDate() {
         return $this->db;
     }
 
-    public function getParent() {
+	public function getParent() {
         return $this->parent;
     }
 
-    public function getType() {
+	public function getType() {
         return $this->type;
     }
 
-    public function getAll() {
+	public function getAll() {
         return $this->all;
     }
 
-    public function getAllParent() {
+	public function getAllParent() {
         $path=array();
         $parent=$this->parent;
         while( $parent!=NULL){
@@ -54,8 +54,10 @@ abstract class AlbumBase {
         return $path;
     }
 
-    // on passe en paramètre si on veut vérifier les permissions en écriture ou en lecture
-    public function can($perm){
+    /**
+	 *@param String $perm 
+	 */
+	public function can($perm){
         $currentuser = UserFactory::instance()->getCurrentUser();
         $db = Database::instance();
         //PDO statement doesn't accept to prepare array, so we will use some joins ...
@@ -106,5 +108,16 @@ abstract class AlbumBase {
         }
     }
 
+	/**
+	 *
+	 */
+
+
+	public function getAllTags(){
+		$sql = $this->db->prepare("SELECT t.name FROM pictures_album_tagged AS p LEFT JOIN pictures_tags as t on t.id = p.id_tag where id_album=:id");
+		$sql->bindValue(":id",$this->id);
+		$sql->execute();
+		return $sql->fetchAll();
+	}
 }
 

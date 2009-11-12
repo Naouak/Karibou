@@ -8,13 +8,39 @@
  *
  */
 
+/**
+ * Classe de base pour la gestion des cartons dans l'application photos : les cartons ne sont destinés qu'à contenir d'autres cartons ou des albums mais pas de photos
+ *@package Application
+ */
+
 class carton extends AlbumBase {
+	/**
+	 * @var PDO 
+	 */
     protected $db;
+	/**
+	 *@var int
+	 */
     protected $id;
+	/**
+	 *@var string
+	 */
     protected $name;
+	/**
+	 *@var int
+	 */
     protected $parent;
+	/**
+	 *@var date
+	 */
     protected $date;
+	/**
+	 *@var array
+	 */
     protected $all;
+	/**
+	 *@var string
+	 */
     protected $type;
 
     function __construct($db,$carton) {

@@ -5,12 +5,13 @@
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU Public License
  * See the enclosed file COPYING for license information.
- *-
+ **/
+
+/**
  * @package applications
  **/
 
 class folder extends Model {
-    //je récupère l'ensemble des enfants de ce container
     public function build() {
         $child = $this->db->prepare("SELECT * FROM pictures_album WHERE parent=:parent");
         $child->bindValue(":parent",$this->args["id"]);
@@ -26,5 +27,7 @@ class folder extends Model {
         $this->assign("parentpath",$parent->getAllParent());
         $this->assign("children",$array);
         $this->assign("parent",$this->args["id"]);
+		$this->assign("tags",$parent->getAllTags());
+		$this->assign("type","carton");
     }
 }

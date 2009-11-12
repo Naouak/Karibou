@@ -52,3 +52,8 @@ ALTER TABLE `pictures_tags` CHANGE `name` `name` VARCHAR( 56 ) CHARACTER SET utf
 ALTER TABLE `pictures_tags` ADD UNIQUE (
 `name`
 );
+
+ALTER TABLE `pictures_album_tagged` ADD UNIQUE (
+`id_album` ,
+`id_tag`
+);
