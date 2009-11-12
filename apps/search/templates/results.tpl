@@ -106,11 +106,13 @@ isset($usersfound) && count($usersfound) > 0 }
 	
 			{*Nickname, Name, login*}
 			{if $user->getSurname()}
-				{$user->getSurname()}
-			{elseif $user->getFirstName()} 
-				{$user->getFirstname()} {$user->getLastname()}
-			{else}
-				{$user->getLogin()}
+				<div>{$user->getSurname()}</div>
+			{/if}
+			{if $user->getFirstName()} 
+				<div>{$user->getFirstname()} {$user->getLastname()}</div>
+			{/if}
+			{if !$user->getSurname() && !$user->getFirstName()}
+				<div>{$user->getLogin()}</div>
 			{/if}
 	
 			</a>
