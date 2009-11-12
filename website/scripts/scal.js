@@ -133,8 +133,6 @@ scal.prototype = {
         (event.target.hasClassName('daybox') ? event.target : event.target.up()).addClassName('dayselected');
         this._setCurrentDate(this.dateRange[cellIndex]);
         this._updateExternal();
-	this.closeCalendar();
-	this.destroy();
     },
     _updateExternal: function(){	
         if (Object.isFunction(this.updateelement)){
@@ -309,7 +307,6 @@ scal.prototype = {
 /*------------------------------- PUBLIC -------------------------------*/        
     destroy: function(){
         this._emptyCells();
-	this.element.parentNode.removeChild(this.element);
         if(this.table) {
             this.table.remove();
         } else {

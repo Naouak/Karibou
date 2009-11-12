@@ -86,7 +86,13 @@ KForm = Class.create({
 					var divNode = document.createElement("div");
 					divNode.setAttribute("class", "floating_calendar");
 					inputNode.parentNode.insertBefore(divNode, inputNode.nextSibling);
-					var inputScal = new scal(divNode, inputNode, {updateformat: 'dd/mm/yyyy'});
+					var callBack = function(d) {
+						inputNode.value = d.format('dd/mm/yyyy');
+						inputScal.closeCalendar();
+						inputScal.destroy();
+						divNode.parentNode.removeChild(divNode);
+					};
+					var inputScal = new scal(divNode, callBack);
 				};
 				var txtNode = document.createElement("span");
 				txtNode.setAttribute("class", "text");
