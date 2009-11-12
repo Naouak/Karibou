@@ -2,9 +2,16 @@
 // Why, why do they use id instead of DOM objects...
 var containerID = 0;
 
+/**
+ * Return the an id element contained in a subnode. Normally you wouldn't need this kind of function as an id MUST BE unique.
+ * @method getSubElementById
+ * @param id string containing the node id
+ * @param subNode the node where you want tofind the id
+ * @return domNode or undefined if the node doesn't exist
+ */
 function getSubElementById(id, subNode) {
 	if (subNode.nodeType != 1)
-		return;
+		return undefined;
 	if (subNode.id == id)
 		return subNode;
 	for (var i = 0 ; i < subNode.childNodes.length ; i++) {
@@ -13,7 +20,7 @@ function getSubElementById(id, subNode) {
 		if (result)
 			return result;
 	}
-	return;
+	return undefined;
 }
 
 var KSortable = Object.extend(Sortable, {
