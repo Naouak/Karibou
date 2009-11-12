@@ -30,7 +30,7 @@ class BugsPost extends FormModel
 				$state = "En attente";
 				$sql = $this->db->prepare("
 					INSERT INTO
-						bugs (`bug`, `bug_state`, `bug_type`, `title`, `Browser`, `user_id`, `doublon`, `doublon_id`)
+						bugs (`bug`, `bug_state`, `bug_type`, `title`, `Browser`, `user_id`, `doublon`)
 					VALUES
 						(:bug, :bug_state, :bug_type, :title, :browser, :user_id, :doublon)
 				");
