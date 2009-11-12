@@ -1,7 +1,3 @@
-// Work around a stupid scriptaculous design mistake : it requires the containers for Sortable to have a unique ID...
-// Why, why do they use id instead of DOM objects...
-var containerID = 0;
-
 /**
  * Return the an id element contained in a subnode. Normally you wouldn't need this kind of function as an id MUST BE unique.
  * @method getSubElementById
@@ -58,14 +54,14 @@ var KTab = Class.create({
 		this.newTabSizes = null;			// The tab sizes during the resize
 		for (var i = 0 ; i < this.tabSizes.length ; i++) {
 			var divNode = document.createElement("div");
-			divNode.setAttribute("id", "container_" + containerID);
+			divNode.setAttribute("id", "container_" + karibou.containerID);
 			divNode.setAttribute("class", "colonne");
 			divNode.className = "colonne";
 			// Warning: the columns can't use 100% of the available size : they have a border...
 			divNode.style.width = this.tabSizes[i] + '%';
 			this.columnsContainer.appendChild(divNode);
 			this.tabContainers.push(divNode);
-			containerID++;
+			karibou.containerID++;
 		}
 		if (settings) {
 			for (var i = 0 ; i < this.tabSizes.length ; i++) {
@@ -207,7 +203,7 @@ var KTab = Class.create({
 		this.tabSizes[this.tabSizes.length] = Math.floor(newSize);
 
 		var divNode = document.createElement("div");
-		divNode.setAttribute("id", "container_" + containerID);
+		divNode.setAttribute("id", "container_" + this.karibou.containerID);
 		divNode.setAttribute("class", "colonne");
 		divNode.className = "colonne";
 		// Warning: the columns can't use 100% of the available size : they have a border...
@@ -217,7 +213,7 @@ var KTab = Class.create({
 		for (var i = 0 ; i < this.tabSizes.length ; i++) {
 			this.tabContainers[i].style.width = this.tabSizes[i] + '%';
 		}
-		containerID++;
+		this.karibou.containerID++;
 		this.rebuildContainers();
 		this.karibou.save();
 	},
@@ -522,6 +518,9 @@ var KApp = Class.create({
 
 // Class responsible for loading the KApp classes, handling the various loaded applications on the screen...
 var Karibou = Class.create({
+	// Work around a stupid scriptaculous design mistake : it requires the containers for Sortable to have a unique ID...
+	// Why, why do they use id instead of DOM objects...
+	containerID: 0,
 	initialize: function(appContentUrl, appJSUrl, appSubmitUrl, appSetConfigUrl, appGetConfigUrl, appGetModifyUrl, appSetModifyUrl, appDeleteUrl, saveHomeUrl) {
 		this.appDeleteUrl = appDeleteUrl;
 		this.appSubmitUrl = appSubmitUrl;
