@@ -159,14 +159,14 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 </div>
 {/if}
 <br />
-<div>
+<div class="default2-tabs">
 {if $loggedUser}
-<input type="button" onclick="addTab();" value="+" />
+<div class="default2-tabs-modify">
+    <input type="button" class="default2-tabs-addtab" onclick="addTab();" value="##Add a tab##" />
+    <input type="button" class="default2-tabs-removetab" onclick="closeTab();" value="##Remove Current tab##" />
+</div>
 {/if}
-<span id="tabsBar"></span>
-{if $loggedUser}
-<input type="button" onclick="closeTab();" value="-" />
-{/if}
+<ul id="tabsBar"></ul>
 </div>
 <div id="tabsContainer"></div>
 {/if}

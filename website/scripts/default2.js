@@ -567,7 +567,7 @@ var Karibou = Class.create({
 				}
 			}
 		}
-		var tabTitleNode = document.createElement("span");
+		var tabTitleNode = document.createElement("li");
 		var aNode = document.createElement("a");
 		tabTitleNode.setAttribute("tabName", tabName);
 		tabTitleNode.setAttribute("class", "activeTabLink");
