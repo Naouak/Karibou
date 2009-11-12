@@ -133,6 +133,7 @@ scal.prototype = {
         (event.target.hasClassName('daybox') ? event.target : event.target.up()).addClassName('dayselected');
         this._setCurrentDate(this.dateRange[cellIndex]);
         this._updateExternal();
+	this.closeCalendar();
     },
     _updateExternal: function(){	
         if (Object.isFunction(this.updateelement)){
