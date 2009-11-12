@@ -784,6 +784,20 @@ var Karibou = Class.create({
 		if ("defaultTab" in data) {
 			this.focusTab(this.tabs[data["defaultTab"]]);
 		}
+	},
+	/**
+	 * Load an external css file without any xmlhttprequest
+	 * @method loadCSS
+	 * @param css url of the css file
+	 * @param frame to manage iframe
+	 */
+	loadCSS: function(css,frame){
+	    //Create a link node that will be inserted in the head
+	    var node = frame.createElement("link");
+	    node.rel = "stylesheet";
+	    node.type = "text/css";
+	    node.href = css;
+	    frame.getElementsByTagName("head")[0].appendChild(node);
 	}
 });
 
