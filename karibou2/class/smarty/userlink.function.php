@@ -64,6 +64,8 @@ function userlink($params , $appList = FALSE)
 				$userlink = "<a href=\"".kurl(array("app" => 'annuaire', "username" => $user->getLogin()), $appList)."\""; 
 				if (isset($params["noicon"]) && ($params["noicon"] === true))
 					$userlink .= " class=\"userlink_noicon\"";
+				else if (isset($params['away']) && $params['away'] == true)
+					$userlink .= " class=\"userlink_away\"";
 				else
 					$userlink .= " class=\"userlink\"";
 				if (isset($params["showpicture"]) && ($params["showpicture"] === TRUE) )

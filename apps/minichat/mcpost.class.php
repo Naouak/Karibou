@@ -155,6 +155,16 @@ class MCPost extends FormModel
 				}
 
 				/*****
+				 * /away
+				 */
+				 if($message == "/away"){
+				     $stmt = $this->db->prepare("UPDATE onlineusers SET away = MOD(away+1,2) WHERE user_id = :user");
+				     $stmt->bindValue(":user",$this->currentUser->getID());
+				     $stmt->execute();
+				     return;
+				 }
+
+				/*****
 				 * Message insertion
 				 *****/
 
