@@ -67,6 +67,16 @@
 		</ul>
 	</li>
 	<li>
+		<strong>Quentin Burny</strong> : App Developer
+		<ul>
+		    <li>Statistiques</li>
+		    <li>Le Bouton</li>
+		    <li>Chifoumi</li>
+		    <li>Prefs: template</li>
+		    <li>Default2: modifications du css et du js</li>
+		</ul>
+	</li>
+	<li>
 		<strong>Thomas Soete</strong> : App Developer
 		<ul>
 			<li>##rssreader##</li>
