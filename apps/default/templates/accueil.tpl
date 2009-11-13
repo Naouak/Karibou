@@ -163,7 +163,7 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 </div>
 {/if}
 <ul id="tabsBar">{if $loggedUser}<li id="default2-addtabbutton">
-    <form id="default2-addtabbutton-formm" method="post" action="">
+    <form id="default2-addtabbutton-formm" method="post" action="" onsubmit="default2_tab_submit();">
 	<label onclick="setTabText();" for="default2-addtabbutton-form" id="default2-addtabbutton-label">##Add a tab##</label>
 	<input type="text" id="default2-addtabbutton-form" value=""/>
     </form>
@@ -172,13 +172,13 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 {literal}
 <script>
     <!--
-	document.getElementById("default2-addtabbutton-form").addEventListener("blur",function(){
+	function default2_tab_blur(){
 	    document.getElementById("default2-addtabbutton-label").style.visibility = "visible";
 	    document.getElementById("default2-addtabbutton-form").style.visibility = "hidden";
 	    document.getElementById("default2-addtabbutton-form").value = "";
-	},false);
+	}
 
-	document.getElementById("default2-addtabbutton-formm").addEventListener("submit",function(e){
+	function default2_tab_submit(e){
 	    var name = document.getElementById("default2-addtabbutton-form").value;
 	    if ((name) && (name.length > 0)){
 		karibou.createNewTab(name);
@@ -188,11 +188,26 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 	    else{
 
 	    }
-	    e.preventDefault();
+	    if(!e){
+		if(window.event){
+		    window.event.returnValue = false;
+		}
+		default2_tab_blur();
+	    }else{
+		e.preventDefault();
+	    }
 	    return false;
-	},false);
+	}
 
-	setTabText = function(){
+	if (document.getElementById("default2-addtabbutton-form").addEventListener){
+	    document.getElementById("default2-addtabbutton-formm").addEventListener("submit",default2_tab_submit, false);
+	    document.getElementById("default2-addtabbutton-form").addEventListener("blur",default2_tab_blur, false);
+	} else if (document.getElementById("default2-addtabbutton-form").attachEvent) {
+	    document.getElementById("default2-addtabbutton-formm").attachEvent("submit",default2_tab_submit);
+	    document.getElementById("default2-addtabbutton-form").attachEvent("blur",default2_tab_blur);
+	}
+
+	function setTabText(){
 	    document.getElementById("default2-addtabbutton-label").style.visibility = "hidden";
 	    document.getElementById("default2-addtabbutton-form").style.visibility = "visible";
 	    document.getElementById("default2-addtabbutton-form").focus();
