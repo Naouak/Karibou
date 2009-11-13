@@ -1,8 +1,11 @@
 	{if ($onlineusers|@count)>0}
 		<ul>
 		{foreach from=$onlineusers key=key item=user}
-		    <li>
+		    <li>{if ($islogged)}
 				{userlink user=$user.object showpicture=$islogged showlocation=$islogged away=$user.away}
+{else}
+    {userlink user=$user.object showpicture=$islogged showlocation=$islogged}
+{/if}
 {if ($islogged)}
 	{if (!$noflashmail)}
 		<a href="#" class="sendflashmaillink" onclick="FlashmailManager.Instance.newFlashmail('{$user.object->getSurname()|escape:'quotes'|escape:'html'}', {$user.object->getId()}); return false;"><span>Flash</span></a>
