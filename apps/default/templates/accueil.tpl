@@ -113,12 +113,7 @@ function showAddAppList() {ldelim}
 	new Effect.toggle($('homeAppAddButton'));
 {rdelim}
 
-// The RSA key
-var KeyPair = new RSAKeyPair(
-	"{$pubkey_exp}",
-	"",
-	"{$pubkey_mod}"
-);
+{include file=rsa.tpl}
 
 </script>
 {if $loggedUser}
