@@ -12,6 +12,7 @@
 	<load class="AddTagContainer" file="addtagcontainer.class.php" />
 	<load class="AddTagContainerForm" file="addtagcontainerform.class.php" />
     <load class="folder" file="folder.class.php" />
+	<load class="AddPhotosForm" file="addphotosform.class.php" />
 
     <load class="[arguments]/AnyCharArgument" />
     <load class="[arguments]/NumberArgument" />
@@ -30,6 +31,7 @@
     <view name="addcontainer" class="AddContainer" template="addcontainer.tpl" />
 	<view name="addtags" class="AddTagContainer" template="addtags.tpl" />
     <view name="folder" class="folder" template="folder.tpl" />
+	<view name="addphotos" template="addphotos.tpl" />
 <!--	<view name="{js}" template="js.tpl" />-->
 
 <!--the following lines defines the default header and footer when we don't defines special header and footer -->
@@ -65,7 +67,9 @@
         <argument name="id" class="NumberArgument" />
     </page>
 
-
+	<page name="addphotos" view="addphotos" >
+		<argument name="parent" class="NumberArgument" />
+	</page>
 
 <!--definition of a form who permit to create event in reaction of form -->
 	<form action="container" class="AddContainerForm" >
@@ -74,5 +78,9 @@
     
 	<form action="tags" class="AddTagContainerForm" >
 		<redirect />
+	</form>
+	
+	<form action="photos" class="AddPhotosForm">
+		<redirect page="album" /> 
 	</form>
 </app>

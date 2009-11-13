@@ -1,4 +1,11 @@
 <?php 
+/**
+ *@copyright 2009 Gilles DEHAUDT <tonton1728@gmail.com>
+ **/
+
+/**
+ *@package Applications
+ **/
 
 class AddTagContainer extends Model {
 	public function build() {
