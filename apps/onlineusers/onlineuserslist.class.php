@@ -21,7 +21,7 @@ class OnlineUsersList extends Model
 			LEFT JOIN usermood um ON um.user_id = ou.user_id
 			LEFT JOIN " . $GLOBALS['config']['bdd']["frameworkdb"] . ".users fu ON fu.id = ou.user_id
 			LEFT JOIN " . $GLOBALS['config']['bdd']["frameworkdb"] . ".profile fp ON fp.id=fu.profile_id
-			WHERE ou.timestamp > :time ORDER BY ou.user_id";
+			WHERE ou.timestamp > :time ORDER BY ou.away ASC,ou.user_id";
 		try {
 			$stmt = $this->db->prepare($sql);
 			$stmt->bindValue(":time", time() - 600);
