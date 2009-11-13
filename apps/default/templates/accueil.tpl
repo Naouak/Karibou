@@ -157,11 +157,52 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 <div class="default2-tabs">
 {if $loggedUser}
 <div class="default2-tabs-modify">
-    <input type="button" class="default2-tabs-addtab" onclick="addTab();" value="##Add a tab##" />
+    
     <input type="button" class="default2-tabs-removetab" onclick="closeTab();" value="##Remove Current tab##" />
+
 </div>
 {/if}
-<ul id="tabsBar"></ul>
+<ul id="tabsBar">{if $loggedUser}<li id="default2-addtabbutton">
+    <form id="default2-addtabbutton-formm" method="post" action="">
+	<label onclick="setTabText();" for="default2-addtabbutton-form" id="default2-addtabbutton-label">##Add a tab##</label>
+	<input type="text" id="default2-addtabbutton-form" value=""/>
+    </form>
+</li>{/if}</ul>
+{if $loggedUser}
+{literal}
+<script>
+    <!--
+	document.getElementById("default2-addtabbutton-form").addEventListener("blur",function(){
+	    document.getElementById("default2-addtabbutton-label").style.visibility = "visible";
+	    document.getElementById("default2-addtabbutton-form").style.visibility = "hidden";
+	    document.getElementById("default2-addtabbutton-form").value = "";
+	},false);
+
+	document.getElementById("default2-addtabbutton-formm").addEventListener("submit",function(e){
+	    var name = document.getElementById("default2-addtabbutton-form").value;
+	    if ((name) && (name.length > 0)){
+		karibou.createNewTab(name);
+		document.getElementById("default2-addtabbutton-form").value = "";
+		document.getElementById("default2-addtabbutton-form").blur();
+	    }
+	    else{
+
+	    }
+	    e.preventDefault();
+	    return false;
+	},false);
+
+	setTabText = function(){
+	    document.getElementById("default2-addtabbutton-label").style.visibility = "hidden";
+	    document.getElementById("default2-addtabbutton-form").style.visibility = "visible";
+	    document.getElementById("default2-addtabbutton-form").focus();
+	};
+
+
+    //-->
+</script>
+{/literal}
+{/if}
 </div>
 <div id="tabsContainer"></div>
 {/if}

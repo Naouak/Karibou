@@ -542,6 +542,13 @@ var Karibou = Class.create({
 		this.currentTab = null;
 		this.appIds = {};						// {app name => max used ID}
 		this.saveTimeout = null;
+		for(var i in this.tabsBar.childNodes){
+		    if(this.tabsBar.childNodes[i].nodeType == 3){
+			this.tabsBar.removeChild(this.tabsBar.childNodes[i]);
+		    }
+		}
+
+
 	},
 	getNewIDForApp: function(appName) {
 		if (this.appIds[appName] != undefined) {
@@ -575,6 +582,7 @@ var Karibou = Class.create({
 		aNode.innerHTML = tabName;
 		tabTitleNode.appendChild(aNode);
 		this.tabsBar.appendChild(tabTitleNode);
+		this.tabsBar.insertBefore(tabTitleNode,document.getElementById("default2-addtabbutton"));
 
 		var tabNode = document.createElement("div");
 		tabNode.setAttribute("class", "tab home");
@@ -645,12 +653,18 @@ var Karibou = Class.create({
 		tabObject.tabDiv.style.display="block";
 		this.currentTab = tabObject;
 		for (var i = 0 ; i < this.tabsBar.childNodes.length ; i++) {
-			if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabname") != null) {
-				if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabname").nodeValue != tabObject.tabName)
-					this.tabsBar.childNodes[i].setAttribute("class", "");
-				else
-					this.tabsBar.childNodes[i].setAttribute("class", "activeTabLink");
-			}	
+		    if(this.tabsBar.childNodes[i] !== undefined){
+			if(this.tabsBar.childNodes[i].nodeType == "1"){
+			    if(this.tabsBar.childNodes[i].attributes !== undefined && this.tabsBar.childNodes[i].attributes !== null){
+				if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabname")) {
+					if (this.tabsBar.childNodes[i].attributes.getNamedItem("tabname").nodeValue != tabObject.tabName)
+						this.tabsBar.childNodes[i].setAttribute("class", "");
+					else
+						this.tabsBar.childNodes[i].setAttribute("class", "activeTabLink");
+				}
+			    }
+			}
+		    }
 		}
 		this.save();
 	},
