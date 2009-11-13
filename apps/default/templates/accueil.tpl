@@ -167,6 +167,7 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 	<label onclick="setTabText();" for="default2-addtabbutton-form" id="default2-addtabbutton-label">##Add a tab##</label>
 	<input type="text" id="default2-addtabbutton-form" value=""/>
     </form>
+    <div id="default2-addtabbutton-hint">##Insert Tab name then submit with enter##</div>
 </li>{/if}</ul>
 {if $loggedUser}
 {literal}
@@ -174,6 +175,7 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
     <!--
 	function default2_tab_blur(){
 	    document.getElementById("default2-addtabbutton-label").style.visibility = "visible";
+	    document.getElementById("default2-addtabbutton-hint").style.visibility = "hidden";
 	    document.getElementById("default2-addtabbutton-form").style.visibility = "hidden";
 	    document.getElementById("default2-addtabbutton-form").value = "";
 	}
@@ -209,6 +211,7 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 
 	function setTabText(){
 	    document.getElementById("default2-addtabbutton-label").style.visibility = "hidden";
+	    document.getElementById("default2-addtabbutton-hint").style.visibility = "visible";
 	    document.getElementById("default2-addtabbutton-form").style.visibility = "visible";
 	    document.getElementById("default2-addtabbutton-form").focus();
 	};

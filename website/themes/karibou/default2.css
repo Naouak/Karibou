@@ -56,6 +56,19 @@
     font-weight: bold;
 }
 
+#default2-addtabbutton-hint{
+    visibility: hidden;
+    position: absolute;
+    margin-top: -70px;
+    background: #EEF5F9;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: solid 2px #99ccff;
+    padding: 5px;
+    font-weight: bold;
+}
+
 .default2-tabs-modify{
 	margin: 10px;
 }
