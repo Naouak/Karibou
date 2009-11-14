@@ -1,7 +1,7 @@
 {foreach item=quote from=$quotes}
-	<div style="background-color: #eeeeee;">
+	<div class="default2-miniapp-subheader">
 		<strong>{$quote.author}</strong>
-		<div style="float: right;">{votesbox id=$quote.idcombox type="miniapp"}</div>
+		<div class="default2-miniapp-subheader-vote">{votesbox id=$quote.idcombox type="miniapp"}</div>
 	</div>
 
 	<p style="text-align: justify;">

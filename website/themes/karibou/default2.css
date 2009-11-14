@@ -398,3 +398,10 @@ input[type=button]:hover,input[type=submit]:hover,input[type=reset]:hover{
     color: white;
 }
 
+.default2-miniapp-subheader {
+	background-color: #eeeeee;
+}
+
+.default2-miniapp-subheader-vote {
+	float: right;
+}

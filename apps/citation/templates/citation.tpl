@@ -1,6 +1,6 @@
-<div style="background-color: #eeeeee;">
+<div class="default2-miniapp-subheader">
 	<em>{t}Quote posted by{/t} : {userlink user=$citationauthor.object showpicture=$islogged}</em>
-	<div style="float: right;">{votesbox id=$idcombox type="miniapp"}</div>
+	<div class="default2-miniapp-subheader-vote">{votesbox id=$idcombox type="miniapp"}</div>
 </div>
 
 <p style="text-align: justify;">

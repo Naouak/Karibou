@@ -1,7 +1,7 @@
 {foreach item=rumour from=$rumours}
-	<div style="background-color: #eeeeee;">
+	<div class="default2-miniapp-subheader">
 		<em>{t}On m'a dit dans l'oreillette que : {/t}</em>
-		<div style="float: right;">{votesbox id=$rumour.idcombox type="miniapp"}</div>
+		<div class="default2-miniapp-subheader-vote">{votesbox id=$rumour.idcombox type="miniapp"}</div>
 	</div>
 
 	<p style="text-align: center;">
