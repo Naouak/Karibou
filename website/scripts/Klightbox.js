@@ -1,4 +1,5 @@
 YUI({
+    base: "/scripts/yui/build/",
     modules:{
 	"gallery-lightbox":{
 	    name: "lightbox-js",
