@@ -23,6 +23,7 @@ li a.userlink {
 }
 
 li a.userlink_away {
+	opacity: 0.5;
 	padding-left: 14px;
 	
 	background-image: url(images/onlineusers/buddyiconaway.png);
