@@ -1,0 +1,54 @@
+.default2-daytof-container{
+    text-align: center;
+    margin: auto;
+}
+
+.default2-daytof-container a img{
+    border: none;
+    background: #EEF5F9;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: solid 2px #88bbee;
+}
+
+.default2-daytof-modify{
+    display: inline-block;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: solid 2px #88bbee;
+    position: absolute;
+    left: 50%;
+    padding: 2px;
+    top: 25px;
+    margin-left: -97px;
+    opacity: 0.75;
+}
+
+.default2-daytof-delete{
+    display: inline-block;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: solid 2px #88bbee;
+    position: absolute;
+    right: 50%;
+    padding: 2px;
+    top: 25px;
+    margin-right: -97px;
+    opacity: 0.75;
+}
+
+.default2-daytof-imagecontainer{
+    margin: auto;
+    width: 210px;
+}
+
+.default2-daytof-caption{
+    
+}
+
+.default2-daytof-history{
+    text-align: center;
+}
