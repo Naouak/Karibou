@@ -390,7 +390,7 @@ input[type=button]:hover,input[type=submit]:hover,input[type=reset]:hover{
     border: solid 2px #99ccff;
     padding: 5px;
     margin-top: 8px;
-
+    z-index: 10;
 }
 
 .default2_customize > a:hover{
