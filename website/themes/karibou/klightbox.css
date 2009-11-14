@@ -1,0 +1,32 @@
+ body{
+    margin:0;
+    padding:0;
+}
+.yui-lightbox{
+    position: fixed;
+    margin: auto;
+    padding: 5px;
+    background: #EEF5F9;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: solid 2px #99ccff;
+    text-align: center;
+}
+
+.yui-lightbox-title{
+    margin: 0;
+    padding: auto;
+    font-size: 15px;
+}
+
+.yui-lightbox-hidden{
+    visibility:hidden;
+    display: none;
+}
+
+.yui-lightbox-loading{
+    background: url(images/loading.gif);
+    height: 200px;
+    width: 200px;
+}

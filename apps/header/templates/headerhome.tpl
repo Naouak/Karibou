@@ -11,6 +11,7 @@
 	<title>##HEADER_PAGE_TITLE## :: ##KPOWERED##</title>
 	<link rel="shortcut icon" type="image/x-icon" href="./themes/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="{$base_url}{$cssFile}" media="screen" title="Normal" />
+	<link rel="stylesheet" type="text/css" href="{$base_url}themes/karibou/klightbox.css" media="screen" title="Normal" />
 	{foreach from=$styles item=style}
 		<link rel="alternate stylesheet" type="text/css" href="{$base_url}{$style.home_css}" media="screen" title="{$style.titre}" />
 	{/foreach}
@@ -25,6 +26,9 @@
 	<script type="text/javascript" src="{$base_url}/scripts/BigInt.js"></script>
 	<script type="text/javascript" src="{$base_url}/scripts/Barrett.js"></script>
 	<script type="text/javascript" src="{$base_url}/scripts/RSA.js"></script>
+	<!-- For LightBox -->
+	<script type="text/javascript" src="{$karibou_base_url}/scripts/yui-min.js"></script>
+	<script type="text/javascript" src="{$karibou_base_url}/scripts/Klightbox.js"></script>
 {hook name="html_head"}
 </head>
 <body>
