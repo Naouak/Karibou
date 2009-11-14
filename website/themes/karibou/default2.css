@@ -2,8 +2,6 @@
 	padding: 0px;
 	margin: 0px;
 	min-height: 50px;
-	background-color: #D6EEFF;
-	border: 1px solid #B2DFFF;
 	float: left;
 	z-index: 5;
 }
@@ -153,8 +151,11 @@
 	Problème ici avec IE7...
 	*/
 	background-color: white;
-	padding: 4px;
-	margin-bottom: 2px;
+	margin: 2px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: solid 2px #99ccff;
 	/*float: none;
 	position: relative;
 	width: 200px;
@@ -164,6 +165,7 @@
 
 .appBox {
 	position: relative;
+	padding: 4px;
 /*	width: 200px;
 	left: 0px;
 	z-index: 4;*/
@@ -290,13 +292,19 @@
 }
 
 #homeAppAdder {
+	text-align: center;
 	z-index: 10;
+	margin: auto;
 	position: absolute;
-	background-color: black;
-	right: 0px;
-	width: 100%;
+	background: #EEF5F9;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: solid 2px #99ccff;
+	width: 90%;
 	opacity: 0.85;
 	color: white;
+	color: #323296;
 }
 
 #homeAppList {
@@ -316,10 +324,18 @@
 }
 
 input[type=button],input[type=submit],input[type=reset]{
-    background: RGB(225,225,225);
-    border: solid 2px RGB(200,200,200);
+    background: #EEF5F9;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: solid 2px #99ccff;
     color: RGB(50,50,150);
     font-weight:bold;
+}
+
+input[type=button]:hover,input[type=submit]:hover,input[type=reset]:hover{
+    background-color: #5c96cc;
+    color: white;
 }
 
 .default2_customize{
