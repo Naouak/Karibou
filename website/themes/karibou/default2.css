@@ -292,24 +292,46 @@
 }
 
 #homeAppAdder {
-	text-align: center;
 	z-index: 10;
 	margin: auto;
 	position: absolute;
+	right: 0px;
+	top: 100px;
 	background: #EEF5F9;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	border: solid 2px #99ccff;
-	width: 90%;
-	opacity: 0.85;
+	width: 400px;
+	opacity: 0.95;
 	color: white;
 	color: #323296;
 }
 
 #homeAppList {
 	overflow-y: auto;
-	max-height: 150px;
+	max-height: 500px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#homeAppList li{
+	display: block;
+	border-bottom: solid gray 1px;
+	padding: 3px;
+	width: 370px;
+	text-align: center;
+}
+
+.default2-applist-appname{
+    display: block;
+    
+    font-weight: bold;
+}
+
+.default2-applist-appdescription{
+
 }
 
 #homeAppAddButton {

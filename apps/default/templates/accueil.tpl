@@ -109,7 +109,7 @@ function removeLastColumn () {ldelim}
 
 function showAddAppList() {ldelim}
 	karibou.unlock();
-	new Effect.toggle($('homeAppAdder'), 'appear', {ldelim} afterFinish: function(eff) {ldelim} $('filterAppList').focus(); {rdelim} {rdelim} );
+	new Effect.toggle($('homeAppAdder'), 'slide', {ldelim} afterFinish: function(eff) {ldelim} $('filterAppList').focus(); {rdelim} {rdelim} );
 	new Effect.toggle($('homeAppAddButton'));
 {rdelim}
 
@@ -138,16 +138,16 @@ function showAddAppList() {ldelim}
 
 <div id="homeAppAdder" style="display : none">
 Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="filterAppList(event);" length="150" />
-<input id="homeAppAddCloseButton" type="button" value="Close" onclick="new Effect.toggle($('homeAppAdder'), 'appear'); new Effect.toggle($('homeAppAddButton'));  return false;" /><br />
-<div id="homeAppList">
+<input id="homeAppAddCloseButton" type="button" value="Close" onclick="new Effect.toggle($('homeAppAdder'), 'slide'); new Effect.toggle($('homeAppAddButton'));  return false;" /><br />
+<ul id="homeAppList">
 {foreach key=appName item=appObject from=$apps}
-<p class="homeAppChoice" kappName="{$appName}">
-{$appObject->getName("$lang")} : {$appObject->getDesc("$lang")}
-&nbsp;&nbsp;&nbsp;
-<a onclick="karibou.instanciateApplication('{$appName}'); $('filterAppList').focus(); return false;">Ajouter</a> <br />
-</p>
+    <li class="homeAppChoice" kappName="{$appName}">
+	<span class="default2-applist-appname">{$appObject->getName("$lang")}</span>
+	<span class="default2-applist-appdescription">{$appObject->getDesc("$lang")}</span>
+	<a onclick="karibou.instanciateApplication('{$appName}'); $('filterAppList').focus(); return false;">Ajouter</a>
+    </li>
 {/foreach}
-</div>
+</ul>
 </div>
 
 
