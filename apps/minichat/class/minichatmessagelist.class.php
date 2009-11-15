@@ -54,7 +54,7 @@ class MiniChatMessageList
 			SELECT
 				id, UNIX_TIMESTAMP(time) as timestamp, id_auteur, post 
 			FROM
-				minichat
+				".($max <= 40 ? "minichat_short" : "minichat")."
 			$where
 			ORDER BY
 				time DESC,
