@@ -1,10 +1,10 @@
 YUI({
-    base: "/scripts/yui/build/",
+    base: KGlobals.baseurl+"/scripts/yui/build/",
     modules:{
 	"gallery-lightbox":{
 	    name: "lightbox-js",
 	    type:"js",
-	    fullpath: "/scripts/yui/gallery-lightbox/gallery-lightbox-min.js",
+	    fullpath: KGlobals.baseurl+"/scripts/yui/gallery-lightbox/gallery-lightbox-min.js",
 	    requires: ["widget", "widget-position-ext", "widget-stack","node","event"]
 	}
     }

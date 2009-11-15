@@ -2,6 +2,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
+    <script type="text/javascript">
+	<!--
+	/**
+	 * Some Globals vars that can be useful;
+	 */
+	var KGlobals = {literal}{}{/literal};
+	KGlobals.baseurl = "{$base_url}";
+	//-->
+    </script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<base href="http://{php} echo $_SERVER['HTTP_HOST'].str_replace("index.php","",$_SERVER['SCRIPT_NAME']);{/php}" />
 
