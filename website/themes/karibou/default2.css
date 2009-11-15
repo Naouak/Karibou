@@ -405,3 +405,9 @@ input[type=button]:hover,input[type=submit]:hover,input[type=reset]:hover{
 .default2-miniapp-subheader-vote {
 	float: right;
 }
+
+#content .home h3{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
