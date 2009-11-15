@@ -301,6 +301,9 @@ class Karibou
 				$GLOBALS['config']['bdd']["username"], 
 				$GLOBALS['config']['bdd']["password"]);
 			$this->db = Database::instance();
+			foreach ($GLOBALS['config']['bdd']['startupQueries'] as $query) {
+				$this->db->exec($query);
+			}
 		}
 
 		public function display()

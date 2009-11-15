@@ -13,6 +13,8 @@ $config['bdd']['frameworkdb']		= "##DBFRAMEWORK##";
 $config['bdd']['dsn']				= 'mysql:dbname='.$config['bdd']['appsdb'].';host=localhost';
 $config['bdd']['username']			= '##DBUSER##';
 $config['bdd']['password']			= '##DBPASS##';
+// startupQueries : queries to execute at launch...
+$config['bdd']['startupQueries']        = array();
 
 //Informations relatives au LDAP
 $config['ldap']['rdn'] = '##LDAPRDN##';
