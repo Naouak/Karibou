@@ -26,9 +26,6 @@ msgstr "An error occured when saving the new article."
 msgid "PAGES"
 msgstr "Pages"
 
-msgid "NO_RIGHT_TO_MODIFY"
-msgstr "You don't have the right to modify this article"
-
 msgid "MODIFY_ARTICLE"
 msgstr "Modify the article"
 

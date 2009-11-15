@@ -5,7 +5,6 @@
 		{*<a href="{kurl app="wiki" page="help"}" >##TITLE_WIKI_SYNTAX##</a>*}
 		<a href="{kurl app="wiki" page="help"}" onclick="javascript:popup(this.href, 'wiki_help', '800', '900', '200', '200');return false;" >##TITLE_WIKI_SYNTAX##</a>
 	{include file="newsmessage.tpl"}
-	{if (!isset($notauthorized))}
 				<form action="{kurl action="post"}" method="post">
 					<input type="hidden" name="postType" value="newNews" >
 					{if isset($theNewsToModify)}
@@ -23,7 +22,6 @@
 					<div class="field group">
 						<label for="group">##NEWS_GROUPS_DESTINATION## :</label>
 						<select name="group" id="group" >
-						{* include file="optiongrouptree.tpl" *}
                         <option {if isset($theNewsToModify)}{if (!$theNewsToModify->getGroup())}selected{/if}{/if} value="">Pas de groupe</option>
                     { foreach item=Admin from=$Admin }
                         <option {if isset($theNewsToModify)}{if ($theNewsToModify->getGroup()==$Admin.Id)}selected{/if}{/if} value="{$Admin.Id}" > {$Admin.name} </option>
@@ -48,10 +46,5 @@
 						<input type="submit" value="{if isset($theNewsToModify)}##POST_MODIFIED_ARTICLE##{else}##POST_NEW_ARTICLE##{/if}" />
 					</div>
 				</form>
-	{else}
-		<div class="error">
-			##NO_RIGHT_TO_MODIFY##
-		</div>
-	{/if}
 	</div>
 </div>

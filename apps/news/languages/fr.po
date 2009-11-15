@@ -26,9 +26,6 @@ msgstr "Une erreur s'est produite lors de l'enregistrement du nouvel article."
 msgid "PAGES"
 msgstr "Pages"
 
-msgid "NO_RIGHT_TO_MODIFY"
-msgstr "Vous n'êtes pas autorisé à modifier cet article."
-
 msgid "MODIFY_ARTICLE"
 msgstr "Modifier l'article"
 
