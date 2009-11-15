@@ -36,22 +36,21 @@ class News
 	//Charge l'article a partir de l'identifiant (a rechercher dans la base) passe en parametre
 	function loadFromId($db, $id)
 	{
-		//Affectation du lien de base dans l'objet
 		$this->db = $db;
 	
 		//Recherche de toutes les dernières news non supprimées
 		$reqArticle = "
 			SELECT news.id, news.id_author, news.id_groups, news.title, news.content, UNIX_TIMESTAMP(news.time) as timestamp, count(news_comments.id) as nb_comments
 			FROM news LEFT OUTER JOIN news_comments ON news.id = news_comments.id_news
-			WHERE (news.id = ".$id." AND news.last = 1 AND news.deleted = 0)
+			WHERE (news.id = :id AND news.last = 1 AND news.deleted = 0)
 			GROUP BY news.id
 			";
 
 		$resArticle = $this->db->prepare($reqArticle);
+		$resArticle->bindValue(":id", $id);
 		$resArticle->execute();
 		
 		//Vérification qu'un article a bien été trouvé
-		//L'utilisation de rowCount semble poser un problème
 		if ($row = $resArticle->fetch(PDO::FETCH_ASSOC))
 		{
 
@@ -90,10 +89,11 @@ class News
 	{
 			$reqComments = "SELECT UNIX_TIMESTAMP(time) as timestamp, id, id_parent, id_author, title, content
 						FROM news_comments
-						WHERE id_news = ".$this->getID()."
+						WHERE id_news = :id
 						ORDER BY time
 						ASC;";
 			$resComments = $this->db->prepare($reqComments);
+			$resComments->bindValue(":id", $this->getID());
 			$resComments->execute();
 
 			$theArticleComments = array();
@@ -183,11 +183,11 @@ class News
 	
 	function getContentXHTML()
 	{
-        $wiki = new wiki2xhtmlBasic();
-        // initialisation variables
-        $wiki->wiki2xhtml();
-        $content = $wiki->transform($this->content);
-        return $content;
+	$wiki = new wiki2xhtmlBasic();
+	// initialisation variables
+	$wiki->wiki2xhtml();
+	$content = $wiki->transform($this->content);
+	return $content;
 	}
 	
 	function getComments()
