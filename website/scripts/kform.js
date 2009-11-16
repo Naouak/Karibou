@@ -9,7 +9,7 @@ KForm = Class.create({
      * @method initialize
      * @param formFields supposedly the fields of your form
      * @param targetNode where in the node you will add it
-     * @param extraParameters Don't ask me, i'm still human
+     * @param extraParameters Extra values (as array) that will be sent together with the other data
      * @param submitCallback Function or Array of function that will be called on submit
      * @param cancelCallback Function or Array of function that will be called on cancelling
      */
