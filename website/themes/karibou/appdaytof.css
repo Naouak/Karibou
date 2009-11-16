@@ -14,7 +14,7 @@
 }
 
 .default2-daytof-modify{
-    display: inline-block;
+    display: none;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -khtml-border-radius: 5px;
@@ -29,7 +29,7 @@
 }
 
 .default2-daytof-delete{
-    display: inline-block;
+    display: none;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -khtml-border-radius: 5px;
@@ -41,6 +41,10 @@
     top: 25px;
     margin-right: -97px;
     opacity: 0.75;
+}
+
+.default2-daytof-imagecontainer:hover .default2-daytof-modify,.default2-daytof-imagecontainer:hover .default2-daytof-delete{
+    display: inline-block;
 }
 
 .default2-daytof-imagecontainer{
