@@ -6,41 +6,43 @@
     padding: 4px;
 }
 
-#currentView .default2-resetbutton-button{
+#currentView .default2-resetbutton-button {
     padding: 5px;
-    background: red;
-    border: solid white 2px;
-    color: white;
     display: block;
     margin: auto;
-}
-
-#currentView .default2-resetbutton-button:hover{
-    padding: 5px;
     background: white;
     border: solid red 2px;
     color: red;
+    margin-bottom: 7px;
+}
+
+#currentView .default2-resetbutton-button:hover {
+    padding: 5px;
     display: block;
     margin: auto;
     cursor: pointer;
+    background: red;
+    border: solid white 2px;
+    color: white;
+    margin-bottom: 7px;
 }
 
-.default2-resetbutton-hour{
+.default2-resetbutton-hour {
     font-size: 20pt;
-    color:green;
+    color:black;
     font-family:monospace;
     font-weight: bold;
 }
 
-.default2-ressetbutton-state{
+.default2-ressetbutton-state {
     text-align: center;
 }
 
-.default2-resetbutton-tabs{
+.default2-resetbutton-tabs {
 
 }
 
-default2-resetbutton-tab{
+default2-resetbutton-tab {
     display: inline-block;
 }
 
