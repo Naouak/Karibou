@@ -27,296 +27,297 @@ KForm = Class.create({
     },
 
     //********************************************FIELDS******************************************
-
-    /**
+    fieldsType: {
+	/**
      * Span field
      * @property __span
      */
-    __span: {
-	build: function(formNode,fieldID,fieldObject){
-	    if (fieldObject["type"] == "span") {
-		var spanNode = document.createElement("span");
-		spanNode.innerHTML = fieldObject["text"];
-		formNode.appendChild(spanNode);
+	__span: {
+	    build: function(formNode,fieldID,fieldObject){
+		if (fieldObject["type"] == "span") {
+		    var spanNode = document.createElement("span");
+		    spanNode.innerHTML = fieldObject["text"];
+		    formNode.appendChild(spanNode);
+		}
 	    }
-	}
-    },
-    /**
+	},
+	/**
      * Text field
      * @property __text
      */
-    __text: {
-	build: function(formNode,fieldID,fieldObject){
-	    if ((fieldObject["type"] == "text") || (fieldObject["type"] == "url") || (fieldObject["type"] == "password")) {
-		if (fieldObject["label"]) {
-		    var lblNode = document.createElement("label");
-		    lblNode.innerHTML = fieldObject["label"];
-		    lblNode.setAttribute("for", fieldID);
-		    formNode.appendChild(lblNode);
+	__text: {
+	    build: function(formNode,fieldID,fieldObject){
+		if ((fieldObject["type"] == "text") || (fieldObject["type"] == "url") || (fieldObject["type"] == "password")) {
+		    if (fieldObject["label"]) {
+			var lblNode = document.createElement("label");
+			lblNode.innerHTML = fieldObject["label"];
+			lblNode.setAttribute("for", fieldID);
+			formNode.appendChild(lblNode);
+		    }
+		    var inputNode = document.createElement("input");
+		    inputNode.setAttribute("id", fieldID);
+		    inputNode.setAttribute("name", fieldID);
+
+		    if(fieldObject["type"] != "password")
+			inputNode.setAttribute("type", "text");
+		    else
+			inputNode.setAttribute("type", "password");
+
+		    if (fieldObject["maxlength"])
+			inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
+		    if (fieldObject["value"])
+			inputNode.setAttribute("value", fieldObject["value"]);
+		    formNode.appendChild(inputNode);
 		}
-		var inputNode = document.createElement("input");
-		inputNode.setAttribute("id", fieldID);
-		inputNode.setAttribute("name", fieldID);
-
-		if(fieldObject["type"] != "password")
-		    inputNode.setAttribute("type", "text");
-		else
-		    inputNode.setAttribute("type", "password");
-
-		if (fieldObject["maxlength"])
-		    inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
-		if (fieldObject["value"])
-		    inputNode.setAttribute("value", fieldObject["value"]);
-		formNode.appendChild(inputNode);
 	    }
-	}
-    },
-    /**
+	},
+	/**
      * Help field
      * @property __help
      */
-    __help: {
-	build: function(formNode,fieldID,fieldObject){
-	    if (fieldObject["type"] == "help") {
-		var titleNode = document.createElement("a");
-		titleNode.setAttribute("href", "#");
-		if (fieldObject["title"])
-		    titleNode.innerHTML = fieldObject["title"];
-		else
-		    titleNode.innerHTML = "Help ?";
-		formNode.appendChild(titleNode);
-		var helpNode = document.createElement("span");
-		helpNode.setAttribute("style", "display: none;");
-		helpNode.innerHTML = fieldObject["text"];
-		helpNode.id = "__karibou_help_node_" + Math.ceil(Math.random()*1000000);
-		titleNode.setAttribute("onclick", "new Effect.toggle(document.getElementById('" + helpNode.id + "')); return false;");
-		formNode.appendChild(helpNode);
-		helpNode.insertBefore(document.createElement("br"), helpNode.firstChild);
+	__help: {
+	    build: function(formNode,fieldID,fieldObject){
+		if (fieldObject["type"] == "help") {
+		    var titleNode = document.createElement("a");
+		    titleNode.setAttribute("href", "#");
+		    if (fieldObject["title"])
+			titleNode.innerHTML = fieldObject["title"];
+		    else
+			titleNode.innerHTML = "Help ?";
+		    formNode.appendChild(titleNode);
+		    var helpNode = document.createElement("span");
+		    helpNode.setAttribute("style", "display: none;");
+		    helpNode.innerHTML = fieldObject["text"];
+		    helpNode.id = "__karibou_help_node_" + Math.ceil(Math.random()*1000000);
+		    titleNode.setAttribute("onclick", "new Effect.toggle(document.getElementById('" + helpNode.id + "')); return false;");
+		    formNode.appendChild(helpNode);
+		    helpNode.insertBefore(document.createElement("br"), helpNode.firstChild);
+		}
 	    }
-	}
-    },
-    /**
+	},
+	/**
      * Date field
      * @property __date
      */
-    __date: {
-	build: function(formNode,fieldID,fieldObject){
-	    if (fieldObject["type"] == "date") {
-		if (fieldObject["label"]) {
-		    var lblNode = document.createElement("label");
-		    lblNode.setAttribute("for", fieldID);
-		    var acroNode = document.createElement("acronym");
-		    acroNode.setAttribute("title", "Format : dd/mm/yyyy");
-		    acroNode.innerHTML = fieldObject["label"];
-		    lblNode.appendChild(acroNode);
-		    formNode.appendChild(lblNode);
-		}
-		var inputNode = document.createElement("input");
-		inputNode.setAttribute("id", fieldID);
-		inputNode.setAttribute("name", fieldID);
-		inputNode.setAttribute("type", "text");
-		if (fieldObject["value"])
-		    inputNode.setAttribute("value", fieldObject["value"]);
-		if (fieldObject["maxlength"])
-		    inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
-		formNode.appendChild(inputNode);
-		var calNode = document.createElement("span");
-		calNode.setAttribute("class", "calendar_link");
-		calNode.setAttribute("for", fieldID);
-		calNode.onclick = function() {
-		    var inputNode = $app(this).getElementById(this.attributes.getNamedItem("for").nodeValue);
-		    var divNode = document.createElement("div");
-		    divNode.setAttribute("class", "floating_calendar");
-		    inputNode.parentNode.insertBefore(divNode, inputNode.nextSibling);
-		    var callBack = function(d) {
-			inputNode.value = d.format('dd/mm/yyyy');
-			inputScal.closeCalendar();
-			inputScal.destroy();
-			divNode.parentNode.removeChild(divNode);
+	__date: {
+	    build: function(formNode,fieldID,fieldObject){
+		if (fieldObject["type"] == "date") {
+		    if (fieldObject["label"]) {
+			var lblNode = document.createElement("label");
+			lblNode.setAttribute("for", fieldID);
+			var acroNode = document.createElement("acronym");
+			acroNode.setAttribute("title", "Format : dd/mm/yyyy");
+			acroNode.innerHTML = fieldObject["label"];
+			lblNode.appendChild(acroNode);
+			formNode.appendChild(lblNode);
+		    }
+		    var inputNode = document.createElement("input");
+		    inputNode.setAttribute("id", fieldID);
+		    inputNode.setAttribute("name", fieldID);
+		    inputNode.setAttribute("type", "text");
+		    if (fieldObject["value"])
+			inputNode.setAttribute("value", fieldObject["value"]);
+		    if (fieldObject["maxlength"])
+			inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
+		    formNode.appendChild(inputNode);
+		    var calNode = document.createElement("span");
+		    calNode.setAttribute("class", "calendar_link");
+		    calNode.setAttribute("for", fieldID);
+		    calNode.onclick = function() {
+			var inputNode = $app(this).getElementById(this.attributes.getNamedItem("for").nodeValue);
+			var divNode = document.createElement("div");
+			divNode.setAttribute("class", "floating_calendar");
+			inputNode.parentNode.insertBefore(divNode, inputNode.nextSibling);
+			var callBack = function(d) {
+			    inputNode.value = d.format('dd/mm/yyyy');
+			    inputScal.closeCalendar();
+			    inputScal.destroy();
+			    divNode.parentNode.removeChild(divNode);
+			};
+			var inputScal = new scal(divNode, callBack);
 		    };
-		    var inputScal = new scal(divNode, callBack);
-		};
-		var txtNode = document.createElement("span");
-		txtNode.setAttribute("class", "text");
-		txtNode.innerHTML = "Open calendar";
-		calNode.appendChild(txtNode);
-		formNode.appendChild(calNode);
+		    var txtNode = document.createElement("span");
+		    txtNode.setAttribute("class", "text");
+		    txtNode.innerHTML = "Open calendar";
+		    calNode.appendChild(txtNode);
+		    formNode.appendChild(calNode);
+		}
 	    }
-	}
-    },
-    /**
+	},
+	/**
      * Textarea field
      * @property __textarea
      */
-    __textarea: {
-	build: function(formNode,fieldID,fieldObject){
-	    if (fieldObject["type"] == "textarea") {
-		if (fieldObject["label"]) {
-		    var lblNode = document.createElement("label");
-		    lblNode.innerHTML = fieldObject["label"];
-		    lblNode.setAttribute("for", fieldID);
-		    formNode.appendChild(lblNode);
-		    formNode.appendChild(document.createElement("br"));
+	__textarea: {
+	    build: function(formNode,fieldID,fieldObject){
+		if (fieldObject["type"] == "textarea") {
+		    if (fieldObject["label"]) {
+			var lblNode = document.createElement("label");
+			lblNode.innerHTML = fieldObject["label"];
+			lblNode.setAttribute("for", fieldID);
+			formNode.appendChild(lblNode);
+			formNode.appendChild(document.createElement("br"));
+		    }
+		    var areaNode = document.createElement("textarea");
+		    areaNode.setAttribute("id", fieldID);
+		    areaNode.setAttribute("name", fieldID);
+		    if (fieldObject["columns"])
+			areaNode.setAttribute("cols", fieldObject["columns"]);
+		    if (fieldObject["rows"])
+			areaNode.setAttribute("rows", fieldObject["rows"]);
+		    if (fieldObject["value"])
+			areaNode.innerHTML = fieldObject["value"];
+		    formNode.appendChild(areaNode);
 		}
-		var areaNode = document.createElement("textarea");
-		areaNode.setAttribute("id", fieldID);
-		areaNode.setAttribute("name", fieldID);
-		if (fieldObject["columns"])
-		    areaNode.setAttribute("cols", fieldObject["columns"]);
-		if (fieldObject["rows"])
-		    areaNode.setAttribute("rows", fieldObject["rows"]);
-		if (fieldObject["value"])
-		    areaNode.innerHTML = fieldObject["value"];
-		formNode.appendChild(areaNode);
 	    }
-	}
-    },
-    /**
+	},
+	/**
      * File field
      * @property __file
      */
-    __file: {
-	build: function(formNode,fieldID,fieldObject){
-	    if (fieldObject["type"] == "file") {
-		formNode.setAttribute("enctype", "multipart/form-data");
-		if (fieldObject["label"]) {
-		    var lblNode = document.createElement("label");
-		    lblNode.innerHTML = fieldObject["label"];
-		    lblNode.setAttribute("for", fieldID);
-		    formNode.appendChild(lblNode);
-		    formNode.appendChild(document.createElement("br"));
+	__file: {
+	    build: function(formNode,fieldID,fieldObject){
+		if (fieldObject["type"] == "file") {
+		    formNode.setAttribute("enctype", "multipart/form-data");
+		    if (fieldObject["label"]) {
+			var lblNode = document.createElement("label");
+			lblNode.innerHTML = fieldObject["label"];
+			lblNode.setAttribute("for", fieldID);
+			formNode.appendChild(lblNode);
+			formNode.appendChild(document.createElement("br"));
+		    }
+		    var fileNode = document.createElement("input");
+		    fileNode.setAttribute("id", fieldID);
+		    fileNode.setAttribute("name", fieldID);
+		    fileNode.setAttribute("type", "file");
+		    formNode.appendChild(fileNode);
 		}
-		var fileNode = document.createElement("input");
-		fileNode.setAttribute("id", fieldID);
-		fileNode.setAttribute("name", fieldID);
-		fileNode.setAttribute("type", "file");
-		formNode.appendChild(fileNode);
 	    }
-	}
-    },
-    /**
+	},
+	/**
      * Number field
      * @property __number
      */
-    __number: {
-	build: function(formNode,fieldID,fieldObject){
-	    if (fieldObject["type"] == "int" || fieldObject["type"] == "float") {
-		if (fieldObject["label"]) {
-		    var lblNode = document.createElement("label");
-		    lblNode.innerHTML = fieldObject["label"];
-		    lblNode.setAttribute("for", fieldID);
-		    formNode.appendChild(lblNode);
+	__number: {
+	    build: function(formNode,fieldID,fieldObject){
+		if (fieldObject["type"] == "int" || fieldObject["type"] == "float") {
+		    if (fieldObject["label"]) {
+			var lblNode = document.createElement("label");
+			lblNode.innerHTML = fieldObject["label"];
+			lblNode.setAttribute("for", fieldID);
+			formNode.appendChild(lblNode);
+		    }
+		    var inputNode = document.createElement("input");
+		    inputNode.setAttribute("id", fieldID);
+		    inputNode.setAttribute("name", fieldID);
+		    inputNode.setAttribute("type", "text");
+		    if (fieldObject["value"])
+			inputNode.setAttribute("value", fieldObject["value"]);
+		    formNode.appendChild(inputNode);
 		}
-		var inputNode = document.createElement("input");
-		inputNode.setAttribute("id", fieldID);
-		inputNode.setAttribute("name", fieldID);
-		inputNode.setAttribute("type", "text");
-		if (fieldObject["value"])
-		    inputNode.setAttribute("value", fieldObject["value"]);
-		formNode.appendChild(inputNode);
 	    }
-	}
-    },
-    /**
+	},
+	/**
      * Bool field
      * @property __bool
      */
-    __bool: {
-	build: function(formNode,fieldID,fieldObject){
-	    if (fieldObject["type"] == "bool") {
-		if (fieldObject["label"]) {
-		    var lblNode = document.createElement("label");
-		    lblNode.innerHTML = fieldObject["label"];
-		    lblNode.setAttribute("for", fieldID);
-		    formNode.appendChild(lblNode);
+	__bool: {
+	    build: function(formNode,fieldID,fieldObject){
+		if (fieldObject["type"] == "bool") {
+		    if (fieldObject["label"]) {
+			var lblNode = document.createElement("label");
+			lblNode.innerHTML = fieldObject["label"];
+			lblNode.setAttribute("for", fieldID);
+			formNode.appendChild(lblNode);
+		    }
+		    var inputNode = document.createElement("input");
+		    inputNode.setAttribute("id", fieldID);
+		    inputNode.setAttribute("name", fieldID);
+		    inputNode.setAttribute("type", "checkbox");
+		    inputNode.setAttribute("value", "on");
+		    if (fieldObject["value"]) {
+			if ((fieldObject["value"] == "true") || (fieldObject["value"] == 1) || (fieldObject["value"] == true))
+			    inputNode.setAttribute("checked", "checked");
+		    }
+		    formNode.appendChild(inputNode);
 		}
-		var inputNode = document.createElement("input");
-		inputNode.setAttribute("id", fieldID);
-		inputNode.setAttribute("name", fieldID);
-		inputNode.setAttribute("type", "checkbox");
-		inputNode.setAttribute("value", "on");
-		if (fieldObject["value"]) {
-		    if ((fieldObject["value"] == "true") || (fieldObject["value"] == 1) || (fieldObject["value"] == true))
-			inputNode.setAttribute("checked", "checked");
-		}
-		formNode.appendChild(inputNode);
 	    }
-	}
-    },
-    /**
+	},
+	/**
      * Enum field
      * @property __enum
      */
-    __enum: {
-	build: function(formNode,fieldID,fieldObject){
-	    if(fieldObject["type"] == "enum") {
-		if (fieldObject["label"]) {
-		    var lblNode = document.createElement("span");
-		    lblNode.innerHTML = fieldObject["label"];
-		    formNode.appendChild(lblNode);
-		}
-
-		var fieldValues = fieldObject["values"];
-		if (fieldObject["values"] instanceof Array) {
-		    fieldValues = {};
-		    for (var fieldValIdx = 0 ; fieldValIdx < fieldObject["values"].length ; fieldValIdx++) {
-			fieldValues[fieldValIdx] = fieldObject["values"][fieldValIdx];
-		    }
-		}
-
-		// Here we face a choice : do we use radio or select ?
-		if (fieldObject["radio"]) {
-		    // If the field is not required the user is not forced to make a choice
-		    if(!fieldObject["required"]) {
-			var radio = document.createElement("input");
-			radio.setAttribute("id", "empty"+fieldID);
-			radio.setAttribute("name", fieldID);
-			radio.setAttribute("type", "radio");
-			radio.setAttribute("value", "");
-			if(fieldObject["value"] == "" || fieldObject["value"] == undefined)
-			    radio.setAttribute("checked", "checked");
-			formNode.appendChild(radio);
-
-			var label = document.createElement("label");
-			label.setAttribute("for", "empty" + fieldID);
-			label.innerHTML = "<em>[no choice]</em>";
-			formNode.appendChild(label);
-		    }
-		    for (var item in fieldValues) {
-			var radio = document.createElement("input");
-			radio.setAttribute("id", fieldID + item);
-			radio.setAttribute("name", fieldID);
-			radio.setAttribute("type", "radio");
-			radio.setAttribute("value", item);
-			if(fieldObject["value"] == item)
-			    radio.setAttribute("checked", "checked");
-			formNode.appendChild(radio);
-			var label = document.createElement("label");
-			label.setAttribute("for", fieldID + item);
-			label.innerHTML = fieldValues[item];
-			formNode.appendChild(label);
-		    }
-		} else {
-		    var select = document.createElement("select");
-		    select.setAttribute("name", fieldID);
-		    select.setAttribute("id", fieldID);
-
-		    if(!fieldObject["required"]) {
-			var option = document.createElement("option");
-			option.setAttribute("value", "");
-			option.innerHTML = "";
-			select.appendChild(option);
+	__enum: {
+	    build: function(formNode,fieldID,fieldObject){
+		if(fieldObject["type"] == "enum") {
+		    if (fieldObject["label"]) {
+			var lblNode = document.createElement("span");
+			lblNode.innerHTML = fieldObject["label"];
+			formNode.appendChild(lblNode);
 		    }
 
-		    for(item in fieldValues) {
-			var option = document.createElement("option");
-			option.setAttribute("value", item);
-			if(fieldObject["value"] == item)
-			    option.setAttribute("selected", "selected");
-			option.innerHTML = fieldValues[item];
-			select.appendChild(option);
+		    var fieldValues = fieldObject["values"];
+		    if (fieldObject["values"] instanceof Array) {
+			fieldValues = {};
+			for (var fieldValIdx = 0 ; fieldValIdx < fieldObject["values"].length ; fieldValIdx++) {
+			    fieldValues[fieldValIdx] = fieldObject["values"][fieldValIdx];
+			}
 		    }
-		    formNode.appendChild(select);
+
+		    // Here we face a choice : do we use radio or select ?
+		    if (fieldObject["radio"]) {
+			// If the field is not required the user is not forced to make a choice
+			if(!fieldObject["required"]) {
+			    var radio = document.createElement("input");
+			    radio.setAttribute("id", "empty"+fieldID);
+			    radio.setAttribute("name", fieldID);
+			    radio.setAttribute("type", "radio");
+			    radio.setAttribute("value", "");
+			    if(fieldObject["value"] == "" || fieldObject["value"] == undefined)
+				radio.setAttribute("checked", "checked");
+			    formNode.appendChild(radio);
+
+			    var label = document.createElement("label");
+			    label.setAttribute("for", "empty" + fieldID);
+			    label.innerHTML = "<em>[no choice]</em>";
+			    formNode.appendChild(label);
+			}
+			for (var item in fieldValues) {
+			    var radio = document.createElement("input");
+			    radio.setAttribute("id", fieldID + item);
+			    radio.setAttribute("name", fieldID);
+			    radio.setAttribute("type", "radio");
+			    radio.setAttribute("value", item);
+			    if(fieldObject["value"] == item)
+				radio.setAttribute("checked", "checked");
+			    formNode.appendChild(radio);
+			    var label = document.createElement("label");
+			    label.setAttribute("for", fieldID + item);
+			    label.innerHTML = fieldValues[item];
+			    formNode.appendChild(label);
+			}
+		    } else {
+			var select = document.createElement("select");
+			select.setAttribute("name", fieldID);
+			select.setAttribute("id", fieldID);
+
+			if(!fieldObject["required"]) {
+			    var option = document.createElement("option");
+			    option.setAttribute("value", "");
+			    option.innerHTML = "";
+			    select.appendChild(option);
+			}
+
+			for(item in fieldValues) {
+			    var option = document.createElement("option");
+			    option.setAttribute("value", item);
+			    if(fieldObject["value"] == item)
+				option.setAttribute("selected", "selected");
+			    option.innerHTML = fieldValues[item];
+			    select.appendChild(option);
+			}
+			formNode.appendChild(select);
+		    }
 		}
 	    }
 	}
@@ -339,45 +340,8 @@ KForm = Class.create({
 	//@todo clean this loop and breaking it in multipart loop
 	for (var fieldID in this.formFields) {
 	    var fieldObject = this.formFields[fieldID];
-	    //If it's a span (What the hell is this type for ?)
-	    if (fieldObject["type"] == "span") {
-		this.__span.build(formNode,fieldID,fieldObject);
-	    }
-	    //If it's a help field (dunno what it is for)
-	    else if (fieldObject["type"] == "help") {
-		this.__help.build(formNode,fieldID,fieldObject);
-	    }
-	    //If it's a text,a url or a password
-	    else if ((fieldObject["type"] == "text") || (fieldObject["type"] == "url") || (fieldObject["type"] == "password")) {
-		this.__text.build(formNode,fieldID,fieldObject);
-	    }
-	    //If it's a date
-	    else if (fieldObject["type"] == "date") {
-		this.__date.build(formNode,fieldID,fieldObject);
-	    }
-	    //If it's a textarea
-	    else if (fieldObject["type"] == "textarea") {
-		this.__textarea.build(formNode,fieldID,fieldObject);
-	    }
-	    //If it's a file'
-	    else if (fieldObject["type"] == "file") {
-		this.__file.build(formNode,fieldID,fieldObject);
-	    }
-	    //If it's a int or a float
-	    else if (fieldObject["type"] == "int" || fieldObject["type"] == "float") {
-		this.__number.build(formNode,fieldID,fieldObject);
-	    }
-	    // If it's a bool
-	    else if (fieldObject["type"] == "bool") {
-		this.__bool.build(formNode,fieldID,fieldObject);
-	    }
-	    //If it's an enum'
-	    else if(fieldObject["type"] == "enum") {
-		this.__enum.build(formNode,fieldID,fieldObject);
-	    }
-	    //Do we really need to do an alert for an unknown field ? I think we should use something like console.log
-	    else {
-		alert("Unknown field type " + fieldObject["type"]);
+	    for(var i in this.fieldsType){
+		this.fieldsType[i].build(formNode,fieldID,fieldObject);
 	    }
 	    //Please don't do designing with br !
 	    formNode.appendChild(document.createElement("br"));
