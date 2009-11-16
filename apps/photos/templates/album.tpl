@@ -1,15 +1,3 @@
-{literal}
-<script type="text/css">
-	.photos_album_place a:visited {
-		font-color : red;
-	}
-	.tets {
-		font-color: red;
-		background-color : red;
-	}
-</script>
-{/literal}
-
 <strong>page for albums </strong><br />
 <div class="photos_album_place">
 	emplacement :
@@ -22,7 +10,7 @@
 <div class="photos_album_pictures">
 	<strong> list of the pictures :  </strong><br /><br />
 	{foreach from=$pictures item=picture}
-		{$picture.id} <br />
+		<a href="">{$picture.id}</a><a href="{kurl page='photo' id=$picture.id}">{t}gestion de la photo{/t}</a> <br />
 	{/foreach}
 </div>
 <div class="photos_album_tags">
@@ -31,5 +19,5 @@
 		{$tag.name} <br />
 	{/foreach}
 	<br />
-	<span class="tets"><a href={kurl page="addtags" parent=$id type=$type}> {t}ajouter des tags{/t}</a></span><br />
+	<a href={kurl page="addtags" parent=$id type=$type}> {t}ajouter des tags{/t}</a><br />
 </page>

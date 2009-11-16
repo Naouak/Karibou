@@ -2,7 +2,7 @@
 <div class="photos_accueil_albums">
 <b>list of all albums </b><br />
 {foreach item=album from=$albums}
-    <a href={kurl page="album" id=$album.id}>{$album.name} </a><br />
+    <a href={kurl page="album" id=$album.id}>{$album.name}  </a><br />
 {/foreach}
 </div>
 <br />

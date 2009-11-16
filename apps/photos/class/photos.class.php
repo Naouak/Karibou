@@ -10,34 +10,58 @@
 
 class pictures extends AlbumBase {
 
+	/**
+	 *@var PDO
+	 **/
     protected $db;
+	
+	/**
+	 *@var String
+	 **/
     protected $name;
+	
+	/**
+	 *@var Array
+	 **/
     protected $tags;
+
+	/**
+	 *@var Int
+	 **/
     protected $id;
+
+	/**
+	 *@var Int
+	 **/
     protected $parent;
 
+	/**
+	 *@var Array
+	 **/
+	protected $all;
+
+	/**
+	 *@param Int $id
+	 **/
     function __construct($id) {
         $this->db=Database::instance();
         $this->id = $id;
-        $this->currentuser = $currentuser;
+//         $this->currentuser = $currentuser;
         $sql = $this->db->prepare("SELECT * FROM pictures where id=:id;");
         $sql->bindValue(":id",$id);
         $sql->execute();
         $pict = $sql->fetch();
+		$this->all = $pict;
         $this->parent = $pict["album"];
         $this->date = $pict["date"];
     }
 
 
     public function getFileName() {
-        $path="/";
-        $parent = $this->parent;
-        while($parent != NULL){
-            $container = containerFactory::getInstance();
-            $objalb = $container->getPictureStorage($parent);
-            $parent = $objalb->getParent();
-            $path .= $objalb->getName . "/";
+      
         }
+
+	public function getTags()
     }
     
 

@@ -16,29 +16,56 @@ abstract class AlbumBase {
 	protected $type;
 	protected $all;
 
+	/**
+	 * function return the name
+	 **/
+
 	public function getName(){
         return $this->name;
     }
+	/**
+	 * function return the Id
+	 **/
 
 	public function getId() {
         return $this->id;
     }
 
+	/**
+	 * function return the Date
+	 **/
+
 	public function getDate() {
         return $this->db;
     }
+
+	/**
+	 * function return the parent
+	 **/
 
 	public function getParent() {
         return $this->parent;
     }
 
+	/**
+	 * function return the type
+	 **/
+
 	public function getType() {
         return $this->type;
     }
 
+	/**
+	 * function return the array with all informations 
+	 **/
+
 	public function getAll() {
         return $this->all;
     }
+
+	/**
+	 * function return the all parents from slash to here
+	 **/
 
 	public function getAllParent() {
         $path=array();
@@ -56,6 +83,7 @@ abstract class AlbumBase {
 
     /**
 	 *@param String $perm 
+	 * function return if we can write or read this container 
 	 */
 	public function can($perm){
         $currentuser = UserFactory::instance()->getCurrentUser();
@@ -109,14 +137,20 @@ abstract class AlbumBase {
     }
 
 	/**
-	 *
+	 * function returns All Tags from this container or pictures
 	 */
 
 
 	public function getAllTags(){
-		$sql = $this->db->prepare("SELECT t.name FROM pictures_album_tagged AS p LEFT JOIN pictures_tags as t on t.id = p.id_tag where id_album=:id");
+		if($this->type=="album" || $this->type=="carton"){
+			$sql = $this->db->prepare("SELECT t.name FROM pictures_album_tagged AS p LEFT JOIN pictures_tags as t on t.id = p.id_tag where p.id_album=:id");
+		}
+		elseif($this->type=="photos"){
+			$sql = $this->db->prepare("SELECT t.name FROM pictures_tagged AS p LEFT JOIN pictures_tags AS t on t.id=p.tag where p.pict=:id");
+		}
 		$sql->bindValue(":id",$this->id);
 		$sql->execute();
+		
 		return $sql->fetchAll();
 	}
 }

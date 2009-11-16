@@ -4,15 +4,17 @@
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
 
 <!--load is used to associate a class name with a the class file name -->
-	<load class= "photos" file="photos.class.php" />
+	<load class="photos" file="photos.class.php" />
 	<load class="submit" file="photossubmit.class.php" />
     <load class="photosAlbum" file="photos_album.class.php" />
     <load class="AddContainerForm" file="addcontainerform.class.php" />
     <load class="AddContainer" file="addcontainer.class.php" />
 	<load class="AddTagContainer" file="addtagcontainer.class.php" />
-	<load class="AddTagContainerForm" file="addtagcontainerform.class.php" />
+	<load class="AddTagForm" file="addtagform.class.php" />
     <load class="folder" file="folder.class.php" />
 	<load class="AddPhotosForm" file="addphotosform.class.php" />
+	<load class="DisplayPhoto" file="displayphoto.class.php" />
+	<load class="FindFromTags" file="findfromtags.class.php" />
 
     <load class="[arguments]/AnyCharArgument" />
     <load class="[arguments]/NumberArgument" />
@@ -23,6 +25,8 @@
     <load class="carton" file="class/carton.class.php" />
     <load class="AlbumBase" file="class/base.class.php" />
     <load class="containerFactory" file="class/containerfactory.class.php" />
+	<load class="PhotosFormModel" file="class/function.class.php" />
+	<load class="PhotosModel" file="class/functionmodel.class.php" />
 
 <!--view is used to associate a the name of the view, the class and the template file -->
 	<view name="mini" class="photos" template="mini.tpl" />
@@ -32,6 +36,9 @@
 	<view name="addtags" class="AddTagContainer" template="addtags.tpl" />
     <view name="folder" class="folder" template="folder.tpl" />
 	<view name="addphotos" template="addphotos.tpl" />
+	<view name="photo" class="DisplayPhoto" template="photo.tpl" />
+	<view name="findfromtags" class="FindFromTags" template="fromtags.tpl" />s
+	
 <!--	<view name="{js}" template="js.tpl" />-->
 
 <!--the following lines defines the default header and footer when we don't defines special header and footer -->
@@ -71,6 +78,13 @@
 		<argument name="parent" class="NumberArgument" />
 	</page>
 
+	<page name="photo" view="photo">
+		<argument name="id" class="NumberArgument" />
+	</page>
+	
+	<page name="findfromtags" view="findfromtags" />
+	
+	
 <!--definition of a form who permit to create event in reaction of form -->
 	<form action="container" class="AddContainerForm" >
         <redirect page="carton" />
@@ -82,5 +96,9 @@
 	
 	<form action="photos" class="AddPhotosForm">
 		<redirect page="album" /> 
+	</form>
+	
+	<form action="research" class="researchform">
+		<redirect page="researchresult" />
 	</form>
 </app>

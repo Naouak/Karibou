@@ -8,7 +8,7 @@
  * @package applications
  **/
 
-class AddContainerForm extends FormModel {
+class AddContainerForm extends PhotosFormModel {
 	public function build() {
 		// We retrieve all data from the form and we filter this data to avoid problems
 		$name = filter_input(INPUT_POST,"name", FILTER_SANITIZE_SPECIAL_CHARS);
@@ -22,13 +22,13 @@ class AddContainerForm extends FormModel {
 		$stmt->bindValue(":parent",$parent);
 		$stmt->bindValue(":type",$type);
 		$stmt->execute();
+		
+		$id = $this->db->lastInsertId();
 
-		$array_tags = explode(",",$tags);
-		$sql = $this->db->prepare("INSERT IGNORE INTO pictures_tags SET `name` = :name;");
-		foreach($array_tags as $tag){
-			$sql->bindValue(":name",$tag);
-			$sql->execute();
-		}
+		if ($id != 0)
+			$this->insertNewTags($tags,$type,$id);
+
+		
 
 		// this permits to Redirect to the page written in the config.xml with this argument after the submit
 		$this->setRedirectArg("id",$parent);

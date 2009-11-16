@@ -4,9 +4,13 @@
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU Public License
  * See the enclosed file COPYING for license information.
- *-
+ **/
+
+/**
+ *
  * @package applications
  **/
+
 class containerFactory {
 
     private static $instance;
@@ -26,6 +30,10 @@ class containerFactory {
 
     }
 
+	/**
+	 *@param Int $id
+	 * function returns an carton or album object depends of the id
+	 **/
     public function getPictureStorage($id) {
         $sql = $this->db->prepare("SELECT * FROM pictures_album WHERE id=:id");
         $sql->bindValue(":id",$id);

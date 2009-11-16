@@ -57,7 +57,7 @@ class album extends AlbumBase {
 	 *@param array $album
 	 */
 
-    function __construct($db,$album) {
+    function __construct(PDO $db,$album) {
         $this->db = $db;
         $this->all = $album;
         $this->id = $this->all["id"];
@@ -67,10 +67,7 @@ class album extends AlbumBase {
         $this->type = "album";
     }
 
-
-
-    public function addPicture() {
-    }
+	
 
 	/**
 	 * This function returns an array with the id of all pictures from this album
