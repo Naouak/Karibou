@@ -48,11 +48,15 @@ a:visited {
 	text-align: left;
 }
 
+body{
+    background: #FCFCFF;
+}
+
 #main {
-	background: #fff;
+	background: #FCFCFF;
 	margin-top: 5.0em;
 	/* IE Bug Fix : résolution d'un problème de marge inférieure sous IE */
-	border: 1px solid #fff;
+	border: 1px solid #FCFCFF;
 }
 
 /* App menu */
