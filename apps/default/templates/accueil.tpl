@@ -64,16 +64,6 @@ function $app (obj) {ldelim}
 	return karibou.getAppFromNode(obj);
 {rdelim}
 
-function addTab () {ldelim}
-	var name = prompt("Tab name ?", "");
-	if ((name) && (name.length > 0))
-		karibou.createNewTab(name);
-{rdelim}
-
-function closeTab () {ldelim}
-	karibou.closeCurrentTab();
-{rdelim}
-
 function customizeTab() {ldelim}
         karibou.unlock();
 	new Effect.toggle("customizeSection",'appear',{literal}{ duration: 0.3 }{/literal});
@@ -99,14 +89,6 @@ function doneResizeTab () {ldelim}
 	karibou.currentTab.doneResize();
 {rdelim}
 
-function addColumn () {ldelim}
-	karibou.currentTab.addColumn();
-{rdelim}
-
-function removeLastColumn () {ldelim}
-	karibou.currentTab.removeLastColumn();
-{rdelim}
-
 function toggleAddAppList() {ldelim}
 	karibou.unlock();
 	new Effect.toggle($('homeAppAdder'), 'slide', {ldelim} afterFinish: function(eff) {ldelim} $('filterAppList').focus(); {rdelim} {rdelim} );
@@ -128,8 +110,8 @@ function toggleAddAppList() {ldelim}
 <ul>
 <li><a href="" onclick="resizeTab(); return false;" id="resizeLink">##Resize##</a></li>
 <span id="columnsLinks">
-<li><a href="" onclick="addColumn(); return false;" id="addColumnLink">##Add a column##</a></li>
-<li><a href="" onclick="removeLastColumn(); return false;" id="removeColumnLink">##Remove the last column##</a></li>
+<li><a href="" onclick="karibou.currentTab.addColumn(); return false;" id="addColumnLink">##Add a column##</a></li>
+<li><a href="" onclick="karibou.currentTab.removeLastColumn(); return false;" id="removeColumnLink">##Remove the last column##</a></li>
 </span>
 <span id="resizeLinks">
 <li><a href="" onclick="cancelResizeTab(); return false;" id="cancelResizeLink">##Cancel##</a></li>
@@ -160,7 +142,7 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 {if $loggedUser}
 <div class="default2-tabs-modify">
     
-    <input type="button" class="default2-tabs-removetab" onclick="closeTab();" value="##Remove Current tab##" />
+    <input type="button" class="default2-tabs-removetab" onclick="karibou.closeCurrentTab();" value="##Remove Current tab##" />
 
 </div>
 {/if}
