@@ -1,7 +1,7 @@
 /**
  * Class used for generating and managing form
  * @module default2
- * @class Kform
+ * @class KForm
  */
 KForm = Class.create({
     /**
@@ -25,47 +25,29 @@ KForm = Class.create({
 	this.submitCallBack = submitCallBack;
 	this.cancelCallBack = cancelCallBack;
     },
+
+    //********************************************FIELDS******************************************
+
     /**
-     * Seems to build the DOM
-     * @method buildForm
+     * Span field
+     * @property __span
      */
-    buildForm: function() {
-	//Declaring the targetNode as the node for the form
-	var formNode = this.targetNode;
-	//Setting the method to post
-	formNode.setAttribute("method", "post");
-	//WTF is this ?... isn't there better way to do that ?
-	//BTW adding onsubmit event in a horrible way
-	formNode.setAttribute("onsubmit", "return KForm.getFormFromNode(this).submit();");
-	//Now we are going through every field to generate them
-	//@todo clean this loop and breaking it in multipart loop
-	for (var fieldID in this.formFields) {
-	    var fieldObject = this.formFields[fieldID];
-	    //If it's a span (What the hell is this type for ?)
+    __span: {
+	build: function(formNode,fieldID,fieldObject){
 	    if (fieldObject["type"] == "span") {
 		var spanNode = document.createElement("span");
 		spanNode.innerHTML = fieldObject["text"];
 		formNode.appendChild(spanNode);
 	    }
-	    //If it's a help field (dunno what it is for)
-	    else if (fieldObject["type"] == "help") {
-		var titleNode = document.createElement("a");
-		titleNode.setAttribute("href", "#");
-		if (fieldObject["title"])
-		    titleNode.innerHTML = fieldObject["title"];
-		else
-		    titleNode.innerHTML = "Help ?";
-		formNode.appendChild(titleNode);
-		var helpNode = document.createElement("span");
-		helpNode.setAttribute("style", "display: none;");
-		helpNode.innerHTML = fieldObject["text"];
-		helpNode.id = "__karibou_help_node_" + Math.ceil(Math.random()*1000000);
-		titleNode.setAttribute("onclick", "new Effect.toggle(document.getElementById('" + helpNode.id + "')); return false;");
-		formNode.appendChild(helpNode);
-		helpNode.insertBefore(document.createElement("br"), helpNode.firstChild);
-	    }
-	    //If it's a text,a url or a password
-	    else if ((fieldObject["type"] == "text") || (fieldObject["type"] == "url") || (fieldObject["type"] == "password")) {
+	}
+    },
+    /**
+     * Text field
+     * @property __text
+     */
+    __text: {
+	build: function(formNode,fieldID,fieldObject){
+	    if ((fieldObject["type"] == "text") || (fieldObject["type"] == "url") || (fieldObject["type"] == "password")) {
 		if (fieldObject["label"]) {
 		    var lblNode = document.createElement("label");
 		    lblNode.innerHTML = fieldObject["label"];
@@ -87,8 +69,39 @@ KForm = Class.create({
 		    inputNode.setAttribute("value", fieldObject["value"]);
 		formNode.appendChild(inputNode);
 	    }
-	    //If it's a date
-	    else if (fieldObject["type"] == "date") {
+	}
+    },
+    /**
+     * Help field
+     * @property __help
+     */
+    __help: {
+	build: function(formNode,fieldID,fieldObject){
+	    if (fieldObject["type"] == "help") {
+		var titleNode = document.createElement("a");
+		titleNode.setAttribute("href", "#");
+		if (fieldObject["title"])
+		    titleNode.innerHTML = fieldObject["title"];
+		else
+		    titleNode.innerHTML = "Help ?";
+		formNode.appendChild(titleNode);
+		var helpNode = document.createElement("span");
+		helpNode.setAttribute("style", "display: none;");
+		helpNode.innerHTML = fieldObject["text"];
+		helpNode.id = "__karibou_help_node_" + Math.ceil(Math.random()*1000000);
+		titleNode.setAttribute("onclick", "new Effect.toggle(document.getElementById('" + helpNode.id + "')); return false;");
+		formNode.appendChild(helpNode);
+		helpNode.insertBefore(document.createElement("br"), helpNode.firstChild);
+	    }
+	}
+    },
+    /**
+     * Date field
+     * @property __date
+     */
+    __date: {
+	build: function(formNode,fieldID,fieldObject){
+	    if (fieldObject["type"] == "date") {
 		if (fieldObject["label"]) {
 		    var lblNode = document.createElement("label");
 		    lblNode.setAttribute("for", fieldID);
@@ -129,8 +142,15 @@ KForm = Class.create({
 		calNode.appendChild(txtNode);
 		formNode.appendChild(calNode);
 	    }
-	    //If it's a textarea
-	    else if (fieldObject["type"] == "textarea") {
+	}
+    },
+    /**
+     * Textarea field
+     * @property __textarea
+     */
+    __textarea: {
+	build: function(formNode,fieldID,fieldObject){
+	    if (fieldObject["type"] == "textarea") {
 		if (fieldObject["label"]) {
 		    var lblNode = document.createElement("label");
 		    lblNode.innerHTML = fieldObject["label"];
@@ -149,8 +169,15 @@ KForm = Class.create({
 		    areaNode.innerHTML = fieldObject["value"];
 		formNode.appendChild(areaNode);
 	    }
-	    //If it's a file'
-	    else if (fieldObject["type"] == "file") {
+	}
+    },
+    /**
+     * File field
+     * @property __file
+     */
+    __file: {
+	build: function(formNode,fieldID,fieldObject){
+	    if (fieldObject["type"] == "file") {
 		formNode.setAttribute("enctype", "multipart/form-data");
 		if (fieldObject["label"]) {
 		    var lblNode = document.createElement("label");
@@ -165,8 +192,15 @@ KForm = Class.create({
 		fileNode.setAttribute("type", "file");
 		formNode.appendChild(fileNode);
 	    }
-	    //If it's a int or a float
-	    else if (fieldObject["type"] == "int" || fieldObject["type"] == "float") {
+	}
+    },
+    /**
+     * Number field
+     * @property __number
+     */
+    __number: {
+	build: function(formNode,fieldID,fieldObject){
+	    if (fieldObject["type"] == "int" || fieldObject["type"] == "float") {
 		if (fieldObject["label"]) {
 		    var lblNode = document.createElement("label");
 		    lblNode.innerHTML = fieldObject["label"];
@@ -181,8 +215,15 @@ KForm = Class.create({
 		    inputNode.setAttribute("value", fieldObject["value"]);
 		formNode.appendChild(inputNode);
 	    }
-	    // If it's a bool
-	    else if (fieldObject["type"] == "bool") {
+	}
+    },
+    /**
+     * Bool field
+     * @property __bool
+     */
+    __bool: {
+	build: function(formNode,fieldID,fieldObject){
+	    if (fieldObject["type"] == "bool") {
 		if (fieldObject["label"]) {
 		    var lblNode = document.createElement("label");
 		    lblNode.innerHTML = fieldObject["label"];
@@ -200,8 +241,15 @@ KForm = Class.create({
 		}
 		formNode.appendChild(inputNode);
 	    }
-	    //If it's an enum'
-	    else if(fieldObject["type"] == "enum") {
+	}
+    },
+    /**
+     * Enum field
+     * @property __enum
+     */
+    __enum: {
+	build: function(formNode,fieldID,fieldObject){
+	    if(fieldObject["type"] == "enum") {
 		if (fieldObject["label"]) {
 		    var lblNode = document.createElement("span");
 		    lblNode.innerHTML = fieldObject["label"];
@@ -234,8 +282,7 @@ KForm = Class.create({
 			label.innerHTML = "<em>[no choice]</em>";
 			formNode.appendChild(label);
 		    }
-
-		    for (item in fieldValues) {
+		    for (var item in fieldValues) {
 			var radio = document.createElement("input");
 			radio.setAttribute("id", fieldID + item);
 			radio.setAttribute("name", fieldID);
@@ -271,6 +318,62 @@ KForm = Class.create({
 		    }
 		    formNode.appendChild(select);
 		}
+	    }
+	}
+    },
+    //******************************************END OF FIELDS***************************************
+    
+    /**
+     * Seems to build the DOM
+     * @method buildForm
+     */
+    buildForm: function() {
+	//Declaring the targetNode as the node for the form
+	var formNode = this.targetNode;
+	//Setting the method to post
+	formNode.setAttribute("method", "post");
+	//WTF is this ?... isn't there better way to do that ?
+	//BTW adding onsubmit event in a horrible way
+	formNode.setAttribute("onsubmit", "return KForm.getFormFromNode(this).submit();");
+	//Now we are going through every field to generate them
+	//@todo clean this loop and breaking it in multipart loop
+	for (var fieldID in this.formFields) {
+	    var fieldObject = this.formFields[fieldID];
+	    //If it's a span (What the hell is this type for ?)
+	    if (fieldObject["type"] == "span") {
+		this.__span.build(formNode,fieldID,fieldObject);
+	    }
+	    //If it's a help field (dunno what it is for)
+	    else if (fieldObject["type"] == "help") {
+		this.__help.build(formNode,fieldID,fieldObject);
+	    }
+	    //If it's a text,a url or a password
+	    else if ((fieldObject["type"] == "text") || (fieldObject["type"] == "url") || (fieldObject["type"] == "password")) {
+		this.__text.build(formNode,fieldID,fieldObject);
+	    }
+	    //If it's a date
+	    else if (fieldObject["type"] == "date") {
+		this.__date.build(formNode,fieldID,fieldObject);
+	    }
+	    //If it's a textarea
+	    else if (fieldObject["type"] == "textarea") {
+		this.__textarea.build(formNode,fieldID,fieldObject);
+	    }
+	    //If it's a file'
+	    else if (fieldObject["type"] == "file") {
+		this.__file.build(formNode,fieldID,fieldObject);
+	    }
+	    //If it's a int or a float
+	    else if (fieldObject["type"] == "int" || fieldObject["type"] == "float") {
+		this.__number.build(formNode,fieldID,fieldObject);
+	    }
+	    // If it's a bool
+	    else if (fieldObject["type"] == "bool") {
+		this.__bool.build(formNode,fieldID,fieldObject);
+	    }
+	    //If it's an enum'
+	    else if(fieldObject["type"] == "enum") {
+		this.__enum.build(formNode,fieldID,fieldObject);
 	    }
 	    //Do we really need to do an alert for an unknown field ? I think we should use something like console.log
 	    else {
@@ -528,7 +631,7 @@ KForm = Class.create({
 		    var form = transport.request.options.form;
 		    form.submitted();
 		}
-		});
+	    });
 	    return false;
 	}
 	return false;
