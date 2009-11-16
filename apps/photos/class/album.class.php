@@ -87,7 +87,7 @@ class album extends AlbumBase {
 	
     public function getRandomPicture() {
         $preview = $this->db->prepare("SELECT p.id,rand() as rnd FROM pictures AS p LEFT JOIN pictures_album AS pa ON p.album = pa.id WHERE pa.name = :album AND p.album = :id ORDER BY rnd  LIMIT 1;");
-        $preview->bindValue(":album",$album["name"]);
+        $preview->bindValue(":album",$this->name);
         $preview->bindValue(":id",$this->id);
         $preview->execute();
         $random = $preview->fetch();
