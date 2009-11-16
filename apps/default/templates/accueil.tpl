@@ -107,10 +107,13 @@ function removeLastColumn () {ldelim}
 	karibou.currentTab.removeLastColumn();
 {rdelim}
 
-function showAddAppList() {ldelim}
+function toggleAddAppList() {ldelim}
 	karibou.unlock();
 	new Effect.toggle($('homeAppAdder'), 'slide', {ldelim} afterFinish: function(eff) {ldelim} $('filterAppList').focus(); {rdelim} {rdelim} );
-	new Effect.toggle($('homeAppAddButton'));
+	if ($('homeAppAddButton').value == "##Close##")
+		$('homeAppAddButton').value = "##Add an application##";
+	else
+		$('homeAppAddButton').value = "##Close##";
 {rdelim}
 
 {include file=rsa.tpl}
@@ -119,26 +122,25 @@ function showAddAppList() {ldelim}
 {if $loggedUser}
 <div class="default2_customize">
 
-<a href="" onclick="customizeTab(); return false;">Customize</a><input id="homeAppAddButton" type="button" onclick="showAddAppList(); return false;" value="Ajouter une application" /><br />
+<a href="" onclick="customizeTab(); return false;">##Customize##</a><input id="homeAppAddButton" type="button" onclick="toggleAddAppList(); return false;" value="##Add an application##" /><br />
 
 <span id="customizeSection" style="display: none;">
 <ul>
-<li><a href="" onclick="resizeTab(); return false;" id="resizeLink">Resize</a></li>
+<li><a href="" onclick="resizeTab(); return false;" id="resizeLink">##Resize##</a></li>
 <span id="columnsLinks">
-<li><a href="" onclick="addColumn(); return false;" id="addColumnLink">Add a column</a></li>
-<li><a href="" onclick="removeLastColumn(); return false;" id="removeColumnLink">Remove the last column</a></li>
+<li><a href="" onclick="addColumn(); return false;" id="addColumnLink">##Add a column##</a></li>
+<li><a href="" onclick="removeLastColumn(); return false;" id="removeColumnLink">##Remove the last column##</a></li>
 </span>
 <span id="resizeLinks">
-<li><a href="" onclick="cancelResizeTab(); return false;" id="cancelResizeLink">Cancel</a></li>
-<li><a href="" onclick="doneResizeTab(); return false;" id="doneResizeLink">Done</a></li>
+<li><a href="" onclick="cancelResizeTab(); return false;" id="cancelResizeLink">##Cancel##</a></li>
+<li><a href="" onclick="doneResizeTab(); return false;" id="doneResizeLink">##Done##</a></li>
 </span>
 </ul>
 </span>
 
 
 <div id="homeAppAdder" style="display : none">
-Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="filterAppList(event);" length="150" />
-<input id="homeAppAddCloseButton" type="button" value="Close" onclick="new Effect.toggle($('homeAppAdder'), 'slide'); new Effect.toggle($('homeAppAddButton'));  return false;" /><br />
+Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="filterAppList(event);" length="150" /><br />
 <ul id="homeAppList">
 {foreach key=appName item=appObject from=$apps}
     <li class="homeAppChoice" kappName="{$appName}">
