@@ -90,7 +90,7 @@
         <redirect page="carton" />
     </form>
     
-	<form action="tags" class="AddTagContainerForm" >
+	<form action="tags" class="AddTagForm" >
 		<redirect />
 	</form>
 	
