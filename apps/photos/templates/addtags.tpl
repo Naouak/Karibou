@@ -12,11 +12,11 @@
 <br />
 <strong>Existing tags for the container</strong><br />
 {foreach from=$tags item=tag}
-	{$tag.name},
+	{$tag.name}{if !$smarty.foreach.tags.last}, {/if}
 {/foreach}
 
 <br />
 <strong>All existing tags </strong> <br />
-{foreach from=$alltags item=tag}
-	{$tag.name}, 
+{foreach from=$alltags item=tag name=tags}
+	{$tag.name}{if !$smarty.foreach.tags.last}, {/if}
 {/foreach}
