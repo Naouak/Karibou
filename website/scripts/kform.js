@@ -502,7 +502,6 @@ KForm = Class.create({
 	    iframeNode.style.display = "none";
 	    this.targetNode.appendChild(iframeNode);
 	    this.targetNode.setAttribute("target", iframeName);
-	    //Is extra parameters used only when there is a file ?
 	    for (var paramName in this.extraParameters) {
 		// Put every extra parameters in a hidden field...
 		var hiddenNode = document.createElement("input");
