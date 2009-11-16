@@ -196,6 +196,8 @@ div#account form.login a.inscription:hover {
   background-color: black;
   opacity: 0.8;
   -moz-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  -webkit-border-radius: 20px;
 }
 
 .karibouMenu li {

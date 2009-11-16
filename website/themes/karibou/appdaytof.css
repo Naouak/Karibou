@@ -8,6 +8,7 @@
     background: #EEF5F9;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
     border-radius: 5px;
     border: solid 2px #88bbee;
 }
@@ -16,6 +17,7 @@
     display: inline-block;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
     border-radius: 5px;
     border: solid 2px #88bbee;
     position: absolute;
@@ -30,6 +32,7 @@
     display: inline-block;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
     border-radius: 5px;
     border: solid 2px #88bbee;
     position: absolute;

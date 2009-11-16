@@ -9,6 +9,7 @@
     background: #EEF5F9;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
     border-radius: 5px;
     border: solid 2px #99ccff;
     text-align: center;
