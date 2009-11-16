@@ -34,20 +34,17 @@ KForm = Class.create({
      */
 	__span: {
 	    build: function(formNode,fieldID,fieldObject){
-		if (fieldObject["type"] == "span") {
-		    var spanNode = document.createElement("span");
-		    spanNode.innerHTML = fieldObject["text"];
-		    formNode.appendChild(spanNode);
-		}
+		var spanNode = document.createElement("span");
+		spanNode.innerHTML = fieldObject["text"];
+		formNode.appendChild(spanNode);
 	    }
 	},
 	/**
-     * Text field
-     * @property __text
-     */
-	__text: {
+	  * URL field
+	  * @property __url
+	  */
+	__url: {
 	    build: function(formNode,fieldID,fieldObject){
-		if ((fieldObject["type"] == "text") || (fieldObject["type"] == "url") || (fieldObject["type"] == "password")) {
 		    if (fieldObject["label"]) {
 			var lblNode = document.createElement("label");
 			lblNode.innerHTML = fieldObject["label"];
@@ -57,18 +54,62 @@ KForm = Class.create({
 		    var inputNode = document.createElement("input");
 		    inputNode.setAttribute("id", fieldID);
 		    inputNode.setAttribute("name", fieldID);
-
-		    if(fieldObject["type"] != "password")
-			inputNode.setAttribute("type", "text");
-		    else
-			inputNode.setAttribute("type", "password");
+		    inputNode.setAttribute("type", "text");
 
 		    if (fieldObject["maxlength"])
 			inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
 		    if (fieldObject["value"])
 			inputNode.setAttribute("value", fieldObject["value"]);
 		    formNode.appendChild(inputNode);
-		}
+	    }
+	},
+	/**
+	  * Password field
+	  * @property __password
+	  */
+	__password: {
+	    build: function(formNode,fieldID,fieldObject){
+		    if (fieldObject["label"]) {
+			var lblNode = document.createElement("label");
+			lblNode.innerHTML = fieldObject["label"];
+			lblNode.setAttribute("for", fieldID);
+			formNode.appendChild(lblNode);
+		    }
+		    var inputNode = document.createElement("input");
+		    inputNode.setAttribute("id", fieldID);
+		    inputNode.setAttribute("name", fieldID);
+		    inputNode.setAttribute("type", "password");
+
+		    if (fieldObject["maxlength"])
+			inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
+		    if (fieldObject["value"])
+			inputNode.setAttribute("value", fieldObject["value"]);
+		    formNode.appendChild(inputNode);
+	    }
+	},
+
+   /**
+     * Text field
+     * @property __text
+     */
+	__text: {
+	    build: function(formNode,fieldID,fieldObject){
+		    if (fieldObject["label"]) {
+			var lblNode = document.createElement("label");
+			lblNode.innerHTML = fieldObject["label"];
+			lblNode.setAttribute("for", fieldID);
+			formNode.appendChild(lblNode);
+		    }
+		    var inputNode = document.createElement("input");
+		    inputNode.setAttribute("id", fieldID);
+		    inputNode.setAttribute("name", fieldID);
+		    inputNode.setAttribute("type", "text");
+
+		    if (fieldObject["maxlength"])
+			inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
+		    if (fieldObject["value"])
+			inputNode.setAttribute("value", fieldObject["value"]);
+		    formNode.appendChild(inputNode);
 	    }
 	},
 	/**
@@ -77,22 +118,20 @@ KForm = Class.create({
      */
 	__help: {
 	    build: function(formNode,fieldID,fieldObject){
-		if (fieldObject["type"] == "help") {
-		    var titleNode = document.createElement("a");
-		    titleNode.setAttribute("href", "#");
-		    if (fieldObject["title"])
+		var titleNode = document.createElement("a");
+		titleNode.setAttribute("href", "#");
+		if (fieldObject["title"])
 			titleNode.innerHTML = fieldObject["title"];
-		    else
+		else
 			titleNode.innerHTML = "Help ?";
-		    formNode.appendChild(titleNode);
-		    var helpNode = document.createElement("span");
-		    helpNode.setAttribute("style", "display: none;");
-		    helpNode.innerHTML = fieldObject["text"];
-		    helpNode.id = "__karibou_help_node_" + Math.ceil(Math.random()*1000000);
-		    titleNode.setAttribute("onclick", "new Effect.toggle(document.getElementById('" + helpNode.id + "')); return false;");
-		    formNode.appendChild(helpNode);
-		    helpNode.insertBefore(document.createElement("br"), helpNode.firstChild);
-		}
+		formNode.appendChild(titleNode);
+		var helpNode = document.createElement("span");
+		helpNode.setAttribute("style", "display: none;");
+		helpNode.innerHTML = fieldObject["text"];
+		helpNode.id = "__karibou_help_node_" + Math.ceil(Math.random()*1000000);
+		titleNode.setAttribute("onclick", "new Effect.toggle(document.getElementById('" + helpNode.id + "')); return false;");
+		formNode.appendChild(helpNode);
+		helpNode.insertBefore(document.createElement("br"), helpNode.firstChild);
 	    }
 	},
 	/**
@@ -101,47 +140,45 @@ KForm = Class.create({
      */
 	__date: {
 	    build: function(formNode,fieldID,fieldObject){
-		if (fieldObject["type"] == "date") {
-		    if (fieldObject["label"]) {
-			var lblNode = document.createElement("label");
-			lblNode.setAttribute("for", fieldID);
-			var acroNode = document.createElement("acronym");
-			acroNode.setAttribute("title", "Format : dd/mm/yyyy");
-			acroNode.innerHTML = fieldObject["label"];
-			lblNode.appendChild(acroNode);
-			formNode.appendChild(lblNode);
-		    }
-		    var inputNode = document.createElement("input");
-		    inputNode.setAttribute("id", fieldID);
-		    inputNode.setAttribute("name", fieldID);
-		    inputNode.setAttribute("type", "text");
-		    if (fieldObject["value"])
-			inputNode.setAttribute("value", fieldObject["value"]);
-		    if (fieldObject["maxlength"])
-			inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
-		    formNode.appendChild(inputNode);
-		    var calNode = document.createElement("span");
-		    calNode.setAttribute("class", "calendar_link");
-		    calNode.setAttribute("for", fieldID);
-		    calNode.onclick = function() {
-			var inputNode = $app(this).getElementById(this.attributes.getNamedItem("for").nodeValue);
-			var divNode = document.createElement("div");
-			divNode.setAttribute("class", "floating_calendar");
-			inputNode.parentNode.insertBefore(divNode, inputNode.nextSibling);
-			var callBack = function(d) {
-			    inputNode.value = d.format('dd/mm/yyyy');
-			    inputScal.closeCalendar();
-			    inputScal.destroy();
-			    divNode.parentNode.removeChild(divNode);
-			};
-			var inputScal = new scal(divNode, callBack);
-		    };
-		    var txtNode = document.createElement("span");
-		    txtNode.setAttribute("class", "text");
-		    txtNode.innerHTML = "Open calendar";
-		    calNode.appendChild(txtNode);
-		    formNode.appendChild(calNode);
+		if (fieldObject["label"]) {
+		    var lblNode = document.createElement("label");
+		    lblNode.setAttribute("for", fieldID);
+		    var acroNode = document.createElement("acronym");
+		    acroNode.setAttribute("title", "Format : dd/mm/yyyy");
+		    acroNode.innerHTML = fieldObject["label"];
+		    lblNode.appendChild(acroNode);
+		    formNode.appendChild(lblNode);
 		}
+		var inputNode = document.createElement("input");
+		inputNode.setAttribute("id", fieldID);
+		inputNode.setAttribute("name", fieldID);
+		inputNode.setAttribute("type", "text");
+		if (fieldObject["value"])
+		    inputNode.setAttribute("value", fieldObject["value"]);
+		if (fieldObject["maxlength"])
+		    inputNode.setAttribute("maxlength", fieldObject["maxlength"]);
+		formNode.appendChild(inputNode);
+		var calNode = document.createElement("span");
+		calNode.setAttribute("class", "calendar_link");
+		calNode.setAttribute("for", fieldID);
+		calNode.onclick = function() {
+		    var inputNode = $app(this).getElementById(this.attributes.getNamedItem("for").nodeValue);
+		    var divNode = document.createElement("div");
+		    divNode.setAttribute("class", "floating_calendar");
+		    inputNode.parentNode.insertBefore(divNode, inputNode.nextSibling);
+		    var callBack = function(d) {
+		        inputNode.value = d.format('dd/mm/yyyy');
+		        inputScal.closeCalendar();
+		        inputScal.destroy();
+		        divNode.parentNode.removeChild(divNode);
+		    };
+		    var inputScal = new scal(divNode, callBack);
+		};
+		var txtNode = document.createElement("span");
+		txtNode.setAttribute("class", "text");
+		txtNode.innerHTML = "Open calendar";
+		calNode.appendChild(txtNode);
+		formNode.appendChild(calNode);
 	    }
 	},
 	/**
@@ -150,7 +187,6 @@ KForm = Class.create({
      */
 	__textarea: {
 	    build: function(formNode,fieldID,fieldObject){
-		if (fieldObject["type"] == "textarea") {
 		    if (fieldObject["label"]) {
 			var lblNode = document.createElement("label");
 			lblNode.innerHTML = fieldObject["label"];
@@ -168,7 +204,6 @@ KForm = Class.create({
 		    if (fieldObject["value"])
 			areaNode.innerHTML = fieldObject["value"];
 		    formNode.appendChild(areaNode);
-		}
 	    }
 	},
 	/**
@@ -177,7 +212,6 @@ KForm = Class.create({
      */
 	__file: {
 	    build: function(formNode,fieldID,fieldObject){
-		if (fieldObject["type"] == "file") {
 		    formNode.setAttribute("enctype", "multipart/form-data");
 		    if (fieldObject["label"]) {
 			var lblNode = document.createElement("label");
@@ -191,16 +225,14 @@ KForm = Class.create({
 		    fileNode.setAttribute("name", fieldID);
 		    fileNode.setAttribute("type", "file");
 		    formNode.appendChild(fileNode);
-		}
 	    }
 	},
 	/**
-     * Number field
-     * @property __number
+     * Float field
+     * @property __float
      */
-	__number: {
+	__float: {
 	    build: function(formNode,fieldID,fieldObject){
-		if (fieldObject["type"] == "int" || fieldObject["type"] == "float") {
 		    if (fieldObject["label"]) {
 			var lblNode = document.createElement("label");
 			lblNode.innerHTML = fieldObject["label"];
@@ -214,7 +246,27 @@ KForm = Class.create({
 		    if (fieldObject["value"])
 			inputNode.setAttribute("value", fieldObject["value"]);
 		    formNode.appendChild(inputNode);
-		}
+	    }
+	},
+	/**
+	  * Integer field
+	  * @Property __int
+	  */
+	__int: {
+	    build: function(formNode,fieldID,fieldObject){
+		    if (fieldObject["label"]) {
+			var lblNode = document.createElement("label");
+			lblNode.innerHTML = fieldObject["label"];
+			lblNode.setAttribute("for", fieldID);
+			formNode.appendChild(lblNode);
+		    }
+		    var inputNode = document.createElement("input");
+		    inputNode.setAttribute("id", fieldID);
+		    inputNode.setAttribute("name", fieldID);
+		    inputNode.setAttribute("type", "text");
+		    if (fieldObject["value"])
+			inputNode.setAttribute("value", fieldObject["value"]);
+		    formNode.appendChild(inputNode);
 	    }
 	},
 	/**
@@ -223,7 +275,6 @@ KForm = Class.create({
      */
 	__bool: {
 	    build: function(formNode,fieldID,fieldObject){
-		if (fieldObject["type"] == "bool") {
 		    if (fieldObject["label"]) {
 			var lblNode = document.createElement("label");
 			lblNode.innerHTML = fieldObject["label"];
@@ -240,7 +291,6 @@ KForm = Class.create({
 			    inputNode.setAttribute("checked", "checked");
 		    }
 		    formNode.appendChild(inputNode);
-		}
 	    }
 	},
 	/**
@@ -249,7 +299,6 @@ KForm = Class.create({
      */
 	__enum: {
 	    build: function(formNode,fieldID,fieldObject){
-		if(fieldObject["type"] == "enum") {
 		    if (fieldObject["label"]) {
 			var lblNode = document.createElement("span");
 			lblNode.innerHTML = fieldObject["label"];
@@ -318,7 +367,6 @@ KForm = Class.create({
 			}
 			formNode.appendChild(select);
 		    }
-		}
 	    }
 	}
     },
@@ -340,9 +388,9 @@ KForm = Class.create({
 	//@todo clean this loop and breaking it in multipart loop
 	for (var fieldID in this.formFields) {
 	    var fieldObject = this.formFields[fieldID];
-	    for(var i in this.fieldsType){
-		this.fieldsType[i].build(formNode,fieldID,fieldObject);
-	    }
+	    var fieldType = "__" + fieldObject["type"];
+	    if (this.fieldsType[fieldType])
+		    this.fieldsType[fieldType].build(formNode, fieldID, fieldObject);
 	    //Please don't do designing with br !
 	    formNode.appendChild(document.createElement("br"));
 	}
