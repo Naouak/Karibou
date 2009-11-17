@@ -1,6 +1,6 @@
-<h1>Bugs</h1>
+<h1>{t}BUGS{/t}</h1>
 
-<p> Les dix derniers bugs reportés : </p>
+<p>{t}TEN LAST BUGS :{/t}</p>
 {foreach item=bug from=$bugsmini}
-	<a href="{kurl page="view" id=$bug.id }">{$bug.title}</a> <br />
+	<p><a href="{kurl page="view" id=$bug.id }">{$bug.summary}</a> </p>
 {/foreach}

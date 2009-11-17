@@ -1,156 +1,128 @@
 <div class="bugs">
 	<h1>Bugs</h1>
 	<h2>Modifier un bug</h2>
-	{if $isadmin || $currentuser == $current_module.developper_id}
+	{if $isadmin || $dev}
 		
 		<div class="newBugsForm">
 
 			<form action="{kurl action="post"}" method="post">
-				<input type="hidden" name="id" value="{$bug.Id}" />
+				<input type="hidden" name="id" value="{$bug.id}" />
 
-				<div class="field title">
-					<label for="title">Titre :</label> <input type="text" id="title" name="title" value="{$bug.title}" />
+				<div class="field summary">
+					<label for="summary">{t}Summary{/t} :</label> <input type="text" id="summary" name="summary" value="{$bug.summary}" />
 				</div>
-				<br />
-				Application concernée :
+				
+				<div class="field module">
+					<label for="module">{t}Module{/t} :
 				<SELECT name="module">
 					{foreach item=module from=$modules}
 						{if $module.id == $bug.module_id}
-							<OPTION selected>{$module.appli_name}
+							<OPTION selected>{$module.name}
 						{else}
-							<OPTION>{$module.appli_name}
+							<OPTION>{$module.name}
 						{/if}
 					{/foreach}
 				</SELECT>
-				<br /><br />
-				<div class="field browser">
-					<label for="browser">Navigateur :</label> <input type="text" id="browser" name="browser" value="{$bug.Browser}"/>
 				</div>
-				<br /><br />
-				<div class="field description">
-					<label for="description">Description : </label><textarea name="bug" id="description" rows="10" cols="60" />{$bug.bug} </textarea>
-				</div>
-
-				<br /><br />
-				<input type="radio" name="bug_type" value="amelioration" id="impbug" {if $bug.bug_type == "amelioration"} checked {/if} />
-				<label for="impbug">
-					<span>Amélioration</span>
-				</label>
-				<br />
-				<input type="radio" name="bug_type" value="mineur" id="minbug" {if $bug.bug_type == "mineur"} checked {/if}/>
-				<label for="minbug">
-					<span>Bug mineur</span>
-				</label>
-				<br />
-				<input type="radio" name="bug_type" value="normal" id="normbug" {if $bug.bug_type == "normal"} checked {/if} />
-				<label for="normbug">
-					<span>Bug normal</span>
-				</label>
-				<br />
-				<input type="radio" name="bug_type" value="majeur" id="majbug" {if $bug.bug_type == "majeur"} checked {/if}/>
-				<label for="majbug">
-					<span>Bug majeur</span>
-				</label>
-				<br />
-				<input type="radio" name="bug_type" value="securite" id="secbug" {if $bug.bug_type == "securite"} checked {/if}/>
-				<label for="secbug">
-					<span>Sécurité</span>
-				</label>
-				<br /> <br />
-			
-				<SELECT name="bug_state"
-					<OPTION> En attente
-					<OPTION> Resolu
-					<OPTION> Besoin d'informations
-					<OPTION> Pris en compte
-				</SELECT>
-				<br /> <br/>
-					
-				<input type="radio" name="doublon" value="true" id="ydoublon" {if $bug.doublon==1}checked{/if} />
-				<label for="ydoublon">
-					<span>Ce bug est un doublon</span>
-				</label>
-				<br />
-
-				<input type="radio" name="doublon" value="false" id="ndoublon" {if $bug.doublon==0}checked{/if} />
-				<label for="ndoublon">
-					<span>Ce bug n'est pas un doublon</span>
-				</label>
-				<div class="field doublon">
-					<label for="doublon">Doublon du bug n° :</label> <input type="text" id="doublon_id" name="doublon_id" value="{$bug.doublon_id}" />
-				</div>
-				<br /><br />
 				
+				<div class="field browser">
+					<label for="browser">{t}Browser{/t} :</label> <input type="text" id="browser" name="browser" value="{$bug.browser}"/>
+				</div>
+				<div class="field description">
+					<label for="description">{t}Description{/t} : </label><textarea name="bug" id="description" rows="10" cols="60" />{$bug.bug} </textarea>
+				</div>
+
+				<div class="field type">
+					<label for="type">{t}Importance{/t} :</label>
+					<select name="type">
+						<option {if $bug.type == "IMPROVMENT"}selected{/if}>{t}IMPROVMENT{/t}</option>
+						<option {if $bug.type == "MINOR"}selected{/if}>{t}MINOR{/t}</option>
+						<option {if $bug.type == "NORMAL"}selected{/if}>{t}NORMAL{/t}</option>
+						<option {if $bug.type == "MAJOR"}selected{/if}>{t}MAJOR{/t}</option>
+						<option {if $bug.type == "SECURITY"}selected{/if}>{t}SECURITY{/t}</option>
+					</select>
+				</div>
+				
+				<div class="field state">
+					<label for="state">{t}State{/t} :</label>
+					<select name="state"
+						<option {if $bug.state == "STANDBY"}selected{/if}>{t}STANDBY{/t}</option>
+						<option {if $bug.state == "RESOLVED"}selected{/if}>{t}RESOLVED{/t}</option>
+						<option {if $bug.state == "NEEDINFO"}selected{/if}>{t}NEEDINFO{/t}</option>
+						<option {if $bug.state == "CONSIDERED"}selected{/if}>{t}CONSIDERED{/t}</option>
+					</select>
+				</div>
+
+				<div class="developer">
+					<label for="developer">{t}Developer{/t} :</label>
+					<select name="developer[]" multiple>
+						{foreach item=dev from="$devlist"}
+							<option value="{$dev->getId()}"> {$dev->getSurname()} </option>
+						{/foreach}
+					</select>
+				</div>
+
+				<div class="field doublon">
+					<label for="doublon">{t}Doublon n°{/t} </label> <input type="text" id="doublon" name="doublon" value="{$bug.doublon_id}" />
+				</div>
+
 				<div class="button">
-					<input type="submit" value="Poster le bug" />
+					<input type="submit" value="{t}Report{/t}" />
 				</div>
 			</form>
 		</div>
-	{elseif $currentuser == $bug.user_id && $bug.doublon == 0}
+	{elseif $currentuser == $bug.reporter_id && !$bug.doublon_id}
 
 		<div class="newBugsForm">
 
 			<form action="{kurl action="post"}" method="post">
-				<input type="hidden" name="id" value="{$bug.Id}" />
+				<input type="hidden" name="id" value="{$bug.id}" />
 
-				<div class="field title">
-					<label for="title">Titre :</label> <input type="text" id="title" name="title" value="{$bug.title}" />
+				<div class="field summary">
+					<label for="summary">{t}Summary{/t} :</label> <input type="text" id="summary" name="summary" value="{$bug.summary}" />
 				</div>
-				<br />
-				Application concernée :
+
+				<div class="field module">
+					<label for="module">{t}Module{/t} :
 				<SELECT name="module">
 					{foreach item=module from=$modules}
 						{if $module.id == $bug.module_id}
-							<OPTION selected>{$module.appli_name}
+							<OPTION selected>{$module.name}
 						{else}
-							<OPTION>{$module.appli_name}
+							<OPTION>{$module.name}
 						{/if}
 					{/foreach}
 				</SELECT>
-				<br /><br />
+				</div>
+
 				<div class="field browser">
-					<label for="browser">Navigateur :</label> <input type="text" id="browser" name="browser" value="{$bug.Browser}"/>
+					<label for="browser">{t}Browser{/t} :</label> <input type="text" id="browser" name="browser" value="{$bug.browser}"/>
 				</div>
-				<br /><br />
 				<div class="field description">
-					<label for="description">Description : </label><textarea name="bug" id="description" rows="10" cols="60" />{$bug.bug} </textarea>
+					<label for="description">{t}Description{/t} : </label><textarea name="bug" id="description" rows="10" cols="60" />{$bug.bug} </textarea>
 				</div>
 
-				<br /><br />
-				<input type="radio" name="bug_type" value="amelioration" id="impbug" {if $bug.bug_type == "amelioration"} checked {/if} />
-				<label for="impbug">
-					<span>Amélioration</span>
-				</label>
-				<br />
-				<input type="radio" name="bug_type" value="mineur" id="minbug" {if $bug.bug_type == "mineur"} checked {/if}/>
-				<label for="minbug">
-					<span>Bug mineur</span>
-				</label>
-				<br />
-				<input type="radio" name="bug_type" value="normal" id="normbug" {if $bug.bug_type == "normal"} checked {/if} />
-				<label for="normbug">
-					<span>Bug normal</span>
-				</label>
-				<br />
-				<input type="radio" name="bug_type" value="majeur" id="majbug" {if $bug.bug_type == "majeur"} checked {/if}/>
-				<label for="majbug">
-					<span>Bug majeur</span>
-				</label>
-				<br />
-				<input type="radio" name="bug_type" value="securite" id="secbug" {if $bug.bug_type == "securite"} checked {/if}/>
-				<label for="secbug">
-					<span>Sécurité</span>
-				</label>
-				<br /> <br />
+				<div class="field type">
+					<label for="type">{t}Importance{/t} :</label>
+					<SELECT name="type">
+						<OPTION {if $bug.type == "IMPROVMENT"}selected{/if}>{t}IMPROVMENT{/t}
+						<OPTION {if $bug.type == "MINOR"}selected{/if}>{t}MINOR{/t}
+						<OPTION {if $bug.type == "NORMAL"}selected{/if}>{t}NORMAL{/t}
+						<OPTION {if $bug.type == "MAJOR"}selected{/if}>{t}MAJOR{/t}
+						<OPTION {if $bug.type == "SECURITY"}selected{/if}>{t}SECURITY{/t}
+					</SELECT>
+				</div>
 
-				<SELECT name="bug_state"
-					<OPTION> En attente
-					<OPTION> Resolu
-				</SELECT>
-				<br /> <br/>
+				<div class="field state">
+					<label for="state">{t}State{/t} :</label>
+					<SELECT name="state"
+						<OPTION {if $bug.state == "STANDBY"}selected{/if}> {t}STANDBY{/t}
+						<OPTION {if $bug.state == "RESOLVED"}selected{/if}> {t}RESOLVED{/t}
+					</SELECT>
+				</div>
 
 				<div class="button">
-					<input type="submit" value="Poster le bug" />
+					<input type="submit" value="{t}Report{/t}" />
 				</div>
 			</form>
 		</div>

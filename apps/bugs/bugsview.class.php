@@ -15,24 +15,40 @@ class BugsView extends Model
 	{
 		$id = $this->args['id'];
 
-		$sql = "SELECT * FROM bugs WHERE Id=:id ORDER BY Id DESC LIMIT 1";
+		$sql = $this->db->prepare("SELECT * FROM bugs_bugs WHERE id=:id ORDER BY id DESC LIMIT 1");
+		$stmt = $this->db->prepare("SELECT * FROM bugs_assign WHERE bugs_id=:bugs_id");
+		$req = $this->db->prepare("SELECT * FROM bugs_module WHERE id=:id");
 		
 		try {
-			$stmt = $this->db->prepare($sql);
-			$stmt->bindValue(":id",$id, PDO::PARAM_INT);
+			$sql->bindValue(":id",$id, PDO::PARAM_INT);
+			$sql->execute();
+			$bug = $sql->fetchAll();
+
+			$req->bindValue(":id",$bug[0]['module_id']);
+			$module = $req->fetchAll();
+
+			$stmt->bindValue(":bugs_id",$bug[0]['id'], PDO::PARAM_INT);
 			$stmt->execute();
+			$assign = $stmt->fetchAll();
+
+			$dev = 0;
+			foreach($assign as $value)
+			{
+				if($value['user_id'] == $this->currentUser->getID())
+					$dev = 1;
+			}
+			
+			
+			$name=$this->appname."-".$bug[0]['id'];
+			$combox = new CommentSource($this->db,$name,"",$bug[0]["bug"]);
 		} catch (PDOException $e) {
 			Debug::kill($e->getMessage());
 		}
-		
-		$bug = $stmt->fetchAll();
-		$name=$this->appname."-".$bug[0]['Id'];
-		$combox = new CommentSource($this->db,$name,"",$bug[0]["bug"]);
-		
-		if ($user["object"] =  $this->userFactory->prepareUserFromId($bug[0]["user_id"]))
+
+		if ($user["object"] =  $this->userFactory->prepareUserFromId($bug[0]["reporter_id"]))
 		{
-			//echo("<br /><br /><br />");
-			//print_r($
+			$this->assign("module", $module[0]);
+			$this->assign("dev",$dev);
 			$this->assign("bug_author", $user);
 			$this->assign("bug",$bug[0]);
 			$this->assign("currentuser",$this->currentUser->getId());

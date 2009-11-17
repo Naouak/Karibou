@@ -13,10 +13,7 @@ class BugsAdd extends Model
 {
 
 	public function build() {
-		//$this->currentuser = $this->userFactory->getCurrentUser();
-		//$app = $this->appList->getApp($this->appname);
-		//$app->addView("menu", "header_menu", array("page" => "add"));
-		$sql = "SELECT * from modules ORDER BY id ASC";
+		$sql = "SELECT * from bugs_module ORDER BY id ASC";
 		try {
 			$stmt = $this->db->prepare($sql);
 			$stmt->execute();

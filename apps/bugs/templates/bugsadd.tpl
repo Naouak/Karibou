@@ -1,51 +1,42 @@
 <div class="bugs">
-	<h1>Bugs</h1>
-	<h2>Ajouter un bug</h2>
+	<h1>{t}Bugs{/t}</h1>
+	<h2>Signaler un bug</h2>
 	<div class="newBugsForm">
 
 		<form action="{kurl action="post"}" method="post">
 			
-			<div class="field title">
-				<label for="title">Titre :</label> <input type="text" id="title" name="title"/>
+			<div class="field summary">
+				<label for="summary">{t}Summary{/t} :</label> <input type="text" id="summary" name="summary"/>
 			</div>
-			<SELECT name="module">
-				{foreach item=module from=$modules}
-				<OPTION>{$module.appli_name}
-				{/foreach}
-			</SELECT>
+			<div class="field module">
+				<label for="module">{t}Module{/t} :</label>
+				<SELECT name="module">
+					{foreach item=module from=$modules}
+					<OPTION>{$module.name}
+					{/foreach}
+				</SELECT>
+			</div>
 			<div class="field browser">
-				<label for="browser">Navigateur :</label> <input type="text" id="browser" name="browser" />
+				<label for="browser">{t}Browser{/t} :</label> <input type="text" id="browser" name="browser" />
+			</div>
+			<div class="field explanations">
+				<label for="explanations">{t}Explanations{/t}</label>
 			</div>
 			<div class="field description">
-				<label for="description">Description : </label><textarea name="bug" id="description" rows="10" cols="60" /></textarea>
+				<label for="description">{t}Description{/t} : </label><textarea name="bug" id="bug" rows="10" cols="60" /></textarea>
 			</div>
 
-			<input type="radio" name="bug_type" value="amelioration" id="impbug" />
-			<label for="impbug">
-				<span>Amélioration</span>
-			</label>
-			<br />
-			<input type="radio" name="bug_type" value="mineur" id="minbug"/>
-			<label for="minbug">
-				<span>Bug mineur</span>
-			</label>
-			<br />
-			<input type="radio" name="bug_type" value="normal" id="normbug" checked />
-			<label for="normbug">
-				<span>Bug normal</span>
-			</label>
-			<br />
-			<input type="radio" name="bug_type" value="grave" id="majbug" />
-			<label for="majbug">
-				<span>Bug majeur</span>
-			</label>
-			<br />
-			<input type="radio" name="bug_type" value="securite" id="secbug" />
-			<label for="secbug">
-				<span>Sécurité</span>
-			</label>
-			<br />
-			
+			<div class="field type">
+				<label for="type">{t}Importance{/t} :</label>
+				<SELECT name="type">
+					<OPTION>{t}IMPROVMENT{/t}
+					<OPTION>{t}MINOR{/t}
+					<OPTION>{t}NORMAL{/t}
+					<OPTION>{t}MAJOR{/t}
+					<OPTION>{t}SECURITY{/t}
+				</SELECT>
+			</div>
+
 			<div class="button">
 				<input type="submit" value="Poster le bug" />
 			</div>
