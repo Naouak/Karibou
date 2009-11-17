@@ -305,7 +305,7 @@ KForm = Class.create({
 	__enum: {
 	    build: function(formNode,fieldID,fieldObject){
 		    if (fieldObject["label"]) {
-			var lblNode = document.createElement("span");
+			var lblNode = document.createElement("label");
 			lblNode.innerHTML = fieldObject["label"];
 			formNode.appendChild(lblNode);
 		    }
