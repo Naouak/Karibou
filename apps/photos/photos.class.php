@@ -43,8 +43,7 @@ class photos extends Model
         }
         $this->assign("albums",$albums_array);
 
-        $sql = $this->db->prepare("SELECT id FROM pictures_album WHERE name=:name;");
-        $sql->bindValue(":name","slash");
+        $sql = $this->db->prepare("SELECT id FROM pictures_album WHERE parent IS NULL;");
         $sql->execute();
         $slash = $sql->fetch();
         $this->assign("idslash",$slash["id"]);
