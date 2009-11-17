@@ -7,11 +7,11 @@ KForm = Class.create({
     /**
      * Called when you create a KForm
      * @method initialize
-     * @param formFields supposedly the fields of your form
-     * @param targetNode where in the node you will add it
-     * @param extraParameters Extra values (as array) that will be sent together with the other data
-     * @param submitCallback Function or Array of function that will be called on submit
-     * @param cancelCallback Function or Array of function that will be called on cancelling
+     * @param {object} formFields supposedly the fields of your form
+     * @param {DOMNode} targetNode where in the node you will add it
+     * @param {object} extraParameters Extra values (as array) that will be sent together with the other data
+     * @param {function array} submitCallback Function or Array of function that will be called on submit
+     * @param {function array} cancelCallback Function or Array of function that will be called on cancelling
      */
     initialize: function (formFields, targetNode, extraParameters, submitCallBack, cancelCallBack) {
 	if (!KForm.forms) {
@@ -27,6 +27,11 @@ KForm = Class.create({
     },
 
     //********************************************FIELDS******************************************
+
+    /**
+     * List every type of fields. Useful for adding your own field.
+     * @property fieldsType
+     */
     fieldsType: {
 	/**
      * Span field
@@ -211,8 +216,8 @@ KForm = Class.create({
      * @property __file
      */
 	__file: {
-	    build: function(formNode,fieldID,fieldObject){
-		    formNode.setAttribute("enctype", "multipart/form-data");
+	    build: function(formNode,fieldID,fieldObject,form){
+		    form.setAttribute("enctype", "multipart/form-data");
 		    if (fieldObject["label"]) {
 			var lblNode = document.createElement("label");
 			lblNode.innerHTML = fieldObject["label"];
@@ -379,6 +384,11 @@ KForm = Class.create({
     buildForm: function() {
 	//Declaring the targetNode as the node for the form
 	var formNode = this.targetNode;
+	var Node = document.createElement("fieldset");
+	var legend = document.createElement("legend");
+	legend.innerHTML = "Formulaire";
+	Node.appendChild(legend);
+	formNode.appendChild(Node);
 	//Setting the method to post
 	formNode.setAttribute("method", "post");
 	//WTF is this ?... isn't there better way to do that ?
@@ -390,7 +400,7 @@ KForm = Class.create({
 	    var fieldObject = this.formFields[fieldID];
 	    var fieldType = "__" + fieldObject["type"];
 	    if (this.fieldsType[fieldType])
-		    this.fieldsType[fieldType].build(formNode, fieldID, fieldObject);
+		    this.fieldsType[fieldType].build(Node, fieldID, fieldObject, formNode);
 	    //Please don't do designing with br !
 	    formNode.appendChild(document.createElement("br"));
 	}
@@ -414,7 +424,7 @@ KForm = Class.create({
     /**
      * Didn't understood yet what it is used for.
      * @method getFormFromNode
-     * @param node The node you want to i still don't know
+     * @param node The node you want to i still don't know what it is used for
      */
     getFormFromNode: function (node) {
 	for (var idx = 0 ; idx < KForm.forms.length ; idx++) {

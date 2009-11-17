@@ -284,17 +284,48 @@
 }
 
 .appRootContainer .overBox {
-	background-color: black;
-	color: white;
+	background: #EEF5F9;
+	color: black;
+	
 	display: block;
+
 	height: 100%;
+	width: 100%;
+
 	opacity: 0.85;
+
 	position: absolute;
+
 	right: 0;
 	top: 0px;
-	width: 100%;
+
 	z-index: 10;
 	overflow: auto;
+
+	text-align: center;
+}
+
+.appRootContainer .overBox br{
+    display: none;
+}
+
+.appRootContainer .overBox label{
+    padding: 4px;
+    display: block;
+}
+
+.appRootContainer .overBox input, .appRootContainer .overBox textarea{
+    display: inline;
+    background: white;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: solid 2px #99ccff;
+    color: RGB(50,50,150);
+    font-weight:bold;
+    margin: 4px;
+    padding: 2px;
 }
 
 #homeAppAdder {
