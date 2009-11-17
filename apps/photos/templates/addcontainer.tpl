@@ -1,20 +1,33 @@
-<form action={kurl action="container"} method="POST">
-	<div class="photos-addcontainer-name">
-		<label for="name">{t}Veuillez entrer le nom du conteneur que vous voulez créer{/t}<input type="text" name="name" id="name" /></label>
-	</div>
-	<div class="photos-addcontainer-type" >
-		{t}Sélectionner le type de conteneur que vous désirez {/t}
-		<select name="type" >
-			<option value="album"> album
-			<option value="carton"> carton
-		</select>
-	</div>
-	<div class="photos-addcontainer-tags" id="Photos_add_tags">
-		<label for="tag">{t}Veuillez saisir la liste des tags correspondants à votre album{/t}<input type="text" id="tags" name="tags"/></label>
-	</div>
+<h1>{t}Photos{/t} {t}Ajout de conteneur{/t}</h1>
+<div class="photos-content">
+    <form action='{kurl action="container"}' method="POST">
+        <input type="hidden" name="parent" value={$parent} />
 
-    <input type="hidden" name="parent" value={$parent} />
-	<div class="photos-addcontainer-submit">
-		<input type="submit" value="ajouter un conteneur" />
-	</div>
-</form>
+        <fieldset>
+            <legend>{t}Conteneur{/t}</legend>
+            <label for="name">{t}Nom du conteneur{/t}</label>
+            <input type="text" name="name" id="name" />
+
+            <label for="type">{t}Type de conteneur{/t}</label>
+            <select name="type" id="type">
+                <option value="album" selected>album</option>
+                <option value="carton">carton</option>
+            </select>
+
+
+        </fieldset>
+
+        <fieldset>
+            <legend>{t}Tags{/t}</legend>
+            <label for="tag">{t}Liste des tags{/t}</label>
+            <input type="text" id="tags" name="tags"/>
+            <div class="photos-hint photos-addcontainer-taghint">
+                {t}Bla bla bla bla et c'est très bien.{/t}
+            </div>
+        </fieldset>
+
+        <div class="photos-addcontainer-submit">
+            <input type="submit" value="ajouter un conteneur" />
+        </div>
+    </form>
+</div>

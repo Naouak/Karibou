@@ -1,18 +1,30 @@
+<h1>##Photo##</h1>
+<div class="photos-content">
+<div class="photos-index-tags photos-main-container">
+    <h2>list of tags </h2>
+    <ul>
+        {foreach item=tag from=$tags}
+            <li>{$tag.name}</li>
+        {/foreach}
+    </ul>
+</div>
 
-<div class="photos_accueil_albums">
-<b>list of all albums </b><br />
-{foreach item=album from=$albums}
-    <a href={kurl page="album" id=$album.id}>{$album.name}  </a><br />
-{/foreach}
+<div class="photos-index-albums photos-main-container">
+    <h2>list of all albums </h2>
+    <ul class="photos-list-thumb">
+        {foreach item=album from=$albums}
+            <li>
+                <a href={kurl page="album" id=$album.id}>
+                    <span class="photos-list-caption">{$album.name}</span>
+                </a>
+            </li>
+        {/foreach}
+    </ul>
 </div>
-<br />
-<div class="photos_accueil_tags">
-<b>list of tags </b><br />
-{foreach item=tag from=$tags}
-	{$tag.name}<br />
-{/foreach}
-</div>
-<br />
+
+
+
 <div class="photos_accueil_slash">
-<a href="{kurl page="carton" id=$idslash}">{t}Navigation dans les cartons et les albums{/t}</a><br />
+    <a href="{kurl page="carton" id=$idslash}">{t}Navigation dans les cartons et les albums{/t}</a>
+</div>
 </div>

@@ -1,30 +1,41 @@
-<strong>Place : </strong>
-<br />
-<div class="photos_folder_place">
-	emplacement : 
+<h1>##Photo##: ##Folders##</h1>
+<div class="photos-content">
+<div class="photos-place">
+    <ul class="photos-place-list">
 	{foreach item=path from=$parentpath}
-		<a href={kurl page="carton" id=$path.1}>{$path.0}</a>/
+        <li><a href={kurl page="carton" id=$path.1}>{$path.0}</a></li>
 	{/foreach}
-	| <a href={kurl page=""}>{t}Page d'accueil{/t}</a>
+    </ul>
+	| 
+    <span class="photos-place-returnlink"><a href={kurl page=""}>{t}Page d'accueil{/t}</a></span>
 </div>
-<br />
-<div class="photos_folder_containers">
-	<strong>folders list</strong><br />
-	{foreach  item=child from=$children}
-		<a href={kurl page=$child.type id=$child.id}> {$child.name} </a>
-		<br />
-	{/foreach}
+<div class="photos-folder-containers photos-main-container">
+    <h2>folders list</h2>
+    <ul class="photos-list-thumb">
+        {foreach  item=child from=$children}
+        <li>
+            <a href={kurl page=$child.type id=$child.id}>
+                <span class="photos-list-caption">{$child.name}</span>
+            </a>
+        </li>
+        {/foreach}
+    </ul>
 
-<div>
+</div>
 
-<div class="photos_folder_add">
-	<b>List of tags</b><br />
-	{foreach from=$tags item=tag}
-		{$tag.name}<br />
-	{/foreach}
-	<br />
-	
-	<a href={kurl page="addtags" parent=$parent type=$type}>{t} add tags{/t} </a>
-	<br  />
-	<a href={kurl page="addcontainer" parent=$parent}> {t}add a container{/t}</a>
+<div class="photos-folder-taglist photos-main-container">
+    <h2>List of tags</h2>
+    <ul>
+        {foreach from=$tags item=tag}
+            <li>{$tag.name}</li>
+        {/foreach}
+    </ul>
+</div>
+
+<div class="photos-folder-add">
+    <ul class="photos-folder-add-list">
+        <li><a href={kurl page="addtags" parent=$parent type=$type}>{t}add tags{/t}</a></li>
+        <li><a href={kurl page="addcontainer" parent=$parent}>{t}add a container{/t}</a></li>
+    </ul>
+</div>
 </div>
