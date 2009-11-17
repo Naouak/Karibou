@@ -1,51 +1,47 @@
 ﻿<span class="StatsContent">
-	
-	<a onclick="new Effect.toggle($app(this).getElementById('statsPreumsList')); return false;" href="#">##CHAMPIONSOFPREUMS##</a>
-	<ol style="list-style-type:decimal; display: none;" id="statsPreumsList">
-		<h4>
+
+    <a onclick="new Effect.toggle($app(this).getElementById('statsPreumsList')); return false;" href="#">##CHAMPIONSOFPREUMS##</a>
+    <ol style="list-style-type:decimal; display: none;" id="statsPreumsList">
 		{foreach item=contact from=$contacts}
 		{if $contact.iteration<=10}
-		<li>
+        <li>
 			{$contact.iteration} / {userlink user=$contact[0] showpicture=$islogged} : {$contact[1]}
-		</li>
+        </li>
 		{/if}
 		{/foreach}
-		</h4>
-	</ol>
-	<br />
-	<a onclick="new Effect.toggle($app(this).getElementById('statsFloodList')); return false;" href="#">##CHAMPIONSOFFLOOD##</a>
-	<ol style="list-style-type:decimal; display:none;" id="statsFloodList">
-	<h4>
+    </ol>
+    <br />
+    <a onclick="new Effect.toggle($app(this).getElementById('statsFloodList')); return false;" href="#">##CHAMPIONSOFFLOOD##</a>
+    <ol style="list-style-type:decimal; display:none;" id="statsFloodList">
 		{foreach name=outer item=contact from=$flooderlist}
 		{if $contact.iteration<=10}
-		<li>
+        <li>
 			{$contact.iteration} / {userlink user=$contact[0] showpicture=$islogged} : {$contact[1]}
-		</li>
+        </li>
 		{/if}
 		{/foreach}
-	</h4>
-	</ol>
-	<br />
-	<span>
-		<a href="{kurl page=""}">##PREUMSBIGLINK##</a>
-	</span>
-	<br />
-	<a onclick = "new Effect.toggle($app(this).getElementById('help')); return false; " href="#" >##HELP##</a>
-	<div style = "display : none; " id="help">
-		<p>##PREUMSRULESTITLE##</p>
-		<ul>
-			<li>
+    </ol>
+    <br />
+    <span>
+        <a href="{kurl page=""}">##PREUMSBIGLINK##</a>
+    </span>
+    <br />
+    <a onclick = "new Effect.toggle($app(this).getElementById('help')); return false; " href="#" >##HELP##</a>
+    <div style = "display : none; " id="help">
+        <p>##PREUMSRULESTITLE##</p>
+        <ul>
+            <li>
 				##DERNZRULES##
-			</li>
-			<li>
+            </li>
+            <li>
 				##PREUMSRULES##
-			</li>
-			<li>
+            </li>
+            <li>
 				##DEUZRULES##
-			</li>
-			<li>
+            </li>
+            <li>
 				##TROIZRULES##
-			</li>
-		</ul>
-	</div>
+            </li>
+        </ul>
+    </div>
 </span>
