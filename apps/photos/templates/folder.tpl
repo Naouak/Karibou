@@ -14,7 +14,7 @@
 		<a href={kurl page=$child.type id=$child.id}> {$child.name} </a>
 		<br />
 	{/foreach}
-	<br />
+
 <div>
 
 <div class="photos_folder_add">

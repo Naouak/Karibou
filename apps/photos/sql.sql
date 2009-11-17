@@ -57,3 +57,7 @@ ALTER TABLE `pictures_album_tagged` ADD UNIQUE (
 `id_album` ,
 `id_tag`
 );
+
+ ALTER TABLE `pictures_tags` ADD UNIQUE (
+`name`
+) ;

@@ -15,17 +15,21 @@
 	<load class="AddPhotosForm" file="addphotosform.class.php" />
 	<load class="DisplayPhoto" file="displayphoto.class.php" />
 	<load class="FindFromTags" file="findfromtags.class.php" />
+	<load class="researchForm" file="researchform.class.php" />
 
     <load class="[arguments]/AnyCharArgument" />
     <load class="[arguments]/NumberArgument" />
 
-
     <load class="pictures" file="class/photos.class.php" />
     <load class="album" file="class/album.class.php" />
     <load class="carton" file="class/carton.class.php" />
+	<!-- AlbumBase is a class which implement functions for album and carton -->
     <load class="AlbumBase" file="class/base.class.php" />
+	<!-- containerFactory is a singleton, this have a function who load carton or album in function of the Id -->
     <load class="containerFactory" file="class/containerfactory.class.php" />
+	<!-- PhotosFormModel extends the FormModel class to have some common functions  -->
 	<load class="PhotosFormModel" file="class/function.class.php" />
+	<!-- PhotosModel extends the Form class to have some common functions  -->
 	<load class="PhotosModel" file="class/functionmodel.class.php" />
 
 <!--view is used to associate a the name of the view, the class and the template file -->
@@ -37,7 +41,8 @@
     <view name="folder" class="folder" template="folder.tpl" />
 	<view name="addphotos" template="addphotos.tpl" />
 	<view name="photo" class="DisplayPhoto" template="photo.tpl" />
-	<view name="findfromtags" class="FindFromTags" template="fromtags.tpl" />s
+	<view name="findfromtags" class="FindFromTags" template="fromtags.tpl" />
+	<view name="researchresult" class="researchForm" template="researchresult.tpl" />
 	
 <!--	<view name="{js}" template="js.tpl" />-->
 
@@ -84,6 +89,8 @@
 	
 	<page name="findfromtags" view="findfromtags" />
 	
+	<page name="researchresult" view="researchresult" />
+	
 	
 <!--definition of a form who permit to create event in reaction of form -->
 	<form action="container" class="AddContainerForm" >
@@ -98,7 +105,7 @@
 		<redirect page="album" /> 
 	</form>
 	
-	<form action="research" class="researchform">
+	<form action="research" class="researchForm">
 		<redirect page="researchresult" />
 	</form>
 </app>

@@ -25,7 +25,7 @@ abstract class PhotosFormModel extends FormModel {
 			$stmt = $this->db->prepare("INSERT IGNORE INTO pictures_album_tagged (id_album,id_tag) (SELECT :id,t.id FROM pictures_tags as t where t.name=:name);");
 		}
 		elseif ($type=="photos") {
-
+			$stmt = $this->db->prepare("INSERT IGNORE INTO pictures_tagged (pict,tag) (SELECT :id,t.id FROM pictures_tags as t WHERE t.name=:name);");
 		}
 		else {
 			return;
