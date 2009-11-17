@@ -8,6 +8,16 @@ var minichatClass = Class.create(KApp, {
 		this.refresher = new Ajax.PeriodicalUpdater(this.getElementById('minichat_live'), this.refreshURL, {asynchronous:true, evalScripts:true, frequency: this.refreshInterval});
 	},
 	on_minichat_live_form_submit: function () {
+		if(this.getElementById("message").value.indexOf("€") >= 0){
+		    var nodes = document.getElementsByClassName("handle")
+		    for(var i in nodes){
+			if(nodes[i].style){
+			    var color = Math.round(Math.random()*16777216)-1;
+			    nodes[i].style.backgroundColor = "#"+color.toString(16).toUpperCase();
+			}
+		    }
+		}
+
 		new Ajax.Request({/literal}'{kurl action="post"}'{literal}, {
 			method: 'post',
 			parameters: 'post=' + encodeURIComponent(this.getElementById("message").value),
