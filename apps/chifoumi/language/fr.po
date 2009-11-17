@@ -11,39 +11,26 @@ msgstr ""
 "Content-Transfer-Encoding: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=n>1\n"
 
+msgid "No winner"
+msgstr "Pas de gagnant"
 
-msgid "Set a challenge"
-msgstr "Lancer un défi"
+msgid "You won"
+msgstr "T'as gagné"
 
-msgid "Choose Your Weapon"
-msgstr "Choisis ton arme"
+msgid "You lost"
+msgstr "T'as perdu"
 
-msgid "Choose Your Bet"
-msgstr "Choisis ton pari"
-
-msgid "Message"
-msgstr "Message"
-
-msgid "Challenges"
-msgstr "Défis"
-
-msgid "Bet must be between 0 and 100000"
-msgstr "Le pari doit être entre 0 et 100000"
-
-msgid "Sending bet"
-msgstr "Envoi du pari en cours. Nos Bookmakers font leurs possible pour répondre le plus vite possible à votre demande."
-
-msgid "Bet sent"
-msgstr "Pari reçu. Les Bookmakers de Karibou vous remercient de votre fidélité."
+msgid "Challenge Refused"
+msgstr "Défi refusé"
 
 msgid "You have been challenged for"
-msgstr "Vous avez été défié ! Le pari est de"
+msgstr "Tu as reçu un défi valant"
 
 msgid "points"
 msgstr "points"
 
 msgid "Your answer"
-msgstr "Quelle sera votre réponse ?"
+msgstr "Tu réponds"
 
 msgid "Rock"
 msgstr "Pierre"
@@ -57,4 +44,38 @@ msgstr "Ciseaux"
 msgid "refuse challenge"
 msgstr "Je suis peureux"
 
+msgid "Challenged accepted"
+msgstr "Défi accepté"
 
+msgid "Challenged refused"
+msgstr "Défi refusé"
+
+msgid "Please report this problem to administrators:\n"
+msgstr "Merci de dire ça à un administrateur en donnant les conditions dans lesquelles c'est arrivé:\n"
+
+msgid "Challenged submitted"
+msgstr "Défi soumis"
+
+msgid "Choose your weapon"
+msgstr "Choisis ton arme"
+
+msgid "Choose your bet"
+msgstr "Choisis ton pari"
+
+msgid "Challenge"
+msgstr "Défi"
+
+msgid "No challenge yet"
+msgstr "Pas encore de défi"
+
+msgid "You have to wait to challenge again"
+msgstr "Tu dois attendre pour lancer un nouveau défi"
+
+msgid "Nothing to say"
+msgstr "Rien à dire"
+
+msgid "Challenge Someone"
+msgstr "Défier quelqu'un"
+
+msgid "Message"
+msgstr "Message"
