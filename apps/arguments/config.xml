@@ -23,5 +23,6 @@
 	<load class="UserName" file="username.class.php" />
 	<load class="WeekArgument" file="weekargument.class.php" />
 	<load class="YearArgument" file="yearargument.class.php" />
+	<load class="SortBugs" file="sortbugs.class.php" />
 </app>
 
