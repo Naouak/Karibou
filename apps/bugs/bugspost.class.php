@@ -53,7 +53,7 @@ class BugsPost extends FormModel
 					$stmt->execute();
 					$module = $stmt->fetch();
 					
-					$state = "STANDBY";
+					$state ="STANDBY";
 					$sql = $this->db->prepare("
 						INSERT INTO
 							bugs_bugs (`summary`, `browser`, `bug`, `module_id`, `state`, `type`, `reporter_id`)
@@ -61,7 +61,7 @@ class BugsPost extends FormModel
 							(:summary, :browser, :bug, :module_id, :state, :type, :reporter)
 					");
 					$sql->bindValue(":bug", $inputs["bug"]);
-					$sql->bindValue(":state", $inputs["state"]);
+					$sql->bindValue(":state", $state);
 					$sql->bindValue(":type", $inputs["type"]);
 					$sql->bindValue(":summary", $inputs["summary"]);
 					$sql->bindValue(":browser", $inputs["browser"]);
@@ -90,7 +90,7 @@ class BugsPost extends FormModel
 					$bug['id'] = $this->db->lastInsertId();
 
 					$req->execute();
-					$module = $req->fetchAll();
+					$module = $req->fetch();
 
 					$stmt2->bindValue(":user_id",$module["user_id"], PDO::PARAM_INT);
 					$stmt2->bindValue(":bugs_id", $bug["id"], PDO::PARAM_INT);
@@ -101,7 +101,9 @@ class BugsPost extends FormModel
 					$stmt2->execute();
 					$stmt3->execute();
 					
+					
 				} catch (PDOException $e) {
+					
 					Debug::kill($e->getMessage());
 				}
 			}
