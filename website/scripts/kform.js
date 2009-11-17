@@ -415,7 +415,7 @@ KForm = Class.create({
 	    cancelNode.setAttribute("type", "button");
 	    //Why the fuck it's in english here and in french some line earlier Oo
 	    //@todo translation here too
-	    cancelNode.setAttribute("value", "Cancel");
+	    cancelNode.setAttribute("value", "Annuler");
 	    //@todo clear this messy thing
 	    cancelNode.setAttribute("onclick", "KForm.getFormFromNode(this.parentNode).cancel();");
 	    formNode.appendChild(cancelNode);
