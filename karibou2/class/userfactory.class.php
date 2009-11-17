@@ -362,17 +362,33 @@ class UserFactory
 		}
 	}
 
+	public function getGroupsfromId ($id) {
+		$a = $GLOBALS['config']['bdd']['frameworkdb'];
+
+		$stmt = $this->db->prepare("SELECT * FROM ".$a.".groups WHERE id=:id");
+		$stmt->bindValue(":id",$id);
+		try {
+			$stmt->execute();
+			if($row = $stmt->fetch()) {
+				return new Group($row);
+			}
+			return null;
+		} catch (PDOException $e) {
+			Debug::kill($e->getMessage());
+		}
+	}
+	
 	public function getUsersFromGroup (Group $group) {
 		$a = $GLOBALS['config']['bdd']['frameworkdb'];
 		
-		$stmt = $this->db->prepare("SELECT id FROM ".$a.".group_user WHERE group_id=:group_id");
+		$stmt = $this->db->prepare("SELECT user_id FROM ".$a.".group_user WHERE group_id=:group_id");
 		$stmt->bindValue(":group_id", $group->getId());
 
 		$result = array();
 		try {
 			$stmt->execute();
 			while ($row = $stmt->fetch()) {
-				$result[] = $this->prepareUserFromId($row['id']);
+				$result[] = $this->prepareUserFromId($row['user_id']);
 			}
 		} catch (PDOException $e) {
 			Debug::kill($e->getMessage());
