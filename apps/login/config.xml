@@ -4,6 +4,7 @@
 	<load class="LoginForm" file="loginform.class.php" />
 	
 	<view name="mini" class="LoginForm" template="loginform.tpl" />
+	<view name="js" template="js.tpl" />
 	
 	<form class="Login">
 		<referer />

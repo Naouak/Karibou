@@ -18,7 +18,7 @@
 
 class LoginForm extends Model
 {
-	protected $useRSA = false;
+	protected $useRSA = true;
 	
 	function build()
 	{

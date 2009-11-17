@@ -6,42 +6,16 @@
 </div>
 {else}
 
-{if $pubkey_exp}
-<script>
-var key = new RSAKeyPair(
-	"{$pubkey_exp}",
-	"",
-	"{$pubkey_mod}"
-);
-
-{literal}
-function cryptPass()
-{
-	var pass = document.getElementById("_pass");
-	var crypt = document.getElementById("_crypt");
-	var pass_txt = pass.value;
-	pass.value = "**";
-	crypt.value = encryptedString2(key, pass_txt);
-	return true;
-}
-{/literal}
-</script>
-{/if}
 <div class="login">
 {section name=m loop=$loginMessages step=1}
 	<div class="error">
 		{$loginMessages[m].1}
 	</div>
 {/section}
-	<form action="{kurl app="login"}" method="post">
+	<form id="loginForm" action="{kurl app="login"}" onsubmit="$app(this).cryptLoginData();" method="post">
 		<label for="_user" class="username">##USERNAME##</label> <input id="_user" name="_user" type="text"/><br />
 		<label for="_pass" class="password">##PASSWORD##</label> <input id="_pass" name="_pass" type="password"/><br />
-{if $pubkey_exp}
-		<input type="hidden" id="_crypt" name="_crypt" value="" />
-		<input type="submit" value="##CONNEXION##" onclick="cryptPass();" class="button" />
-{else}
 		<input type="submit" value="##CONNEXION##" class="button" />
-{/if}
 	</form>
 	{if ($allowaccountcreation)}
 	<div class="register"><a href="{kurl app='createaccount'}">##REGISTER##</a></div>
