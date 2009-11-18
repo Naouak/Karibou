@@ -13,7 +13,7 @@ class BugsSorted extends Model
 {
 	public function build()
 	{
-		$sort = $this->args['sort'];
+		$sort = "b.".$this->args['sort'];
 		
 		if($this->args['ascdescsort'] == 2)
 			$order = "DESC";
@@ -29,15 +29,11 @@ class BugsSorted extends Model
 			$end = $start + 30;
 		}
 
-		$sql = $this->db->prepare("SELECT * FROM bugs_bugs ORDER BY $sort $order LIMIT $start , $end");
-		$stmt = $this->db->prepare("SELECT * FROM bugs_module ORDER BY id");
+		$sql = $this->db->prepare("SELECT b.id, b.reporter_id, b.summary, b.bug, b.browser, b.module_id, b.doublon_id, b.state, b.type, bugs_module.name FROM bugs_bugs as b LEFT JOIN bugs_module ON bugs_module.id = b.module_id ORDER BY $sort $order LIMIT $start , $end");
 		
 				
 		try {
 			$sql->execute();
-			$stmt->execute();
-
-			$modules = $stmt->fetchAll();
 			$bugs = array();
 			//echo("<br /><br /><br />");
 			
@@ -53,8 +49,7 @@ class BugsSorted extends Model
 					$bug['doublon_id']=$bugRow['doublon_id'];
 					$bug['state']=$bugRow['state'];
 					$bug['type']=$bugRow['type'];
-					$id = $bugRow['module_id'] - 1;
-					$bug['module']=$modules[$id]['name'];
+					$bug['module']=$bugRow['name'];
 					$bug['reporter']=$bugRow['reporter_id'];
 					$bugs[] = $bug;
 			}
