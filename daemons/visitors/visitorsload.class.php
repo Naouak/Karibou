@@ -52,7 +52,7 @@ $_SERVER["REMOTE_ADDR"]));
 				$insert->bindValue(":proxy_ip", (isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? $_SERVER["REMOTE_ADDR"] : null), 
 				(isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? PDO::PARAM_INT : PDO::PARAM_NULL));
 			} else {
-				$insert->bindValue(":user_ip", PDO::PARAM_NULL);
+				$insert->bindValue(":user_ip", "0.0.0.0");
 				$insert->bindValue(":proxy_ip", PDO::PARAM_NULL);
 			}
 			$insert->bindValue(":time", time());
