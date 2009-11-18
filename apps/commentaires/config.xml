@@ -9,8 +9,8 @@
 
 	<page view="commentaire">
 		<argument name="id" class="NumberArgument" />
-		<header app="header" view="default" />
-		<footer app="footer" view="default" />
+		<header app="header" view="minimal" />
+		<footer app="footer" view="minimal" />
 	</page>
 
 	<form action="postcomment" class="CommentairesAdd" >

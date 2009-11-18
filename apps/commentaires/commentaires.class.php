@@ -26,6 +26,12 @@ class Commentaires extends Model {
         $this->assign("title",$combox->getTitle());
         $this->assign("content",$combox->getContent());
         $this->assign("id",$combox->getId());
-        $this->assign("existing", $sqlc->fetchAll());
+        $existing = $sqlc->fetchAll();
+        $coms = Array();
+        foreach($existing as $k => $v){
+            $v['user'] = $this->userFactory->prepareUserFromId($v['user']);
+            $coms[] = $v;
+        }
+        $this->assign("existing", $coms);
     }
 }
