@@ -31,3 +31,7 @@
     height: 200px;
     width: 200px;
 }
+
+.yui-lightbox-iframe{
+    border: none;
+}

@@ -42,7 +42,8 @@ try{
 	 */
 	strings:{
 	    value:{
-		closecaption: "click to close"
+		closecaption: "click to close",
+                close: "Close"
 	    }
 	}
     };
@@ -64,15 +65,21 @@ try{
 	    Y.log("instanciating events with this selector:"+ this.get("selector"));
 	    Y.one("body").delegate("click",Y.bind(function(e){
 		Y.log("click !");
+                try{
 		if(this.imgnode !== undefined){
 		    this.get("contentBox").removeChild(this.imgnode);
 		}
+                }catch(ex){}
+                try{
 		if(this.titlenode !== undefined){
 		    this.get("contentBox").removeChild(this.titlenode);
 		}
+                } catch(ex){}
+                Y.log(e.currentTarget.hasClass("lightbox-iframe"));
 		this.fire("openLB",{
 		    src : e.currentTarget.get("href"),
-		    title : e.currentTarget.get("title")
+		    title : e.currentTarget.get("title"),
+                    iframe : e.currentTarget.hasClass("lightbox-iframe")
 		});
 		e.preventDefault();
 	    },this),this.get("selector"));
@@ -84,10 +91,15 @@ try{
 	},
 	renderUI: function(){
 	    this.loadingImg = Y.Node.create("<div class='"+this.getClassName("loading")+"'></div>");
+            this.closebutton = Y.Node.create("<a href=''>"+this.get("strings.close")+"</a>");
 	},
 	bindUI: function(){
 	    this.after("openLB", Y.bind(this._openLB,this));
 	    this.after("closeLB",Y.bind(this._closeLB,this));
+            this.closebutton.on("click",Y.bind(function(e){
+                    this.fire("closeLB");
+                    e.preventDefault();
+                },this));
 	},
 	syncUI: function(){
 
@@ -128,10 +140,17 @@ try{
 	_loadContent: function(e){
 	    //Loading title
 	    this.titlenode = Y.Node.create("<h1 class='"+this.getClassName("title")+"'>"+e.title+"</h1>");
-	    //Loading image
-	    this.imgnode = Y.Node.create("<img />");
-	    this.imgnode.set("title",this.get("strings").closecaption);
-	    this.imgnode.set("src",e.src);
+            this.iframe = e.iframe;
+            if(e.iframe){
+                Y.log("nom de la classe iframe:"+ this.getClassName("iframe"));
+                this.imgnode = Y.Node.create("<iframe src='"+e.src+"' class='"+this.getClassName("iframe")+"' />");
+            }
+            else{
+                //Loading image
+                this.imgnode = Y.Node.create("<img />");
+                this.imgnode.set("title",this.get("strings").closecaption);
+                this.imgnode.set("src",e.src);
+            }
 	},
 	/**
 	 * Resize the image to make it fit the viewport
@@ -139,30 +158,48 @@ try{
 	 * @protected
 	 */
 	_resizeLB: function(){
-	    //Get image information
-	    var iw = this.imgnode.get("offsetWidth"),
-		ih = this.imgnode.get("offsetHeight"),
-		ir = iw / ih;
+            if(this.iframe){
+                //Get image information
+                var iw = this.imgnode.get("offsetWidth"),
+                    ih = this.imgnode.get("offsetHeight");
 
-	    //adapt height
-	    var bbh = this.get("boundingBox").get("offsetHeight"),
-		wh = this.get("boundingBox").get("winHeight");
-	    if(wh - bbh < 0){
-		ih += (wh - bbh);
-		iw += (wh - bbh)*ir;
-	    }
-	    this.imgnode.set("width",iw);
-	    this.imgnode.set("height",ih);
+                //adapt height
+                var bbh = this.get("boundingBox").get("offsetHeight"),
+                    wh = this.get("boundingBox").get("winHeight");
+                var bbw = this.get("boundingBox").get("offsetWidth"),
+                    ww = this.get("boundingBox").get("winWidth");
 
-	    //adapt width
-	    var bbw = this.get("boundingBox").get("offsetWidth"),
-		ww = this.get("boundingBox").get("winWidth");
-	    if(ww - bbw < 0){
-		iw += (ww - bbw);
-		ih += (ww - bbw)/ir;
-	    }
-	    this.imgnode.set("width",iw);
-	    this.imgnode.set("height",ih);
+                this.imgnode.set("width",iw+ 0.7*ww - bbw);
+                this.imgnode.set("height",ih+ 0.7*wh -bbh );
+
+                
+            }
+            else{
+                //Get image information
+                var iw = this.imgnode.get("offsetWidth"),
+                    ih = this.imgnode.get("offsetHeight"),
+                    ir = iw / ih;
+
+                //adapt height
+                var bbh = this.get("boundingBox").get("offsetHeight"),
+                    wh = this.get("boundingBox").get("winHeight");
+                if(wh - bbh < 0){
+                    ih += (wh - bbh);
+                    iw += (wh - bbh)*ir;
+                }
+                this.imgnode.set("width",iw);
+                this.imgnode.set("height",ih);
+
+                //adapt width
+                var bbw = this.get("boundingBox").get("offsetWidth"),
+                    ww = this.get("boundingBox").get("winWidth");
+                if(ww - bbw < 0){
+                    iw += (ww - bbw);
+                    ih += (ww - bbw)/ir;
+                }
+                this.imgnode.set("width",iw);
+                this.imgnode.set("height",ih);
+            }
 	},
 	/**
 	 * transition from loading state to show content state
@@ -174,6 +211,7 @@ try{
 	    this.get("contentBox").removeChild(this.loadingImg);
 	    this.get("contentBox").appendChild(this.imgnode);
 	    this.get("contentBox").appendChild(this.titlenode);
+            this.get("contentBox").appendChild(this.closebutton);
 	    if(this.get("anim")){
 		var anim = new Y.Anim({
 		    node: this.get("boundingBox"),
@@ -183,7 +221,7 @@ try{
 		    to:{
 			opacity: 1
 		    },
-		    duration: 0.5
+		    duration: 0.1
 		});
 		anim.on("start",Y.bind(this.show,this));
 		anim.run();
@@ -201,22 +239,33 @@ try{
 	 * @todo cut function
 	 */
 	_openLB: function(e){
+            Y.log(e);
 	    this._loadLB();
 	    this._loadContent(e);
-
-	    //We add it to the content box only when it's fully loaded
-	    this.imgnode.on("load",Y.bind(function(){
-		this._fromLoadToContent();
-	    },this));
+            if(this.iframe){
+                Y.log("iframe");
+                this._fromLoadToContent();
+            }
+            else{
+                //We add it to the content box only when it's fully loaded
+                this.imgnode.on("load",Y.bind(function(){
+                    this._fromLoadToContent();
+                },this));
+                this.imgnode.on("error",Y.bind(function(){
+                    this.fire("closeLB");
+                },this));
+            }
 	    //We attach close on image click
-	    this.imgnode.on("click",Y.bind(function(){this.fire("closeLB");},this));
+            if(!this.iframe){
+                this.imgnode.on("click",Y.bind(function(){this.fire("closeLB");},this));
+            }
 	},
 	/**
 	 * When UI is asked to close lightbox
 	 * @method _closeLB
 	 * @protected
 	 */
-	_closeLB: function(e){
+	_closeLB: function(){
 	    if(this.get("anim")){
 		    var anim = new Y.Anim({
 			node: this.get("boundingBox"),
@@ -226,7 +275,7 @@ try{
 			to:{
 			    opacity: 0
 			},
-			duration: 0.5
+			duration: 0.1
 		    });
 		    anim.on("end",Y.bind(this.hide,this));
 		    anim.run();
