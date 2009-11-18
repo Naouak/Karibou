@@ -46,11 +46,15 @@ class VisitorsLoad extends Listener
 				ON DUPLICATE KEY UPDATE
 					timestamp = :time
 			");
-
-			$insert->bindValue(":user_ip", (isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? $_SERVER["HTTP_X_FORWARDED_FOR"] : 
+			if (strpos(":", $_SERVER["REMOTE_ADDR"]) === FALSE) {
+				$insert->bindValue(":user_ip", (isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? $_SERVER["HTTP_X_FORWARDED_FOR"] : 
 $_SERVER["REMOTE_ADDR"]));
-			$insert->bindValue(":proxy_ip", (isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? $_SERVER["REMOTE_ADDR"] : null), 
-(isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? PDO::PARAM_INT : PDO::PARAM_NULL));
+				$insert->bindValue(":proxy_ip", (isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? $_SERVER["REMOTE_ADDR"] : null), 
+				(isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? PDO::PARAM_INT : PDO::PARAM_NULL));
+			} else {
+				$insert->bindValue(":user_ip", PDO::PARAM_NULL);
+				$insert->bindValue(":proxy_ip", PDO::PARAM_NULL);
+			}
 			$insert->bindValue(":time", time());
 			$insert->bindValue(":user_id", $currentUser->getID());
 			try {
