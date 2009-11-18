@@ -19,6 +19,9 @@
     <div class="default2-daytof-caption">
 		{userlink user=$datofauthor.object showpicture=$islogged} : {$datofcomment|wordwrap:34:" ":true}
     </div>
+    <div>
+        <a href="{kurl app='commentaires' id=$idcombox}" class="lightbox lightbox-iframe">##Comment##</a>
+    </div>
 
 	
 	{votesbox id=$idcombox type="miniapp"}

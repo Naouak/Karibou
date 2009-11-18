@@ -4,7 +4,6 @@
 }
 
 .default2-daytof-container a img{
-    border: none;
     background: #EEF5F9;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -59,4 +58,21 @@
 
 .default2-daytof-history{
     text-align: center;
+}
+
+.daytof-history{
+    text-align: center;
+}
+
+.daytof-history-element{
+    list-style: none;
+}
+
+.daytof-history a img{
+    background: #EEF5F9;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    border: solid 2px #88bbee;
 }

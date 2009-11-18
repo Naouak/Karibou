@@ -55,7 +55,6 @@ class DaTof extends Model
 	
 			if ($user["object"] =  $this->userFactory->prepareUserFromId($row["user_id"])) {
 				$name=$this->appname."-".$row['id'];
-				$combox = new CommentSource($this->db,$name,"",$row["comment"]);
 				$file = "PIC" . str_pad($row["id"], 5, "0", STR_PAD_LEFT);
 				$path = "$tofdir/$file";
 	
@@ -79,6 +78,10 @@ class DaTof extends Model
 				$this->assign("datofauthor", $user);
 				$this->assign("datofcomment", $row["comment"]);
 				$this->assign("islogged", $this->currentUser->isLogged());
+
+                                $combox = new CommentSource($this->db,$name,$row["comment"],
+                                    "<a class='lightbox' href='".'pub/daytof/' . $filename."'>"."<img src='".'pub/daytof/' . $smallName."' /></a>");
+				
 
 				$this->assign("idcombox", $combox->getId());
 				$this->assign("author_id",$row["user_id"]);

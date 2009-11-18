@@ -32,7 +32,10 @@
 		<footer app="footer" view="empty" />
 	</page>
 	
-	<page name="history" view="bigdaytof" />
+	<page name="history" view="bigdaytof">
+                <header app="header" view="minimal" />
+		<footer app="footer" view="minimal" />
+        </page>
 	
 	<!-- Param -->
 	<config>
