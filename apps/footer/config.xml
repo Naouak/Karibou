@@ -4,4 +4,5 @@
 
 	<load class="FooterModel" file="footermodel.class.php" />
 	<view name="default" class="FooterModel" template="footer.tpl" />
+        <view name="minimal" class="FooterModel" template="minimal.tpl" />
 </app>

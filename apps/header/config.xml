@@ -7,4 +7,5 @@
 	<view name="home" class="HeaderHome" template="headerhome.tpl" />
 	<view name="default" class="HeaderHome" template="headerhome.tpl" />
 
+        <view name="minimal" class="HeaderHome" template="minimal.tpl" />
 </app>
