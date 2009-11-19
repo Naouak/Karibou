@@ -1,1 +1,0 @@
-ALTER TABLE `dday` ADD `visible` BOOL NOT NULL DEFAULT '1'
