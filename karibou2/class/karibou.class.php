@@ -61,6 +61,8 @@ ClassLoader::add('KFormFactory', KARIBOU_CLASS_DIR."/kformfactory.class.php");
 ClassLoader::add('CommentSource', KARIBOU_CLASS_DIR."/commentsource.class.php");
 ClassLoader::add('VotesScoreFactory', KARIBOU_CLASS_DIR."/votes.class.php");
 
+ClassLoader::add('Browscap', KARIBOU_LIB_DIR."/Browscap.php");
+
 
 /**
  * @todo move session_start() in a class
