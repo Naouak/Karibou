@@ -28,3 +28,6 @@ msgstr "Photo postée par"
 
 msgid "Picture duration (in seconds)"
 msgstr "Durée de la photo (en secondes)"
+
+msgid "Comment"
+msgstr "Commenter"
