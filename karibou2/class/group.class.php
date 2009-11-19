@@ -19,6 +19,7 @@ class Group
 	protected $left;
 	protected $right;
 	protected $used;
+        protected $description;
 	
 	public function __construct()
 	{
