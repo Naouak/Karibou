@@ -20,9 +20,19 @@ class BugsAdd extends Model
 		} catch (PDOException $e) {
 			Debug::kill($e->getMessage());
 		}
-
-		$modules = $stmt->fetchAll();
+		$browser = new Browscap(KARIBOU_CACHE_DIR);
 		
+		if($browser->getBrowser(null, true) != false)
+			$brow = $browser["platform"] . " " . $browser["browser"] . " " . $browser["version"];
+		else
+			$brow = "inconnu";
+		echo("<br /><br /><br /><br /><br /><br />");
+		print_r($brow);
+		//print_r($browser);
+		var_dump($browser);
+		$modules = $stmt->fetchAll();
+
+		$this->assign("browser",$brow);
 		$this->assign("modules", $modules);
 		$this->assign("message",$this->formMessage->getSession());
 	}

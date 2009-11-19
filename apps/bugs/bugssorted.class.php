@@ -13,7 +13,12 @@ class BugsSorted extends Model
 {
 	public function build()
 	{
-		$sort = "b.".$this->args['sort'];
+		if($this->args['sort'] == "browser" || $this->args['sort'] == "module_id" || $this->args['sort'] == "doublon_id" || $this->args['sort'] == "state" || $this->args['sort'] == "type" || $this->args['sort'] == "bug" || $this->args['sort'] == "summary" || $this->args['sort'] == "reporter_id") {
+			$sort = "b.".$this->args['sort'];
+		} else {
+			$sort = "b.id";
+		}
+		
 		
 		if($this->args['ascdescsort'] == 2)
 			$order = "DESC";

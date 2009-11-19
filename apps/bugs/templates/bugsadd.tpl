@@ -4,7 +4,8 @@
 	<div class="newBugsForm">
 
 		<form action="{kurl action="post"}" method="post">
-			
+
+			<input type="hidden" name="browser" value="{$browser}" />
 			<div class="field summary">
 				<label for="summary">{t}Summary{/t} :</label> <input type="text" id="summary" name="summary"/>
 			</div>
@@ -16,9 +17,7 @@
 					{/foreach}
 				</SELECT>
 			</div>
-			<div class="field browser">
-				<label for="browser">{t}Browser{/t} :</label> <input type="text" id="browser" name="browser" />
-			</div>
+			
 			<div class="field explanations">
 				<label for="explanations">{t}Explanations{/t}</label>
 			</div>

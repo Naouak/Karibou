@@ -7,6 +7,7 @@
 
 			<form action="{kurl action="post"}" method="post">
 				<input type="hidden" name="id" value="{$bug.id}" />
+				<input type="hidden" name="browser" value="{$browser}" />
 
 				<div class="field summary">
 					<label for="summary">{t}Summary{/t} :</label> <input type="text" id="summary" name="summary" value="{$bug.summary}" />
@@ -25,9 +26,6 @@
 				</SELECT>
 				</div>
 				
-				<div class="field browser">
-					<label for="browser">{t}Browser{/t} :</label> <input type="text" id="browser" name="browser" value="{$bug.browser}"/>
-				</div>
 				<div class="field description">
 					<label for="description">{t}Description{/t} : </label><textarea name="bug" id="description" rows="10" cols="60" />{$bug.bug} </textarea>
 				</div>
