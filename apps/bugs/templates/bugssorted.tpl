@@ -1,77 +1,67 @@
-<table>
-	<caption>Bug list</caption>
-	<tr>
-		<th> {if $sort == "b.id" && $order =="ASC"}
-			<a href="{kurl page="sort" sort="id" ascdescsort="2" numberpage="$numberpage"}">{t}Id{/t}</a>
+<div class="bugs-content bugs-sorted-content">
+    <h1>{t}Bug List{/t}</h1>
+    <ul>
+        <li><a href="{kurl}">##Index##</a></li>
+    </ul>
+    <table>
+        <caption>{t}Bug list{/t}</caption>
+        <thead>
+            <tr>
+                <th>{if $sort == "module_id" && $order =="ASC"}
+                    <a href="{kurl page="sort" sort="module_id" ascdescsort="2" numberpage="$numberpage"}">{t}Module{/t}</a>
 		{else}
-			<a href="{kurl page="sort" sort="id" ascdescsort="1" numberpage="$numberpage"}">{t}Id{/t}</a>
-		{/if} </th>
-
-		<th>{if $sort == "b.summary" && $order =="ASC"}
-			<a href="{kurl page="sort" sort="summary" ascdescsort="2" numberpage="$numberpage"}">{t}Summary{/t}</a>
-		{else}
-			<a href="{kurl page="sort" sort="summary" ascdescsort="1" numberpage="$numberpage"}">{t}Summary{/t}</a>
+                    <a href="{kurl page="sort" sort="module_id" ascdescsort="1" numberpage="$numberpage"}">{t}Module{/t}</a>
 		{/if}</th>
 
-		<th>{if $sort == "b.bug" && $order =="ASC"}
-			<a href="{kurl page="sort" sort="bug" ascdescsort="2" numberpage="$numberpage"}">{t}Bug{/t}</a>
+                <th>{if $sort == "summary" && $order =="ASC"}
+                    <a href="{kurl page="sort" sort="summary" ascdescsort="2" numberpage="$numberpage"}">{t}Summary{/t}</a>
 		{else}
-			<a href="{kurl page="sort" sort="bug" ascdescsort="1" numberpage="$numberpage"}">{t}Bug{/t}</a>
+                    <a href="{kurl page="sort" sort="summary" ascdescsort="1" numberpage="$numberpage"}">{t}Summary{/t}</a>
 		{/if}</th>
 
-		<th>{if $sort == "b.browser" && $order =="ASC"}
-			<a href="{kurl page="sort" sort="browser" ascdescsort="2" numberpage="$numberpage"}">{t}Browser{/t}</a>
+                <th>{if $sort == "state" && $order =="ASC"}
+                    <a href="{kurl page="sort" sort="state" ascdescsort="2" numberpage="$numberpage"}">{t}State{/t}</a>
 		{else}
-			<a href="{kurl page="sort" sort="browser" ascdescsort="1" numberpage="$numberpage"}">{t}Browser{/t}</a>
+                    <a href="{kurl page="sort" sort="state" ascdescsort="1" numberpage="$numberpage"}">{t}State{/t}</a>
 		{/if}</th>
 
-		<th>{if $sort == "b.module_id" && $order =="ASC"}
-			<a href="{kurl page="sort" sort="module_id" ascdescsort="2" numberpage="$numberpage"}">{t}Module{/t}</a>
+                <th>{if $sort == "type" && $order =="ASC"}
+                    <a href="{kurl page="sort" sort="type" ascdescsort="2" numberpage="$numberpage"}">{t}Type{/t}</a>
 		{else}
-			<a href="{kurl page="sort" sort="module_id" ascdescsort="1" numberpage="$numberpage"}">{t}Module{/t}</a>
+                    <a href="{kurl page="sort" sort="type" ascdescsort="1" numberpage="$numberpage"}">{t}Type{/t}</a>
 		{/if}</th>
 
-		<th>{if $sort == "b.doublon_id" && $order =="ASC"}
-			<a href="{kurl page="sort" sort="doublon_id" ascdescsort="2" numberpage="$numberpage"}">{t}Doublon{/t}</a>
-		{else}
-			<a href="{kurl page="sort" sort="doublon_id" ascdescsort="1" numberpage="$numberpage"}">{t}Doublon{/t}</a>
-		{/if}</th>
-
-		<th>{if $sort == "b.state" && $order =="ASC"}
-			<a href="{kurl page="sort" sort="state" ascdescsort="2" numberpage="$numberpage"}">{t}State{/t}</a>
-		{else}
-			<a href="{kurl page="sort" sort="state" ascdescsort="1" numberpage="$numberpage"}">{t}State{/t}</a>
-		{/if}</th>
-
-		<th>{if $sort == "b.type" && $order =="ASC"}
-			<a href="{kurl page="sort" sort="type" ascdescsort="2" numberpage="$numberpage"}">{t}Type{/t}</a>
-		{else}
-			<a href="{kurl page="sort" sort="type" ascdescsort="1" numberpage="$numberpage"}">{t}Type{/t}</a>
-		{/if}</th>
-
-		<th>{if $sort == "b.reporter" && $order =="ASC"}
-			<a href="{kurl page="sort" sort="reporter_id" ascdescsort="2" numberpage="$numberpage"}">{t}Reporter{/t}</a>
-		{else}
-			<a href="{kurl page="sort" sort="reporter_id" ascdescsort="1" numberpage="$numberpage"}">{t}Reporter{/t}</a>
-		{/if}</th>
-	</tr>
-
+            </tr>
+        </thead>
+        <tbody>
 	{foreach item=bug from=$bugs}
-		<tr>
-			<th>{$bug.id}</th>
-			<th><a href="{kurl page="view" id=$bug.id}">{$bug.summary}</a></th>
-			<th>{$bug.bug}</th>
-			<th>{$bug.browser}</th>
-			<th>{$bug.module}</th>
-			<th>{$bug.doublon_id}</th>
-			<th>{t}{$bug.state}{/t}</th>
-			<th>{t}{$bug.type}{/t}</th>
-			<th>{userlink user=$bug.author.object showpicture=true}</th>
-		</tr>
+            <tr>
+                <td>{$bug.module}</td>
+                <td><a href='{kurl page="view" id=$bug.id}'>{$bug.summary}</a></td>
+                <td>{t}{$bug.state}{/t}</td>
+                <td>{t}{$bug.type}{/t}</td>
+            </tr>
 	{/foreach}
-</table>
+        </tbody>
+    </table>
 
-<p>{if $previous == 1} <a href="{kurl page="sort" sort="id" ascdescsort="1" numberpage="$previouspage"}">{t}Previous{/t}</a> {/if}
-{if $next == 1} <a href="{kurl page="sort" sort="id" ascdescsort="1" numberpage="$nextpage"}">{t}Next{/t}</a> {/if}</p>
+    <ul>
+        {if $previous == 1}
+            <li>
+                <a href='{kurl page="sort" sort="id" ascdescsort="1" numberpage="$previouspage"}'>
+                    {t}Previous{/t}
+                </a>
+            </li>
+        {/if}
+        {if $next == 1}
+            <li>
+                <a href='{kurl page="sort" sort="id" ascdescsort="1" numberpage="$nextpage"}'>
+                   {t}Next{/t}
+                </a>
+            </li>
+        {/if}
+    </ul>
 
 
+
+</div>
