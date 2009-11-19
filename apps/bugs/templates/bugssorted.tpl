@@ -1,4 +1,4 @@
-<table BORDER="1">
+<table>
 	<caption>Bug list</caption>
 	<tr>
 		<th> {if $sort == "id" && $order =="ASC"}
