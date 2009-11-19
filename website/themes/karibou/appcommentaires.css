@@ -29,10 +29,10 @@
 }
 
 .commentaires-page-comments, .commentaires-page-form fieldset{
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    border-radius: 5px;
+    -moz-border-radius: 0px 5px 5px 5px;
+    -webkit-border-radius: 0px 5px 5px 5px;
+    -khtml-border-radius: 0px 5px 5px 5px;
+    border-radius: 0px 5px 5px 5px;
     border: solid 2px #99ccff;
     padding: 5px;
     margin-top: 40px;
@@ -43,6 +43,7 @@
     display: block;
     position:relative;
     top: -30px;
+    margin-left: -7px;
     font-size: 19px;
     min-width: 1px;
     width: 300px;
@@ -57,7 +58,7 @@
 
 .commentaires-page-formlegend{
     position:relative;
-    margin-top: -30px;
+    margin-top: -29px;
     padding: 3px;
     padding-left: 50px;
     padding-right: 50px;
