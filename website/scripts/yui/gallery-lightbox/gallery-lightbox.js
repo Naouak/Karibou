@@ -164,7 +164,7 @@ try{
                     ww = this.get("boundingBox").get("winWidth");
 
                 this.imgnode.set("width",iw+ 0.7*ww - bbw);
-                this.imgnode.set("height",ih+ 0.7*wh -bbh );
+                this.imgnode.set("height",ih+ 0.85*wh -bbh );
 
                 
             }
@@ -178,7 +178,7 @@ try{
                 var bbh = this.get("boundingBox").get("offsetHeight"),
                     wh = this.get("boundingBox").get("winHeight");
                 if(wh - bbh < 0){
-                    ih += (wh - bbh);
+                    ih += (wh - 40 - bbh);
                     iw += (wh - bbh)*ir;
                 }
                 this.imgnode.set("width",iw);
