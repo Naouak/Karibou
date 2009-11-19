@@ -15,6 +15,8 @@ DROP TABLE IF EXISTS `onlineusers`;
 CREATE TABLE `onlineusers` (
   `user_id` int(11) NOT NULL,
   `timestamp` int(11) NOT NULL default '0',
+  `user_ip` int(32) NOT NULL,
+  `proxy_ip` int(32) NULL,
   PRIMARY KEY  (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -22,7 +24,19 @@ CREATE TABLE `onlineusers` (
 -- Contenu de la table `connectes`
 -- 
 
-
+--
+-- Contenu de la table `location`
+--
+DROP TABLE IF EXISTS `location`;
+CREATE TABLE `location` (
+    `location_id` int(32) NOT NULL,
+    `user_ip` int(32) NOT NULL,
+    `location` varchar(64) collate utf8_unicode_ci NOT NULL default '',
+    `proxy_ip` int(32) NULL,
+    `proxy_mask` int(32) NULL,
+    `user_mask` int(32) NOT NULL,
+    PRIMARY KEY (`location_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- 
 -- Structure de la table `addressbook`
