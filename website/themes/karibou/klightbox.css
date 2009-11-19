@@ -35,3 +35,25 @@
 .yui-lightbox-iframe{
     border: none;
 }
+
+a.yui-lightbox-closebutton{
+    display: block;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    width: 30px;
+    height: 25px;
+
+    background: #EEF5F9;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -khtml-border-radius: 30px;
+    border-radius: 30px;
+    border: solid 2px #99ccff;
+
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 20px;
+    color: black;
+
+}

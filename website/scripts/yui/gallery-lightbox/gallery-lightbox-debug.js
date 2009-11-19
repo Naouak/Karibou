@@ -43,7 +43,7 @@ try{
 	strings:{
 	    value:{
 		closecaption: "click to close",
-                close: "Close"
+                close: "X"
 	    }
 	}
     };
@@ -91,7 +91,7 @@ try{
 	},
 	renderUI: function(){
 	    this.loadingImg = Y.Node.create("<div class='"+this.getClassName("loading")+"'></div>");
-            this.closebutton = Y.Node.create("<a href=''>"+this.get("strings.close")+"</a>");
+            this.closebutton = Y.Node.create("<a href='' class='"+this.getClassName("closebutton")+"'>"+this.get("strings.close")+"</a>");
 	},
 	bindUI: function(){
 	    this.after("openLB", Y.bind(this._openLB,this));
