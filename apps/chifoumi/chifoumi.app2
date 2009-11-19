@@ -1,6 +1,6 @@
 name_fr = "Chifoumi"
-name_en = "vtff"
+name_en = "Chifoumi"
 desc_fr = "Ciseau... T'as perdu !"
-desc_en = "Blork blurp barg bruk"
+desc_en = "Paper... I lost !"
 view = "mini"
 JSview = "js"
