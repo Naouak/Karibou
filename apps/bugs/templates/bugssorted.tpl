@@ -7,25 +7,25 @@
         <caption>{t}Bug list{/t}</caption>
         <thead>
             <tr>
-                <th>{if $sort == "module_id" && $order =="ASC"}
+                <th>{if $sort == "b.module_id" && $order =="ASC"}
                     <a href="{kurl page="sort" sort="module_id" ascdescsort="2" numberpage="$numberpage"}">{t}Module{/t}</a>
 		{else}
                     <a href="{kurl page="sort" sort="module_id" ascdescsort="1" numberpage="$numberpage"}">{t}Module{/t}</a>
 		{/if}</th>
 
-                <th>{if $sort == "summary" && $order =="ASC"}
+                <th>{if $sort == "b.summary" && $order =="ASC"}
                     <a href="{kurl page="sort" sort="summary" ascdescsort="2" numberpage="$numberpage"}">{t}Summary{/t}</a>
 		{else}
                     <a href="{kurl page="sort" sort="summary" ascdescsort="1" numberpage="$numberpage"}">{t}Summary{/t}</a>
 		{/if}</th>
 
-                <th>{if $sort == "state" && $order =="ASC"}
+                <th>{if $sort == "b.state" && $order =="ASC"}
                     <a href="{kurl page="sort" sort="state" ascdescsort="2" numberpage="$numberpage"}">{t}State{/t}</a>
 		{else}
                     <a href="{kurl page="sort" sort="state" ascdescsort="1" numberpage="$numberpage"}">{t}State{/t}</a>
 		{/if}</th>
 
-                <th>{if $sort == "type" && $order =="ASC"}
+                <th>{if $sort == "b.type" && $order =="ASC"}
                     <a href="{kurl page="sort" sort="type" ascdescsort="2" numberpage="$numberpage"}">{t}Type{/t}</a>
 		{else}
                     <a href="{kurl page="sort" sort="type" ascdescsort="1" numberpage="$numberpage"}">{t}Type{/t}</a>
