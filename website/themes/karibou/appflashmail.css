@@ -3,13 +3,24 @@
     bottom: 2px;
     right: 2px;
     width: 400px;
-    background-color: white;
     text-align: left;
     z-index: 200;
 }
 
 .flashmail {
-    border: solid 1px red;
+    border: solid 2px #99ccff;
+
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: white;
+}
+
+.flashmailHeader {
+    background: #EEF5F9;
+    border-bottom: dotted 1px #99ccff;
+    padding: 2px;
 }
 
 .flashmailHeader span {
@@ -17,6 +28,15 @@
     margin-right: 5px;
     padding-left: 5px;
     padding-right: 5px;
+}
+
+.flashmailHeader span.answerlink, .flashmailHeader span.readlink, .flashmailHeader span.time{
+    cursor: pointer;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: white;
 }
 
 .flashmails form {
@@ -30,16 +50,14 @@
 }
 
 .flashmail .message {
-    margin-left: 15px;
-    margin-right: 15px;
+    padding: 10px;
     max-height: 200px;
     overflow: auto;
 }
 
 .flashmail .oldmessage {
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    border-bottom: dotted 1px #99ccff;
+    padding: 10px;
     color: gray;
     max-height: 150px;
     overflow: auto;
