@@ -14,7 +14,7 @@
             <li>
                 <ul class="commentaires-page-commentconainer">
                     <li class="commentaires-page-commentername">
-                        {userlink user=$oldcomment.user showpicture=false}
+                        {userlink user=$oldcomment.user showpicture=true}
                     </li>
                     <li class="commentaires-page-commentercomment">
                         {$oldcomment.comment}
