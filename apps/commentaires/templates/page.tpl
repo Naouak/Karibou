@@ -1,12 +1,22 @@
 {literal}
 <script type="text/javascript">
 	function todelete(id) {
-		new Ajax.Request({/literal}'{kurl action="formdelete"}'{literal}, {
-			method: 'post',
-			parameters: 'id=' + encodeURIComponent(id),
-			onSuccess: function success() {}
-		});
-		return false;
+		/* THIS IS DEFAULT 2 ! */
+		/* DEFAULT 2... THIS IS COMMENTS ! */
+		var form = document.createElement("form");
+		form.setAttribute("method", "POST");
+		form.setAttribute("action", {/literal}'{kurl action="formdelete"}'{literal});
+		
+		var field = document.createElement("input");
+		field.setAttribute("type", "hidden");
+		field.setAttribute("name", "id");
+		field.setAttribute("value", id);
+
+		form.appendChild(field);
+
+		document.body.appendChild(form);
+
+		form.submit();
 	}
 </script>
 {/literal}
