@@ -17,3 +17,6 @@ CREATE TABLE `karibou_apps`.`combox` (
 ALTER TABLE `karibou_apps`.`combox` ADD UNIQUE (
 `name`
 );
+
+ALTER TABLE `comment` ADD `deleted` TINYINT( 1 ) NOT NULL DEFAULT '0',
+ADD INDEX ( `deleted` ) ;

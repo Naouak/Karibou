@@ -19,7 +19,7 @@ class Commentaires extends Model {
     public function build() {
         $combox = new CommentSource($this->db,$this->args["id"]);
         // we get all old comments for this couple appname,id
-        $sqlc = $this->db->prepare("select * from comment  where `key_id`=:id ");
+        $sqlc = $this->db->prepare("select * from comment  where `key_id`=:id and deleted=0");
         $sqlc->bindValue(":id", $this->args["id"]);
         $sqlc->execute();
         $this->assign("name",$combox->getName());

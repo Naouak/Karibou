@@ -4,8 +4,12 @@
 	<load class="Commentaires" file="commentaires.class.php" />
 	<load class="[arguments]/NumberArgument" />
 	<load class="CommentairesAdd" file="commentairesadd.class.php" />
+	<load class="CommentairesModify" file="commentairesmodify.class.php" />
+	<load class="CommentairesModifyForm" file="commentairesmodifyform.class.php" />
+	<load class="CommentairesDeleteForm" file="commentairesdeleteform.class.php" />
 
 	<view name="commentaire" class="Commentaires" template="page.tpl" />
+	<view name="modify" class="CommentairesModify" template="modify.tpl" />
 
 	<page view="commentaire">
 		<argument name="id" class="NumberArgument" />
@@ -13,7 +17,20 @@
 		<footer app="footer" view="minimal" />
 	</page>
 
+	<page name="modify" view="modify">
+		<argument name="id" class="NumberArgument" />
+		<argument name="parent" class="NumberArgument" />
+	</page>
+
 	<form action="postcomment" class="CommentairesAdd" >
+		<referer />
+	</form>
+	
+	<form action="formmodify" class="CommentairesModifyForm">
+		<redirect page="" />
+	</form>
+	
+	<form action="formdelete" class="CommentairesDeleteForm">
 		<referer />
 	</form>
 </app>
