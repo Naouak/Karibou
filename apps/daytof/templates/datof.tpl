@@ -20,6 +20,7 @@
 		{userlink user=$datofauthor.object showpicture=$islogged} : {$datofcomment|wordwrap:34:" ":true}
     </div>
     <div>
+		{commentbox id=$idcombox}
         <a href="{kurl app='commentaires' id=$idcombox}" class="lightbox lightbox-iframe">##Comment##</a>
     </div>
 
