@@ -14,7 +14,6 @@
 </div>
 {else}
 <script type="text/javascript" src="{$karibou_base_url}/scripts/default2.js"></script>
-<script type="text/javascript" src="{$karibou_base_url}/scripts/scal.js"></script>
 
 <script language="javascript">
 var karibou = null;

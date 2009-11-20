@@ -31,6 +31,7 @@
 	<script type="text/javascript" src="{$base_url}/scripts/scriptaculous.js"></script>
 	<script type="text/javascript" src="{$base_url}/scripts/karibou.js"></script>
 	<script type="text/javascript" src="{$base_url}/scripts/kform.js"></script>
+	<script type="text/javascript" src="{$base_url}/scripts/scal.js"></script>
 	<script type="text/javascript" src="{$base_url}/scripts/hintbox.js"></script>
 	<script type="text/javascript" src="{$base_url}/scripts/BigInt.js"></script>
 	<script type="text/javascript" src="{$base_url}/scripts/Barrett.js"></script>
