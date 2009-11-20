@@ -33,5 +33,7 @@ class Commentaires extends Model {
             $coms[] = $v;
         }
         $this->assign("existing", $coms);
+		$this->assign("isadmin", $this->getPermission() == _ADMIN_);
+		$this->assign("currentuser",$this->currentUser->getId());
     }
 }

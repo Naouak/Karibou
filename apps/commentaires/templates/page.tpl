@@ -33,8 +33,10 @@
                     <li class="commentaires-page-commentercomment">
                         {$oldcomment.comment|wordwrap:34:" ":true|nl2br}
                     </li>
-					<a href="{kurl page="modify" id=$oldcomment.id parent=$id}"> ##modify##</a>
-					<a onclick="todelete({$oldcomment.id});">##delete##</a>
+					{if $isadmin || $currentuser == $oldcomment.user->getId()}
+						<a href="{kurl page="modify" id=$oldcomment.id parent=$id}"> ##modify##</a>
+						<a onclick="todelete({$oldcomment.id});">##delete##</a>
+					{/if}
                 </ul>
 
             </li>
