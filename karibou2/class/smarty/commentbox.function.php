@@ -10,7 +10,9 @@
 
 
 function smarty_function_commentbox($params,&$smarty){
-    $array = array_merge(array("app" => "commentaires"), $params);
-    $url = kurl($array,$smarty->getAppList());
-    return "";
+	$db = Database::instance();
+	$count = $db->prepare("SELECT count(*) FROM comment WHERE deleted=0 AND key_id=:id;");
+	$count->execute(array(":id" => $params["id"]));
+	
+    return $count->fetchColumn(0);
 }
