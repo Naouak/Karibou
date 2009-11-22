@@ -36,7 +36,7 @@
         <ul>
 	{foreach item=oldcomment from=$existing}
             <li>
-                <ul class="commentaires-page-commentconainer">
+                <ul class="commentaires-page-commentcontainer {if !$oldcomment.read}commentaires-page-commentunread{/if}">
                     <li class="commentaires-page-commentername">
                         {userlink user=$oldcomment.user showpicture=true}
                     </li>
