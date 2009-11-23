@@ -10,7 +10,8 @@ X-WR-CALDESC:Les jours J du Karibou de TL1
 BEGIN:VEVENT
 DTSTART;VALUE=DATE:{$dd.vcalDateStart}
 DTEND;VALUE=DATE:{$dd.vcalDateEnd}
-{if $dd.link}URL:{$dd.link}{/if}
+{if $dd.link}URL:{$dd.link}
+{/if}
 SUMMARY:{$dd.event}{if $dd.desc} - {$dd.desc}{/if}
 
 END:VEVENT
