@@ -1,6 +1,7 @@
 <?php
 /**
-  * @copyright 2005 Antoine Leclercq <http://antoine.leclercq.netcv.org>
+ * @copyright 2005 Antoine Leclercq <http://antoine.leclercq.netcv.org>
+ * @copyright 2009 Pierre Ducroquet <pinaraf@gmail.com>
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU Public License
  * See the enclosed file COPYING for license information (GPL).
@@ -17,21 +18,18 @@ class FlashMailSetAsRead extends FormModel
 	{
 		if (isset($_POST["flashmailid"]))
 		{
-					$uqry = "
-							UPDATE flashmail
-							SET `read` = 1
-							WHERE
-                            to_user_id = ".$this->currentUser->getId()."
-                            AND
-                            id = ".intval($_POST["flashmailid"]);
-					try
-					{
-                   		$this->db->exec($uqry);
-					}
-					catch(PDOException $e)
-					{
-						Debug::kill($e->getMessage() );
-					}
+			$qry = "UPDATE flashmail SET `read` = 1 WHERE to_user_id = :userId AND id=:flashmailId";
+			try {
+				$stmt = $this->db->prepare($qry);
+				$stmt->bindValue(":userId", $this->currentUser->getId());
+				$stmt->bindValue(":flashmailId", $_POST["flashmailid"]);
+				$stmt->execute();
+				KacheControl::instance()->renew("flashmail");
+			}
+			catch(PDOException $e)
+			{
+				Debug::kill($e->getMessage() );
+			}
 		}
 	}
 }
