@@ -23,11 +23,6 @@ require_once KARIBOU_LIB_DIR.'/grouplist.class.php';
 class UserFactory
 {
 	/**
-	 * @var PDO
-	 */
-	protected $db;
-
-	/**
 	 * @var UtilisateurCourant
 	 */
 	protected $currentUser=FALSE;
@@ -72,7 +67,6 @@ class UserFactory
 	 */
 	private function __construct()
 	{
-		$this->db = Database::instance();
 		$this->userList = new UserList();
 
 		$this->usersArrayById = array();
@@ -105,7 +99,7 @@ class UserFactory
 			if($reFetch)
 			{
 				$this->currentUser = new CurrentUser();
-				$this->currentUser->update($this->db, $this->currentUser->getLogin());
+				$this->currentUser->update(Database::instance(), $this->currentUser->getLogin());
 				$_SESSION['currentUser'] = serialize($this->currentUser);
 			}
 			else
@@ -125,12 +119,12 @@ class UserFactory
 	}
 
 	/**
-	 * @return UtilisateurCourant
+	 * @return CurrentUser
 	 */
 	function setCurrentUser($userID, $create = false)
 	{
 		$this->currentUser = new CurrentUser();
-		if( $this->currentUser->update($this->db, $userID, $create) )
+		if( $this->currentUser->update(Database::instance(), $userID, $create) )
 		{
 			return TRUE;
 		}
@@ -165,7 +159,7 @@ class UserFactory
 		$qry = "SELECT * FROM ".$GLOBALS['config']['bdd']["frameworkdb"].".groups ORDER BY `left` ASC";
 		try
 		{
-			$stmt = $this->db->prepare($qry);
+			$stmt = Database::instance()->prepare($qry);
 			$stmt->execute();
 		}
 		catch( PDOException $e )
@@ -208,7 +202,7 @@ class UserFactory
 		$userList = array();
 		try
 		{
-			$stmt = $this->db->prepare($qry);
+			$stmt = Database::instance()->prepare($qry);
 			$stmt->execute();
 		}
 		catch( PDOException $e )
@@ -328,7 +322,7 @@ class UserFactory
 
 			$currentUserId = 0;
 			$currentGroups = array();
-			foreach ($this->db->query($groupsQuery) as $groupTab)
+			foreach (Database::instance()->query($groupsQuery) as $groupTab)
 			{
 				if ($groupTab["user_id"] != $currentUserId) 
 				{
@@ -343,7 +337,7 @@ class UserFactory
 			}
 			$groups[$currentUserId] = $currentGroups;
 		}
-		foreach( $this->db->query($qry.$where) as $tab )
+		foreach( Database::instance()->query($qry.$where) as $tab )
 		{
 			if (array_key_exists($tab["id"], $groups))
 				$tab["groups"] = $groups[$tab["id"]];
@@ -365,7 +359,7 @@ class UserFactory
 	public function getGroupsfromId ($id) {
 		$a = $GLOBALS['config']['bdd']['frameworkdb'];
 
-		$stmt = $this->db->prepare("SELECT * FROM ".$a.".groups WHERE id=:id");
+		$stmt = Database::instance()->prepare("SELECT * FROM ".$a.".groups WHERE id=:id");
 		$stmt->bindValue(":id",$id);
 		try {
 			$stmt->execute();
@@ -381,7 +375,7 @@ class UserFactory
 	public function getUsersFromGroup (Group $group) {
 		$a = $GLOBALS['config']['bdd']['frameworkdb'];
 		
-		$stmt = $this->db->prepare("SELECT user_id FROM ".$a.".group_user WHERE group_id=:group_id");
+		$stmt = Database::instance()->prepare("SELECT user_id FROM ".$a.".group_user WHERE group_id=:group_id");
 		$stmt->bindValue(":group_id", $group->getId());
 
 		$result = array();
@@ -411,6 +405,6 @@ class UserFactory
 	 * @return GroupList
 	 */
 	function getAllGroupsFromUser ($user) {
-		return $user->getAllGroups($this->db);
+		return $user->getAllGroups(Database::instance());
 	}
 }

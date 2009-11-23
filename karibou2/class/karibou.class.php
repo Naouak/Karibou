@@ -149,6 +149,15 @@ class Karibou
 	{
 		ExecutionTimer::getRef()->start("building Karibou");
 		
+		// Récupération de l'utilisateur courant
+		$this->userFactory = UserFactory::instance();
+		$this->currentUser = $this->userFactory->getCurrentUser();
+
+		// Création de la page en fonction des paramètres dans l'url, et création de l'objet BaseUrl
+		$this->baseUrl = BaseURL :: getRef();
+		$this->baseUrl->setCurrentUser($this->currentUser);
+		$this->baseUrl->parseURL($_SERVER['REQUEST_URI']);
+		
 		try {
 			$this->connectDB();
 			KeyChainFactory::$db = $this->db;
@@ -158,15 +167,6 @@ class Karibou
 			Debug::kill($e->getMessage());
 			die("Could not connect to database." . "\n". "Please check the database name, host, login and password.");
 		}
-
-		// Récupération de l'utilisateur courant
-		$this->userFactory = UserFactory::instance();
-		$this->currentUser = $this->userFactory->getCurrentUser();
-
-		// Création de la page en fonction des paramètres dans l'url, et création de l'objet BaseUrl
-		$this->baseUrl = BaseURL :: getRef();
-		$this->baseUrl->setCurrentUser($this->currentUser);
-		$this->baseUrl->parseURL($_SERVER['REQUEST_URI']);
 		
 		// Contrôle du cache
 		$kc = KacheControl::instance();
