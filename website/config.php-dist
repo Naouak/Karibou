@@ -141,4 +141,8 @@ L'équipe d'Administration de l'Intranet
 ";
 //END
 
+/* Client Cache */
+
+$config["kache_exclude"] = array();
+
 ?>
