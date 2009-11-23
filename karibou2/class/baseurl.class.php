@@ -116,6 +116,10 @@ class BaseUrl
 		return $this->app;
 	}
 
+	function getArguments() {
+		return $this->arguments;
+	}
+
 	/**
 	 *
 	 */

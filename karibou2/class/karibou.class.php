@@ -41,6 +41,7 @@ ClassLoader::add('EventManager', KARIBOU_CLASS_DIR."/eventmanager.class.php");
 ClassLoader::add('MessageManager', KARIBOU_CLASS_DIR."/messagemanager.class.php");
 ClassLoader::add('AuthManager', KARIBOU_CLASS_DIR."/authManager.class.php");
 ClassLoader::add('HookManager', KARIBOU_CLASS_DIR."/hookmanager.class.php");
+ClassLoader::add('KacheControl', KARIBOU_CLASS_DIR."/kachecontrol.class.php");
 
 ClassLoader::add('ObjectList', KARIBOU_LIB_DIR.'/objectlist.class.php');
 ClassLoader::add('KText', KARIBOU_LIB_DIR."/ktext.class.php");
@@ -166,6 +167,10 @@ class Karibou
 		$this->baseUrl = BaseURL :: getRef();
 		$this->baseUrl->setCurrentUser($this->currentUser);
 		$this->baseUrl->parseURL($_SERVER['REQUEST_URI']);
+
+		// Contrôle du cache
+		$kc = KacheControl::instance();
+		$kc->replyFor($this->baseUrl);
 
 		$this->hookManager	= new HookManager();
 		$this->eventManager	= new EventManager();
