@@ -12,7 +12,8 @@ class KacheControl {
 		return self::$instance;
 	}
 
-	public function replyFor(BaseURL $url) {
+	public function replyFor() {
+		$url = BaseURL::getRef();
 		// We only act when method is GET
 		if($_SERVER['REQUEST_METHOD'] === "GET" && $_SERVER['SERVER_PROTOCOL'] === strtoupper("HTTP/1.1") && $this->isCacheable($url)) {
 			// Remove annoying headers
@@ -29,7 +30,7 @@ class KacheControl {
 			if(isset($_SERVER["HTTP_IF_NONE_MATCH"]) && !(isset($_SERVER["HTTP_CACHE_CONTROL"]) && strpos($_SERVER['HTTP_CACHE_CONTROL'], "no-cache") === false)) {
 				// Case 2 : the browser has a cache, and
 				// just asks us to validate it
-				$sth = $db->prepare("SELECT user_id FROM ".$GLOBALS['config']['bdd']["frameworkdb"].".kache WHERE id = :etag");
+				$sth = $db->prepare("SELECT user_id FROM kache WHERE id = :etag");
 				$sth->bindValue(":etag", $_SERVER["HTTP_IF_NONE_MATCH"]);
 				$sth->execute();
 
@@ -48,7 +49,7 @@ class KacheControl {
 			// wants something fresh
 			// Refreshing the etag
 			if(isset($_SERVER["HTTP_IF_NONE_MATCH"])) {
-				$sth = $db->prepare("SELECT id FROM ".$GLOBALS['config']['bdd']["frameworkdb"].".kache WHERE user_id = :user_id AND app = :app AND args = :args");
+				$sth = $db->prepare("SELECT id FROM kache WHERE user_id = :user_id AND app = :app AND args = :args");
 				$sth->bindValue(":user_id", UserFactory::instance()->getCurrentUser()->getID());
 				$sth->bindValue(":app", $url->getApp());
 				$sth->bindValue(":args", $url->getArguments());
@@ -57,7 +58,7 @@ class KacheControl {
 
 				// Okay, the cache was cleared in the meantime
 				if($etag === false) {
-					$sth = $db->prepare("INSERT IGNORE INTO ".$GLOBALS['config']['bdd']["frameworkdb"].".kache (user_id, app, args) VALUES (:user, :app, :args)");
+					$sth = $db->prepare("INSERT IGNORE INTO kache (user_id, app, args) VALUES (:user, :app, :args)");
 					$sth->bindValue(":user", UserFactory::instance()->getCurrentUser()->getID());
 					$sth->bindValue(":app", $url->getApp());
 					$sth->bindValue(":args", $url->getArguments());
@@ -65,7 +66,7 @@ class KacheControl {
 					$etag = $db->lastInsertId();
 				}
 			} else {
-				$sth = $db->prepare("INSERT IGNORE INTO ".$GLOBALS['config']['bdd']["frameworkdb"].".kache (user_id, app, args) VALUES (:user, :app, :args)");
+				$sth = $db->prepare("INSERT IGNORE INTO kache (user_id, app, args) VALUES (:user, :app, :args)");
 				$sth->bindValue(":user", UserFactory::instance()->getCurrentUser()->getID());
 				$sth->bindValue(":app", $url->getApp());
 				$sth->bindValue(":args", $url->getArguments());
@@ -73,7 +74,7 @@ class KacheControl {
 				$etag = $db->lastInsertId();
 
 				if($etag == 0) {
-					$sth = $db->prepare("SELECT id FROM ".$GLOBALS['config']['bdd']["frameworkdb"].".kache WHERE user_id = :user_id AND app = :app AND args = :args");
+					$sth = $db->prepare("SELECT id FROM kache WHERE user_id = :user_id AND app = :app AND args = :args");
 					$sth->bindValue(":user_id", UserFactory::instance()->getCurrentUser()->getID());
 					$sth->bindValue(":app", $url->getApp());
 					$sth->bindValue(":args", $url->getArguments());
@@ -97,9 +98,10 @@ class KacheControl {
 	}
 
 	public function renew($app, $args = '%') {
-		$sth = Database::instance()->prepare("DELETE FROM ".$GLOBALS['config']['bdd']["frameworkdb"].".kache WHERE app LIKE :app AND args LIKE :args");
+		$sth = Database::instance()->prepare("DELETE FROM kache WHERE app LIKE :app AND args LIKE :args");
 		$sth->bindValue(":app", $app);
 		$sth->bindValue(":args", $args);
 		$sth->execute();
 	}
 }
+
