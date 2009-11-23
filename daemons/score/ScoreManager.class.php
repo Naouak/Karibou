@@ -25,6 +25,7 @@ class ScoreManager {
 			$sth->bindValue(":user", $user->getID());
 			$sth->bindValue(":post", sprintf("/me a %s %d point%s ! (application: %s)", $score >= 0 ? "gagné" : "perdu", abs($score), abs($score) > 1 ? "s" : "", $app));
 			$sth->execute();
+			KacheControl::instance()->renew("minichat");
 		}
 	}
 
@@ -56,6 +57,7 @@ class ScoreManager {
 			$sth->bindValue(":user", $thief->getID());
 			$sth->bindValue(":post", sprintf("/me a volé %d points à %s (application: %s)", $score, $victim->getDisplayName(), $app));
 			$sth->execute();
+			KacheControl::instance()->renew("minichat");
 		}
 	}
 
