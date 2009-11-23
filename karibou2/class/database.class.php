@@ -18,7 +18,7 @@
 Class Database extends PDO
 {
 	private static $instance = null;
-	private $driver = null;
+	private $_driver = null;
 
 	const MYSQL = 1;
 	const POSTGRES = 2;
@@ -36,15 +36,15 @@ Class Database extends PDO
 
 	public function driver()
 	{
-		return $this->driver;
+		return $this->_driver;
 	}
 
 	public function __construct($dsn, $username, $password)
 	{
-		if (strpos("mysql", $dsn) !== FALSE)
-			$this->driver = MYSQL;
-		else if (strpos("pgsql", $dsn) !== FALSE)
-			$this->driver = POSTGRES;
+		if (strpos($dsn, "mysql") !== FALSE)
+			$this->_driver = Database::MYSQL;
+		else if (strpos($dsn, "pgsql") !== FALSE)
+			$this->_driver = Database::POSTGRES;
 		parent::__construct($dsn, $username, $password);
 		parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
 	}
