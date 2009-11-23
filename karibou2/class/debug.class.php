@@ -123,8 +123,6 @@ class Debug
 	function backtraceText()
 	{
 		$output = " -== Backtrace ==-\n";
-		print_r(debug_backtrace(false));
-		exit(0);
 		$backtrace = debug_backtrace();
 		$backtrace = array_reverse($backtrace);
 		array_pop($backtrace);
