@@ -1168,7 +1168,7 @@ Ajax.Responders.register({
 Ajax.Base = Class.create({
   initialize: function(options) {
     this.options = {
-      method:       'get',
+      method:       'post',
       asynchronous: true,
       contentType:  'application/x-www-form-urlencoded',
       encoding:     'UTF-8',
