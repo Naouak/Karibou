@@ -2,6 +2,7 @@
 /**
  * @copyright 2004 Jonathan Semczyk <jonathan.semczyk@free.fr>
  * @copyright 2009 Rémy Sanchez <remy.sanchez@hyperthese.net>
+ * @copyright 2009 Pierre Ducroquet <pinaraf@pinaraf.info>
  *
  * @license http://www.gnu.org/licenses/lgpl.html Lesser GNU Public License
  * See the enclosed file COPYING for license information (LGPL).
@@ -23,7 +24,7 @@ require_once KARIBOU_LIB_DIR.'/grouplist.class.php';
 class UserFactory
 {
 	/**
-	 * @var UtilisateurCourant
+	 * @var CurrentUser
 	 */
 	protected $currentUser=FALSE;
 
@@ -87,27 +88,17 @@ class UserFactory
 	}
 
 	/**
-	 * @return UtilisateurCourant
+	 * @return CurrentUser
 	 */
 
-	function getCurrentUser($reFetch = false)
+	function getCurrentUser()
 	{
 		// si il y a un utilisateur loggé
 		if ( isset($_SESSION['currentUser']) )
 		{
-			// on récupère en session
-			if($reFetch)
+			if($this->currentUser === FALSE)
 			{
-				$this->currentUser = new CurrentUser();
-				$this->currentUser->update(Database::instance(), $this->currentUser->getLogin());
-				$_SESSION['currentUser'] = serialize($this->currentUser);
-			}
-			else
-			{
-				if($this->currentUser === FALSE)
-				{
-					$this->currentUser = unserialize($_SESSION['currentUser']);
-				}
+				$this->currentUser = unserialize($_SESSION['currentUser']);
 			}
 		}
 		else
@@ -255,19 +246,19 @@ class UserFactory
 	function setUserList()
 	{
 		if( (count($this->whereArray) == 0) 
-		    and (count($this->whereUserIdArray) == 0)
-		    and (count($this->whereUserNameArray) == 0)
-		  ) return;
+			and (count($this->whereUserIdArray) == 0)
+				and (count($this->whereUserNameArray) == 0)
+			) return;
 		$a = $GLOBALS['config']['bdd']["frameworkdb"];
 		$qry = "SELECT
-				u.id,
-				LOWER(u.login) login,
-				p.firstname,
-				p.lastname,
-				p.surname,
-				u.profile_id
+			u.id,
+			LOWER(u.login) login,
+			p.firstname,
+			p.lastname,
+			p.surname,
+			u.profile_id
 			FROM
-				".$a.".users u LEFT OUTER JOIN ".$a.".profile p ON u.profile_id=p.id";
+			".$a.".users u LEFT OUTER JOIN ".$a.".profile p ON u.profile_id=p.id";
 
 		$where = " WHERE";
 
@@ -307,18 +298,18 @@ class UserFactory
 		{
 			$groupsQuery = "
 				SELECT
-					g.*,
-					gu.role,
-					gu.user_id
+				g.*,
+				gu.role,
+				gu.user_id
 				FROM
-					".$a.".group_user gu,
-					".$a.".groups g
+				".$a.".group_user gu,
+				".$a.".groups g
 				WHERE
-					g.id=gu.group_id AND
-					gu.user_id IN (" . implode(", ", $this->whereUserIdArray) . ")
+				g.id=gu.group_id AND
+				gu.user_id IN (" . implode(", ", $this->whereUserIdArray) . ")
 				ORDER BY
-					gu.user_id
-			";
+				gu.user_id
+				";
 
 			$currentUserId = 0;
 			$currentGroups = array();
@@ -371,10 +362,10 @@ class UserFactory
 			Debug::kill($e->getMessage());
 		}
 	}
-	
+
 	public function getUsersFromGroup (Group $group) {
 		$a = $GLOBALS['config']['bdd']['frameworkdb'];
-		
+
 		$stmt = Database::instance()->prepare("SELECT user_id FROM ".$a.".group_user WHERE group_id=:group_id");
 		$stmt->bindValue(":group_id", $group->getId());
 
