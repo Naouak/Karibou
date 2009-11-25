@@ -1,0 +1,26 @@
+/* 
+    Document   : appcitation
+    Created on : 25 nov. 2009, 07:47:07
+    Author     : Naouak
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/*.default2-citation-blockquote:before{
+    content:open-quote;
+}
+
+.default2-citation-blockquote:after{
+    content:close-quote;
+}*/
+
+.default2-citation-blockquote{
+    text-align:justify;
+    padding: 5px;
+}
+
+.default2-citation-blockquote q{
+    quotes: "«" "»" "'" "'";
+}
+
+
