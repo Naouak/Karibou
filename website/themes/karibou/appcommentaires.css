@@ -100,8 +100,12 @@
     background: white;
 }
 
-.commentaires-page-commentunread {
-	background-color: grey;
+.commentaires-page-commentunread .commentaires-page-commentername:before{
+    display: inline-block;
+    position: absolute;
+    left: 2px;
+    color: red;
+    content: "new";
 }
 
 .commentaires-page-commentcontainer{
