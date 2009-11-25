@@ -25,9 +25,9 @@ Event.observe(document, "keypress", function(evt) {
 Event.observe(window, "load", function(evt) {
 	Ajax.Base.prototype._initialize = Ajax.Base.prototype.initialize;
 	Ajax.Base.prototype.initialize = function(options) {
-			var _options = options;
-			Object.extend(_options, {method: "get"});
-			this._initialize(_options);
+			if (options.method == undefined)
+				options.method = "get";
+			this._initialize(options);
 		};
 });
 
