@@ -266,7 +266,7 @@ var KApp = Class.create({
 		this.appHandle = this.getElementById(this.appName + "_handle");
 		this.config = null;
 		if (this.constructor.configFields) {
-			new Ajax.Request(karibou.appGetConfigUrl + this.appId, {method: 'post', app: this, asynchronous: false, onComplete: function(transport) {
+			new Ajax.Request(karibou.appGetConfigUrl + this.appId, {method: 'get', app: this, asynchronous: false, onComplete: function(transport) {
 				transport.request.options.app.config = transport.responseText.evalJSON();
 			}});
 		}
@@ -422,7 +422,7 @@ var KApp = Class.create({
 	submittedConfig: function() {
 		// This function will call the onConfig function after doing its own cleanups
 		if (this.submitBox) {
-			new Ajax.Request(this.karibou.appGetConfigUrl + this.appId, {method: 'post', app: this, asynchronous: false, onComplete: function(transport) {
+			new Ajax.Request(this.karibou.appGetConfigUrl + this.appId, {method: 'get', app: this, asynchronous: false, onComplete: function(transport) {
 				transport.request.options.app.config = transport.responseText.evalJSON();
 			}});
 			this.mainContainer.style.height = this.submitHeightBackup;
