@@ -15,6 +15,10 @@
     text-align: center;
 }
 
+.yui-lightbox-content{
+        overflow: auto;
+}
+
 .yui-lightbox-title{
     margin: 0;
     padding: auto;
