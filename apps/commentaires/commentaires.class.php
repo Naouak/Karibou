@@ -19,7 +19,7 @@ class Commentaires extends Model {
 	public function build() {
 		$combox = new CommentSource($this->db,$this->args["id"]);
 		// we get all old comments for this couple appname,id
-		$sql = "SELECT c.*, IF(cr.user IS NULL, false, true) AS `read` FROM comment c LEFT JOIN comment_read cr ON cr.user=:user_id AND cr.comment = c.id WHERE c.key_id=:id ORDER BY `date` ASC";
+		$sql = "SELECT c.*, IF(cr.user IS NULL, false, true) AS `read` FROM comment c LEFT JOIN comment_read cr ON cr.user=:user_id AND cr.comment = c.id WHERE c.key_id=:id  AND c.deleted = 0 ORDER BY `date` ASC";
 		$sqlc = $this->db->prepare($sql);
 		$sqlc->bindValue(":id", $this->args["id"]);
 		$sqlc->bindValue(":user_id", $this->currentUser->getID());
