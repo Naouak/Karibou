@@ -53,7 +53,7 @@ if(chifoumi == undefined){
 		that.refreshData = function(){
 			new Ajax.Request('{/literal}{kurl page="challenge"}{literal}', 
 				{
-					method: 'post',
+					method: 'get',
 					onSuccess: function(transport){
 						var response = transport.responseText.evalJSON();
 						challenges = response;
