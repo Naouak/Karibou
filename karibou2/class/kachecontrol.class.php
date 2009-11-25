@@ -153,6 +153,10 @@ class KacheControl {
 	 * @param string $args arguments of the page to purge, may contain SQL jokers '%'
 	 */
 	public function renew($app, $args = '%') {
+		if($GLOBALS["config"]["kache_disable"]) {
+			return;
+		}
+
 		$sth = $this->db->prepare("DELETE FROM kache WHERE app LIKE :app AND args LIKE :args");
 		$sth->bindValue(":app", $app);
 		$sth->bindValue(":args", $args);
