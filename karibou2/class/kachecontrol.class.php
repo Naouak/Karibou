@@ -39,6 +39,10 @@ class KacheControl {
 	 * if the content doesn't have to be generated.
 	 */
 	public function replyFor() {
+		if($GLOBALS["config"]["kache_disable"]) {
+			return;
+		}
+
 		if($_SERVER['REQUEST_METHOD'] === "GET" && $this->isCacheable()) {
 			// Stupid PHP, stupid
 			header("Expires:");

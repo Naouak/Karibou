@@ -143,6 +143,7 @@ L'équipe d'Administration de l'Intranet
 
 /* Client Cache */
 
+$config["kache_disable"] = true;
 $config["kache_exclude"] = array();
 
 ?>
