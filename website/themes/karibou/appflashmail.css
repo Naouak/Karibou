@@ -1,15 +1,17 @@
 .flashmails {
     position: fixed;
-    bottom: 2px;
-    right: 2px;
+    top: 30px;
+    /*right: 2px;*/
+    left: 50%;
+    margin-left: -200px;
     width: 400px;
     text-align: left;
     z-index: 200;
 }
 
 .flashmail {
-    border: solid 2px #99ccff;
-
+    border: solid 2px #ff3333;
+    margin: 10px;
     -moz-border-radius: 5px;
     -khtml-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -18,7 +20,7 @@
 }
 
 .flashmailHeader {
-    background: #EEF5F9;
+    background: #ff3333;
     border-bottom: dotted 1px #99ccff;
     padding: 2px;
 }
@@ -30,7 +32,7 @@
     padding-right: 5px;
 }
 
-.flashmailHeader span.answerlink, .flashmailHeader span.readlink, .flashmailHeader span.time{
+.flashmailHeader span.answerlink, .flashmailHeader span.readlink, .flashmailHeader span.time, .flashmailHeader span.author{
     cursor: pointer;
     -moz-border-radius: 5px;
     -khtml-border-radius: 5px;
