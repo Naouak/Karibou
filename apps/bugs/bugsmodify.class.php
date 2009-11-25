@@ -18,12 +18,29 @@ class BugsModify extends Model
 		$devGroupId = $config["developersGroup"]["id"];
 		
 		$id = $this->args['id'];
+
+		$search = filter_input(INPUT_POST, "search", FILTER_SANITIZE_SPECIAL_CHARS);
 		
 		$sql1 = $this->db->prepare("SELECT * FROM bugs_bugs WHERE id=:id ORDER BY Id DESC");
 		$sql1->bindValue(":id", $id, PDO::PARAM_INT);
 		
 		$sql2 = $this->db->prepare("SELECT * FROM bugs_module ORDER BY id ASC");
 		$stmt = $this->db->prepare("SELECT * FROM bugs_assign WHERE bugs_id=:bugs_id");
+
+		if($search != null) {
+				echo ("<br /><br /><br /><br /><br /><br /><br />");
+				
+				$sql = $this->db->prepare("SELECT id,summary FROM bugs_bugs WHERE summary LIKE :search OR bug LIKE :search");
+				$sql->bindValue("search",'%'.$search.'%');
+				try {
+					$sql->execute();
+					$content = $sql->fetchAll();
+					print_r($content);
+				} catch (PDOException $e) {
+					Debug::kill($e->getMessage());
+				}
+
+			}
 		
 		try {
 			
@@ -59,6 +76,7 @@ class BugsModify extends Model
 		$this->assign("bug",$bug[0]);
 		$this->assign("currentuser",$this->currentUser->getID());
 		$this->assign("isadmin", $this->getPermission() == _ADMIN_);
+		$this->assign("search", $content);
 		
 	}
 }

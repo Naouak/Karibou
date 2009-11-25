@@ -25,6 +25,7 @@ class BugsView extends Model
 			$bug = $sql->fetchAll();
 
 			$req->bindValue(":id",$bug[0]['module_id']);
+			$req->execute();
 			$module = $req->fetchAll();
 
 			$stmt->bindValue(":bugs_id",$bug[0]['id'], PDO::PARAM_INT);

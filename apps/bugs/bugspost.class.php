@@ -12,15 +12,7 @@
 class BugsPost extends FormModel
 {
 	public function build() {
-		/*$summary = filter_input(INPUT_POST, "summary", FILTER_SANITIZE_SPECIAL_CHARS);
-		$bug = filter_input(INPUT_POST, "bug", FILTER_SANITIZE_SPECIAL_CHARS);
-		$browser = filter_input(INPUT_POST, "browser", FILTER_SANITIZE_SPECIAL_CHARS);
-		$id = filter_input(INPUT_POST, "id", FILTER_SANITIZE_NUMBER_INT);
-		$type = filter_input(INPUT_POST, "type", FILTER_SANITIZE_SPECIAL_CHARS);
-		$state = filter_input(INPUT_POST, "state", FILTER_SANITIZE_SPECIAL_CHARS);
-		$doublon = filter_input(INPUT_POST, "doublon", FILTER_SANITIZE_NUMBER_INT);
-		$module = filter_input(INPUT_POST, "module", FILTER_SANITIZE_SPECIAL_CHARS);*/
-
+	
 		$args = array(
 			'summary' => FILTER_SANITIZE_SPECIAL_CHARS,
 			'bug' => FILTER_SANITIZE_SPECIAL_CHARS,
@@ -30,15 +22,13 @@ class BugsPost extends FormModel
 			'state' => FILTER_SANITIZE_SPECIAL_CHARS,
 			'doublon' => FILTER_SANITIZE_NUMBER_INT,
 			'module' => FILTER_SANITIZE_SPECIAL_CHARS,
-			'developer' => array('filter' => FILTER_SANITIZE_NUMBER_INT,
-								 'flags'  => FILTER_REQUIRE_ARRAY,)
+			'developer' => array(
+								'filter' => FILTER_SANITIZE_NUMBER_INT,
+								'flags'  => FILTER_REQUIRE_ARRAY,)
 		);
 		$inputs = filter_input_array(INPUT_POST, $args);
-		
-			
-		
-		
-		
+
+
 		if($inputs["doublon"] == 0)
 			$inputs["doublon"] = null;
 
@@ -109,6 +99,8 @@ class BugsPost extends FormModel
 			}
 
 		} else {
+
+			
 			
 			$req = $this->db->prepare("INSERT IGNORE INTO `bugs_assign` (user_id,bugs_id) VALUES (:user_id, :bugs_id)");
 			
@@ -118,6 +110,7 @@ class BugsPost extends FormModel
 			
 			try {
 				foreach( $inputs["developer"] as $value) {
+					
 					$req->bindValue(":user_id",$value);
 					$req->bindValue(":bugs_id", $inputs["id"]);
 					$req->execute();
