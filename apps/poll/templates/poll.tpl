@@ -13,3 +13,6 @@
 {include file="votes.tpl"}
 {/if}
 </span>
+<div>
+	<a href="{kurl app='commentaires' id=$commentId}" class="lightbox lightbox-iframe">{commentbox id=$commentId} ##Comments##</a>
+</div>
