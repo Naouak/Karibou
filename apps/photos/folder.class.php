@@ -13,17 +13,23 @@
 
 class folder extends Model {
     public function build() {
-        $child = $this->db->prepare("SELECT * FROM pictures_album WHERE parent=:parent");
-        $child->bindValue(":parent",$this->args["id"]);
+		$container = containerFactory::getInstance();
+		$parent = $container->getPictureStorage($this->args["id"]);
+		
+
+        $child = $this->db->prepare("SELECT *
+										FROM pictures_album 
+										WHERE `parent`=:parent");
+        $child->bindValue(":parent",$parent->getId());
         $child->execute();
         $children = $child->fetchAll();
-        $container = containerFactory::getInstance();
+        
         $array = array();
         foreach($children as $kid){
             $k = $container->getPictureStorage($kid["id"]);
             $array[] = $k->getAll();
         }
-        $parent = $container->getPictureStorage($this->args["id"]);
+        
         $this->assign("parentpath",$parent->getAllParent());
         $this->assign("children",$array);
         $this->assign("parent",$this->args["id"]);

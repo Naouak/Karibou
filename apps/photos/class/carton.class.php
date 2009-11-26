@@ -29,7 +29,11 @@ class carton extends AlbumBase {
 	/**
 	 *@var int
 	 */
-    protected $parent;
+    protected $left;
+	/**
+	 *@var int
+	 */
+    protected $right;
 	/**
 	 *@var date
 	 */
@@ -48,8 +52,9 @@ class carton extends AlbumBase {
         $this->all = $carton;
         $this->name = $carton["name"];
         $this->id = $carton["id"];
-        $this->parent = $carton["parent"];
         $this->date = $carton["date"];
         $this->type="carton";
+		$this->left=$carton["left"];
+		$this->right=$carton["right"];
     }
 }

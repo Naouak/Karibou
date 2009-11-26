@@ -16,12 +16,29 @@ class AddContainerForm extends PhotosFormModel {
 		$parent=filter_input(INPUT_POST,"parent",FILTER_SANITIZE_NUMBER_INT);
 		$tags = filter_input(INPUT_POST,"tags",FILTER_SANITIZE_SPECIAL_CHARS);
 
-		// we create the new container
-		$stmt = $this->db->prepare("INSERT INTO pictures_album (`name`,`type`,`parent`) VALUES (:name,:type,:parent);");
+		$container = containerFactory::getInstance();
+		$objparent = $container->getPictureStorage($parent);
+
+
+		//Now we have to update all left/right values of others containers
+		$uleft = "UPDATE pictures_album SET `left`=`left`+2 WHERE `left`>:rightparent;";
+		$uright = "UPDATE pictures_album SET `right`=`right`+2 WHERE `right`>=:rightparent;";
+		$updateleft = $this->db->prepare($uleft);
+		$updateleft->bindValue(":rightparent",$objparent->getRight());
+		$updateleft->execute();
+		$updateright = $this->db->prepare($uright);
+		$updateright->bindValue(":rightparent",$objparent->getRight());
+		$updateright->execute();
+
+		// we create the new container (we use parent/child system AND left/right system to have both advantages of this 2 systems
+		$stmt = $this->db->prepare("INSERT INTO pictures_album (`name`,`type`,`parent`,`left`,`right`) VALUES (:name,:type,:parent,:left,:right);");
 		$stmt->bindValue(":name",$name);
-		$stmt->bindValue(":parent",$parent);
+		$stmt->bindValue(":parent",$objparent->getId());
+		$stmt->bindValue(":left",$objparent->getRight());
+		$stmt->bindValue(":right",$objparent->getRight()+1);
 		$stmt->bindValue(":type",$type);
 		$stmt->execute();
+
 		
 		$id = $this->db->lastInsertId();
 

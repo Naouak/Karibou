@@ -33,7 +33,12 @@ class album extends AlbumBase {
 	/**
 	 *@var int
 	 */
-    protected $parent;
+    protected $left;
+
+	/**
+	 *@var int
+	 */
+    protected $right;
 
 	/**
 	 *@var date
@@ -62,9 +67,10 @@ class album extends AlbumBase {
         $this->all = $album;
         $this->id = $this->all["id"];
         $this->name = $this->all["name"];
-        $this->parent = $this->all["parent"];
         $this->date = $this->all["date"];
         $this->type = "album";
+		$this->left= $this->all["left"];
+		$this->right = $this->all["right"];
     }
 
 	

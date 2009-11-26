@@ -2,7 +2,7 @@
 <div class="photos-album-place">
 	<strong>emplacement : </strong>
 	{foreach item=path from=$parentpath}
-		<a href={kurl page=$path.2 id=$path.1}>{$path.0}</a>/
+		<a href={kurl page=$path.type id=$path.id}>{$path.name}</a>/
 	{/foreach} 
 	| <a href={kurl page=""}>{t}Page d'accueil{/t}</a>
 </div>

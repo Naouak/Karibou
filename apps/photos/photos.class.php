@@ -16,15 +16,12 @@
  */
 
 // name of the class and extends permit to have an heritage of an class 
-class photos extends Model
+class photos extends PhotosModel
 {
     // you would have the function build() in all apps you create
     public function build()
     {
-        $tags = $this->db->prepare("SELECT name from pictures_tags;");
-        $tags->execute();
-        $tags_array = $tags->fetchAll();
-        $this->assign("tags",$tags_array);
+        $this->assign("tags",$this->getAllTags());
 
         $albums = $this->db->prepare("SELECT * from pictures_album where type=:type;");
         $albums->bindValue(":type","album");
@@ -43,7 +40,7 @@ class photos extends Model
         }
         $this->assign("albums",$albums_array);
 
-        $sql = $this->db->prepare("SELECT id FROM pictures_album WHERE parent IS NULL;");
+        $sql = $this->db->prepare("SELECT id FROM pictures_album WHERE `parent` IS NULL");
         $sql->execute();
         $slash = $sql->fetch();
         $this->assign("idslash",$slash["id"]);

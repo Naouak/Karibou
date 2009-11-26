@@ -15,16 +15,23 @@ abstract class AlbumBase {
 	protected $parent;
 	protected $type;
 	protected $all;
+	protected $left;
+	protected $right;
+	protected $db;
+
+	public function __construct() {
+		$db = Database::instance();
+	}
 
 	/**
-	 * function return the name
+	 * function returns the name
 	 **/
 
 	public function getName(){
         return $this->name;
     }
 	/**
-	 * function return the Id
+	 * function returns the Id
 	 **/
 
 	public function getId() {
@@ -32,15 +39,15 @@ abstract class AlbumBase {
     }
 
 	/**
-	 * function return the Date
+	 * function returns the Date
 	 **/
 
 	public function getDate() {
-        return $this->db;
+        return $this->date;
     }
 
 	/**
-	 * function return the parent
+	 * function returns the parent
 	 **/
 
 	public function getParent() {
@@ -48,7 +55,23 @@ abstract class AlbumBase {
     }
 
 	/**
-	 * function return the type
+	 * Function returns left
+	 **/
+
+	public function getLeft() {
+		return $this->left;
+	}
+
+	/**
+	 * Function returns right
+	 **/
+
+	public function getRight() {
+		return $this->right;
+	}
+
+	/**
+	 * function returns the type
 	 **/
 
 	public function getType() {
@@ -56,7 +79,7 @@ abstract class AlbumBase {
     }
 
 	/**
-	 * function return the array with all informations 
+	 * function returns the array with all informations 
 	 **/
 
 	public function getAll() {
@@ -64,32 +87,25 @@ abstract class AlbumBase {
     }
 
 	/**
-	 * function return the all parents from slash to here
+	 * function returns the all parents from slash to here
 	 **/
 
 	public function getAllParent() {
-        $path=array();
-        $parent=$this->parent;
-        while( $parent!=NULL){
-            $container = containerFactory::getInstance();
-            $objalb = $container->getPictureStorage($parent);
-            $link = array($objalb->getName(),$parent,$objalb->getType());
-            $parent = $objalb->getParent();
-            array_unshift($path,$link);
-        }
-        $path[]=array($this->name,$this->id,$this->type);
-        return $path;
+        $sql = $this->db->prepare("SELECT * FROM pictures_album WHERE `left` <= :left AND `right` >= :right;");
+		$sql->bindValue(":left",$this->left);
+		$sql->bindValue(":right",$this->right);
+		$sql->execute();
+        return $sql->fetchAll();
     }
 
     /**
 	 *@param String $perm 
-	 * function return if we can write or read this container 
+	 * function returns if we can write or read this container 
 	 */
 	public function can($perm){
         $currentuser = UserFactory::instance()->getCurrentUser();
-        $db = Database::instance();
         //PDO statement doesn't accept to prepare array, so we will use some joins ...
-        $perm = $db->prepare("
+        $perm = $this->db->prepare("
             SELECT
                 *
             FROM

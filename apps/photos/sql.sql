@@ -1,7 +1,9 @@
 CREATE TABLE  `karibou_apps`.`pictures_album` (
 `name` TEXT NOT NULL ,
 `date` TIMESTAMP NOT NULL ,
-`id` SERIAL NOT NULL
+`id` SERIAL NOT NULL,
+`left` INT NOT NULL,
+`right` INT NOT NULL
 ) ENGINE = INNODB;
 
 
@@ -25,7 +27,6 @@ ALTER TABLE `pictures_album` CHANGE `name` `name` VARCHAR( 64 ) CHARACTER SET ut
 
 ALTER TABLE `pictures_album` ADD `type` ENUM( "carton", "album" ) NOT NULL;
 
-ALTER TABLE `pictures_album` ADD `parent` INT NULL;
 
 
 

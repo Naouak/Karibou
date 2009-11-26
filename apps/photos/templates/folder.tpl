@@ -3,7 +3,7 @@
 <div class="photos-place">
     <ul class="photos-place-list">
 	{foreach item=path from=$parentpath}
-        <li><a href={kurl page="carton" id=$path.1}>{$path.0}</a></li>
+        <li><a href={kurl page="carton" id=$path.id}>{$path.name}</a></li>
 	{/foreach}
     </ul>
 	| 
