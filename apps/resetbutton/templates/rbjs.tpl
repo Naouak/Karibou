@@ -68,7 +68,7 @@ var resetbuttonClass = Class.create(KApp, {
 		var counter = this.getElementById("resethour");
 		var userlink = this.getElementById("lastresetby");
 
-		var time = parseInt((new Date().getTime() - this.lastClick + this.delta) / 1000);
+		var time = parseInt((new Date().getTime() - this.lastClick - this.delta) / 1000);
 		
 		var h = parseInt(time / 3600);
 		var m = parseInt(time / 60) - h * 60;
