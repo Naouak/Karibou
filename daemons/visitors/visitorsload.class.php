@@ -16,39 +16,32 @@
 class VisitorsLoad extends Listener
 {
 	protected $maxAge = 600;
-	
+
 	function eventOccured(Event $event)
 	{
 		$currentUser = $this->userFactory->getCurrentUser();
-		if (((int) time() % 15) == 0) {
-			$delete = $this->db->prepare("
-				DELETE FROM
-					onlineusers
-				WHERE
-					timestamp < :time
-					");
-			$delete->bindValue(":time", (time() - $this->maxAge));
-	
-			try {
-				$delete->execute();
-			} catch(PDOException $ex) {
-				trigger_error("Unable to prune onlineusers ($ex)", E_USER_WARNING);
-			}
+		$delete = $this->db->prepare("DELETE FROM onlineusers WHERE timestamp < :time");
+		$delete->bindValue(":time", (time() - $this->maxAge));
+
+		try {
+			$delete->execute();
+		} catch(PDOException $ex) {
+			trigger_error("Unable to prune onlineusers ($ex)", E_USER_WARNING);
 		}
 
-		if (($currentUser->getID() != 0) && (((int) time() % 5) == 0))
+		if ($currentUser->getID() != 0)
 		{
 			$insert = $this->db->prepare("
 				INSERT INTO
-					onlineusers (user_id, timestamp, user_ip, proxy_ip)
+				onlineusers (user_id, timestamp, user_ip, proxy_ip)
 				VALUES
-					(:user_id, :time, INET_ATON(:user_ip), INET_ATON(:proxy_ip))
+				(:user_id, :time, INET_ATON(:user_ip), INET_ATON(:proxy_ip))
 				ON DUPLICATE KEY UPDATE
-					timestamp = :time
-			");
+				timestamp = :time
+				");
 			if (strpos(":", $_SERVER["REMOTE_ADDR"]) === FALSE) {
 				$insert->bindValue(":user_ip", (isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? $_SERVER["HTTP_X_FORWARDED_FOR"] : 
-$_SERVER["REMOTE_ADDR"]));
+					$_SERVER["REMOTE_ADDR"]));
 				$insert->bindValue(":proxy_ip", (isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? $_SERVER["REMOTE_ADDR"] : null), 
 				(isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? PDO::PARAM_INT : PDO::PARAM_NULL));
 			} else {
