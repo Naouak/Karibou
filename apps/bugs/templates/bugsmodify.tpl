@@ -5,7 +5,7 @@
 
 		<form action='{kurl page="modify" id=$bug.id}' method="post">
 		
-			<div class="field search">
+			<div class="search">
 				<label for="search">{t}Search{/t} :</label>
 				<input type="text" id="search" name="search" />
 			</div>
@@ -21,30 +21,30 @@
 			<input type="hidden" name="id" value="{$bug.id}" />
 			<input type="hidden" name="browser" value="{$browser}" />
 
-			<div class="field summary">
+			<div class="summary">
 				<label for="summary">{t}Summary{/t} :</label>
 				<input type="text" id="summary" name="summary" value="{$bug.summary}" />
 			</div>
 				
-			<div class="field module">
+			<div class="module">
 				<label for="module">{t}Module{/t} :
 			<select name="module">
 				{foreach item=module from=$modules}
 					{if $module.id == $bug.module_id}
-						<OPTION selected>{$module.name}
+						<option selected>{$module.name}</option>
 					{else}
-						<OPTION>{$module.name}
+						<option>{$module.name}</option>
 					{/if}
 				{/foreach}
 			</select>
 			</div>
 
-			<div class="field description">
+			<div class="description">
 				<label for="description">{t}Description{/t} : </label><textarea name="bug" id="description" rows="10" cols="60" />{$bug.bug} </textarea>
 			</div>
 
 
-			<div class="field type">
+			<div class="type">
 				<label for="type">{t}Importance{/t} :</label>
 				<select name="type">
 					<option {if $bug.type == "IMPROVMENT"}selected{/if}>{t}IMPROVMENT{/t}</option>
@@ -55,7 +55,7 @@
 				</select>
 			</div>
 			{if $isadmin || $dev}
-				<div class="field state">
+				<div class="state">
 					<label for="state">{t}State{/t} :</label>
 					<select name="state">
 						<option {if $bug.state == "STANDBY"}selected{/if}>{t}STANDBY{/t}</option>
@@ -74,15 +74,21 @@
 					</select>
 				</div>
 
-				<div class="field doublon">
-					<label for="doublon">{t}Doublon n°{/t} </label>
+				<div class="doublon">
+					<label for="doublon">{t}Choose doublon{/t} </label>
+					<ul>
+						<li><input type="radio" name="doublon" value="0">Aucun</li>
+						{foreach item=dbln from=$search}
+							<li><input type="radio" name="doublon" value="{$dbln.id}">{$dbln.summary} </li>
+						{/foreach}
+					</ul>
 				</div>
 
 		
 			{elseif $currentuser == $bug.reporter_id && !$bug.doublon_id}
 
 
-				<div class="field state">
+				<div class="state">
 					<label for="state">{t}State{/t} :</label>
 					<select name="state">
 						<option {if $bug.state == "STANDBY"}selected{/if}> {t}STANDBY{/t}</option>
