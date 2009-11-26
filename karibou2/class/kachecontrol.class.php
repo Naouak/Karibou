@@ -157,10 +157,14 @@ class KacheControl {
 			return;
 		}
 
-		$sth = $this->db->prepare("DELETE FROM kache WHERE app LIKE :app AND args LIKE :args");
-		$sth->bindValue(":app", $app);
-		$sth->bindValue(":args", $args);
-		$sth->execute();
+		if($app != '%') {
+			$sth = $this->db->prepare("DELETE FROM kache WHERE app LIKE :app AND args LIKE :args");
+			$sth->bindValue(":app", $app);
+			$sth->bindValue(":args", $args);
+			$sth->execute();
+		} else {
+			$this->db->exec("TRUNCATE TABLE kache");
+		}
 	}
 
 	/**
