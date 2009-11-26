@@ -73,8 +73,10 @@ class KacheControl {
 					$sth->bindValue(":id", $etag);
 					$sth->execute();
 
+					$last = isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) ? $_SERVER['HTTP_IF_MODIFIED_SINCE'] : 0;
+
 					// Was it in cache ?
-					if(($row = $sth->fetch()) !== false) {
+					if(($row = $sth->fetch()) !== false && strtotime($last) >= $row['date']) {
 						self::reply304($etag, $row['date']);
 					} else {
 						list(, $infos) = $this->markAsCached();
@@ -87,7 +89,9 @@ class KacheControl {
 				// can just answer 304
 				list($present, $infos) = $this->getCacheInfo();
 
-				if($present) {
+				$last = $_SERVER['HTTP_IF_MODIFIED_SINCE'];
+
+				if($present && strtotime($last) >= $infos["date"]) {
 					self::replyNormal($infos["id"], $infos["date"]);
 				} else {
 					self::reply304($infos["id"], $infos["date"]);
