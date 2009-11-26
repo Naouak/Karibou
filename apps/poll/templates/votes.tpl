@@ -8,3 +8,6 @@
 </ul>
 <i>{$countVotes} ##VOTES##</i>
 </p>
+<div>
+	<a href="{kurl app='commentaires' id=$commentId}" class="lightbox lightbox-iframe">{commentbox id=$commentId} ##Comments##</a>
+</div>
