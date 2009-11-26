@@ -58,7 +58,7 @@ class MCPost extends FormModel
 
 				// Preums
 				if($message == "preums" or $message == "deuz" or $message == "troiz") {
-					$this->db->query("LOCK TABLES minichat_game WRITE, scores WRITE, minichat WRITE");
+					$this->db->query("LOCK TABLES minichat_game WRITE, scores WRITE, minichat WRITE, kache WRITE");
 
 					$res = array(
 						"preums" => false,
@@ -116,7 +116,7 @@ class MCPost extends FormModel
 
 				// Dernz
 				if($message == "dernz") {
-					$this->db->query("LOCK TABLES minichat WRITE, minichat_game WRITE, scores WRITE");
+					$this->db->query("LOCK TABLES minichat WRITE, minichat_game WRITE, scores WRITE, kache WRITE");
 
 					// Who did the last dernz ?
 					$sth = $this->db->prepare("SELECT id_auteur FROM minichat_game WHERE DATE(time) = DATE(NOW()) AND post = 'dernz' ORDER BY id DESC LIMIT 1");
