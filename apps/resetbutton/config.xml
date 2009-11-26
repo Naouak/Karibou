@@ -7,21 +7,24 @@
 	<load class="RBStats" file="class/RBStats.class.php" />
 	<load class="RBMyStats" file="class/RBMyStats.class.php" />
 	<load class="RBMini" file="class/RBMini.class.php" />
-	
+	<load class="RBTrojanRabbit" file="class/RBTrojanRabbit.class.php" />
+
 	<header app="header" view="empty" />
 	<footer app="footer" view="empty" />
-	
-	<view name="state" class="RBState" template="state.tpl" />
+
+	<view name="state" class="RBState" template="json.tpl" />
+	<view name="state_html" class="RBMini" template="state.tpl" />
 	<view name="stats" class="RBStats" template="stats.tpl" />
 	<view name="mystats" class="RBMyStats" template="mystats.tpl" />
 	<view name="mini" class="RBMini" template="mini.tpl" />
 	<view name="RBJS" template="rbjs.tpl" />
-	
+
 	<page name="stats" view="stats" />
-	
+
 	<page name="mystats" view="mystats" />
-	
+
 	<page name="state" view="state" />
+	<page name="state_html" view="state_html" />
 
 	<form action="reset" class="RBReset">
 		<redirect page="state" />

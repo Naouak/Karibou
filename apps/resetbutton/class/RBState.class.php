@@ -3,21 +3,15 @@
 class RBState extends Model {
 
 	public function build() {
-		$stmt = $this->db->prepare(" SELECT TIMEDIFF( NOW() , date) as hour, user
+		$stmt = $this->db->prepare("SELECT UNIX_TIMESTAMP(date) as hour, user
 				FROM resetbutton
 				ORDER BY date DESC
 				LIMIT 1 ");
 		$stmt->execute();
 		$temp = $stmt->fetch();
 
-		$this->assign("islogged", $this->currentUser->isLogged());
-
 		if($temp !== false) {
-			$this->assign("resethour",$temp['hour']);
-			$this->assign("lastresetby",$this->userFactory->prepareUserFromId(intval($temp['user'])));
+			$this->assign("json", new RBTrojanRabbit($temp["hour"], $this->userFactory->prepareUserFromId(intval($temp['user'])), $this->currentUser->isLogged(), $this->appList));
 		}
 	}
-
 }
-
-?>

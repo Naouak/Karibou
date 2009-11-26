@@ -6,5 +6,5 @@
 <input type="button" class="default2-resetbutton-button" id="RBbutton" onclick="$app(this).resetButton();" value="##RESET##" />
 {/if}
 
-##LASTRESETBY## {userlink user=$lastresetby showpicture=$islogged}
+##LASTRESETBY## <span id="lastresetby">{userlink user=$lastresetby showpicture=$islogged}</span>
 </div>
