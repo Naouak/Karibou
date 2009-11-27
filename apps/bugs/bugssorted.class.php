@@ -13,10 +13,10 @@ class BugsSorted extends Model
 {
 	public function build()
 	{
-		if($this->args['sort'] == "browser" || $this->args['sort'] == "module_id" || $this->args['sort'] == "doublon_id" || $this->args['sort'] == "state" || $this->args['sort'] == "type" || $this->args['sort'] == "bug" || $this->args['sort'] == "summary" || $this->args['sort'] == "reporter_id") {
+		if( $this->args['sort'] == "state" || $this->args['sort'] == "type" || $this->args['sort'] == "summary" ) {
 			$sort = "b.".$this->args['sort'];
 		} else {
-			$sort = "b.id";
+			$sort = "b.module_id";
 		}
 		
 		
@@ -34,28 +34,22 @@ class BugsSorted extends Model
 			$end = $start + 30;
 		}
 
-		$sql = $this->db->prepare("SELECT b.id, b.reporter_id, b.summary, b.bug, b.browser, b.module_id, b.doublon_id, b.state, b.type, bugs_module.name FROM bugs_bugs as b LEFT JOIN bugs_module ON bugs_module.id = b.module_id ORDER BY $sort $order LIMIT $start , $end");
+		$sql = $this->db->prepare("SELECT b.id, b.summary, b.module_id, b.state, b.type, bugs_module.name FROM bugs_bugs as b LEFT JOIN bugs_module ON bugs_module.id = b.module_id ORDER BY $sort $order LIMIT $start , $end");
 		
 				
 		try {
 			$sql->execute();
 			$bugs = array();
-			//echo("<br /><br /><br />");
 			
 			while($bugRow = $sql->fetch(PDO::FETCH_ASSOC))
 			{
-				if ($user["object"] =  $this->userFactory->prepareUserFromId($bugRow['reporter_id']))
-					$bug['author']=$user;
+				if ($user["object"] =  $this->userFactory->prepareUserFromId($bugRow['id']))
 					$bug['id']=$bugRow['id'];
 					$bug['summary']=$bugRow['summary'];
-					$bug['bug']=$bugRow['bug'];
-					$bug['browser']=$bugRow['browser'];
 					$bug['module_id']=$bugRow['module_id'];
-					$bug['doublon_id']=$bugRow['doublon_id'];
 					$bug['state']=$bugRow['state'];
 					$bug['type']=$bugRow['type'];
 					$bug['module']=$bugRow['name'];
-					$bug['reporter']=$bugRow['reporter_id'];
 					$bugs[] = $bug;
 			}
 
@@ -78,10 +72,6 @@ class BugsSorted extends Model
 			$this->assign("sort",$sort);
 			$this->assign("order",$order);
 
-			/*echo("<br /><br /><br />");
-			print_r($bugs);
-			print_r($modules);*/
-			
 		} catch (PDOException $e) {
 			Debug::kill($e->getMessage());
 		}

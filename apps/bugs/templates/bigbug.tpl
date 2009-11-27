@@ -8,7 +8,7 @@
     <h2>{t}Bug List{/t}</h2>
     <div>
         <p>{t}Intro bug list description{/t}<p>
-        <p><a href="{kurl page="sort" sort="id" ascdescsort="1" numberpage="1"}">{t}Bug List{/t}</a></p>
+        <p><a href="{kurl page="sort" sort="module_id" ascdescsort="1" numberpage="1"}">{t}Bug List{/t}</a></p>
     </div>
 
     <h2>{t}Signal a bug{/t}</h2>

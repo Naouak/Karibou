@@ -3,6 +3,7 @@
     <ul>
         <li><a href="{kurl}">##Index##</a></li>
     </ul>
+
     <table>
         <caption>{t}Bug list{/t}</caption>
         <thead>
@@ -48,14 +49,14 @@
     <ul>
         {if $previous == 1}
             <li>
-                <a href='{kurl page="sort" sort="id" ascdescsort="1" numberpage="$previouspage"}'>
+                <a href='{kurl page="sort" sort="module_id" ascdescsort="1" numberpage="$previouspage"}'>
                     {t}Previous{/t}
                 </a>
             </li>
         {/if}
         {if $next == 1}
             <li>
-                <a href='{kurl page="sort" sort="id" ascdescsort="1" numberpage="$nextpage"}'>
+                <a href='{kurl page="sort" sort="module_id" ascdescsort="1" numberpage="$nextpage"}'>
                    {t}Next{/t}
                 </a>
             </li>
