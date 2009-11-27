@@ -45,6 +45,7 @@ class Commentaires extends Model {
 			$sqlu->bindValue(":id", $this->args["id"]);
 			$sqlu->bindValue(":user_id", $this->currentUser->getID());
 			$sqlu->execute();
+			KacheControl::instance()->renew("commentaires");
 		}
 	}
 }
