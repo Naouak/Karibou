@@ -39,8 +39,13 @@ class KacheControl {
 	 * if the content doesn't have to be generated.
 	 */
 	public function replyFor() {
-		if($GLOBALS["config"]["kache_disable"]) {
-			return;
+		if (isset($GLOBALS["config"]["kache_disable"]))
+			if ($GLOBALS["config"]["kache_disable"])
+				return;
+		try {
+			$this->db->exec("DELETE FROM kache WHERE `date` < (NOW() - INTERVAL 5 MINUTE)");
+		} catch (PDOException $e) {
+			// Do nothing...
 		}
 
 		if($_SERVER['REQUEST_METHOD'] === "GET" && $this->isCacheable()) {
@@ -157,9 +162,9 @@ class KacheControl {
 	 * @param string $args arguments of the page to purge, may contain SQL jokers '%'
 	 */
 	public function renew($app, $args = '%') {
-		if($GLOBALS["config"]["kache_disable"]) {
-			return;
-		}
+		if (isset($GLOBALS["config"]["kache_disable"]))
+			if($GLOBALS["config"]["kache_disable"])
+				return;
 
 		if($app != '%') {
 			$sth = $this->db->prepare("DELETE FROM kache WHERE app LIKE :app AND args LIKE :args");
