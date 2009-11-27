@@ -121,7 +121,7 @@
     border: 0px;
 }
 
-.commentaires-page-form textarea{
+.commentaires-page-form textarea {
     display: block;
     width: 90%;
     margin: 5px 5% 5px 5%;
@@ -135,6 +135,20 @@
     background: white;
 
     font-family:sans-serif;
-    
+}
 
+.commentaires-modify-textarea {
+    display: block;
+    width: 90%;
+    margin: 5px 5% 5px 5%;
+    height: 200px;
+    padding: 10px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    border: solid 2px #99ccff;
+    background: white;
+
+    font-family:sans-serif;
 }

@@ -20,6 +20,8 @@
 	<page name="modify" view="modify">
 		<argument name="id" class="NumberArgument" />
 		<argument name="parent" class="NumberArgument" />
+		<header app="header" view="minimal" />
+		<footer app="footer" view="minimal" />
 	</page>
 
 	<form action="postcomment" class="CommentairesAdd" >
