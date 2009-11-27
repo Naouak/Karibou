@@ -26,16 +26,16 @@ class FlashMailSend extends FormModel
 				{
 					$stmt = $this->db->prepare($qry);
 					$stmt->bindValue(":userId", $this->currentUser->getId());
-					$stmt->bindValue(":toUserId", $_POST["to_user_id"]);
-					$stmt->bindValue(":message", $_POST["message"]);
-					$stmt->bindValue(":omsgid", $_POST["omsgid"]);
+					$stmt->bindValue(":toUserId", filter_input(INPUT_POST, "to_user_id", FILTER_VALIDATE_INT));
+					$stmt->bindValue(":message", filter_input(INPUT_POST, "message"));
+					$stmt->bindValue(":omsgid", filter_input(INPUT_POST, "omsgid", FILTER_VALIDATE_INT));
 					$stmt->execute();
 					if (isset($_POST["omsgid"]) && $_POST["omsgid"] != "")
 					{
 						$qry = "UPDATE flashmail SET `read` = 1 WHERE to_user_id=:toUserId AND id=:id";
 						$stmt = $this->db->prepare($qry);
 						$stmt->bindValue(":toUserId", $this->currentUser->getId());
-						$stmt->bindValue(":id", $_POST["omsgid"]);
+						$stmt->bindValue(":id", filter_input(INPUT_POST, "omsgid", FILTER_VALIDATE_INT));
 						$stmt->execute();
 					}
 				}
