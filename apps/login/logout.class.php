@@ -18,6 +18,7 @@ class Logout extends FormModel
 {
 	function build()
 	{
+		KacheControl::instance()->renew('%');
 		$this->eventManager->sendEvent("beforelogout");
 		$this->eventManager->sendEvent("logout");
 		$this->eventManager->performActions();
