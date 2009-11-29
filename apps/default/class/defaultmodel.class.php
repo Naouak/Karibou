@@ -11,7 +11,6 @@ class DefaultModel extends Model {
 		ksort($appArray);
 		$this->assign("apps", $appArray);
 		$this->assign("karibou_base_url", $GLOBALS['config']['base_url']);
-		$this->assign("loggedUser", $this->currentUser->isLogged()); 
 		if ($this->currentUser->isLogged())
 		{
 			$keychain = KeyChainFactory::getKeyChain($this->currentUser);

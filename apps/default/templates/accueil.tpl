@@ -100,7 +100,7 @@ function toggleAddAppList() {ldelim}
 {include file=rsa.tpl}
 
 </script>
-{if $loggedUser}
+{if $islogged}
 <div class="default2_customize">
 
 <a href="" onclick="customizeTab(); return false;">##Customize##</a><input id="homeAppAddButton" type="button" onclick="toggleAddAppList(); return false;" value="##Add an application##" /><br />
@@ -138,21 +138,21 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 {/if}
 <br />
 <div class="default2-tabs">
-{if $loggedUser}
+{if $islogged}
 <div class="default2-tabs-modify">
     
     <input type="button" class="default2-tabs-removetab" onclick="karibou.closeCurrentTab();" value="##Remove Current tab##" />
 
 </div>
 {/if}
-<ul id="tabsBar">{if $loggedUser}<li id="default2-addtabbutton">
+<ul id="tabsBar">{if $islogged}<li id="default2-addtabbutton">
     <form id="default2-addtabbutton-formm" method="post" action="" onsubmit="default2_tab_submit();">
 	<label onclick="setTabText();" for="default2-addtabbutton-form" id="default2-addtabbutton-label">##Add a tab##</label>
 	<input type="text" id="default2-addtabbutton-form" value=""/>
     </form>
     <div id="default2-addtabbutton-hint">##Insert Tab name then submit with enter##</div>
 </li>{/if}</ul>
-{if $loggedUser}
+{if $islogged}
 {literal}
 <script>
     <!--
