@@ -12,11 +12,12 @@
 class CommentairesAdd extends FormModel {
     public function build() {
         $comment = filter_input(INPUT_POST,"comment",FILTER_SANITIZE_SPECIAL_CHARS);
+	$comment = str_replace(array('&#13;', '&#10;'), array("\r", "\n"), $comment);
         $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_NUMBER_INT);
         $stmt = $this->db->prepare("INSERT INTO comment (`user`, `key_id`,`comment`) VALUES (:user,:id,:comment) ");
         $stmt->bindValue(":user",$this->currentUser->getId());
         $stmt->bindValue(":id",$id);
-        $stmt->bindValue(":comment",nl2br($comment));
+        $stmt->bindValue(":comment", $comment);
         $stmt->execute();
     }
 }
