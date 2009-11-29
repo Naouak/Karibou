@@ -61,6 +61,7 @@ function positiontip (e) {
         } else {
             hintObject.style.top = curY + offsetypoint + "px";
         }
+		hintObject.style.display = "block";
         hintObject.style.visibility = "visible";
     } else {
         hidehint();
@@ -70,6 +71,7 @@ function positiontip (e) {
 function hidehint () {
     if (hintObject) {
         hintEnabled = false;
+		hintObject.style.display = "none";
         hintObject.style.visibility = "hidden";
         hintObject.style.myClass = 'hint';
     }
