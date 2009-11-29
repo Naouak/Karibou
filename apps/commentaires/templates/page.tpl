@@ -42,7 +42,7 @@
                         {userlink user=$oldcomment.user showpicture=true}
                     </li>
                     <li class="commentaires-page-commentercomment">
-                        {$oldcomment.comment|wordwrap:34:" ":true|nl2br}
+                        {$oldcomment.comment|nl2br}
                     </li>
 					{if $isadmin || $currentuser == $oldcomment.user->getId()}
 					<li>
