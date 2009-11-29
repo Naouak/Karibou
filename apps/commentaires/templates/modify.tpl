@@ -6,4 +6,5 @@
 	<textarea class="commentaires-modify-textarea" name="comment">{$tomodify.comment}</textarea>
 	</fieldset>
 	<input type="submit" value="##MODIFY##">
+	<input type="submit" value="##CANCEL##" onclick="javascript:history.go(-1);">
 </form>
