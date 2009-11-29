@@ -148,7 +148,7 @@ class Karibou
 	function build()
 	{
 		ExecutionTimer::getRef()->start("building Karibou");
-		
+
 		// Récupération de l'utilisateur courant
 		$this->userFactory = UserFactory::instance();
 		$this->currentUser = $this->userFactory->getCurrentUser();
@@ -157,7 +157,7 @@ class Karibou
 		$this->baseUrl = BaseURL :: getRef();
 		$this->baseUrl->setCurrentUser($this->currentUser);
 		$this->baseUrl->parseURL($_SERVER['REQUEST_URI']);
-		
+
 		try {
 			$this->connectDB();
 			KeyChainFactory::$db = $this->db;
@@ -167,7 +167,7 @@ class Karibou
 			Debug::kill($e->getMessage());
 			die("Could not connect to database." . "\n". "Please check the database name, host, login and password.");
 		}
-		
+
 		// Contrôle du cache
 		$kc = KacheControl::instance();
 		$kc->replyFor();
@@ -290,37 +290,36 @@ class Karibou
 
 	/**
 	 * Connexion à la base de données
-		 */
-		protected function connectDB()
+	 */
+	protected function connectDB()
+	{
+		//Prise en compte des espaces (si la variable de base de données est initialisée)
+		if (isset($GLOBALS['config']['current_space']['bdd']['appsdb']))
 		{
-			//Prise en compte des espaces (si la variable de base de données est initialisée)
-			if (isset($GLOBALS['config']['current_space']['bdd']['appsdb']))
-			{
-				$dsn = 'mysql:dbname='.$GLOBALS['config']['current_space']['bdd']['appsdb'].';host=localhost';
-			}
-			else
-			{
-				$dsn = $GLOBALS['config']['bdd']['dsn'];
-			}
-
-			Database::initialize(
-				$dsn, 
-				$GLOBALS['config']['bdd']["username"], 
-				$GLOBALS['config']['bdd']["password"]);
-			$this->db = Database::instance();
-			if (isset($GLOBALS['config']['bdd']['startupQueries'])) {
-				foreach ($GLOBALS['config']['bdd']['startupQueries'] as $query) {
-					$this->db->exec($query);
-				}
+			$dsn = 'mysql:dbname='.$GLOBALS['config']['current_space']['bdd']['appsdb'].';host=localhost';
+		}
+		else
+		{
+			$dsn = $GLOBALS['config']['bdd']['dsn'];
+		}
+		Database::initialize(
+			$dsn, 
+			$GLOBALS['config']['bdd']["username"], 
+			$GLOBALS['config']['bdd']["password"]);
+		$this->db = Database::instance();
+		if (isset($GLOBALS['config']['bdd']['startupQueries'])) {
+			foreach ($GLOBALS['config']['bdd']['startupQueries'] as $query) {
+				$this->db->exec($query);
 			}
 		}
+	}
 
-		public function display()
-		{
-			ExecutionTimer::getRef()->start("display Karibou");
-			$this->app->display();
-			ExecutionTimer::getRef()->stop("display Karibou");
-		}
+	public function display()
+	{
+		ExecutionTimer::getRef()->start("display Karibou");
+		$this->app->display();
+		ExecutionTimer::getRef()->stop("display Karibou");
+	}
 
 }
 
