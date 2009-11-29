@@ -21,25 +21,10 @@ function smarty_function_kurl($params, &$smarty)
  */
 function kurl($params , $appList = FALSE)
 {
-	//Gestion des templates PHP
 	if ($appList === FALSE)
 	{
-		//Cas du template PHP
-		if (isset($GLOBALS['phpTemplateCurrentAppList'], $GLOBALS['phpTemplateCurrentAppName']))
-		{
-			$appList = $GLOBALS['phpTemplateCurrentAppList'];
-			$params = array_merge( array("app" => $GLOBALS['phpTemplateCurrentAppName']), $params);
-		}
-		else
-		{
-			Debug::kill('Erreur : appList n\'est pas initialisé (cas du template PHP).');
-		}
+		Debug::kill('Error : appList is not set.');
 	}
-	else
-	{
-		//Cas d'un template TPL (Smarty) où le $appList est déjà chargé
-	}
-
 
 	$app = "";
 	$page = "";

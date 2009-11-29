@@ -1,13 +1,14 @@
 <?php
 /**
  * @copyright 2005 Antoine Leclercq <http://antoine.leclercq.netcv.org>
+ * @copyright 2009 Pierre Ducroquet <pinaraf@gmail.com>
  *
  * @license http://www.gnu.org/licenses/lgpl.html Lesser GNU Public License
  * See the enclosed file COPYING for license information (LGPL).
  * 
  * @package framework
  **/
- 
+
 
 function smarty_function_userlink($params, &$smarty)
 {
@@ -17,26 +18,10 @@ function smarty_function_userlink($params, &$smarty)
 
 function userlink($params , $appList = FALSE)
 {
-
-	//Gestion des templates PHP
 	if ($appList === FALSE)
 	{
-		//Cas du template PHP
-		if (isset($GLOBALS['phpTemplateCurrentAppList'], $GLOBALS['phpTemplateCurrentAppName']))
-		{
-			$appList = $GLOBALS['phpTemplateCurrentAppList'];
-			$params = array_merge( array("app" => $GLOBALS['phpTemplateCurrentAppName']), $params);
-		}
-		else
-		{
-			Debug::kill('Erreur : appList n\'est pas initialis� (cas du template PHP).');
-		}
+		Debug::kill('Error : appList is not set.');
 	}
-	else
-	{
-		//Cas d'un template TPL (Smarty) o� le $appList est d�j� charg�
-	}
-
 
 	$userlink = "";
 
@@ -45,12 +30,14 @@ function userlink($params , $appList = FALSE)
 	{
 		if (isset($params["user"]))
 		{
- 			$user = $params["user"];
- 			
+			if ((!isset($params['showdisplayname'])) && (!isset($params['showfullname'])))
+				$params['showdisplayname'] = true;
+			$user = $params["user"];
+
 			if ( is_object($user) && $user->getLogin() )
 			{
- 				$firstname = $user->getFirstName();
-	 			$lastname = $user->getLastName();
+				$firstname = $user->getFirstName();
+				$lastname = $user->getLastName();
 
 				if ( ($firstname != "") && ($lastname != "" ) )
 				{
@@ -89,22 +76,27 @@ function userlink($params , $appList = FALSE)
 					}
 					$userlink .= "</span>','hint_profile');\" onMouseout=\"hidehint()\"";
 				}
-				if (isset($params["showfullname"]) && ($params["showfullname"] === TRUE) )
-					$userlink .= ">" . $fullName . "</a>";
-				else
-					$userlink .= ">".$user->getDisplayName()."</a>";
+				$displayedName = "";
+				if (isset($params['showdisplayname']) && ($params['showdisplayname'] == true))
+					$displayedName = $user->getDisplayName();
+				if ((isset($params["showfullname"]) && ($params["showfullname"] === TRUE) ) && ($displayedName != $fullName)) {
+					if ($displayedName != "")
+						$displayedName = $displayedName . " / ";
+					$displayedName = $displayedName . $fullName;
+				}
+				$userlink .= ">$displayedName</a>";
 			}
 			else
 			{
 				$userlink .= "?";
 			}
-    	}
+		}
 	}
 	else
-   {
-        Debug::kill("Array needed in userlink");
-   }
-    
+	{
+		Debug::kill("Array needed in userlink");
+	}
+
 	return $userlink;
 }
 
