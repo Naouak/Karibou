@@ -61,7 +61,7 @@ class pictures extends AlbumBase {
       
         }
 
-	public function getTags()
+	public function getTags() {
     }
     
 

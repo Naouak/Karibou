@@ -31,6 +31,7 @@
         {$content}
     </div>
     {/if}
+	{if count($existing)!=0}
     <div class="commentaires-page-comments">
         <h2 class="commentaires-page-commentstitle">##Comments##</h2>
         <ul>
@@ -55,6 +56,7 @@
             {/foreach}
         </ul>
     </div>
+	{/if}
 
     <div class="commentaires-page-form">
         <form action='{kurl action="postcomment"}' method="POST">

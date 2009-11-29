@@ -42,9 +42,18 @@ class AddContainerForm extends PhotosFormModel {
 		
 		$id = $this->db->lastInsertId();
 
-		if ($id != 0)
-			$this->insertNewTags($tags,$type,$id);
+		//we get all tags from parent to insert them for the new child
+		$sql = $this->db->prepare("SELECT id_tag FROM pictures_album_tagged AS a WHERE id_album=:id");
+		$sql->bindValue(":id",$parent);
+		$sql->execute();
+		$ids = $sql->fetchAll();
 
+		
+
+		if ($id != 0){
+			$this->insertNewTags($tags,$type,$id);
+			$this->insertNewTagsFromId($ids,$type,$id);
+		}
 		
 
 		// this permits to Redirect to the page written in the config.xml with this argument after the submit

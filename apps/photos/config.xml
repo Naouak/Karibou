@@ -20,9 +20,9 @@
     <load class="[arguments]/AnyCharArgument" />
     <load class="[arguments]/NumberArgument" />
 
-    <load class="pictures" file="class/photos.class.php" />
-    <load class="album" file="class/album.class.php" />
-    <load class="carton" file="class/carton.class.php" />
+	<load class="pictures" file="class/photos.class.php" />
+	<load class="album" file="class/album.class.php" />
+	<load class="carton" file="class/carton.class.php" />
 	<!-- AlbumBase is a class which implement functions for album and carton -->
     <load class="AlbumBase" file="class/base.class.php" />
 	<!-- containerFactory is a singleton, this have a function who load carton or album in function of the Id -->

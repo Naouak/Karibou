@@ -21,10 +21,11 @@ class photosAlbum extends Model {
 		foreach($pictures as $picture) {
 			$objpict = new pictures($picture["id"]);
 //                    if ($objpict->can("read")){
-			$array_pict[]["id"] = $objpict->getId();
-			$array_pict[]["name"] = $objpict->getName();
-			$array_pict[]["date"] = $objpict->getDate();
-			$array_pict[]["path"] = $objpict->getFileName();
+			$pict["id"] = $objpict->getId();
+			$pict["name"] = $objpict->getName();
+			$pict["date"] = $objpict->getDate();
+			$pict["path"] = $objpict->getFileName();
+			$array_pict[] = $pict;
   //                }
 		}
 		$this->assign("pictures",$array_pict);
