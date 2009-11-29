@@ -22,12 +22,6 @@ class KApp
 	protected $name;
 
 	/**
-	 * titre de l appli instanciée
-	 * @var String
-	 */
-	protected $titre			= 'appli_abstract';
-
-	/**
 	 * @var int
 	 */
 	protected $permission;
@@ -57,8 +51,6 @@ class KApp
 	 */
 	protected $viewList;
 	protected $appList;
-
-	protected $html; //Ajouté lors de la descente du model factory et de la suppression des versions
 
 	/**
 	 * @var BOOL
