@@ -26,7 +26,7 @@ class KApp
 	 * @var String
 	 */
 	protected $titre			= 'appli_abstract';
-	
+
 	/**
 	 * @var int
 	 */
@@ -36,12 +36,12 @@ class KApp
 	 * @var PDO
 	 */
 	protected $db;
-	
+
 	/**
 	 * @var UtilisateurCourant
 	 */
 	protected $currentUser;
-	
+
 	/**
 	 * @var UserFactory
 	 */
@@ -57,16 +57,16 @@ class KApp
 	 */
 	protected $viewList;
 	protected $appList;
-	
+
 	protected $html; //Ajouté lors de la descente du model factory et de la suppression des versions
 
 	/**
 	 * @var BOOL
 	 */
 	protected $erreur = FALSE;
-	
+
 	protected $templatedir;
-	
+
 	protected $eventManager;
 	protected $messageManager;
 	protected $xmlconfig;
@@ -96,17 +96,17 @@ class KApp
 		EventManager $eventManager,
 		MessageManager $messageManager,
 		KSmarty $smarty
-		 )
+	)
 	{
-//		Debug::display("Building KApp ".$name." ($permission)");
+		//		Debug::display("Building KApp ".$name." ($permission)");
 		$this->name = $name;
 		$this->db = $db;
 		$this->currentUser = $userFactory->getCurrentUser();
 		$this->userFactory = $userFactory;
 		$this->appList = $appList;
-		
+
 		$this->relativeDir = dirname($configfile);
-		
+
 		$this->messageManager = $messageManager;
 
 		$this->viewList = array();
@@ -116,7 +116,7 @@ class KApp
 
 		$this->modelFactory = new ModelFactory($modelbuilder, $this->db, $this->userFactory, 
 			$appList, $this->hookManager, $this->eventManager, $this->messageManager, $smarty);
-		
+
 		$this->permission = $permission;
 		//Lecture des configs
 		$this->xmlconfig = new XMLCache( KARIBOU_CACHE_DIR.'/'.$this->name );
@@ -128,11 +128,11 @@ class KApp
 	{
 		ClassLoader::unloadContext($this->name);
 	}
-	
+
 	protected function getArgArray()
 	{
 		if( $this->argArray ) return $this->argArray;
-		
+
 		$xml = $this->xmlconfig->getXML();
 		foreach( $xml->page as $page )
 		{
@@ -192,7 +192,7 @@ class KApp
 		{
 			$this->templatedir = $this->relativeDir.'/templates/';
 		}
-		
+
 		$this->configViewList = array();
 		if( isset($xml->view) )
 		{
@@ -219,7 +219,7 @@ class KApp
 				}
 			}
 		}
-		
+
 		if($this->permission == _DEFAULT_)
 		{
 			if(isset($xml->permissions))
@@ -240,15 +240,15 @@ class KApp
 		{
 			$this->config = $this->readConfigTree($xml->config[0]);
 		}
-        if (isset($xml->hook))
-        {
-            foreach ($xml->hook as $hookXML)
-            {
-                $this->addView($hookXML["view"], $hookXML["name"]);
-            }
-        }
+		if (isset($xml->hook))
+		{
+			foreach ($xml->hook as $hookXML)
+			{
+				$this->addView($hookXML["view"], $hookXML["name"]);
+			}
+		}
 	}
-	
+
 	function readConfigTree ($tree)
 	{
 		$varb = array();
@@ -289,7 +289,7 @@ class KApp
 					}
 				}
 			}
-			
+
 			if (isset($tree->value))
 			{
 				if (is_array($tree->value) && count($tree->value)>0 )
@@ -335,7 +335,7 @@ class KApp
 			{
 				$var = array_merge($vara, $varc);
 			}
-			
+
 		}
 		elseif (isset($vara))
 		{
@@ -348,7 +348,7 @@ class KApp
 
 		return $var;
 	}
-	
+
 	/**
 	 * Fonction pour ajouter une vue à la liste à construire
 	 */
@@ -359,10 +359,10 @@ class KApp
 		{
 			if( !isset($this->configViewList[$name]) ) return false;
 			$configview =  $this->configViewList[$name];
-			
+
 			if ((!isset($configview['class'])) || (empty($configview['class'])))
 				$configview['class'] = 'EmptyModel';
-			
+
 			Debug::display("Adding new view : ".$name." (".$configview['class'].") => ".$hook);
 
 			$model = $this->modelFactory->getModel($configview['class'],
@@ -378,7 +378,7 @@ class KApp
 		$err = $this->appList->getApp('error');
 		return $err->addView('noaccess', $hook);
 	}
-	
+
 	/**
 	 * Construction d'une Page
 	 */
@@ -391,7 +391,7 @@ class KApp
 			//Debug::kill($urlParser);
 			return false;
 		}
-		
+
 		// on va chercher dans la config de l'appli instanciée si elle
 		// utilise la class Header par défaut ou une autre classe
 		if( $header = $page->getHeader() )
@@ -405,7 +405,7 @@ class KApp
 			$app->addView($footer['view'], "footer");
 		}
 		$this->contentType = $page->getContentType();
-		
+
 		if( ! $this->addView($page->getViewName(), "default", $page->getArguments()) )
 		{
 			Debug::kill("Impossible de creer la vue : ".$page->getViewName());
@@ -417,12 +417,12 @@ class KApp
 	{
 		// We'll send the content type
 		header("Content-Type: ".$this->contentType);
-	
+
 		$this->hookManager->display("header");
 		$this->hookManager->display("default");
 		$this->hookManager->display("footer");
 	}
-	
+
 	public function doForm(URLParser $urlParser)
 	{
 		if( $this->permission > _NO_ACCESS_ )
