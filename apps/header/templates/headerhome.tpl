@@ -41,7 +41,7 @@
 </head>
 <body>
 	<div id="container">
-		<h1><a href="{kurl app="" page=""}#" id="logo"><span>Karibou</span></a></h1>
+		<h1 class="pagetitle"><a href="{kurl app="" page=""}#" id="logo"><span>Karibou</span></a></h1>
 		<div id="main" class="nonav">
 			<div id="content1">
 				<div id="content">
