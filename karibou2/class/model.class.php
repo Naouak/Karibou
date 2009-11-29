@@ -84,6 +84,12 @@ abstract class Model
 	 */
 	protected $messageManager;
 
+	/*
+	 * We will store the result of the build function to allow template-less models and views.
+	 * It is useful for JSON outputs for instance.
+	 */
+	protected $rawResult = FALSE;
+
 	function __construct(
 		PDO $p_db,
 		$kapp,
@@ -119,7 +125,7 @@ abstract class Model
 
 		$this->smarty = $smarty;
 
-		$this->vars = array('islogged' => $this->currentUser->isLogged(), 'currentuser' => $this->currentUser);
+		$this->vars = array('islogged' => $this->currentUser->isLogged(), 'currentuser' => $this->currentUser, 'karibou' => $GLOBALS['config']);
 	}
 	
 	protected function getConfig()
@@ -150,10 +156,12 @@ abstract class Model
 	function display($template)
 	{
 		ExecutionTimer::getRef()->start("Display Model (".$template.") ".$this->appname."(".get_class($this).")");
-		
-		$this->assign("karibou", $GLOBALS["config"]);
 
-		if (preg_match('/\.tpl$/i',$template))
+		if ($template == "")
+		{
+			echo $this->rawResult;
+		}
+		else if (preg_match('/\.tpl$/i',$template))
 		{
 			ExecutionTimer::getRef()->start("Config Smarty");
 			// problème avec les hook, smarty appelé recursivement efface des valeurs
@@ -184,6 +192,14 @@ abstract class Model
 
 	public function getPermission() {
 		return $this->permission;
+	}
+
+	public function setRawResult($rawResult) {
+		$this->rawResult = $rawResult;
+	}
+
+	public function getRawResult() {
+		return $this->rawResult;
 	}
 }
 

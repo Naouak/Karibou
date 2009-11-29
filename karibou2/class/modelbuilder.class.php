@@ -28,7 +28,7 @@ class ModelBuilder extends ObjectList
 		{
 			Debug::display("Building app: ".$model->appname." (model: ".get_class($model).")");
 			ExecutionTimer::getRef()->start("Building Model ".$model->appname." (".get_class($model).")");
-			$model->build();
+			$model->setRawResult($model->build());
 			ExecutionTimer::getRef()->stop("Building Model ".$model->appname." (".get_class($model).")");
 		}
 	}
