@@ -32,6 +32,10 @@ class AppJSView extends Model
 				$this->assign("configFields", "");
 			}
 			$this->assign("appName", $miniapp->getAppName());
+			ThemeManager::instance()->flushApplications();
+			ThemeManager::instance()->addApplication($miniapp->getAppName());
+			$this->assign("base_url", $GLOBALS["config"]["base_url"]);
+			$this->assign("cssfiles", ThemeManager::instance()->getCSSList());
 		}
 	}
 }

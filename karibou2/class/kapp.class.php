@@ -116,6 +116,8 @@ class KApp
 		$this->xmlconfig = new XMLCache( KARIBOU_CACHE_DIR.'/'.$this->name );
 		$this->xmlconfig->loadFile( $configfile );
 		$this->readConfig( $this->xmlconfig->getXML() );
+
+		ThemeManager::instance()->addApplication($name);
 	}
 
 	function __destruct()

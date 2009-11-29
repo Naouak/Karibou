@@ -1,0 +1,284 @@
+/*****************/
+/*	Appli News    */
+/*****************/
+
+/*
+	MENU
+*/
+
+#news {
+}
+
+.aNews, .aSmallNews {
+	border: 1px solid #dedede;
+	padding: 4px;
+	margin: 5px;
+}
+
+.aNews.one, .aSmallNews.one {
+	background-color: #efefef;
+}
+
+.aNews.two, .aSmallNews.two {
+	background-color: #efefff;
+}
+
+
+.aNews .time {
+	float: right;
+	padding: 4px;
+	font-style: italic;
+	text-align: right;
+	background: #efefef;
+}
+
+.addlink {
+	text-align: center;
+}
+
+.addlink a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.archivelink {
+	text-align: center;
+}
+
+.archivelink a {
+	text-decoration: none;
+}
+
+/* A Small News */
+
+.aSmallNews .title {
+	font-weight: bold;
+	display: block;
+}
+
+.aSmallNews .author {
+	display: inline;
+	font-style: italic;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.aSmallNews .time {
+	display: inline;
+	font-style: italic;
+	color: #acacac;
+}
+
+.aSmallNews a {
+	text-decoration: none;
+}
+
+.aNews h1 {
+
+	margin: 0px;
+	padding: 4px 0px 4px 5px;
+
+	background: #efefef;
+
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.aNews .author {
+	float: right;
+	
+	padding: 0px 10px 5px 10px;
+	margin: 0px 0px 5px 5px;
+	
+	text-align: right;
+
+	background: #efefef;
+}
+
+.aNews .content {
+	padding: 5px 5px 2px 5px;
+}
+
+.aNews .commentsHidden {
+	padding: 4px 0px 4px 0px;
+	margin: 0px;
+	text-align: center;
+	background: #efefef;
+}
+
+.aNews .commentsShowed {
+	padding: 4px 0px 4px 0px;
+	margin: 0px;
+	text-align: center;
+	background: #efefef;
+}
+
+.aNews form .controls {
+	width: 100%;
+	font-size: 70%;
+	margin: 3px;
+}
+
+.aNews form .controls a {
+	color: #aaaaaa;
+}
+
+.aNews .controls form input {
+	float: right;
+	color: #555577;
+	background: #eeeeff;
+	border: 1px solid #665577;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+	font-size: 8px;
+}
+/* New News Form */
+.newNewsForm {
+	border: 0px solid #aaaaaa;
+	padding: 0px;
+	margin: 5px;
+}
+
+.newNewsForm form {
+	padding: 10px 20px 20px 30px;
+}
+
+.newNewsForm label {
+	font-weight: bold;
+	width: 150px;
+	display: block;
+	margin: 0px;
+}
+
+.newNewsForm .field input, .newNewsForm .field textarea, .newNewsForm .field select {
+	padding: 4px;
+	margin: 0px;
+	border: 1px solid #acacbb;
+	background: #efefef;
+	width: 800px;
+}
+
+.newNewsForm .field input {
+	height: 28px;
+	font-weight: bold;
+}
+
+.newNewsForm .field {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.newNewsForm form .button {
+	text-align: center;
+}
+
+.newNewsForm form .button input {
+	padding: 4px;
+	font-weight: bold;	
+	background: #666699;
+	border: 2px solid #9999bb;
+	color: #ffffff;
+}
+
+/* New News Comment Form */
+.newNewsCommentForm {
+	padding: 10px 20px 20px 30px;
+	border: 1px dashed #acacac;
+	margin: 20px;
+}
+
+.newNewsCommentForm h2 {
+	padding: 5px;
+	margin: 0px 0px 10px 0px;
+	
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.newNewsCommentForm form {
+	line-height: 30px;
+}
+
+.newNewsCommentForm form label {
+	font-weight: bold;
+	width: 150px;
+	display: block;
+	margin: 0px;
+}
+
+.newNewsCommentForm form input, .newNewsCommentForm form textarea {
+	padding: 4px;
+	margin: 0px;
+	margin-bottom: 10px;
+	border: 1px solid #acacbb;
+	background: #efefef;
+	width: 750px;
+}
+
+#content .newNewsCommentForm h3 {
+	border: 0px;
+	font-weight: bold;
+}
+
+.newNewsCommentForm form input {
+	font-weight: bold;
+}
+
+.newNewsCommentForm form input.button {
+	padding: 4px;
+	font-weight: bold;	
+	background: #666699;
+	border: 2px solid #9999bb;
+	color: #ffffff;
+	width: auto;
+	margin: 0px;
+	margin-left: 200px;
+}
+
+/* aComment */
+.aComment {
+	border: 1px dashed #acacac;
+	margin: 5px;
+	padding: 3px;
+}
+
+.aComment .title {
+	font-weight: bold;
+}
+
+.aComment .content {
+	font-style: italic;
+}
+
+.aComment .author {
+	float: right;
+	background: transparent;
+	font-size: 80%;
+}
+
+.aComment .time {
+	float: none;
+	text-align: left;
+	color: #acacac;
+	background: transparent;
+	margin: 0px;
+	padding: 0px;
+}
+
+.aComment .controls {
+	float: right;
+	font-size: 70%;
+	margin: 0px;
+}
+
+.aComment .controls a {
+	color: #aaaaaa;
+}
+
+.clear {
+		clear: both;
+		border: 0px;
+		margin: 0px;
+		padding: 0px;
+		background: transparent;
+}

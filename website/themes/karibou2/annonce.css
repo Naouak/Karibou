@@ -1,0 +1,18 @@
+#annoncecss{
+background-color: #efefef;
+margin : 5px;
+padding : 3px ; 
+}
+
+
+#annoncecsstext{
+font-weight : bold;
+}
+
+#annoncecssprix{
+font-weight : bold;
+}
+
+#annoncecssdate{
+font-weight : bold;
+}

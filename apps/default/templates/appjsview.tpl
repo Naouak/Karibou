@@ -1,4 +1,6 @@
-
+{foreach from=$cssfiles item=cssfile}
+karibou.loadCSS("{$base_url}/{$cssfile}", document);
+{/foreach}
 {if ($hasJS)}
 {hook name=JS_$appName}
 {else}

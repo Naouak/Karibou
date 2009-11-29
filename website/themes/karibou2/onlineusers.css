@@ -1,0 +1,52 @@
+#onlineusers ul {
+	margin: 2px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+#onlineusers li {
+	line-height: 20px;
+}
+
+li a.userlink {
+	padding-left: 14px;
+	
+	background-image: url(images/onlineusers/buddyicon.png);
+	background-repeat: no-repeat;
+	background-position: 0px 5px;
+	
+	padding-top: 7px;
+	padding-bottom: 2px;
+	
+	font-weight: bold;
+	text-decoration: none;
+}
+
+li a.userlink_away {
+	opacity: 0.5;
+	padding-left: 14px;
+	
+	background-image: url(images/onlineusers/buddyiconaway.png);
+	background-repeat: no-repeat;
+	background-position: 0px 5px;
+	
+	padding-top: 7px;
+	padding-bottom: 2px;
+	
+	font-weight: bold;
+	text-decoration: none;
+}
+
+li a.userlink_noicon {
+	padding-left: 2px;
+	
+	padding-top: 7px;
+	padding-bottom: 2px;
+	
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.default2-onlineusers-away{
+	
+}

@@ -1,0 +1,101 @@
+.login {
+}
+
+.login form {
+	text-align: center;
+}
+
+.login input {
+	border: 1px solid #acaccd;
+	background-color: #efefef;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.login label {
+	font-weight: bold;
+	line-height: 25px;
+	padding-bottom: 10px;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+.login label.username {
+	padding-left: 20px;
+	background-image: url(images/onlineusers/buddyicon.png);
+}
+.login label.password {
+	padding-left: 25px;
+	background-image: url(images/login/key20.png);
+}
+
+.login input.button {
+	border: 2px solid #cfcfcf;
+	background-color: #efefef;
+	color: #444488;
+	font-weight: bold;
+	margin: 5px;
+	cursor: pointer;
+}
+
+.login .register {
+	text-align: center;
+	font-weight: bold;
+	margin: 5px;
+}
+
+.login .register a {
+	text-decoration: none;
+}
+
+.login .changepassword, .login .logout,  .login .editprofile, .login .configureemailfw {
+	text-align: center;
+	margin-top: 13px;
+	margin-bottom: 13px;
+}
+
+.login .changepassword a, .login .logout a, .login .editprofile a, .login .configureemailfw a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.login .changepassword a {
+	padding-left: 25px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-image: url(images/login/keyrenew20.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+.login .configureemailfw a {
+	padding-left: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-image: url(images/login/fwenveloppe.png);
+	background-repeat: no-repeat;
+	background-position: 0 5px;
+}
+
+.login .editprofile a {
+	padding-left: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-image: url(images/onlineusers/buddyicon.png);
+	background-repeat: no-repeat;
+	background-position: 0 center;
+}
+
+.login .logout a {
+	padding-left: 25px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-image: url(images/login/logout20.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+.login .changepassword, .login .logout {
+	line-height: 25px;
+	padding: 0px;
+}

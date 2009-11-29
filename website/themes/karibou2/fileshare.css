@@ -1,0 +1,632 @@
+.fileshare {
+}
+
+.fileshare a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * Large Icons View * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+
+.fileshare ul.largeicons {
+	margin: 2px;
+	padding: 0px;
+	list-style: none;
+}
+
+.fileshare ul.largeicons li {
+	float: left;
+	margin: 10px;
+	width: 150px;
+	height: 100px;
+	border: 1px solid #efefef;
+	text-align: center;
+	overflow: hidden;
+}
+
+.fileshare ul.largeicons.file li {
+	background-image: url(images/fileshare/largeicons/default.png);
+	background-repeat: no-repeat;
+	background-position: 55px 40px;
+}
+
+.fileshare ul.largeicons.file  li.xls {
+	background-image: url(images/fileshare/largeicons/files/xls.png);
+}
+.fileshare ul.largeicons.file li.doc {
+	background-image: url(images/fileshare/largeicons/files/doc.png);
+}
+.fileshare ul.largeicons.file li.ppt {
+	background-image: url(images/fileshare/largeicons/files/ppt.png);
+}
+.fileshare ul.largeicons.file li.zip {
+	background-image: url(images/fileshare/largeicons/files/zip.png);
+}
+.fileshare ul.largeicons.file li.pdf {
+	background-image: url(images/fileshare/largeicons/files/pdf.png);
+}
+
+.fileshare ul.largeicons.directory  li {
+	background-image: url(images/fileshare/largeicons/directory.png);
+	background-repeat: no-repeat;
+	background-position: 40px 35px;
+}
+
+.fileshare ul.largeicons li a .name {
+font-size: 0.85em;
+font-weight: bold;
+}
+
+.fileshare ul.largeicons  li a .size {
+font-size: 0.8em;
+}
+
+.fileshare ul.largeicons  li a .date {
+color: #acacac;
+font-size: 0.8em;
+}
+
+.fileshare ul.largeicons li a {
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	text-decoration: none;
+	height: 95px;
+}
+
+.fileshare ul.largeicons.file li a:hover {
+	background-image: url(images/fileshare/largeicons/download.png);
+	background-repeat: no-repeat;
+	background-position: bottom right;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * Detailed View * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+
+.fileshare ul.detailed {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+.fileshare ul.detailed li {
+	margin: 0px 0px 0px 10px;
+	/*padding-left: 23px;*/
+	padding-top: 4px;
+	width: 840px;
+	height: 24px;
+	border: 0px solid #efefef;
+	text-align: left;
+	overflow: hidden;
+	cursor: pointer;
+	font-size: 0.85em;
+}
+
+.fileshare ul.detailed li:hover {
+	background-color: #efefef;
+}
+
+.fileshare ul.detailed.file li {
+	background-image: url(images/fileshare/detailed/default.png);
+	background-repeat: no-repeat;
+	background-position: 2px 2px;
+}
+
+.fileshare ul.detailed.file  li.xls {
+	background-image: url(images/fileshare/detailed/files/xls.png);
+}
+.fileshare ul.detailed.file li.doc {
+	background-image: url(images/fileshare/detailed/files/doc.png);
+}
+.fileshare ul.detailed.file li.ppt {
+	background-image: url(images/fileshare/detailed/files/ppt.png);
+}
+.fileshare ul.detailed.file li.zip {
+	background-image: url(images/fileshare/detailed/files/zip.png);
+}
+.fileshare ul.detailed.file li.pdf {
+	background-image: url(images/fileshare/detailed/files/pdf.png);
+}
+
+.fileshare ul.detailed.directory  li {
+	background-image: url(images/fileshare/detailed/directory.png);
+	background-repeat: no-repeat;
+	background-position: 0px 4px;
+}
+
+.fileshare ul.detailed li span.unknown {
+	position: absolute;
+	float: left;
+	display: block;
+	width: 18px;
+	height: 24px;
+	background-image: url(images/fileshare/detailed/unknown.png);
+	background-repeat: no-repeat;
+	background-position: 9px 8px;
+	z-index: 1;
+	cursor: help;
+}
+
+.fileshare ul.detailed li span.unknown span {
+	visibility: hidden;
+}
+
+
+.fileshare ul.detailed li .name {
+	float: left;
+	display: block;
+	width: 180px;
+	padding-left: 23px;
+	font-weight: bold;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.fileshare ul.detailed  li .size {
+	float: left;
+	display: block;
+	width: 60px;
+	margin-left: 10px;
+}
+
+.fileshare ul.detailed.directory  li .date {
+	margin-left: 70px;
+}
+
+.fileshare ul.detailed  li .date {
+	float: left;
+	display: block;
+	width: 120px;
+	overflow: hidden;
+}
+
+.fileshare ul.detailed  li .description {
+	float: left;
+	display: block;
+	width: 250px;
+	margin-left: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.fileshare ul.detailed  li .versionid {
+	float: left;
+	display: block;
+	width: 50px;
+	margin-left: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.fileshare ul.detailed  li .rights {
+	float: left;
+	display: block;
+	width: 50px;
+	margin-left: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.fileshare ul.detailed  li .downloadlink, .fileshare ul.detailed  li .detailslink {
+	float: left;
+	display: block;
+	width: 20px;
+	height: 24px;
+	margin-left: 10px;
+	font-size: 0.55em;
+	white-space: nowrap;
+	overflow: hidden;
+	font-weight: bold;
+	color: #000000;
+	
+}
+.fileshare ul.detailed  li .downloadlink span, .fileshare ul.detailed  li .detailslink span {
+	visibility: hidden;
+}
+.fileshare ul.detailed  li .downloadlink {
+	background-image: url(images/fileshare/detailed/download.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+.fileshare ul.detailed  li .detailslink {
+	background-image: url(images/fileshare/detailed/info.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+
+.fileshare ul.detailed li a span {
+	cursor: pointer;
+}
+
+.fileshare ul.detailed li a {
+	padding: 0px;
+	margin: 0px;
+	display: inline;
+	text-decoration: none;
+	height: 95px;
+}
+
+
+.fileshare ul.detailed.header li {
+	cursor: auto;
+	background-color: #bcbcbc;
+	height: 20px;
+	color: #ffffff;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+.fileshare ul.detailed.header li:hover {
+	background-color: #bcbcbc;
+}
+
+.fileshare .detailed.empty {
+	margin-left: 30px;
+	font-weight: bold;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * File Details * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+.fileshare div.details {
+	background-image: url(images/fileshare/largeicons/default.png);
+	background-repeat: no-repeat;
+	background-position: 10px 10px;
+	margin: 20px 0px 10px 30px;
+	padding-left: 90px;
+	line-height: 30px;
+}
+
+.fileshare div.details.xls {
+	background-image: url(images/fileshare/largeicons/files/xls.png);
+}
+.fileshare div.details.doc {
+	background-image: url(images/fileshare/largeicons/files/doc.png);
+}
+.fileshare div.details.ppt {
+	background-image: url(images/fileshare/largeicons/files/ppt.png);
+}
+.fileshare div.details.zip {
+	background-image: url(images/fileshare/largeicons/files/zip.png);
+}
+.fileshare div.details.pdf {
+	background-image: url(images/fileshare/largeicons/files/pdf.png);
+}
+.fileshare div.details.directory {
+	background-position: 0px 10px;
+	background-image: url(images/fileshare/largeicons/directory.png);
+	padding-bottom: 20px;
+}
+
+.fileshare div.details label {
+	width: 180px;
+	display: block;
+	float: left;
+	clear: both;
+	white-space: nowrap;
+}
+
+.fileshare div.details div.detail span, .fileshare .details div.versions li.detail span {
+	font-weight: bold;
+}
+
+.fileshare div.details div.description label, .fileshare .details div.versions label.title  {
+	display: inline;
+	float: none;
+}
+
+
+.fileshare div.details div.description span {
+	display: block;
+	margin-left: 40px;
+	padding: 5px;
+	width: 600px;
+	border: 1px solid #dfdfdf;
+	font-weight: normal;
+	background: #efefef;
+	line-height: 20px;
+}
+
+/* versions */
+.fileshare div.details div.versions {
+	margin-top: 20px;
+}
+
+.fileshare div.details div.versions ul {
+	display: block;
+	list-style: none;
+}
+
+.fileshare div.details div.versions li {
+	border-left: 4px solid #acacac;
+	border-bottom: 1px dashed #acacac;
+	padding-left: 10px;
+	margin-right: 20px;
+	margin-bottom: 10px;
+}
+
+.fileshare div.details div.versions li.one  {
+	background-color: #f4f4f9;
+}
+
+.fileshare div.details div.versions li.two {
+	background-color: #fafaff;
+}
+
+.fileshare div.details div.versions li span {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.fileshare div.details div.versions {
+	
+}
+
+/* File details toolbox */
+
+.fileshare div.details .toolbox {
+	display: block;
+	background: transparent;
+	border: 0px;
+}
+
+.fileshare div.details .toolbox form {
+	background: transparent;
+	padding: 0px;
+	margin: 0px;
+	display: inline;
+	border: 0px;
+}
+
+.fileshare div.details .toolbox form a {
+	background-image: url(images/fileshare/detailed/trash.png);
+	background-repeat: no-repeat;
+	background-position: top left;
+	padding-left: 22px;
+	padding-top: 0px;
+	padding-bottom: 2px;
+}
+
+
+/* Download Link */
+
+.fileshare div.details .downloadlink a {
+	background-image: url(images/fileshare/detailed/download.png);
+	background-repeat: no-repeat;
+	background-position: top left;
+	padding-left: 22px;
+	padding-top: 0px;
+	padding-bottom: 2px;
+}
+
+/* Move Link */
+.fileshare div.details .movelink a {
+	background-image: url(images/fileshare/detailed/move.png);
+	background-repeat: no-repeat;
+	background-position: top left;
+	padding-left: 22px;
+	padding-top: 0px;
+	padding-bottom: 2px;
+}
+
+/* Rename Link */
+.fileshare div.details .renamelink a {
+	background-image: url(images/fileshare/detailed/rename.png);
+	background-repeat: no-repeat;
+	background-position: top left;
+	padding-left: 22px;
+	padding-top: 0px;
+	padding-bottom: 2px;
+}
+
+/* Add new version link */
+.fileshare div.details .versions a.add {
+	background-image: url(images/fileshare/detailed/add.png);
+	background-repeat: no-repeat;
+	background-position: top left;
+	padding-left: 22px;
+	padding-top: 0px;
+	padding-bottom: 2px;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+
+
+.fileshare .uploadlink, .fileshare .createdirectorylink {
+text-align: center;
+padding-bottom: 2px;
+}
+
+.fileshare .uploadlink a, .fileshare .createdirectorylink a {
+clear: both;
+}
+
+.fileshare form {
+	padding: 10px;
+	margin: 10px;
+	background: #efefff;
+	border: 1px solid #acacbb;
+	line-height: 40px;
+	text-align: center;
+}
+
+.fileshare form input.file {
+	padding: 4px;
+	font-weight: bold;
+	border: 1px solid #acacbb;
+	font-weight: bold;
+	line-height: 20px;
+
+	font-weight: bold;
+	background-repeat: no-repeat;
+	background-position: 3px 3px;
+	padding-left: 28px;
+	background-image: url(images/fileshare/file16.png);
+}
+
+.fileshare form input.directory {
+	padding: 4px;
+	font-weight: bold;
+	border: 1px solid #acacbb;
+	font-weight: bold;
+	line-height: 20px;
+
+	font-weight: bold;
+	background-repeat: no-repeat;
+	background-position: 3px 3px;
+	padding-left: 28px;
+	background-image: url(images/fileshare/directory20.png);
+}
+
+.fileshare form input.button {
+	padding: 4px;
+	font-weight: bold;
+	background: #666699;
+	border: 2px solid #9999bb;
+	color: #ffffff;
+}
+.fileshare form label {
+	font-weight: bold;
+}
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * Mini  App * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+.fileshare.mini ul {
+	margin: 0px;
+	margin-left: 20px;
+	margin-right: 20px;
+	padding: 0px;
+	list-style: none;
+}
+
+.fileshare.mini ul li {
+	margin-bottom: 10px;
+	line-height: 20px;
+	padding: 5px;
+	border-bottom: 1px dashed #afafaf;
+	overflow: hidden;
+}
+
+
+.fileshare.mini ul li span span {
+	font-weight: bold;
+}
+
+.fileshare.mini ul li span.hits, .fileshare.mini ul li span.uploader,  .fileshare.mini ul li span.description {
+	margin-left: 20px;
+	display: block;
+}
+
+.fileshare.mini ul li span.description span{
+	display: block;
+	margin-left: 20px;
+	color: #898989;
+}
+
+.fileshare.mini ul li span.name {
+	display: block;
+}
+
+.fileshare.mini ul li span.name a {
+	background-image: url(images/fileshare/detailed/default.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	padding-left: 22px;
+	padding-top: 0px;
+	padding-bottom: 2px;
+}
+
+.fileshare.mini ul li span.name a.xls {
+	background-image: url(images/fileshare/detailed/files/xls.png);
+}
+.fileshare.mini ul li span.name a.doc {
+	background-image: url(images/fileshare/detailed/files/doc.png);
+}
+.fileshare.mini ul li span.name a.ppt {
+	background-image: url(images/fileshare/detailed/files/ppt.png);
+}
+.fileshare.mini ul li span.name a.zip {
+	background-image: url(images/fileshare/detailed/files/zip.png);
+}
+.fileshare.mini ul li span.name a.pdf {
+	background-image: url(images/fileshare/detailed/files/pdf.png);
+}
+
+.fileshare.mini ul li a span.downloadlink {
+	float: right;
+	display: block;
+	width: 20px;
+	height: 24px;
+	font-size: 0.85em;
+	white-space: nowrap;
+	overflow: hidden;
+	font-weight: bold;
+	color: #000000;
+	z-index: 1;
+	
+	cursor: pointer;
+	
+	background-image: url(images/fileshare/detailed/download.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+.fileshare.mini ul li a span.downloadlink span {
+	visibility: hidden;
+}
+
+
+/************************************************\
+* The new look fo the fileshare mini application *
+\************************************************/
+.fileshareMini ul.directory {	
+	padding-left: 0px;
+	margin-left: 0px;
+}
+
+.fileshareMini li.directory {
+	background-image: url(images/fileshare/detailed/directory-expanded.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	list-style: none;	
+	padding-left: 20px;
+	margin-left: 0px;
+}
+
+.fileshareMini li.directory.expanded {
+	background-image: url(images/fileshare/detailed/directory-reduced.png);
+}
+
+.fileshareMini li.file {
+	background-image: url(images/fileshare/file16.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	list-style: none;	
+	padding-left: 20px;
+	margin-left: 0px;
+}
+
+.fileshareMini li.file.xls {	
+	background-image: url(images/fileshare/detailed/files/xls.png);
+}
+
+.fileshareMini li.file.pdf {	
+	background-image: url(images/fileshare/detailed/files/pdf.png);
+}
+
+.fileshareMini li.file.doc {	
+	background-image: url(images/fileshare/detailed/files/doc.png);
+}
+
+.fileshareMini li.file.ppt {	
+	background-image: url(images/fileshare/detailed/files/ppt.png);
+}
+.fileshareMini li.file.pps {	
+	background-image: url(images/fileshare/detailed/files/ppt.png);
+}
+
+.fileshareMini li.file.zip {	
+	background-image: url(images/fileshare/detailed/files/zip.png);
+}

@@ -16,24 +16,10 @@ class HeaderHome extends Model
 {
 	function build()
 	{
-//		$url = BaseUrl::getRef();
-//		print_r($url->getApp());
-		
-		if( $theme = $this->currentUser->getPref('theme') )
-		{
-			$this->assign("cssFile", $GLOBALS['config']['style']
-				[$theme]
-				['home_css']);
-		}
-		else
-		{
-			$this->assign("cssFile", $GLOBALS['config']['style']
-				[0]
-				['home_css']);
-		}
-		
+		ThemeManager::instance()->addApplication('klightbox');
+		ThemeManager::instance()->addApplication('hintbox');
+		$this->assign("cssfiles", ThemeManager::instance()->getCSSList());
 		$this->assign('base_url', $GLOBALS['config']['base_url']);
-		$this->assign("styles", $GLOBALS['config']['style']);
 	}
 	
 

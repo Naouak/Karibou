@@ -1,0 +1,56 @@
+.preferences {
+	/*text-align: center;*/
+	padding: 5px;
+}
+/*
+.preferences label {
+	font-weight: bold;
+}
+
+.preferences select {
+	background: #efefef;
+}
+
+.preferences select option {
+	padding-left: 5px;
+}
+
+.preferences input {
+	border: 2px solid #cfcfcf;
+	background-color: #efefef;
+	color: #444488;
+	font-weight: bold;
+	margin: 5px;
+}
+*/
+
+.preferences .flag a span {
+	visibility: hidden;
+	font-size: 1px;
+}
+.preferences .flag a {
+	text-decoration: none;
+	display: block;
+	width: 40px;
+	height: 25px;
+}
+
+.preferences .flag  {
+	width: 40px;
+	height: 25px;
+	/* border: 1px solid #acacac; */
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+.preferences .french {
+	background-image: url(images/preferences/flags/fr.png);	
+	margin-left: 15px;
+	float: left;
+}
+
+.preferences .english {
+	background-image: url(images/preferences/flags/uk.png);	
+	margin-right: 15px;
+	float: right;
+}
