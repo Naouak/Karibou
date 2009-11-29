@@ -1,5 +1,6 @@
 <?php
 /**
+ * @copyright 2009 Pierre Ducroquet <pinaraf@gmail.com>
  * @copyright 2004 Jonathan Semczyk <jonathan.semczyk@free.fr>
  * @copyright 2003 Pierre Laden <pladen@elv.enic.fr>
  *
@@ -16,7 +17,7 @@
 class KApp
 {
 	/**
-	 * Nom de la classe
+	 * Application name
 	 * @var String
 	 */
 	protected $name;
@@ -32,7 +33,7 @@ class KApp
 	protected $db;
 
 	/**
-	 * @var UtilisateurCourant
+	 * @var CurrentUser
 	 */
 	protected $currentUser;
 
@@ -52,11 +53,6 @@ class KApp
 	protected $viewList;
 	protected $appList;
 
-	/**
-	 * @var BOOL
-	 */
-	protected $erreur = FALSE;
-
 	protected $templatedir;
 
 	protected $eventManager;
@@ -72,9 +68,15 @@ class KApp
 	 *
 	 * @param string $name
 	 * @param string $configfile
+	 * @parem ModelBuilder $modelbuilder
 	 * @param PDO $db
-	 * @param Int $versions_asked
+	 * @param UserFactory $userFactory
+	 * @param AppList $appList
 	 * @param Int $permission
+	 * @param HookManager $hookManager
+	 * @param EventManager $eventManager
+	 * @param MessageManager $messageManager
+	 * @param KSmarty $smarty
 	 */
 	function __construct(
 		$name, 
@@ -90,7 +92,7 @@ class KApp
 		KSmarty $smarty
 	)
 	{
-		//		Debug::display("Building KApp ".$name." ($permission)");
+		//	Debug::display("Building KApp ".$name." ($permission)");
 		$this->name = $name;
 		$this->db = $db;
 		$this->currentUser = $userFactory->getCurrentUser();
