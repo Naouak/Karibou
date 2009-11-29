@@ -118,6 +118,8 @@ abstract class Model
 		$this->messageManager = $messageManager;
 
 		$this->smarty = $smarty;
+
+		$this->vars = array('islogged' => $this->currentUser->isLogged(), 'currentuser' => $this->currentUser);
 	}
 	
 	protected function getConfig()
