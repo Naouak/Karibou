@@ -3,12 +3,12 @@
 class AppGetData extends Model {
 	public function build () {
 		if (!isset($this->args['miniapp'])) {
-			return;
+			return "";
 		}
 		$miniappName = $this->args['miniapp'];
 		$miniapp = MiniAppFactory::buildApplication($miniappName);
 		if ($miniapp->getSubmitModel() == "") {
-			$this->assign("json", "");
+			return "";
 		} else {
 			$submitModelName = $miniapp->getSubmitModel();
 			$app = $this->appList->getApp($miniappName);
@@ -22,7 +22,7 @@ class AppGetData extends Model {
 					$submitArray[$formKey] = $formValue;
 				}
 				$submitModel->fillFields($key, $submitArray);
-				$this->assign("json", json_encode($submitArray));
+				return json_encode($submitArray);
 			} else {
 				throw new Exception("Unmodifiable 'key' $key");
 			}

@@ -34,9 +34,9 @@
 	<view name="homeConfig" class="HomeConfig" template="homeconfig.tpl" />
 	<view name="appMainView" class="AppMainView" template="appmainview.tpl" />
 	<view name="appJSView" class="AppJSView" template="appjsview.tpl" />
-	<view name="appJSConfigView" class="AppJSConfigView" template="json.tpl" />
-	<view name="appGetData" class="AppGetData" template="json.tpl" />
-	<view name="appModifyData" class="AppModifyData" template="json.tpl" />
+	<view name="appJSConfigView" class="AppJSConfigView" />
+	<view name="appGetData" class="AppGetData" />
+	<view name="appModifyData" class="AppModifyData" />
 	
 	<header app="empty" view="default" />
 	<footer app="empty" view="default" />
