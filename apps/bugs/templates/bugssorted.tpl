@@ -4,6 +4,43 @@
         <li><a href="{kurl}">##Index##</a></li>
     </ul>
 
+	<form action='{kurl page="sort" sort="module_id" ascdescsort="1" numberpage="$numberpage"}' method="post">
+		<h2> Filters </h2>
+		<div class="Module">
+			<label for="Module">{t}Module{/t} :</label>
+			<select name="module_id[]" multiple >
+				{foreach item=module from="$modules"}
+					<option value="{$module.id}"> {$module.id}-{$module.name} </option>
+				{/foreach}
+			</select>
+		</div>
+
+		<div class="State">
+			<label for="State">{t}State{/t} :</label>
+			<select name="state[]" multiple>
+				<option>{t}STANDBY{/t}</option>
+				<option>{t}RESOLVED{/t}</option>
+				<option>{t}NEEDINFO{/t}</option>
+				<option>{t}CONSIDERED{/t}</option>
+			</select>
+		</div>
+
+		<div class="Type">
+			<label for="Type">{t}Type{/t} :</label>
+			<select name="type[]" multiple>
+				<option>{t}IMPROVMENT{/t}</option>
+				<option>{t}MINOR{/t}</option>
+				<option>{t}NORMAL{/t}</option>
+				<option>{t}MAJOR{/t}</option>
+				<option>{t}SECURITY{/t}</option>
+			</select>
+		</div>
+
+		<div class="button">
+			<input type="submit" value="{t}Apply{/t}" />
+		</div>
+	</form>
+	
     <table>
         <caption>{t}Bug list{/t}</caption>
         <thead>
@@ -36,12 +73,12 @@
         </thead>
         <tbody>
 	{foreach item=bug from=$bugs}
-            <tr>
+		<tr>
                 <td>{$bug.module}</td>
                 <td><a href='{kurl page="view" id=$bug.id}'>{$bug.summary}</a></td>
                 <td>{t}{$bug.state}{/t}</td>
                 <td>{t}{$bug.type}{/t}</td>
-            </tr>
+		</tr>
 	{/foreach}
         </tbody>
     </table>

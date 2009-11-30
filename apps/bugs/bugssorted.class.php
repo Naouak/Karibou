@@ -13,6 +13,23 @@ class BugsSorted extends Model
 {
 	public function build()
 	{
+		$post = array (
+			'module_id' => array (
+				'filter' => FILTER_SANITIZE_NUMBER_INT,
+				'flags'  => FILTER_REQUIRE_ARRAY,
+			),
+			'state' => array (
+				'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
+				'flags' => FILTER_REQUIRE_ARRAY,
+			),
+			'type' => array (
+				'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
+				'flags' => FILTER_REQUIRE_ARRAY,
+			)
+		);
+		
+		$filter = filter_input_array(INPUT_POST, $post);
+		
 		if( $this->args['sort'] == "state" || $this->args['sort'] == "type" || $this->args['sort'] == "summary" ) {
 			$sort = "b.".$this->args['sort'];
 		} else {
@@ -34,11 +51,33 @@ class BugsSorted extends Model
 			$end = $start + 30;
 		}
 
-		$sql = $this->db->prepare("SELECT b.id, b.summary, b.module_id, b.state, b.type, bugs_module.name FROM bugs_bugs as b LEFT JOIN bugs_module ON bugs_module.id = b.module_id ORDER BY $sort $order LIMIT $start , $end");
-		
+		$sql1 = "SELECT b.id, b.summary AS summary, b.module_id AS module_id, b.state AS state, b.type AS type, bugs_module.name FROM bugs_bugs as b LEFT JOIN bugs_module ON bugs_module.id = b.module_id";
+
+		$conds = array();
+		foreach($filter as $key => $value) {
+			$conds2 = array();
+			foreach($value as $value2) {
+				$conds2[] = "$key = " . $this->db->quote($value2);
+			}
+			if(!empty($conds2)) $conds[] = "(" . implode(" OR ", $conds2) . ")";
+		}
+		if(!empty($conds)) {
+			$where = " WHERE " . implode(" AND ", $conds) . " ";
+		} else {
+			$where = " ";
+		}
+
+		$sql1.= $where;
+		$sql1.="ORDER BY $sort $order LIMIT $start , $end";
+
+		$sql = $this->db->prepare($sql1);
+		$stmt = $this->db->prepare("SELECT * FROM bugs_module");
 				
 		try {
 			$sql->execute();
+			$stmt->execute();
+
+			$modules = $stmt->fetchAll();
 			$bugs = array();
 			
 			while($bugRow = $sql->fetch(PDO::FETCH_ASSOC))
@@ -52,16 +91,12 @@ class BugsSorted extends Model
 					$bug['module']=$bugRow['name'];
 					$bugs[] = $bug;
 			}
-
+			$next = 0;
+			$previous = 0;
 			if($bugs[29] !== null)
 				$next = 1;
-			else
-				$next = 0;
-
 			if($page == 1)
 				$previous = 0;
-			else
-				$previous = 1;
 
 			$this->assign("numberpage",$page);
 			$this->assign("nextpage",$page+1);
@@ -71,6 +106,7 @@ class BugsSorted extends Model
 			$this->assign("bugs",$bugs);
 			$this->assign("sort",$sort);
 			$this->assign("order",$order);
+			$this->assign("modules",$modules);
 
 		} catch (PDOException $e) {
 			Debug::kill($e->getMessage());
