@@ -694,6 +694,28 @@ var Karibou = Class.create({
 			}
 		}
 	},
+	loadMultiApplicationJS: function(applications) {
+		var neededJS = [];
+		for (var i = 0 ; i < applications.length ; ++i) {
+			application = applications[i];
+			if ((this.loadedApplicationsJS[application]) && (this.loadedApplicationsJS[application] != Karibou.APP_FAILURE)) {
+				// JS already loaded, so we must notify the apploader that its js is ready.
+				if (this.loadedApplicationsJS[application] == Karibou.APP_LOADED)
+					this.applicationJSLoaded(application);
+			} else {
+				neededJS.push(application);
+			}
+		}
+		if (neededJS.length > 0) {
+			for (var i = 0 ; i < neededJS.length ; ++i) {
+				this.loadedApplicationsJS[neededJS[i]] = Karibou.APP_LOADING;
+			}
+			var scriptNode = document.createElement("script");
+			scriptNode.setAttribute("language", "javascript");
+			scriptNode.setAttribute("src", this.appJSUrl + neededJS.join(','));
+			document.body.appendChild(scriptNode);
+		}
+	},
 	loadApplicationJS: function(application) {
 		if ((this.loadedApplicationsJS[application]) && (this.loadedApplicationsJS[application] != Karibou.APP_FAILURE)) {
 			// JS already loaded, so we must notify the apploader that its js is ready.
@@ -703,7 +725,7 @@ var Karibou = Class.create({
 			// This is where the fun begins...
 			this.loadedApplicationsJS[application] = Karibou.APP_LOADING;
 			JSurl = this.appJSUrl + application;
-			scriptNode = document.createElement("script");
+			var scriptNode = document.createElement("script");
 			scriptNode.setAttribute("language", "javascript");
 			scriptNode.setAttribute("src", JSurl);
 			document.body.appendChild(scriptNode);
@@ -798,6 +820,21 @@ var Karibou = Class.create({
 	},
 	loadData: function (data) {
 		var tabs = data["tabs"];
+		var applications = [];
+		for (var tabName in tabs) {
+			var containers = tabs[tabName]["containers"];
+			containers.each(function(container) {
+				for (var i = 0 ; i < container.length ; i++) {
+					appli = container[i];
+					if (appli[0] == '*')
+						appli = appli.substr(1);
+					appli = appli.substr(0, appli.indexOf('_'));
+					if (applications.indexOf(appli) == -1)
+						applications.push(appli);
+				};
+			});
+			this.loadMultiApplicationJS(applications);
+		}
 		for (var tabName in tabs) {
 			this.createNewTab(tabName, tabs[tabName]);
 		}
@@ -881,6 +918,6 @@ var KAppLoader = Class.create({
 	}
 });
 
-Karibou.APP_LOADING = 0;
-Karibou.APP_LOADED = 1;
-Karibou.APP_FAILURE = 2;
+Karibou.APP_LOADING = 1;
+Karibou.APP_LOADED = 2;
+Karibou.APP_FAILURE = 3;
