@@ -15,12 +15,12 @@
 					<li class="logout"><a href="{kurl app="login" page="logout"}">##LOGOUT##</a></li>
 {if ($hasMenu)} 
 	<li>
-	<ins class="karibouMenu">
-		Menu Karibou
+	<div class="karibouMenu">
+		<h1 class="karibouMenu-title">Menu Karibou</h1>
 		<ul>
 			{hook name="header_menu"}
 		</ul>
-	</ins>
+	</div>
 	</li>
 {/if}
 				</ul>
