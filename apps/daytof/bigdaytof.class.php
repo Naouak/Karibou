@@ -47,7 +47,8 @@ class BigDayTof extends Model
 				$photos[$id]["photo"] = $filename;
 				
 				$name=$this->appname."-".$photos[$id]['id'];
-				$combox = new CommentSource($this->db,$name,"",$photos[$id]["photo"]);
+				$combox = new CommentSource($this->db,$name,$items["comment"],
+                                    "<a class='lightbox' href='".'pub/daytof/' . $filename."'>"."<img src='".'pub/daytof/' . $mfilename."' /></a>");
 				
 				$photos[$id]["mphoto"] = $mfilename;
 				$photos[$id]["idcombox"] = $combox->getId();

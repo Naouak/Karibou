@@ -16,6 +16,9 @@
             <div>
                 {votesbox id=$tof.idcombox type="bigapp"}
             </div>
+            <div>
+                <a href="{kurl app='commentaires' id=$tof.idcombox}">{commentbox id=$tof.idcombox} ##Comments##</a>
+            </div>
 	</li>
 {/foreach}
     </ul>
