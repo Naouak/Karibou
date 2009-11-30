@@ -51,7 +51,7 @@
 	</page>
 	
 	<page name="appjsview" view="appJSView">
-		<argument name="miniapp" class="ArgMiniapp" />
+		<argument name="miniapp*" class="ArgMiniapp" />
 	</page>
 
 	<page name="appjsconfigview" view="appJSConfigView">

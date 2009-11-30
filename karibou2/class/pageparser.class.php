@@ -85,6 +85,40 @@ class PageParser
 	 */
 	function match( $argsTab )
 	{
+		// Special case : a page with a variable number of arguments
+		if (count($this->args) == 1)
+		{
+			$keys = array_keys($this->args);
+			$argname = $keys[0];
+			if (substr($argname, strlen($argname)-1, 1) == '*')
+			{
+				$argparser = $this->args[$argname]; 
+				$argname = substr($argname, 0, strlen($argname)-1);
+				$values = array();
+				$i = 0;
+				foreach ($argsTab as $key => $arg)
+				{
+					if (($value = $argparser["parser"]->getVar($arg)) !== false)
+					{
+						$newparser = clone $argparser["parser"];
+						$newparser->setValue($value);
+						$values[$argname . $i] = array("parser" => $newparser);
+						$i++;
+					}
+					else
+					{
+						$values = null;
+						break;
+					}
+						
+				}
+				if ($values != null)
+				{
+					$this->args = $values;
+					return true;
+				}
+			}
+		}
 		if( count($argsTab) > count($this->args) )
 		{
 			return FALSE;
