@@ -28,14 +28,12 @@ class BugsModify extends Model
 		$stmt = $this->db->prepare("SELECT * FROM bugs_assign WHERE bugs_id=:bugs_id");
 
 		if($search != null) {
-				echo ("<br /><br /><br /><br /><br /><br /><br />");
 				
 				$sql = $this->db->prepare("SELECT id,summary FROM bugs_bugs WHERE summary LIKE :search OR bug LIKE :search");
 				$sql->bindValue("search",'%'.$search.'%');
 				try {
 					$sql->execute();
 					$content = $sql->fetchAll();
-					print_r($content);
 				} catch (PDOException $e) {
 					Debug::kill($e->getMessage());
 				}
