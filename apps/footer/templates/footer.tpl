@@ -8,7 +8,7 @@
 				<span class="user">
 					<strong>{$user->getDisplayName()}</strong>
 				</span>
-				<ul style="width: 700px; padding-left: 0px;">
+				<ul>
 					{hook name="footer_account_start"}
 					<li class="profile"><a href="{kurl app="annuaire" username="$login" act="edit"}">##EDITPROFILE##</a></li>
 					<li class="preferences"><a href="{kurl app="preferences"}">##PREFERENCES##</a></li>
