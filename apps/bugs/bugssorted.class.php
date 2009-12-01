@@ -52,7 +52,7 @@ class BugsSorted extends Model
 		}
 
 		$sql1 = "SELECT b.id, b.summary AS summary, b.module_id AS module_id, b.state AS state, b.type AS type, bugs_module.name FROM bugs_bugs as b LEFT JOIN bugs_module ON bugs_module.id = b.module_id";
-
+		//TO DO : Comprendre ce code.
 		$conds = array();
 		foreach($filter as $key => $value) {
 			$conds2 = array();

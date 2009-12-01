@@ -47,7 +47,7 @@
 			<div class="type">
 				<label for="type">{t}Importance{/t} :</label>
 				<select name="type">
-					<option {if $bug.type == "IMPROVMENT"}selected{/if}>{t}IMPROVMENT{/t}</option>
+					<option {if $bug.type == "IMPROVEMENT"}selected{/if}>{t}IMPROVEMENT{/t}</option>
 					<option {if $bug.type == "MINOR"}selected{/if}>{t}MINOR{/t}</option>
 					<option {if $bug.type == "NORMAL"}selected{/if}>{t}NORMAL{/t}</option>
 					<option {if $bug.type == "MAJOR"}selected{/if}>{t}MAJOR{/t}</option>
@@ -62,6 +62,7 @@
 						<option {if $bug.state == "RESOLVED"}selected{/if}>{t}RESOLVED{/t}</option>
 						<option {if $bug.state == "NEEDINFO"}selected{/if}>{t}NEEDINFO{/t}</option>
 						<option {if $bug.state == "CONSIDERED"}selected{/if}>{t}CONSIDERED{/t}</option>
+
 					</select>
 				</div>
 

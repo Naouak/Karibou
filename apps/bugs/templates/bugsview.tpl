@@ -18,6 +18,7 @@
         <dd>{t}Post by{/t}</dd><dt>{userlink user=$bug_author.object showpicture=true}</dt>
         <dd>{t}State{/t}</dd><dt>{t}{$bug.state}{/t}</dt>
         <dd>{t}Importance{/t}</dd><dt>{t}{$bug.type}{/t}</dt>
+		<dd>{t}Summary{/t}</dd><dt>{t}{$bug.summary}{/t}</dt>
         <dd>{t}Browser{/t}</dd><dt>{$bug.browser}</dt>
         <dd>{t}Description{/t}</dd><dt>{$bug.bug}</dt>
         <dd>{t}Module{/t}</dd><dt>{$module.name}</dt>

@@ -133,6 +133,9 @@ class BugsPost extends FormModel
 					WHERE
 						`id` = :id
 				");
+
+				if($inputs["doublon"] !=null)
+					$inputs["state"] = "DOUBLON";
 				
 				$sql->bindValue(":bug", $inputs["bug"]);
 				$sql->bindValue(":state", $inputs["state"]);

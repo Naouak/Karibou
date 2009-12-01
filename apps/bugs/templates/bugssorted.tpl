@@ -22,13 +22,14 @@
 				<option>{t}RESOLVED{/t}</option>
 				<option>{t}NEEDINFO{/t}</option>
 				<option>{t}CONSIDERED{/t}</option>
+				<option>{t}DOUBLON{/t}</option>
 			</select>
 		</div>
 
 		<div class="Type">
 			<label for="Type">{t}Type{/t} :</label>
 			<select name="type[]" multiple>
-				<option>{t}IMPROVMENT{/t}</option>
+				<option>{t}IMPROVEMENT{/t}</option>
 				<option>{t}MINOR{/t}</option>
 				<option>{t}NORMAL{/t}</option>
 				<option>{t}MAJOR{/t}</option>
