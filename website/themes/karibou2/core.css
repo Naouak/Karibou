@@ -104,6 +104,13 @@ html>body #content {
 	width: 100%;
 }
 
+.karibouMenu-title {
+	font-size: 1em;
+	font-weight:bold;
+	margin-top:-3px;
+	text-decoration:underline;
+}
+
 
 /* Logo */
 #container a#logo {
