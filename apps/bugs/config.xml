@@ -16,7 +16,6 @@
 	<load class="BugsModify" file="bugsmodify.class.php" />
 	<load class="BugsSorted" file="bugssorted.class.php" />
 	<load class="BugsMini" file="mini.class.php" />
-	<load class="BugsSearch" file="bugssearch.class.php" />
 
 
 	<view name="BigBug" class="Bugs" template="bigbug.tpl" />
@@ -25,7 +24,6 @@
 	<view name="modify" class="BugsModify" template="bugsmodify.tpl" />
 	<view name="bugsmini" class="BugsMini" template="bugsmini.tpl" />
 	<view name="sort" class="BugsSorted" template="bugssorted.tpl" />
-	<view name="search" class="BugsSearch" template="bugssearch.tpl" />
 	
 	<page view="BigBug" />
 	
