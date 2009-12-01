@@ -286,6 +286,7 @@ var KApp = Class.create({
 			data = "miniapp=" + this.appName + "&key=" + deleteKey;
 			new Ajax.Request(this.karibou.appDeleteUrl, {
 				app: this,
+				method: "post",
 				parameters: data,
 				onComplete: function(transport) {
 					transport.request.options.app.refresh();
