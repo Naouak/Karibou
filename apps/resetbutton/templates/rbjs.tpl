@@ -17,8 +17,12 @@ var resetbuttonClass = Class.create(KApp, {
 
 	importJson: function (transport) {
 		this.delta = new Date().getTime() - new Date(transport.getHeader("Date")).getTime()
-		var data = transport.responseText.evalJSON();
-
+		try{
+			var data = transport.responseText.evalJSON(true);
+		}catch(e){
+			this.lastClick = new Date.getTime();
+		}
+		
 		this.lastClick = data.lastClick * 1000;
 		this.lastClicker = data.userlink;
 	},
@@ -52,16 +56,12 @@ var resetbuttonClass = Class.create(KApp, {
 	displayedButton: function () {
 		// This function is called when the button has been displayed, to setup the refresher...
 		this.counter = 0;
-		this.refresher = new PeriodicalExecuter(function(pe) {
-				pe.app.updateTimer();
-				pe.app.counter++;
-				if ((pe.app.counter % 10) == 0) {
-					new Ajax.Request("{/literal}{kurl page="state"}{literal}", {asynchronous: true, evalScripts: false, onComplete: function(transport) {
-						pe.app.importJson(transport);
-					}});
-				}
-			}, 1);
-		this.refresher.app = this;
+		this.refresher1 = new PeriodicalExecuter(this.updateTimer.bind(this), 0.9);
+		this.refresher2 = new PeriodicalExecuter((
+			function(){
+					new Ajax.Request("{/literal}{kurl page='state'}{literal}", {asynchronous: true, evalScripts: false, onComplete: this.importJson});
+			}
+		).bind(this), 10);
 	},
 
 	updateTimer: function () {
@@ -102,9 +102,13 @@ var resetbuttonClass = Class.create(KApp, {
 	},
 
 	stopRefresher: function () {
-		if (this.refresher) {
-			this.refresher.stop();
-			this.refresher = null;
+		if (this.refresher1) {
+			this.refresher1.stop();
+			this.refresher1 = null;
+		}
+		if (this.refresher2) {
+			this.refresher2.stop();
+			this.refresher2 = null;
 		}
 	}
 });
