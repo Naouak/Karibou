@@ -27,6 +27,9 @@ class PreferencesPost extends FormModel
 		$loc = filter_input(INPUT_POST, "localization", FILTER_SANITIZE_SPECIAL_CHARS);
 		$currentUser->setPref($prefName[1], $loc == "true");
 
+		$theme = filter_input(INPUT_POST, "theme", FILTER_SANITIZE_SPECIAL_CHARS);
+		$currentUser->setPref('theme', $theme);
+
 		$currentUser->savePrefs($this->db);
 	}
 }

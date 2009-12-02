@@ -60,6 +60,18 @@
 			</label>
 		</fieldset>
 		<fieldset>
+			<legend>##Theme##</legend>
+			<label for="theme">
+				<span>##Your favourite theme : ##</span>
+			</label>
+			<select name="theme" id="theme">
+				<option value="" {if $currenttheme == ""}selected{/if}>##I don't know##</option>
+				{foreach from=$themes key=name item=theme}
+				<option value="{$name}" {if $currenttheme == $name} selected {/if}>{$name} - {$theme->getDescription()}</option>
+				{/foreach}
+			</select>
+		</fieldset>
+		<fieldset>
 			<legend>##Validation##</legend>
 			<input type="submit" value="##Save my preferences##" />
 		</fieldset>

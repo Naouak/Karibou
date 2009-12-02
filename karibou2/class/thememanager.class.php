@@ -113,6 +113,16 @@ class ThemeManager {
 		$this->applications = array();
 	}
 
+	public function getVisibleThemes() {
+		$result = array();
+		foreach ($this->themes as $name => $theme) {
+			if (($theme->isValid()) && !($theme->isHidden())) {
+				$result[$name] = $theme;
+			}
+		}
+		return $result;
+	}
+
 	public function getTheme($name) {
 		if (array_key_exists($name, $this->themes))
 			return $this->themes[$name];
