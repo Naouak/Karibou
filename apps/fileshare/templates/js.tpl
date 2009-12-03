@@ -10,7 +10,8 @@ var fileshareClass = Class.create(KApp, {
 	},
 	loadFolder: function (folderName) {
 		new Ajax.Request("{/literal}{kurl page="json"}{literal}", {
-			parameters: "folder=" + encodeURIComponent(folderName), 
+			parameters: "folder=" + encodeURIComponent(folderName),
+                        method: 'post',
 			folder: folderName,
 			app: this,
 			onComplete: function(transport) {
