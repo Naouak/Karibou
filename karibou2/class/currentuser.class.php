@@ -155,24 +155,19 @@ class CurrentUser extends User
 
 	public function savePrefs(PDO $db)
 	{
-		$qry_delete = "DELETE FROM prefs WHERE user_id=".$this->id." ; ";
-		if( count($this->prefs) > 0 )
-		{
-			$qry_insert = "INSERT INTO prefs (user_id, name, value) VALUES ";
-			$first = true;
-			foreach($this->prefs as $name => $value)
-			{
-				if( !$first ) $qry_insert .= ", ";
-				$qry_insert .= "(".$this->id.", '". addslashes($name)."', '". addslashes($value)."')";
-				$first = false;
-			}
-		}
-
 		try
 		{
-			$db->exec($qry_delete);
-			if (isset($qry_insert))
-				$db->exec($qry_insert);
+			$qry_delete = $db->prepare("DELETE FROM prefs WHERE user_id=:id");
+			$qry_insert = $db->prepare("INSERT INTO prefs(user_id, name, value) VALUES (:id, :name, :value)");
+			$qry_delete->bindValue(":id", $this->id);
+			$qry_delete->execute();
+			$qry_insert->bindValue(":id", $this->id);
+			foreach ($this->prefs as $name => $value)
+			{
+				$qry_insert->bindValue(":name", $name);
+				$qry_insert->bindValue(":value", $value);
+				$qry_insert->execute();
+			}
 		}
 		catch(PDOException $e)
 		{
