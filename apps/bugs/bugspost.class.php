@@ -13,32 +13,44 @@ class BugsPost extends FormModel
 {
 	public function build() {
 	
-		$args = array(
+		$args1 = array(
 			'summary' => FILTER_SANITIZE_SPECIAL_CHARS,
 			'bug' => FILTER_SANITIZE_SPECIAL_CHARS,
-			'browser' => FILTER_SANITIZE_SPECIAL_CHARS,
-			'id' => FILTER_SANITIZE_NUMBER_INT,
+			//'browser' => FILTER_SANITIZE_SPECIAL_CHARS,
 			'type' => FILTER_SANITIZE_SPECIAL_CHARS,
 			'state' => FILTER_SANITIZE_SPECIAL_CHARS,
-			'doublon' => FILTER_SANITIZE_NUMBER_INT,
-			'module' => FILTER_SANITIZE_SPECIAL_CHARS,
+			
+			
+		);
+
+		$args2 = array(
 			'developer' => array(
 								'filter' => FILTER_SANITIZE_NUMBER_INT,
-								'flags'  => FILTER_REQUIRE_ARRAY,)
+								'flags'  => FILTER_REQUIRE_ARRAY,
+			)
 		);
-		$inputs = filter_input_array(INPUT_POST, $args);
+		$args3 = array(
+			'id' => FILTER_SANITIZE_NUMBER_INT,
+			'doublon' => FILTER_SANITIZE_NUMBER_INT,
+			'module' => FILTER_SANITIZE_SPECIAL_CHARS
+		);
+		$inputs1 = filter_input_array(INPUT_POST, $args1);
+		$inputs2 = filter_input_array(INPUT_POST, $args2);
+		$inputs3 = filter_input_array(INPUT_POST, $args3);
 
-
-		if($inputs["doublon"] == 0)
-			$inputs["doublon"] = null;
+		if($inputs3["doublon"] == 0)
+			$inputs3["doublon"] = null;
 
 		// if id is null, the bug doesn't exist so we do the creation
-		if($inputs["id"] === null)
+		if($inputs3["id"] === null)
 		{
-			if($inputs["summary"]!== null && $inputs["summary"] != "" && $inputs["bug"] !== null && $inputs["bug"] != "" && $inputs["browser"] !== null && $inputs["browser"] != "")
+			
+			if($inputs1["summary"]!== null && $inputs1["summary"] != "" && $inputs1["bug"] !== null && $inputs1["bug"] != "")//&& $inputs1["browser"] !== null && $inputs1["browser"] != "")
 			{
+				
+				
 				$stmt = $this->db->prepare("SELECT * FROM `bugs_module` WHERE name=:module ORDER BY id ASC");
-				$stmt->bindValue(":module",$inputs["module"]);
+				$stmt->bindValue(":module",$inputs3["module"]);
 				try {
 					$stmt->execute();
 					$module = $stmt->fetch();
@@ -50,11 +62,11 @@ class BugsPost extends FormModel
 						VALUES
 							(:summary, :browser, :bug, :module_id, :state, :type, :reporter)
 					");
-					$sql->bindValue(":bug", $inputs["bug"]);
+					$sql->bindValue(":bug", $inputs1["bug"]);
 					$sql->bindValue(":state", $state);
-					$sql->bindValue(":type", $inputs["type"]);
-					$sql->bindValue(":summary", $inputs["summary"]);
-					$sql->bindValue(":browser", $inputs["browser"]);
+					$sql->bindValue(":type", $inputs1["type"]);
+					$sql->bindValue(":summary", $inputs1["summary"]);
+					$sql->bindValue(":browser", $inputs1["browser"]);
 					$sql->bindValue(":module_id", $module["id"], PDO::PARAM_INT);
 					$sql->bindValue("reporter", $this->currentUser->getID(), PDO::PARAM_INT);
 
@@ -84,69 +96,71 @@ class BugsPost extends FormModel
 
 					$stmt2->bindValue(":user_id",$module["user_id"], PDO::PARAM_INT);
 					$stmt2->bindValue(":bugs_id", $bug["id"], PDO::PARAM_INT);
-
+					
 					$stmt3->bindValue(":bugs_id", $bug["id"], PDO::PARAM_INT);
 					$stmt3->bindValue(":user_id",$this->currentUser->getID(), PDO::PARAM_INT);
 
 					$stmt2->execute();
+					$this->eventManager->sendEvent("bugadd");
 					$stmt3->execute();
+					/*print_r($inputs2["developer"]);
+				die("a");*/
 					
 					
 				} catch (PDOException $e) {
-					
+					die("Pokemon !");
 					Debug::kill($e->getMessage());
 				}
 			}
 
 		} else {
-
-			
 			
 			$req = $this->db->prepare("INSERT IGNORE INTO `bugs_assign` (user_id,bugs_id) VALUES (:user_id, :bugs_id)");
 			
 			
 			$stmt = $this->db->prepare("SELECT * FROM `bugs_module` WHERE name=:module ORDER BY id ASC");
-			$stmt->bindValue(":module",$inputs["module"]);
+			$stmt->bindValue(":module",$inputs3["module"]);
 			
 			try {
-				foreach( $inputs["developer"] as $value) {
+				foreach( $inputs2["developer"] as $value) {
 					
 					$req->bindValue(":user_id",$value);
-					$req->bindValue(":bugs_id", $inputs["id"]);
+					$req->bindValue(":bugs_id", $inputs3["id"]);
 					$req->execute();
 					
 				}
 				
 				$stmt->execute();
 				$module = $stmt->fetch();
-				$sql = $this->db->prepare("
-					UPDATE
-						`bugs_bugs`
-					SET
-						`bug` = :bug,
-						`state` = :state,
-						`type` = :type,
-						`summary` = :summary,
-						`browser` = :browser,
-						`module_id` = :module_id,
-						`doublon_id` = :doublon_id
-					WHERE
-						`id` = :id
-				");
+				$inputs1["module_id"] = $module["id"];
+				$inputs1["doublon_id"] = $inputs3["doublon"];
 
-				if($inputs["doublon"] !=null)
-					$inputs["state"] = "DOUBLON";
+				if($inputs3["doublon"] !=null)
+					$inputs1["state"] = "DOUBLON";
 				
-				$sql->bindValue(":bug", $inputs["bug"]);
-				$sql->bindValue(":state", $inputs["state"]);
-				$sql->bindValue(":type", $inputs["type"]);
-				$sql->bindValue(":summary", $inputs["summary"]);
-				$sql->bindValue(":browser", $inputs["browser"]);
-				$sql->bindValue(":id", $inputs["id"]);
-				$sql->bindValue(":module_id", $module['id']);
-				$sql->bindValue(":doublon_id", $inputs["doublon"]);
+				$sql = "UPDATE `bugs_bugs` SET ";
+				$conds = array();
+				foreach($inputs1 as $key => $value) {
+					$conds2= array();
+					if($value != null) {
+						$conds2 = "$key = " . $this->db->quote($value);
+						$conds[] = $conds2;
+					}					
+					
+				}
+				if(!empty($conds))
+					$conds3= implode(", ", $conds);
+				$sql.= $conds3;
+				$sql.= " WHERE id = :id";
 
-				$sql->execute();
+				$sql2 = $this->db->prepare($sql);
+				
+				$sql2->bindValue(":id", $inputs3["id"]);
+				$sql2->execute();
+				$this->eventManager->sendEvent("bugmodify");
+				if($inputs2["developer"] != null) {
+					$this->eventManager->sendEvent("bugadd");
+				}
 				
 			} catch (PDOException $e) {
 				Debug::kill($e->getMessage());

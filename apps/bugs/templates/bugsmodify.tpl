@@ -68,9 +68,9 @@
 
 				<div class="developer">
 					<label for="developer">{t}Developer{/t} :</label>
-					<select name="developer[]" multiple>
+					<select name="developer[]" multiple >
 						{foreach item=dev from="$devlist"}
-							<option value="{$dev->getId()}"> {$dev->getSurname()} </option>
+							<option value="{$dev->getID()}"> {$dev->getSurname()} </option>
 						{/foreach}
 					</select>
 				</div>
