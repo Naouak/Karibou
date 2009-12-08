@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<daemon>
+
+	<load class="FlashBugAdd" file="flashbugadd.class.php" />
+
+	<listen event="bugadd" class="FlashBugAdd" />
+
+</daemon>
+
+ 
