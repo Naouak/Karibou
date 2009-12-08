@@ -114,26 +114,36 @@ class BugsPost extends FormModel
 			}
 
 		} else {
+			$req1 = $this->db->prepare("SELECT * FROM bugs_dev WHERE module_id=:module");
 			
-			$req = $this->db->prepare("INSERT IGNORE INTO `bugs_assign` (user_id,bugs_id) VALUES (:user_id, :bugs_id)");
+			$req2 = $this->db->prepare("INSERT IGNORE INTO `bugs_assign` (user_id,bugs_id) VALUES (:user_id, :bugs_id)");
 			
 			
 			$stmt = $this->db->prepare("SELECT * FROM `bugs_module` WHERE name=:module ORDER BY id ASC");
 			$stmt->bindValue(":module",$inputs3["module"]);
 			
 			try {
-				foreach( $inputs2["developer"] as $value) {
-					
-					$req->bindValue(":user_id",$value);
-					$req->bindValue(":bugs_id", $inputs3["id"]);
-					$req->execute();
-					
-				}
-				
 				$stmt->execute();
 				$module = $stmt->fetch();
 				$inputs1["module_id"] = $module["id"];
 				$inputs1["doublon_id"] = $inputs3["doublon"];
+
+				$req1->bindValue(":module", $inputs1["module_id"]);
+				$req1->execute();
+				$dev = $req1->fetch();
+				foreach( $inputs2["developer"] as $value) {
+					
+					$req2->bindValue(":user_id",$value);
+					$req2->bindValue(":bugs_id", $inputs3["id"]);
+					$req2->execute();
+					$this->eventManager->sendEvent("bugadd");
+					
+				}
+				$req2->bindValue(":user_id", $dev["user_id"]);
+				$req2->bindValue(":bugs_id", $inputs3["id"]);
+				$req2->execute();
+				$this->eventManager->sendEvent("bugadd");
+				
 
 				if($inputs3["doublon"] !=null)
 					$inputs1["state"] = "DOUBLON";
@@ -158,9 +168,7 @@ class BugsPost extends FormModel
 				$sql2->bindValue(":id", $inputs3["id"]);
 				$sql2->execute();
 				$this->eventManager->sendEvent("bugmodify");
-				if($inputs2["developer"] != null) {
-					$this->eventManager->sendEvent("bugadd");
-				}
+				
 				
 			} catch (PDOException $e) {
 				Debug::kill($e->getMessage());
