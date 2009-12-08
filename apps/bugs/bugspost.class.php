@@ -103,12 +103,9 @@ class BugsPost extends FormModel
 					$stmt2->execute();
 					$this->eventManager->sendEvent("bugadd");
 					$stmt3->execute();
-					/*print_r($inputs2["developer"]);
-				die("a");*/
 					
 					
 				} catch (PDOException $e) {
-					die("Pokemon !");
 					Debug::kill($e->getMessage());
 				}
 			}

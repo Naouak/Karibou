@@ -59,10 +59,7 @@ class BugsModify extends Model
 					$dev = 1;
 			}
 			$devlist = $this->userFactory->getUsersFromGroup($this->userFactory->getGroupsFromId($devGroupId));
-			echo("<br /><br /><br /><br /><br /><br /><br /><br />");
 			
-			$idd = $devlist[0]->getID();
-			print_r($idd);
 		} catch (PDOException $e)
 		{
 			Debug::kill($e->getMessage());
