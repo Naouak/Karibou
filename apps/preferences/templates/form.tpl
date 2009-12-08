@@ -1,37 +1,3 @@
-{literal}
-<style type="text/css">
-	.frenchflag, .englishflag{
-		display:inline-block;
-		width: 40px;
-		height: 25px;
-		font-size: 0pt;
-	}
-
-	.frenchflag{
-		background-image: url(/themes/karibou/images/preferences/flags/fr.png);
-	}
-	
-	.englishflag{
-		background-image: url(/themes/karibou/images/preferences/flags/uk.png);
-	}
-	
-	.preferences fieldset, .preferences .changepassword{
-		border: solid grey 1px;
-		margin-top: 20px;
-		padding: 10px;
-	}
-	
-	.preferences .changepassword h2, .preferences legend{
-		color: green;
-		font-size: 12pt;
-		background: white;
-	}
-	
-	.preferences .changepassword h2{
-		margin-top: -20px;
-	}
-</style>
-{/literal}
 
 <div class="preferences">
 	<form action="{kurl app='preferences' action=post}" method="post">
