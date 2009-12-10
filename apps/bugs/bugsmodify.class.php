@@ -18,6 +18,8 @@ class BugsModify extends Model
 		$devGroupId = $config["developersGroup"]["id"];
 		
 		$id = $this->args['id'];
+		$display = 1;
+		
 
 		$search = filter_input(INPUT_POST, "search", FILTER_SANITIZE_SPECIAL_CHARS);
 		
@@ -45,10 +47,13 @@ class BugsModify extends Model
 			$sql1->execute();
 			$sql2->execute();
 			
-			$bug = $sql1->fetchAll();
+			$bug = $sql1->fetch();
+			if($bug["bug"] == null)
+				$display = 0;
+			
 			$modules = $sql2->fetchAll();
 
-			$stmt->bindValue(":bugs_id",$bug[0]['id'], PDO::PARAM_INT);
+			$stmt->bindValue(":bugs_id",$bug['id'], PDO::PARAM_INT);
 			$stmt->execute();
 			$assign = $stmt->fetchAll();
 
@@ -65,13 +70,14 @@ class BugsModify extends Model
 			Debug::kill($e->getMessage());
 		}
 	
-		$module = $modules[$bug[0]["module_id"]];
+		$module = $modules[$bug["module_id"]];
 
+		$this->assign("display", $display);
 		$this->assign("devlist", $devlist);
 		$this->assign("dev",$dev);
 		$this->assign("modules",$modules);
 		$this->assign("current_module",$module[0]);
-		$this->assign("bug",$bug[0]);
+		$this->assign("bug",$bug);
 		$this->assign("currentuser",$this->currentUser->getID());
 		$this->assign("isadmin", $this->getPermission() == _ADMIN_);
 		$this->assign("search", $content);

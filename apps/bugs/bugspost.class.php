@@ -41,6 +41,10 @@ class BugsPost extends FormModel
 		if($inputs3["doublon"] == 0)
 			$inputs3["doublon"] = null;
 
+		$qry = $this->db->prepare("INSERT INTO flashmail (from_user_id, to_user_id, message, date)
+								VALUES (:userId, :toUserId, :message, NOW())");
+		$fromUser = 1;
+		$message = "Le bug suivant vous a été assigné : ".$inputs1["bug"];
 		// if id is null, the bug doesn't exist so we do the creation
 		if($inputs3["id"] === null)
 		{
@@ -101,7 +105,12 @@ class BugsPost extends FormModel
 					$stmt3->bindValue(":user_id",$this->currentUser->getID(), PDO::PARAM_INT);
 
 					$stmt2->execute();
-					$this->eventManager->sendEvent("bugadd");
+					
+					$qry->bindValue(":userId", $fromUser);
+					$qry->bindValue(":toUserId", $module["user_id"]);
+					$qry->bindValue(":message", $message);
+					
+					$qry->execute();
 					$stmt3->execute();
 					
 					
@@ -114,6 +123,10 @@ class BugsPost extends FormModel
 			$req1 = $this->db->prepare("SELECT * FROM bugs_dev WHERE module_id=:module");
 			
 			$req2 = $this->db->prepare("INSERT IGNORE INTO `bugs_assign` (user_id,bugs_id) VALUES (:user_id, :bugs_id)");
+
+			$req3 = $this->db->prepare("SELECT * FROM bugs_subscribe WHERE bugs_id=:bugs_id");
+
+			$req4 = $this->db->prepare("SELECT * FROM bugs_assign WHERE bugs_id=:bugs_id");
 			
 			
 			$stmt = $this->db->prepare("SELECT * FROM `bugs_module` WHERE name=:module ORDER BY id ASC");
@@ -128,18 +141,37 @@ class BugsPost extends FormModel
 				$req1->bindValue(":module", $inputs1["module_id"]);
 				$req1->execute();
 				$dev = $req1->fetch();
+
+				$req4->bindValue(":bugs_id", $inputs3["id"]);
+				$req4->execute();
+				$assign_list = $req4->fetchAll();
+				$assigned = 0;
+				foreach($assign_list as $value) {
+					if(in_array($dev["user_id"],$value))
+						$assigned = 1;
+				}
 				foreach( $inputs2["developer"] as $value) {
 					
 					$req2->bindValue(":user_id",$value);
 					$req2->bindValue(":bugs_id", $inputs3["id"]);
 					$req2->execute();
-					$this->eventManager->sendEvent("bugadd");
+					
+					$qry->bindValue(":userId", $fromUser);
+					$qry->bindValue(":toUserId", $value);
+					$qry->bindValue(":message", $message);
+					$qry->execute();
 					
 				}
 				$req2->bindValue(":user_id", $dev["user_id"]);
 				$req2->bindValue(":bugs_id", $inputs3["id"]);
 				$req2->execute();
-				$this->eventManager->sendEvent("bugadd");
+				
+				if($assigned == 0) {
+					$qry->bindValue(":userId", $fromUser);
+					$qry->bindValue(":toUserId", $dev["user_id"]);
+					$qry->bindValue(":message", $message);
+					$qry->execute();
+				}
 				
 
 				if($inputs3["doublon"] !=null)
@@ -164,8 +196,20 @@ class BugsPost extends FormModel
 				
 				$sql2->bindValue(":id", $inputs3["id"]);
 				$sql2->execute();
-				$this->eventManager->sendEvent("bugmodify");
+
+				$req3->bindValue(":bugs_id",$inputs3["id"]);
+				$req3->execute();
+
+				$subscribers = $req3->fetchAll();
 				
+				$message = "Le bug suivant a été modifié : ".$inputs1["bug"];
+				
+				foreach($subscribers as $value) {
+					$qry->bindValue(":userId", $fromUser);
+					$qry->bindValue(":toUserId", $value["user_id"]);
+					$qry->bindValue(":message", $message);
+					$qry->execute();
+				}
 				
 			} catch (PDOException $e) {
 				Debug::kill($e->getMessage());

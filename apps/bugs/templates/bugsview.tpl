@@ -23,4 +23,11 @@
         <dd>{t}Description{/t}</dd><dt>{$bug.bug}</dt>
         <dd>{t}Module{/t}</dd><dt>{$module.name}</dt>
     </dl>
+	<form action='{kurl page="view" id=$bug.id}' method="post">
+		<div class="button">
+			<input type="hidden" name="insert" value="1" />
+			<input type="submit" value="{t}Suivre ce bug{/t}" />
+		</div>
+	</form>
+	
 </div>

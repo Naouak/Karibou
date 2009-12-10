@@ -13,22 +13,30 @@ class BugsView extends Model
 {
 	public function build()
 	{
+		$insert = filter_input(INPUT_POST, "insert", FILTER_SANITIZE_NUMBER_INT);
+		
 		$id = $this->args['id'];
 
+		$sql2 = $this->db->prepare("INSERT IGNORE INTO bugs_subscribe (user_id, bugs_id) VALUES (:user_id, :bugs_id)");
 		$sql = $this->db->prepare("SELECT * FROM bugs_bugs WHERE id=:id ORDER BY id DESC LIMIT 1");
 		$stmt = $this->db->prepare("SELECT * FROM bugs_assign WHERE bugs_id=:bugs_id");
 		$req = $this->db->prepare("SELECT * FROM bugs_module WHERE id=:id");
 		
 		try {
+			if($insert == 1) {
+				$sql2->bindValue(":user_id",$this->currentUser->getID());
+				$sql2->bindValue(":bugs_id", $id);
+				$sql2->execute();
+			}
 			$sql->bindValue(":id",$id, PDO::PARAM_INT);
 			$sql->execute();
-			$bug = $sql->fetchAll();
+			$bug = $sql->fetch();
 
-			$req->bindValue(":id",$bug[0]['module_id']);
+			$req->bindValue(":id",$bug['module_id']);
 			$req->execute();
-			$module = $req->fetchAll();
+			$module = $req->fetch();
 
-			$stmt->bindValue(":bugs_id",$bug[0]['id'], PDO::PARAM_INT);
+			$stmt->bindValue(":bugs_id",$bug['id'], PDO::PARAM_INT);
 			$stmt->execute();
 			$assign = $stmt->fetchAll();
 
@@ -40,19 +48,19 @@ class BugsView extends Model
 			}
 			
 			
-			$name=$this->appname."-".$bug[0]['id'];
-			$combox = new CommentSource($this->db,$name,"",$bug[0]["bug"]);
+			$name=$this->appname."-".$bug['id'];
+			$combox = new CommentSource($this->db,$name,"",$bug["bug"]);
 		} catch (PDOException $e) {
 			Debug::kill($e->getMessage());
 		}
 
-		if ($user["object"] =  $this->userFactory->prepareUserFromId($bug[0]["reporter_id"]))
+		if ($user["object"] =  $this->userFactory->prepareUserFromId($bug["reporter_id"]))
 		{
-			$this->assign("module", $module[0]);
+			$this->assign("module", $module);
 			$this->assign("dev",$dev);
 			$this->assign("bug_author", $user);
-			$this->assign("bug",$bug[0]);
-			$this->assign("currentuser",$this->currentUser->getId());
+			$this->assign("bug",$bug);
+			$this->assign("currentuser",$this->currentUser->getID());
 			$this->assign("idcombox",$combox->getId());
 			$this->assign("isadmin",$this->getPermission() == _ADMIN_);
 		}
