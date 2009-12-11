@@ -85,7 +85,7 @@ class Poll extends Model
                 $this->assign("results", $resultsTab);
                 $this->assign("countVotes", $countVotes);
             }
-		$commentSource = new CommentSource($this->db,"sondage".$pollID,"",$pollInfos["question"]);
+		$commentSource = new CommentSource($this->db,"sondage".$pollID,$pollInfos["question"],"");
 		$this->assign("commentId",$commentSource->getId());
         }
     }
