@@ -1,4 +1,4 @@
-<div id="scorelist">
+<div class="default2-score-list">
 {if $selfrank and !$hide}
 	<ul>
 {if $app != null}
@@ -17,7 +17,7 @@
 	</p>
 	<ul>
 {foreach item="row" from=$scores}
-		<li style="margin-left: 4em;">{$row.rank}/ {userlink user=$row.user showpicture=$islogged}: {$row.score}</li>
+		<li class="default2-score-orderlist" >{$row.rank}/ {userlink user=$row.user showpicture=$islogged}: {$row.score}</li>
 {/foreach}
 	</ul>
 </div>
