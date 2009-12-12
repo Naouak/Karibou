@@ -17,6 +17,8 @@ class BugsView extends Model
 		
 		$id = $this->args['id'];
 
+		$sql4 = $this->db->prepare("DELETE FROM bugs_subscribe WHERE user_id=:user_id AND bugs_id=:bugs_id");
+		$sql3 = $this->db->prepare("SELECT * FROM bugs_subscribe WHERE user_id=:user_id AND bugs_id=:bugs_id");
 		$sql2 = $this->db->prepare("INSERT IGNORE INTO bugs_subscribe (user_id, bugs_id) VALUES (:user_id, :bugs_id)");
 		$sql = $this->db->prepare("SELECT * FROM bugs_bugs WHERE id=:id ORDER BY id DESC LIMIT 1");
 		$stmt = $this->db->prepare("SELECT * FROM bugs_assign WHERE bugs_id=:bugs_id");
@@ -27,6 +29,21 @@ class BugsView extends Model
 				$sql2->bindValue(":user_id",$this->currentUser->getID());
 				$sql2->bindValue(":bugs_id", $id);
 				$sql2->execute();
+			} elseif ($insert == 2) {
+				$sql4->bindValue(":user_id",$this->currentUser->getID());
+				$sql4->bindValue(":bugs_id", $id);
+				$sql4->execute();
+			}
+
+   
+			$sql3->bindValue(":user_id",$this->currentUser->getID());
+			$sql3->bindValue(":bugs_id",$id);
+			$sql3->execute();
+			$subs = 0;
+	
+			$fetch = $sql3->fetch();
+			if($fetch !=null) {
+				$subs = 1;
 			}
 			$sql->bindValue(":id",$id, PDO::PARAM_INT);
 			$sql->execute();
@@ -52,10 +69,12 @@ class BugsView extends Model
 			$combox = new CommentSource($this->db,$name,"",$bug["bug"]);
 		} catch (PDOException $e) {
 			Debug::kill($e->getMessage());
+			print_r($e->getMessage());
 		}
 
 		if ($user["object"] =  $this->userFactory->prepareUserFromId($bug["reporter_id"]))
 		{
+			$this->assign("subs",$subs);
 			$this->assign("module", $module);
 			$this->assign("dev",$dev);
 			$this->assign("bug_author", $user);

@@ -25,8 +25,13 @@
     </dl>
 	<form action='{kurl page="view" id=$bug.id}' method="post">
 		<div class="button">
-			<input type="hidden" name="insert" value="1" />
-			<input type="submit" value="{t}Suivre ce bug{/t}" />
+			{if $subs == 0}
+				<input type="hidden" name="insert" value="1" />
+				<input type="submit" value="{t}Suivre ce bug{/t}" />
+			{else}
+				<input type="hidden" name="insert" value="2" />
+				<input type="submit" value="{t}Se désinscrire{/t}" />
+			{/if}
 		</div>
 	</form>
 	
