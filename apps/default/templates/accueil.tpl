@@ -22,7 +22,8 @@ var karibou = null;
 function filterAppList (evt) {
 	if (evt.keyCode == 27) {
 		new Effect.toggle($('homeAppAdder'), 'appear');
-		new Effect.toggle($('homeAppAddButton'));
+		$('homeAppAddButton').value = "##Add an application##";
+		evt.stop();
 		return false;
 	}
 	var val = document.getElementById("filterAppList").value.toLowerCase();
