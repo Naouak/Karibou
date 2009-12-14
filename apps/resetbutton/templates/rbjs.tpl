@@ -22,7 +22,7 @@ var resetbuttonClass = Class.create(KApp, {
 		}catch(e){
 			this.lastClick = new Date.getTime();
 		}
-		
+
 		this.lastClick = data.lastClick * 1000;
 		this.lastClicker = data.userlink;
 	},
@@ -59,7 +59,7 @@ var resetbuttonClass = Class.create(KApp, {
 		this.refresher1 = new PeriodicalExecuter(this.updateTimer.bind(this), 0.9);
 		this.refresher2 = new PeriodicalExecuter((
 			function(){
-					new Ajax.Request("{/literal}{kurl page='state'}{literal}", {asynchronous: true, evalScripts: false, onComplete: this.importJson});
+					new Ajax.Request("{/literal}{kurl page='state'}{literal}", {asynchronous: true, evalScripts: false, onComplete: this.importJson.bind(this)});
 			}
 		).bind(this), 10);
 	},
