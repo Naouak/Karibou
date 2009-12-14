@@ -7,12 +7,15 @@
  * did not receive this file, see http://www.gnu.org/licenses/gpl.html.
  *
  * @package applications
- **/ 
+ **/
+
+ClassLoader::add('ProfileFactory', dirname(__FILE__).'/../annuaire/classes/profilefactory.class.php');
+ClassLoader::add('Profile', dirname(__FILE__).'/../annuaire/classes/profile.class.php');
 
 class BugsPost extends FormModel
 {
 	public function build() {
-	
+		$a = $GLOBALS['config']['bdd']['frameworkdb'];
 		$args1 = array(
 			'summary' => FILTER_SANITIZE_SPECIAL_CHARS,
 			'bug' => FILTER_SANITIZE_SPECIAL_CHARS,
@@ -44,7 +47,12 @@ class BugsPost extends FormModel
 		$qry = $this->db->prepare("INSERT INTO flashmail (from_user_id, to_user_id, message, date)
 								VALUES (:userId, :toUserId, :message, NOW())");
 		$fromUser = 1;
-		$message = "Le bug suivant vous a été assigné : ".$inputs1["bug"];
+		$message = "Bonjour. Le bug suivant vous a été assigné : ".$inputs1["bug"];
+
+		$qry2 = Database::instance()->prepare("SELECT login FROM ".$a.".users WHERE id=:id");
+		
+		$factory = new ProfileFactory($this->db, $GLOBALS['config']['bdd']["frameworkdb"].".profile");
+		
 		// if id is null, the bug doesn't exist so we do the creation
 		if($inputs3["id"] === null)
 		{
@@ -52,7 +60,7 @@ class BugsPost extends FormModel
 			if($inputs1["summary"]!== null && $inputs1["summary"] != "" && $inputs1["bug"] !== null && $inputs1["bug"] != "")//&& $inputs1["browser"] !== null && $inputs1["browser"] != "")
 			{
 				
-				
+				//$stmt4 = $this->db->prepare("SELECT * FROM "
 				$stmt = $this->db->prepare("SELECT * FROM `bugs_module` WHERE name=:module ORDER BY id ASC");
 				$stmt->bindValue(":module",$inputs3["module"]);
 				try {
@@ -112,7 +120,22 @@ class BugsPost extends FormModel
 					
 					$qry->execute();
 					$stmt3->execute();
+
+					$subject = "BugTracker";
 					
+					
+					$qry2->bindValue(":id", $module["user_id"]);
+					$qry2->execute();
+					$username = $qry2->fetch();
+
+					if($profile = $factory->fetchFromUsername($username["login"]))
+					{
+						$factory->fetchEmails($profile);
+						$mail = $profile->getEmails();
+						
+					}
+					mail($mail[0]["email"], $subject, $message);
+
 					
 				} catch (PDOException $e) {
 					Debug::kill($e->getMessage());
@@ -160,7 +183,17 @@ class BugsPost extends FormModel
 					$qry->bindValue(":toUserId", $value);
 					$qry->bindValue(":message", $message);
 					$qry->execute();
-					
+
+					$qry2->bindValue(":id",$value);
+					$qry2->execute();
+					$username = $qry2->fetch();
+					if($profile = $factory->fetchFromUsername($username["login"]))
+					{
+						$factory->fetchEmails($profile);
+						$mail = $profile->getEmails();
+
+					}
+					mail($mail[0]["email"], $subject, $message);
 				}
 				$req2->bindValue(":user_id", $dev["user_id"]);
 				$req2->bindValue(":bugs_id", $inputs3["id"]);
@@ -209,6 +242,17 @@ class BugsPost extends FormModel
 					$qry->bindValue(":toUserId", $value["user_id"]);
 					$qry->bindValue(":message", $message);
 					$qry->execute();
+
+					$qry2->bindValue(":id",$value["user_id"]);
+					$qry2->execute();
+					$username = $qry2->fetch();
+					if($profile = $factory->fetchFromUsername($username["login"]))
+					{
+						$factory->fetchEmails($profile);
+						$mail = $profile->getEmails();
+
+					}
+					mail($mail[0]["email"], $subject, $message);
 				}
 				
 			} catch (PDOException $e) {
