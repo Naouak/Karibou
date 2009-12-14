@@ -112,6 +112,7 @@ function toggleAddAppList() {ldelim}
 <span id="columnsLinks">
 <li><a href="" onclick="karibou.currentTab.addColumn(); return false;" id="addColumnLink">##Add a column##</a></li>
 <li><a href="" onclick="karibou.currentTab.removeLastColumn(); return false;" id="removeColumnLink">##Remove the last column##</a></li>
+<li><a href="" onclick="karibou.closeCurrentTab(); return false" id="closeTabLink">##Remove current tab##</a></li>
 </span>
 <span id="resizeLinks">
 <li><a href="" onclick="cancelResizeTab(); return false;" id="cancelResizeLink">##Cancel##</a></li>
@@ -139,13 +140,7 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
 {/if}
 <br />
 <div class="default2-tabs">
-{if $islogged}
-<div class="default2-tabs-modify">
-    
-    <input type="button" class="default2-tabs-removetab" onclick="karibou.closeCurrentTab();" value="##Remove Current tab##" />
-
-</div>
-{/if}
+{if $islogged}<div class="default2-tabs-modify"></div>{/if}
 <ul id="tabsBar">{if $islogged}<li id="default2-addtabbutton">
     <form id="default2-addtabbutton-formm" method="post" action="" onsubmit="default2_tab_submit();">
 	<label onclick="setTabText();" for="default2-addtabbutton-form" id="default2-addtabbutton-label">##Add a tab##</label>
