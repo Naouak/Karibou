@@ -10,10 +10,7 @@
 
 /**
  * Argument Class to handle URL action
- *  - id
- *	- browser
  *	- module
- *	- doublon
  *  - state
  *  - type
  *  - summary
@@ -24,7 +21,7 @@ class SortBugs extends Argument
 {
 	function getVar($arg)
 	{
-		if( preg_match('#(id|browser|module_id|doublon_id|state|type|summary|bug|reporter_id)#', $arg, $match) )
+		if( preg_match('#(module_id|state|type|summary)#', $arg, $match) )
 		{
 			return $match[1];
 		}
