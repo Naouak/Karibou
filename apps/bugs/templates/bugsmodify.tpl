@@ -32,15 +32,11 @@
 
 				<div class="module">
 					<label for="module">{t}Module{/t} :
-				<select name="module">
-					{foreach item=module from=$modules}
-						{if $module.id == $bug.module_id}
-							<option selected>{$module.name}</option>
-						{else}
-							<option>{$module.name}</option>
-						{/if}
-					{/foreach}
-				</select>
+					<select name="module_id">
+						{foreach item=module from=$modules}
+							<option value="{$module.id}" {if $module.id == $bug.module_id} selected{/if}>{$module.name}</option>
+						{/foreach}
+					</select>
 				</div>
 
 				<div class="description">
@@ -84,7 +80,7 @@
 						<ul>
 							<li><input type="radio" name="doublon" value="0">Aucun</li>
 							{foreach item=dbln from=$search}
-								<li><input type="radio" name="doublon" value="{$dbln.id}">{$dbln.summary} </li>
+								<li><input type="radio" name="doublon_id" value="{$dbln.id}">{$dbln.summary} </li>
 							{/foreach}
 						</ul>
 					</div>

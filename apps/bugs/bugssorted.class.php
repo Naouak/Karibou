@@ -13,6 +13,7 @@ class BugsSorted extends Model
 {
 	public function build()
 	{
+		//Filtrage de POST (pour la recherche)
 		$post = array (
 			'module_id' => array (
 				'filter' => FILTER_SANITIZE_NUMBER_INT,
@@ -29,19 +30,21 @@ class BugsSorted extends Model
 		);
 		
 		$filter = filter_input_array(INPUT_POST, $post);
-		
-		if( $this->args['sort'] == "state" || $this->args['sort'] == "type" || $this->args['sort'] == "summary" ) {
+
+		//Par défaut, on trie par état.
+		if( $this->args['sort'] == "module_id" || $this->args['sort'] == "type" || $this->args['sort'] == "summary" ) {
 			$sort = "b.".$this->args['sort'];
 		} else {
-			$sort = "b.module_id";
+			$sort = "b.state";
 		}
 		
-		
+		//Par défaut, on trie par ordre croissant
 		if($this->args['ascdescsort'] == 2)
 			$order = "DESC";
 		else
 			$order = "ASC";
 
+		//En fonction du numéro de page, on ne met pas les mêmes éléments (pagination).
 		$page = $this->args['numberpage'];
 		if($page==1) {
 			$start = 0;
@@ -51,7 +54,17 @@ class BugsSorted extends Model
 			$end = $start + 30;
 		}
 
-		$sql1 = "SELECT b.id, b.summary AS summary, b.module_id AS module_id, b.state AS state, b.type AS type, bugs_module.name FROM bugs_bugs as b LEFT JOIN bugs_module ON bugs_module.id = b.module_id";
+		//Première partie de la requête : ce qu'on sélectionne
+		$sql1 = "SELECT
+						b.id, b.summary AS summary, b.module_id AS module_id, b.state AS state, b.type AS type, bugs_module.name
+				FROM
+						bugs_bugs as b
+				LEFT JOIN
+						bugs_module
+				ON
+						bugs_module.id = b.module_id";
+
+		//Deuxième partie de la requête : le filtre (where) ne se fait que lorsque l'user a lancé une recherche, i.e que POST est rempli.
 		$conds = array();
 		foreach($filter as $key => $value) {
 			$conds2 = array();
@@ -70,26 +83,21 @@ class BugsSorted extends Model
 		$sql1.="ORDER BY $sort $order LIMIT $start , $end";
 
 		$sql = $this->db->prepare($sql1);
-		$stmt = $this->db->prepare("SELECT * FROM bugs_module");
+
+		$stmt = $this->db->prepare("
+			SELECT
+				*
+			FROM
+				bugs_module
+		");
 				
 		try {
 			$sql->execute();
 			$stmt->execute();
 
 			$modules = $stmt->fetchAll();
-			$bugs = array();
+			$bugs = $sql->fetchAll();
 			
-			while($bugRow = $sql->fetch(PDO::FETCH_ASSOC))
-			{
-				if ($user["object"] =  $this->userFactory->prepareUserFromId($bugRow['id']))
-					$bug['id']=$bugRow['id'];
-					$bug['summary']=$bugRow['summary'];
-					$bug['module_id']=$bugRow['module_id'];
-					$bug['state']=$bugRow['state'];
-					$bug['type']=$bugRow['type'];
-					$bug['module']=$bugRow['name'];
-					$bugs[] = $bug;
-			}
 			$next = 0;
 			$previous = 0;
 			if($bugs[29] !== null)
@@ -97,9 +105,9 @@ class BugsSorted extends Model
 			if($page == 1)
 				$previous = 0;
 
+			$this->assign("previouspage",$previouspage);
+			$this->assign("nextpage",$nextpage);
 			$this->assign("numberpage",$page);
-			$this->assign("nextpage",$page+1);
-			$this->assign("previouspage",$page-1);
 			$this->assign("previous",$previous);
 			$this->assign("next",$next);
 			$this->assign("bugs",$bugs);

@@ -13,6 +13,7 @@ class BugsAdd extends Model
 {
 
 	public function build() {
+		//Sélection des modules à afficher dans le template.
 		$sql = "SELECT * from bugs_module ORDER BY id ASC";
 		try {
 			$stmt = $this->db->prepare($sql);
@@ -41,7 +42,6 @@ class BugsAdd extends Model
 
 		//$this->assign("browser",$brow);
 		$this->assign("modules", $modules);
-		$this->assign("message",$this->formMessage->getSession());
 	}
 }
 ?>

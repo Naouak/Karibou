@@ -13,7 +13,7 @@
 				<label for="module">{t}Module{/t} :</label>
 				<select name="module">
 					{foreach item=module from=$modules}
-					<option>{$module.name}</option>
+					<option value="{$module.id}">{$module.name}</option>
 					{/foreach}
 				</select>
 			</div>

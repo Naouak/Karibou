@@ -4,7 +4,7 @@
         <li><a href="{kurl}">##Index##</a></li>
     </ul>
 
-	<form action='{kurl page="sort" sort="module_id" ascdescsort="1" numberpage="$numberpage"}' method="post">
+	<form action='{kurl page="sort" sort="state" ascdescsort="1" numberpage="$numberpage"}' method="post">
 		<h2> Filters </h2>
 		<div class="Module">
 			<label for="Module">{t}Module{/t} :</label>
@@ -75,7 +75,7 @@
         <tbody>
 	{foreach item=bug from=$bugs}
 		<tr>
-                <td>{$bug.module}</td>
+                <td>{$bug.name}</td>
                 <td><a href='{kurl page="view" id=$bug.id}'>{$bug.summary}</a></td>
                 <td>{t}{$bug.state}{/t}</td>
                 <td>{t}{$bug.type}{/t}</td>
@@ -87,14 +87,14 @@
     <ul>
         {if $previous == 1}
             <li>
-                <a href='{kurl page="sort" sort="module_id" ascdescsort="1" numberpage="$previouspage"}'>
+                <a href='{kurl page="sort" sort="state" ascdescsort="1" numberpage="$previouspage"}'>
                     {t}Previous{/t}
                 </a>
             </li>
         {/if}
         {if $next == 1}
             <li>
-                <a href='{kurl page="sort" sort="module_id" ascdescsort="1" numberpage="$nextpage"}'>
+                <a href='{kurl page="sort" sort="state" ascdescsort="1" numberpage="$nextpage"}'>
                    {t}Next{/t}
                 </a>
             </li>

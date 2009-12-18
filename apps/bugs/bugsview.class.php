@@ -13,6 +13,7 @@ class BugsView extends Model
 {
 	public function build()
 	{
+		//Le insert est utilisé pour l'incription.
 		$insert = filter_input(INPUT_POST, "insert", FILTER_SANITIZE_NUMBER_INT);
 		
 		$id = $this->args['id'];
@@ -25,6 +26,7 @@ class BugsView extends Model
 		$req = $this->db->prepare("SELECT * FROM bugs_module WHERE id=:id");
 		
 		try {
+			//Si le type s'inscrit, on le met dans subscribe, s'il se désinscrit, on le vire, sinon on fait rien.
 			if($insert == 1) {
 				$sql2->bindValue(":user_id",$this->currentUser->getID());
 				$sql2->bindValue(":bugs_id", $id);
@@ -35,17 +37,19 @@ class BugsView extends Model
 				$sql4->execute();
 			}
 
-   
+			//On sélectionne regarde si l'user est inscrit. Cela conditionnera le bouton s'inscrire/se désinscrire.
 			$sql3->bindValue(":user_id",$this->currentUser->getID());
 			$sql3->bindValue(":bugs_id",$id);
 			$sql3->execute();
+			$fetch = $sql3->fetch();
+
 			$subs = 0;
 	
-			$fetch = $sql3->fetch();
 			if($fetch !=null) {
 				$subs = 1;
 			}
-			$sql->bindValue(":id",$id, PDO::PARAM_INT);
+			
+			$sql->bindValue(":id",$id);
 			$sql->execute();
 			$bug = $sql->fetch();
 
@@ -53,7 +57,7 @@ class BugsView extends Model
 			$req->execute();
 			$module = $req->fetch();
 
-			$stmt->bindValue(":bugs_id",$bug['id'], PDO::PARAM_INT);
+			$stmt->bindValue(":bugs_id",$bug['id']);
 			$stmt->execute();
 			$assign = $stmt->fetchAll();
 

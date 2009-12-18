@@ -13,34 +13,41 @@ class BugsModify extends Model
 {
 	function build()
 	{
+		//Configuration pour obtenir les développeurs
 		$app = $this->appList->getApp($this->appname);
 		$config = $app->getConfig();
 		$devGroupId = $config["developersGroup"]["id"];
-		
-		$id = $this->args['id'];
-		$display = 1;
-		
 
+		//Récupération de l'id du bug.
+		$id = $this->args['id'];
+
+		//Variable conditionnant l'affichage de la page de modification du bug (si le bug existe ou non).
+		$display = 1;
+
+		//Recherche de doublons du bug
 		$search = filter_input(INPUT_POST, "search", FILTER_SANITIZE_SPECIAL_CHARS);
-		
-		$sql1 = $this->db->prepare("SELECT * FROM bugs_bugs WHERE id=:id ORDER BY Id DESC");
-		$sql1->bindValue(":id", $id, PDO::PARAM_INT);
-		
+
+		//Sélection du bug à modifier
+		$sql1 = $this->db->prepare("SELECT * FROM bugs_bugs WHERE id=:id");
+		$sql1->bindValue(":id", $id);
+
+		//Requêtes pour l'assignation du bug à des développeurs
 		$sql2 = $this->db->prepare("SELECT * FROM bugs_module ORDER BY id ASC");
 		$stmt = $this->db->prepare("SELECT * FROM bugs_assign WHERE bugs_id=:bugs_id");
 
+		//Recherche de doublons
 		if($search != null) {
 				
-				$sql = $this->db->prepare("SELECT id,summary FROM bugs_bugs WHERE summary LIKE :search OR bug LIKE :search");
-				$sql->bindValue("search",'%'.$search.'%');
-				try {
-					$sql->execute();
-					$content = $sql->fetchAll();
-				} catch (PDOException $e) {
-					Debug::kill($e->getMessage());
-				}
-
+			$sql = $this->db->prepare("SELECT id,summary FROM bugs_bugs WHERE summary LIKE :search OR bug LIKE :search");
+			$sql->bindValue("search",'%'.$search.'%');
+			try {
+				$sql->execute();
+				$content = $sql->fetchAll();
+			} catch (PDOException $e) {
+				Debug::kill($e->getMessage());
 			}
+
+		}
 		
 		try {
 			
@@ -48,21 +55,20 @@ class BugsModify extends Model
 			$sql2->execute();
 			
 			$bug = $sql1->fetch();
-			if($bug["bug"] == null)
-				$display = 0;
-			
 			$modules = $sql2->fetchAll();
 
-			$stmt->bindValue(":bugs_id",$bug['id'], PDO::PARAM_INT);
+			//On affiche la page d'erreur si le bug n'existe pas
+			if($bug["bug"] == null)
+				$display = 0;
+
+			$stmt->bindValue(":bugs_id",$bug['id']);
 			$stmt->execute();
 			$assign = $stmt->fetchAll();
 
+			//On détecte si l'user fait partie des développeurs déjà assignés
 			$dev = 0;
-			foreach($assign as $value)
-			{
-				if($value['user_id'] == $this->currentUser->getID())
-					$dev = 1;
-			}
+			if(in_array($this->currentUser->getID(), $assign));
+				$dev = 1;
 			$devlist = $this->userFactory->getUsersFromGroup($this->userFactory->getGroupsFromId($devGroupId));
 			
 		} catch (PDOException $e)
