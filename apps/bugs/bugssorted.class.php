@@ -32,7 +32,7 @@ class BugsSorted extends Model
 		$filter = filter_input_array(INPUT_POST, $post);
 
 		//Par défaut, on trie par état.
-		if( $this->args['sort'] == "module_id" || $this->args['sort'] == "type" || $this->args['sort'] == "summary" ) {
+		if( $this->args['sort'] == "module_id" || $this->args['sort'] == "type" || $this->args['sort'] == "summary") {
 			$sort = "b.".$this->args['sort'];
 		} else {
 			$sort = "b.state";
@@ -48,10 +48,8 @@ class BugsSorted extends Model
 		$page = $this->args['numberpage'];
 		if($page==1) {
 			$start = 0;
-			$end = 30;
 		} else {
 			$start = 30 * ($page - 1);
-			$end = $start + 30;
 		}
 
 		//Première partie de la requête : ce qu'on sélectionne
@@ -80,7 +78,7 @@ class BugsSorted extends Model
 		}
 
 		$sql1.= $where;
-		$sql1.="ORDER BY $sort $order LIMIT $start , $end";
+		$sql1.="ORDER BY $sort $order LIMIT $start , 30";
 
 		$sql = $this->db->prepare($sql1);
 
@@ -99,14 +97,14 @@ class BugsSorted extends Model
 			$bugs = $sql->fetchAll();
 			
 			$next = 0;
-			$previous = 0;
+			$previous = 1;
 			if($bugs[29] !== null)
 				$next = 1;
 			if($page == 1)
 				$previous = 0;
 
-			$this->assign("previouspage",$previouspage);
-			$this->assign("nextpage",$nextpage);
+			$this->assign("previouspage",$page-1);
+			$this->assign("nextpage",$page+1);
 			$this->assign("numberpage",$page);
 			$this->assign("previous",$previous);
 			$this->assign("next",$next);
