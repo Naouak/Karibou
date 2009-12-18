@@ -8,10 +8,6 @@
  *
  * @package applications
  **/
-
-ClassLoader::add('ProfileFactory', dirname(__FILE__).'/../annuaire/classes/profilefactory.class.php');
-ClassLoader::add('Profile', dirname(__FILE__).'/../annuaire/classes/profile.class.php');
-
 class BugsPost extends FormModel
 {
 	public function build() {
@@ -214,18 +210,23 @@ class BugsPost extends FormModel
 	//Fonction d'envoi de mail.
 	public function mailsend ($touser,$subject,$message) {
 		$a = $GLOBALS['config']['bdd']["frameworkdb"];
-		
-		$sql = Database::instance()->prepare("SELECT login FROM ".$a.".users WHERE id=:id");
-		$sql->bindValue(":id", $touser);
-		$sql->execute();
-		$username = $sql->fetch();
 
-		$factory = new ProfileFactory($this->db, $a.".profile");
-		if($profile = $factory->fetchFromUsername($username["login"]))
-		{
-			$factory->fetchEmails($profile);
-			$mail = $profile->getEmails();
-		}
+		$stmt = Database::instance()->prepare("
+			SELECT
+				e.email
+			FROM
+				".$a.".profile_email as e
+			LEFT JOIN
+				".$a.".users
+			ON
+				".$a.".users.profile_id=e.profile_id
+			WHERE
+				".$a.".users.id=:id
+		");
+		$stmt->bindValue(":id", $touser);
+		$stmt->execute();
+		$mail = $stmt->fetch();
+
 		mail($mail[0]["email"], $subject, $message);
 	}
 }
