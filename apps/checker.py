@@ -123,17 +123,26 @@ class Application:
 			print "A load node can't have children"
 			return False
 		attrs = node.attrib
-		if len(attrs) != 2:
+		if not len(attrs) in [1, 2] :
 			print "Invalid number of attributes for the load node"
 			return False
-		for attrib in ["class", "file"]:
-			if not attrib in attrs:
-				print "Missing '%s' attribute for the load node" % attrib
-				return False
-		if attrs["class"] in self.classes:
-			print "Duplicated load entry for %s" % attrs["class"]
+		if not("class") in attrs:
+			print "Missing class attribute for a load node."
 			return False
-		self.classes[attrs["class"]] = attrs["file"]
+		className = attrs["class"]
+		if not className.startswith("["):
+			if not "file" in attrs:
+				print "Missing file attribute for a load node."
+				return False
+		else:
+			className = className[className.index("/"):]
+		if className in self.classes:
+			print "Duplicated load entry for %s" % className
+			return False
+		if "file" in attrs:
+			self.classes[className] = attrs["file"]
+		else:
+			self.classes[className] = attrs["class"]
 		return True
 	
 	def loadNode_header(self, node):
@@ -176,13 +185,16 @@ class Application:
 			print "A view node can't have children"
 			return False
 		attrs = node.attrib
-		if len(attrs) != 3:
+		if not len(attrs) in [2,3]:
 			print "Invalid number of attributes for the view node"
 			return False
-		for attrib in ["class", "name", "template"]:
-			if not attrib in attrs:
-				print "Missing '%s' attribute for the view node" % attrib
-				return False
+		if not "name" in attrs:
+			print "Missing name attribute for a view node"
+			return False
+		if not "class" in attrs:
+			attrs["class"] = "EmptyModel"
+		if not "template" in attrs:
+			attrs["template"] = ""
 		self.views[attrs["name"]] = {"class": attrs["class"], "template": attrs["template"]}
 		return True
 	
