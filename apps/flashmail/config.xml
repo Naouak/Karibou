@@ -36,7 +36,7 @@
 	</page>
 	
 	<!-- The page for the unread flashmails in XML -->
-	<page name="unreadlistXML" view="unreadlistXML">
+	<page name="unreadlistXML" view="unreadlistXML" contenttype="text/xml">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
 	</page>
