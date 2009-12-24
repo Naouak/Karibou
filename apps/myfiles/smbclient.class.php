@@ -64,8 +64,8 @@ class SmbClient {
 	public function __construct ($homeDirectory, $loginName, $password) {
 		// Split the homeDirectory to serverPath and homePath
 		$blocs = explode("\\", $homeDirectory);
-		$this->serverPath = "\\\\\\\\" . $blocs[2] . "\\" . $blocs[3];
-		$this->homePath = str_replace("\\", "/", substr($homeDirectory, strlen($this->serverPath) - 2));
+		$this->serverPath = "\\\\" . $blocs[2] . "\\" . $blocs[3];
+		$this->homePath = str_replace("\\", "/", substr($homeDirectory, strlen($this->serverPath)));
 		if (substr($this->homePath, -1) != '/')
 			$this->homePath .= '/';
 		$this->password = $password;
@@ -74,7 +74,7 @@ class SmbClient {
 	
 	public function ls ($folder) {
 		$entries = array();
-		$smbCommand = "smbclient \"" . $this->serverPath . "\"  -D \"" . $this->homePath . $folder . "\" -U \"" . $this->loginName . "%" . $this->password . "\" -c \"ls\"";
+		$smbCommand = "smbclient " . self::estr($this->serverPath) . "  -D " . self::estr($this->homePath . $folder) . " -U " . self::estr($this->loginName . "%" . $this->password) . " -c \"ls\"";
 		exec($smbCommand, $lines);
 		if ((substr($folder, -1) != '/') && ($folder != ""))
 			$folder .= '/';
@@ -91,11 +91,13 @@ class SmbClient {
 		if (substr($fileName, 0, 1) == "/")
 			$fileName = substr($fileName, 1);
 		$fileName = str_replace("/", "\\", $fileName);
-		$smbCommand = "smbclient \"" . $this->serverPath . "\"  -D \"" . $this->homePath . "\" -U \"" . $this->loginName . "%" . $this->password . "\" -c ";
-		$smbCommand .= "\"get \\\"$fileName\\\" \\\"$temp\\\" \"";
+		$smbCommand = "smbclient " . self::estr($this->serverPath) . "  -D " . self::estr($this->homePath) . " -U " . self::estr($this->loginName . "%" . $this->password) . " -c ";
+		$smbCommand .= self::estr('get "' . addcslashes($fileName, '"') . '" "' . addcslashes($temp, '"') . '"');
 		exec($smbCommand, $lines);
 		return $temp;
 	}
-}
 
-?>
+	private static function estr($str) {
+		return "'" . str_replace("'", "'\"'\"'", $str) . "'";
+	}
+}

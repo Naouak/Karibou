@@ -11,6 +11,10 @@ class AppJSView extends Model
 				continue;
 			$miniapp = MiniAppFactory::buildApplication($miniappName);
 			$app = $this->appList->getApp($miniappName);
+
+			// Do not ask
+			if(!is_object($miniapp)) continue;
+			
 			if ($miniapp->getJSView() != "") {
 				$app->addView($miniapp->getJSView(), "JS_" . $miniapp->getAppName());
 				$hasJS = true;
