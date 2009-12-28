@@ -177,5 +177,10 @@ isset($usersfound) && count($usersfound) > 0 }
 		padding-left: 10px;
 		padding-right: 10px;
 	}
+
+	#container div.search div.resultset .thumbnail {
+		float:left;
+		margin-left:10px;
+	}
 </style>
 {/literal}
