@@ -18,6 +18,7 @@ class Bugs extends Model
 {
 	public function build()
 	{
+		$this->assign("isadmin", $this->getPermission() == _ADMIN_);
 	}
 }
  

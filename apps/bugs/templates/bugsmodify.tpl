@@ -70,7 +70,7 @@
 						<label for="developer">{t}Developer{/t} :</label>
 						<select name="developer[]" multiple >
 							{foreach item=dev from="$devlist"}
-								<option value="{$dev->getID()}"> {$dev->getSurname()} </option>
+								<option value="{$dev->getID()}" {if in_array($dev->getID(),$assigned)}selected{/if}> {$dev->getSurname()} </option>
 							{/foreach}
 						</select>
 					</div>

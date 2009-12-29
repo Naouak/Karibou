@@ -33,7 +33,7 @@ class BugsModify extends Model
 
 		//Requêtes pour l'assignation du bug à des développeurs
 		$sql2 = $this->db->prepare("SELECT * FROM bugs_module ORDER BY id ASC");
-		$stmt = $this->db->prepare("SELECT * FROM bugs_assign WHERE bugs_id=:bugs_id");
+		$stmt = $this->db->prepare("SELECT user_id FROM bugs_assign WHERE bugs_id=:bugs_id");
 
 		//Recherche de doublons
 		if($search != null) {
@@ -64,6 +64,11 @@ class BugsModify extends Model
 			$stmt->bindValue(":bugs_id",$bug['id']);
 			$stmt->execute();
 			$assign = $stmt->fetchAll();
+			$assigned = array();
+			foreach($assign as $value) {
+				$assign2 = $value["user_id"];
+				$assigned[] = $assign2;
+			}
 
 			//On détecte si l'user fait partie des développeurs déjà assignés
 			$dev = 0;
@@ -78,6 +83,8 @@ class BugsModify extends Model
 	
 		$module = $modules[$bug["module_id"]];
 
+
+		$this->assign("assigned",$assigned);
 		$this->assign("display", $display);
 		$this->assign("devlist", $devlist);
 		$this->assign("dev",$dev);

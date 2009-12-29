@@ -73,7 +73,6 @@ class BugsView extends Model
 			$combox = new CommentSource($this->db,$name,"",$bug["bug"]);
 		} catch (PDOException $e) {
 			Debug::kill($e->getMessage());
-			print_r($e->getMessage());
 		}
 
 		if ($user["object"] =  $this->userFactory->prepareUserFromId($bug["reporter_id"]))
