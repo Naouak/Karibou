@@ -21,7 +21,7 @@ class SortBugs extends Argument
 {
 	function getVar($arg)
 	{
-		if( preg_match('#(module_id|state|type|summary)#', $arg, $match) )
+		if( preg_match('#(module_id|id|state|type|summary)#', $arg, $match) )
 		{
 			return $match[1];
 		}
