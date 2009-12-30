@@ -1,4 +1,3 @@
  - Intégrer la fonction de génération des fichiers .po
    (génération automatique à partir du parcours des .tpl avec vérification des duplicates et clés globales)
- - Suppression des fichiers de langue XML (après validation du fonctionnement global)
  - Mutualiser / nettoyer / optimiser le code et le placer dans l'application d'admin

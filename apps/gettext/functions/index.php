@@ -7,14 +7,3 @@ Le fichier de traduction est nécessaire pour localiser une application. C'est un
 Une fois le fichier PO créé, il faut le compiler pour qu'il soit exploitable par gettext.<br />
 <a href="compile.php">Compiler le fichier PO (pour prise en compte des traduction)</a><br />
 
-
-<hr />
-
-
-<div style="color: #acacac;">
-<h2>Création du PO (fichier traducteurs) à partir des fichiers de langue (languages.xml)</h2>
-<a href="xml2po.php">Accéder au fichier de création du PO</a><br />
-Ce fichier requiert des modifications (fichier de sortie, type de sortie...).
-<br />
-<strong>Il ne doit être utilisé que pour l'import initial des traductions et n'aura plus lieu d'être lors de la suppression des fichiers de langue (languages.xml)</strong>
-</div>
