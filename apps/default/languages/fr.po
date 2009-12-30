@@ -18,6 +18,9 @@ msgstr "Ajouter une application"
 msgid "Add"
 msgstr "Ajouter"
 
+msgid "Search"
+msgstr "Chercher"
+
 msgid "Resize"
 msgstr "Redimensionner"
 

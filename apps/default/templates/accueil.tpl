@@ -123,7 +123,7 @@ function toggleAddAppList() {ldelim}
 
 
 <div id="homeAppAdder" style="display : none">
-Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="filterAppList(event);" length="150" /><br />
+##Search## : <input type="text" name="filterAppList" id="filterAppList" onkeyup="filterAppList(event);" length="150" /><br />
 <ul id="homeAppList">
 {foreach key=appName item=appObject from=$apps}
     <li class="homeAppChoice" kappName="{$appName}">
