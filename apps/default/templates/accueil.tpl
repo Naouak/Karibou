@@ -129,7 +129,7 @@ Search : <input type="text" name="filterAppList" id="filterAppList" onkeyup="fil
     <li class="homeAppChoice" kappName="{$appName}">
 	<span class="default2-applist-appname">{$appObject->getName("$lang")}</span>
 	<span class="default2-applist-appdescription">{$appObject->getDesc("$lang")}</span>
-	<a onclick="karibou.instanciateApplication('{$appName}'); $('filterAppList').focus(); return false;">Ajouter</a>
+	<a onclick="karibou.instanciateApplication('{$appName}'); $('filterAppList').focus(); return false;">##Add##</a>
     </li>
 {/foreach}
 </ul>
