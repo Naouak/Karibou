@@ -1,0 +1,6 @@
+msgid "Phone number :"
+msgstr "Numéro de téléphone :"
+
+msgid "No result."
+msgstr "Aucun résultat."
+

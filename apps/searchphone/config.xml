@@ -1,0 +1,19 @@
+<app>
+    <permissions default="_NO_ACCESS_" logged="_READ_ONLY_" />
+
+    <load class="SearchPhone" file="searchphone.class.php" />
+
+    <header app="header" view="default" />
+    <footer app="footer" view="default" />
+    
+    <view name="js" template="js.tpl" />
+    <view name="mini" template="search.tpl" />
+
+    <view name="search" class="SearchPhone" template="results.tpl" />
+
+    <page name="number" view="search">
+        <header app="header" view="empty" />
+        <footer app="footer" view="empty" />
+        <argument name="number" class="NumberArgument" />
+    </page>
+</app>
