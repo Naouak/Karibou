@@ -2,7 +2,6 @@ pour Pierre
 Kapp : confirm, alert
 default = big app
 AAAS : Application As A Service
-système de CSS
 iframe
 Amélioration KForm -> choix multiple
 
@@ -19,6 +18,4 @@ bot
 pourrissage de gueule
 
 pour Tonton
-votesbox
-commentbox
 réécriture News et Calendar
