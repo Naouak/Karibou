@@ -1,6 +1,0 @@
-name_fr = "Photos"
-name_en = "Pictures"
-desc_fr = "Affiche les photos envoyées par les utilisateurs"
-desc_en = "Display the pictures sent by the users"
-view = "mini"
-submitmodel = "submit"
