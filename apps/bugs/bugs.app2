@@ -1,5 +1,0 @@
-name_fr = "Bugs"
-name_en = "Bugs"
-desc_fr = "Application de gestion des bugs"
-desc_en = "Application which is carried by bugs"
-view = "bugsmini"
