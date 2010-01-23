@@ -129,6 +129,12 @@ var KTab = Class.create({
 		var sliderObject = new Control.Slider(handles, this.slider, { range: $R(0, 100), tabObject: this, sliderValue: sliderValues, restricted: true, onSlide: function (value) {
 			this.tabObject.newTabSizes = new Array();
 			var previousSize = 0;
+			if (value.length == undefined) {
+				// In this case, we have only one slider value.
+				var value_backup = value;
+				value = new Array();
+				value.push(value_backup);
+			}
 			for (var i = 0 ; i < value.length ; i++) {
 				if ((i == value.length-1) && value[i] > 90)
 					value[i] = 90;
