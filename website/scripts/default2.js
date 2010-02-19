@@ -772,7 +772,7 @@ var Karibou = Class.create({
 			}
 		}
 		if (choosenContainer == null) {
-			alert("Cannot instanciate application, no container. Please create a tab.");
+			alert("Cannot instanciate application, no container.");
 			return;
 		}
 		var appLoader = null;
