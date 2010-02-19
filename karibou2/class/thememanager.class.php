@@ -40,7 +40,7 @@ class Theme {
 		return $this->valid;
 	}
 
-	public function getCSS($appname, Theme $fallback) {
+	public function getCSS($appname, $fallback) {
 		if (($this->parent == null) && ($this->parentname != null))
 			$this->parent = ThemeManager::instance()->getTheme($this->parentname);
 		$filename = '/' . $this->name . '/' . $appname . '.css';
@@ -51,7 +51,7 @@ class Theme {
 		if (is_file(KARIBOU_THEMES_DIR . $filename))
 			return array_merge($base, array($filename));
 		else if (($fallback != null) && (count($base) == 0))
-			return $fallback->getCSS($appname);
+			return $fallback->getCSS($appname, null);
 		return $base;
 	}
 
