@@ -1,4 +1,5 @@
 <?php
+
 	$checklist = array();
 	/**
 	 * Liste des fonctions nécessaires
@@ -32,7 +33,7 @@
 		'name'			=> 'Crypt/RSA.php',
 		'errortitle'		=> 'CryptRSA est introuvable',
 		'errordescription'	=> 'Certaines données sont chiffrées en utilisant la classe CryptRSA de PEAR. Cependant, il semblerait qu\'elle ne soit pas actuellement installée.',
-		'resolve'		=> 'Vous devez installer CryptRSA dans le <em>include_path</em> de PHP. Si PEAR est correctement, la commande <br /><pre>pear install Crypt_RSA</pre> devrait régler le problème.'
+		'resolve'		=> 'Vous devez installer CryptRSA dans le <em>include_path</em> de PHP. Si PEAR est correctement, la commande <br /><pre>pear install Crypt_RSA-1.2.1</pre> devrait régler le problème.'
 	);
 
 	/**
