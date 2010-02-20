@@ -7,6 +7,40 @@ var minichatClass = Class.create(KApp, {
 		this.refreshInterval = Number({/literal}{$refreshInterval}{literal});
 		this.refresher = new Ajax.PeriodicalUpdater(this.getElementById('minichat_live'), this.refreshURL, {asynchronous:true, evalScripts:true, frequency: this.refreshInterval});
 	},
+	minichat_keypress: function(e) {
+		if (e.keyCode == e.DOM_VK_TAB) {
+			var messageInput = this.getElementById("message");
+			var currentText = messageInput.value;
+			// Extract last word, ending at messageInput.selectionEnd...
+			var lastWord = '';
+			var i = messageInput.selectionEnd - 1;
+			while (i >= 0) {
+				var c = currentText[i];
+				if ((c == ' ') || (c == "\t") || (c == ':') || (c == ',') || (c == ';'))
+					break
+				lastWord = c + lastWord;
+				i--;
+			}
+			// Crude hack here to retrieve the list of onlineusers
+			var oll = document.getElementById("onlineusers_live");
+			if (oll) {
+				var matches = oll.innerHTML.match(new RegExp("\\(\\)\">" + lastWord + "(.*)</a>", "gi"));
+				// Sorry, I do not handle more than one nick for completion so far...
+				if (matches.length == 1) {
+					var daMatch = matches[0];
+					var daName = daMatch.substring(4, daMatch.length-4);
+					
+					// Now, replace lastWord with daName
+					var currentTextBefore = currentText.substring(0, messageInput.selectionEnd - lastWord.length);
+					var currentTextAfter = currentText.substring(messageInput.selectionEnd);
+					var newText = currentTextBefore + daName + " " + currentTextAfter;
+					messageInput.value = newText;
+				}
+			}
+			return false;
+		}
+		return true;
+	},
 	on_minichat_live_form_submit: function () {
 		if(this.getElementById("message").value.indexOf("€") >= 0){
 		    var nodes = document.getElementsByClassName("handle")
