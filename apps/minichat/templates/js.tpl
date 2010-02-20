@@ -33,7 +33,10 @@ var minichatClass = Class.create(KApp, {
 					// Now, replace lastWord with daName
 					var currentTextBefore = currentText.substring(0, messageInput.selectionEnd - lastWord.length);
 					var currentTextAfter = currentText.substring(messageInput.selectionEnd);
-					var newText = currentTextBefore + daName + " " + currentTextAfter;
+					var newText = "";
+					if (currentTextBefore.length < 2)
+						newText = ":";
+					newText = currentTextBefore + daName + newText + " " + currentTextAfter;
 					messageInput.value = newText;
 				}
 			}
