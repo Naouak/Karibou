@@ -6,7 +6,7 @@
 {/if}
     {if $permission > _READ_ONLY_}
     <form autocomplete="off" action="{kurl action="post"}" method="post" id="minichat_live_form">
-        <input type="text" name="post" id="message" class="minichatMessage" onkeypress="return $app(this).minichat_keypress(event);" />
+        <input type="text" name="post" id="message" class="minichatMessage" onkeydown="return $app(this).minichat_keypress(event);" />
     </form>
     {/if}
 {if $inversepostorder}
