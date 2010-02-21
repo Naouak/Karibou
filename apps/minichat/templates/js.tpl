@@ -8,7 +8,7 @@ var minichatClass = Class.create(KApp, {
 		this.refresher = new Ajax.PeriodicalUpdater(this.getElementById('minichat_live'), this.refreshURL, {asynchronous:true, evalScripts:true, frequency: this.refreshInterval});
 	},
 	minichat_keypress: function(e) {
-		if (e.keyCode == e.DOM_VK_TAB) {
+		if (e.keyCode == 9) {	// 9 == Tab key
 			var messageInput = this.getElementById("message");
 			var currentText = messageInput.value;
 			// Extract last word, ending at messageInput.selectionEnd...
