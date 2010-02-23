@@ -10,6 +10,9 @@
 </object><br />
 </br>{$vid.comment}<br />{t}Video posted by{/t} : {userlink user=$vid.user showpicture=$islogged}
 <br />
+    <div>
+        <a href="{kurl app='commentaires' id=$vid.idcombox}" class="lightbox lightbox-iframe">{commentbox id=$vid.idcombox} ##Comments##</a>
+    </div>
 	{votesbox id=$vid.idcombox type="bigapp"}
 <br /> <br />
 
