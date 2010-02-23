@@ -14,103 +14,61 @@
  **/
 class Video extends Model
 {
-    public function build()
-    {
-    	if (isset($_POST, $_POST['newvideo']) && ($this->currentUser->getID() > 0) ) 
+	public function build()
 	{
-		$video = filter_input(INPUT_POST, 'newvideo', FILTER_SANITIZE_SPECIAL_CHARS);	
-		$comment = filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_SPECIAL_CHARS);	
+		$app = $this->appList->getApp($this->appname);
+		$config = $app->getConfig();
 
-		// Enregistrement URL : Youtube ou Dailymotion
-		$site = "unknown";
-		if (eregi("http://(.*)youtube.com/watch\?v=(.*)", $video, $out)) {
-			$video = $out[2];
-			$urlvid = "http://www.youtube.com/v/";
-			$site = "youtube";
-		} else if (eregi("http://(.*)vimeo.com/(.*)", $video, $out)) {
-			$video = $out[2];
-			$urlvid = "http://vimeo.com/moogaloop.swf?clip_id=";
-			$site = "vimeo";
-		} else if (eregi("http://(.*)koreus.com/video/(.*).html", $video, $out)) {
-			$video = $out[2];
-			$urlvid = "http://www.koreus.com/video/";
-			$site = "koreus";
-		} else if (eregi("http://(.*)dailymotion.com/(.*)", $video, $out)) {
-			$urlvid = "http://www.dailymotion.com/swf/";
-			$site = "dailymotion";
-			
-			$file = fopen ($video, "r");
-			if ($file) {
-				while (!feof($file)) {
-					$line = fgets($file, 1024);
-					if (preg_match ("<link rel=\"video_src\" href=\"http://www.dailymotion.com/swf/([^\?]*)(.*)?\" />", $line, $out)) {
-						$video = $out[1];
-						break;
-					}
+		try
+		{
+			$stmt = $this->db->query("SELECT * FROM video WHERE datetime < NOW() AND deleted=0 ORDER BY datetime DESC LIMIT 5");
+		}
+		catch(PDOException $e)
+		{
+			Debug::kill($e->getMessage());
+		}
+
+		if ($videoonline = $stmt->fetchall(PDO::FETCH_ASSOC)) {
+			if ($user["object"] =  $this->userFactory->prepareUserFromId($videoonline[0]["user_id"])) {
+				$name = $this->appname . '-' . $videoonline[0]['id'];
+
+				$videoUrl = $videoonline[0]['site'] . $videonline[0]['video'];
+				$videoHTML = "<object id=\"videoObject\" data=\"$videoUrl\" type=\"application/x-shockwave-flash\" width=\"200\" height=\"184\">";
+				$videoHTML .= "<param name=\"movie\" value=\"$videoUrl\" />";
+				$videoHTML .= "</object>";
+
+				$combox = new CommentSource($this->db, $name, $videoonline[0]["comment"], $videoHTML);
+
+
+				$this->assign("idnow",$videoonline[0]["id"]);
+				$this->assign("idcomboxnow",$combox->getId());
+				$this->assign("videonow",$videoonline[0]["video"]);
+				$this->assign("commentaire",$videoonline[0]["comment"]);
+				$this->assign("url",$videoonline[0]["site"]);
+
+				foreach ($videoonline as $id => $items) {
+					$videoonline[$id]["user"] = $this->userFactory->prepareUserFromId($videoonline[$id]["user_id"]);
+					
+					$videoUrl = $items['site'] . $items['video'];
+					$videoHTML = "<object id=\"videoObject\" data=\"$videoUrl\" type=\"application/x-shockwave-flash\" width=\"200\" height=\"184\">";
+					$videoHTML .= "<param name=\"movie\" value=\"$videoUrl\" />";
+					$videoHTML .= "</object>";
+
+					$name = $this->appname . '-' . $videoonline[$id]['id'];
+					$combox = new CommentSource($this->db, $name, $videoonline[$id]["comment"], $videoHTML);
+					$videoonline[$id]["idcombox"] = $combox->getId();
 				}
-				fclose($file);
+				$this->assign("videosarray", $videoonline);
+				$this->assign("videoauthor",$user);
+				$this->assign("islogged", $this->currentUser->isLogged());
+				$this->assign("isadmin", $this->getPermission() == _ADMIN_);
+			}
+			else
+			{
+				$this->assign("DDempty","Err empty");
 			}
 		}
-		
-		if ((strlen($video) > 3) && ($site != "unknown"))
-		{
-			// Requete d'insertion
-			$sql = "INSERT INTO video (`datetime`, user_id, video, site, comment) VALUES (NOW(), :user, :vid, :url, :comment)";
-			$stmt = $this->db->prepare($sql);
-			$stmt->bindValue(":user", $this->currentUser->getID());
-			$stmt->bindValue(":vid", $video);
-			$stmt->bindValue(":url", $urlvid);
-			$stmt->bindValue(":comment", $comment);
-			$stmt->execute();
-		}
 	}
-
-        $app = $this->appList->getApp($this->appname);
-        $config = $app->getConfig();
-
-        $sql = "SELECT * FROM video WHERE datetime < NOW() AND `deleted`=0 ORDER BY datetime DESC LIMIT 5";
-        try
-        {
-            $stmt = $this->db->query($sql);
-        }
-        catch(PDOException $e)
-        {
-            Debug::kill($e->getMessage());
-        }
-
-	if ($videoonline = $stmt->fetchall(PDO::FETCH_ASSOC)) {
-		//je recupere l'user
-		if ($user["object"] =  $this->userFactory->prepareUserFromId($videoonline[0]["user_id"])) {
-			
-			$name=$this->appname."-".$videoonline[0]['id'];
-			$combox = new CommentSource($this->db,$name,"",$videoonline[0]["video"]);
-
-			$this->assign("idnow",$videoonline[0]["id"]);
-			$this->assign("idcomboxnow",$combox->getId());
-			$this->assign("videonow",$videoonline[0]["video"]);
-			$this->assign("commentaire",$videoonline[0]["comment"]);
-			$this->assign("url",$videoonline[0]["site"]);
-
-			foreach ($videoonline as $id => $items) {
-				$videoonline[$id]["user"] = $this->userFactory->prepareUserFromId($videoonline[$id]["user_id"]);
-				$name=$this->appname."-".$videoonline[$id]['id'];
-				$combox = new CommentSource($this->db,$name,"",$videoonline[$id]["video"]);
-				$videoonline[$id]["idcombox"] = $combox->getId();
-
-			}
-			
-			$this->assign("videosarray", $videoonline);
-			$this->assign("videoauthor",$user);
-			$this->assign("islogged", $this->currentUser->isLogged());
-			$this->assign("isadmin", $this->getPermission() == _ADMIN_);
-			
-		}
-		else
-		{
-			$this->assign("DDempty","Err empty");
-		}
-	}
-    }
 }
 
 ?>

@@ -13,6 +13,9 @@
 <p>
 	{if $videoauthor == $currentuser || $isadmin}<a onclick="$app(this).modify({$idnow}); return false;">modifier</a>{/if}
 	{if $videoauthor == $currentuser || $isadmin}<a onclick="$app(this).deleteContent({$idnow}); return false;">supprimer<br /></a>{/if}
+    <div>
+        <a href="{kurl app='commentaires' id=$idcomboxnow}" class="lightbox lightbox-iframe">{commentbox id=$idcomboxnow} ##Comments##</a>
+    </div>
 	{votesbox id=$idcomboxnow type="miniapp"}
 </p>
 
