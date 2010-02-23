@@ -16,62 +16,12 @@ class Video extends Model
 {
     public function build()
     {
-    	if (isset($_POST, $_POST['newvideo']) && ($this->currentUser->getID() > 0) ) 
-	{
-		$video = filter_input(INPUT_POST, 'newvideo', FILTER_SANITIZE_SPECIAL_CHARS);	
-		$comment = filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_SPECIAL_CHARS);	
-
-		// Enregistrement URL : Youtube ou Dailymotion
-		$site = "unknown";
-		if (eregi("http://(.*)youtube.com/watch\?v=(.*)", $video, $out)) {
-			$video = $out[2];
-			$urlvid = "http://www.youtube.com/v/";
-			$site = "youtube";
-		} else if (eregi("http://(.*)vimeo.com/(.*)", $video, $out)) {
-			$video = $out[2];
-			$urlvid = "http://vimeo.com/moogaloop.swf?clip_id=";
-			$site = "vimeo";
-		} else if (eregi("http://(.*)koreus.com/video/(.*).html", $video, $out)) {
-			$video = $out[2];
-			$urlvid = "http://www.koreus.com/video/";
-			$site = "koreus";
-		} else if (eregi("http://(.*)dailymotion.com/(.*)", $video, $out)) {
-			$urlvid = "http://www.dailymotion.com/swf/";
-			$site = "dailymotion";
-			
-			$file = fopen ($video, "r");
-			if ($file) {
-				while (!feof($file)) {
-					$line = fgets($file, 1024);
-					if (preg_match ("<link rel=\"video_src\" href=\"http://www.dailymotion.com/swf/([^\?]*)(.*)?\" />", $line, $out)) {
-						$video = $out[1];
-						break;
-					}
-				}
-				fclose($file);
-			}
-		}
-		
-		if ((strlen($video) > 3) && ($site != "unknown"))
-		{
-			// Requete d'insertion
-			$sql = "INSERT INTO video (`datetime`, user_id, video, site, comment) VALUES (NOW(), :user, :vid, :url, :comment)";
-			$stmt = $this->db->prepare($sql);
-			$stmt->bindValue(":user", $this->currentUser->getID());
-			$stmt->bindValue(":vid", $video);
-			$stmt->bindValue(":url", $urlvid);
-			$stmt->bindValue(":comment", $comment);
-			$stmt->execute();
-		}
-	}
-
         $app = $this->appList->getApp($this->appname);
         $config = $app->getConfig();
 
-        $sql = "SELECT * FROM video WHERE datetime < NOW() AND `deleted`=0 ORDER BY datetime DESC LIMIT 5";
         try
         {
-            $stmt = $this->db->query($sql);
+            $stmt = $this->db->query("SELECT * FROM video WHERE datetime < NOW() AND deleted=0 ORDER BY datetime DESC LIMIT 5");
         }
         catch(PDOException $e)
         {
@@ -79,9 +29,7 @@ class Video extends Model
         }
 
 	if ($videoonline = $stmt->fetchall(PDO::FETCH_ASSOC)) {
-		//je recupere l'user
 		if ($user["object"] =  $this->userFactory->prepareUserFromId($videoonline[0]["user_id"])) {
-			
 			$name=$this->appname."-".$videoonline[0]['id'];
 			$combox = new CommentSource($this->db,$name,"",$videoonline[0]["video"]);
 
