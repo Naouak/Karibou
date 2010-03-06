@@ -6,7 +6,15 @@
 {/if}
     {if $permission > _READ_ONLY_}
     <form autocomplete="off" action="{kurl action="post"}" method="post" id="minichat_live_form">
-        <input type="text" name="post" id="message" class="minichatMessage" onkeydown="return $app(this).minichat_keypress(event);" />
+        <input type="text" 
+		       name="post" 
+			   id="message" 
+			   class="minichatMessage" 
+			   {if $showbutton}style="width: 80%;"{/if}
+			   onkeydown="return $app(this).minichat_keypress(event);" />
+		{if $showbutton}
+        <input type="submit" value="##MINICHAT_SEND##" class="button" />
+		{/if}
     </form>
     {/if}
 {if $inversepostorder}

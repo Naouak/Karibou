@@ -26,6 +26,11 @@ class MCDefault extends Model
 			$max = $config["max"]["small"] ;
 		}
 
+		if (isset($this->args['showbutton']) && $this->args['showbutton'] != "") {
+			$this->assign("showbutton", $this->args['showbutton']);
+		} else {
+			$this->assign("showbutton", false);
+		}
 		if( isset($this->args['userichtext']) && $this->args['userichtext'] != "" )
 		{
 			$userichtext = $this->args['userichtext'];
