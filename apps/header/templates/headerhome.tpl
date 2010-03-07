@@ -32,15 +32,13 @@
 
 	function sendPresenceNotification() {
 		lastPresenceNotification = new Date();
-		new Ajax.Request("{/literal}{kurl app="login" page="presence"}{literal}", 
-							{method: "post"});
+		new Ajax.Request("{/literal}{kurl app="login" page="presence"}{literal}", {method: "post"});
 	}
 
 	function presenceNotification(event) {
 		//alert("Ok, you are here...");
 		var newDate = new Date();
-		var truc = (newDate - lastPresenceNotification);
-		if (truc > 30000) {
+		if ((newDate - lastPresenceNotification) > 30000) {
 			// 30 seconds without notifying the server of our presence.
 			// He must be worrying, we must contact him !
 			sendPresenceNotification();
@@ -48,7 +46,7 @@
 	}
 
 	function initializeAutoAwaySystem() {
-		sendPresenceNotification();
+		lastPresenceNotification = new Date(); // sendPresenceNotification();
 		Event.observe(document, "keydown", presenceNotification);
 		Event.observe(document, "click", presenceNotification);
 		Event.observe(document, "mousemove", presenceNotification);
