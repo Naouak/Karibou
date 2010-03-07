@@ -2,15 +2,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
-    <script type="text/javascript">
-	<!--
-	/**
-	 * Some Globals vars that can be useful;
-	 */
-	var KGlobals = {literal}{}{/literal};
-	KGlobals.baseurl = "{$base_url}";
-	//-->
-    </script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<base href="http://{php} echo $_SERVER['HTTP_HOST'].str_replace("index.php","",$_SERVER['SCRIPT_NAME']);{/php}" />
 
@@ -27,6 +18,46 @@
 <![endif]-->
 	<script type="text/javascript" src="{$base_url}/scripts/prototype.js"></script>
 	<script type="text/javascript" src="{$base_url}/scripts/scriptaculous.js"></script>
+    <script type="text/javascript">
+	<!--
+	{literal}
+	/**
+	 * Some Globals vars that can be useful;
+	 */
+	var KGlobals = {};
+	KGlobals.baseurl = "{$base_url}";
+{/literal}{if $islogged}{literal}
+	// Auto-away system
+	var lastPresenceNotification;
+
+	function sendPresenceNotification() {
+		lastPresenceNotification = new Date();
+		new Ajax.Request("{/literal}{kurl app="login" page="presence"}{literal}", 
+							{method: "post"});
+	}
+
+	function presenceNotification(event) {
+		//alert("Ok, you are here...");
+		var newDate = new Date();
+		var truc = (newDate - lastPresenceNotification);
+		if (truc > 30000) {
+			// 30 seconds without notifying the server of our presence.
+			// He must be worrying, we must contact him !
+			sendPresenceNotification();
+		}
+	}
+
+	function initializeAutoAwaySystem() {
+		sendPresenceNotification();
+		Event.observe(document, "keydown", presenceNotification);
+		Event.observe(document, "click", presenceNotification);
+		Event.observe(document, "mousemove", presenceNotification);
+	}
+
+	Event.observe(window, "load", initializeAutoAwaySystem);
+	{/literal}{/if}
+	//-->
+    </script>
 	<script type="text/javascript" src="{$base_url}/scripts/karibou.js"></script>
 	<script type="text/javascript" src="{$base_url}/scripts/kform.js"></script>
 	<script type="text/javascript" src="{$base_url}/scripts/scal.js"></script>

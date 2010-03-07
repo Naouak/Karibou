@@ -2,10 +2,17 @@
 	<load class="Login" file="login.class.php" />
 	<load class="Logout" file="logout.class.php" />
 	<load class="LoginForm" file="loginform.class.php" />
+	<load class="Presence" file="presence.class.php" />
 	
 	<view name="mini" class="LoginForm" template="loginform.tpl" />
 	<view name="js" template="js.tpl" />
-	
+	<view name="presence" class="Presence" />
+
+	<page name="presence" view="presence">
+		<header app="header" name="empty" />
+		<footer app="header" name="empty" />
+	</page>
+
 	<form class="Login">
 		<referer />
 	</form>
