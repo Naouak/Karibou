@@ -26,6 +26,7 @@
 	 */
 	var KGlobals = {};{/literal}
 	KGlobals.baseurl = "{$base_url}";
+	{if $user_id}KGlobals.userID = {$user_id};{/if}
 {if $islogged}{literal}
 	// Auto-away system
 	var lastPresenceNotification;
