@@ -24,9 +24,10 @@
 	/**
 	 * Some Globals vars that can be useful;
 	 */
-	var KGlobals = {};
+	var KGlobals = {};{/literal}
 	KGlobals.baseurl = "{$base_url}";
-{/literal}{if $islogged}{literal}
+	{if $user_id}KGlobals.userID = {$user_id};{/if}
+{if $islogged}{literal}
 	// Auto-away system
 	var lastPresenceNotification;
 
