@@ -7,6 +7,7 @@ RewriteEngine On
 #RewriteBase /karibou/website
 
 # Some rules...
+RewriteRule ^push.php	push.php	[L]
 RewriteRule ^themes/	-		[L]
 RewriteRule ^scripts/	-		[L]
 RewriteRule ^statics/	-		[L]

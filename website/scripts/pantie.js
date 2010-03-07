@@ -15,7 +15,7 @@ function Pantie(register_url, uid) {
 	// Session identifier for the event system
 	var sid;
 	// Events we are listening to
-	var listen = [];
+	var listen = undefined;
 	// Number of tries remaining after an error
 	var tries = 10;
 	// The object itself
@@ -41,9 +41,8 @@ function Pantie(register_url, uid) {
 				"event": evt
 			},
 			onSuccess: function(r) {
-				if(r.responseJSON.slap != undefined) {
-					push_url = r.responseJSON.push;
-					uid = r.responseJSON.id;
+				if(r.responseJSON.slap == undefined) {
+					push_url = r.responseJSON.push_url;
 				} else {
 					alert('Pirate !');
 				}
@@ -75,9 +74,9 @@ function Pantie(register_url, uid) {
 	 * Calls all the functions attached to a specific event
 	 */
 	var dispatchEvent = function(evt, data) {
-		for(i in listen[evt]) {
-			listen[evt][i](data);
-		}
+		listen[evt].each(function(v, i) {
+			v(data);
+		});
 	}
 
 	/**
@@ -89,7 +88,8 @@ function Pantie(register_url, uid) {
 	 */
 	this.listenTo = function(evt, callback) {
 		var tostart = false;
-		if(listen.size() == 0) {
+		if(listen == undefined) {
+			listen = [];
 			tostart = true;
 		}
 
@@ -108,18 +108,18 @@ function Pantie(register_url, uid) {
 	 * Start a long poll of the server, waiting for events
 	 */
 	this.longPoll = function() {
-		var evts = new Array();
+		var evts = [];
 		run = true;
 
 		for(k in listen) {
-			evts.push(k);
+			if(typeof(listen[k]) == "object") evts.push(k);
 		}
 
 		xhr = new Ajax.Request(push_url, {
 			method: 'post',
 			parameters: {
-				"sessuion": sid,
-				"events": evts
+				"session": sid,
+				"events[]": evts
 			},
 			onFailure: function() {
 				if(--tries > 0) {
@@ -153,60 +153,14 @@ function Pantie(register_url, uid) {
 				}
 
 				// ok, we've got datas
-				for(i in data) {
+				data.each(function(v, i) {
 					if(listen[data[i].name] != undefined) {
 						dispatchEvent(data[i].name, data[i].data);
 					}
-				}
+				});
 				if(run) obj.longPoll();
 			}
 		});
-
-		/*xhr = $.ajax({
-			cache: false,
-			data: {
-				"session": sid,
-				"events": evts
-			},
-			dataType: "json",
-			error: function(xhr, stat, error) {
-				if(--tries > 0) {
-					if(run) setTimeout(obj.longPoll, 1000);
-				}
-			},
-			success: function(data, stat) {
-				// Is there any data in a first place ?
-				if(data == null) {
-					if(run) setTimeout(obj.longPoll, 1000);
-					return;
-				}
-
-				// in case of error, we retry in 1 second (provided that we did not tried that
-				// too much yet
-				if(data.error == true) {
-					if(--tries > 0) {
-						if(run) setTimeout(obj.longPoll, 1000);
-					}
-					return;
-				}
-
-				// in case of timeout, let's just re-run the same thing
-				if(data.timeout == true) {
-					if(run) obj.longPoll();
-					return;
-				}
-
-				// ok, we've got datas
-				for(i in data) {
-					if(listen[data[i].name] != undefined) {
-						dispatchEvent(data[i].name, data[i].data);
-					}
-				}
-				if(run) obj.longPoll();
-			},
-			type: "POST",
-			url: '/push.php'
-		});*/
 	}
 
 	/**
