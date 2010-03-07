@@ -2,10 +2,6 @@
 define("PANTIE_ROOT", dirname(__FILE__) . "/../karibou2/lib/pantie");
 
 // ---
-// Configuration
-// ---
-
-// ---
 // Inclusions
 // ---
 
