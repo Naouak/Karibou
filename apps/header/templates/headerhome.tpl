@@ -24,9 +24,9 @@
 	/**
 	 * Some Globals vars that can be useful;
 	 */
-	var KGlobals = {};
+	var KGlobals = {};{/literal}
 	KGlobals.baseurl = "{$base_url}";
-{/literal}{if $islogged}{literal}
+{if $islogged}{literal}
 	// Auto-away system
 	var lastPresenceNotification;
 
