@@ -61,6 +61,8 @@
 	<script type="text/javascript" src="{$base_url}/scripts/pantie.js"></script>
 	<script type="text/javascript">
 		pantie = new Pantie('{kurl app="header" page="pantie"}');
+		pantie.listenTo('test-909-test', {literal}function(){alert('caca');}{/literal});
+		pantie.listenTo('test-909-test', {literal}function(){alert('prout');}{/literal});
 	</script>
 	<script type="text/javascript" src="{$base_url}/scripts/karibou.js"></script>
 	<script type="text/javascript" src="{$base_url}/scripts/kform.js"></script>
