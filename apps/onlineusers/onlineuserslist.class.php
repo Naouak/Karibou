@@ -17,7 +17,7 @@ class OnlineUsersList extends Model
 		$moods = array(-1 => "none", "happy", "sad", "angry", "bored", "depressed", "disgusted", "excited", "invincible", "proud", "sick", "in_love", "stressed", "surprised", "worried", "serious", "distracted", "working", "desperate", "furious");
 
 		// Lister tous les utilisateurs en ligne dans un tableau
-		$sql = "SELECT ou.*, um.message, um.mood, fp.gender FROM onlineusers ou 
+		$sql = "SELECT ou.*, um.message, um.mood, fp.gender, TIME_TO_SEC(TIMEDIFF(NOW(), ou.last_presence)) AS presence FROM onlineusers ou 
 			LEFT JOIN usermood um ON um.user_id = ou.user_id
 			LEFT JOIN " . $GLOBALS['config']['bdd']["frameworkdb"] . ".users fu ON fu.id = ou.user_id
 			LEFT JOIN " . $GLOBALS['config']['bdd']["frameworkdb"] . ".profile fp ON fp.id=fu.profile_id
@@ -45,6 +45,8 @@ class OnlineUsersList extends Model
 				$user["mood"] = $tmp;
 			} else
 				$user["mood"] = "";
+			if ($user["presence"] > 15 * 60)
+				$user["away"] = true;
 		}
 
 		$nbonlineusers= sizeof($onlineusers);
