@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <app>
 	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
-	
+
 	<load class="HeaderHome" file="headerhome.class.php" />
-	
+	<load class="HeaderPantie" file="headerpantie.class.php" />
+
 	<view name="home" class="HeaderHome" template="headerhome.tpl" />
 	<view name="default" class="HeaderHome" template="headerhome.tpl" />
+	<view name="minimal" class="HeaderHome" template="minimal.tpl" />
+	<view name="pantie" class="HeaderPantie" />
 
-        <view name="minimal" class="HeaderHome" template="minimal.tpl" />
+	<page name="pantie" view="pantie" contenttype="application/json">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+	</page>
 </app>

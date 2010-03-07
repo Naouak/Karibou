@@ -56,6 +56,12 @@
 	{/literal}{/if}
 	//-->
     </script>
+	<!-- Pantie System -->
+	<script type="text/javascript" src="{$base_url}/scripts/pantie.js"></script>
+	<script type="text/javascript">
+		pantie = new Pantie('{kurl app="header" page="pantie"}');
+		pantie.listenTo('prout', {literal}function(){alert('caca');}{/literal});
+	</script>
 	<script type="text/javascript" src="{$base_url}/scripts/karibou.js"></script>
 	<script type="text/javascript" src="{$base_url}/scripts/kform.js"></script>
 	<script type="text/javascript" src="{$base_url}/scripts/scal.js"></script>

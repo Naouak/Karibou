@@ -65,6 +65,12 @@ ClassLoader::add('VotesScoreFactory', KARIBOU_CLASS_DIR."/votes.class.php");
 
 ClassLoader::add('Browscap', KARIBOU_LIB_DIR."/Browscap.php");
 
+// Pantie System
+ClassLoader::add('Pantie', KARIBOU_LIB_DIR."/pantie/Pantie.class.php");
+ClassLoader::add('PantieEvent', KARIBOU_LIB_DIR."/pantie/PantieEvent.class.php");
+ClassLoader::add('PantieSocket', KARIBOU_LIB_DIR."/pantie/PantieSocket.class.php");
+ClassLoader::add('PantieSocketException', KARIBOU_LIB_DIR."/pantie/PantieSocketException.class.php");
+ClassLoader::add('PantieToolkit', KARIBOU_LIB_DIR."/pantie/PantieToolkit.class.php");
 
 /**
  * @todo move session_start() in a class
