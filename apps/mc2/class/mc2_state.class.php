@@ -4,6 +4,7 @@ class Mc2State extends Model {
 		$db = Database::instance();
 
 		$lines = intval($this->args["lines"]);
+		if($lines > 100) $lines = 100;
 
 		if(!empty($this->args["types"])) {
 			$types = explode("|", urldecode($this->args["types"]));
