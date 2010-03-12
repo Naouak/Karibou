@@ -12,8 +12,15 @@ var mc2Class = Class.create(KApp, {
 		var obj = this;
 
 		// Create an empty list of messages
-		this.list = this.getElementById('messages');
+		this.list = $(this.getElementById('messages'));
 		this.msg = [];
+
+		// Override events of the form
+		this.getElementById('msg_form').onsubmit = function() {
+			this.request();
+			this.msg.value = "";
+			return false;
+		};
 
 		// Display the initial messages
 		this.updateState();
@@ -29,6 +36,7 @@ var mc2Class = Class.create(KApp, {
 	 * the whole DOM tree.
 	 */
 	onConfig: function() {
+		this.placeFormRight();
 		this.updateState();
 	},
 
@@ -40,6 +48,22 @@ var mc2Class = Class.create(KApp, {
 			this.appendMessage(msg.evalJSON());
 		} catch(err) {
 			console.log(err);
+		}
+	},
+
+	placeFormRight: function() {
+		var old_list = this.list;
+		var par = $(old_list.parentNode);
+
+		var new_list = old_list.cloneNode(true);
+		this.list = new_list;
+
+		old_list.remove();
+
+		if(this.config.invert) {
+			par.insert({bottom: new_list});
+		} else {
+			par.insert({top: new_list});
 		}
 	},
 
@@ -100,13 +124,13 @@ var mc2Class = Class.create(KApp, {
 	appendMessageToDOM: function(msg, pop) {
 		if(this.config.invert) {
 			if(pop) {
-				var d = $(this.list).immediateDescendants();
+				var d = this.list.immediateDescendants();
 				d[d.size() - 1].remove();
 			}
 			this.list.innerHTML = this.makeLine(msg) + this.list.innerHTML;
 		} else {
 			if(pop) {
-				var d = $(this.list).immediateDescendants();
+				var d = this.list.immediateDescendants();
 				d[0].remove();
 			}
 			this.list.innerHTML += this.makeLine(msg);
