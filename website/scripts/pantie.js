@@ -155,7 +155,12 @@ function Pantie(register_url, uid) {
 				// ok, we've got datas
 				data.each(function(v, i) {
 					if(listen[data[i].name] != undefined) {
-						dispatchEvent(data[i].name, data[i].data);
+						try {
+							dispatchEvent(data[i].name, data[i].data);
+						} catch(err) {
+							// ok we just don't want to die stupidly because of an
+							// incompetent programmer
+						}
 					}
 				});
 				if(run) obj.longPoll();
