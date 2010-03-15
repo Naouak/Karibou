@@ -36,12 +36,6 @@ Event.observe(window, "load", function(evt) {
  */
 
 function KBBCode() {
-	var tags = [];
-
-	this.addTag = function(name, callback) {
-		this.tags[name] = callback;
-	};
-
 	this.process = function(str, richText, smileys) {
 		var out = str;
 		out = this.urlize(out);
@@ -51,7 +45,7 @@ function KBBCode() {
 
 	this.urlize = function(str) {
 		expr = /(\s|^)((http|https|ftp|gopher):\/\/(\w+\.)*(\w+)(\/[^\s\[]*)*)(\s|$)/ig;
-		str = str.replace(expr, "[url]$2[/url]");
+		str = str.replace(expr, "$1[url]$2[/url]$7");
 		return str;
 	};
 
