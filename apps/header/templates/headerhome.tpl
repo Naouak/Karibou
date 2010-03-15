@@ -18,6 +18,8 @@
 <![endif]-->
 	<script type="text/javascript" src="{$base_url}/scripts/prototype.js"></script>
 	<script type="text/javascript" src="{$base_url}/scripts/scriptaculous.js"></script>
+	<!-- A better JSON implementation than prototype's one -->
+	<script type="text/javascript" src="{$base_url}/scripts/json.js"></script>
     <script type="text/javascript">
 	<!--
 	{literal}
