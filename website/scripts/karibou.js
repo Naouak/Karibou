@@ -31,3 +31,91 @@ Event.observe(window, "load", function(evt) {
 		};
 });
 
+/**
+ * BBCode parser
+ */
+
+function KBBCode() {
+	var tags = [];
+
+	this.addTag = function(name, callback) {
+		this.tags[name] = callback;
+	};
+
+	this.stringToDom = function(str) {
+		var parts = str.split('[');
+
+		var root = new Element('p');
+		var node = root;
+		node.tagname = "";
+		var exp = /^(\/?)(\w*)/;
+
+		for(var i = 0; i < parts.size(); i++) {
+			var semi = parts[i].split(']', 2);
+
+			var res = exp.exec(semi[0]);
+
+			if(res == null || semi[1] == undefined) {
+				node.innerHTML += ((i != 0) ? '[' : '') + parts[i];
+			} else if(res[1] == "/" && res[2] == node.tagname) {
+				node = node.parentNode;
+				node.innerHTML += semi[1];
+			} else if(res[2] == "b") {
+				var newNode = new Element('strong');
+				newNode.innerHTML = semi[1];
+				newNode.tagname = "b";
+				node.insert({
+					bottom: newNode
+				});
+				node = newNode;
+			} else if(res[2] == "i") {
+				var newNode = new Element('em');
+				newNode.innerHTML = semi[1];
+				newNode.tagname = "i";
+				node.insert({
+					bottom: newNode
+				});
+				node = newNode;
+			} else if(res[2] == "url") {
+				var prop = semi[0].split("=", 2);
+				var href = (prop[1] != undefined) ? prop[1] : semi[1];
+				var short_href = href;
+
+				var validate = /^(http|https|ftp|gopher):\/\//;
+				if(!validate.match(href)) {
+					href="";
+				} else {
+					short_href = href.replace(validate, "");
+					short_href = short_href.replace(/\/$/, "");
+					short_href = (short_href.length > 25) ? short_href.substr(0, 20) + "[...]" : short_href;
+				}
+
+				var newNode = new Element('a', {href: href, target: "_blank"});
+				newNode.tagname = "url";
+				newNode.innerHTML = (prop[1] != undefined) ? semi[1] : short_href;
+				node.insert({
+					bottom: newNode
+				});
+				node = newNode;
+			} else if(res[2] == "color") {
+				var newNode = new Element('span');
+				newNode.innerHTML = semi[1];
+				newNode.tagname = "color";
+
+				var prop = semi[0].split('=', 2);
+				if(prop[1] != undefined) {
+					newNode.style.color = prop[1];
+				}
+
+				node.insert({
+					bottom: newNode
+				});
+				node = newNode;
+			} else {
+				node.innerHTML += ((i != 0) ? '[' : '') + parts[i];
+			}
+		}
+
+		return root;
+	};
+}

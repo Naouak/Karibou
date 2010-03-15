@@ -3,7 +3,7 @@ class Mc2Post extends FormModel {
 	public function build() {
 		$db = Database::instance();
 
-		$msg = filter_input(INPUT_POST, "msg", FILTER_SANITIZE_STRING);
+		$msg = filter_input(INPUT_POST, "msg", FILTER_SANITIZE_SPECIAL_CHARS);
 
 		// TODO: antiflood, games
 

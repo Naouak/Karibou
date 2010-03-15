@@ -22,6 +22,9 @@ var mc2Class = Class.create(KApp, {
 			return false;
 		};
 
+		// Create the BBCode parser
+		this.bbc = new KBBCode();
+
 		// Display the initial messages
 		this.updateState();
 
@@ -81,7 +84,7 @@ var mc2Class = Class.create(KApp, {
 		new Ajax.Request(this.makeStateUrl(this.config['num_lines'], types), {
 			method: 'get',
 			onSuccess: function(t) {
-				obj.msg = t.responseJSON;
+				obj.msg = jsonParse(t.responseText);
 				obj.repaintDOM();
 			}
 		});
@@ -142,7 +145,12 @@ var mc2Class = Class.create(KApp, {
 	 */
 	makeLine: function(msg) {
 		var d = new Date(msg.time);
-		return "<li><strong>" + msg.userlink + "</strong> (<em>" + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "</em>) " + msg.post + "</li>";
+
+		try {
+			return "<li><strong>" + msg.userlink + "</strong> (<em>" + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "</em>) " + this.bbc.stringToDom(msg.post).innerHTML + "</li>";
+		} catch(err) {
+			console.log(err);
+		}
 	},
 
 	/**
