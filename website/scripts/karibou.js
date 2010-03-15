@@ -42,6 +42,19 @@ function KBBCode() {
 		this.tags[name] = callback;
 	};
 
+	this.process = function(str, richText, smileys) {
+		var out = str;
+		out = this.urlize(out);
+		out = this.stringToDom(out).innerHTML;
+		return out;
+	}
+
+	this.urlize = function(str) {
+		expr = /(\s|^)((http|https|ftp|gopher):\/\/(\w+\.)*(\w+)(\/[^\s\[]*)*)(\s|$)/ig;
+		str = str.replace(expr, "[url]$2[/url]");
+		return str;
+	};
+
 	this.stringToDom = function(str) {
 		var parts = str.split('[');
 
