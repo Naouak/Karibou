@@ -40,8 +40,9 @@ function KBBCode() {
 		var out = str;
 		out = this.urlize(out);
 		out = this.stringToDom(out).innerHTML;
+		if(!richText) out = this.unstyle(out);
 		return out;
-	}
+	};
 
 	this.urlize = function(str) {
 		expr = /(\s|^)((http|https|ftp|gopher):\/\/(\w+\.)*(\w+)(\/[^\s\[]*)*)(\s|$)/ig;
@@ -125,4 +126,8 @@ function KBBCode() {
 
 		return root;
 	};
+
+	this.unstyle = function(str) {
+		return str.replace(/<(?!a|\/a)(?:.|\s)*?>/g, "");
+	}
 }

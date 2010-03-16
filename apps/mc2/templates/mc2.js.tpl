@@ -147,7 +147,7 @@ var mc2Class = Class.create(KApp, {
 		var d = new Date(msg.time);
 
 		try {
-			return "<li><strong>" + msg.userlink + "</strong> (<em>" + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "</em>) " + this.bbc.process(msg.post) + "</li>";
+			return "<li><strong>" + msg.userlink + "</strong> (<em>" + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "</em>) " + this.bbc.process(msg.post, this.config.richtext) + "</li>";
 		} catch(err) {
 			console.log(err);
 		}
