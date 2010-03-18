@@ -15,12 +15,8 @@ var mc2Class = Class.create(KApp, {
 		this.list = $(this.getElementById('messages'));
 		this.msg = [];
 
-		// Override events of the form
-		this.getElementById('msg_form').onsubmit = function() {
-			this.request();
-			this.msg.value = "";
-			return false;
-		};
+		// Attach events
+		this.listenToDom();
 
 		// Create the BBCode parser
 		this.bbc = new KBBCode();
@@ -31,6 +27,29 @@ var mc2Class = Class.create(KApp, {
 		// Wait for updates (broadcast event for all messages)
 		pantie.listenTo('mc2-*-message', function(msg) {
 			obj.onNewMessage(msg);
+		});
+	},
+
+	listenToDom: function() {
+		var obj = this;
+
+		// Override events of the form
+		this.getElementById('msg_form').onsubmit = function() {
+			this.request();
+			this.msg.value = "";
+			return false;
+		};
+
+		// Focus effect on the input
+		$(this.getElementById('input_text')).observe('focus', function(evt) {
+			$(obj.getElementById('input_text')).parentNode.addClassName('mc2_input_focus');
+			$(obj.getElementById('input_submit')).parentNode.addClassName('mc2_input_focus');
+		});
+
+		// Lost of focus
+		$(this.getElementById('input_text')).observe('blur', function(evt) {
+			$(obj.getElementById('input_text')).parentNode.removeClassName('mc2_input_focus');
+			$(obj.getElementById('input_submit')).parentNode.removeClassName('mc2_input_focus');
 		});
 	},
 

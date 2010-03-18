@@ -45,7 +45,7 @@ function KBBCode() {
 	};
 
 	this.urlize = function(str) {
-		expr = /(\s|^)((http|https|ftp|gopher):\/\/(\w+\.)*(\w+)(\/[^\s\[]*)*)(\s|$)/ig;
+		expr = /(\s|^)((http|https|ftp|gopher):\/\/([\w\-]+\.)*([\w\-]+)(\/[^\s\[]*)*)(\s|$)/ig;
 		str = str.replace(expr, "$1[url]$2[/url]$7");
 		return str;
 	};
@@ -58,19 +58,39 @@ function KBBCode() {
 		node.tagname = "";
 		var exp = /^(\/?)(\w*)/;
 
+		function wordWrap(str, ml) {
+			if(ml == undefined) ml = 20;
+			var out = "";
+			var wl = 0;
+			var exp = /[\s\-,.;]/i;
+			for(var i=0; i < str.length; i++) {
+				if(exp.match(str[i])) {
+					wl = 0;
+					out += str[i];
+				} else {
+					out += str[i];
+					if(++wl >= ml) {
+						out += " ";
+						wl = 0;
+					}
+				}
+			}
+			return out;
+		}
+
 		for(var i = 0; i < parts.size(); i++) {
 			var semi = parts[i].split(']', 2);
 
 			var res = exp.exec(semi[0]);
 
 			if(res == null || semi[1] == undefined) {
-				node.innerHTML += ((i != 0) ? '[' : '') + parts[i];
+				node.innerHTML += wordWrap(((i != 0) ? '[' : '') + parts[i]);
 			} else if(res[1] == "/" && res[2] == node.tagname) {
 				node = node.parentNode;
-				node.innerHTML += semi[1];
+				node.innerHTML += wordWrap(semi[1]);
 			} else if(res[2] == "b") {
 				var newNode = new Element('strong');
-				newNode.innerHTML = semi[1];
+				newNode.innerHTML = wordWrap(semi[1]);
 				newNode.tagname = "b";
 				node.insert({
 					bottom: newNode
@@ -78,7 +98,7 @@ function KBBCode() {
 				node = newNode;
 			} else if(res[2] == "i") {
 				var newNode = new Element('em');
-				newNode.innerHTML = semi[1];
+				newNode.innerHTML = wordWrap(semi[1]);
 				newNode.tagname = "i";
 				node.insert({
 					bottom: newNode
@@ -100,14 +120,14 @@ function KBBCode() {
 
 				var newNode = new Element('a', {href: href, target: "_blank"});
 				newNode.tagname = "url";
-				newNode.innerHTML = (prop[1] != undefined) ? semi[1] : short_href;
+				newNode.innerHTML = wordWrap((prop[1] != undefined) ? semi[1] : short_href);
 				node.insert({
 					bottom: newNode
 				});
 				node = newNode;
 			} else if(res[2] == "color") {
 				var newNode = new Element('span');
-				newNode.innerHTML = semi[1];
+				newNode.innerHTML = wordWrap(semi[1]);
 				newNode.tagname = "color";
 
 				var prop = semi[0].split('=', 2);
@@ -120,7 +140,7 @@ function KBBCode() {
 				});
 				node = newNode;
 			} else {
-				node.innerHTML += ((i != 0) ? '[' : '') + parts[i];
+				node.innerHTML += wordWrap(((i != 0) ? '[' : '') + parts[i]);
 			}
 		}
 

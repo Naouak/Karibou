@@ -1,95 +1,61 @@
 .mc2 {
-	padding: 3px;
+	padding: 0;
 }
 
 .mc2_input_text {
 	overflow: hidden;
-	background-color: transparent;
-	padding-left: 2px;
-
-	/* Border */
-	border-left: 1px #5C96CC solid;
-	border-top: 1px #5C96CC solid;
-	border-bottom: 1px #5C96CC solid;
-	border-right: 0;
-
-	/* Corners */
-	-webkit-border-radius: 10px 0 0 10px;
-	-moz-border-radius: 10px 0 0 10px;
-	-khtml-border-radius: 10px 0 0 10px;
-}
-
-.mc2_input_text input {
-	width: 100%;
+	border-top: 1px #99CCFF solid;
+	border-bottom: 1px #99CCFF solid;
+	background-color: #EEF5F9;
 }
 
 .mc2_input_submit {
 	float: right;
-	background-color: #5C96CC;
-	border: 1px solid black;
+	border-top: 1px #99CCFF solid;
+	border-bottom: 1px #99CCFF solid;
+}
 
-	/* Border */
-	border-right: 1px #5C96CC solid;
-	border-top: 1px #5C96CC solid;
-	border-bottom: 1px #5C96CC solid;
-	border-left: 0;
-
-	/* Corners */
-	-webkit-border-radius: 0 10px 10px 0;
-	-moz-border-radius: 0 10px 10px 0;
-	-khtml-border-radius: 0 10px 10px 0;
+.mc2_input_focus {
+	border-color: #ffbb4a;
 }
 
 .mc2 input {
+	height: 20px;
 	border: 0;
-	padding: 0;
-	margin: 0;
-	border-radius: 0;
-	background: grey;
+
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
 	-khtml-border-radius: 0;
 }
 
 .mc2 input[type="text"] {
-	padding-top: 2px;
-	font-height: 20px;
-	height: 18px;
-	background-color: white;
-	margin-right: 2px;
-	border-right: 0;
-
-	-webkit-border-radius: 10px 0 0 10px;
-	-moz-border-radius: 10px 0 0 10px;
-	-khtml-border-radius: 10px 0 0 10px;
-}
-
-.mc2 input[type="submit"] {
-	height: 20px;
-	color: #EEF5F9;
-	background-color: #5C96CC;
+	width: 100%;
+	padding-top: 3px;
+	height: 17px;
+	font-size: 12px;
 
 	-webkit-border-radius: 0 10px 10px 0;
 	-moz-border-radius: 0 10px 10px 0;
 	-khtml-border-radius: 0 10px 10px 0;
 }
 
+.mc2 input[type="text"]:focus {
+	outline: none;
+}
+
+.mc2 input[type="submit"] {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
 .mc2 input[type="submit"]:hover {
 	background-color: #EEF5F9;
-	color: #5C96CC;
+	color: green;
 }
 
 .mc2 ul {
-	margin: 0 11px 11px 11px;
 	padding: 0;
-	border-right: 1px #5C96CC solid;
-	border-left: 1px #5C96CC solid;
-	border-right: 1px #5C96CC solid;
-	border-bottom: 1px #5C96CC solid;
-
-	-webkit-border-radius: 0 0 7px 7px;
-	-moz-border-radius: 0 0 7px 7px;
-	-khtml-border-radius: 0 0 7px 7px;
+	margin: 0;
 }
 
 .mc2 li {
