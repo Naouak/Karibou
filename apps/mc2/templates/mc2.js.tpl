@@ -146,10 +146,33 @@ var mc2Class = Class.create(KApp, {
 	makeLine: function(msg) {
 		var d = new Date(msg.time);
 
+		function makeTimeString(t) {
+			var h = t.getHours();
+			var m = t.getMinutes();
+
+			if(h < 10) h = "0" + h;
+			if(m < 10) m = "0" + m;
+
+			return h + ":" + m;
+		}
+
 		try {
-			return "<li><strong>" + msg.userlink + "</strong> (<em>" + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "</em>) " + this.bbc.process(msg.post, this.config.richtext) + "</li>";
+			if(msg.type == "msg") {
+				var tpl
+				if(msg.post.substring(0, 4) != "/me ") {
+					tpl = new Template('<li><span class="time">[#{time}]</span> <span class="user">#{user}</span> <span class="msg">#{msg}</span></li>');
+				} else {
+					tpl = new Template('<li><span class="time">[#{time}]</span> <span class="me"><span class="user">#{user}</span> <span class="msg">#{msg}</span> </span></li>');
+					msg.post = msg.post.substring(4);
+				}
+				return tpl.evaluate({
+					time: makeTimeString(d),
+					user: msg.userlink,
+					msg: this.bbc.process(msg.post, this.config.richtext)
+				});
+			}
 		} catch(err) {
-			console.log(err);
+			// you're fucked :)
 		}
 	},
 

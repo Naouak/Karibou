@@ -3,7 +3,11 @@ class Mc2Post extends FormModel {
 	public function build() {
 		$db = Database::instance();
 
-		$msg = filter_input(INPUT_POST, "msg", FILTER_SANITIZE_SPECIAL_CHARS);
+		$msg = trim(filter_input(INPUT_POST, "msg", FILTER_SANITIZE_SPECIAL_CHARS));
+
+		if(empty($msg)) {
+			return;
+		}
 
 		// TODO: antiflood, games
 
@@ -22,7 +26,8 @@ class Mc2Post extends FormModel {
 				'time' => time() * 1000,
 				'user_id' => $this->currentUser->getID(),
 				'userlink' => userlink(array('noicon' => true, 'showpicture' => true, 'user' => $user), $this->appList),
-				'post' => $msg
+				'post' => $msg,
+				'type' => 'msg'
 			);
 			$p->throwEvent('mc2-*-message', json_encode($evt));
 		} catch(Exception $ex) {
