@@ -115,3 +115,8 @@
 .mc2 li > .me > .user:before {
 	content: "* ";
 }
+
+.mc2 a:visited {
+	color: #4E80C9;
+	font-weight: bold;
+}
