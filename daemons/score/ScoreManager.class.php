@@ -1,10 +1,11 @@
 <?php
 class ScoreManager {
-	protected $db;
+	protected $db, $uf, $al;
 
-	public function __construct($db, $uf) {
+	public function __construct($db, $uf, $al) {
 		$this->db = $db;
 		$this->uf = $uf;
+		$this->al = $al;
 	}
 
 	public function addScoreToUser(User $user, $score, $app = "none", $silent = false) {
@@ -18,14 +19,26 @@ class ScoreManager {
 		$sth->execute();
 
 		if(!$silent) {
+			$msg = sprintf("/me a %s %d point%s ! (application: %s)", $score >= 0 ? "gagné" : "perdu", abs($score), abs($score) > 1 ? "s" : "", $app);
 			$query =
 				"INSERT INTO minichat (id_auteur, post, type) ".
 				"VALUES (:user, :post, 'score')";
 			$sth = $this->db->prepare($query);
 			$sth->bindValue(":user", $user->getID());
-			$sth->bindValue(":post", sprintf("/me a %s %d point%s ! (application: %s)", $score >= 0 ? "gagné" : "perdu", abs($score), abs($score) > 1 ? "s" : "", $app));
+			$sth->bindValue(":post", $msg);
 			$sth->execute();
 			KacheControl::instance()->renew("minichat");
+
+			$this->uf->setUserList();
+			$p = new Pantie();
+			$evt = array(
+				'time' => time() * 1000,
+				'user_id' => $user->getID(),
+				'userlink' => userlink(array('noicon' => true, 'showpicture' => true, 'user' => $user), $this->al),
+				'post' => $msg,
+				'type' => 'msg'
+			);
+			$p->throwEvent('mc2-*-message', json_encode($evt));
 		}
 	}
 
@@ -50,14 +63,26 @@ class ScoreManager {
 			// Nobody's seen that
 			$this->uf->setUserList();
 
+			$msg = sprintf("/me a volé %d points à %s (application: %s)", $score, $victim->getDisplayName(), $app);
+
 			$query =
 				"INSERT INTO minichat (id_auteur, post, type) ".
 				"VALUES (:user, :post, 'score')";
 			$sth = $this->db->prepare($query);
 			$sth->bindValue(":user", $thief->getID());
-			$sth->bindValue(":post", sprintf("/me a volé %d points à %s (application: %s)", $score, $victim->getDisplayName(), $app));
+			$sth->bindValue(":post", $msg);
 			$sth->execute();
 			KacheControl::instance()->renew("minichat");
+
+			$p = new Pantie();
+			$evt = array(
+				'time' => time() * 1000,
+				'user_id' => $thief->getID(),
+				'userlink' => userlink(array('noicon' => true, 'showpicture' => true, 'user' => $thief), $this->al),
+				'post' => $msg,
+				'type' => 'msg'
+			);
+			$p->throwEvent('mc2-*-message', json_encode($evt));
 		}
 	}
 

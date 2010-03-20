@@ -188,7 +188,7 @@ var mc2Class = Class.create(KApp, {
 		}
 
 		try {
-			if(msg.type == "msg") {
+			if(msg.type == "msg" || msg.type == "score") {
 				var tpl
 				if(msg.post.substring(0, 4) != "/me ") {
 					tpl = new Template('<li><span class="time">[#{time}]</span> <span class="user">#{user}</span> <span class="msg">#{msg}</span></li>');
