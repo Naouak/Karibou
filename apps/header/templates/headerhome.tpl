@@ -28,7 +28,10 @@
 	 */
 	var KGlobals = {};{/literal}
 	KGlobals.baseurl = "{$base_url}";
-	{if $user_id}KGlobals.userID = {$user_id};{/if}
+	{if $user->getID()}
+		KGlobals.userID = {$user->getID()};
+		KGlobals.userNick = "{$user->getDisplayName()|escape:'quotes'}";
+	{/if}
 {if $islogged}{literal}
 	// Auto-away system
 	var lastPresenceNotification;

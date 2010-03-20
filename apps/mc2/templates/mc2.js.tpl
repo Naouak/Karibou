@@ -20,7 +20,7 @@ var mc2Class = Class.create(KApp, {
 
 		// Create the BBCode parser
 		this.bbc = new KBBCode();
-		this.bbc.setNick("{/literal}{$user->getDisplayName()|escape:'quotes'}{literal}");
+		this.bbc.setNick(KGlobals.userNick);
 
 		// Display the initial messages
 		this.updateState();
