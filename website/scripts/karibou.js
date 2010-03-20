@@ -39,8 +39,7 @@ function KBBCode() {
 	this.process = function(str, richText, smileys) {
 		var out = str;
 		out = this.urlize(out);
-		out = this.stringToDom(out).innerHTML;
-		if(!richText) out = this.unstyle(out);
+		out = this.stringToDom(out, richText).innerHTML;
 		return out;
 	};
 
@@ -85,7 +84,7 @@ function KBBCode() {
 		return out;
 	}
 
-	this.stringToDom = function(str) {
+	this.stringToDom = function(str, richtext) {
 		var parts = str.split('[');
 
 		var root = new Element('p');
@@ -104,7 +103,7 @@ function KBBCode() {
 				node = node.parentNode;
 				node.innerHTML += this.treatPureText(semi[1]);
 			} else if(res[2] == "b") {
-				var newNode = new Element('strong');
+				var newNode = (richtext) ? new Element('strong') : new Element('span');
 				newNode.innerHTML = this.treatPureText(semi[1]);
 				newNode.tagname = "b";
 				node.insert({
@@ -112,7 +111,7 @@ function KBBCode() {
 				});
 				node = newNode;
 			} else if(res[2] == "i") {
-				var newNode = new Element('em');
+				var newNode = (richtext) ? new Element('em') : new Element('span');
 				newNode.innerHTML = this.treatPureText(semi[1]);
 				newNode.tagname = "i";
 				node.insert({
@@ -146,7 +145,7 @@ function KBBCode() {
 				newNode.tagname = "color";
 
 				var prop = semi[0].split('=', 2);
-				if(prop[1] != undefined) {
+				if(prop[1] != undefined && richtext) {
 					newNode.style.color = prop[1];
 				}
 
@@ -160,9 +159,5 @@ function KBBCode() {
 		}
 
 		return root;
-	};
-
-	this.unstyle = function(str) {
-		return str.replace(/<(?!a|\/a)(?:.|\s)*?>/g, "");
 	};
 }
