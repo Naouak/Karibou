@@ -4,6 +4,7 @@
 
 	<load class="HeaderHome" file="headerhome.class.php" />
 	<load class="HeaderPantie" file="headerpantie.class.php" />
+	<load class="Emoticons" file="./class/emoticons.class.php" />
 
 	<view name="home" class="HeaderHome" template="headerhome.tpl" />
 	<view name="default" class="HeaderHome" template="headerhome.tpl" />
