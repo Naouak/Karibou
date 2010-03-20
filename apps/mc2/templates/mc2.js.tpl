@@ -64,6 +64,11 @@ var mc2Class = Class.create(KApp, {
 		this.displayButton();
 	},
 
+	refresh: function() {
+		this.updateState();
+		return false;
+	},
+
 	/**
 	 * What happens when a new message arrives from the pantie system.
 	 */
