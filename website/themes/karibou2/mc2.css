@@ -50,6 +50,13 @@
 	border-radius: 0 10px 10px 0;
 }
 
+.mc2_input_text_noradius {
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	-khtml-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+
 .mc2 input[type="text"]:focus {
 	outline: none;
 }

@@ -94,8 +94,10 @@ var mc2Class = Class.create(KApp, {
 	displayButton: function() {
 		if(this.config.button) {
 			$(this.getElementById("input_submit")).parentNode.show();
+			$(this.getElementById("input_text")).removeClassName('mc2_input_text_noradius');
 		} else {
 			$(this.getElementById("input_submit")).parentNode.hide();
+			$(this.getElementById("input_text")).addClassName('mc2_input_text_noradius');
 		}
 	},
 
