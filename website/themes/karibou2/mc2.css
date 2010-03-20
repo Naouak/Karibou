@@ -112,7 +112,11 @@
 }
 
 .mc2 li > .user:after {
-	content: ">";
+	content: " >";
+}
+
+.mc2 li:hover > .user {
+	color: #4E80C9;
 }
 
 .mc2 li .me {
