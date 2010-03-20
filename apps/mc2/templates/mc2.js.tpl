@@ -52,6 +52,9 @@ var mc2Class = Class.create(KApp, {
 			$(obj.getElementById('input_text')).parentNode.removeClassName('mc2_input_focus');
 			$(obj.getElementById('input_submit')).parentNode.removeClassName('mc2_input_focus');
 		});
+
+		// Autocompletion
+		$(this.getElementById('input_text')).observe('keydown', this.onKeyDown.bind(this));
 	},
 
 	/**
@@ -77,6 +80,43 @@ var mc2Class = Class.create(KApp, {
 			this.appendMessage(msg.evalJSON());
 		} catch(err) {
 			console.log(err);
+		}
+	},
+
+	onKeyDown: function(evt) {
+		if (evt.keyCode == 9) {	// 9 == Tab key
+			var messageInput = this.getElementById("input_text");
+			var currentText = messageInput.value;
+			// Extract last word, ending at messageInput.selectionEnd...
+			var lastWord = '';
+			var i = messageInput.selectionEnd - 1;
+			while (i >= 0) {
+				var c = currentText[i];
+				if ((c == ' ') || (c == "\t") || (c == ':') || (c == ',') || (c == ';'))
+					break
+				lastWord = c + lastWord;
+				i--;
+			}
+			// Crude hack here to retrieve the list of onlineusers
+			var oll = document.getElementById("onlineusers_live");
+			if (oll) {
+				var matches = oll.innerHTML.match(new RegExp("\\(\\)\">" + lastWord + "(.*)</a>", "gi"));
+				// Sorry, I do not handle more than one nick for completion so far...
+				if (matches.length == 1) {
+					var daMatch = matches[0];
+					var daName = daMatch.substring(4, daMatch.length-4);
+					
+					// Now, replace lastWord with daName
+					var currentTextBefore = currentText.substring(0, messageInput.selectionEnd - lastWord.length);
+					var currentTextAfter = currentText.substring(messageInput.selectionEnd);
+					var newText = "";
+					if (currentTextBefore.length < 2)
+						newText = " :";
+					newText = currentTextBefore + daName + newText + " " + currentTextAfter;
+					messageInput.value = newText;
+				}
+			}
+			evt.stop();
 		}
 	},
 
