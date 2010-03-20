@@ -3,9 +3,17 @@ class Mc2Post extends FormModel {
 	public function build() {
 		$db = Database::instance();
 
+		// Getting the message and filtering it
 		$msg = trim(filter_input(INPUT_POST, "msg", FILTER_SANITIZE_SPECIAL_CHARS));
 
+		// There is no point if the message is empty
 		if(empty($msg)) {
+			return;
+		}
+
+		// Check that the user has the permissions to post a message
+		$app = $this->appList->getApp($this->appname);
+		if ($app->getPermission() <= _READ_ONLY_) {
 			return;
 		}
 
@@ -14,7 +22,8 @@ class Mc2Post extends FormModel {
 			 * Antiflood protection
 			 *****/
 
-			$sth = $this->db->prepare("SELECT COUNT(*) FROM minichat WHERE id_auteur = :user AND `time` > SUBTIME(NOW(), '00:01:00')");
+			// Only 20 messages per minute are allowed
+			$sth = $db->prepare("SELECT COUNT(*) FROM minichat WHERE id_auteur = :user AND `time` > SUBTIME(NOW(), '00:01:00')");
 			$sth->bindValue(':user', $this->currentUser->getID());
 			$sth->execute();
 			if($sth->fetchColumn(0) > 20) {
@@ -26,19 +35,24 @@ class Mc2Post extends FormModel {
 			 *****/
 
 			// Alone on Karibou
+			// -> if somebody says "alone on karibou" and that he is the only online
+			//    person, then he wins 600000 points
 			if(strcasecmp("alone on karibou", $msg) == 0) {
-				$last_hour = $this->db->prepare("SELECT COUNT(*) FROM minichat WHERE id_auteur = :user AND post = 'alone on karibou' AND `time` > SUBTIME(NOW(), '01:00:00')");
+				$last_hour = $db->prepare("SELECT COUNT(*) FROM minichat WHERE id_auteur = :user AND post = 'alone on karibou' AND `time` > SUBTIME(NOW(), '01:00:00')");
 				$last_hour->bindValue(":user", $this->currentUser->getID());
 				$last_hour->execute();
 
-				if($this->db->query("SELECT COUNT(*) FROM onlineusers")->fetchColumn(0) == 1 and $last_hour->fetchColumn(0) == 0) {
+				if($db->query("SELECT COUNT(*) FROM onlineusers")->fetchColumn(0) == 1 and $last_hour->fetchColumn(0) == 0) {
 					ScoreFactory::addScoreToUser($this->currentUser, 600000, "alone on karibou");
 				}
 			}
 
 			// Preums
+			// -> The first person to say "preums" each day wins 500000 points, the
+			//    first to say "deuz" after that wins 200000 points and the first to
+			//    say "troiz" after that wins 100000 points
 			if($msg == "preums" or $msg == "deuz" or $msg == "troiz") {
-				$this->db->query("LOCK TABLES minichat_game WRITE, scores WRITE, minichat WRITE, kache WRITE");
+				$db->query("LOCK TABLES minichat_game WRITE, scores WRITE, minichat WRITE, kache WRITE");
 
 				$res = array(
 					"preums" => false,
@@ -54,7 +68,7 @@ class Mc2Post extends FormModel {
 
 				$winners = array();
 
-				$sth = $this->db->query("SELECT id_auteur, post FROM minichat_game WHERE DATE(`time`) = DATE(NOW()) AND post IN ('preums', 'deuz', 'troiz') ORDER BY id ASC");
+				$sth = $db->query("SELECT id_auteur, post FROM minichat_game WHERE DATE(`time`) = DATE(NOW()) AND post IN ('preums', 'deuz', 'troiz') ORDER BY id ASC");
 				while($row = $sth->fetch()) {
 					if(!$res["preums"] && $row["post"] == "preums") {
 						$res["preums"] = true;
@@ -80,7 +94,7 @@ class Mc2Post extends FormModel {
 					ScoreFactory::addScoreToUser($this->currentUser, $scores[$msg], "preums");
 				}
 
-				$sth = $this->db->prepare("
+				$sth = $db->prepare("
 					INSERT INTO
 						minichat_game (id_auteur, post, time)
 					VALUES
@@ -90,28 +104,29 @@ class Mc2Post extends FormModel {
 				$sth->bindValue(":message", $msg);
 				$sth->execute();
 
-				$this->db->query("UNLOCK TABLES");
-				$this->db->query("DELETE FROM minichat_game WHERE DATE(time) != DATE(NOW())");
+				$db->query("UNLOCK TABLES");
+				$db->query("DELETE FROM minichat_game WHERE DATE(time) != DATE(NOW())");
 			}
 
 			// Dernz
+			// -> The last person to say "dernz" a day wins 300000 points
 			if($msg == "dernz") {
-				$this->db->query("LOCK TABLES minichat WRITE, minichat_game WRITE, scores WRITE, kache WRITE");
+				$db->query("LOCK TABLES minichat WRITE, minichat_game WRITE, scores WRITE, kache WRITE");
 
 				// Who did the last dernz ?
-				$sth = $this->db->prepare("SELECT id_auteur FROM minichat_game WHERE DATE(time) = DATE(NOW()) AND post = 'dernz' ORDER BY id DESC LIMIT 1");
+				$sth = $db->prepare("SELECT id_auteur FROM minichat_game WHERE DATE(time) = DATE(NOW()) AND post = 'dernz' ORDER BY id DESC LIMIT 1");
 				$sth->execute();
 				$last_user = $sth->fetchColumn(0);
 
 				// Anti flood
-				$sth = $this->db->prepare("SELECT COUNT(*) FROM minichat_game WHERE DATE(time) = DATE(NOW()) AND post = 'dernz' AND id_auteur = :user");
+				$sth = $db->prepare("SELECT COUNT(*) FROM minichat_game WHERE DATE(time) = DATE(NOW()) AND post = 'dernz' AND id_auteur = :user");
 				$sth->bindValue(":user", $this->currentUser->getID());
 				$sth->execute();
 				$count = $sth->fetchColumn(0);
 
 				if($this->currentUser->getID() != $last_user && $count == 0) {
 					// Insert the last message
-					$sth = $this->db->prepare("
+					$sth = $db->prepare("
 						INSERT INTO
 							minichat_game (id_auteur, post, time)
 						VALUES
@@ -121,8 +136,8 @@ class Mc2Post extends FormModel {
 					$sth->bindValue(":message", $msg);
 					$sth->execute();
 
-					$this->db->query("UNLOCK TABLES");
-					$this->db->query("DELETE FROM minichat_game WHERE DATE(time) != DATE(NOW())");
+					$db->query("UNLOCK TABLES");
+					$db->query("DELETE FROM minichat_game WHERE DATE(time) != DATE(NOW())");
 				}
 
 				if($this->currentUser->getID() != $last_user && $count == 0) {
@@ -137,8 +152,9 @@ class Mc2Post extends FormModel {
 			/*****
 			 * /away
 			 *****/
+
 			if($msg == "/away"){
-				$stmt = $this->db->prepare("UPDATE onlineusers SET away = MOD(away+1,2) WHERE user_id = :user");
+				$stmt = $db->prepare("UPDATE onlineusers SET away = MOD(away+1,2) WHERE user_id = :user");
 				$stmt->bindValue(":user",$this->currentUser->getID());
 				$stmt->execute();
 				return;
