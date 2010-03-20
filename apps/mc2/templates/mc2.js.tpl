@@ -61,6 +61,7 @@ var mc2Class = Class.create(KApp, {
 	onConfig: function() {
 		this.placeFormRight();
 		this.updateState();
+		this.displayButton();
 	},
 
 	/**
@@ -87,6 +88,14 @@ var mc2Class = Class.create(KApp, {
 			par.insert({bottom: new_list});
 		} else {
 			par.insert({top: new_list});
+		}
+	},
+
+	displayButton: function() {
+		if(this.config.button) {
+			$(this.getElementById("input_submit")).parentNode.show();
+		} else {
+			$(this.getElementById("input_submit")).parentNode.hide();
 		}
 	},
 
