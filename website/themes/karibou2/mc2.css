@@ -82,7 +82,7 @@
 	padding: 3px;
 }
 
-.mc2 li:nth-of-type(2n) {
+.mc2 li {
 	background-color: #F2F2F2;
 }
 
