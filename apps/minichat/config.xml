@@ -33,6 +33,7 @@
 	<load class="MinichatRendering"			file="./class/minichatrendering.class.php" />
 	<load class="PageArgument"			file="../arguments/pageargument.class.php" />
 	<load class="NumberArgument"	    		file="../arguments/numberargument.class.php" />
+	<load class="Emoticons"				file="../header/class/emoticons.class.php" />
 
 	<load class="MCDefault"		file="mcdefault.class.php" />
 	<load class="MCPost"		file="mcpost.class.php" />
