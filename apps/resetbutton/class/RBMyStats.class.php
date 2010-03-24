@@ -44,7 +44,7 @@ class RBMyStats extends Model
 		$sth = $this->db->prepare("
 			SELECT
 				r2.user AS cutter,
-				IF(r1.user=:user, TIME_TO_SEC(TIMEDIFF(r1.date, r2.date)), TIME_TO_SEC(TIMEDIFF(r2.date, r1.date))) AS scorediff,
+				IF(r1.user=:user, TIME_TO_SEC(TIMEDIFF(r1.date, r2.date)), TIME_TO_SEC(TIMEDIFF(r2.date, r1.date)))*10 AS scorediff,
 				r2.date AS date
 			FROM
 				resetbutton r1
@@ -69,7 +69,7 @@ class RBMyStats extends Model
 	private function myscore(){
 		$sth = $this->db->prepare("
 		SELECT
-			SUM(IF(r1.user=:user, TIME_TO_SEC(TIMEDIFF(r1.date, r2.date)), TIME_TO_SEC(TIMEDIFF(r2.date, r1.date))))
+			SUM(IF(r1.user=:user, TIME_TO_SEC(TIMEDIFF(r1.date, r2.date)), TIME_TO_SEC(TIMEDIFF(r2.date, r1.date))))*10
 		FROM
 			resetbutton r1
 		LEFT JOIN
@@ -94,3 +94,4 @@ class RBMyStats extends Model
 	
 }
 ?>
+

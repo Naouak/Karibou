@@ -71,7 +71,7 @@ class RBStats extends Model
 		$sth = $this->db->prepare("
 		SELECT
 			user,
-			SUM(score) AS score
+			SUM(score)*10 AS score
 		FROM
 			(
 				SELECT * FROM (
@@ -119,7 +119,7 @@ class RBStats extends Model
 		$sth = $this->db->prepare("
 		SELECT
 			user,
-			SUM(score) AS score
+			SUM(score)*10 AS score
 		FROM
 			(
 				SELECT * FROM (
