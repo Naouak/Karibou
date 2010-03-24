@@ -36,8 +36,29 @@ Event.observe(window, "load", function(evt) {
  */
 
 function KBBCode() {
-	this.process = function(str, richText, smileys) {
+	function makeSmileysUrl(theme) {
+		return KGlobals.baseurl + '/header/emoticons/' + theme;
+	}
+
+	this.loadSmileys = function(theme, onDone) {
+		this.e_theme_loaded = false;
+
+		// Try to load it
+		new Ajax.Request(makeSmileysUrl(theme), {
+			method: 'get',
+			onSuccess: function(t) {
+				// We've got the theme
+				this.e_theme = jsonParse(t.responseText);
+				this.e_theme_loaded = true;
+				// And now trigger the callback
+				onDone();
+			}.bind(this)
+		});
+	}
+
+	this.process = function(str, richText) {
 		var out = str;
+
 		out = this.urlize(out);
 		out = this.stringToDom(out, richText).innerHTML;
 		return out;
@@ -79,8 +100,24 @@ function KBBCode() {
 			return str.replace(expr, '$1<strong>$2</strong>$3');
 		}
 
+		function smile(str) {
+			if(this.e_theme_loaded == true) {
+				try {
+					this.e_theme.strings.each(function(v) {
+						var expr = new RegExp('(\\s|^)(' + v.str + ')(\\s|$)', "g");
+						str = str.replace(expr, "$1<img src='" + this.e_theme.picts[v.pict] + "' alt='$2' />$3");
+					}, this);
+				} catch(err) {
+					//console.log(err);
+				}
+			}
+
+			return str;
+		}
+
 		var out = wordWrap(str, ml);
 		out = pseudoize.bind(this)(out);
+		out = smile.bind(this)(out);
 		return out;
 	}
 

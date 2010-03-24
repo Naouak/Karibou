@@ -80,10 +80,8 @@
 	display: block;
 	margin: 0;
 	padding: 3px;
-}
-
-.mc2 li {
 	background-color: #F2F2F2;
+	text-align: left;
 }
 
 .mc2 li:nth-of-type(2n+1) {

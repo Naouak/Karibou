@@ -6,7 +6,7 @@
 			<input type="submit" value="{t}Envoyer{/t}" id="input_submit" />
 		</div>
 		<div class="mc2_input_text">
-			<input type="text" name="msg" id="input_text"{if !$button} class="mc2_input_text_noradius"{/if} />
+			<input type="text" name="msg" autocomplete="off" id="input_text"{if !$button} class="mc2_input_text_noradius"{/if} />
 		</div>
 	</form>
 

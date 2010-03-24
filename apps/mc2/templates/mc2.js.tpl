@@ -21,6 +21,10 @@ var mc2Class = Class.create(KApp, {
 		// Create the BBCode parser
 		this.bbc = new KBBCode();
 		this.bbc.setNick(KGlobals.userNick);
+		this.bbc.loadSmileys(this.config.emoticon_theme, function() {
+			// When the smileys are loaded, you must repaint the DOM
+			this.repaintDOM();
+		}.bind(this));
 
 		// Display the initial messages
 		this.updateState();
@@ -65,6 +69,10 @@ var mc2Class = Class.create(KApp, {
 		this.placeFormRight();
 		this.updateState();
 		this.displayButton();
+		this.bbc.loadSmileys(this.config.emoticon_theme, function() {
+			// When the smileys are loaded, you must repaint the DOM
+			this.repaintDOM();
+		}.bind(this));
 	},
 
 	refresh: function() {
