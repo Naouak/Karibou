@@ -69,8 +69,8 @@ function KBBCode() {
 	};
 
 	this.urlize = function(str) {
-		expr = /(\s|^)((http|https|ftp|gopher):\/\/([\w\-]+\.)*([\w\-]+)(\/[^\s\[]*)*)(\s|$)/ig;
-		str = str.replace(expr, "$1[url]$2[/url]$7");
+		expr = /(\s|^)((http|https|ftp|gopher):\/\/([\w\-]+\.)*([\w\-]+(:\d+\/?)?)(\/[^\s\[]*)*)(\s|$)/ig;
+		str = str.replace(expr, "$1[url]$2[/url]$8");
 		return str;
 	};
 
