@@ -37,7 +37,7 @@ Event.observe(window, "load", function(evt) {
 
 function KBBCode() {
 	function makeSmileysUrl(theme) {
-		return KGlobals.baseurl + '/header/emoticons/' + theme;
+		return KGlobals.baseurl + '/kbbcode/emoticons/' + theme;
 	}
 
 	this.loadSmileys = function(theme, onDone) {

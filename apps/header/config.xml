@@ -4,24 +4,15 @@
 
 	<load class="HeaderHome" file="headerhome.class.php" />
 	<load class="HeaderPantie" file="headerpantie.class.php" />
-	<load class="HeaderEmoticon" file="headeremoticon.class.php" />
-	<load class="Emoticons" file="class/emoticons.class.php" />
 	<load class="AlphaNum" file="../arguments/alphanum.class.php" />
 
 	<view name="home" class="HeaderHome" template="headerhome.tpl" />
 	<view name="default" class="HeaderHome" template="headerhome.tpl" />
 	<view name="minimal" class="HeaderHome" template="minimal.tpl" />
 	<view name="pantie" class="HeaderPantie" />
-	<view name="emoticons" class="HeaderEmoticon" />
 
 	<page name="pantie" view="pantie" contenttype="application/json">
 		<header app="header" view="empty" />
 		<footer app="footer" view="empty" />
-	</page>
-
-	<page name="emoticons" view="emoticons" contenttype="application/json">
-		<header app="header" view="empty" />
-		<footer app="footer" view="empty" />
-		<option name="theme" class="AlphaNum" />
 	</page>
 </app>
