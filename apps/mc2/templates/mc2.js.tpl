@@ -106,6 +106,12 @@ var mc2Class = Class.create(KApp, {
 				lastWord = c + lastWord;
 				i--;
 			}
+
+			if(lastWord.length == 0) {
+				evt.stop();
+				return;
+			}
+
 			// Crude hack here to retrieve the list of onlineusers
 			var oll = document.getElementById("onlineusers_live");
 			if (oll) {
