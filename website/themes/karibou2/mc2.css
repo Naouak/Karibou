@@ -110,7 +110,7 @@
 }
 
 .mc2 li > .user:after {
-	content: " >";
+	content: ">";
 }
 
 .mc2 li:hover > .user {
