@@ -177,8 +177,24 @@ class MCPost extends FormModel
 					$stmt->bindValue(":userId", $this->currentUser->getID());
 					$stmt->bindValue(":message", htmlspecialchars($message));
 					$stmt->execute();
+
+					// Notify the user of what happened
+					try {
+						$this->userFactory->setUserList();
+					} catch(Exception $e) {
+						// do nothing, this exception was excepted
+					}
+					$p = new KPantie();
+					$evt = array(
+						'time' => time() * 1000,
+						'user_id' => $this->currentUser->getID(),
+						'userlink' => userlink(array('noicon' => true, 'showpicture' => true, 'user' => $this->currentUser), $this->appList),
+						'post' => $message,
+						'type' => 'msg'
+					);
+					$p->throwEvent('mc2-*-message', json_encode($evt));
 				}
-				catch(PDOException $e)
+				catch(Exception $e)
 				{
 					Debug::kill($e->getMessage());
 				}
