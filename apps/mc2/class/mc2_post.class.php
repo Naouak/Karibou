@@ -154,7 +154,7 @@ class Mc2Post extends FormModel {
 			 *****/
 
 			if($msg == "/away"){
-				$stmt = $db->prepare("UPDATE onlineusers SET away = MOD(away+1,2) WHERE user_id = :user");
+				$stmt = $db->prepare("UPDATE onlineusers SET away = NOT(away) WHERE user_id = :user");
 				$stmt->bindValue(":user",$this->currentUser->getID());
 				$stmt->execute();
 				return;
