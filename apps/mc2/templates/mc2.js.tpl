@@ -58,6 +58,7 @@ var mc2Class = Class.create(KApp, {
 		});
 
 		// Autocompletion
+		// TODO: no autocomplete with 0 character
 		$(this.getElementById('input_text')).observe('keydown', this.onKeyDown.bind(this));
 	},
 
