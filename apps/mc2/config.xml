@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  Copyright 2010 Rémy Sanchez <remy.sanchez@hyperthese.net>
+
+  License: http://www.gnu.org/licenses/gpl.html GNU Public License
+  See the enclosed file COPYING for license information.
+-->
 <app>
 	<permission default="_NO_ACCESS_" logged="_SELF_WRITE_" />
 
@@ -12,7 +18,7 @@
 	<load class="Mc2Post" file="class/mc2_post.class.php" />
 
 	<view name="state" class="Mc2State" />
-	<view name="JS" class="Mc2JS" template="mc2.js.tpl" />
+	<view name="JS" template="mc2.js.tpl" />
 	<view name="mini" class="Mc2Mini" template="mini.tpl" />
 
 	<page name="state" view="state" contenttype="application/json">
