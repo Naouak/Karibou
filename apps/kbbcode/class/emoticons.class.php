@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @copyright 2008 Vincent Billey <http://vincent.billey.netcv.fr>
  * @copyright 2010 Rémy Sanchez <remy.sanchez@hyperthese.net>
