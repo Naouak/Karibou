@@ -1,14 +1,4 @@
 /**
- * We have to extend Prototype a bit
- */
-
-Ajax.Request.prototype.abort = function() {
-	this.transport.onreadstatechange = Prototype.emptyFunction;
-	this.transport.abort();
-	Ajax.activeRequestCount--;
-}
-
-/**
  * Provides a way to have HTTP server push
  */
 function Pantie(register_url, uid) {

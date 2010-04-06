@@ -24,11 +24,18 @@ Event.observe(document, "keypress", function(evt) {
 
 Event.observe(window, "load", function(evt) {
 	Ajax.Base.prototype._initialize = Ajax.Base.prototype.initialize;
+
 	Ajax.Base.prototype.initialize = function(options) {
 			if (options.method == undefined)
 				options.method = "get";
 			this._initialize(options);
 		};
+
+	Ajax.Request.prototype.abort = function() {
+		this.transport.onreadstatechange = Prototype.emptyFunction;
+		this.transport.abort();
+		Ajax.activeRequestCount--;
+	}
 });
 
 /**
