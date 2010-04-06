@@ -6,6 +6,8 @@ class Mc2State extends Model {
 	public function build() {
 		$db = Database::instance();
 
+		// TODO handle permissions
+
 		$lines = intval($this->args["lines"]);
 		if($lines > 100) $lines = 100;
 
@@ -40,6 +42,6 @@ class Mc2State extends Model {
 			$out[$k] = $v;
 		}
 
-		echo json_encode(array_reverse($out));
+		return json_encode(array_reverse($out));
 	}
 }
