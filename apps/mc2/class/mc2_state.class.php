@@ -15,7 +15,11 @@ class Mc2State extends Model {
 	public function build() {
 		$db = Database::instance();
 
-		// TODO handle permissions
+		// Check that the user has the permissions to read the messages
+		$app = $this->appList->getApp($this->appname);
+		if ($app->getPermission() < _READ_ONLY_) {
+			return;
+		}
 
 		$lines = intval($this->args["lines"]);
 		if($lines > 100) $lines = 100;

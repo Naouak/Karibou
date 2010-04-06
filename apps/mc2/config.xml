@@ -6,7 +6,7 @@
   See the enclosed file COPYING for license information.
 -->
 <app>
-	<permission default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
 
 	<load class="NumberArgument" file="../arguments/numberargument.class.php" />
 	<load class="AnyCharArgument" file="../arguments/anycharargument.class.php" />
