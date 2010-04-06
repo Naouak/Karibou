@@ -176,7 +176,7 @@ class Mc2Post extends FormModel {
 			} catch(Exception $e) {
 				// do nothing, this exception was excepted
 			}
-			$p = new Pantie();
+			$p = new KPantie();
 			$evt = array(
 				'time' => time() * 1000,
 				'user_id' => $this->currentUser->getID(),

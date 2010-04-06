@@ -146,4 +146,9 @@ L'équipe d'Administration de l'Intranet
 $config["kache_disable"] = true;
 $config["kache_exclude"] = array();
 
+/* Pantie */
+
+$config['pantie']['host'] = 'localhost';
+$config['pantie']['port'] = 5896;
+
 ?>

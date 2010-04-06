@@ -24,7 +24,7 @@ class HeaderPantie extends Model {
 		if($m and ($matches[2] == $this->currentUser->getID() or $matches[2] == "*")) {
 			$ret->push_url = "/push.php";
 
-			$p = new Pantie($sid);
+			$p = new KPantie($sid);
 			$p->register($event);
 		} else {
 			$ret->slap = true;
