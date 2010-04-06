@@ -1,4 +1,12 @@
 /**
+ * @copyright 2009 Pinaraf <pinaraf@ducroquet.info>
+ * @copyright 2010 Rémy Sanchez <remy.sanchez@hyperthese.net>
+ *
+ * @license http://www.gnu.org/licenses/gpl.html GNU Public License
+ * See the enclosed file COPYING for license information.
+ */
+
+/**
  * Open a popup.
  */
 function popup(url, name, height, width, top, left) {

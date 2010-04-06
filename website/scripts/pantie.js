@@ -1,4 +1,11 @@
 /**
+ * @copyright 2010 Rémy Sanchez <remy.sanchez@hyperthese.net>
+ *
+ * @license http://www.gnu.org/licenses/gpl.html GNU Public License
+ * See the enclosed file COPYING for license information.
+ */
+
+/**
  * Provides a way to have HTTP server push
  */
 function Pantie(register_url, uid) {
