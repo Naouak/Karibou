@@ -39,11 +39,11 @@ var mc2Class = Class.create(KApp, {
 		var obj = this;
 
 		// Override events of the form
-		this.getElementById('msg_form').onsubmit = function() {
+		$(this.getElementById('msg_form')).observe('submit', function(evt) {
 			this.request();
 			this.msg.value = "";
-			return false;
-		};
+			evt.stop();
+		});
 
 		// Focus effect on the input
 		$(this.getElementById('input_text')).observe('focus', function(evt) {
