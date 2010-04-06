@@ -1,4 +1,13 @@
 <?php
+/**
+ * @copyright 2010 Rémy Sanchez <remy.sanchez@hyperthese.net>
+ *
+ * @license http://www.gnu.org/licenses/gpl.html GNU Public License
+ * See the enclosed file COPYING for license information.
+ *
+ * @package applications
+ */
+
 class Mc2State extends Model {
 	/**
 	 * Returns a JSON containing asked messages of the Minichat, in chronological order
