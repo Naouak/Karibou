@@ -1,3 +1,10 @@
+{*
+  Copyright 2010 Rémy Sanchez <remy.sanchez@hyperthese.net>
+
+  License: http://www.gnu.org/licenses/gpl.html GNU Public License
+  See the enclosed file COPYING for license information.
+*}
+
 <div class="mc2">
 	{if !$invert}<ul id="messages"></ul>{/if}
 
