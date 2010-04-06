@@ -56,8 +56,6 @@ function KBBCode() {
 	}
 
 	this.loadSmileys = function(theme, onDone) {
-		// TODO: handle spaces in names properly
-		// TODO: check out this fucking :'( smiley that looks like not working
 		this.e_theme_loaded = false;
 
 		// Try to load it
