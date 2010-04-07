@@ -181,6 +181,8 @@ class Mc2Post extends FormModel {
 			$sth->bindValue(':msg', $msg);
 			$sth->execute();
 
+			$user = $this->userFactory->prepareUserFromId($this->currentUser->getID());
+
 			// Notify the user of what happened
 			try {
 				$this->userFactory->setUserList();
@@ -191,7 +193,7 @@ class Mc2Post extends FormModel {
 			$evt = array(
 				'time' => time() * 1000,
 				'user_id' => $this->currentUser->getID(),
-				'userlink' => userlink(array('noicon' => true, 'showpicture' => true, 'user' => $this->currentUser), $this->appList),
+				'userlink' => userlink(array('noicon' => true, 'showpicture' => true, 'user' => $user), $this->appList),
 				'post' => $msg,
 				'type' => 'msg'
 			);
