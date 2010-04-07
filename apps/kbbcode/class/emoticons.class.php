@@ -103,7 +103,7 @@ class Emoticons
 				// Step 2 : list strings
 				foreach($e->string as $str) {
 					$out['strings'][] = array(
-						'str' => preg_replace("/([\\\.\$\[\]\(\)\{\}\^\?\*\+\-])/", "\\\\$1", filter_var($str, FILTER_SANITIZE_STRING)),
+						'str' => preg_quote(filter_var($str, FILTER_SANITIZE_STRING)),
 						'pict' => $file
 					);
 				}

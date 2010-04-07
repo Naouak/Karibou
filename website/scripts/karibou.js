@@ -80,7 +80,7 @@ function KBBCode() {
 	};
 
 	this.setNick = function(nick) {
-		this.nick = nick.replace(/([\\\.\$\[\]\(\)\{\}\^\?\*\+\-])/ig, '\\$1');
+		this.nick = nick.replace(/([\\\.\$\[\]\(\)\{\}\^\?\*\+\-\^\|])/ig, '\\$1');
 	};
 
 	this.urlize = function(str) {
@@ -119,20 +119,25 @@ function KBBCode() {
 			if(this.e_theme_loaded == true) {
 				try {
 					this.e_theme.strings.each(function(v) {
-						var expr = new RegExp('(\\s|^)(' + v.str + ')(\\s|$)', "g");
+						if(v.str == "") return;
+						var expr = new RegExp('(\\s|^)(' + v.str + ')((?!\s)(\\s|$))', "g");
 						str = str.replace(expr, "$1<img src='" + this.e_theme.picts[v.pict] + "' alt='$2' />$3");
 					}, this);
 				} catch(err) {
-					//console.log(err);
 				}
 			}
 
 			return str;
 		}
 
-		var out = wordWrap(str, ml);
-		out = pseudoize.bind(this)(out);
-		out = smile.bind(this)(out);
+		if(navigator.appName != "Microsoft Internet Explorer") {
+			var out = wordWrap(str, ml);
+			out = pseudoize.bind(this)(out);
+			out = smile.bind(this)(out);
+		} else {
+			out = str;
+		}
+
 		return out;
 	}
 
