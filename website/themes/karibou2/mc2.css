@@ -1,0 +1,135 @@
+.mc2 {
+	padding: 0;
+	background-color: #EEF5F9;
+	-webkit-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	-khtml-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+}
+
+.mc2_input_text {
+	overflow: hidden;
+	border-top: 1px #99CCFF solid;
+	border-bottom: 1px #99CCFF solid;
+	background-color: #EEF5F9;
+}
+
+.mc2_input_submit {
+	float: right;
+	border-top: 1px #99CCFF solid;
+	border-bottom: 1px #99CCFF solid;
+}
+
+.mc2_input_focus {
+	border-color: #ffbb4a;
+}
+
+.mc2 form:last-child {
+	padding-bottom: 7px;
+}
+
+.mc2 input {
+	height: 20px;
+	border: 0;
+
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	-khtml-border-radius: 0;
+	border-radius: 0;
+}
+
+.mc2 input[type="text"] {
+	width: 100%;
+	padding-top: 3px;
+	height: 17px;
+	font-size: 12px;
+
+	-webkit-border-radius: 0 10px 10px 0;
+	-moz-border-radius: 0 10px 10px 0;
+	-khtml-border-radius: 0 10px 10px 0;
+	border-radius: 0 10px 10px 0;
+}
+
+.mc2_input_text_noradius {
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	-khtml-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+
+.mc2 input[type="text"]:focus {
+	outline: none;
+}
+
+.mc2 input[type="submit"] {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.mc2 input[type="submit"]:hover {
+	background-color: #EEF5F9;
+	color: green;
+}
+
+.mc2 ul {
+	padding: 0;
+	margin: 0;
+}
+
+.mc2 li {
+	display: block;
+	margin: 0;
+	padding: 3px;
+	background-color: #F2F2F2;
+	text-align: left;
+}
+
+.mc2 li img {
+	vertical-align: middle;
+}
+
+.mc2 li:nth-of-type(2n+1) {
+	background-color: #F8F8F8;
+}
+
+.mc2 li:last-of-type {
+	-webkit-border-radius: 0 0 7px 7px;
+	-moz-border-radius: 0 0 7px 7px;
+	-khtml-border-radius: 0 0 7px 7px;
+	border-radius: 0 0 7px 7px;
+}
+
+.mc2 li .time {
+	font-family: mono;
+	color: #777;
+}
+
+.mc2 li .user {
+	color: #323296;
+	font-weight: bold;
+}
+
+.mc2 li > .user:before {
+	content: "<";
+}
+
+.mc2 li > .user:after {
+	content: ">";
+}
+
+.mc2 li:hover > .user {
+	color: #4E80C9;
+}
+
+.mc2 li .me {
+	font-style: italic;
+}
+
+.mc2 li > .me > .user:before {
+	content: "* ";
+}
+
+.mc2 a:visited {
+	color: #4E80C9;
+	font-weight: bold;
+}

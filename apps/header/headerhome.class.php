@@ -20,7 +20,7 @@ class HeaderHome extends Model
 		ThemeManager::instance()->addApplication('hintbox');
 		$this->assign("cssfiles", ThemeManager::instance()->getCSSList());
 		$this->assign('base_url', $GLOBALS['config']['base_url']);
-		$this->assign('user_id', $this->currentUser->getID());
+		$this->assign('user', $this->currentUser);
 	}
 	
 

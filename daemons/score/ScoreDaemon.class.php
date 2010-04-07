@@ -11,7 +11,7 @@
  */
 class ScoreDaemon extends Listener {
 	function eventOccured(Event $event) {
-		ScoreFactory::initialize($this->db, $this->userFactory);
+		ScoreFactory::initialize($this->db, $this->userFactory, $this->appList);
 	}
 }
 ?>

@@ -1,12 +1,9 @@
 /**
- * We have to extend Prototype a bit
+ * @copyright 2010 Rémy Sanchez <remy.sanchez@hyperthese.net>
+ *
+ * @license http://www.gnu.org/licenses/gpl.html GNU Public License
+ * See the enclosed file COPYING for license information.
  */
-
-Ajax.Request.prototype.abort = function() {
-	this.transport.onreadstatechange = Prototype.emptyFunction;
-	this.transport.abort();
-	Ajax.activeRequestCount--;
-}
 
 /**
  * Provides a way to have HTTP server push
@@ -155,7 +152,12 @@ function Pantie(register_url, uid) {
 				// ok, we've got datas
 				data.each(function(v, i) {
 					if(listen[data[i].name] != undefined) {
-						dispatchEvent(data[i].name, data[i].data);
+						try {
+							dispatchEvent(data[i].name, data[i].data);
+						} catch(err) {
+							// ok we just don't want to die stupidly because of an
+							// incompetent programmer
+						}
 					}
 				});
 				if(run) obj.longPoll();

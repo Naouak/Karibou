@@ -95,6 +95,7 @@ $config['footer']['cvdb'] = TRUE;
 $config['base_url'] = substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['SCRIPT_NAME'], '/'));
 $config['site']['base_url'] = 'http://'.$_SERVER["SERVER_NAME"].$config['base_url'];
 
+define("KARIBOU_ROOT", dirname(__FILE__).'/..');
 define("KARIBOU_DIR", dirname(__FILE__).'/../karibou2');
 define("KARIBOU_COMPILE_DIR", dirname(__FILE__).'/../compile');
 define("KARIBOU_CACHE_DIR", dirname(__FILE__).'/../cache');
@@ -144,5 +145,10 @@ L'équipe d'Administration de l'Intranet
 
 $config["kache_disable"] = true;
 $config["kache_exclude"] = array();
+
+/* Pantie */
+
+$config['pantie']['host'] = 'localhost';
+$config['pantie']['port'] = 5896;
 
 ?>

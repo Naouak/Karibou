@@ -66,6 +66,7 @@ ClassLoader::add('VotesScoreFactory', KARIBOU_CLASS_DIR."/votes.class.php");
 ClassLoader::add('Browscap', KARIBOU_LIB_DIR."/Browscap.php");
 
 // Pantie System
+ClassLoader::add('KPantie', KARIBOU_CLASS_DIR."/kpantie.class.php");
 ClassLoader::add('Pantie', KARIBOU_LIB_DIR."/pantie/Pantie.class.php");
 ClassLoader::add('PantieEvent', KARIBOU_LIB_DIR."/pantie/PantieEvent.class.php");
 ClassLoader::add('PantieSocket', KARIBOU_LIB_DIR."/pantie/PantieSocket.class.php");

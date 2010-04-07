@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  Copyright 2010 Rémy Sanchez <remy.sanchez@hyperthese.net>
+
+  License: http://www.gnu.org/licenses/gpl.html GNU Public License
+  See the enclosed file COPYING for license information.
+-->
+<app>
+	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
+
+	<load class="[arguments]/NumberArgument" />
+	<load class="[arguments]/AnyCharArgument" />
+	<load class="[kbbcode]/Emoticons" />
+	<load class="Mc2State" file="class/mc2_state.class.php" />
+	<load class="Mc2Config" file="class/mc2_config.class.php" />
+	<load class="Mc2JS" file="class/mc2_js.class.php" />
+	<load class="Mc2Mini" file="class/mc2_mini.class.php" />
+	<load class="Mc2Post" file="class/mc2_post.class.php" />
+
+	<view name="state" class="Mc2State" />
+	<view name="JS" template="mc2.js.tpl" />
+	<view name="mini" class="Mc2Mini" template="mini.tpl" />
+
+	<page name="state" view="state" contenttype="application/json">
+		<header app="empty" view="default" />
+		<footer app="empty" view="default" />
+
+		<option name="lines" class="NumberArgument" />
+		<option name="types" class="AnyCharArgument" />
+	</page>
+
+	<form action="post" class="Mc2Post" />
+</app>
