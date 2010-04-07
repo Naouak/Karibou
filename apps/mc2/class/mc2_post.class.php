@@ -1,6 +1,8 @@
 <?php
 /**
- * @copyright 2010 Rémy Sanchez <remy.sanchez@hyperthese.net>
+ * @copyright 2008-2010 Pierre Ducroquet <pinaraf@ducroquet.info>
+ * @copyright 2009-2010 Rémy Sanchez <remy.sanchez@hyperthese.net>
+ * @copyright 2009 Quentin Burny <tardiel@gmail.com>
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU Public License
  * See the enclosed file COPYING for license information.
