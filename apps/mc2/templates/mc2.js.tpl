@@ -1,5 +1,6 @@
 {*
   Copyright 2010 Rémy Sanchez <remy.sanchez@hyperthese.net>
+  Copyright 2010 Pierre Ducroquet <pinaraf@pinaraf.info>
 
   License: http://www.gnu.org/licenses/gpl.html GNU Public License
   See the enclosed file COPYING for license information.
