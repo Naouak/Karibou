@@ -102,6 +102,7 @@ define("KARIBOU_CACHE_DIR", dirname(__FILE__).'/../cache');
 define("KARIBOU_APP_DIR", dirname(__FILE__).'/../apps');
 //$config["site"]["extra_apps"] = array(dirname(__FILE__).'/../apps_test');
 define("KARIBOU_DAEMON_DIR", dirname(__FILE__).'/../daemons');
+define("KARIBOU_WEBSITE_DIR", dirname(__FILE__));
 define("KARIBOU_PUB_DIR", dirname(__FILE__).'/pub');
 define("KARIBOU_THEMES_URL", "/themes");
 define("KARIBOU_THEMES_DIR", dirname(__FILE__) . '/themes');
