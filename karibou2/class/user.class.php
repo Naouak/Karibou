@@ -150,7 +150,7 @@ class User
 				return "/pub".$picturepath;
 			}
 		}
-		return "/themes/karibou/images/0.jpg";
+		return "/themes/karibou2/images/0.jpg";
     }
       
     /**
