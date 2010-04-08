@@ -18,6 +18,8 @@
 <![endif]-->
 	<script type="text/javascript" src="{$base_url}/scripts/prototype.js"></script>
 	<script type="text/javascript" src="{$base_url}/scripts/scriptaculous.js"></script>
+	<!-- A better JSON implementation than prototype's one -->
+	<script type="text/javascript" src="{$base_url}/scripts/json.js"></script>
     <script type="text/javascript">
 	<!--
 	{literal}
@@ -26,7 +28,10 @@
 	 */
 	var KGlobals = {};{/literal}
 	KGlobals.baseurl = "{$base_url}";
-	{if $user_id}KGlobals.userID = {$user_id};{/if}
+	{if $user->getID()}
+		KGlobals.userID = {$user->getID()};
+		KGlobals.userNick = "{$user->getDisplayName()|escape:'quotes'}";
+	{/if}
 {if $islogged}{literal}
 	// Auto-away system
 	var lastPresenceNotification;

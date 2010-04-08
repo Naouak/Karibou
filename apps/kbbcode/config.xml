@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+	<permissions default="_READ_ONLY_" logged="_SELF_WRITE_" />
+
+	<load class="Emoticons" file="class/emoticons.class.php" />
+	<load class="EmoticonsList" file="class/emoticons_list.class.php" />
+	<load class="EmoticonArgument" file="class/emoticon_argument.class.php" />
+
+	<view name="emoticons" class="EmoticonsList" />
+
+	<page name="emoticons" view="emoticons" contenttype="application/json">
+		<header app="header" view="empty" />
+		<footer app="footer" view="empty" />
+		<option name="theme" class="EmoticonArgument" />
+	</page>
+</app>

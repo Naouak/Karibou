@@ -12,7 +12,7 @@
 class ScoreFactory {
 	static $instance;
 
-	private function __construct() {	
+	private function __construct() {
 	}
 
 	public static function getInstance() {
@@ -22,8 +22,8 @@ class ScoreFactory {
 		return self::$instance;
 	}
 
-	public static function initialize($db, $uf) {
-		self::$instance = new ScoreManager($db, $uf);
+	public static function initialize($db, $uf, $al) {
+		self::$instance = new ScoreManager($db, $uf, $al);
 
 		// Shall we update the scores_valid view ?
 		if(is_readable(KARIBOU_CACHE_DIR . '/score_start_time')) {

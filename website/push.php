@@ -1,15 +1,18 @@
 <?php
 define("PANTIE_ROOT", dirname(__FILE__) . "/../karibou2/lib/pantie");
 
+
 // ---
 // Inclusions
 // ---
 
+require_once "config.php";
 require_once PANTIE_ROOT . "/Pantie.class.php";
 require_once PANTIE_ROOT . "/PantieEvent.class.php";
 require_once PANTIE_ROOT . "/PantieSocketException.class.php";
 require_once PANTIE_ROOT . "/PantieSocket.class.php";
 require_once PANTIE_ROOT . "/PantieToolkit.class.php";
+require_once KARIBOU_ROOT . "/karibou2/class/kpantie.class.php";
 
 // ---
 // Code itself
@@ -28,7 +31,7 @@ if(empty($session) or empty($events)) {
 
 // Waiting the event
 try {
-	$p = new Pantie($session);
+	$p = new KPantie($session);
 	$data = $p->waitEvent($events);
 } catch(PantieSocketTimeout $e) {
 	$data = new stdClass();

@@ -1,0 +1,8 @@
+name_en="Minichat 2"
+name_fr="Minichat 2"
+desc_en ="Chat with the other users"
+desc_fr ="Discutez avec les autres utilisateurs"
+view ="mini"
+configmodel ="Mc2Config"
+JSview = "JS"
+
