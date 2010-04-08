@@ -29,7 +29,7 @@
 				var tb = new dcToolBar(
 						document.getElementById('p_content'),
 						document.getElementById('p_format'),
-						'/themes/karibou/images/wiki/');
+						'/themes/karibou2/images/wiki/');
 				
 				tb.btStrong('Forte emphase');
 				tb.btEm('Emphase');
