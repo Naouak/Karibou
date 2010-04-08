@@ -55,6 +55,12 @@ function KBBCode() {
 		return KGlobals.baseurl + '/kbbcode/emoticons/' + theme;
 	}
 
+	function unHtmlEntities(str) {
+		var t = new Element('textarea');
+		t.innerHTML = str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+		return t.value; // This is not a hack
+	}
+
 	this.loadSmileys = function(theme, onDone) {
 		this.e_theme_loaded = false;
 
@@ -177,7 +183,7 @@ function KBBCode() {
 				node = newNode;
 			} else if(res[2] == "url") {
 				var prop = semi[0].split("=", 2);
-				var href = (prop[1] != undefined) ? prop[1] : semi[1];
+				var href = unHtmlEntities((prop[1] != undefined) ? prop[1] : semi[1]);
 				var short_href = href;
 
 				var validate = /^(http|https|ftp|gopher):\/\//;
