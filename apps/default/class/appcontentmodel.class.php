@@ -27,9 +27,13 @@ abstract class AppContentModel extends DefaultFormModel {
 			$key = $_POST["__modified_key"];
 			if ($this->isModifiable($key)) {
 				$this->modify($key, $params);
+				$p = new Pantie();
+				$p->throwEvent("default-*-" . $this->appName, "modify");
 			}
 		} else {
 			$this->submit($params);
+			$p = new Pantie();
+			$p->throwEvent("default-*-" . $this->appName, "submit");
 		}
 	}
 }

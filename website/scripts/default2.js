@@ -286,6 +286,7 @@ var KApp = Class.create({
 		this.detachedNext = null;
 		this.submitBox = null;
 		this.eventsAutoConnect();
+		pantie.listenTo("default-*-" + this.appName, this.refresh.bind(this));
 	},
 	deleteContent: function (deleteKey) {
 		if (window.confirm("Sure ?")) {

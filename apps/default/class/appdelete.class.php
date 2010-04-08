@@ -18,10 +18,13 @@ class AppDeleteModel extends FormModel {
 		$modelName = $miniapp->getSubmitModel();
 		$model = new $modelName($this->db, $this->currentUser, $miniappName, $app);
 		$key = filter_input(INPUT_POST, 'key');
-		if ($model->canDelete($key))
+		if ($model->canDelete($key)) {
 			$model->delete($key);
-		else
+			$p = new Pantie();
+			$p->throwEvent("default-*-$miniappName", "delete");
+		} else {
 			print("vtff...");
+		}
 	}
 }
 
