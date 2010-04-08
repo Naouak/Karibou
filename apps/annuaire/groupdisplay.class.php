@@ -104,7 +104,7 @@ class GroupDisplay extends Model
 			}
 			else
 			{
-				$u["picture"] = "/themes/karibou/images/0.jpg";
+				$u["picture"] = "/themes/karibou2/images/0.jpg";
 			}
 			if (($this->currentUser->getId() == $u['id']) && ($u['role'] == "admin"))
 			{
