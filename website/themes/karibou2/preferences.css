@@ -6,11 +6,11 @@
 }
 
 .frenchflag{
-	background-image: url(/themes/karibou/images/preferences/flags/fr.png);
+	background-image: url(images/preferences/flags/fr.png);
 }
 
 .englishflag{
-	background-image: url(/themes/karibou/images/preferences/flags/uk.png);
+	background-image: url(images/preferences/flags/uk.png);
 }
 
 .preferences fieldset, .preferences .changepassword{
