@@ -4,4 +4,3 @@ desc_fr ="Affiche la citation du jour"
 desc_en ="Display the quote of the day"
 view ="mini"
 submitmodel ="CitationSubmit"
-autorefresh=600

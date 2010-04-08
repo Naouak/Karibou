@@ -3,4 +3,3 @@ name_en ="Birthdays"
 desc_fr ="Affiche les anniversaires du jour"
 desc_en ="Display the today's birthdays"
 view ="mini"
-autorefresh=3600
