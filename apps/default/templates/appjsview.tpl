@@ -7,9 +7,6 @@ karibou.loadCSS("{$base_url}{$cssfile}", document);
 {hook name=JS_$appName}
 {else}
 var {$appName}Class = Class.create(KApp, {ldelim}{rdelim});
-{if ($app.autorefresh > 0)}
-{$appName}Class.autorefresh = {$app.autorefresh};
-{/if}
 {/if}
 {if ($app.submitFields != "")}
 {$appName}Class.submitFields = {$app.submitFields};

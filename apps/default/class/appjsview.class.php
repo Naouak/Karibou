@@ -20,9 +20,6 @@ class AppJSView extends Model
 				$hasJS = true;
 			} else {
 				$hasJS = false;
-				if ($miniapp->getAutorefresh() > 0) {
-					$autorefresh = $miniapp->getAutoRefresh();
-				}
 			}
 			$submitModelName = $miniapp->getSubmitModel();
 			if ($submitModelName != "") {
@@ -40,7 +37,7 @@ class AppJSView extends Model
 			}
 			$appName = $miniapp->getAppName();
 			ThemeManager::instance()->addApplication($appName);
-			$apps[] = array("hasJS" => $hasJS, "autorefresh" => $autorefresh, "appName" => $appName, "configFields" => $configFields, "submitFields" => $submitFields);
+			$apps[] = array("hasJS" => $hasJS, "appName" => $appName, "configFields" => $configFields, "submitFields" => $submitFields);
 		}
 		$this->assign("apps", $apps);
 		$this->assign("base_url", $GLOBALS["config"]["base_url"]);

@@ -10,12 +10,11 @@ class MiniApp {
 	 */
 	private $descs = array();
 	
-	private $appName, $mainView, $jsView, $configModel, $submitModel, $autorefresh;
+	private $appName, $mainView, $jsView, $configModel, $submitModel;
 	
 	public function __construct($appName, $parameters) {
 		$this->appName = $appName;
 		$this->names = $parameters["names"];
-		$this->autorefresh = 0;
 		if (count($this->names) == 0)
 			throw new Exception("Missing parameter names for MiniApp $appName");
 		$this->descs = $parameters["descs"];
@@ -32,10 +31,6 @@ class MiniApp {
 			$this->jsView = $parameters["JSview"];
 		} else {
 			$this->jsView = "";
-			if (array_key_exists("autorefresh", $parameters)) {
-				$this->autorefresh = intval($parameters["autorefresh"]);
-			}
-
 		}
 		if (array_key_exists("submitmodel", $parameters))
 			$this->submitModel = $parameters["submitmodel"];
@@ -59,10 +54,6 @@ class MiniApp {
 		return $this->jsView;
 	}
 
-	public function getAutorefresh() {
-		return $this->autorefresh;
-	}
-	
 	public function getName($language) {
 		if (array_key_exists($language, $this->names))
 			return $this->names[$language];
