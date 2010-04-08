@@ -39,7 +39,7 @@ function Pantie(register_url, uid) {
 			},
 			onSuccess: function(r) {
 				if(r.responseJSON.slap == undefined) {
-					push_url = r.responseJSON.push_url;
+					push_url = KGlobals.baseurl + r.responseJSON.push_url;
 				} else {
 					alert('Pirate !');
 				}

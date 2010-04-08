@@ -12,7 +12,7 @@ require_once PANTIE_ROOT . "/PantieEvent.class.php";
 require_once PANTIE_ROOT . "/PantieSocketException.class.php";
 require_once PANTIE_ROOT . "/PantieSocket.class.php";
 require_once PANTIE_ROOT . "/PantieToolkit.class.php";
-require_once KARIBOU_ROOT . "/karibou2/class/kpantie.class.php";
+require_once KARIBOU_DIR . "/class/kpantie.class.php";
 
 // ---
 // Code itself
