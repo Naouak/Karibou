@@ -5,8 +5,6 @@ import json
 from twisted.internet import protocol, reactor, defer
 from twisted.protocols import basic
 
-import pprint
-
 class Event:
 	"""
 	Only contains datas of an event
@@ -34,8 +32,6 @@ class Session:
 		Waits for one or more event. Returns a Deferred object
 		"""
 
-		print "waiting for events %s" % events
-
 		# Update the list of events to be sensitive to
 		for evt in events:
 			if evt not in self.sensitive:
@@ -60,7 +56,6 @@ class Session:
 
 			if len(send) != 0:
 				d.callback(send)
-				print "-> events were on the stack"
 				return d
 
 		self.waiting.append({
@@ -75,8 +70,6 @@ class Session:
 		Tries to give an event to a waiting connection. If nobody is waiting, the
 		event is added to the stack
 		"""
-
-		print "got event %s, added to stack %x" % (event, id(self.stack))
 
 		# Nothing to do if the session is not sensitive to this event
 		if event.name not in self.sensitive:
@@ -115,8 +108,6 @@ class SessionFactory:
 		if self.sessions.has_key(session):
 			s = self.sessions[session]
 
-			print "got session %s" % session
-
 			# There is 1 more connection linked to this session
 			s["count"] = s["count"] + 1
 
@@ -124,12 +115,9 @@ class SessionFactory:
 			if s["nemesis"] != None:
 				s["nemesis"].cancel()
 				s["nemesis"] = None
-				print "session %s no more going to die" % session
 
 			return s["object"]
 		else:
-			print "created session %s" % session
-
 			self.sessions[session] = {
 				"count": 1,
 				"object": Session(),
@@ -139,7 +127,6 @@ class SessionFactory:
 			return self.sessions[session]["object"]
 
 	def clientLost(self, session, client):
-		print "%s lost was lost by session %s" % (client, session)
 		if self.sessions.has_key(session):
 			s = self.sessions[session]
 			s["object"].clientLost(client)
@@ -150,16 +137,12 @@ class SessionFactory:
 			s = self.sessions[session]
 			s["count"] = s["count"] - 1
 
-			print "session %s has a count of %s" % (session, s["count"])
-
 			if s["count"] == 0:
 				def kill(session):
 					if self.sessions.has_key(session):
 						del self.sessions[session]
-						print "killed session %s" % session
 
 				# No more sessions linked, 5 minutes left to live
-				print "session %s will be destroyed" % session
 				s["nemesis"] = reactor.callLater(300, kill, session)
 
 	def throwEvent(self, event, f = None):
@@ -168,7 +151,6 @@ class SessionFactory:
 				s["object"].gotEvent(event)
 
 	def register(self, session, event):
-		print "registering session %s for event %s" % (session, event)
 		s = self.getSession(session)
 
 		s = self.sessions[session]
@@ -196,8 +178,6 @@ class Pantie(basic.Int32StringReceiver):
 				d = self.factory.sessionFactory.getSession(msg["by"]).waitEvents(msg["what"], self)
 
 				self.session = msg["by"]
-
-				print "%s grabbed events %s" % (msg["by"], msg["what"])
 
 				# Called when one or more events occurs
 				def onEvent(events):
@@ -227,7 +207,6 @@ class Pantie(basic.Int32StringReceiver):
 				else:
 					self.factory.sessionFactory.throwEvent(Event(msg["what"], msg["how"]))
 				self.stopProducing()
-				print "event %s was received" % msg["what"]
 
 			elif msg["do"] == "register":
 				self.factory.sessionFactory.register(msg["who"], msg["for"])
@@ -244,7 +223,6 @@ class Pantie(basic.Int32StringReceiver):
 	def connectionLost(self, reason):
 		if self.session != None:
 			self.factory.sessionFactory.clientLost(self.session, self)
-		print "connection lost"
 
 class PantieFactory(protocol.ServerFactory):
 	"""
@@ -259,7 +237,3 @@ class PantieFactory(protocol.ServerFactory):
 		"""
 		# Create factories
 		self.sessionFactory = SessionFactory()
-
-if __name__ == "__main__":
-	print "test !"
-
