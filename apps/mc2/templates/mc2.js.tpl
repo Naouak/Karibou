@@ -257,17 +257,19 @@ var mc2Class = Class.create(KApp, {
 
 		try {
 			if(msg.type == "msg" || msg.type == "score") {
-				var tpl
+				var post;
+				var tpl;
 				if(msg.post.substring(0, 4) != "/me ") {
 					tpl = new Template('<li><span class="time">[#{time}]</span> <span class="user">#{user}</span> <span class="msg">#{msg}</span></li>');
+					post = msg.post;
 				} else {
 					tpl = new Template('<li><span class="time">[#{time}]</span> <span class="me"><span class="user">#{user}</span> <span class="msg">#{msg}</span> </span></li>');
-					msg.post = msg.post.substring(4);
+					post = msg.post.substring(4);
 				}
 				return tpl.evaluate({
 					time: makeTimeString(d),
 					user: msg.userlink,
-					msg: this.bbc.process(msg.post, this.config.richtext)
+					msg: this.bbc.process(post, this.config.richtext)
 				});
 			}
 		} catch(err) {
