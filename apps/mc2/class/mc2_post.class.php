@@ -53,7 +53,7 @@ class Mc2Post extends FormModel {
 				$last_hour->bindValue(":user", $this->currentUser->getID());
 				$last_hour->execute();
 
-				if($db->query("SELECT COUNT(*) FROM onlineusers")->fetchColumn(0) == 1 and $last_hour->fetchColumn(0) == 0) {
+				if($db->query("SELECT COUNT(*) FROM onlineusers WHERE away = 0")->fetchColumn(0) == 1 and $last_hour->fetchColumn(0) == 0) {
 					ScoreFactory::addScoreToUser($this->currentUser, 600000, "alone on karibou");
 				}
 			}
