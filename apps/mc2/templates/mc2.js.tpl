@@ -38,9 +38,7 @@ var mc2Class = Class.create(KApp, {
 		this.updateState();
 
 		// Wait for updates (broadcast event for all messages)
-		pantie.listenTo('mc2-*-message', function(msg) {
-			obj.onNewMessage(msg);
-		});
+		pantie.listenTo('mc2-*-message', this.onNewMessage.bind(this));
 	},
 
 	listenToDom: function() {
@@ -94,9 +92,15 @@ var mc2Class = Class.create(KApp, {
 	 */
 	onNewMessage: function(msg) {
 		try {
-			this.appendMessage(msg.evalJSON());
+			var jmsg = jsonParse(msg);
+			if(
+				   (this.config.show_msg && jmsg.type == "msg")
+				|| (this.config.show_score && jmsg.type == "score")
+				|| (!this.config.show_msg && !this.config.show_score)
+			) {
+				this.appendMessage(jmsg);
+			}
 		} catch(err) {
-			console.log(err);
 		}
 	},
 

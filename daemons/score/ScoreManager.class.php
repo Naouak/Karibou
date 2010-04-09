@@ -36,7 +36,7 @@ class ScoreManager {
 				'user_id' => $user->getID(),
 				'userlink' => userlink(array('noicon' => true, 'showpicture' => true, 'user' => $user), $this->al),
 				'post' => $msg,
-				'type' => 'msg'
+				'type' => 'score'
 			);
 			$p->throwEvent('mc2-*-message', json_encode($evt));
 		}
@@ -80,7 +80,7 @@ class ScoreManager {
 				'user_id' => $thief->getID(),
 				'userlink' => userlink(array('noicon' => true, 'showpicture' => true, 'user' => $thief), $this->al),
 				'post' => $msg,
-				'type' => 'msg'
+				'type' => 'score'
 			);
 			$p->throwEvent('mc2-*-message', json_encode($evt));
 		}
