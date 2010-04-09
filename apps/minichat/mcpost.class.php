@@ -178,6 +178,8 @@ class MCPost extends FormModel
 					$stmt->bindValue(":message", htmlspecialchars($message));
 					$stmt->execute();
 
+					$user = $this->userFactory->prepareUserFromId($this->currentUser->getID());
+
 					// Notify the user of what happened
 					try {
 						$this->userFactory->setUserList();
@@ -188,7 +190,7 @@ class MCPost extends FormModel
 					$evt = array(
 						'time' => time() * 1000,
 						'user_id' => $this->currentUser->getID(),
-						'userlink' => userlink(array('noicon' => true, 'showpicture' => true, 'user' => $this->currentUser), $this->appList),
+						'userlink' => userlink(array('noicon' => true, 'showpicture' => true, 'user' => $user), $this->appList),
 						'post' => $message,
 						'type' => 'msg'
 					);
