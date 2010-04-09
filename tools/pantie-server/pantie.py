@@ -5,6 +5,8 @@ import json
 from twisted.internet import protocol, reactor, defer
 from twisted.protocols import basic
 
+import pprint
+
 class Event:
 	"""
 	Only contains datas of an event
@@ -78,9 +80,20 @@ class Session:
 
 		# Nothing to do if the session is not sensitive to this event
 		if event.name not in self.sensitive:
+			# If there is no sensitivity, any event to any waiter should do it
+			for w in self.waiting:
+				w["d"].callback([event])
+				self.waiting.remove(w)
+				return
 			return
 
 		for w in self.waiting:
+			# if the waiting list is empty
+			if len(w["events"]) == 0:
+				w["d"].callback([event])
+				self.waiting.remove(w)
+				return
+
 			if event.name in w["events"]:
 				w["d"].callback([event])
 				self.waiting.remove(w)

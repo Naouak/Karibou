@@ -23,9 +23,14 @@ header("Content-Type: application/json; charset=utf-8");
 
 // Getting parameters
 $session = filter_input(INPUT_POST, "session", FILTER_SANITIZE_STRING);
-$events = $_POST['events'];
 
-if(empty($session) or empty($events)) {
+if(isset($_POST['events']) and is_array($_POST['events'])) {
+	$events = $_POST['events'];
+} else {
+	$events = array();
+}
+
+if(empty($session)) {
 	exit("we're not going very far with this...");
 }
 

@@ -115,8 +115,7 @@ function Pantie(register_url, uid) {
 		xhr = new Ajax.Request(push_url, {
 			method: 'post',
 			parameters: {
-				"session": sid,
-				"events[]": evts
+				"session": sid
 			},
 			onFailure: function() {
 				if(--tries > 0) {
