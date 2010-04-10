@@ -54,7 +54,12 @@ class RBReset extends FormModel
 			$stmt->execute();
 
 			$p = new KPantie();
-			$p->throwEvent("resetbutton-*-reset", "");
+			$evt = array(
+				"date" => date(DATE_RFC1123),
+				"userlink" => userlink(array('noicon' => true, 'showpicture' => true, 'user' => $this->currentUser), $this->appList),
+				"lastClick" => time()
+			);
+			$p->throwEvent("resetbutton-*-reset", json_encode($evt));
 		}
 	}
 	
