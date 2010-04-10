@@ -52,6 +52,9 @@ class RBReset extends FormModel
 			$stmt = $this->db->prepare("INSERT INTO resetbutton(date,user) VALUES ( NOW(), :user );");
 			$stmt->bindValue(':user',$this->currentUser->getID(),PDO::PARAM_INT);
 			$stmt->execute();
+
+			$p = new KPantie();
+			$p->throwEvent("resetbutton-*-reset", "");
 		}
 	}
 	
