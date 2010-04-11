@@ -58,7 +58,7 @@ class XMLElement implements ArrayAccess
 	}
 	function offsetGet($offset)
 	{
-		return $this->attributes[$offset];
+		return isset($this->attributes[$offset]) ? $this->attributes[$offset] : 0;
 	}
 	function offsetSet($offset, $value)
 	{

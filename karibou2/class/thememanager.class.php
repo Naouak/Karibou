@@ -29,7 +29,7 @@ class Theme {
 		if (is_file($settings)) {
 			$attrs = parse_ini_file($settings);
 			$this->description = $attrs["description"];
-			$this->hidden = ($attrs["hidden"] == "true");
+			$this->hidden = (isset($attrs['hidden']) && $attrs["hidden"] == "true");
 			if (array_key_exists("parent", $attrs))
 				$this->parentname = $attrs["parent"];
 			$this->valid = true;
