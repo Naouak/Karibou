@@ -46,7 +46,7 @@ class Session:
 
 			todel = []
 			for evt in self.stack:
-				if evt.name in events:
+				if (evt.name in events) or (len(events) == 0):
 					send.append(evt)
 					todel.append(evt)
 
@@ -78,7 +78,9 @@ class Session:
 				w["d"].callback([event])
 				self.waiting.remove(w)
 				return
-			return
+
+			if len(self.sensitive) != 0:
+				return
 
 		for w in self.waiting:
 			# if the waiting list is empty
