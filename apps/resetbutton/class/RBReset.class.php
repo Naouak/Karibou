@@ -2,25 +2,25 @@
 /* BEWARE made by Naouak*/
 /* Nux also came here, it's now harmless */
 /* Pinaraf came too, so it's understandable now, and not complex by design any more... */
- 
+
 /**
  * Classe resetbuttonreset
  *
  * @package applications
  */
- 
+
 class RBReset extends FormModel
-{	
+{
 	public function build()
 	{
 		// Si l'utilisateur n'est pas loggé, il n'a pas le droit de remettre le bouton à 0
 		if(!$this->currentUser->isLogged()) return;
-	
+
 		//anti-flood
 		$stmt = $this->db->prepare("
 		SELECT *
 		FROM resetbutton
-		WHERE 
+		WHERE
 			user=:user
 			AND (
 				date > SUBTIME(NOW(), '1:00:00')
@@ -29,6 +29,7 @@ class RBReset extends FormModel
 			)");
 		$stmt->bindValue(':user',$this->currentUser->getID(),PDO::PARAM_INT);
 		$stmt->execute();
+
 		if($stmt->fetch() === false){
 			// Score calculation
 			$stmt = $this->db->prepare("
@@ -46,24 +47,24 @@ class RBReset extends FormModel
 
 			if($row = $stmt->fetch()) {
 				ScoreFactory::stealScoreFromUser($this->currentUser, $this->userFactory->prepareUserFromId($row["user"]), $row["score"] * 10, "resetbutton");
+
+				$user = $this->userFactory->prepareUserFromId($this->currentUser->getID());
+				$this->userFactory->setUserList();
+
+				$stmt = $this->db->prepare("INSERT INTO resetbutton(date,user) VALUES ( NOW(), :user );");
+				$stmt->bindValue(':user',$this->currentUser->getID(),PDO::PARAM_INT);
+				$stmt->execute();
+
+				$p = new KPantie();
+				$evt = array(
+					"date" => date(DATE_RFC1123),
+					"userlink" => userlink(array('noicon' => true, 'showpicture' => true, 'user' => $user), $this->appList),
+					"lastClick" => time()
+				);
+				$p->throwEvent("resetbutton-*-reset", json_encode($evt));
 			}
-
-			//ajout si passe l'anti-flood
-			$stmt = $this->db->prepare("INSERT INTO resetbutton(date,user) VALUES ( NOW(), :user );");
-			$stmt->bindValue(':user',$this->currentUser->getID(),PDO::PARAM_INT);
-			$stmt->execute();
-
-			$p = new KPantie();
-			$evt = array(
-				"date" => date(DATE_RFC1123),
-				"userlink" => userlink(array('noicon' => true, 'showpicture' => true, 'user' => $this->currentUser), $this->appList),
-				"lastClick" => time()
-			);
-			$p->throwEvent("resetbutton-*-reset", json_encode($evt));
 		}
 	}
-	
-	
-}
 
-?>
+
+}
