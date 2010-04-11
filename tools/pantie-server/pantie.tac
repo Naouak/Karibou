@@ -9,4 +9,4 @@ f = pantie.PantieFactory()
 
 application = service.Application('pantie')
 serviceCollection = service.IServiceCollection(application)
-internet.TCPServer(5896, f).setServiceParent(serviceCollection)
+internet.TCPServer(5896, f, interface='127.0.0.1').setServiceParent(serviceCollection)
