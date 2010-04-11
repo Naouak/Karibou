@@ -145,7 +145,7 @@ class ThemeManager {
 		$theme = $this->getTheme($themename);
 
 		foreach ($this->applications as $app) {
-			$csss = $core->getCSS($app);
+			$csss = $core->getCSS($app, null);
 			foreach($csss as $css)
 				$result[] = KARIBOU_THEMES_URL . $css;
 
