@@ -50,6 +50,7 @@ class AppMainView extends Model
 				} else {
 					$this->assign("canConfig", false);
 				}
+				$this->assign("history", $miniapp->getHistoryPage());
 				$this->assign("appName", $miniapp->getAppName());
 				$this->assign("appTitle", $miniapp->getName($lang));
 			}
