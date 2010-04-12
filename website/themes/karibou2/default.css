@@ -234,17 +234,16 @@
 	display: none;
 }
 .appRootContainer .submit {
-        width: 16px;
-        height: 16px;
-        background-image: url("images/submit.png");
-        visibility: hidden;
+	width: 16px;
+	height: 16px;
+	background-image: url("images/submit.png");
+	visibility: hidden;
 }
 
 .appRootContainer:hover .submit {
-	position: absolute;
 	top: 1px;
-	/*left: 25px;
-	visibility: visible;*/
+	left: 5px;
+	visibility: visible;
 	float: left;
 }
 
@@ -260,10 +259,9 @@
 }
 
 .appRootContainer:hover .config {
-/*	position: absolute;*/
 	top: 1px;
-	/*left: 42px;*/
 	float: left;
+	left: 5px;
 	visibility: visible;
 }
 
@@ -278,7 +276,6 @@
 }
 
 .appRootContainer:hover .update {
-	/*position: absolute;*/
 	float: left;
 	top: 1px;
 	left: 5px;
