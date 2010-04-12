@@ -35,3 +35,25 @@ msgstr "Annuler"
 
 msgid "Done"
 msgstr "Terminé"
+
+msgid "History"
+msgstr "Historique"
+
+msgid "Submit content"
+msgstr "Ajouter du contenu"
+
+msgid "Refresh"
+msgstr "Rafraichir"
+
+msgid "Configure"
+msgstr "Configurer"
+
+msgid "Shade"
+msgstr "Enrouler"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Detach"
+msgstr "Détacher"
+

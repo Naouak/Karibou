@@ -40,7 +40,7 @@ class MiniAppFactory {
 								$names[substr($key, 5)] = $value;
 							else if ((strpos($key, "desc_") === 0) && (strlen($key) != 5))
 								$descs[substr($key, 5)] = $value;
-							else if (($key == "view") || ($key == "JSview") || ($key == "configmodel") || ($key == "submitmodel"))
+							else if (($key == "view") || ($key == "JSview") || ($key == "configmodel") || ($key == "submitmodel") || ($key == "history"))
 								$app[$key] = $value;
 						}
 						$app["names"] = $names;
