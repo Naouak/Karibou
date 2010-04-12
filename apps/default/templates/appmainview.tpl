@@ -11,9 +11,9 @@ Small idea : add these links using JavaScript, so that applications can remove b
 {if $hasHistory}
 <a target="_blank" title="##History##" href="{kurl app=$appName page=$history}"><span class="history"><span class="text">history</span></span></a>
 {/if}
-<a onclick="$app(this).detach();   return false;" title="detach"  href=""><span class="detach" ><span class="text">detach</span></span></a>
-<a onclick="$app(this).shade();   return false;" title="shade"  href=""><span class="shade" ><span class="text">shade</span></span></a>
-<a onclick="$app(this).close(); return false;"   title="del"    href=""><span class="del"   ><span class="text">del</span></span></a>
+<a onclick="$app(this).detach();return false;" title="##Detach##"  href=""><span class="detach" ><span class="text">detach</span></span></a>
+<a onclick="$app(this).shade(); return false;" title="##Shade##"   href=""><span class="shade" ><span class="text">shade</span></span></a>
+<a onclick="$app(this).close(); return false;" title="##Delete##"  href=""><span class="del"   ><span class="text">del</span></span></a>
 <h3 class="handle" id="{$appName}_handle">{$appTitle}</h3>
 <div id="{$appName}" class="appBox" >
 {hook name=$appName}

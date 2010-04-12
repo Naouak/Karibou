@@ -47,3 +47,13 @@ msgstr "Rafraichir"
 
 msgid "Configure"
 msgstr "Configurer"
+
+msgid "Shade"
+msgstr "Enrouler"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Detach"
+msgstr "Détacher"
+
