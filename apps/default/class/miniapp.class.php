@@ -10,7 +10,7 @@ class MiniApp {
 	 */
 	private $descs = array();
 	
-	private $appName, $mainView, $jsView, $configModel, $submitModel;
+	private $appName, $mainView, $jsView, $configModel, $submitModel, $historyPage;
 	
 	public function __construct($appName, $parameters) {
 		$this->appName = $appName;
@@ -36,6 +36,10 @@ class MiniApp {
 			$this->submitModel = $parameters["submitmodel"];
 		else
 			$this->submitModel = "";
+		if (array_key_exists("history", $parameters))
+			$this->historyPage = $parameters["history"];
+		else
+			$this->historyPage = null;
 	}
 	
 	public function getAppName() {
@@ -68,6 +72,10 @@ class MiniApp {
 
 	public function getSubmitModel() {
 		return $this->submitModel;
+	}
+
+	public function getHistoryPage() {
+		return $this->historyPage;
 	}
 }
 
