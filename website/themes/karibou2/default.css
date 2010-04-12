@@ -251,6 +251,24 @@
 	display: none;
 }
 
+.appRootContainer .history {
+	width: 16px;
+	height: 16px;
+	background-image: url("images/clock.png");
+	visibility: hidden;
+}
+
+.appRootContainer:hover .history {
+	top: 1px;
+	float: left;
+	left: 5px;
+	visibility: visible;
+}
+
+.appRootContainer .history .text {
+	display: none;
+}
+
 .appRootContainer .config {
 	width: 16px;
 	height: 16px;
@@ -268,6 +286,7 @@
 .appRootContainer .config .text {
 	display: none;
 }
+
 .appRootContainer .update {
 	width: 16px;
 	height: 16px;
