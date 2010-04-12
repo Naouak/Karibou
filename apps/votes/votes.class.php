@@ -26,9 +26,14 @@ class Votes extends Model {
 				if ($sql->execute()) {
 					$this->assign("status", "ok");
 					// This system is quite hacky, but it should work.
-					if (preg_match('/([^-]*)-(.*)/', $this->args["id"], $result)) {
-						$p = new Pantie();
-						$p->throwEvent("default-*-" . $result[1], "vote");
+					$sql = $this->db->prepare("SELECT name FROM combox WHERE id=:id");
+					$sql->bindValue(":id", $this->args["id"]);
+					if ($sql->execute()) {
+						$row = $sql->fetch();
+						if (preg_match('/([^-]*)-(.*)/', $row[0], $result)) {
+							$p = new Pantie();
+							$p->throwEvent("default-*-" . $result[1], "vote");
+						}
 					}
 				}
 				else{
