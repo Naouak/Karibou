@@ -4,8 +4,7 @@ var minichatClass = Class.create(KApp, {
 	initialize: function ($super, appName, id, container, karibou) {
 		$super(appName, id, container, karibou);
 		this.refreshURL = {/literal}'{kurl page="content"}'{literal} + this.config["maxlines"] + "," + (this.config["userichtext"]?1:0) + "," + (this.config["inversepostorder"]?1:0) + "," + (this.config["showscore"]?1:0);
-		this.refreshInterval = Number({/literal}{$refreshInterval}{literal});
-		this.refresher = new Ajax.PeriodicalUpdater(this.getElementById('minichat_live'), this.refreshURL, {asynchronous:true, evalScripts:true, frequency: this.refreshInterval});
+		pantie.listenTo('mc2-*-message', this.refreshMessageList.bind(this));
 	},
 	minichat_keypress: function(e) {
 		if (e.keyCode == 9) {	// 9 == Tab key
@@ -66,13 +65,11 @@ var minichatClass = Class.create(KApp, {
 		this.getElementById("message").value = "";
 		return false;
 	},
-	refreshMessageList: function () {
+	refreshMessageList: function (evt) {
 		new Ajax.Updater(this.getElementById('minichat_live'), this.refreshURL, {asynchronous: true, evalScripts: true});
 	},
 	onRefresh: function () {
-		this.refresher.stop();
 		this.refreshURL = {/literal}'{kurl page="content"}'{literal} + this.config["maxlines"] + "," + (this.config["userichtext"]?1:0) + "," + (this.config["inversepostorder"]?1:0) + "," + (this.config["showscore"]?1:0);
-		this.refresher = new Ajax.PeriodicalUpdater(this.getElementById('minichat_live'), this.refreshURL, {asynchronous:true, evalScripts:true, frequency: this.refreshInterval});
 	}
 });
 {/literal}
