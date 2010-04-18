@@ -3,13 +3,12 @@
 <app>
 	<permissions default="_NO_ACCESS_" logged="_SELF_WRITE_" />
 
-	<load class="Chifoumi" file="chifoumi.class.php" />
 	<load class="ChifoumiPost" file="post.class.php" />
 	<load class="ChifoumiChallenge" file="challenge.class.php" />
 	
 	<load class="[arguments]/NumberArgument" />
 
-	<view name="mini" class="Chifoumi" template="chifoumi.tpl" />
+	<view name="mini" template="chifoumi.tpl" />
 	<view name="js" template="js.tpl" />
 	<view name="challenge" class="ChifoumiChallenge" template="challenge.tpl" />
 	<view name="post" class="ChifoumiPost" template="post.tpl" />
