@@ -65,7 +65,7 @@ class ChifoumiChallenge extends Model
 		}
 
 		//On fourni le JSON
-		$this->assign("result",json_encode($result));
+		return json_encode($result);
 		
 	}
 }

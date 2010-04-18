@@ -43,7 +43,7 @@ class ChifoumiPost extends Model
 			
 		}
 		
-		$this->assign("result",json_encode($result));
+		return json_encode($result);
 	}
 }
 ?>

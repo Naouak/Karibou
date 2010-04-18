@@ -8,10 +8,10 @@
 	
 	<load class="[arguments]/NumberArgument" />
 
-	<view name="mini" template="chifoumi.tpl" />
+	<view name="mini" />
 	<view name="js" template="js.tpl" />
-	<view name="challenge" class="ChifoumiChallenge" template="challenge.tpl" />
-	<view name="post" class="ChifoumiPost" template="post.tpl" />
+	<view name="challenge" class="ChifoumiChallenge" />
+	<view name="post" class="ChifoumiPost" />
 	
 	<page name="challenge" view="challenge">
 		<option name="weapon" class="NumberArgument" />
