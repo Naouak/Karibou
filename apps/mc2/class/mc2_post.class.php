@@ -52,9 +52,12 @@ class Mc2Post extends FormModel {
 				$last_hour = $db->prepare("SELECT COUNT(*) FROM minichat WHERE id_auteur = :user AND post = 'alone on karibou' AND `time` > SUBTIME(NOW(), '01:00:00')");
 				$last_hour->bindValue(":user", $this->currentUser->getID());
 				$last_hour->execute();
+				$did_last_hour = ($last_hour->fetchColumn(0) == 0);
 
-				if($db->query("SELECT COUNT(*) FROM onlineusers WHERE away = 0 AND TIME_TO_SEC(TIMEDIFF(NOW(), last_presence)) <= 900")->fetchColumn(0) == 1 and $last_hour->fetchColumn(0) == 0) {
+				if($db->query("SELECT COUNT(*) FROM onlineusers WHERE away = 0")->fetchColumn(0) == 1 and $did_last_hour) {
 					ScoreFactory::addScoreToUser($this->currentUser, 600000, "alone on karibou");
+				} elseif($db->query("SELECT COUNT(*) FROM onlineusers WHERE away = 0 AND TIME_TO_SEC(TIMEDIFF(NOW(), last_presence)) <= 900")->fetchColumn(0) == 1 and $did_last_hour) {
+					ScoreFactory::addScoreToUser($this->currentUser, 300000, "alone on karibou");
 				}
 			}
 
