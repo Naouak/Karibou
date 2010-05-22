@@ -8,8 +8,10 @@ Small idea : add these links using JavaScript, so that applications can remove b
 {if $canConfig}
 <a onclick="$app(this).configure(); return false;" title="##Configure##" href=""><span class="config"><span class="text">config</span></span></a>
 {/if}
+{if $isLogged}
 {if isset($history)}
-<a class="lightbox" target="_blank" title="##History##" href="{kurl app=$appName page=$history}"><span class="history"><span class="text">history</span></span></a>
+<a class="lightbox lightbox-iframe" target="_blank" title="##History##" href="{kurl app=$appName page=$history}"><span class="history"><span class="text">history</span></span></a>
+{/if}
 {/if}
 <a onclick="$app(this).detach();return false;" title="##Detach##"  href=""><span class="detach" ><span class="text">detach</span></span></a>
 <a onclick="$app(this).shade(); return false;" title="##Shade##"   href=""><span class="shade" ><span class="text">shade</span></span></a>
