@@ -1,1 +1,1 @@
-{if $islogged}true{else}false{/if};
+{if $islogged}true{else}false{/if}
