@@ -7,6 +7,12 @@
 	<view name="mini" class="LoginForm" template="loginform.tpl" />
 	<view name="js" template="js.tpl" />
 	<view name="presence" class="Presence" />
+	<view name="status" template="status.tpl" />
+
+	<page name="status" view="status">
+		<header app="header" name="empty" />
+		<footer app="header" name="empty" />
+	</page>
 
 	<page name="presence" view="presence">
 		<header app="header" name="empty" />
