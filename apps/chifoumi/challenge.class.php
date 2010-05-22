@@ -6,7 +6,7 @@ class ChifoumiChallenge extends Model
 		if (!$this->currentUser->isLogged()) {
 			return;
 		}
-		//Pour fournir le JSON à la fin
+		//Pour fournir le JSON Ã  la fin
 		$result = Array();
 	
 		$weapon = $this->args["weapon"];
@@ -17,7 +17,7 @@ class ChifoumiChallenge extends Model
 		}
 		if(!empty($id) && ($weapon) >= 0 && $weapon <= 3 ){
 			$result["challenge"] = "yes";
-			$stmt = $this->db->prepare("SELECT * FROM chifoumi WHERE id = :id AND acepted=0 AND dateofresponse IS NULL LIMIT 1");
+			$stmt = $this->db->prepare("SELECT * FROM chifoumi WHERE id = :id ANDÂ acepted=0 ANDÂ dateofresponse ISÂ NULL LIMIT 1");
 			$stmt->bindValue(":id",$id);
 			$stmt->execute();
 			$data = $stmt->fetch();
@@ -39,13 +39,13 @@ class ChifoumiChallenge extends Model
 			elseif( ($weapon == 2 && $data["weapon"] == 1) || 
 				($weapon == 1 && $data["weapon"] == 0) ||
 				($weapon == 0 && $data["weapon"] == 2)){
-				//Gain du challengé
+				//Gain du challengÃ©
 				ScoreFactory::stealScoreFromUser($this->currentUser,$this->userFactory->prepareUserFromId($data['user']), $data["bet"], "chifoumi");
 				
 				$result["result"] = 1;
 			}
 			elseif($weapon == $data["weapon"]){
-				//égalité
+				//Ã©galitÃ©
 				$result["result"] = 0;
 			}
 			else{
@@ -65,7 +65,7 @@ class ChifoumiChallenge extends Model
 		}
 
 		//On fourni le JSON
-		$this->assign("result",json_encode($result));
+		return json_encode($result);
 		
 	}
 }
