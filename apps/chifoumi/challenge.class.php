@@ -17,7 +17,7 @@ class ChifoumiChallenge extends Model
 		}
 		if(!empty($id) && ($weapon) >= 0 && $weapon <= 3 ){
 			$result["challenge"] = "yes";
-			$stmt = $this->db->prepare("SELECT * FROM chifoumi WHERE id = :id AND acepted=0 AND dateofresponse IS NULL LIMIT 1");
+			$stmt = $this->db->prepare("SELECT * FROM chifoumi WHERE id=:id AND acepted=0 AND dateofresponse IS NULL LIMIT 1");
 			$stmt->bindValue(":id",$id);
 			$stmt->execute();
 			$data = $stmt->fetch();
