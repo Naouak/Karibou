@@ -12,22 +12,23 @@ daytofClass = Class.create(KApp, {
 		}
 		this.urlIndex = 0;
 		this.displayNewPicture();
-		this.pe = new PeriodicalExecuter(function (pe) {
-			pe.app.displayNewPicture();
-		}, this.config["speed"]);
-		this.pe.app = this;
+		this.timeout = 0;
 	},
 	onDestroy: function() {
-		this.pe.stop();
+		if (this.timeout)
+			window.clearTimeout(this.timeout);
 	},
 	onRefresh: function() {
 		this.displayNewPicture();
 	},
 	displayNewPicture: function() {
+		if (this.timeout)
+			clearTimeout(this.timeout);
 		new Ajax.Updater(this.getElementById('daTofContainer'), this.urls[this.urlIndex]);
 		this.urlIndex++;
 		if (this.urlIndex >= this.urls.length)
 			this.urlIndex = 0; 
+		this.timeout = window.setTimeout(this.displayNewPicture.bind(this), this.config["speed"] * 1000);
 	},
 	onConfig: function() {
 		this.urls = [];
@@ -36,11 +37,6 @@ daytofClass = Class.create(KApp, {
 		for (var i = 0 ; i < this.config["maxtof"] ; i++) {
 			this.urls[i] = this.baseURL.replace("9999", i);
 		}
-		this.pe.stop();
-		this.pe = new PeriodicalExecuter(function (pe) {
-			pe.app.displayNewPicture();
-		}, this.config["speed"]);
-		this.pe.app = this;
 		this.displayNewPicture();
 	}
 });
