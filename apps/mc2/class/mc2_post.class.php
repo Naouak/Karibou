@@ -67,6 +67,7 @@ class Mc2Post extends FormModel {
 						if ($game_check_part->fetchColumn(0) == 0) {
 							ScoreFactory::addScoreToUser($this->currentUser, 300000, "alone on karibou");
 						}
+					}
 				}
 			}
 
