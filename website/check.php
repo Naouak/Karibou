@@ -2,14 +2,14 @@
 
 	$checklist = array();
 	/**
-	 * Liste des fonctions nécessaires
+	 * Liste des fonctions nï¿½cessaires
 	 */
 
 	/* No more check is made on the functions... But the type "function"
 	   still exists, so keep that in mind for new features. */
 
 	/**
-	 * Liste des fichiers nécessaires
+	 * Liste des fichiers nï¿½cessaires
 	 */
 	
 	$checklist[] = array(
@@ -17,7 +17,7 @@
 		'name'			=> KARIBOU_SMARTY_DIR . '/Smarty.class.php',
 		'errortitle'		=> 'Smarty est introuvable',
 		'errordescription'	=> 'Karibou utilise <a href="http://www.smarty.net/">Smarty</a> comme moteur de template. Cependant, il est impossible de trouver Smarty. ',
-		'resolve'		=> 'Vous devez installer Smarty dans le <em>include_path</em> de PHP. Sous Debian, la commande <br /><pre>aptitude install smarty</pre> devrait régler le problème.'
+		'resolve'		=> 'Vous devez installer Smarty dans le <em>include_path</em> de PHP. Sous Debian, la commande <br /><pre>aptitude install smarty</pre> devrait rï¿½gler le problï¿½me.'
 	);
 
 	$checklist[] = array(
@@ -25,19 +25,19 @@
 		'name'			=> 'PEAR.php',
 		'errortitle'		=> 'PEAR est introuvable',
 		'errordescription'	=> 'Karibou utilise des classes en provnenance de <a href="http://pear.php.net/">PEAR</a>. Cependant, il est impossible de trouver PEAR.',
-		'resolve'		=> 'Vous devez installer PEAR dans le <em>include_path</em> de PHP. Sous Debian, la commande <br /><pre>aptitude install php-pear</pre> devrait régler le problème.'
+		'resolve'		=> 'Vous devez installer PEAR dans le <em>include_path</em> de PHP. Sous Debian, la commande <br /><pre>aptitude install php-pear</pre> devrait rï¿½gler le problï¿½me.'
 	);
 
 	$checklist[] = array(
 		'type'			=> 'file',
 		'name'			=> 'Crypt/RSA.php',
 		'errortitle'		=> 'CryptRSA est introuvable',
-		'errordescription'	=> 'Certaines données sont chiffrées en utilisant la classe CryptRSA de PEAR. Cependant, il semblerait qu\'elle ne soit pas actuellement installée.',
-		'resolve'		=> 'Vous devez installer CryptRSA dans le <em>include_path</em> de PHP. Si PEAR est correctement, la commande <br /><pre>pear install Crypt_RSA-1.2.1</pre> devrait régler le problème.'
+		'errordescription'	=> 'Certaines donnï¿½es sont chiffrï¿½es en utilisant la classe CryptRSA de phpseclib. Cependant, il semblerait qu\'elle ne soit pas actuellement installï¿½e.',
+		'resolve'		=> 'Vous devez installer CryptRSA dans le <em>include_path</em> de PHP. Installer la lib disponible ici pour rÃ©gler le problÃ¨me.'
 	);
 
 	/**
-	 * Liste des extensions nécessaires
+	 * Liste des extensions nï¿½cessaires
 	 */
 	$checklist[] = array(
 		'type'				=> 'extension',

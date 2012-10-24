@@ -12,6 +12,7 @@
 require_once 'PEAR.php';
 require_once("Crypt/RSA.php");
 
+
 function binToHex($str)
 {
 	$result = '';
@@ -55,38 +56,28 @@ class Krypt
 	
 	function __construct()
 	{
-		if( ! isset($_SESSION['rsakeypair']) )
+		if(! isset($_SESSION['rsakeypair']) )
 		{
-			$this->keypair = new Crypt_RSA_KeyPair($this->keysize) ;
-			if( PEAR::isError($this->keypair) )
-			{
-				Debug::kill($this->keypair->getMessage());
-			}
-			else
-			{
-				$_SESSION['rsakeypair'] = serialize($this->keypair);
-			}
+			$rsa = new Crypt_RSA();
+
+			$this->keypair = $rsa->createKey($this->keysize) ;
+			$_SESSION['rsakeypair'] = serialize($this->keypair);
 		}
 		else
 		{
 			$this->keypair = unserialize($_SESSION['rsakeypair']);
-			if( PEAR::isError($this->keypair) )
-			{
-				unset($_SESSION['rsakeypair']);
-				Debug::kill($this->keypair->getMessage());
-			}
 		}
 	}
 	
 	function getPublicKey()
 	{
-		return $this->keypair->getPublicKey();
+		return $this->keypair["publickey"];
 	}
 	
 	function decrypt($data)
 	{
 		$rsa = new Crypt_RSA();
-		$decrypted = $rsa->decryptBinary(hexToBin($data),  $this->keypair->getPrivateKey() );
+		$decrypted = $rsa->decrypt(hexToBin($data),  $this->keypair["privatekey"] );
 		return $decrypted;
 	}
 }
