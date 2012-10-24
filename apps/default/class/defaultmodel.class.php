@@ -34,7 +34,7 @@ class DefaultModel extends Model {
 		$pubkey = $krypt->getPublicKey();
 
 		$this->assign("pubkey_exp", $pubkey["e"]->hex );
-		$this->assign("pubkey_mod", $pubkey["m"]->hex );
+		$this->assign("pubkey_mod", $pubkey["n"]->hex );
 	}
 }
 
