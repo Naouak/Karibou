@@ -26,8 +26,8 @@ class LoginForm extends Model
 		{
 			$krypt = new Krypt();
 			$pubkey = $krypt->getPublicKey();
-			$this->assign("pubkey_exp", binToHex($pubkey->getExponent()) );
-			$this->assign("pubkey_mod", binToHex($pubkey->getModulus()) );
+			$this->assign("pubkey_exp", $pubkey["e"]->hex );
+			$this->assign("pubkey_mod", $pubkey["m"]->hex );
 		}
 
 
