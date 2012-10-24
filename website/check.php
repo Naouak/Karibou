@@ -2,14 +2,14 @@
 
 	$checklist = array();
 	/**
-	 * Liste des fonctions n�cessaires
+	 * Liste des fonctions nécessaires
 	 */
 
 	/* No more check is made on the functions... But the type "function"
 	   still exists, so keep that in mind for new features. */
 
 	/**
-	 * Liste des fichiers n�cessaires
+	 * Liste des fichiers nécessaires
 	 */
 	
 	$checklist[] = array(
@@ -17,7 +17,7 @@
 		'name'			=> KARIBOU_SMARTY_DIR . '/Smarty.class.php',
 		'errortitle'		=> 'Smarty est introuvable',
 		'errordescription'	=> 'Karibou utilise <a href="http://www.smarty.net/">Smarty</a> comme moteur de template. Cependant, il est impossible de trouver Smarty. ',
-		'resolve'		=> 'Vous devez installer Smarty dans le <em>include_path</em> de PHP. Sous Debian, la commande <br /><pre>aptitude install smarty</pre> devrait r�gler le probl�me.'
+		'resolve'		=> 'Vous devez installer Smarty dans le <em>include_path</em> de PHP. Sous Debian, la commande <br /><pre>aptitude install smarty</pre> devrait régler le problème.'
 	);
 
 	$checklist[] = array(
@@ -25,14 +25,14 @@
 		'name'			=> 'PEAR.php',
 		'errortitle'		=> 'PEAR est introuvable',
 		'errordescription'	=> 'Karibou utilise des classes en provnenance de <a href="http://pear.php.net/">PEAR</a>. Cependant, il est impossible de trouver PEAR.',
-		'resolve'		=> 'Vous devez installer PEAR dans le <em>include_path</em> de PHP. Sous Debian, la commande <br /><pre>aptitude install php-pear</pre> devrait r�gler le probl�me.'
+		'resolve'		=> 'Vous devez installer PEAR dans le <em>include_path</em> de PHP. Sous Debian, la commande <br /><pre>aptitude install php-pear</pre> devrait régler le problème.'
 	);
 
 	$checklist[] = array(
 		'type'			=> 'file',
 		'name'			=> 'Crypt/RSA.php',
 		'errortitle'		=> 'CryptRSA est introuvable',
-		'errordescription'	=> 'Certaines donn�es sont chiffr�es en utilisant la classe CryptRSA de phpseclib. Cependant, il semblerait qu\'elle ne soit pas actuellement install�e.',
+		'errordescription'	=> 'Certaines données sont chiffrées en utilisant la classe CryptRSA de phpseclib. Cependant, il semblerait qu\'elle ne soit pas actuellement install�e.',
 		'resolve'		=> 'Vous devez installer CryptRSA dans le <em>include_path</em> de PHP. Installer la lib disponible ici pour régler le problème.'
 	);
 
