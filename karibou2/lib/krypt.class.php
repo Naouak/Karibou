@@ -12,7 +12,6 @@
 require_once 'PEAR.php';
 require_once("Crypt/RSA.php");
 
-
 function binToHex($str)
 {
 	$result = '';
@@ -59,6 +58,7 @@ class Krypt
 		if(! isset($_SESSION['rsakeypair']) )
 		{
 			$rsa = new Crypt_RSA();
+			$rsa->publicKeyFormat = CRYPT_RSA_PUBLIC_FORMAT_RAW;
 
 			$this->keypair = $rsa->createKey($this->keysize) ;
 			$_SESSION['rsakeypair'] = serialize($this->keypair);
